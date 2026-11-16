@@ -160,6 +160,30 @@ describe("events", () => {
         // then
         expect(li.classes()).toContain("imenu__list__item--highlight");
     });
+
+    it("should set aria-current on selected item", async () => {
+        expect.assertions(1);
+        // given
+        const wrapper = mount(FNavigationMenu, {
+            props: {
+                route: "",
+                routes: testItems,
+            },
+        });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+        await wrapper.vm.$nextTick();
+
+        const li = wrapper.findAll(".imenu__list__item")[1];
+        const a = li.get("a");
+
+        // when
+        await a.trigger("click");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+        await wrapper.vm.$nextTick();
+
+        // then
+        expect(a.element.getAttribute("aria-current")).toBe("page");
+    });
 });
 
 describe("html-validate", () => {
