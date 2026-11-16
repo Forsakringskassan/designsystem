@@ -99,6 +99,17 @@ export function FMinimizablePanelSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FModalSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    dialog(this: void): string;
+    title(this: void): string;
+    body(this: void): string;
+    primaryButton(this: void): string;
+    secondaryButton(this: void): string;
+    closeCross(this: void): string;
+}>;
+
+// @public
 export function FPaginatorSelectors(selector?: string): Readonly<{
     readonly selector: string;
     currentPageButton(this: void): string;

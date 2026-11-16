@@ -1,9 +1,11 @@
+import { FModalSelectors } from "../selectors";
 import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
  * @public
  */
 export class FModalPageObject implements BasePageObject {
+    private _selectors: ReturnType<typeof FModalSelectors>;
     public selector: string;
     public el: () => DefaultCypressChainable;
 
@@ -12,37 +14,28 @@ export class FModalPageObject implements BasePageObject {
      */
     public constructor(selector: string) {
         this.selector = selector;
-        this.el = () => cy.get(`${this.selector} .modal__dialog-container`);
+        this._selectors = FModalSelectors(selector);
+        this.el = () => cy.get(this._selectors.dialog());
     }
 
     public title(): DefaultCypressChainable {
-        return cy.get(
-            `${this.selector} .modal__dialog-container .modal__title`,
-        );
+        return cy.get(this._selectors.title());
     }
 
     public body(): DefaultCypressChainable {
-        return cy.get(
-            `${this.selector} .modal__dialog-container .modal__content`,
-        );
+        return cy.get(this._selectors.body());
     }
 
     public primaryButton(): DefaultCypressChainable {
-        return cy.get(
-            `${this.selector} .modal__dialog-container .modal__footer .button--primary`,
-        );
+        return cy.get(this._selectors.primaryButton());
     }
 
     public secondaryButton(): DefaultCypressChainable {
-        return cy.get(
-            `${this.selector} .modal__dialog-container .modal__footer .button--secondary`,
-        );
+        return cy.get(this._selectors.secondaryButton());
     }
 
     public closeCross(): DefaultCypressChainable {
-        return cy.get(
-            `${this.selector} .modal__dialog-container .close-button`,
-        );
+        return cy.get(this._selectors.closeCross());
     }
 
     public typeOfModal(): Cypress.Chainable<string> {
