@@ -4024,9 +4024,6 @@ function isInside(outer, inner, spacing) {
 function isElementOptions(options) {
   return options.target instanceof HTMLElement;
 }
-function isOverlapping(a, b) {
-  return a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y;
-}
 function clipRect(src, clip) {
   if (!clip) {
     return src;
@@ -4045,8 +4042,7 @@ function fitInsideArea(options) {
       target: targetElement,
       viewport: viewportElement,
       spacing: spacing2,
-      candidateOrder,
-      allowAnchorOverlap: allowAnchorOverlap2
+      candidateOrder
     } = options;
     const area2 = getAbsolutePosition(areaElement);
     const anchor2 = getAbsolutePosition(anchorElement);
@@ -4058,8 +4054,7 @@ function fitInsideArea(options) {
       anchor: anchor2,
       viewport: viewport2,
       spacing: spacing2,
-      candidateOrder,
-      allowAnchorOverlap: allowAnchorOverlap2
+      candidateOrder
     });
     const offset = targetElement.offsetParent?.getBoundingClientRect();
     if (!offset) {
@@ -4071,14 +4066,7 @@ function fitInsideArea(options) {
       y: result.y - (offset.top + window.pageYOffset)
     };
   }
-  const {
-    anchor,
-    target,
-    area,
-    viewport,
-    spacing,
-    allowAnchorOverlap = true
-  } = options;
+  const { anchor, target, area, viewport, spacing } = options;
   const clippedArea = clipRect(area, viewport);
   const candidates = getCandidates(
     anchor,
@@ -4088,7 +4076,7 @@ function fitInsideArea(options) {
     options.candidateOrder
   );
   const index = candidates.findIndex(
-    (it) => isInside(clippedArea, it, spacing) && (allowAnchorOverlap || !isOverlapping(anchor, it))
+    (it) => isInside(clippedArea, it, spacing)
   );
   if (index !== -1) {
     const match = candidates[index];
