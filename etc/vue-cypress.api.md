@@ -162,6 +162,7 @@ export class FCrudDatasetPageObject implements BasePageObject {
     el(): DefaultCypressChainable;
     // (undocumented)
     form: FValidationFormPageObject;
+    modal: FModalPageObject;
     // (undocumented)
     get selector(): string;
 }

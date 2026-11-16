@@ -1,26 +1,20 @@
 import "html-validate/vitest";
-import { type PropType, defineComponent, h } from "vue";
+import { type PropType, defineComponent } from "vue";
 import * as logic from "@fkui/logic";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import {
-    type VueWrapper,
-    flushPromises,
-    mount,
-    shallowMount,
-} from "@vue/test-utils";
+import { type VueWrapper, flushPromises, mount } from "@vue/test-utils";
 import { afterAll, afterEach, describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../plugins";
+import { FCrudDatasetSelectors, FModalSelectors } from "../../selectors";
 import { type ListItem } from "../../types";
-import {
-    type FModalSize,
-    FFormModal,
-    FFormModalAction,
-    FModal,
-} from "../FModal";
+import { type FModalSize, FFormModalAction, FModal } from "../FModal";
 import { FTextField } from "../FTextField";
 import { type FValidationFormCallback } from "../FValidationForm";
 import FCrudButton from "./FCrudButton.vue";
 import FCrudDataset from "./FCrudDataset.vue";
+
+const { addButton, cancelButton, confirmButton, modal } =
+    FCrudDatasetSelectors();
 
 vi.useFakeTimers();
 
@@ -203,7 +197,7 @@ function createWrapper(
 }
 
 async function submitForm(wrapper: VueWrapper): Promise<void> {
-    await wrapper.find(".modal form").trigger("submit");
+    await wrapper.find(confirmButton()).trigger("click");
 
     // hasFormErrors in FValidationForm
     await flushPromises(); // ValidationService.validateAllElements
@@ -244,7 +238,7 @@ it("should not show add button when #add slot is absent", () => {
         template,
     });
     const wrapper = mount(TestComponent, { stubs: ["FConfirmModal", "FIcon"] });
-    const buttons = wrapper.findAll(".crud-dataset__add-button");
+    const buttons = wrapper.findAll(addButton());
     expect(buttons).toHaveLength(0);
 });
 
@@ -260,7 +254,7 @@ it("should show add button when #add slot is present", () => {
         template,
     });
     const wrapper = mount(TestComponent, { stubs: ["FConfirmModal", "FIcon"] });
-    const buttons = wrapper.findAll(".crud-dataset__add-button");
+    const buttons = wrapper.findAll(addButton());
     expect(buttons).toHaveLength(1);
     expect(buttons.at(0)?.text()).toBe("Lägg till ny");
 });
@@ -276,11 +270,11 @@ describe("buttonPosition", () => {
             },
         });
 
-        const addButton = wrapper.find(".crud-dataset__add-button");
+        const button = wrapper.find(addButton());
         const table = wrapper.find("table");
 
-        expect(addButton.exists()).toBe(true);
-        expect(addButton.element.compareDocumentPosition(table.element)).toBe(
+        expect(button.exists()).toBe(true);
+        expect(button.element.compareDocumentPosition(table.element)).toBe(
             Node.DOCUMENT_POSITION_FOLLOWING,
         );
     });
@@ -295,11 +289,11 @@ describe("buttonPosition", () => {
             },
         });
 
-        const addButton = wrapper.find(".crud-dataset__add-button");
+        const button = wrapper.find(addButton());
         const table = wrapper.find("table");
 
-        expect(addButton.exists()).toBe(true);
-        expect(addButton.element.compareDocumentPosition(table.element)).toBe(
+        expect(button.exists()).toBe(true);
+        expect(button.element.compareDocumentPosition(table.element)).toBe(
             Node.DOCUMENT_POSITION_PRECEDING,
         );
     });
@@ -311,11 +305,11 @@ describe("buttonPosition", () => {
             stubs: ["FConfirmModal"],
         });
 
-        const addButton = wrapper.find(".crud-dataset__add-button");
+        const button = wrapper.find(addButton());
         const table = wrapper.find("table");
 
-        expect(addButton.exists()).toBe(true);
-        expect(addButton.element.compareDocumentPosition(table.element)).toBe(
+        expect(button.exists()).toBe(true);
+        expect(button.element.compareDocumentPosition(table.element)).toBe(
             Node.DOCUMENT_POSITION_PRECEDING,
         );
     });
@@ -352,9 +346,9 @@ it("should show add modal when the add button is pressed", async () => {
             stubs: ["FConfirmModal"],
         },
     );
-    const button = wrapper.find(".crud-dataset__add-button");
+    const button = wrapper.find(addButton());
     await button.trigger("click");
-    expect(wrapper.find("form > span").text()).toBe("add");
+    expect(wrapper.get(modal()).find("span").text()).toBe("add");
 });
 
 it("should show modify modal when the modify button is pressed", async () => {
@@ -367,23 +361,21 @@ it("should show modify modal when the modify button is pressed", async () => {
     );
     const button = wrapper.find("#modifyButton");
     await button.trigger("click");
-    expect(wrapper.find("form > span").text()).toBe("modify");
+    expect(wrapper.get(modal()).find("span").text()).toBe("modify");
 });
 
 it("should show delete modal when the delete button is pressed", async () => {
     expect.assertions(2);
-    const wrapper = createWrapper(
-        [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-        {
-            stubs: ["FConfirmModal"],
-        },
-    );
+    const wrapper = createWrapper([
+        ADD_TEMPLATE,
+        MODIFY_TEMPLATE,
+        DELETE_TEMPLATE,
+    ]);
 
-    const confirmModal = wrapper.find("f-confirm-modal-stub");
-    expect(confirmModal.attributes().isopen).toBe("false");
+    expect(wrapper.find(modal()).exists()).toBe(false);
     const button = wrapper.find("#deleteButton");
     await button.trigger("click");
-    expect(confirmModal.attributes().isopen).toBe("true");
+    expect(wrapper.get(modal()).find("span").text()).toBe("delete");
 });
 
 it("should add item", async () => {
@@ -396,7 +388,7 @@ it("should add item", async () => {
             stubs: ["FConfirmModal"],
         },
     );
-    await wrapper.find(".crud-dataset__add-button").trigger("click");
+    await wrapper.find(addButton()).trigger("click");
 
     await wrapper.find("#id-input").setValue(4);
     await wrapper.find("#name-input").setValue("d");
@@ -446,7 +438,7 @@ it("should not modify original item on cancel", async () => {
     await wrapper.find("#name-input").setValue("test");
     await wrapper.find("#child-name-input").setValue("test child");
 
-    await wrapper.find(".button-group .button--secondary").trigger("click");
+    await wrapper.find(cancelButton()).trigger("click");
     vi.runAllTimers();
     await flushPromises();
 
@@ -462,7 +454,7 @@ it("should emit created event when items are added", async () => {
             stubs: ["FConfirmModal"],
         },
     );
-    await wrapper.find(".crud-dataset__add-button").trigger("click");
+    await wrapper.find(addButton()).trigger("click");
 
     await wrapper.find("#id-input").setValue(4);
     await wrapper.find("#name-input").setValue("d");
@@ -498,9 +490,9 @@ it("should call :onCancel after cancel", async () => {
         },
     );
 
-    await wrapper.find(".crud-dataset__add-button").trigger("click");
+    await wrapper.find(addButton()).trigger("click");
 
-    await wrapper.find(".button-group .button--secondary").trigger("click");
+    await wrapper.find(cancelButton()).trigger("click");
     vi.runAllTimers();
     await flushPromises();
 
@@ -521,7 +513,7 @@ describe("beforeSubmit", () => {
                 },
             },
         );
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
+        await wrapper.find(addButton()).trigger("click");
 
         expect(beforeSubmit).toHaveBeenCalledTimes(0);
 
@@ -546,13 +538,10 @@ describe("beforeSubmit", () => {
             },
         );
 
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
+        await wrapper.find(addButton()).trigger("click");
         await submitForm(wrapper);
 
-        const crud = wrapper.findComponent(FCrudDataset) as VueWrapper;
-        const modal = crud.findComponent(FFormModal) as VueWrapper;
-
-        expect(modal.emitted().submit).toBeFalsy();
+        expect(wrapper.vm.$data.createdEventData).toBeNull();
     });
 
     it("should emit submit when beforeSubmit returns CONTINUE", async () => {
@@ -571,13 +560,10 @@ describe("beforeSubmit", () => {
             },
         );
 
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
+        await wrapper.find(addButton()).trigger("click");
         await submitForm(wrapper);
 
-        const crud = wrapper.findComponent(FCrudDataset) as VueWrapper;
-        const modal = crud.findComponent(FFormModal) as VueWrapper;
-
-        expect(modal.emitted().submit).toBeTruthy();
+        expect(wrapper.vm.$data.createdEventData).not.toBeNull();
     });
 
     it("should emit submit when beforeSubmit returns undefined", async () => {
@@ -596,13 +582,10 @@ describe("beforeSubmit", () => {
             },
         );
 
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
+        await wrapper.find(addButton()).trigger("click");
         await submitForm(wrapper);
 
-        const crud = wrapper.findComponent(FCrudDataset) as VueWrapper;
-        const modal = crud.findComponent(FFormModal) as VueWrapper;
-
-        expect(modal.emitted().submit).toBeTruthy();
+        expect(wrapper.vm.$data.createdEventData).not.toBeNull();
     });
 
     it("should emit submit when beforeSubmit props not set (default)", async () => {
@@ -617,13 +600,10 @@ describe("beforeSubmit", () => {
             },
         );
 
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
+        await wrapper.find(addButton()).trigger("click");
         await submitForm(wrapper);
 
-        const crud = wrapper.findComponent(FCrudDataset) as VueWrapper;
-        const modal = crud.findComponent(FFormModal) as VueWrapper;
-
-        expect(modal.emitted().submit).toBeTruthy();
+        expect(wrapper.vm.$data.createdEventData).not.toBeNull();
     });
 });
 
@@ -640,7 +620,7 @@ it("should call before validation", async () => {
             },
         },
     );
-    await wrapper.find(".crud-dataset__add-button").trigger("click");
+    await wrapper.find(addButton()).trigger("click");
 
     await wrapper.find("#id-input-required").setValue("");
     await wrapper.find("#name-input-required").setValue("");
@@ -649,14 +629,11 @@ it("should call before validation", async () => {
     await submitForm(wrapper);
     expect(beforeValidation).toHaveBeenCalledTimes(1);
 
-    const crud = wrapper.findComponent(FCrudDataset) as VueWrapper;
-    const modal = crud.findComponent(FFormModal) as VueWrapper;
-
-    expect(modal.emitted().submit).toBeFalsy();
+    expect(wrapper.vm.$data.createdEventData).toBeNull();
 });
 
 describe("onCancel", () => {
-    it("should be called on cancel-event emitted", async () => {
+    it("should be called on escape pressed", async () => {
         expect.assertions(2);
         const onCancel = vi.fn();
         const wrapper = createWrapper(
@@ -669,15 +646,12 @@ describe("onCancel", () => {
                 },
             },
         );
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
+        await wrapper.find(addButton()).trigger("click");
 
         expect(onCancel).toHaveBeenCalledTimes(0);
 
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
-        wrapper
-            .findComponent(FCrudDataset)
-            .findComponent(FFormModal)
-            .vm.$emit("cancel");
+        await wrapper.get("#name-input").trigger("keyup.esc");
+        await flushPromises();
 
         expect(onCancel).toHaveBeenCalledTimes(1);
     });
@@ -695,11 +669,13 @@ describe("onCancel", () => {
                 },
             },
         );
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
+        await wrapper.find(addButton()).trigger("click");
 
         expect(onCancel).toHaveBeenCalledTimes(0);
 
-        await wrapper.find(".close-button").trigger("click");
+        await wrapper
+            .find(FModalSelectors(modal()).closeCross())
+            .trigger("click");
 
         expect(onCancel).toHaveBeenCalledTimes(1);
     });
@@ -717,11 +693,11 @@ describe("onCancel", () => {
                 },
             },
         );
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
+        await wrapper.find(addButton()).trigger("click");
 
         expect(onCancel).toHaveBeenCalledTimes(0);
 
-        await wrapper.find(".button-group .button--secondary").trigger("click");
+        await wrapper.find(cancelButton()).trigger("click");
 
         expect(onCancel).toHaveBeenCalledTimes(1);
     });
@@ -730,57 +706,54 @@ describe("onCancel", () => {
 describe("formModalSize", () => {
     it("should pass size prop to FFormModal when opening add modal", async () => {
         expect.assertions(1);
-        const wrapper = shallowMount(FCrudDataset, {
+        const wrapper = createWrapper([ADD_TEMPLATE], {
             props: { formModalSize: "large" },
-            slots: { add: "..." },
         });
+        const { dialog } = FModalSelectors(modal());
 
-        await wrapper.get(".crud-dataset__add-button").trigger("click");
-        await flushPromises();
+        await wrapper.get(addButton()).trigger("click");
 
-        const formModal = wrapper.findComponent(FFormModal) as VueWrapper<
-            InstanceType<typeof FFormModal>
-        >;
-        expect(formModal.props("size")).toBe("large");
+        expect(wrapper.get(dialog()).classes()).toContain(
+            "modal__dialog-container--large",
+        );
     });
 
     it("should pass size prop to FFormModal when opening modify modal", async () => {
         expect.assertions(1);
-        const wrapper = mount(FCrudDataset, {
+        const wrapper = createWrapper([MODIFY_TEMPLATE], {
             props: { formModalSize: "large" },
-            slots: {
-                default: h(FCrudButton, {
-                    id: "modify-button",
-                    action: "modify",
-                    item: {},
-                }),
-                modify: "...",
-            },
-            stubs: [FFormModal],
         });
+        const { dialog } = FModalSelectors(modal());
 
-        await wrapper.get("#modify-button").trigger("click");
-        await flushPromises();
+        await wrapper.get("#modifyButton").trigger("click");
 
-        const formModal = wrapper.findComponent(FFormModal) as VueWrapper<
-            InstanceType<typeof FFormModal>
-        >;
-        expect(formModal.props("size")).toBe("large");
+        expect(wrapper.get(dialog()).classes()).toContain(
+            "modal__dialog-container--large",
+        );
     });
 
     it("should use default size (empty string) when prop not provided", async () => {
         expect.assertions(1);
-        const wrapper = shallowMount(FCrudDataset, {
-            slots: { add: "..." },
+        const wrapper = mount(FCrudDataset, {
+            slots: { default: "...", add: "..." },
+            global: { stubs: ["FIcon"] },
+            attachTo: createPlaceholderInDocument(),
         });
+        const { dialog } = FModalSelectors(modal());
 
-        await wrapper.get(".crud-dataset__add-button").trigger("click");
-        await flushPromises();
+        await wrapper.get(addButton()).trigger("click");
 
-        const formModal = wrapper.findComponent(FFormModal) as VueWrapper<
-            InstanceType<typeof FFormModal>
-        >;
-        expect(formModal.props("size")).toBe("");
+        const sizeClasses = new Set(
+            ["small", "medium", "large", "fullwidth"].map(
+                (it) => `modal__dialog-container--${it}`,
+            ),
+        );
+        expect(
+            wrapper
+                .get(dialog())
+                .classes()
+                .filter((it) => sizeClasses.has(it)),
+        ).toEqual([]);
     });
 
     it.each`

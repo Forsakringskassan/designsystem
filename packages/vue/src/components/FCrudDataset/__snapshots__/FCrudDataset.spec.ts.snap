@@ -164,28 +164,5 @@ exports[`snapshot > should match snapshot 1`] = `
   
   
   
-   
-  <f-form-modal-stub
-    ariaclosetext="Stäng"
-    beforesubmit="[Function]"
-    beforevalidation="[Function]"
-    buttons="[object Object],[object Object]"
-    datatest=""
-    formid="fkui-vue-element-0001"
-    fullscreen="true"
-    isopen="false"
-    size="small"
-    useerrorlist="false"
-    value="[object Object]"
-  />
-   
-  <f-confirm-modal-stub
-    buttons="[object Object],[object Object]"
-    content="Brödtext"
-    fullscreen="false"
-    heading="Rubrik"
-    isopen="false"
-    size=""
-  />
 </div>
 `;

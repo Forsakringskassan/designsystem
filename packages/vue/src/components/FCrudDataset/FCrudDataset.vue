@@ -1,12 +1,15 @@
 <script setup lang="ts" generic="T">
-import { type PropType, type Ref, computed, onMounted, provide, ref, useSlots, watch } from "vue";
-import { TranslationService, alertScreenReader, deepClone } from "@fkui/logic";
+import { type PropType, type Ref, computed, onMounted, provide, ref, useTemplateRef, watch } from "vue";
+import { TranslationService, alertScreenReader, assertRef, deepClone } from "@fkui/logic";
 
 import { useTranslate } from "../../plugins";
+import { useModal } from "../../utils/use-modal";
 import { FIcon } from "../FIcon";
-import { type FModalSize, FConfirmModal, FFormModal } from "../FModal";
+import { type FModalSize } from "../FModal";
 import { type FModalButtonDescriptor } from "../FModal/modal-button";
 import { type FValidationFormCallback } from "../FValidationForm";
+import ICrudDatasetConfirmModal from "./ICrudDatasetConfirmModal.vue";
+import ICrudDatasetFormModal from "./ICrudDatasetFormModal.vue";
 import { filterItem } from "./filter-item";
 import { Operation } from "./operation";
 
@@ -137,16 +140,71 @@ const emit = defineEmits<{
      */
     "update:modelValue": [items: T[]];
 }>();
+
+const slots = defineSlots<{
+    /**
+     * Slot for displaying the data.
+     */
+    default?(bindings: {
+        /**
+         * Callback to trigger modification modal
+         */
+        updateItem: (item: T) => void;
+        /**
+         * Callback to trigger deletion modal
+         */
+        deleteItem: (item: T) => void;
+    }): unknown;
+    /**
+     * Slot for additional add buttons
+     */
+    buttons?(bindings: {
+        /**
+         * Default button classes.
+         */
+        buttonClasses: string[];
+    }): unknown;
+    /**
+     * Slot for inputs when creating a new item. The new item is available through `v-slot="{ item }"`. If any data in the item should be set not by the user the prop `beforeCreate` can be used to set that data.
+     */
+    add?(bindings: {
+        /**
+         * Item returned by `beforeCreate` or an empty object.
+         */
+        item: T;
+    }): unknown;
+    /**
+     * Slot for inputs when modifying an item. The item being modified is available through `v-slot="{ item }"`.
+     */
+    modify?(bindings: {
+        /**
+         * A clone of the current item.
+         */
+        item: T;
+    }): unknown;
+    /**
+     * Slot for displaying a warning message before an item is deleted. The item being deleted is available through `v-slot="{ item }"`.
+     */
+    delete?(bindings: {
+        /**
+         * Item about to be deleted.
+         */
+        item: T;
+    }): unknown;
+    /* must be last and documented in the template: vue-docgen-api does not
+     * handle quoted slot names (it would drop the description of another slot) */
+    "add-button"?(): unknown;
+}>();
+
 const $t = useTranslate();
-const slots = useSlots();
+const { openModal } = useModal();
+const rootElement = useTemplateRef("root");
 
 const result = ref<T[]>([]) as Ref<T[]>; // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt
 const operation = ref(Operation.NONE);
 const item = ref<T | null>(null);
 const nestedKey = ref<keyof T | null | undefined>(null);
 const originalItemToUpdate = ref<T | null>(null);
-const isFormModalOpen = ref(false);
-const isConfirmModalOpen = ref(false);
 const callbackAfterItemAdd = ref<(item: T) => void>(() => ({}));
 const callbackBeforeItemDelete = ref<(item: T) => void>(() => ({}));
 
@@ -195,15 +253,15 @@ const confirmDeleteButtons = computed((): FModalButtonDescriptor[] => {
 });
 
 const hasAddSlot = computed((): boolean => {
-    return Boolean(slots.add);
+    return slots.add !== undefined;
 });
 
 const hasDeleteSlot = computed((): boolean => {
-    return Boolean(slots.delete);
+    return slots.delete !== undefined;
 });
 
 const hasModifySlot = computed((): boolean => {
-    return Boolean(slots.modify);
+    return slots.modify !== undefined;
 });
 
 const formModalHeader = computed((): string => {
@@ -254,7 +312,7 @@ function createItem(): void {
     }
     operation.value = Operation.ADD;
     item.value = props.beforeCreate ? props.beforeCreate() : {};
-    isFormModalOpen.value = true;
+    void showFormModal();
 }
 
 function deleteItem(current: T): void {
@@ -263,7 +321,7 @@ function deleteItem(current: T): void {
     }
     operation.value = Operation.DELETE;
     item.value = current;
-    isConfirmModalOpen.value = true;
+    void showConfirmModal();
 }
 
 function onDeleteConfirm(): void {
@@ -281,18 +339,6 @@ function onDeleteConfirm(): void {
     alertScreenReader(message, {
         assertive: true,
     });
-}
-
-function onDeleteClose(e: { reason: string }): void {
-    onModalClose();
-    if (e.reason === "close" && props.onCancel) {
-        props.onCancel();
-    }
-}
-
-function onModalClose(): void {
-    isFormModalOpen.value = false;
-    isConfirmModalOpen.value = false;
 }
 
 function onFormModalSubmit(): void {
@@ -326,7 +372,6 @@ function onFormModalSubmit(): void {
             assertive: true,
         });
     }
-    isFormModalOpen.value = false;
 }
 
 function updateItem(current: T): void {
@@ -336,16 +381,67 @@ function updateItem(current: T): void {
     operation.value = Operation.MODIFY;
     originalItemToUpdate.value = current;
     item.value = deepClone(current);
-    isFormModalOpen.value = true;
+    void showFormModal();
 }
 
 function setNestedKey(key: keyof T | null | undefined): void {
     nestedKey.value = key;
 }
+
+/**
+ * The modals are mounted inside the root element of this component to retain
+ * the DOM placement (selectors and pageobjects are scoped to this component).
+ */
+function getRootElement(): HTMLElement {
+    assertRef(rootElement);
+
+    return rootElement.value;
+}
+
+async function showFormModal(): Promise<void> {
+    const current = item.value;
+    const isAdd = operation.value === Operation.ADD;
+
+    const { reason } = await openModal(ICrudDatasetFormModal, {
+        attachTo: getRootElement(),
+        props: {
+            header: formModalHeader.value,
+            ariaCloseText: $t("fkui.crud-dataset.modal.close", "Stäng"),
+            buttons: formModalButtons.value,
+            size: props.formModalSize,
+            beforeSubmit: props.beforeSubmit,
+            beforeValidation: props.beforeValidation,
+            content: () => (isAdd ? slots.add?.({ item: current }) : slots.modify?.({ item: current })),
+            onSubmit: onFormModalSubmit,
+        },
+    });
+
+    if (reason !== "submit") {
+        props.onCancel?.();
+    }
+}
+
+async function showConfirmModal(): Promise<void> {
+    const current = item.value;
+
+    const { reason } = await openModal(ICrudDatasetConfirmModal, {
+        attachTo: getRootElement(),
+        props: {
+            heading: props.deleteModalHeader,
+            buttons: confirmDeleteButtons.value,
+            content: () => slots.delete?.({ item: current }),
+            onConfirm: onDeleteConfirm,
+        },
+    });
+
+    if (reason === "close") {
+        props.onCancel?.();
+    }
+}
 </script>
 
 <template>
-    <div class="crud-dataset">
+    <div ref="root" class="crud-dataset">
         <template v-if="props.buttonPosition === 'top' && hasAddSlot">
             <button
                 data-test="f-crud-dataset-add-button"
@@ -363,10 +459,6 @@ function setNestedKey(key: keyof T | null | undefined): void {
                 }}</slot>
             </button>
 
-            <!--
-                @slot Slot for additional add buttons
-                @binding {string[]} buttonClasses Default button classes.
-            -->
             <slot
                 name="buttons"
                 v-bind="{
@@ -374,11 +466,6 @@ function setNestedKey(key: keyof T | null | undefined): void {
                 }"
             />
         </template>
-        <!--
-             @slot Slot for displaying the data.
-             @binding {(item: T) => void} updateItem Callback to trigger modification modal
-             @binding {(item: T, nested?: keyof T) => void} deleteItem Callback to trigger deletion modal
-        -->
         <slot v-bind="{ updateItem, deleteItem }"></slot>
         <template v-if="props.buttonPosition === 'bottom' && hasAddSlot">
             <button
@@ -397,10 +484,6 @@ function setNestedKey(key: keyof T | null | undefined): void {
                 }}</slot>
             </button>
 
-            <!--
-                @slot Slot for additional add buttons
-                @binding {string[]} buttonClasses Default button classes.
-            -->
             <slot
                 name="buttons"
                 v-bind="{
@@ -408,53 +491,5 @@ function setNestedKey(key: keyof T | null | undefined): void {
                 }"
             />
         </template>
-
-        <!-- [html-validate-disable-block fkui/no-template-modal -- technical debt] -->
-        <f-form-modal
-            :is-open="isFormModalOpen"
-            :aria-close-text="$t('fkui.crud-dataset.modal.close', 'Stäng')"
-            :buttons="formModalButtons"
-            :size="formModalSize"
-            :use-error-list="false"
-            :before-submit
-            :before-validation
-            :on-cancel
-            @close="onModalClose"
-            @cancel="onCancel"
-            @submit="onFormModalSubmit"
-        >
-            <template #header>{{ formModalHeader }}</template>
-            <template #input-text-fields>
-                <!--
-                     @slot Slot for inputs when creating a new item. The new item is available through `v-slot="{ item }"`. If any data in the item should be set not by the user the prop `beforeCreate` can be used to set that data.
-                     @binding {T} item Item returned by `beforeCreate` or an empty object.
-                -->
-                <slot v-if="operation === Operation.ADD" name="add" v-bind="{ item: item! }" />
-                <!--
-                     @slot Slot for inputs when modifying an item. The item being modified is available through `v-slot="{ item }"`.
-                     @binding {T} item A clone of the current item.
-                -->
-                <slot v-if="operation === Operation.MODIFY" name="modify" v-bind="{ item: item! }" />
-            </template>
-        </f-form-modal>
-
-        <f-confirm-modal
-            :is-open="isConfirmModalOpen"
-            :buttons="confirmDeleteButtons"
-            @confirm="onDeleteConfirm"
-            @close="onDeleteClose"
-        >
-            <template #heading>
-                {{ deleteModalHeader }}
-            </template>
-
-            <template #content>
-                <!--
-                     @slot Slot for displaying a warning message before an item is deleted. The item being deleted is available through `v-slot="{ item }"`.
-                     @binding {T} item Item about to be deleted.
-                -->
-                <slot name="delete" v-bind="{ item: item! }" />
-            </template>
-        </f-confirm-modal>
     </div>
 </template>

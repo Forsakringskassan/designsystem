@@ -63,3 +63,12 @@ MyAwesomeModal.vue
 ```import static
 FModalUsage.vue
 ```
+
+## FCrudDataset
+
+{@link FCrudDataset `FCrudDataset`} öppnar nu också sina modaler programmatiskt.
+Innehållet i slottarna `#add`, `#modify` och `#delete` renderas därför i en separat Vue-applikation (på samma sätt som för `openModal()`), men modalen placeras fortfarande inuti `.crud-dataset`-elementet så selektorer och pageobjects fungerar som tidigare.
+
+Det kan påverka er applikation om:
+
+- komponenter i slottarna `#add`, `#modify` eller `#delete` använder `inject()` för att hämta värden som tillhandahålls (`provide()`) av en komponent ovanför `FCrudDataset`.

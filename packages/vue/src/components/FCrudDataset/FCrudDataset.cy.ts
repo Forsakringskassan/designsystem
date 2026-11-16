@@ -8,7 +8,10 @@ import {
     FTableColumn,
     FTextField,
 } from "..";
-import { FInteractiveTablePageObject } from "../../cypress";
+import {
+    FCrudDatasetPageObject,
+    FInteractiveTablePageObject,
+} from "../../cypress";
 import { type ListItem } from "../../types";
 import FCrudButton from "./FCrudButton.vue";
 import FCrudDataset from "./FCrudDataset.vue";
@@ -207,8 +210,11 @@ describe("item delete", () => {
         mountComponent([ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE]);
         // Check that item with id item1 exists
         cy.get("#item1").should("exist");
+        const crudDataset = new FCrudDatasetPageObject();
         cy.get("#deleteButton1").click();
-        cy.get(".modal .button--primary").click();
+        crudDataset.modal.el().should("be.visible");
+        crudDataset.modal.primaryButton().click();
+        crudDataset.modal.el().should("not.exist");
         // Check that row 1 and item with id item1 do not exist after delete
         cy.get("#item1").should("not.exist");
     });

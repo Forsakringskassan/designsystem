@@ -1,3 +1,5 @@
+import { FModalSelectors } from "./FModal.selectors";
+
 /**
  * Selectors for `FCrudDataset`.
  *
@@ -74,8 +76,8 @@ export function FCrudDatasetSelectors(selector: string = ":scope") {
         /**
          * Get the cancel button element.
          *
-         * The cancel button is present in the modal footer when the add or edit
-         * form is open.
+         * The cancel button is present in the modal footer when the add, modify
+         * or delete modal is open.
          *
          * @example Cypress
          *
@@ -96,14 +98,14 @@ export function FCrudDatasetSelectors(selector: string = ":scope") {
          * @returns A selector for the cancel button element.
          */
         cancelButton(): string {
-            return `${selector} .modal__footer > .button-group > .button--secondary`;
+            return FModalSelectors(selector).secondaryButton();
         },
 
         /**
          * Get the confirm button element.
          *
-         * The confirm button is present in the modal footer when the add or edit
-         * form is open.
+         * The confirm button is present in the modal footer when the add, modify
+         * or delete modal is open.
          *
          * @example Cypress
          *
@@ -124,7 +126,37 @@ export function FCrudDatasetSelectors(selector: string = ":scope") {
          * @returns A selector for the confirm button element.
          */
         confirmButton(): string {
-            return `${selector} .modal__footer > .button-group > .button--primary`;
+            return FModalSelectors(selector).primaryButton();
+        },
+
+        /**
+         * Get the modal element.
+         *
+         * The modal is only present while it is open. The same selector is
+         * used for the add, modify and delete modal (only one can be open at
+         * a time). Use it to scope selectors for the content rendered by the
+         * `#add`, `#modify` or `#delete` slot.
+         *
+         * @example Cypress
+         *
+         * ```ts
+         * const { modal } = FCrudDatasetSelectors();
+         * cy.get(modal()).should("exist");
+         * ```
+         *
+         * @example Playwright
+         *
+         * ```ts
+         * const { modal } = FCrudDatasetSelectors();
+         * await expect(page.locator(modal())).toHaveCount(1);
+         * ```
+         *
+         * @public
+         * @since %version%
+         * @returns A selector for the modal element.
+         */
+        modal(): string {
+            return `${selector} .modal`;
         },
     });
 }

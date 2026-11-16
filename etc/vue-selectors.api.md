@@ -29,6 +29,7 @@ export function FCrudDatasetSelectors(selector?: string): Readonly<{
     addButtonTop(): string;
     cancelButton(): string;
     confirmButton(): string;
+    modal(): string;
 }>;
 
 // @public
