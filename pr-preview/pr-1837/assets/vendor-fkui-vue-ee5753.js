@@ -13652,7 +13652,7 @@ var ITableButton_default = /* @__PURE__ */ defineComponent({
           name: __props.column.icon
         }, null, 8, ["library", "name"])) : createCommentVNode("v-if", true),
         _cache[0] || (_cache[0] = createTextVNode()),
-        createElementVNode("span", _hoisted_2$33, toDisplayString(__props.column.srOnlyText(__props.row)), 1)
+        createElementVNode("span", _hoisted_2$33, toDisplayString(__props.column.screenreaderText(__props.row)), 1)
       ], 512)) : createCommentVNode("v-if", true)]);
     };
   }
@@ -13725,7 +13725,7 @@ var ITableMenu_default = /* @__PURE__ */ defineComponent({
             name: __props.column.icon
           }, null, 8, ["library", "name"]),
           _cache[0] || (_cache[0] = createTextVNode()),
-          createElementVNode("span", _hoisted_1$43, toDisplayString(__props.column.srOnlyText(__props.row)), 1)
+          createElementVNode("span", _hoisted_1$43, toDisplayString(__props.column.screenreaderText(__props.row)), 1)
         ], 512),
         _cache[1] || (_cache[1] = createTextVNode()),
         createVNode(unref(FContextMenu_default), {
@@ -14548,7 +14548,7 @@ function normalizeButtonColumn(column) {
   var _column$icon;
   return {
     type: "button",
-    srOnlyText: getValueFn(column.srOnlyText, column.key, String, ""),
+    screenreaderText: getValueFn(column.screenreaderText, column.key, String, ""),
     onClick: column.onClick,
     icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
     iconLibrary: column.iconLibrary
@@ -14577,7 +14577,7 @@ function normalizeMenuColumn(column) {
   const actions = (_column$actions = column.actions) !== null && _column$actions !== void 0 ? _column$actions : [];
   return {
     type: "menu",
-    srOnlyText: getValueFn(column.srOnlyText, void 0, String, ""),
+    screenreaderText: getValueFn(column.screenreaderText, void 0, String, ""),
     actions: typeof actions === "function" ? (row) => actions(row).map(normalizeMenuAction) : actions.map(normalizeMenuAction),
     icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : "bars",
     iconLibrary: column.iconLibrary

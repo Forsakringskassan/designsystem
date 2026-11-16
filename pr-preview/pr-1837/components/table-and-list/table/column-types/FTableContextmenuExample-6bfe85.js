@@ -28,82 +28,88 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableActionButtonLinkExample.vue:FTableActionButtonLinkExample-b42f82.js
+// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableContextmenuExample.vue:FTableContextmenuExample-6bfe85.js
 import { defineComponent as _defineComponent } from "vue";
 import { ref } from "vue";
-import { removeTableRows } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue";
 import { openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FTableActionButtonLinkExample",
+  __name: "FTableContextmenuExample",
   setup(__props, { expose: __expose }) {
     __expose();
     const columns = defineTableColumns([
       {
         type: "text",
-        header: "Frukt",
-        key: "frukt"
+        header: "ID",
+        key: "id"
       },
       {
         type: "text",
-        header: "Land",
-        key: "land"
+        header: "Text 1",
+        key: "text1"
       },
       {
-        type: "text:currency",
-        header: "Pris per kilo",
-        key: "pris"
+        type: "text",
+        header: "Text 2",
+        key: "text2"
       },
       {
-        type: "anchor",
-        header: "L\xE4nk",
-        text() {
-          return "Mer information";
-        },
-        href: "#"
+        type: "text",
+        header: "Text 3",
+        key: "text3"
       },
       {
-        type: "button",
-        header: "",
-        icon: "trashcan",
-        srOnlyText() {
-          return "Ta bort";
-        },
-        onClick: onRemoveRow
-      },
-      {
-        header: "",
+        header: "\xC5tg\xE4rd",
         type: "menu",
-        srOnlyText(row) {
-          return `\xC5tg\xE4rder f\xF6r "${row.frukt}"`;
+        screenreaderText(row) {
+          return `Visa \xE5tg\xE4rder f\xF6r rad "${row.id}"`;
         },
         actions: [
           {
             label: "Visa",
             icon: "search",
             onClick(row) {
-              window.alert(`Visa detaljer f\xF6r "${row.frukt}"`);
+              window.alert(`Visa detaljer f\xF6r rad "${row.id}"`);
             }
           },
           {
             label: "Redigera",
             icon: "pen",
             onClick(row) {
-              window.alert(`Redigera "${row.frukt}"`);
+              window.alert(`Redigera rad "${row.id}"`);
+            }
+          },
+          {
+            label: "Ta bort",
+            icon: "trashcan",
+            onClick(row) {
+              window.alert(`Ta bort rad "${row.id}"`);
             }
           }
         ]
       }
     ]);
     const rows = ref([
-      { frukt: "Apelsin", land: "Spanien", pris: "30" },
-      { frukt: "Banan", land: "Ecuador", pris: "15" },
-      { frukt: "\xC4pple", land: "Sverige", pris: "22" }
+      {
+        id: "1",
+        text1: "Text 1",
+        text2: "Text 2",
+        text3: "Text 3"
+      },
+      {
+        id: "2",
+        text1: "Text 4",
+        text2: "Text 5",
+        text3: "Text 6"
+      },
+      {
+        id: "3",
+        text1: "Text 7",
+        text2: "Text 8",
+        text3: "Text 9"
+      }
     ]);
-    function onRemoveRow(row) {
-      removeTableRows(rows, row);
-    }
-    const __returned__ = { columns, rows, onRemoveRow, get FTable() {
+    const __returned__ = { columns, rows, get FTable() {
       return FTable;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -121,7 +127,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-b42f82"
+  selector: "#example-6bfe85"
 });
 export {
   render

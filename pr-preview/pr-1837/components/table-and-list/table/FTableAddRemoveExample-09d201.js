@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableAddRemoveExample.vue:FTableAddRemoveExample-ecd12e.js
+// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableAddRemoveExample.vue:FTableAddRemoveExample-09d201.js
 import { defineComponent as _defineComponent } from "vue";
 import { ref, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
@@ -73,7 +73,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         type: "button",
         header: "\xC5tg\xE4rd",
         icon: "trashcan",
-        srOnlyText() {
+        screenreaderText() {
           return "Ta bort";
         },
         onClick(row) {
@@ -155,7 +155,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-ecd12e"
+  selector: "#example-09d201"
 });
 export {
   render

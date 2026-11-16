@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableCrudEdit.vue:FTableCrudEdit-b004a9.js
+// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableCrudEdit.vue:FTableCrudEdit-2926ec.js
 import { defineComponent as _defineComponent } from "vue";
 import { ref, useTemplateRef } from "vue";
 import {
@@ -75,7 +75,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
       {
         type: "menu",
         header: "\xC5tg\xE4rder",
-        srOnlyText(row) {
+        screenreaderText(row) {
           return `Visa \xE5tg\xE4rder f\xF6r ${row.namn}`;
         },
         actions: [
@@ -224,7 +224,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-b004a9"
+  selector: "#example-2926ec"
 });
 export {
   render

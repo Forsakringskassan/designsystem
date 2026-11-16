@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FDetailsPanel/examples/FDetailsPanelEdit.vue:FDetailsPanelEdit-0fc4dc.js
+// virtual-entry:virtual:packages/vue/src/components/FDetailsPanel/examples/FDetailsPanelEdit.vue:FDetailsPanelEdit-ae1b87.js
 import { defineComponent as _defineComponent } from "vue";
 import { reactive } from "vue";
 import {
@@ -81,7 +81,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
       {
         type: "button",
         header: "\xC5tg\xE4rd",
-        srOnlyText: (row) => `\xD6ppna detaljpanel f\xF6r ${row.column1}`,
+        screenreaderText: (row) => `\xD6ppna detaljpanel f\xF6r ${row.column1}`,
         icon: "arrow-right",
         onClick: openPanel
       }
@@ -285,10 +285,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ]);
 }
 exampleComponent.render = render;
-exampleComponent.__scopeId = "data-v-0fc4dc";
+exampleComponent.__scopeId = "data-v-ae1b87";
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-0fc4dc"
+  selector: "#example-ae1b87"
 });
 export {
   render

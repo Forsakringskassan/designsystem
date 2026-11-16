@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableColumnLiveExample.vue:FTableColumnLiveExample-04c297.js
+// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableColumnLiveExample.vue:FTableColumnLiveExample-37d4bc.js
 import { defineComponent, ref } from "vue";
 import { FDate } from "@fkui/date";
 import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
@@ -117,7 +117,7 @@ function stringifyObject(obj) {
   return `{ ${props.join(", ")} }`;
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableColumnLiveExample.vue:FTableColumnLiveExample-04c297.js
+// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableColumnLiveExample.vue:FTableColumnLiveExample-37d4bc.js
 import {
   FCheckboxField,
   FFieldset,
@@ -256,7 +256,7 @@ var columnData = {
   button: {
     type: "button",
     header: "Knapp kolumnrubrik",
-    srOnlyText: () => "value",
+    screenreaderText: () => "value",
     icon: "bell"
   },
   select: {
@@ -279,7 +279,7 @@ var columnData = {
   menu: {
     type: "menu",
     header: "\xC5tg\xE4rd",
-    srOnlyText: (row) => {
+    screenreaderText: (row) => {
       return `Visa \xE5tg\xE4rder f\xF6r rad "${row.id ?? -1}"`;
     },
     actions: [
@@ -823,7 +823,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-04c297"
+  selector: "#example-37d4bc"
 });
 export {
   render

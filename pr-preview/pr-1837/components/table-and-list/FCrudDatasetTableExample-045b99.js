@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-fe4fa6.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-045b99.js
 import { defineComponent as _defineComponent } from "vue";
 import { useTemplateRef } from "vue";
 
@@ -74,7 +74,7 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-fe4fa6.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-045b99.js
 import {
   FCrudDataset,
   FTable,
@@ -97,7 +97,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
       {
         type: "menu",
         header: "\xC5tg\xE4rd",
-        srOnlyText: (row) => `Visa \xE5tg\xE4rder f\xF6r ${row.name}`,
+        screenreaderText: (row) => `Visa \xE5tg\xE4rder f\xF6r ${row.name}`,
         actions: [
           {
             label: "\xC4ndra",
@@ -351,7 +351,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-fe4fa6"
+  selector: "#example-045b99"
 });
 export {
   render

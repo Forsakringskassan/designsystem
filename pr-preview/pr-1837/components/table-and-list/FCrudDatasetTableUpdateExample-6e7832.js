@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableUpdateExample.vue:FCrudDatasetTableUpdateExample-550c61.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableUpdateExample.vue:FCrudDatasetTableUpdateExample-6e7832.js
 import { defineComponent as _defineComponent } from "vue";
 import { useTemplateRef } from "vue";
 
@@ -74,7 +74,7 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableUpdateExample.vue:FCrudDatasetTableUpdateExample-550c61.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableUpdateExample.vue:FCrudDatasetTableUpdateExample-6e7832.js
 import { FCrudDataset, FTable, FTextField, defineTableColumns, useDatasetRef } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
@@ -90,7 +90,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
       {
         type: "button",
         header: "\xC5tg\xE4rd",
-        srOnlyText: (row) => `\xC4ndra ${row.name}`,
+        screenreaderText: (row) => `\xC4ndra ${row.name}`,
         icon: "pen",
         onClick: (row) => {
           crud.value?.updateItem(row);
@@ -173,7 +173,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-550c61"
+  selector: "#example-6e7832"
 });
 export {
   render
