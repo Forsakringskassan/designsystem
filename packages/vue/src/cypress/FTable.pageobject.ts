@@ -217,7 +217,7 @@ export class FTablePageObject implements BasePageObject {
      * not work properly if there are several dropdowns open simultaneously.
      *
      * @public
-     * @deprecated Since %version%. This method targes the legacy combobox dropdown. Use `select()` with Cypress `.select()` instead.
+     * @deprecated Since %version%. This method targets the legacy combobox dropdown. Use `select()` with Cypress `.select()` instead.
      * @param option - option number (1-indexed).
      * @returns Option of given number from a select cell dropdown.
      */
