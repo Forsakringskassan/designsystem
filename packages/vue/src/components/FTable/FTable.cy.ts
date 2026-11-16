@@ -2422,21 +2422,21 @@ describe("select cell", () => {
         table.cell({ row: 2, col: 1 }).should("contain.text", "Bar");
     });
 
-    it("should focus next row on selecting option with enter", () => {
+    it("1.2 should not focus next row on selecting option with enter", () => {
         cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
 
         table.select(1, 1).select("Baz");
-        table.cell({ row: 2, col: 1 }).should("have.focus");
+        table.cell({ row: 2, col: 1 }).should("not.have.focus");
     });
 
-    it("should focus same cell on selecting option with enter when on last row", () => {
+    it("should keep focus on select after choosing an option on last row", () => {
         cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
 
         table.select(2, 1).select("Baz");
-        table.cell({ row: 2, col: 1 }).should("have.focus");
+        table.select(2, 1).should("have.focus");
     });
 
-    it("should focus same cell when selecting an option on last row with footer", () => {
+    it("should keep focus on select after choosing an option on last row with footer", () => {
         cy.mount(() =>
             h(
                 FTable<Row>,
@@ -2453,7 +2453,7 @@ describe("select cell", () => {
         );
 
         table.select(2, 1).select("Baz");
-        table.cell({ row: 2, col: 1 }).should("have.focus");
+        table.select(2, 1).should("have.focus");
     });
 
     it("should move focus out of select cell on tab", () => {
@@ -2485,7 +2485,7 @@ describe("select cell", () => {
         table.cell({ row: 1, col: 1 }).should("not.be.focused");
     });
 
-    it("should have correct styling when open", () => {
+    it("1.1 should have correct styling when open", () => {
         cy.mount(() =>
             h(
                 FTable<Row>,
@@ -2530,6 +2530,20 @@ describe("select cell", () => {
         table.cell({ row: 2, col: 1 }).should("have.focus");
         cy.toMatchScreenshot();
         cy.get("body").realClick({ position: "topLeft" });
+    });
+
+    it("1.3 should not wrap around when navigating an open select", () => {
+        cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
+
+        table.select(1, 1).select("Foo").realClick();
+        cy.focused().press(Cypress.Keyboard.Keys.UP);
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+        table.select(1, 1).should("have.value", "Foo");
+
+        table.select(1, 1).select("Baz").realClick();
+        cy.focused().press(Cypress.Keyboard.Keys.DOWN);
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+        table.select(1, 1).should("have.value", "Baz");
     });
 });
 

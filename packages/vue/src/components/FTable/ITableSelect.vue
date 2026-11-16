@@ -1,12 +1,11 @@
 <script setup lang="ts" generic="T, K extends keyof T">
 import { computed, nextTick, ref, useTemplateRef, watch, watchEffect } from "vue";
-import { type ValidityEvent, ElementIdService, ValidationService, assertRef } from "@fkui/logic";
+import { type ValidityEvent, ElementIdService, ValidationService } from "@fkui/logic";
 import { useElementHover, useFocusWithin } from "@vueuse/core";
 import { IPopupError } from "../../internal-components";
 import { dispatchComponentValidityEvent } from "../../utils";
 import { isVisible } from "./is-visible";
 import { type PopupError } from "./popup-error";
-import { useStartStopEdit } from "./start-stop-edit";
 import { type NormalizedTableColumnSelect } from "./table-column";
 
 const {
@@ -50,8 +49,6 @@ const wrapperClasses = computed(() => ({
     "table-ng__cell--valid": !hasError.value,
     "table-ng__cell--error": hasError.value,
 }));
-
-const { stopEdit } = useStartStopEdit();
 
 const viewValue = ref(column.selected(row));
 
@@ -111,16 +108,12 @@ async function onSelectChange(event: Event): Promise<void> {
         column.update(row, value, oldValue);
     }
 
-    if (column.hasValidation) {
-        await nextTick();
-        await ValidationService.validateElement(select);
+    if (!column.hasValidation) {
+        return;
     }
 
-    const cell = select.closest<HTMLTableCellElement>("td, th");
-
-    if (cell) {
-        await stopEdit(cell, "enter");
-    }
+    await nextTick();
+    await ValidationService.validateElement(select);
 }
 
 function onValidity(event: CustomEvent<ValidityEvent>): void {
@@ -132,7 +125,9 @@ function onValidity(event: CustomEvent<ValidityEvent>): void {
         validityMode,
     };
 
-    assertRef(selectElement);
+    if (!selectElement.value) {
+        return;
+    }
 
     dispatchComponentValidityEvent(selectElement.value, {
         ...event.detail,
