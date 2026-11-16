@@ -85,9 +85,12 @@ Notera: variabeln `$global` måste sättas till `false` annars sätts samtliga v
 ### CSS
 
 Om din applikation inte använder Sass ska du istället placera `@fkui/design/lib/fkui.min.css` i en assets-katalog.
-Du behöver sedan referera till filen i assets-katalogen för varje sida.
+Placera även `@fkui/theme-default/dist/theme-auto.css` i assets-katalogen.
+Den filen väljer automatiskt ljust eller mörkt tema utifrån användarens systeminställning.
+Ladda design-systemets CSS efter temafilen:
 
 ```html static
+<link rel="stylesheet" href="assets/theme-auto.css" />
 <link rel="stylesheet" href="assets/fkui.min.css" />
 ```
 
