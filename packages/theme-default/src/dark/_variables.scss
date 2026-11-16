@@ -76,13 +76,14 @@
 
     // SELECT - BACKGROUND
     --fkds-color-select-background-primary-default: #{$palette-color-blue-300};
-    --fkds-color-select-background-primary-hover: #{$palette-color-neutral-700};
+    --fkds-color-select-background-primary-hover: #{$palette-color-neutral-800};
     --fkds-color-select-background-primary-active: #{$palette-color-neutral-700};
     --fkds-color-select-background-primary-focus: #{$palette-color-neutral-700};
     --fkds-color-select-background-secondary-default: #{$palette-color-green-300};
-    --fkds-color-select-background-secondary-hover: #{$palette-color-neutral-700};
+    --fkds-color-select-background-secondary-hover: #{$palette-color-neutral-800};
     --fkds-color-select-background-secondary-active: #{$palette-color-neutral-700};
     --fkds-color-select-background-secondary-focus: #{$palette-color-neutral-700};
+    --fkds-color-select-background-tertiary-hover: #{$palette-color-neutral-700};
 
     // INTERACTIVE SURFACE - BACKGROUND
     --fkds-color-interactive-surface-background-primary-default: #{$palette-color-neutral-800};
