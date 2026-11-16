@@ -13876,7 +13876,7 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
     });
     const visible = computed(() => isVisible$1(__props.column.visible, __props.row));
     function onCellKeyDown(event) {
-      if (event.target !== tdElement.value) return;
+      if (event.target !== tdElement.value && event.target !== selectElement.value) return;
       if (![
         "Enter",
         "NumpadEnter",
