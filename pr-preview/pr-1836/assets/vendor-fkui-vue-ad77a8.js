@@ -22711,8 +22711,8 @@ var FWizard_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
         get headerTag() {
           return wizard.headerTag;
         },
-        get disableInitialFocus() {
-          return wizard.disableInitialFocus;
+        get focusInitialStep() {
+          return wizard.focusInitialStep;
         }
       }
     };
@@ -22741,10 +22741,9 @@ var FWizard_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
       }
     },
     /**
-    * When the first wizard step is registered, it is opened and focused by default.
-    * Set this property to disable that behaviour.
+    * Focus the first wizard step when it is opened initially.
     */
-    disableInitialFocus: {
+    focusInitialStep: {
       type: Boolean,
       required: false
     }
@@ -22875,8 +22874,7 @@ var FWizardStep_vue_vue_type_script_lang_default = /* @__PURE__ */ defineCompone
     */
     useErrorList: {
       type: Boolean,
-      required: false,
-      default: true
+      required: false
     }
   },
   setup() {
@@ -22974,7 +22972,7 @@ var FWizardStep_vue_vue_type_script_lang_default = /* @__PURE__ */ defineCompone
       this.ignoreClick = false;
       if (this.isOpenedFirstTime) {
         this.isOpenedFirstTime = false;
-        if (this.inheritedProps.disableInitialFocus && this.stepNumber === 1) return;
+        if (!this.inheritedProps.focusInitialStep && this.stepNumber === 1) return;
       }
       const headerElement = findHTMLElementFromVueRef(this.$refs.header);
       await this.$nextTick();

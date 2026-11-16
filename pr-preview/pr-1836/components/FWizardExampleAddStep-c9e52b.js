@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FWizard/examples/FWizardExampleAddStep.vue:FWizardExampleAddStep-1243fd.js
+// virtual-entry:virtual:packages/vue/src/components/FWizard/examples/FWizardExampleAddStep.vue:FWizardExampleAddStep-c9e52b.js
 import { defineComponent } from "vue";
 import { FButton, FCheckboxField, FFieldset, FTextField, FWizard, FWizardStep } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, resolveDirective as _resolveDirective, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, renderList as _renderList, Fragment as _Fragment, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString } from "vue";
@@ -93,7 +93,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       modelValue: _ctx.current,
       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.current = $event),
       "header-tag": "h2",
-      "disable-initial-focus": "",
       onCompleted: _ctx.onCompleted,
       onCancel: _ctx.onCancel
     }, {
@@ -138,6 +137,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _renderList(_ctx.fruktkorgar, (item) => {
             return _openBlock(), _createBlock(_component_f_wizard_step, {
               key: "fruktkorg-" + item.id,
+              "use-error-list": "",
               title: "Frukt korg " + item.id,
               "data-test": "fruitBasketStep-" + item.id
             }, {
@@ -297,7 +297,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-1243fd"
+  selector: "#example-c9e52b"
 });
 export {
   render
