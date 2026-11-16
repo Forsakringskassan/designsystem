@@ -23,7 +23,7 @@ const defaultOptions: AlertScreenReaderOptions = {
     assertive: false,
 };
 
-let wrapper: HTMLDivElement;
+const wrapperId = "fkui-alert-screen-reader";
 
 /**
  * Trigger screen reader to read the passed text.
@@ -36,10 +36,10 @@ export function alertScreenReader(
     text: string,
     options?: Partial<AlertScreenReaderOptions>,
 ): void {
-    const mergedOptions = { ...defaultOptions, ...options };
-    const wrapper = getWrapper();
+    const wrapper = findWrapper() ?? createWrapper(defaultOptions);
 
-    updateProperties(mergedOptions);
+    const mergedOptions = { ...defaultOptions, ...options };
+    updateProperties(wrapper, mergedOptions);
 
     const msg = document.createElement("p");
     msg.textContent = text;
@@ -66,17 +66,9 @@ export function alertScreenReader(
 export function createScreenReaderWrapper(
     options: AlertScreenReaderOptions,
 ): void {
-    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-    if (getWrapper()) {
-        return;
+    if (!findWrapper()) {
+        createWrapper(options);
     }
-
-    wrapper = document.createElement("div");
-    wrapper.id = "fkui-alert-screen-reader";
-    wrapper.className = "sr-only";
-    updateProperties(options);
-
-    document.body.append(wrapper);
 }
 
 /**
@@ -85,18 +77,38 @@ export function createScreenReaderWrapper(
  * @internal
  * @param options - options for wrapper element attributes.
  */
-function updateProperties(options: AlertScreenReaderOptions): void {
-    const wrapper = getWrapper();
+function updateProperties(
+    wrapper: HTMLDivElement,
+    options: AlertScreenReaderOptions,
+): void {
     const ariaLive = options.assertive ? "assertive" : "polite";
 
     wrapper.setAttribute("aria-live", ariaLive);
 }
 
 /**
- * Retrieve wrapper element.
+ * Find the wrapper element in the DOM.
  *
  * @internal
  */
-function getWrapper(): HTMLDivElement {
+
+function findWrapper(): HTMLDivElement | null {
+    return document.querySelector<HTMLDivElement>(`#${wrapperId}`);
+}
+
+/**
+ * Create the wrapper element for the screen reader.
+ *
+ * @internal
+ * @returns The created wrapper element.
+ */
+
+function createWrapper(options: AlertScreenReaderOptions): HTMLDivElement {
+    const wrapper = document.createElement("div");
+    wrapper.id = wrapperId;
+    wrapper.className = "sr-only";
+    updateProperties(wrapper, options);
+
+    document.body.append(wrapper);
     return wrapper;
 }
