@@ -200,6 +200,7 @@
     --fkds-color-select-background-secondary-hover: #d9ede3;
     --fkds-color-select-background-secondary-active: #d9ede3;
     --fkds-color-select-background-secondary-focus: #d9ede3;
+    --fkds-color-select-background-tertiary-hover: #dee9f7;
     --fkds-color-interactive-surface-background-primary-default: #f7f7f8;
     --fkds-color-interactive-surface-background-primary-hover: #ecedef;
     --fkds-color-interactive-surface-background-primary-active: #ecedef;
@@ -387,13 +388,14 @@
     --fkds-color-feedback-text-positive: #41aa75;
     --fkds-color-feedback-text-on-warning: #1b1e23;
     --fkds-color-select-background-primary-default: #76a6e0;
-    --fkds-color-select-background-primary-hover: #494f5b;
+    --fkds-color-select-background-primary-hover: #292d34;
     --fkds-color-select-background-primary-active: #494f5b;
     --fkds-color-select-background-primary-focus: #494f5b;
     --fkds-color-select-background-secondary-default: #77bb98;
-    --fkds-color-select-background-secondary-hover: #494f5b;
+    --fkds-color-select-background-secondary-hover: #292d34;
     --fkds-color-select-background-secondary-active: #494f5b;
     --fkds-color-select-background-secondary-focus: #494f5b;
+    --fkds-color-select-background-tertiary-hover: #494f5b;
     --fkds-color-interactive-surface-background-primary-default: #292d34;
     --fkds-color-interactive-surface-background-primary-hover: #494f5b;
     --fkds-color-interactive-surface-background-primary-active: #494f5b;

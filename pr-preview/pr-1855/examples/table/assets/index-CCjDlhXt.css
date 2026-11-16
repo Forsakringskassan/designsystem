@@ -173,6 +173,7 @@
   --fkds-color-select-background-secondary-hover: #d9ede3;
   --fkds-color-select-background-secondary-active: #d9ede3;
   --fkds-color-select-background-secondary-focus: #d9ede3;
+  --fkds-color-select-background-tertiary-hover: #dee9f7;
   --fkds-color-interactive-surface-background-primary-default: #f7f7f8;
   --fkds-color-interactive-surface-background-primary-hover: #ecedef;
   --fkds-color-interactive-surface-background-primary-active: #ecedef;
@@ -2097,7 +2098,7 @@ input[type=search]:focus-visible,
 }
 @media (hover: hover) {
   .calendar-day:hover:not(.calendar-day--disabled, .calendar-day--selected), .calendar-day--hover:not(.calendar-day--disabled, .calendar-day--selected) {
-    background-color: var(--fkds-color-select-background-primary-hover);
+    background-color: var(--fkds-color-select-background-tertiary-hover);
     color: var(--fkds-color-text-primary);
   }
 }
@@ -2228,7 +2229,7 @@ input[type=search]:focus-visible,
     cursor: pointer;
   }
   .list--hover .list__item:hover:not(.disabled) {
-    background: var(--fkds-color-select-background-primary-hover);
+    background: var(--fkds-color-select-background-tertiary-hover);
   }
   .list--hover .list__item:hover.list__item--active {
     background: var(--fkds-color-select-background-primary-active);
@@ -5519,7 +5520,7 @@ input[type=search]:focus-visible,
 }
 
 .table tbody .table__row--hover {
-  background: var(--fkds-color-select-background-primary-hover);
+  background: var(--fkds-color-select-background-tertiary-hover);
   color: var(--fkds-color-text-primary);
   outline: 1px solid var(--fkds-color-border-primary);
 }
@@ -5537,7 +5538,7 @@ input[type=search]:focus-visible,
 }
 
 .table--striped tbody .table__row:nth-child(even).table__row--active, .table tbody .table__row--active, .table tbody .table__row:focus-visible.table__row--active, .table tbody .table__row--focus.table__row--active, .table tbody .table__row:has(:focus-visible).table__row--active, .table tbody .table__row--focus-within.table__row--active {
-  background: var(--fkds-color-select-background-primary-hover);
+  background: var(--fkds-color-select-background-primary-active);
   color: var(--fkds-color-text-primary);
 }
 
@@ -5666,12 +5667,12 @@ input[type=search]:focus-visible,
 }
 @media (hover: hover) {
   .table--hover tbody .table__row:hover {
-    background: var(--fkds-color-select-background-primary-hover);
+    background: var(--fkds-color-select-background-tertiary-hover);
     color: var(--fkds-color-text-primary);
     outline: 1px solid var(--fkds-color-border-primary);
   }
   .table--hover tbody .table__row:hover.table__row--active {
-    background: var(--fkds-color-select-background-primary-hover);
+    background: var(--fkds-color-select-background-primary-active);
     color: var(--fkds-color-text-primary);
   }
 }

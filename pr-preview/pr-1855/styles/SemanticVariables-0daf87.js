@@ -972,8 +972,8 @@ var metadata_default = {
           "palette": "blue-100"
         },
         "dark": {
-          "value": "#494f5b",
-          "palette": "neutral-700"
+          "value": "#292d34",
+          "palette": "neutral-800"
         }
       }
     },
@@ -1026,6 +1026,20 @@ var metadata_default = {
         "light": {
           "value": "#d9ede3",
           "palette": "green-100"
+        },
+        "dark": {
+          "value": "#292d34",
+          "palette": "neutral-800"
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-select-background-tertiary-hover",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#dee9f7",
+          "palette": "blue-100"
         },
         "dark": {
           "value": "#494f5b",
