@@ -69,11 +69,17 @@ $calendar-width: calc(100vw - #{$popup-spacing});
         margin: 0;
         padding: 1rem;
         align-items: center;
+        min-width: unset;
+        border-radius: 0;
 
         &:hover,
         &:active {
             color: button.$button-tertiary-muted-color-text-default;
             mix-blend-mode: normal;
+        }
+
+        &:active {
+            transform: none;
         }
     }
 }
