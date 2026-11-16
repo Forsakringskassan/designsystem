@@ -52,8 +52,7 @@
     "@fkui/theme-default": "6.66.0",
     "autoprefixer": "10.7.0",
     "cssnano": "9.9.0",
-    "postcss": "8.5.33",
-    "postcss-var-func-fallback": "3.0.1"
+    "postcss": "8.5.33"
   },
   "peerDependencies": {
     "@fkui/theme-default": "^6.66.0",
