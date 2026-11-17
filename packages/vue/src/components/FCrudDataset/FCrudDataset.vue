@@ -94,7 +94,7 @@ const props = defineProps({
      * Property for changing the "add" and "modify" modal size
      */
     formModalSize: {
-        type: String as PropType<FModalSize | "fullscreen" | "">,
+        type: String as PropType<FModalSize | "">,
         required: false,
         default: "",
     },
