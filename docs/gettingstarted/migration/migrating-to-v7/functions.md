@@ -5,6 +5,10 @@ name: migrating-to-v7-funktioner
 layout: article
 ---
 
+Följande propar är ändrade:
+
+- [`FModal` `size`](#fmodal)
+
 Följande propar är borttagna:
 
 - [`FSortFilterDataset` `placeholderFilter`](#fsortfilterdataset)
@@ -13,6 +17,33 @@ Följande funktioner är borttagna:
 
 - [`getLegacyInternalKey()`](#getlegacyinternalkey)
 - [`TableScroll.VERTICAL` och `TableScroll.BOTH`](#tablescroll)
+
+## `FModal`
+
+Propen `size` stödjer inte längre aliaset `fullscreen` och är ersatt med `fullwidth`.
+
+```diff
+ const { openModal } = useModal();
+ const modal = openModal(FModal, {
+-    size: "fullscreen",
++    size: "fullwidth",
+ });
+```
+
+::: details 🤖 Prompt för AI Agenter
+
+För varje användning av egenskapen `size` till `openModal()`, `confirmModal()` eller `formModal()`, ersätt värdet `fullscreen` med `fullwidth`.
+Värdet är identisk i funktion.
+
+För varje användning av propen `size` av `FModal`, `FConfirmModal` och `FFormModal`, ersätt värdet `fullscreen`med `fullwidth`.
+Värdet är identisk i funktion.
+
+Verifiera resultatet genom att bygga projektet och köra enhetstester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.
+
+Be användaren göra en okulär granskning av de modaler som påverkats för att säkerställa att rätt storlek används.
+
+:::
 
 ## `FSortFilterDataset`
 

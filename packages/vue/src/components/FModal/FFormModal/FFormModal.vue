@@ -34,10 +34,10 @@ export default defineComponent({
             required: false,
         },
         /**
-         * See <f-modal> `size` props.
+         * The size of modal in desktop mode.
          */
         size: {
-            type: String as PropType<FModalSize | "fullscreen" | "">,
+            type: String as PropType<FModalSize | "">,
             default: "",
         },
         /**
