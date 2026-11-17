@@ -3,8 +3,8 @@
  * Internal modal for the "delete" operation of `FCrudDataset`.
  *
  * Opened with `openModal()` so slots cannot be passed, the content is instead
- * passed as a functional component rendering the consumer slot. The `isOpen`
- * prop and the `close` and `confirm` listeners falls through to `FConfirmModal`.
+ * passed as a functional component rendering the consumer slot. The `close`
+ * and `confirm` listeners falls through to `FConfirmModal`.
  */
 import { type FunctionalComponent } from "vue";
 import { FConfirmModal } from "../FModal";

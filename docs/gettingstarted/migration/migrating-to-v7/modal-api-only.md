@@ -52,7 +52,7 @@ function onClose(): void {
 För att öppna modalen programmatiskt istället:
 
 1. Flytta modalen till en egen komponent, till exempel `MyAwesomeModal.vue`.
-   Modalen är alltid öppen (`is-open`) och skickar `close`-eventet vidare när den ska stängas:
+   Vid stängning ska modalen skicka ett `close`-event:
 
 ```import static
 MyAwesomeModal.vue
@@ -63,6 +63,16 @@ MyAwesomeModal.vue
 ```import static
 FModalUsage.vue
 ```
+
+## `is-open` har tagits bort
+
+Egenskapen `is-open` har tagits bort från `FModal`, `FConfirmModal` och `FFormModal`.
+En modal är alltid öppen när den renderas och stängs genom att den tas bort (vilket `openModal()` gör när `close`-eventet skickas).
+
+- Ta bort `is-open` från era modaler.
+  Valideringsregeln `fkui/no-template-modal` i html-validate (ingår i `@fkui/vue:recommended`) rapporterar ett fel om attributet fortfarande används.
+- `openModal()` skickar inte längre med `isOpen: true` till komponenten.
+  Om er egen modalkomponent har en egen `isOpen`-prop som styr om modalen visas (till exempel genom att skicka vidare den till `<f-modal :is-open>`) ska den tas bort, annars visas inte modalen.
 
 ## FCrudDataset
 

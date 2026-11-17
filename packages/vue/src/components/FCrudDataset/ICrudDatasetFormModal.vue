@@ -3,8 +3,8 @@
  * Internal modal for the "add" and "modify" operations of `FCrudDataset`.
  *
  * Opened with `openModal()` so slots cannot be passed, the content is instead
- * passed as a functional component rendering the consumer slot. The `isOpen`
- * prop and the `close` and `submit` listeners falls through to `FFormModal`.
+ * passed as a functional component rendering the consumer slot. The `close`
+ * and `submit` listeners falls through to `FFormModal`.
  */
 import { type FunctionalComponent } from "vue";
 import { FFormModal } from "../FModal";
