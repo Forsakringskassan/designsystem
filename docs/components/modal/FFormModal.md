@@ -226,12 +226,7 @@ Detta används för att tydliggöra vad knappen kommer att göra i de fallen dä
 Inmatningsfälten valideras redan med vanlig validering, men om du behöver utföra extra validering (manuella steg, korsvalidering eller validering på backend och så vidare) så kan du använda beforeSubmit:
 
 ```html static
-<f-form-modal
-    :is-open="isOpen"
-    :value="value"
-    :before-submit="onBeforeSubmit"
-    @submit="onSubmit"
->
+<f-form-modal :value="value" :before-submit="onBeforeSubmit" @submit="onSubmit">
 </f-form-modal>
 ```
 

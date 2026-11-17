@@ -1,6 +1,6 @@
 import "html-validate/vitest";
 import { HtmlValidate } from "html-validate";
-import { expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import plugin from "../index.mjs";
 
 const htmlvalidate = new HtmlValidate({
@@ -147,4 +147,64 @@ it("should not report when `f-form-modal` is root element", async () => {
     const report = await htmlvalidate.validateString(markup);
     await expect(report).toBeValid();
     await expect(report).toMatchInlineCodeframe(`""`);
+});
+
+describe("is-open", () => {
+    it.each(["f-modal", "f-confirm-modal", "f-form-modal"])(
+        "should report removed `is-open` on `%s`",
+        async (tagName) => {
+            expect.assertions(1);
+            const markup = `<${tagName} is-open></${tagName}>`;
+            const report = await htmlvalidate.validateString(markup);
+            expect(report).toHaveError(
+                "fkui/no-template-modal",
+                `"is-open" has been removed from ${tagName}, modals are always open when rendered. Open the modal with openModal() or useModal() instead.`,
+            );
+        },
+    );
+
+    it.each([":is-open", "v-bind:is-open", ":isOpen", "isOpen"])(
+        "should report removed `is-open` written as `%s`",
+        async (attr) => {
+            expect.assertions(1);
+            const markup = `<f-modal ${attr}="isOpen"></f-modal>`;
+            const report = await htmlvalidate.validateString(markup);
+            expect(report.errorCount).toBe(1);
+        },
+    );
+
+    it("should report both removed `is-open` and non-root modal", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <div>
+                <f-modal is-open></f-modal>
+            </div>
+        `;
+        const report = await htmlvalidate.validateString(markup);
+        await expect(report).toMatchInlineCodeframe(`
+          "error: f-modal must be root element (fkui/no-template-modal)
+            1 |
+            2 |             <div>
+          > 3 |                 <f-modal is-open></f-modal>
+              |                  ^^^^^^^
+            4 |             </div>
+            5 |
+          Selector: -
+          error: "is-open" has been removed from f-modal, modals are always open when rendered. Open the modal with openModal() or useModal() instead (fkui/no-template-modal)
+            1 |
+            2 |             <div>
+          > 3 |                 <f-modal is-open></f-modal>
+              |                          ^^^^^^^
+            4 |             </div>
+            5 |
+          Selector: div > f-modal"
+        `);
+    });
+
+    it("should not report modal without `is-open`", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `<f-modal type="warning"></f-modal>`;
+        const report = await htmlvalidate.validateString(markup);
+        expect(report).toBeValid();
+    });
 });

@@ -3,7 +3,11 @@ import { defineComponent } from "vue";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { flushPromises, mount, shallowMount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
+import { type MaybeWithFKUIContext } from "../../config";
+import { openModal } from "../../utils/open-modal";
 import FModal from "./FModal.vue";
+
+const callingInstance = { $fkui: {} } as MaybeWithFKUIContext;
 
 const offsetFn = {
     get() {
@@ -22,11 +26,7 @@ Object.defineProperties(window.HTMLElement.prototype, {
 describe("events", () => {
     it('should send "close" event on close button clicked', async () => {
         expect.assertions(1);
-        const wrapper = shallowMount(FModal, {
-            props: {
-                isOpen: true,
-            },
-        });
+        const wrapper = shallowMount(FModal);
         const closeElement = wrapper.get(".close-button");
 
         await closeElement.trigger("click");
@@ -35,11 +35,7 @@ describe("events", () => {
 
     it('should send "close" event on escape key pressed"', async () => {
         expect.assertions(1);
-        const wrapper = shallowMount(FModal, {
-            props: {
-                isOpen: true,
-            },
-        });
+        const wrapper = shallowMount(FModal);
         const closeElement = wrapper.get(".modal__content");
 
         await closeElement.trigger("keyup.esc");
@@ -48,27 +44,12 @@ describe("events", () => {
 });
 
 describe("props", () => {
-    it('should be visible if "isOpen" prop is true', () => {
+    it("should be visible when mounted", () => {
         expect.assertions(1);
-        const wrapper = shallowMount(FModal, {
-            props: {
-                isOpen: true,
-            },
-        });
+        const wrapper = shallowMount(FModal);
 
         const modal = wrapper.get(".modal");
         expect(modal.isVisible()).toBeTruthy();
-    });
-
-    it('should be invisible if "isOpen" prop is false', () => {
-        expect.assertions(1);
-        const wrapper = shallowMount(FModal, {
-            props: {
-                isOpen: false,
-            },
-        });
-
-        expect(wrapper.find(".modal").exists()).toBeFalsy();
     });
 
     describe("fullscreen", () => {
@@ -76,11 +57,7 @@ describe("props", () => {
 
         it("[ID 1.1] should not have fullscreen class by default", async () => {
             expect.assertions(1);
-            const wrapper = shallowMount(FModal, {
-                props: {
-                    isOpen: true,
-                },
-            });
+            const wrapper = shallowMount(FModal);
             /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             await wrapper.vm.$nextTick();
             const element = wrapper.get(".modal__dialog-container");
@@ -92,7 +69,6 @@ describe("props", () => {
             const wrapper = shallowMount(FModal, {
                 props: {
                     fullscreen: true,
-                    isOpen: true,
                 },
             });
             /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
@@ -106,7 +82,6 @@ describe("props", () => {
             const wrapper = shallowMount(FModal, {
                 props: {
                     fullscreen: false,
-                    isOpen: true,
                 },
             });
             /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
@@ -128,7 +103,6 @@ describe("props", () => {
             expect.assertions(1);
             const wrapper = shallowMount(FModal, {
                 props: {
-                    isOpen: true,
                     size,
                 },
             });
@@ -155,9 +129,6 @@ describe("accessibility", () => {
         expect.assertions(1);
         const wrapper = mount(FModal, {
             attachTo: createPlaceholderInDocument(),
-            props: {
-                isOpen: true,
-            },
             slots: {
                 header: "my header",
                 content: { template: interactiveContent },
@@ -172,9 +143,6 @@ describe("accessibility", () => {
         expect.assertions(1);
         const wrapper = mount(FModal, {
             attachTo: createPlaceholderInDocument(),
-            props: {
-                isOpen: true,
-            },
             slots: { content: { template: interactiveContent } },
         });
         await flushPromises();
@@ -186,9 +154,6 @@ describe("accessibility", () => {
         expect.assertions(1);
         const wrapper = mount(FModal, {
             attachTo: createPlaceholderInDocument(),
-            props: {
-                isOpen: true,
-            },
             slots: { content: "my content" },
         });
         await flushPromises();
@@ -199,26 +164,33 @@ describe("accessibility", () => {
     it("should restore focus when the modal is closed", async () => {
         expect.assertions(3);
 
+        const TestModal = defineComponent({
+            name: "TestModal",
+            components: { FModal },
+            emits: ["close"],
+            template: /* HTML */ `
+                <f-modal @close="$emit('close')">
+                    <template #header>My header</template>
+                </f-modal>
+            `,
+        });
+
         const TestComponent = defineComponent({
             name: "TestComponent",
-            components: {
-                FModal,
+            methods: {
+                onClick(): void {
+                    void openModal(callingInstance, TestModal, {
+                        attachTo: this.$el as HTMLElement,
+                    });
+                },
             },
-            data() {
-                return { isOpen: false };
-            },
+            /* the wrapping div is the attachTo target for the modal, without
+             * it the modal would be mounted inside the button */
             template: /* HTML */ `
                 <div>
-                    <button
-                        id="toggle-button"
-                        type="button"
-                        @click="isOpen = true"
-                    >
+                    <button id="toggle-button" type="button" @click="onClick">
                         Open
                     </button>
-                    <f-modal :isOpen="isOpen" @close="isOpen = false">
-                        <template #header>My header</template>
-                    </f-modal>
                 </div>
             `,
         });
@@ -245,40 +217,20 @@ describe("accessibility", () => {
 });
 
 describe("scrollbars", () => {
-    it('should remove scrollbars from document if "isOpen" prop is true', async () => {
+    it("should remove scrollbars from document when mounted", async () => {
         expect.assertions(1);
         const wrapper = shallowMount(FModal, {
-            props: {
-                isOpen: true,
-            },
             attachTo: createPlaceholderInDocument(),
         });
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
         const documentElement = document.documentElement;
         expect(documentElement.style.overflow).toBe("hidden");
-    });
-
-    it('should restore scrollbars in document if "isOpen" prop is false', async () => {
-        expect.assertions(1);
-        const wrapper = shallowMount(FModal, {
-            props: {
-                isOpen: false,
-            },
-            attachTo: createPlaceholderInDocument(),
-        });
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
-        await wrapper.vm.$nextTick();
-        const documentElement = document.documentElement;
-        expect(documentElement.style.overflow).not.toBe("hidden");
     });
 
     it("should restore scrollbars in document when component is unmounted", async () => {
         expect.assertions(2);
         const wrapper = shallowMount(FModal, {
-            props: {
-                isOpen: true,
-            },
             attachTo: createPlaceholderInDocument(),
         });
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
@@ -288,9 +240,7 @@ describe("scrollbars", () => {
 
         expect(documentElement.style.overflow).toBe("hidden");
 
-        await wrapper.setProps({ isOpen: false });
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
-        await wrapper.vm.$nextTick();
+        wrapper.unmount();
 
         expect(documentElement.style.overflow).not.toBe("hidden");
     });

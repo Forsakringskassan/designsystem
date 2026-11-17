@@ -18,7 +18,6 @@ function createWrapper(): VueWrapper {
             template: /* HTML */ `
                 <f-confirm-modal
                     data-test="my-modal"
-                    is-open
                     heading="Lorem ipsum"
                     content="Dolor sit amet"
                 >
