@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-303d34.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-0375f2.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-f2cdb5.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-bc3541.js",
     "@fkui/vue-labs": "../../../assets/vendor-fkui-vue-labs-a2a6fb.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js"
   },
@@ -35,7 +35,7 @@
     "../../../assets/vendor-fkui-vue-selectors-303d34.js": "sha384-VDRtJukmYHvieJUGPqtaVb0j7ocu/gYIS2kUcj02cMAoFvt7ZMs9DwEjogtf5x5X",
     "../../../assets/vendor-fkui-logic-0375f2.js": "sha384-AmTACorVlStyNetYWs4/XxIjlxix05CTn9CkP8Ep73l33fRW8dC/jgfe0fWWcnHP",
     "../../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../../assets/vendor-fkui-vue-f2cdb5.js": "sha384-JpTBjeJ85an2fFPYmFxzSrudrQTZ7jqz7VBeXL47PfaxIxeNuNQjpjzEsPP/4cG9",
+    "../../../assets/vendor-fkui-vue-bc3541.js": "sha384-BkkOUcU6D9JuLlO+Bf4t5Fgfyz+sGDv0NqK4ukOfQwqW0b62ZxuDlfgCgjS0+2xs",
     "../../../assets/vendor-fkui-vue-labs-a2a6fb.js": "sha384-h40XX4ozhvBgz6AWNQ0/PORIMa6s3scmYMA6oJTujg2racMU/GypyFfqTvLaa6oJ",
     "../../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js": "sha384-Zomp3tpZgQ5vBn1jDfJPFtzxDwJLLe39dK/jC//bT97+TQqCbXlfNz6um+bZc61n"
   }
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../search-data-f62a29.json"
+    href="../../../search-data-04ccdf.json"
     as="fetch"
     crossorigin
-    integrity="sha384-jgLfE0fG8/Yr49uOgEjDRScF41lHWl4/ihnmaX9teJ2feF+h8lI9WOja0GM0ehqk"
+    integrity="sha384-MQ/Lv3QbSJZU0lT2CBHBRfIUUfE458vb9WjCEZRe8PElqBVEp8J4p9l3p0zEJf8/"
     id="search-data"
 />
 <script>
@@ -555,6 +555,8 @@
                     
                 
                     
+                
+                    
                         
                     
                 
@@ -575,6 +577,19 @@
 
             
 <ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../migrating-crud-button.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-crud-button.html"
+            
+        >
+            FCrudButton
+        </a>
+    </li>
 
 <li class="link ">
         <a
@@ -6163,6 +6178,17 @@
             
 <ul><li class="link ">
         <a
+            href="../migrating-crud-button.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-crud-button.html"
+            
+        >
+            FCrudButton
+        </a>
+    </li><li class="link ">
+        <a
             href="../migrating-to-fieldset.html"
             
             
@@ -6385,11 +6411,7 @@
                     </div>
                     
 
-                    <div id="docs-content"><h2 id="fkui_vue" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fkui_vue"><code>@fkui/vue</code></a></h2><p class="docs-paragraph">Följande komponenter är borttagna:</p>
-<ul>
-<li><a href="#fcrudbutton"><code>FCrudButton</code></a></li>
-</ul>
-<p class="docs-paragraph">Följande propar är ändrade:</p>
+                    <div id="docs-content"><h2 id="fkui_vue" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fkui_vue"><code>@fkui/vue</code></a></h2><p class="docs-paragraph">Följande propar är ändrade:</p>
 <ul>
 <li><a href="#fmodal"><code>FModal</code> <code>size</code></a></li>
 </ul>
@@ -6402,61 +6424,10 @@
 <li><a href="#getlegacyinternalkey"><code>getLegacyInternalKey()</code></a></li>
 <li><a href="#tablescroll"><code>TableScroll.VERTICAL</code> och <code>TableScroll.BOTH</code></a></li>
 </ul>
-<h3 id="fcrudbutton" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#fcrudbutton"><code>FCrudButton</code></a></h3><p class="docs-paragraph">Komponenten <code>FCrudButton</code> är borttagen.</p>
-<p class="docs-paragraph">För enskilda knappar använder du <a href="../../../components/button.html">FButton</a>.
-I tabeller använder du i stället en <code>menu</code>-kolumn i <a href="../../../components/table-and-list/table">FTable</a>.
-När du placerar tabellen i <code>FCrudDataset</code> kopplar du menyåtgärdernas <code>onClick</code> till <code>updateItem(item)</code> och <code>deleteItem(item)</code>, som du når via en template ref på <code>FCrudDataset</code>.
-Utanför tabeller får du samma funktioner som slot-props i defaultslotten.</p>
-<p class="docs-paragraph">Så ersätter du propsen:</p>
-<ul>
-<li><code>action</code> ersätts med <code>updateItem(item)</code> eller <code>deleteItem(item)</code> i menyåtgärdens <code>onClick</code> eller knappens <code>@click</code>.</li>
-<li><code>icon</code> anges på en action i <code>menu</code>-kolumnen eller med <code>icon-left</code> på <code>FButton</code>.</li>
-<li><code>label</code> anges med actionens <code>label</code> eller som knappens text i <code>FButton</code>.</li>
-</ul>
-<p class="docs-paragraph">För tabell, se <a href="../../../components/table-and-list/fcruddataset.html#tabell-med-redigering">Tabell med redigering</a> för ett exempel med <code>menu</code>-kolumn.</p>
+<h3 id="fmodal" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#fmodal"><code>FModal</code></a></h3><p class="docs-paragraph">Propen <code>size</code> stödjer inte längre aliaset <code>fullscreen</code> och är ersatt med <code>fullwidth</code>.</p>
 
                 <div
-                    id="example-6e0d04"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-crud-dataset&gt;
-<span class="hljs-deletion">-    &lt;template #default&gt;</span>
-<span class="hljs-addition">+    &lt;template #default=&quot;{ updateItem, deleteItem }&quot;&gt;</span>
-         &lt;f-list :items&gt;
-             &lt;template #default=&quot;{ item }&quot;&gt;
-<span class="hljs-deletion">-                &lt;f-crud-button action=&quot;modify&quot; :item icon&gt;</span>
-<span class="hljs-addition">+                &lt;f-button</span>
-<span class="hljs-addition">+                    icon-left=&quot;pen&quot;</span>
-<span class="hljs-addition">+                    size=&quot;small&quot;</span>
-<span class="hljs-addition">+                    variant=&quot;tertiary&quot;</span>
-<span class="hljs-addition">+                    @click=&quot;updateItem(item)&quot;</span>
-<span class="hljs-addition">+                &gt;</span>
-                     Ändra {{ item.name }}
-<span class="hljs-deletion">-                &lt;/f-crud-button&gt;</span>
-<span class="hljs-deletion">-                &lt;f-crud-button action=&quot;delete&quot; :item icon&gt;</span>
-<span class="hljs-addition">+                &lt;/f-button&gt;</span>
-<span class="hljs-addition">+                &lt;f-button</span>
-<span class="hljs-addition">+                    icon-left=&quot;trashcan&quot;</span>
-<span class="hljs-addition">+                    size=&quot;small&quot;</span>
-<span class="hljs-addition">+                    variant=&quot;tertiary&quot;</span>
-<span class="hljs-addition">+                    @click=&quot;deleteItem(item)&quot;</span>
-<span class="hljs-addition">+                &gt;</span>
-                     Ta bort {{ item.name }}
-<span class="hljs-deletion">-                &lt;/f-crud-button&gt;</span>
-<span class="hljs-addition">+                &lt;/f-button&gt;</span>
-             &lt;/template&gt;
-         &lt;/f-list&gt;
-     &lt;/template&gt;
-</code></pre>
-                </div>
-            <h3 id="fmodal" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#fmodal"><code>FModal</code></a></h3><p class="docs-paragraph">Propen <code>size</code> stödjer inte längre aliaset <code>fullscreen</code> och är ersatt med <code>fullwidth</code>.</p>
-
-                <div
-                    id="example-1f003b"
+                    id="example-dd8777"
                     class="code-preview code-preview--default"
                     
                     
@@ -6472,7 +6443,7 @@ Utanför tabeller får du samma funktioner som slot-props i defaultslotten.</p>
             <h3 id="fsortfilterdataset" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#fsortfilterdataset"><code>FSortFilterDataset</code></a></h3><p class="docs-paragraph">Propen <code>placeholderFilter</code> är borttagen och ersatt med <code>filterLabel</code>.</p>
 
                 <div
-                    id="example-a5bfa3"
+                    id="example-014b86"
                     class="code-preview code-preview--default"
                     
                     
@@ -6488,7 +6459,7 @@ Utanför tabeller får du samma funktioner som slot-props i defaultslotten.</p>
             <h3 id="getlegacyinternalkey" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#getlegacyinternalkey"><code>getLegacyInternalKey()</code></a></h3><p class="docs-paragraph">Använd <code>findItemIdentifier()</code> eller <code>getItemIdentifier()</code> istället för att hämta ut identifieraren istället för dess nyckel.</p>
 
                 <div
-                    id="example-16e971"
+                    id="example-72faf2"
                     class="code-preview code-preview--default"
                     
                     
@@ -6505,7 +6476,7 @@ Vi rekommenderar att undvika vertikal scroll, behöver du trots allt det så beh
 
             <div class="docs-messagebox docs-messagebox--warning">
                 <p class="docs-messagebox__title">Tänk på att</p>
-                <p class="docs-paragraph">Tänk på att scrollbara ytor måste vara kunna tangentbordsnavigeras för att vara tillgängliga.</p>
+                <p class="docs-paragraph">Tänk på att scrollbara ytor måste gå att tangentbordsnavigera för att vara tillgängliga.</p>
 
             </div>
         
@@ -6576,9 +6547,9 @@ Vi rekommenderar att undvika vertikal scroll, behöver du trots allt det så beh
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">feature/deprecated-breaking-symbols</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/0cc3d81d70f475503cf1dee36e976e5f7f137349">0cc3d81</a>)<br />
+<div class="version"><span class="version-text-block">feature/deprecated-breaking-symbols</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/2d265427060b1033ee370ac1bb46a36157e66ce2">2d26542</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1826">PR 1826</a><br />
-       <span class="version-text-block">2026-11-17 12:49</span>
+       <span class="version-text-block">2026-11-17 12:55</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

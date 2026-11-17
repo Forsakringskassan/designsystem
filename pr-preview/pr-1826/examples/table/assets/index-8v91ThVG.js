@@ -27041,7 +27041,7 @@ for: {
 		}
 	}
 });
-var _hoisted_1$55 = { key: 0 };
+var _hoisted_1$54 = { key: 0 };
 var _hoisted_2$39 = {
 	key: 0,
 	ref: "tooltipAttachTo"
@@ -27059,7 +27059,7 @@ var _hoisted_7$11 = {
 };
 function _sfc_render$26(_ctx, _cache, $props, $setup, $data, $options) {
 	const _component_f_icon = resolveComponent("f-icon");
-	return _ctx.$slots.tooltip ? (openBlock(), createElementBlock("div", _hoisted_1$55, [
+	return _ctx.$slots.tooltip ? (openBlock(), createElementBlock("div", _hoisted_1$54, [
 		_ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", _hoisted_2$39, [createBaseVNode("label", {
 			class: "label",
 			for: _ctx.forProperty
@@ -27239,7 +27239,7 @@ var FSelectField_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponen
 		});
 	} }
 });
-var _hoisted_1$54 = ["id"];
+var _hoisted_1$53 = ["id"];
 function _sfc_render$25(_ctx, _cache, $props, $setup, $data, $options) {
 	const _component_f_label = resolveComponent("f-label");
 	const _component_f_icon = resolveComponent("f-icon");
@@ -27272,7 +27272,7 @@ function _sfc_render$25(_ctx, _cache, $props, $setup, $data, $options) {
 				id: _ctx.id,
 				"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.vModel = $event),
 				class: "select-field__select"
-			}, _ctx.attrs), [renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$54), [[vModelSelect, _ctx.vModel]]),
+			}, _ctx.attrs), [renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$53), [[vModelSelect, _ctx.vModel]]),
 			_cache[5] || (_cache[5] = createTextVNode()),
 			_ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_f_icon, {
 				key: 0,
@@ -27289,7 +27289,7 @@ function _sfc_render$25(_ctx, _cache, $props, $setup, $data, $options) {
 	], 34);
 }
 var FSelectField_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FSelectField_vue_vue_type_script_lang_default, [["render", _sfc_render$25]]);
-var _hoisted_1$53 = {
+var _hoisted_1$52 = {
 	key: 0,
 	class: "table-ng__cell table-ng__cell--expand"
 };
@@ -27320,7 +27320,7 @@ var ITableExpandButton_default = /* @__PURE__ */ defineComponent({
 		}
 		__expose({ tabstopEl: expandableRef });
 		return (_ctx, _cache) => {
-			return __props.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_1$53, [createBaseVNode("button", {
+			return __props.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_1$52, [createBaseVNode("button", {
 				ref: "expandable",
 				tabindex: "-1",
 				"aria-label": expandLabel.value,
@@ -27334,7 +27334,7 @@ var ITableExpandButton_default = /* @__PURE__ */ defineComponent({
 		};
 	}
 });
-var _hoisted_1$52 = ["colspan"];
+var _hoisted_1$51 = ["colspan"];
 var ITableExpandable_default = /* @__PURE__ */ defineComponent({
 	__name: "ITableExpandable",
 	props: { colspan: {} },
@@ -27344,7 +27344,7 @@ var ITableExpandable_default = /* @__PURE__ */ defineComponent({
 				class: "table-ng__cell--custom",
 				colspan: __props.colspan,
 				tabindex: "-1"
-			}, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_1$52);
+			}, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_1$51);
 		};
 	}
 });
@@ -27626,7 +27626,7 @@ var inputFieldConfig = {
 		}
 	}
 };
-var _hoisted_1$51 = ["aria-sort", "onKeydown"];
+var _hoisted_1$50 = ["aria-sort", "onKeydown"];
 var ITableHeader_default = /* @__PURE__ */ defineComponent({
 	__name: "ITableHeader",
 	props: {
@@ -27737,11 +27737,11 @@ var ITableHeader_default = /* @__PURE__ */ defineComponent({
 					})]),
 					_: 1
 				}, 8, ["float"])) : createCommentVNode("v-if", true)
-			], 46, _hoisted_1$51);
+			], 46, _hoisted_1$50);
 		};
 	}
 });
-var _hoisted_1$50 = {
+var _hoisted_1$49 = {
 	scope: "col",
 	class: "table-ng__column table-ng__column--selectable table-ng__column--shrink"
 };
@@ -27773,7 +27773,7 @@ var ITableHeaderSelectable_default = /* @__PURE__ */ defineComponent({
 		if (__props.selectable === "multi") expose.tabstopEl = useTemplateRef("input");
 		__expose(expose);
 		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("th", _hoisted_1$50, [__props.selectable === "multi" ? (openBlock(), createElementBlock("input", {
+			return openBlock(), createElementBlock("th", _hoisted_1$49, [__props.selectable === "multi" ? (openBlock(), createElementBlock("input", {
 				key: 0,
 				ref: "input",
 				checked: checked.value,
@@ -27792,7 +27792,7 @@ var ITableHeaderSelectable_default = /* @__PURE__ */ defineComponent({
 function isVisible$1(visible, row) {
 	return visible(row);
 }
-var _hoisted_1$49 = { class: "table-ng__cell table-ng__cell--checkbox" };
+var _hoisted_1$48 = { class: "table-ng__cell table-ng__cell--checkbox" };
 var _hoisted_2$36 = ["checked", "aria-label"];
 var ITableCheckbox_default = /* @__PURE__ */ defineComponent({
 	__name: "ITableCheckbox",
@@ -27813,7 +27813,7 @@ var ITableCheckbox_default = /* @__PURE__ */ defineComponent({
 		}
 		__expose({ tabstopEl: targetElement });
 		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("td", _hoisted_1$49, [visible.value ? (openBlock(), createElementBlock("input", {
+			return openBlock(), createElementBlock("td", _hoisted_1$48, [visible.value ? (openBlock(), createElementBlock("input", {
 				key: 0,
 				ref: "target",
 				checked: Boolean(__props.column.checked(__props.row)),
@@ -27825,7 +27825,7 @@ var ITableCheckbox_default = /* @__PURE__ */ defineComponent({
 		};
 	}
 });
-var _hoisted_1$48 = { class: "table-ng__cell table-ng__cell--radio" };
+var _hoisted_1$47 = { class: "table-ng__cell table-ng__cell--radio" };
 var _hoisted_2$35 = ["checked", "aria-label"];
 var ITableRadio_default = /* @__PURE__ */ defineComponent({
 	__name: "ITableRadio",
@@ -27846,7 +27846,7 @@ var ITableRadio_default = /* @__PURE__ */ defineComponent({
 		}
 		__expose({ tabstopEl: inputElement });
 		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("td", _hoisted_1$48, [visible.value ? (openBlock(), createElementBlock("input", {
+			return openBlock(), createElementBlock("td", _hoisted_1$47, [visible.value ? (openBlock(), createElementBlock("input", {
 				key: 0,
 				ref: "input",
 				type: "radio",
@@ -27858,7 +27858,7 @@ var ITableRadio_default = /* @__PURE__ */ defineComponent({
 		};
 	}
 });
-var _hoisted_1$47 = {
+var _hoisted_1$46 = {
 	key: 0,
 	tabindex: "-1",
 	class: "table-ng__cell"
@@ -27927,7 +27927,7 @@ var ITableSelectable_default = /* @__PURE__ */ defineComponent({
 			visible: () => true
 		};
 		return (_ctx, _cache) => {
-			return __props.level > 1 ? (openBlock(), createElementBlock("td", _hoisted_1$47)) : __props.selectable === "multi" ? (openBlock(), createBlock(ITableCheckbox_default, {
+			return __props.level > 1 ? (openBlock(), createElementBlock("td", _hoisted_1$46)) : __props.selectable === "multi" ? (openBlock(), createBlock(ITableCheckbox_default, {
 				key: 1,
 				ref: "child",
 				row: __props.row,
@@ -28288,7 +28288,7 @@ var stopEditKey = Symbol();
 function useStartStopEdit() {
 	return { stopEdit: inject(stopEditKey, () => Promise.resolve()) };
 }
-var _hoisted_1$46 = ["href"];
+var _hoisted_1$45 = ["href"];
 var _hoisted_2$34 = {
 	key: 1,
 	ref: "target",
@@ -28317,11 +28317,11 @@ var ITableAnchor_default = /* @__PURE__ */ defineComponent({
 				target: "_blank",
 				href: __props.column.href(__props.row),
 				tabindex: "-1"
-			}, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_1$46)) : createCommentVNode("v-if", true)], 32)) : (openBlock(), createElementBlock("td", _hoisted_2$34, null, 512));
+			}, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_1$45)) : createCommentVNode("v-if", true)], 32)) : (openBlock(), createElementBlock("td", _hoisted_2$34, null, 512));
 		};
 	}
 });
-var _hoisted_1$45 = { class: "table-ng__cell table-ng__cell--button" };
+var _hoisted_1$44 = { class: "table-ng__cell table-ng__cell--button" };
 var _hoisted_2$33 = { class: "sr-only" };
 var ITableButton_default = /* @__PURE__ */ defineComponent({
 	__name: "ITableButton",
@@ -28341,7 +28341,7 @@ var ITableButton_default = /* @__PURE__ */ defineComponent({
 		}
 		__expose({ tabstopEl: buttonElement });
 		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("td", _hoisted_1$45, [visible.value ? (openBlock(), createElementBlock("button", {
+			return openBlock(), createElementBlock("td", _hoisted_1$44, [visible.value ? (openBlock(), createElementBlock("button", {
 				key: 0,
 				ref: "button",
 				class: "icon-button",
@@ -28360,7 +28360,7 @@ var ITableButton_default = /* @__PURE__ */ defineComponent({
 		};
 	}
 });
-var _hoisted_1$44 = { class: "sr-only" };
+var _hoisted_1$43 = { class: "sr-only" };
 var ITableMenu_default = /* @__PURE__ */ defineComponent({
 	__name: "ITableMenu",
 	props: {
@@ -28428,7 +28428,7 @@ var ITableMenu_default = /* @__PURE__ */ defineComponent({
 						name: __props.column.icon
 					}, null, 8, ["library", "name"]),
 					_cache[0] || (_cache[0] = createTextVNode()),
-					createBaseVNode("span", _hoisted_1$44, toDisplayString(__props.column.text(__props.row)), 1)
+					createBaseVNode("span", _hoisted_1$43, toDisplayString(__props.column.text(__props.row)), 1)
 				], 512),
 				_cache[1] || (_cache[1] = createTextVNode()),
 				createVNode(unref(FContextMenu_default), {
@@ -28447,7 +28447,7 @@ var ITableMenu_default = /* @__PURE__ */ defineComponent({
 		};
 	}
 });
-var _hoisted_1$43 = {
+var _hoisted_1$42 = {
 	ref: "th",
 	class: "table-ng__cell table-ng__cell--rowheader",
 	scope: "row"
@@ -28461,11 +28461,11 @@ var ITableRowheader_default = /* @__PURE__ */ defineComponent({
 	setup(__props) {
 		const visible = computed(() => isVisible$1(__props.column.visible, __props.row));
 		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("th", _hoisted_1$43, [visible.value ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [createTextVNode(toDisplayString(__props.column.text(__props.row)), 1)], 64)) : createCommentVNode("v-if", true)], 512);
+			return openBlock(), createElementBlock("th", _hoisted_1$42, [visible.value ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [createTextVNode(toDisplayString(__props.column.text(__props.row)), 1)], 64)) : createCommentVNode("v-if", true)], 512);
 		};
 	}
 });
-var _hoisted_1$42 = ["id", "aria-invalid"];
+var _hoisted_1$41 = ["id", "aria-invalid"];
 var _hoisted_2$32 = ["id"];
 var _hoisted_3$26 = ["value"];
 var _hoisted_4$21 = { class: "table-ng__editable" };
@@ -28788,7 +28788,7 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
 					"error-message",
 					"arrow-anchor"
 				])
-			], 64)) : createCommentVNode("v-if", true)], 42, _hoisted_1$42)) : (openBlock(), createElementBlock("td", _hoisted_10$3, [visible.value ? (openBlock(), createElementBlock("div", _hoisted_11$3, toDisplayString(__props.column.selected(__props.row)), 1)) : createCommentVNode("v-if", true)]));
+			], 64)) : createCommentVNode("v-if", true)], 42, _hoisted_1$41)) : (openBlock(), createElementBlock("td", _hoisted_10$3, [visible.value ? (openBlock(), createElementBlock("div", _hoisted_11$3, toDisplayString(__props.column.selected(__props.row)), 1)) : createCommentVNode("v-if", true)]));
 		};
 	}
 });
@@ -28858,7 +28858,7 @@ function addInputValidators(inputElement, type) {
 function isAlphanumeric(e) {
 	return e.key.length === 1 && !e.ctrlKey && !e.metaKey;
 }
-var _hoisted_1$41 = ["id", "aria-invalid"];
+var _hoisted_1$40 = ["id", "aria-invalid"];
 var _hoisted_2$31 = {
 	key: 0,
 	class: "sr-only"
@@ -29221,7 +29221,7 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
 					"error-message",
 					"arrow-anchor"
 				])
-			], 64)) : createCommentVNode("v-if", true)], 42, _hoisted_1$41)) : (openBlock(), createElementBlock("td", {
+			], 64)) : createCommentVNode("v-if", true)], 42, _hoisted_1$40)) : (openBlock(), createElementBlock("td", {
 				key: 1,
 				ref: "td",
 				tabindex: "-1",
@@ -29733,7 +29733,7 @@ function useTabstop(tableRef, metaRows) {
 		}
 	};
 }
-var _hoisted_1$40 = ["role", "aria-rowcount"];
+var _hoisted_1$39 = ["role", "aria-rowcount"];
 var _hoisted_2$30 = {
 	key: 0,
 	"data-test": "caption"
@@ -30068,7 +30068,7 @@ var FTable_default = /* @__PURE__ */ defineComponent({
 					class: "table-ng__cell--custom",
 					onKeydown: _cache[1] || (_cache[1] = withKeys(withModifiers(() => {}, ["prevent"]), ["space"]))
 				}, [renderSlot(_ctx.$slots, "footer")], 40, _hoisted_12$2)], 8, _hoisted_11$2)])) : createCommentVNode("v-if", true)
-			], 42, _hoisted_1$40);
+			], 42, _hoisted_1$39);
 		};
 	}
 });
@@ -30469,7 +30469,7 @@ var FTextField_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent(
 		}
 	}
 });
-var _hoisted_1$39 = { key: 0 };
+var _hoisted_1$38 = { key: 0 };
 var _hoisted_2$29 = {
 	key: 0,
 	class: "sr-only"
@@ -30503,7 +30503,7 @@ function _sfc_render$24(_ctx, _cache, $props, $setup, $data, $options) {
 			for: _ctx.id,
 			class: normalizeClass(_ctx.labelClass)
 		}, createSlots({
-			default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [_ctx.defaultText !== "" ? (openBlock(), createElementBlock("span", _hoisted_1$39, toDisplayString(_ctx.defaultText), 1)) : createCommentVNode("v-if", true)])]),
+			default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [_ctx.defaultText !== "" ? (openBlock(), createElementBlock("span", _hoisted_1$38, toDisplayString(_ctx.defaultText), 1)) : createCommentVNode("v-if", true)])]),
 			description: withCtx(({ descriptionClass, formatDescriptionClass }) => [renderSlot(_ctx.$slots, "description", {
 				descriptionClass,
 				formatDescriptionClass
@@ -30682,7 +30682,7 @@ var FSearchTextField_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComp
 		}
 	}
 });
-var _hoisted_1$37 = { class: "sr-only" };
+var _hoisted_1$36 = { class: "sr-only" };
 function _sfc_render$21(_ctx, _cache, $props, $setup, $data, $options) {
 	const _component_f_icon = resolveComponent("f-icon");
 	const _component_f_text_field = resolveComponent("f-text-field");
@@ -30734,7 +30734,7 @@ function _sfc_render$21(_ctx, _cache, $props, $setup, $data, $options) {
 				class: "clear-button__icon"
 			}),
 			_cache[1] || (_cache[1] = createTextVNode()),
-			createBaseVNode("span", _hoisted_1$37, toDisplayString(_ctx.clearableScreenReaderText), 1)
+			createBaseVNode("span", _hoisted_1$36, toDisplayString(_ctx.clearableScreenReaderText), 1)
 		])]),
 		key: "1"
 	} : void 0]), 1040, [
@@ -31019,7 +31019,7 @@ function useSortFilterDataset(data, sortableAttributes, filterAttributes, defaul
 		refresh
 	};
 }
-var _hoisted_1$36 = { class: "sort-filter-dataset" };
+var _hoisted_1$35 = { class: "sort-filter-dataset" };
 var _hoisted_2$28 = { class: "sort-filter-dataset__search" };
 var _hoisted_3$22 = ["value"];
 var _hoisted_4$17 = ["value"];
@@ -31123,7 +31123,7 @@ var FSortFilterDataset_default = /* @__PURE__ */ defineComponent({
 			emit("datasetSorted", sortFilterResult.value);
 		}, { immediate: true });
 		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1$36, [
+			return openBlock(), createElementBlock("div", _hoisted_1$35, [
 				createVNode(unref(IFlex_default), {
 					collapse: "",
 					gap: "3x",
@@ -31479,7 +31479,7 @@ var FRadioField_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent
 		}
 	}
 });
-var _hoisted_1$21 = ["id", "disabled"];
+var _hoisted_1$20 = ["id", "disabled"];
 var _hoisted_2$16 = ["for"];
 var _hoisted_3$11 = {
 	key: 0,
@@ -31499,7 +31499,7 @@ function _sfc_render$13(_ctx, _cache, $props, $setup, $data, $options) {
 			type: "radio",
 			class: "radio-button__input",
 			disabled: _ctx.disabled
-		}, _ctx.attrs), null, 16, _hoisted_1$21),
+		}, _ctx.attrs), null, 16, _hoisted_1$20),
 		_cache[3] || (_cache[3] = createTextVNode()),
 		createBaseVNode("label", {
 			class: normalizeClass(_ctx.$slots.details ? "radio-button__label radio-button__width" : "radio-button__label"),
@@ -31680,7 +31680,7 @@ function showPageNumberAsGap(options) {
 	const showGapToLastPage = pages.indexOf(page) === pages.length - 2 && page !== numberOfPages - 1;
 	return showGapToFirstPage || showGapToLastPage;
 }
-var _hoisted_1$6 = ["aria-label"];
+var _hoisted_1$5$1 = ["aria-label"];
 var _hoisted_2$3 = ["aria-label"];
 var _hoisted_3$2 = [
 	"data-index",
@@ -31829,7 +31829,7 @@ page });
 					_cache[2] || (_cache[2] = createTextVNode()),
 					createVNode(unref(FIcon_default), { name: "arrow-right" })
 				], 8, _hoisted_7$1)
-			], 8, _hoisted_1$6);
+			], 8, _hoisted_1$5$1);
 		};
 	}
 });
