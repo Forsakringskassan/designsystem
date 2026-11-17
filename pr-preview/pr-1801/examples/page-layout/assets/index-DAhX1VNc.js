@@ -9001,7 +9001,7 @@ var ValidationServiceImpl = class {
 * @public
 */
 var ValidationService = /* @__PURE__ */ new ValidationServiceImpl();
-var wrapper;
+var wrapperId = "fkui-alert-screen-reader";
 /**
 * Create an element for adding text to be read by a screen reader.
 *
@@ -9009,12 +9009,7 @@ var wrapper;
 * @param options - options for wrapper element attributes.
 */
 function createScreenReaderWrapper(options) {
-	if (getWrapper()) return;
-	wrapper = document.createElement("div");
-	wrapper.id = "fkui-alert-screen-reader";
-	wrapper.className = "sr-only";
-	updateProperties(options);
-	document.body.append(wrapper);
+	if (!findWrapper()) createWrapper(options);
 }
 /**
 * Update properties on wrapper element.
@@ -9022,17 +9017,30 @@ function createScreenReaderWrapper(options) {
 * @internal
 * @param options - options for wrapper element attributes.
 */
-function updateProperties(options) {
-	const wrapper = getWrapper();
+function updateProperties(wrapper, options) {
 	const ariaLive = options.assertive ? "assertive" : "polite";
 	wrapper.setAttribute("aria-live", ariaLive);
 }
 /**
-* Retrieve wrapper element.
+* Find the wrapper element in the DOM.
 *
 * @internal
 */
-function getWrapper() {
+function findWrapper() {
+	return document.querySelector(`#${wrapperId}`);
+}
+/**
+* Create the wrapper element for the screen reader.
+*
+* @internal
+* @returns The created wrapper element.
+*/
+function createWrapper(options) {
+	const wrapper = document.createElement("div");
+	wrapper.id = wrapperId;
+	wrapper.className = "sr-only";
+	updateProperties(wrapper, options);
+	document.body.append(wrapper);
 	return wrapper;
 }
 if (typeof document !== "undefined") createScreenReaderWrapper({ assertive: false });
@@ -19468,7 +19476,7 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
 		activeErrorAnchor: { default: () => void 0 }
 	},
 	emits: ["onError", "closeError"],
-	setup(__props, { emit: __emit }) {
+	setup(__props, { expose: __expose, emit: __emit }) {
 		const emit = __emit;
 		const selectId = ElementIdService.generateElementId();
 		const selectElement = useTemplateRef("select");
@@ -19500,19 +19508,7 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
 			return value.length > 0 ? value : void 0;
 		});
 		const visible = computed(() => isVisible$1(__props.column.visible, __props.row));
-		function onCellKeyDown(event) {
-			if (event.target !== tdElement.value && event.target !== selectElement.value) return;
-			if (![
-				"Enter",
-				"NumpadEnter",
-				"Space"
-			].includes(event.code)) return;
-			const select = selectElement.value;
-			if (!select) return;
-			event.preventDefault();
-			select.focus();
-			select.showPicker();
-		}
+		__expose({ tabstopEl: selectElement });
 		function onCellClick(event) {
 			if (event.target === selectElement.value) return;
 			selectElement.value?.focus();
@@ -19588,7 +19584,6 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
 				class: normalizeClass(wrapperClasses.value),
 				"aria-invalid": viewModeAriaInvalid.value,
 				tabindex: "-1",
-				onKeydown: onCellKeyDown,
 				onClick: withModifiers(onCellClick, ["stop"])
 			}, [visible.value ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
 				createBaseVNode("div", _hoisted_2$32, [
@@ -19626,7 +19621,7 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
 					"error-message",
 					"arrow-anchor"
 				])
-			], 64)) : createCommentVNode("v-if", true)], 42, _hoisted_1$41)) : (openBlock(), createElementBlock("td", _hoisted_6$13, [visible.value ? (openBlock(), createElementBlock("div", _hoisted_7$10, toDisplayString(__props.column.selected(__props.row)), 1)) : createCommentVNode("v-if", true)]));
+			], 64)) : createCommentVNode("v-if", true)], 10, _hoisted_1$41)) : (openBlock(), createElementBlock("td", _hoisted_6$13, [visible.value ? (openBlock(), createElementBlock("div", _hoisted_7$10, toDisplayString(__props.column.selected(__props.row)), 1)) : createCommentVNode("v-if", true)]));
 		};
 	}
 });
@@ -22699,9 +22694,9 @@ var XPersonPanel_default = /* @__PURE__ */ defineComponent({
 		};
 	}
 });
-// ../../node_modules/vue-router/dist/useApi-il6ACzUc.js
+// ../../node_modules/vue-router/dist/useApi-SF8tY_yo.js
 /*!
-* vue-router v5.5.0
+* vue-router v5.5.1
 * (c) 2026 Eduardo San Martin Morote
 * @license MIT
 */
@@ -22813,9 +22808,9 @@ var routerViewOnRouteRenderedKey = Symbol("");
 function useRouter() {
 	return inject(routerKey);
 }
-// ../../node_modules/vue-router/dist/devtools-C2sLSl4b.js
+// ../../node_modules/vue-router/dist/devtools-RytpElE1.js
 /*!
-* vue-router v5.5.0
+* vue-router v5.5.1
 * (c) 2026 Eduardo San Martin Morote
 * @license MIT
 */
@@ -23362,13 +23357,137 @@ function extractChangingRecords(to, from) {
 		enteringRecords
 	];
 }
+/**
+* Returns the internal behavior of a {@link RouterLink} without the rendering part.
+*
+* @param props - a `to` location and an optional `replace` flag
+*/
+function useLink(props) {
+	const router = inject(routerKey);
+	const currentRoute = inject(routeLocationKey);
+	const route = computed(() => {
+		const to = unref(props.to);
+		return router.resolve(to);
+	});
+	const activeRecordIndex = computed(() => {
+		const { matched } = route.value;
+		const { length } = matched;
+		const routeMatched = matched[length - 1];
+		const currentMatched = currentRoute.matched;
+		if (!routeMatched || !currentMatched.length) return -1;
+		const index = currentMatched.findIndex(isSameRouteRecord.bind(null, routeMatched));
+		if (index > -1) return index;
+		const parentRecordPath = getOriginalPath(matched[length - 2]);
+		return length > 1 && getOriginalPath(routeMatched) === parentRecordPath && currentMatched[currentMatched.length - 1].path !== parentRecordPath ? currentMatched.findIndex(isSameRouteRecord.bind(null, matched[length - 2])) : index;
+	});
+	const isActive = computed(() => activeRecordIndex.value > -1 && includesParams(currentRoute.params, route.value.params));
+	const isExactActive = computed(() => activeRecordIndex.value > -1 && activeRecordIndex.value === currentRoute.matched.length - 1 && isSameRouteLocationParams(currentRoute.params, route.value.params));
+	function navigate(e = {}) {
+		if (guardEvent(e)) {
+			const p = router[unref(props.replace) ? "replace" : "push"](unref(props.to)).catch(noop);
+			if (props.viewTransition && typeof document !== "undefined" && "startViewTransition" in document) document.startViewTransition(() => p);
+			return p;
+		}
+		return Promise.resolve();
+	}
+	/**
+	* NOTE: update {@link _RouterLinkI}'s `$slots` type when updating this
+	*/
+	return {
+		route,
+		href: computed(() => route.value.href),
+		isActive,
+		isExactActive,
+		navigate
+	};
+}
+/** @internal */
+function preferSingleVNode(vnodes) {
+	return vnodes.length === 1 ? vnodes[0] : vnodes;
+}
+/**
+* Component to render a link that triggers a navigation on click.
+*/
+var RouterLink = /* @__PURE__ */ defineComponent({
+	name: "RouterLink",
+	compatConfig: { MODE: 3 },
+	props: {
+		to: {
+			type: [String, Object],
+			required: true
+		},
+		replace: Boolean,
+		activeClass: String,
+		exactActiveClass: String,
+		custom: Boolean,
+		ariaCurrentValue: {
+			type: String,
+			default: "page"
+		},
+		viewTransition: Boolean
+	},
+	useLink,
+	setup(props, { slots }) {
+		const link = /* @__PURE__ */ reactive(useLink(props));
+		const { options } = inject(routerKey);
+		const elClass = computed(() => ({
+			[getLinkClass(props.activeClass, options.linkActiveClass, "router-link-active")]: link.isActive,
+			[getLinkClass(props.exactActiveClass, options.linkExactActiveClass, "router-link-exact-active")]: link.isExactActive
+		}));
+		return () => {
+			const children = slots.default && preferSingleVNode(slots.default(link));
+			return props.custom ? children : h("a", {
+				"aria-current": link.isExactActive ? props.ariaCurrentValue : null,
+				href: link.href,
+				onClick: link.navigate,
+				class: elClass.value
+			}, children);
+		};
+	}
+});
+/** @internal */
+function guardEvent(e) {
+	if (e.metaKey || e.altKey || e.ctrlKey || e.shiftKey) return;
+	if (e.defaultPrevented) return;
+	if (e.button !== void 0 && e.button !== 0) return;
+	if (e.currentTarget && e.currentTarget.getAttribute) {
+		const target = e.currentTarget.getAttribute("target");
+		if (/\b_blank\b/i.test(target)) return;
+	}
+	if (e.preventDefault) e.preventDefault();
+	return true;
+}
+/** @internal */
+function includesParams(outer, inner) {
+	for (const key in inner) {
+		const innerValue = inner[key];
+		const outerValue = outer[key];
+		if (isArray(innerValue)) {
+			if (!isArray(outerValue) || outerValue.length !== innerValue.length || innerValue.some((value, i) => value.valueOf() !== outerValue[i].valueOf())) return false;
+		} else if (innerValue !== outerValue) return false;
+	}
+	return true;
+}
+/**
+* Get the original path value of a record by following its aliasOf
+* @param record
+*/
+function getOriginalPath(record) {
+	return record ? record.aliasOf ? record.aliasOf.path : record.path : "";
+}
+/**
+* Utility class to get the active class based on defaults.
+* @param propClass
+* @param globalClass
+* @param defaultClass
+*/
+var getLinkClass = (propClass, globalClass, defaultClass) => propClass != null ? propClass : globalClass != null ? globalClass : defaultClass;
 // ../../node_modules/vue-router/dist/vue-router.js
 /*!
-* vue-router v5.5.0
+* vue-router v5.5.1
 * (c) 2026 Eduardo San Martin Morote
 * @license MIT
 */
-var createBaseLocation = () => location.protocol + "//" + location.host;
 /**
 * Creates a normalized history location from a window.location object
 * @param base - The base path
@@ -23474,7 +23593,7 @@ function useHistoryStateNavigation(base) {
 		* base tag we can just use everything after the `#`.
 		*/
 		const hashIndex = base.indexOf("#");
-		const url = hashIndex > -1 ? (location.host && document.querySelector("base") ? base : base.slice(hashIndex)) + to : createBaseLocation() + base + to;
+		const url = hashIndex > -1 ? (location.host && document.querySelector("base") ? base : base.slice(hashIndex)) + to : "/." + base + to;
 		try {
 			history[replace ? "replaceState" : "pushState"](state, "", url);
 			historyState.value = state;
@@ -23662,7 +23781,7 @@ var BASE_PATH_PARSER_OPTIONS = {
 	start: true,
 	end: true
 };
-var REGEX_CHARS_RE = /[.+*?^${}()[\]/\\]/g;
+var REGEX_CHARS_RE = /[.+*?^${}()[\]/\\|]/g;
 /**
 * Creates a path parser from an array of Segments (a segment is an array of Tokens)
 *
@@ -23675,6 +23794,7 @@ function tokensToParser(segments, extraOptions) {
 	const score = [];
 	let pattern = options.start ? "^" : "";
 	const keys = [];
+	const hasBackreference = segments.some((segment) => segment.some((token) => token.type === 1 && /\\[1-9k]/.test(token.regexp || "")));
 	for (const segment of segments) {
 		const segmentScores = segment.length ? [] : [90];
 		if (options.strict && !segment.length) pattern += "/";
@@ -23702,6 +23822,9 @@ function tokensToParser(segments, extraOptions) {
 					}
 				}
 				let subPattern = repeatable && re !== ".+" && re !== ".*" ? `((?:${re})(?:/(?:${re}))*)` : `(${re})`;
+				const next = segment[tokenIndex + 1];
+				const afterNext = segment[tokenIndex + 2];
+				if (!hasBackreference && !regexp && !repeatable && afterNext && afterNext.type === 1 && !afterNext.regexp && next.type === 0) subPattern = `([^/](?:(?!${next.value.replace(REGEX_CHARS_RE, "\\$&")})[^/])*)`;
 				if (!tokenIndex) subPattern = optional && segment.length < 2 ? `(?:/${subPattern})` : "/" + subPattern;
 				if (optional) subPattern += "?";
 				pattern += subPattern;
@@ -24078,128 +24201,6 @@ function getInsertionAncestor(matcher) {
 function isMatchable({ record }) {
 	return !!(record.name || record.components && Object.keys(record.components).length || record.redirect);
 }
-/**
-* Returns the internal behavior of a {@link RouterLink} without the rendering part.
-*
-* @param props - a `to` location and an optional `replace` flag
-*/
-function useLink(props) {
-	const router = inject(routerKey);
-	const currentRoute = inject(routeLocationKey);
-	const route = computed(() => {
-		const to = unref(props.to);
-		return router.resolve(to);
-	});
-	const activeRecordIndex = computed(() => {
-		const { matched } = route.value;
-		const { length } = matched;
-		const routeMatched = matched[length - 1];
-		const currentMatched = currentRoute.matched;
-		if (!routeMatched || !currentMatched.length) return -1;
-		const index = currentMatched.findIndex(isSameRouteRecord.bind(null, routeMatched));
-		if (index > -1) return index;
-		const parentRecordPath = getOriginalPath(matched[length - 2]);
-		return length > 1 && getOriginalPath(routeMatched) === parentRecordPath && currentMatched[currentMatched.length - 1].path !== parentRecordPath ? currentMatched.findIndex(isSameRouteRecord.bind(null, matched[length - 2])) : index;
-	});
-	const isActive = computed(() => activeRecordIndex.value > -1 && includesParams(currentRoute.params, route.value.params));
-	const isExactActive = computed(() => activeRecordIndex.value > -1 && activeRecordIndex.value === currentRoute.matched.length - 1 && isSameRouteLocationParams(currentRoute.params, route.value.params));
-	function navigate(e = {}) {
-		if (guardEvent(e)) {
-			const p = router[unref(props.replace) ? "replace" : "push"](unref(props.to)).catch(noop);
-			if (props.viewTransition && typeof document !== "undefined" && "startViewTransition" in document) document.startViewTransition(() => p);
-			return p;
-		}
-		return Promise.resolve();
-	}
-	/**
-	* NOTE: update {@link _RouterLinkI}'s `$slots` type when updating this
-	*/
-	return {
-		route,
-		href: computed(() => route.value.href),
-		isActive,
-		isExactActive,
-		navigate
-	};
-}
-function preferSingleVNode(vnodes) {
-	return vnodes.length === 1 ? vnodes[0] : vnodes;
-}
-/**
-* Component to render a link that triggers a navigation on click.
-*/
-var RouterLink = /* @__PURE__ */ defineComponent({
-	name: "RouterLink",
-	compatConfig: { MODE: 3 },
-	props: {
-		to: {
-			type: [String, Object],
-			required: true
-		},
-		replace: Boolean,
-		activeClass: String,
-		exactActiveClass: String,
-		custom: Boolean,
-		ariaCurrentValue: {
-			type: String,
-			default: "page"
-		},
-		viewTransition: Boolean
-	},
-	useLink,
-	setup(props, { slots }) {
-		const link = /* @__PURE__ */ reactive(useLink(props));
-		const { options } = inject(routerKey);
-		const elClass = computed(() => ({
-			[getLinkClass(props.activeClass, options.linkActiveClass, "router-link-active")]: link.isActive,
-			[getLinkClass(props.exactActiveClass, options.linkExactActiveClass, "router-link-exact-active")]: link.isExactActive
-		}));
-		return () => {
-			const children = slots.default && preferSingleVNode(slots.default(link));
-			return props.custom ? children : h("a", {
-				"aria-current": link.isExactActive ? props.ariaCurrentValue : null,
-				href: link.href,
-				onClick: link.navigate,
-				class: elClass.value
-			}, children);
-		};
-	}
-});
-function guardEvent(e) {
-	if (e.metaKey || e.altKey || e.ctrlKey || e.shiftKey) return;
-	if (e.defaultPrevented) return;
-	if (e.button !== void 0 && e.button !== 0) return;
-	if (e.currentTarget && e.currentTarget.getAttribute) {
-		const target = e.currentTarget.getAttribute("target");
-		if (/\b_blank\b/i.test(target)) return;
-	}
-	if (e.preventDefault) e.preventDefault();
-	return true;
-}
-function includesParams(outer, inner) {
-	for (const key in inner) {
-		const innerValue = inner[key];
-		const outerValue = outer[key];
-		if (isArray(innerValue)) {
-			if (!isArray(outerValue) || outerValue.length !== innerValue.length || innerValue.some((value, i) => value.valueOf() !== outerValue[i].valueOf())) return false;
-		} else if (innerValue !== outerValue) return false;
-	}
-	return true;
-}
-/**
-* Get the original path value of a record by following its aliasOf
-* @param record
-*/
-function getOriginalPath(record) {
-	return record ? record.aliasOf ? record.aliasOf.path : record.path : "";
-}
-/**
-* Utility class to get the active class based on defaults.
-* @param propClass
-* @param globalClass
-* @param defaultClass
-*/
-var getLinkClass = (propClass, globalClass, defaultClass) => propClass != null ? propClass : globalClass != null ? globalClass : defaultClass;
 var RouterViewImpl = /*#__PURE__*/ defineComponent({
 	name: "RouterView",
 	inheritAttrs: false,

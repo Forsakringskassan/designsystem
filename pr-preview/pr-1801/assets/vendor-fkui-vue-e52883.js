@@ -13843,7 +13843,7 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
     activeErrorAnchor: { default: () => void 0 }
   },
   emits: ["onError", "closeError"],
-  setup(__props, { emit: __emit }) {
+  setup(__props, { expose: __expose, emit: __emit }) {
     const emit = __emit;
     const selectId = ElementIdService.generateElementId();
     const selectElement = useTemplateRef("select");
@@ -13875,19 +13875,7 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
       return value.length > 0 ? value : void 0;
     });
     const visible = computed(() => isVisible$1(__props.column.visible, __props.row));
-    function onCellKeyDown(event) {
-      if (event.target !== tdElement.value && event.target !== selectElement.value) return;
-      if (![
-        "Enter",
-        "NumpadEnter",
-        "Space"
-      ].includes(event.code)) return;
-      const select = selectElement.value;
-      if (!select) return;
-      event.preventDefault();
-      select.focus();
-      select.showPicker();
-    }
+    __expose({ tabstopEl: selectElement });
     function onCellClick(event) {
       if (event.target === selectElement.value) return;
       selectElement.value?.focus();
@@ -13963,7 +13951,6 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
         class: normalizeClass(wrapperClasses.value),
         "aria-invalid": viewModeAriaInvalid.value,
         tabindex: "-1",
-        onKeydown: onCellKeyDown,
         onClick: withModifiers(onCellClick, ["stop"])
       }, [visible.value ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
         createElementVNode("div", _hoisted_2$32, [
@@ -14001,7 +13988,7 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
           "error-message",
           "arrow-anchor"
         ])
-      ], 64)) : createCommentVNode("v-if", true)], 42, _hoisted_1$41)) : (openBlock(), createElementBlock("td", _hoisted_6$13, [visible.value ? (openBlock(), createElementBlock("div", _hoisted_7$10, toDisplayString(__props.column.selected(__props.row)), 1)) : createCommentVNode("v-if", true)]));
+      ], 64)) : createCommentVNode("v-if", true)], 10, _hoisted_1$41)) : (openBlock(), createElementBlock("td", _hoisted_6$13, [visible.value ? (openBlock(), createElementBlock("div", _hoisted_7$10, toDisplayString(__props.column.selected(__props.row)), 1)) : createCommentVNode("v-if", true)]));
     };
   }
 });
