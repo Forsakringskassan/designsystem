@@ -1020,124 +1020,120 @@ function FModalSelectors(selector = ":scope") {
       return dialog;
     },
     /**
-     * Get the title element.
+     * Get the header element (the modal heading).
+     *
+     * Contains the content of the `header` slot (`heading` slot for
+     * `FConfirmModal`).
      *
      * @example Cypress
      *
      * ```ts
-     * const { title } = FModalSelectors();
-     * cy.get(title()).should("have.text", "Lorem ipsum");
+     * const { header } = FModalSelectors();
+     * cy.get(header()).should("have.text", "Lorem ipsum");
      * ```
      *
      * @example Playwright
      *
      * ```ts
-     * const { title } = FModalSelectors();
-     * await expect(page.locator(title())).toHaveText("Lorem ipsum");
+     * const { header } = FModalSelectors();
+     * await expect(page.locator(header())).toHaveText("Lorem ipsum");
      * ```
      *
      * @public
      * @since %version%
-     * @returns A selector for the title element.
+     * @returns A selector for the header element.
      */
-    title() {
+    header() {
       return `${dialog} .modal__title`;
     },
     /**
-     * Get the body element.
+     * Get the content element.
+     *
+     * Contains the content of the `content` slot. For `FFormModal` this
+     * also includes the form, use the selectors for the respective input
+     * components scoped to this element to access the fields.
      *
      * @example Cypress
      *
      * ```ts
-     * const { body } = FModalSelectors();
-     * cy.get(body()).should("contain.text", "Lorem ipsum");
+     * const { content } = FModalSelectors();
+     * cy.get(content()).should("contain.text", "Lorem ipsum");
      * ```
      *
      * @example Playwright
      *
      * ```ts
-     * const { body } = FModalSelectors();
-     * await expect(page.locator(body())).toContainText("Lorem ipsum");
+     * const { content } = FModalSelectors();
+     * await expect(page.locator(content())).toContainText("Lorem ipsum");
      * ```
      *
      * @public
      * @since %version%
-     * @returns A selector for the body element.
+     * @returns A selector for the content element.
      */
-    body() {
+    content() {
       return `${dialog} .modal__content`;
     },
     /**
-     * Get the primary button in the modal footer.
+     * Get the footer element.
+     *
+     * The footer contains the modal buttons. For `FModal` the buttons are
+     * whatever is passed in the `footer` slot. For `FConfirmModal` and
+     * `FFormModal` they are rendered from the `buttons` prop (or the
+     * default buttons) in the configured button order.
+     *
+     * Since the number, order and types of the buttons vary, no selectors
+     * for individual buttons are provided. Locate a button inside the
+     * footer by its text (accessible name) or by a selector of your own
+     * instead.
      *
      * @example Cypress
      *
      * ```ts
-     * const { primaryButton } = FModalSelectors();
-     * cy.get(primaryButton()).click();
+     * const { footer } = FModalSelectors();
+     * cy.get(footer()).contains("button", "Bekräfta").click();
      * ```
      *
      * @example Playwright
      *
      * ```ts
-     * const { primaryButton } = FModalSelectors();
-     * await page.locator(primaryButton()).click();
+     * const { footer } = FModalSelectors();
+     * await page
+     *     .locator(footer())
+     *     .getByRole("button", { name: "Bekräfta" })
+     *     .click();
      * ```
      *
      * @public
      * @since %version%
-     * @returns A selector for the primary button element.
+     * @returns A selector for the footer element.
      */
-    primaryButton() {
-      return `${dialog} .modal__footer .button--primary`;
+    footer() {
+      return `${dialog} .modal__footer`;
     },
     /**
-     * Get the secondary button in the modal footer.
+     * Get the close button in the top right corner of the modal.
      *
      * @example Cypress
      *
      * ```ts
-     * const { secondaryButton } = FModalSelectors();
-     * cy.get(secondaryButton()).click();
+     * const { closeButton } = FModalSelectors();
+     * cy.get(closeButton()).click();
      * ```
      *
      * @example Playwright
      *
      * ```ts
-     * const { secondaryButton } = FModalSelectors();
-     * await page.locator(secondaryButton()).click();
-     * ```
-     *
-     * @public
-     * @since %version%
-     * @returns A selector for the secondary button element.
-     */
-    secondaryButton() {
-      return `${dialog} .modal__footer .button--secondary`;
-    },
-    /**
-     * Get the close button (cross).
-     *
-     * @example Cypress
-     *
-     * ```ts
-     * const { closeCross } = FModalSelectors();
-     * cy.get(closeCross()).click();
-     * ```
-     *
-     * @example Playwright
-     *
-     * ```ts
-     * const { closeCross } = FModalSelectors();
-     * await page.locator(closeCross()).click();
+     * const { closeButton } = FModalSelectors();
+     * await page.locator(closeButton()).click();
      * ```
      *
      * @public
      * @since %version%
      * @returns A selector for the close button element.
      */
-    closeCross() {
-      return `${dialog} .close-button`;
+    closeButton() {
+      return `${dialog} .modal__shelf > .close-button`;
     }
   });
 }
