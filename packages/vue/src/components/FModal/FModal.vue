@@ -29,14 +29,6 @@ export default defineComponent({
             default: () => ElementIdService.generateElementId(),
         },
         /**
-         * If the modal is open.
-         * Use this to toggle if the modal should be visible or not.
-         */
-        isOpen: {
-            type: Boolean,
-            required: false,
-        },
-        /**
          * The aria-label attribute text for the top right close button.
          */
         ariaCloseText: {
@@ -84,8 +76,8 @@ export default defineComponent({
     },
     emits: [
         /**
-         * Event that is dispatched when the escape button is pressed.
-         * In most use cases the `isOpen` prop should be set to false when this event is triggered.
+         * Event that is dispatched when the escape button or the close button is pressed.
+         * When opened with `openModal()` the modal is closed when this event is triggered.
          */
         "close",
     ],
@@ -111,18 +103,9 @@ export default defineComponent({
             return hasSlot(this, "header");
         },
     },
-    watch: {
-        isOpen: {
-            immediate: true,
-            async handler(value: boolean): Promise<void> {
-                if (value) {
-                    await this.$nextTick();
-                    this.openModal();
-                } else {
-                    this.restoreState();
-                }
-            },
-        },
+    async mounted(): Promise<void> {
+        await this.$nextTick();
+        this.openModal();
     },
     beforeUnmount(): void {
         this.restoreState();
@@ -201,7 +184,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div v-if="isOpen" :id class="modal" :class="modalClass">
+    <div :id class="modal" :class="modalClass">
         <div class="modal__backdrop">
             <div
                 class="modal__outer-container scroll-target"

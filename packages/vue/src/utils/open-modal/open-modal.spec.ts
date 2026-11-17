@@ -5,10 +5,6 @@ import { openModal } from "./open-modal";
 
 const callingInstance = { $fkui: {} } as MaybeWithFKUIContext;
 
-interface MockProps {
-    isOpen: boolean;
-}
-
 const MockModal = defineComponent({
     props: ["content", "isOpen", "payload", "reason"],
     render() {
@@ -18,7 +14,7 @@ const MockModal = defineComponent({
         ): ReturnType<typeof h> {
             return h("button", { onClick: click }, text);
         }
-        const props: MockProps = {
+        const props = {
             isOpen: this.isOpen,
         };
         const data = {
@@ -63,10 +59,6 @@ class PageObject {
     public exists(): boolean {
         return this.element !== null;
     }
-
-    public props(): MockProps {
-        return JSON.parse(this.element?.dataset.props ?? "{}") as MockProps;
-    }
 }
 
 it("should attach modal to given parent when opened", () => {
@@ -87,16 +79,6 @@ it("should remove modal from given parent when closed", () => {
     modal.closeButton?.click();
     expect(modal.exists()).toBeFalsy();
     expect(modal.element).toBeNull();
-});
-
-it("should set isOpen to true", () => {
-    expect.assertions(1);
-    const container = document.createElement("div");
-    void openModal(callingInstance, MockModal, { attachTo: container });
-    const modal = new PageObject(container);
-    const props = modal.props();
-    expect(props.isOpen).toBe(true);
-    modal.closeButton?.click();
 });
 
 it("should resolve promise when close is emitted", async () => {

@@ -8,7 +8,7 @@ interface Row {
     pris?: number;
 }
 
-const props = defineProps<{ isOpen: boolean; row: Row }>();
+const props = defineProps<{ row: Row }>();
 
 const emit = defineEmits<{ close: [event: { reason: string; data?: Row }] }>();
 
@@ -29,7 +29,7 @@ const value = ref<Row>({ ...props.row });
 </script>
 
 <template>
-    <f-form-modal :is-open :value :use-error-list="false" @close="(event) => emit('close', event)">
+    <f-form-modal :value :use-error-list="false" @close="(event) => emit('close', event)">
         <template #header> Ändra {{ row.namn }} </template>
         <template #input-text-fields>
             <f-select-field v-model="value.land">

@@ -9,8 +9,6 @@ import {
     FOrganisationsnummerTextField,
 } from "@fkui/vue";
 
-const props = defineProps<{ isOpen?: boolean }>();
-
 const emit = defineEmits<{
     cancel: [];
 
@@ -78,7 +76,7 @@ function onChange(event: FDialogueTreeUserProgress): void {
 </script>
 
 <template>
-    <f-form-modal :is-open :value :buttons @submit="onSubmit" @cancel="onCancel" @close="onClose">
+    <f-form-modal :value :buttons @submit="onSubmit" @cancel="onCancel" @close="onClose">
         <template #header> {{ current.label }} </template>
         <template #error-message>Oj, du har glömt fylla i något. Gå till:</template>
         <template #input-text-fields>

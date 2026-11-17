@@ -26,14 +26,6 @@ export default defineComponent({
             default: true,
         },
         /**
-         * If the modal is open.
-         * Use this to toggle if the modal should be visible or not.
-         */
-        isOpen: {
-            type: Boolean,
-            required: false,
-        },
-        /**
          * The size of modal in desktop mode.
          */
         size: {
@@ -132,7 +124,6 @@ export default defineComponent({
     emits: {
         /**
          * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
-         * In most use cases the isOpen prop should be set to false when this event is triggered.
          */
         cancel() {
             return true;
@@ -140,7 +131,6 @@ export default defineComponent({
 
         /**
          * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
-         * In most use cases the isOpen prop should be set to false when this event is triggered.
          */
         /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, should use generics */
         close(_payload: { reason: string; data?: any }) {
@@ -185,7 +175,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-modal :data-test :fullscreen :is-open :size :aria-close-text @close="onClose">
+    <f-modal :data-test :fullscreen :size :aria-close-text @close="onClose">
         <template #header>
             <!-- @slot Slot for the header. -->
             <slot name="header"></slot>

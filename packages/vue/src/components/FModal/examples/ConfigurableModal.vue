@@ -11,7 +11,7 @@ const emit = defineEmits<{ close: [] }>();
 </script>
 
 <template>
-    <f-modal is-open :type :size @close="emit('close')">
+    <f-modal :type :size @close="emit('close')">
         <template #header> My awesome modal </template>
         <template #content> My awesome content </template>
         <template #footer>

@@ -40,7 +40,17 @@ function isSFCTemplateRoot(node) {
 }
 
 export class NoTemplateModal extends Rule {
-    documentation() {
+    /**
+     * @param {string | undefined} context
+     */
+    documentation(context) {
+        if (context === "is-open") {
+            return {
+                description:
+                    "The `is-open` prop has been removed. Modals are always open when rendered and closed by being unmounted. Remove the prop and open the modal using API (`openModal()` or `useModal()`).",
+                url: getDocumentationUrl("/components/fmodal.html"),
+            };
+        }
         return {
             description:
                 "The template method of using modals is no longer supported. Modals need to be the root element in a Vue component and opened using API.",
@@ -50,12 +60,24 @@ export class NoTemplateModal extends Rule {
 
     setup() {
         this.on("element:ready", isRelevant, (event) => {
-            const { parent } = event.target;
+            const { target } = event;
+            const modalType = target.tagName;
+            const isOpen = target.getAttribute("is-open");
+
+            if (isOpen) {
+                this.report({
+                    node: target,
+                    context: "is-open",
+                    location: isOpen.keyLocation,
+                    message: `"is-open" has been removed from ${modalType}, modals are always open when rendered. Open the modal with openModal() or useModal() instead.`,
+                });
+            }
+
+            const { parent } = target;
             if (isDocumentRoot(parent) || isSFCTemplateRoot(parent)) {
                 return;
             }
 
-            const modalType = event.target.tagName;
             this.report({
                 message: `${modalType} must be root element.`,
             });

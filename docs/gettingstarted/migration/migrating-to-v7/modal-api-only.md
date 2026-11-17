@@ -52,7 +52,7 @@ function onClose(): void {
 För att öppna modalen programmatiskt istället:
 
 1. Flytta modalen till en egen komponent, till exempel `MyAwesomeModal.vue`.
-   Modalen är alltid öppen (`is-open`) och skickar `close`-eventet vidare när den ska stängas:
+   Vid stängning ska modalen skicka ett `close`-event:
 
 ```import static
 MyAwesomeModal.vue
@@ -63,3 +63,31 @@ MyAwesomeModal.vue
 ```import static
 FModalUsage.vue
 ```
+
+## `is-open` har tagits bort
+
+Egenskapen `is-open` har tagits bort från `FModal`, `FConfirmModal` och `FFormModal`.
+En modal är alltid öppen när den renderas och stängs genom att den tas bort (vilket `openModal()` gör när `close`-eventet skickas).
+
+```diff
+-<f-modal :is-open></f-modal>
++<f-modal></f-modal>
+```
+
+::: details 🤖 Prompt för AI Agenter
+
+Leta efter `FModal`, `FConfirmModal` och `FFormModal` som har proppen `is-open` och ta bort den.
+
+Verifiera resultatet genom att bygga projektet och köra relevanta tester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.
+
+:::
+
+## FCrudDataset
+
+{@link FCrudDataset `FCrudDataset`} öppnar nu också sina modaler programmatiskt.
+Innehållet i slottarna `#add`, `#modify` och `#delete` renderas därför i en separat Vue-applikation (på samma sätt som för `openModal()`), men modalen placeras fortfarande inuti `.crud-dataset`-elementet så selektorer och pageobjects fungerar som tidigare.
+
+Det kan påverka er applikation om:
+
+- komponenter i slottarna `#add`, `#modify` eller `#delete` använder `inject()` för att hämta värden som tillhandahålls (`provide()`) av en komponent ovanför `FCrudDataset`.

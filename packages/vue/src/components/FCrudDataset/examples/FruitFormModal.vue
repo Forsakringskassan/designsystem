@@ -4,7 +4,6 @@ import { type FruitData } from "./fruit-data";
 import { type FModalButtonDescriptor, FFormModal, FTextField, FTextareaField } from "@fkui/vue";
 
 const props = defineProps<{
-    isOpen: boolean;
     heading: string;
     confirmText: string;
     fruit: FruitData;
@@ -24,13 +23,7 @@ const buttons: FModalButtonDescriptor[] = [
 </script>
 
 <template>
-    <f-form-modal
-        :is-open
-        :value
-        :buttons
-        :use-error-list="false"
-        @close="(event) => emit('close', event)"
-    >
+    <f-form-modal :value :buttons :use-error-list="false" @close="(event) => emit('close', event)">
         <template #header>{{ heading }}</template>
         <template #input-text-fields>
             <f-text-field
