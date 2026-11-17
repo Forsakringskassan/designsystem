@@ -162,27 +162,23 @@ describe("events", () => {
     });
 
     it("should set aria-current on selected item", async () => {
-        expect.assertions(1);
-        // given
+        expect.assertions(2);
         const wrapper = mount(FNavigationMenu, {
             props: {
                 route: "",
                 routes: testItems,
             },
         });
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
-        await wrapper.vm.$nextTick();
+        await expect
+            .poll(() => wrapper.findAll(".imenu__list__item"))
+            .toHaveLength(4);
+        const a = wrapper.findAll(".imenu__list__item a")[1];
 
-        const li = wrapper.findAll(".imenu__list__item")[1];
-        const a = li.get("a");
-
-        // when
         await a.trigger("click");
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
-        await wrapper.vm.$nextTick();
 
-        // then
-        expect(a.element.getAttribute("aria-current")).toBe("page");
+        await expect
+            .poll(() => a.element.getAttribute("aria-current"))
+            .toBe("page");
     });
 });
 
