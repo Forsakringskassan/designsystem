@@ -4329,7 +4329,7 @@ var FConfirmModal_vue_vue_type_script_lang_default = /* @__PURE__ */ defineCompo
       default: "Rubrik"
     },
     /**
-    * The size of modal. 'large' and 'fullscreen' is valid.
+    * The size of modal in desktop mode.
     */
     size: {
       type: String,
@@ -5045,7 +5045,7 @@ var FFormModal_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponen
       required: false
     },
     /**
-    * See <f-modal> `size` props.
+    * The size of modal in desktop mode.
     */
     size: {
       type: String,

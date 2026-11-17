@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-303d34.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-0375f2.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-bc3541.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-2a1423.js",
     "@fkui/vue-labs": "../../../assets/vendor-fkui-vue-labs-a2a6fb.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js"
   },
@@ -35,7 +35,7 @@
     "../../../assets/vendor-fkui-vue-selectors-303d34.js": "sha384-VDRtJukmYHvieJUGPqtaVb0j7ocu/gYIS2kUcj02cMAoFvt7ZMs9DwEjogtf5x5X",
     "../../../assets/vendor-fkui-logic-0375f2.js": "sha384-AmTACorVlStyNetYWs4/XxIjlxix05CTn9CkP8Ep73l33fRW8dC/jgfe0fWWcnHP",
     "../../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../../assets/vendor-fkui-vue-bc3541.js": "sha384-BkkOUcU6D9JuLlO+Bf4t5Fgfyz+sGDv0NqK4ukOfQwqW0b62ZxuDlfgCgjS0+2xs",
+    "../../../assets/vendor-fkui-vue-2a1423.js": "sha384-7ExzkavbaHhVILKfbVyvhmj4jZHXJPrtw0gCgBqSlbRkRGzJrdJnzZ3E9/CfEV26",
     "../../../assets/vendor-fkui-vue-labs-a2a6fb.js": "sha384-h40XX4ozhvBgz6AWNQ0/PORIMa6s3scmYMA6oJTujg2racMU/GypyFfqTvLaa6oJ",
     "../../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js": "sha384-Zomp3tpZgQ5vBn1jDfJPFtzxDwJLLe39dK/jC//bT97+TQqCbXlfNz6um+bZc61n"
   }
@@ -6433,14 +6433,15 @@
 <h2 id="fmodal" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fmodal"><code>FModal</code></a></h2><p class="docs-paragraph">Propen <code>size</code> stödjer inte längre aliaset <code>fullscreen</code> och är ersatt med <code>fullwidth</code>.</p>
 
                 <div
-                    id="example-88ad9f"
+                    id="example-92b06c"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> const modal = openModal(FModal, {
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> const { openModal } = useModal();
+ const modal = openModal(FModal, {
 <span class="hljs-deletion">-    size: &quot;fullscreen&quot;,</span>
 <span class="hljs-addition">+    size: &quot;fullwidth&quot;,</span>
  });
@@ -6463,7 +6464,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="fsortfilterdataset" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fsortfilterdataset"><code>FSortFilterDataset</code></a></h2><p class="docs-paragraph">Propen <code>placeholderFilter</code> är borttagen och ersatt med <code>filterLabel</code>.</p>
 
                 <div
-                    id="example-4f8a18"
+                    id="example-989782"
                     class="code-preview code-preview--default"
                     
                     
@@ -6490,7 +6491,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="getlegacyinternalkey" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#getlegacyinternalkey"><code>getLegacyInternalKey()</code></a></h2><p class="docs-paragraph">Använd <code>findItemIdentifier()</code> eller <code>getItemIdentifier()</code> istället för att hämta ut identifieraren istället för dess nyckel.</p>
 
                 <div
-                    id="example-d115da"
+                    id="example-b3e3e2"
                     class="code-preview code-preview--default"
                     
                     
@@ -6513,8 +6514,23 @@ Funktionen <code>getLegacyInternalKey()</code> är borttagen och returnerade en 
 Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
 
             </details>
-        <h2 id="tablescroll" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tablescroll"><code>TableScroll</code></a></h2><p class="docs-paragraph"><code>FDataTable</code> och <code>FInteractiveTable</code> stödjer inte längre <code>TableScroll.VERTICAL</code> och <code>TableScroll.HORIZONTAL</code>.
-Vi rekommenderar att undvika vertikal scroll, behöver du trots allt det så behöver det implementeras i applikationen.</p>
+        <h2 id="tablescroll" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tablescroll"><code>TableScroll</code></a></h2><p class="docs-paragraph"><code>FDataTable</code> och <code>FInteractiveTable</code> stödjer inte längre <code>TableScroll.VERTICAL</code> och <code>TableScroll.BOTH</code>.</p>
+
+                <div
+                    id="example-8b3fe5"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-interactive-table
+   :rows
+<span class="hljs-deletion">-  :scroll=&quot;TableScroll.VERTICAL&quot;</span>
+ &gt;&lt;/f-interactive-table&gt;
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Vi rekommenderar att undvika vertikal scroll, behöver du trots allt det så behöver det implementeras i applikationen.</p>
 
             <div class="docs-messagebox docs-messagebox--warning">
                 <p class="docs-messagebox__title">Tänk på att</p>
@@ -6601,9 +6617,9 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">feature/deprecated-breaking-symbols</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/0b79feedfae57715f35973013eda0681287e0a9f">0b79fee</a>)<br />
+<div class="version"><span class="version-text-block">feature/deprecated-breaking-symbols</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/39a303f003a2795df7702975e7e83cc05e18f1dd">39a303f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1826">PR 1826</a><br />
-       <span class="version-text-block">2026-11-17 14:23</span>
+       <span class="version-text-block">2026-11-17 15:35</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
