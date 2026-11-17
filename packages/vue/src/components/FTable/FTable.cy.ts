@@ -1778,7 +1778,7 @@ describe("5 tabstop", () => {
         cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
         // {1, 6}: select
         cy.focused()
-            .should("have.prop", "tagName", "TD")
+            .should("have.prop", "tagName", "SELECT")
             .should("contain.text", "awesome option")
             .should("have.attr", "tabindex", 0);
         cy.focused().press(Cypress.Keyboard.Keys.RIGHT);

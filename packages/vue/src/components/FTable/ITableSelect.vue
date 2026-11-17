@@ -71,24 +71,9 @@ const ariaLabel = computed(() => {
 
 const visible = computed((): boolean => isVisible(column.visible, row));
 
-function onCellKeyDown(event: KeyboardEvent): void {
-    if (event.target !== tdElement.value && event.target !== selectElement.value) {
-        return;
-    }
-
-    if (!["Enter", "NumpadEnter", "Space"].includes(event.code)) {
-        return;
-    }
-
-    const select = selectElement.value;
-    if (!select) {
-        return;
-    }
-
-    event.preventDefault();
-    select.focus();
-    select.showPicker();
-}
+defineExpose({
+    tabstopEl: selectElement,
+});
 
 function onCellClick(event: MouseEvent): void {
     if (event.target === selectElement.value) {
@@ -201,7 +186,6 @@ watchEffect(() => {
         :class="wrapperClasses"
         :aria-invalid="viewModeAriaInvalid"
         tabindex="-1"
-        @keydown="onCellKeyDown"
         @click.stop="onCellClick"
     >
         <template v-if="visible">
