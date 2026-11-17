@@ -9,7 +9,6 @@ export default defineComponent({
     data() {
         return {
             action: undefined as ModalResult | undefined,
-            isOpen: false,
             threeButtons: [
                 {
                     label: "Ja, ta bort",

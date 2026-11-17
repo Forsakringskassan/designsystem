@@ -1,6 +1,6 @@
 import "html-validate/vitest";
 import { HtmlValidate } from "html-validate";
-import { expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import plugin from "../index.mjs";
 
 const htmlvalidate = new HtmlValidate({
@@ -147,4 +147,19 @@ it("should not report when `f-form-modal` is root element", async () => {
     const report = await htmlvalidate.validateString(markup);
     await expect(report).toBeValid();
     await expect(report).toMatchInlineCodeframe(`""`);
+});
+
+describe("is-open", () => {
+    it.each(["f-modal", "f-confirm-modal", "f-form-modal"])(
+        "should report removed `is-open` on `%s`",
+        async (tagName) => {
+            expect.assertions(1);
+            const markup = `<${tagName} is-open></${tagName}>`;
+            const report = await htmlvalidate.validateString(markup);
+            expect(report).toHaveError(
+                "fkui/no-template-modal",
+                `"is-open" has been removed from ${tagName}, modals are always open when rendered. Open the modal with openModal() or useModal() instead.`,
+            );
+        },
+    );
 });

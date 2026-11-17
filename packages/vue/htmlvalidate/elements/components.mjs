@@ -1239,9 +1239,6 @@ export default defineMetadata({
             size: {
                 enum: ["small", "medium", "large", "fullwidth"],
             },
-            "is-open": {
-                boolean: true,
-            },
         },
     },
 
@@ -1263,9 +1260,6 @@ export default defineMetadata({
         permittedContent: ["template"],
         attributes: {
             "aria-close-text": {},
-            "is-open": {
-                boolean: true,
-            },
             content: {
                 enum: ["/.+/"],
             },

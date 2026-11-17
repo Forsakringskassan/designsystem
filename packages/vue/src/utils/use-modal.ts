@@ -19,7 +19,6 @@ export interface UseModal {
      *
      * The component must adhere to the following rules:
      *
-     * - Either be open by default or use a prop named `is-open` to toggle it.
      * - Emit the `close` event with the payload implementing `PartialResult<T>`.
      *
      * Props can be passed to the component using the options parameter.

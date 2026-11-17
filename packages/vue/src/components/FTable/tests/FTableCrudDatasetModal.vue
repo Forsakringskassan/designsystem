@@ -8,13 +8,13 @@ interface Row {
     description: string;
 }
 
-const props = defineProps<{ isOpen: boolean; row: Row }>();
+const props = defineProps<{ row: Row }>();
 const emit = defineEmits<{ close: [event: { reason: string; data?: Row }] }>();
 const value = ref<Row>({ ...props.row });
 </script>
 
 <template>
-    <f-form-modal :is-open :value :use-error-list="false" @close="(event) => emit('close', event)">
+    <f-form-modal :value :use-error-list="false" @close="(event) => emit('close', event)">
         <template #header> Ärende </template>
         <template #input-text-fields>
             <f-text-field v-model="value.name" v-validation.maxLength="{ maxLength: { length: 32 } }" type="text">

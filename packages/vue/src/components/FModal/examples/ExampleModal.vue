@@ -14,10 +14,6 @@ export default defineComponent({
     name: "ExampleModal",
     components: { FFormModal, FTextField },
     props: {
-        isOpen: {
-            type: Boolean,
-            required: false,
-        },
         size: {
             type: String as PropType<FModalSize>,
             default: "small",
@@ -71,7 +67,6 @@ export default defineComponent({
     <f-form-modal
         :size
         :data-test="testId"
-        :is-open
         :value
         :before-submit
         :buttons="buttons ? buttons : undefined"

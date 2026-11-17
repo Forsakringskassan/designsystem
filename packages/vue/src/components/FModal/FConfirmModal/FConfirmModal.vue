@@ -27,13 +27,6 @@ export default defineComponent({
             required: false,
         },
         /**
-         * Prop for opening modal
-         */
-        isOpen: {
-            type: Boolean,
-            required: false,
-        },
-        /**
          * Simple text content
          */
         content: {
@@ -125,7 +118,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-modal :fullscreen :is-open :aria-close-text type="warning" :size :focus @close="onClose">
+    <f-modal :fullscreen :aria-close-text type="warning" :size :focus @close="onClose">
         <template #header>
             <!--@slot Slot for advanced header. -->
             <slot name="heading">{{ heading }}</slot>

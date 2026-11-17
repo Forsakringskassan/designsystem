@@ -5,7 +5,7 @@ const emit = defineEmits<{ close: [] }>();
 </script>
 
 <template>
-    <f-modal is-open @close="emit('close')">
+    <f-modal @close="emit('close')">
         <template #header> My awesome modal </template>
         <template #content> My awesome content </template>
         <template #footer>

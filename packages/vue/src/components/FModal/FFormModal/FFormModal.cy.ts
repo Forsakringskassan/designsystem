@@ -9,7 +9,6 @@ const TestComponent = defineComponent({
     template: /* HTML */ `
         <f-form-modal
             :use-error-list
-            :is-open="true"
             data-test="form-modal-example"
             :buttons="buttons"
         >
