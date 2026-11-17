@@ -3277,38 +3277,40 @@ var REMOVE_TEXT_DELAY = 2e3;
 var defaultOptions = {
   assertive: false
 };
-var wrapper;
+var wrapperId = "fkui-alert-screen-reader";
 function alertScreenReader(text, options) {
+  const wrapper = findWrapper() ?? createWrapper(defaultOptions);
   const mergedOptions = { ...defaultOptions, ...options };
-  const wrapper2 = getWrapper();
-  updateProperties(mergedOptions);
+  updateProperties(wrapper, mergedOptions);
   const msg = document.createElement("p");
   msg.textContent = text;
   waitForScreenReader(() => {
-    wrapper2.replaceChildren(msg);
+    wrapper.replaceChildren(msg);
     setTimeout(() => {
-      if (msg.parentElement === wrapper2) {
+      if (msg.parentElement === wrapper) {
         msg.remove();
       }
     }, REMOVE_TEXT_DELAY);
   });
 }
 function createScreenReaderWrapper(options) {
-  if (getWrapper()) {
-    return;
+  if (!findWrapper()) {
+    createWrapper(options);
   }
-  wrapper = document.createElement("div");
-  wrapper.id = "fkui-alert-screen-reader";
-  wrapper.className = "sr-only";
-  updateProperties(options);
-  document.body.append(wrapper);
 }
-function updateProperties(options) {
-  const wrapper2 = getWrapper();
+function updateProperties(wrapper, options) {
   const ariaLive = options.assertive ? "assertive" : "polite";
-  wrapper2.setAttribute("aria-live", ariaLive);
+  wrapper.setAttribute("aria-live", ariaLive);
 }
-function getWrapper() {
+function findWrapper() {
+  return document.querySelector(`#${wrapperId}`);
+}
+function createWrapper(options) {
+  const wrapper = document.createElement("div");
+  wrapper.id = wrapperId;
+  wrapper.className = "sr-only";
+  updateProperties(wrapper, options);
+  document.body.append(wrapper);
   return wrapper;
 }
 if (typeof document !== "undefined") {
