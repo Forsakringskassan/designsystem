@@ -1,0 +1,17 @@
+{
+    "name": "FDefinitionList",
+    "slug": "fdefinitionlist",
+    "models": [],
+    "props": [
+        {
+            "name": "definitions",
+            "description": "Array with items containing:\n- `term` (key)\n- `definition` (value).",
+            "type": "FDefinitionListItem[]",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": []
+}

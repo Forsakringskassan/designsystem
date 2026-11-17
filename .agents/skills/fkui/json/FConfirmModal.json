@@ -1,0 +1,117 @@
+{
+    "name": "FConfirmModal",
+    "slug": "fconfirmmodal",
+    "models": [],
+    "props": [
+        {
+            "name": "fullscreen",
+            "description": "Enable fullscreen mode in mobile.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "isOpen",
+            "description": "Prop for opening modal",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "content",
+            "description": "Simple text content",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"Brödtext\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "heading",
+            "description": "Simple text header",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"Rubrik\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "size",
+            "description": "The size of modal. 'large' and 'fullscreen' is valid.",
+            "type": "FModalSize | \"fullscreen\" | \"\"",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "ariaCloseText",
+            "description": "The aria-label attribute text for the top right close button.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "buttons",
+            "description": "List of buttons",
+            "type": "FModalButtonDescriptor[]",
+            "required": false,
+            "default": {
+                "value": "(): FModalButtonDescriptor[] => {\r\n    return defaultButtons;\r\n}"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "focus",
+            "description": "Default behavior is that the modal will restore focus to previous element once closed.\n- \"on\" (default) - component will set focus both when opened and closed\n- \"off\" - focus strategy disabled\n- \"open\" - focus will only be applied once modal is opened",
+            "type": "\"on\" | \"off\" | \"open\"",
+            "required": false,
+            "default": {
+                "value": "\"on\""
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "close",
+            "description": "Emits reason for closing modal",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "undefined",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "button.event",
+            "description": "Emits specified button event when clicked",
+            "properties": [],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "heading",
+            "description": "Slot for advanced header.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "content",
+            "description": "Slot for advanced content.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

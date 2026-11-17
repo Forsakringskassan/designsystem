@@ -1,0 +1,131 @@
+{
+    "name": "FSortFilterDataset",
+    "slug": "fsortfilterdataset",
+    "models": [],
+    "props": [
+        {
+            "name": "data",
+            "description": "The data that you wish to sort or filter.",
+            "type": "Dataset | Array",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "sortableAttributes",
+            "description": "All the attributes you want to enable sorting for and the corresponding name to display in the dropdown.\nStructured as `{attributeName: \"Name for dropdown\", secondAttributeName: \"Name for dropdown\"}`",
+            "type": "Record",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "defaultSortAttribute",
+            "description": "If set the data will be sorted by this attribute by default.",
+            "type": "PropertyKey",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "showSort",
+            "description": "Show/hides the sort dropdown.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "showFilter",
+            "description": "Show/hides the filter input.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "filterLabel",
+            "description": "Label text for filter input field.",
+            "type": "string",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "placeholderFilter",
+            "description": "Previously set placeholder text in filter input field.\n\nDefault is textkey \"fkui.sort-filter-dataset.placeholder.filter\"",
+            "type": "string",
+            "required": false,
+            "default": null,
+            "deprecated": "Use `filterLabel` instead. Deprecated since v6.40.0."
+        },
+        {
+            "name": "defaultSortAscending",
+            "description": "The order the data will be sorted by if defaultSortAttribute has been set.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "filterAttributes",
+            "description": "Attributes that should be included in search when filtering by input.\nDefault includes all attributes.",
+            "type": "PropertyKey[]",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "datasetSorted",
+            "description": "Emitted when the data is sorted.",
+            "properties": [
+                {
+                    "name": "items",
+                    "type": "Dataset",
+                    "description": "The sorted data."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "usedSortAttributes",
+            "description": "Emits the used sorting attributes.",
+            "properties": [
+                {
+                    "name": "sortAttribute",
+                    "type": "SortOrder",
+                    "description": "The attributes used when sorting the data."
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "header",
+            "description": "Slot for header to the left of the filter dropdown. Slot content is available through `v-slot=\"{ <propertyName> }\"`, e.g. `v-slot=\"{ slotClass }\"`.",
+            "bindings": [
+                {
+                    "name": "slotClass",
+                    "type": "string[]",
+                    "description": "CSS classes to use for the SortFilter header element. Use with `:class=\"slotClass\"`."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "default",
+            "description": "Slot for displaying the data. The data is available through `v-slot=\"{ <propertyName> }\"`, e.g. `v-slot=\"{ sortFilterResult }\"`.",
+            "bindings": [
+                {
+                    "name": "sortFilterResult",
+                    "type": "T[]",
+                    "description": "The sorted or filtered data."
+                }
+            ],
+            "deprecated": null
+        }
+    ]
+}

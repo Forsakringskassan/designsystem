@@ -1,0 +1,48 @@
+{
+    "name": "FValidationGroup",
+    "slug": "fvalidationgroup",
+    "models": [
+        {
+            "name": "v-model",
+            "description": "A `GroupValidityEvent` object containing:\n\n  `isValid`: the aggregated validity of underlying components\n\n  `componentsWithError`: a list of components with errors sorted in DOM order\n\n  `componentCount`: number of registered components",
+            "type": "GroupValidityEvent",
+            "required": false,
+            "default": {
+                "value": "(): GroupValidityEvent => {\r\n    return { isValid: false, componentsWithError: [], componentCount: 0 };\r\n}"
+            },
+            "deprecated": null
+        }
+    ],
+    "props": [
+        {
+            "name": "stopPropagation",
+            "description": "Controls whether component-validity event should be propagated or not from underlying components.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "group-validity",
+            "description": "Emitted when validation group has been updated.",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "GroupValidityEvent",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}
