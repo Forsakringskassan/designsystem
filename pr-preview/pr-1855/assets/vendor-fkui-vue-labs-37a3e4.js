@@ -2420,7 +2420,10 @@ var _hoisted_1$2 = {
   class: "error-style"
 };
 var _hoisted_2 = { class: "error-icon" };
-var _hoisted_3 = { key: 1 };
+var _hoisted_3 = {
+  key: 1,
+  class: "x-file-dragdrop__selected-file"
+};
 var _hoisted_4 = {
   "aria-live": "off",
   class: "fill"
@@ -2610,7 +2613,7 @@ var XFileDragdrop_default = /* @__PURE__ */ defineComponent({
         ])), [[_directive_test, "valdFil"]])]),
         _cache[10] || (_cache[10] = createTextVNode()),
         harValtFil.value || harMisslyckats.value ? (openBlock(), createElementBlock("div", _hoisted_3, [
-          _cache[4] || (_cache[4] = createElementVNode("hr", { class: "file-item__separator show_separator" }, null, -1)),
+          _cache[4] || (_cache[4] = createElementVNode("hr", { class: "file-item__separator" }, null, -1)),
           _cache[5] || (_cache[5] = createTextVNode()),
           withDirectives((openBlock(), createBlock(unref(FFileItem), {
             id: "fillista",
