@@ -17338,9 +17338,9 @@ function _sfc_render$1(_ctx, _cache) {
 	return openBlock(), createBlock(_component_router_view);
 }
 var App_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main, [["render", _sfc_render$1]]);
-// ../../node_modules/vue-router/dist/useApi-il6ACzUc.js
+// ../../node_modules/vue-router/dist/useApi-SF8tY_yo.js
 /*!
-* vue-router v5.5.0
+* vue-router v5.5.1
 * (c) 2026 Eduardo San Martin Morote
 * @license MIT
 */
@@ -17445,9 +17445,9 @@ var routerViewLocationKey = Symbol("");
 * @internal
 */
 var routerViewOnRouteRenderedKey = Symbol("");
-// ../../node_modules/vue-router/dist/devtools-C2sLSl4b.js
+// ../../node_modules/vue-router/dist/devtools-RytpElE1.js
 /*!
-* vue-router v5.5.0
+* vue-router v5.5.1
 * (c) 2026 Eduardo San Martin Morote
 * @license MIT
 */
@@ -17994,13 +17994,137 @@ function extractChangingRecords(to, from) {
 		enteringRecords
 	];
 }
+/**
+* Returns the internal behavior of a {@link RouterLink} without the rendering part.
+*
+* @param props - a `to` location and an optional `replace` flag
+*/
+function useLink(props) {
+	const router = inject(routerKey);
+	const currentRoute = inject(routeLocationKey);
+	const route = computed(() => {
+		const to = unref(props.to);
+		return router.resolve(to);
+	});
+	const activeRecordIndex = computed(() => {
+		const { matched } = route.value;
+		const { length } = matched;
+		const routeMatched = matched[length - 1];
+		const currentMatched = currentRoute.matched;
+		if (!routeMatched || !currentMatched.length) return -1;
+		const index = currentMatched.findIndex(isSameRouteRecord.bind(null, routeMatched));
+		if (index > -1) return index;
+		const parentRecordPath = getOriginalPath(matched[length - 2]);
+		return length > 1 && getOriginalPath(routeMatched) === parentRecordPath && currentMatched[currentMatched.length - 1].path !== parentRecordPath ? currentMatched.findIndex(isSameRouteRecord.bind(null, matched[length - 2])) : index;
+	});
+	const isActive = computed(() => activeRecordIndex.value > -1 && includesParams(currentRoute.params, route.value.params));
+	const isExactActive = computed(() => activeRecordIndex.value > -1 && activeRecordIndex.value === currentRoute.matched.length - 1 && isSameRouteLocationParams(currentRoute.params, route.value.params));
+	function navigate(e = {}) {
+		if (guardEvent(e)) {
+			const p = router[unref(props.replace) ? "replace" : "push"](unref(props.to)).catch(noop);
+			if (props.viewTransition && typeof document !== "undefined" && "startViewTransition" in document) document.startViewTransition(() => p);
+			return p;
+		}
+		return Promise.resolve();
+	}
+	/**
+	* NOTE: update {@link _RouterLinkI}'s `$slots` type when updating this
+	*/
+	return {
+		route,
+		href: computed(() => route.value.href),
+		isActive,
+		isExactActive,
+		navigate
+	};
+}
+/** @internal */
+function preferSingleVNode(vnodes) {
+	return vnodes.length === 1 ? vnodes[0] : vnodes;
+}
+/**
+* Component to render a link that triggers a navigation on click.
+*/
+var RouterLink = /* @__PURE__ */ defineComponent({
+	name: "RouterLink",
+	compatConfig: { MODE: 3 },
+	props: {
+		to: {
+			type: [String, Object],
+			required: true
+		},
+		replace: Boolean,
+		activeClass: String,
+		exactActiveClass: String,
+		custom: Boolean,
+		ariaCurrentValue: {
+			type: String,
+			default: "page"
+		},
+		viewTransition: Boolean
+	},
+	useLink,
+	setup(props, { slots }) {
+		const link = /* @__PURE__ */ reactive(useLink(props));
+		const { options } = inject(routerKey);
+		const elClass = computed(() => ({
+			[getLinkClass(props.activeClass, options.linkActiveClass, "router-link-active")]: link.isActive,
+			[getLinkClass(props.exactActiveClass, options.linkExactActiveClass, "router-link-exact-active")]: link.isExactActive
+		}));
+		return () => {
+			const children = slots.default && preferSingleVNode(slots.default(link));
+			return props.custom ? children : h("a", {
+				"aria-current": link.isExactActive ? props.ariaCurrentValue : null,
+				href: link.href,
+				onClick: link.navigate,
+				class: elClass.value
+			}, children);
+		};
+	}
+});
+/** @internal */
+function guardEvent(e) {
+	if (e.metaKey || e.altKey || e.ctrlKey || e.shiftKey) return;
+	if (e.defaultPrevented) return;
+	if (e.button !== void 0 && e.button !== 0) return;
+	if (e.currentTarget && e.currentTarget.getAttribute) {
+		const target = e.currentTarget.getAttribute("target");
+		if (/\b_blank\b/i.test(target)) return;
+	}
+	if (e.preventDefault) e.preventDefault();
+	return true;
+}
+/** @internal */
+function includesParams(outer, inner) {
+	for (const key in inner) {
+		const innerValue = inner[key];
+		const outerValue = outer[key];
+		if (isArray(innerValue)) {
+			if (!isArray(outerValue) || outerValue.length !== innerValue.length || innerValue.some((value, i) => value.valueOf() !== outerValue[i].valueOf())) return false;
+		} else if (innerValue !== outerValue) return false;
+	}
+	return true;
+}
+/**
+* Get the original path value of a record by following its aliasOf
+* @param record
+*/
+function getOriginalPath(record) {
+	return record ? record.aliasOf ? record.aliasOf.path : record.path : "";
+}
+/**
+* Utility class to get the active class based on defaults.
+* @param propClass
+* @param globalClass
+* @param defaultClass
+*/
+var getLinkClass = (propClass, globalClass, defaultClass) => propClass != null ? propClass : globalClass != null ? globalClass : defaultClass;
 // ../../node_modules/vue-router/dist/vue-router.js
 /*!
-* vue-router v5.5.0
+* vue-router v5.5.1
 * (c) 2026 Eduardo San Martin Morote
 * @license MIT
 */
-var createBaseLocation = () => location.protocol + "//" + location.host;
 /**
 * Creates a normalized history location from a window.location object
 * @param base - The base path
@@ -18106,7 +18230,7 @@ function useHistoryStateNavigation(base) {
 		* base tag we can just use everything after the `#`.
 		*/
 		const hashIndex = base.indexOf("#");
-		const url = hashIndex > -1 ? (location.host && document.querySelector("base") ? base : base.slice(hashIndex)) + to : createBaseLocation() + base + to;
+		const url = hashIndex > -1 ? (location.host && document.querySelector("base") ? base : base.slice(hashIndex)) + to : "/." + base + to;
 		try {
 			history[replace ? "replaceState" : "pushState"](state, "", url);
 			historyState.value = state;
@@ -18294,7 +18418,7 @@ var BASE_PATH_PARSER_OPTIONS = {
 	start: true,
 	end: true
 };
-var REGEX_CHARS_RE = /[.+*?^${}()[\]/\\]/g;
+var REGEX_CHARS_RE = /[.+*?^${}()[\]/\\|]/g;
 /**
 * Creates a path parser from an array of Segments (a segment is an array of Tokens)
 *
@@ -18307,6 +18431,7 @@ function tokensToParser(segments, extraOptions) {
 	const score = [];
 	let pattern = options.start ? "^" : "";
 	const keys = [];
+	const hasBackreference = segments.some((segment) => segment.some((token) => token.type === 1 && /\\[1-9k]/.test(token.regexp || "")));
 	for (const segment of segments) {
 		const segmentScores = segment.length ? [] : [90];
 		if (options.strict && !segment.length) pattern += "/";
@@ -18334,6 +18459,9 @@ function tokensToParser(segments, extraOptions) {
 					}
 				}
 				let subPattern = repeatable && re !== ".+" && re !== ".*" ? `((?:${re})(?:/(?:${re}))*)` : `(${re})`;
+				const next = segment[tokenIndex + 1];
+				const afterNext = segment[tokenIndex + 2];
+				if (!hasBackreference && !regexp && !repeatable && afterNext && afterNext.type === 1 && !afterNext.regexp && next.type === 0) subPattern = `([^/](?:(?!${next.value.replace(REGEX_CHARS_RE, "\\$&")})[^/])*)`;
 				if (!tokenIndex) subPattern = optional && segment.length < 2 ? `(?:/${subPattern})` : "/" + subPattern;
 				if (optional) subPattern += "?";
 				pattern += subPattern;
@@ -18710,128 +18838,6 @@ function getInsertionAncestor(matcher) {
 function isMatchable({ record }) {
 	return !!(record.name || record.components && Object.keys(record.components).length || record.redirect);
 }
-/**
-* Returns the internal behavior of a {@link RouterLink} without the rendering part.
-*
-* @param props - a `to` location and an optional `replace` flag
-*/
-function useLink(props) {
-	const router = inject(routerKey);
-	const currentRoute = inject(routeLocationKey);
-	const route = computed(() => {
-		const to = unref(props.to);
-		return router.resolve(to);
-	});
-	const activeRecordIndex = computed(() => {
-		const { matched } = route.value;
-		const { length } = matched;
-		const routeMatched = matched[length - 1];
-		const currentMatched = currentRoute.matched;
-		if (!routeMatched || !currentMatched.length) return -1;
-		const index = currentMatched.findIndex(isSameRouteRecord.bind(null, routeMatched));
-		if (index > -1) return index;
-		const parentRecordPath = getOriginalPath(matched[length - 2]);
-		return length > 1 && getOriginalPath(routeMatched) === parentRecordPath && currentMatched[currentMatched.length - 1].path !== parentRecordPath ? currentMatched.findIndex(isSameRouteRecord.bind(null, matched[length - 2])) : index;
-	});
-	const isActive = computed(() => activeRecordIndex.value > -1 && includesParams(currentRoute.params, route.value.params));
-	const isExactActive = computed(() => activeRecordIndex.value > -1 && activeRecordIndex.value === currentRoute.matched.length - 1 && isSameRouteLocationParams(currentRoute.params, route.value.params));
-	function navigate(e = {}) {
-		if (guardEvent(e)) {
-			const p = router[unref(props.replace) ? "replace" : "push"](unref(props.to)).catch(noop);
-			if (props.viewTransition && typeof document !== "undefined" && "startViewTransition" in document) document.startViewTransition(() => p);
-			return p;
-		}
-		return Promise.resolve();
-	}
-	/**
-	* NOTE: update {@link _RouterLinkI}'s `$slots` type when updating this
-	*/
-	return {
-		route,
-		href: computed(() => route.value.href),
-		isActive,
-		isExactActive,
-		navigate
-	};
-}
-function preferSingleVNode(vnodes) {
-	return vnodes.length === 1 ? vnodes[0] : vnodes;
-}
-/**
-* Component to render a link that triggers a navigation on click.
-*/
-var RouterLink = /* @__PURE__ */ defineComponent({
-	name: "RouterLink",
-	compatConfig: { MODE: 3 },
-	props: {
-		to: {
-			type: [String, Object],
-			required: true
-		},
-		replace: Boolean,
-		activeClass: String,
-		exactActiveClass: String,
-		custom: Boolean,
-		ariaCurrentValue: {
-			type: String,
-			default: "page"
-		},
-		viewTransition: Boolean
-	},
-	useLink,
-	setup(props, { slots }) {
-		const link = /* @__PURE__ */ reactive(useLink(props));
-		const { options } = inject(routerKey);
-		const elClass = computed(() => ({
-			[getLinkClass(props.activeClass, options.linkActiveClass, "router-link-active")]: link.isActive,
-			[getLinkClass(props.exactActiveClass, options.linkExactActiveClass, "router-link-exact-active")]: link.isExactActive
-		}));
-		return () => {
-			const children = slots.default && preferSingleVNode(slots.default(link));
-			return props.custom ? children : h("a", {
-				"aria-current": link.isExactActive ? props.ariaCurrentValue : null,
-				href: link.href,
-				onClick: link.navigate,
-				class: elClass.value
-			}, children);
-		};
-	}
-});
-function guardEvent(e) {
-	if (e.metaKey || e.altKey || e.ctrlKey || e.shiftKey) return;
-	if (e.defaultPrevented) return;
-	if (e.button !== void 0 && e.button !== 0) return;
-	if (e.currentTarget && e.currentTarget.getAttribute) {
-		const target = e.currentTarget.getAttribute("target");
-		if (/\b_blank\b/i.test(target)) return;
-	}
-	if (e.preventDefault) e.preventDefault();
-	return true;
-}
-function includesParams(outer, inner) {
-	for (const key in inner) {
-		const innerValue = inner[key];
-		const outerValue = outer[key];
-		if (isArray(innerValue)) {
-			if (!isArray(outerValue) || outerValue.length !== innerValue.length || innerValue.some((value, i) => value.valueOf() !== outerValue[i].valueOf())) return false;
-		} else if (innerValue !== outerValue) return false;
-	}
-	return true;
-}
-/**
-* Get the original path value of a record by following its aliasOf
-* @param record
-*/
-function getOriginalPath(record) {
-	return record ? record.aliasOf ? record.aliasOf.path : record.path : "";
-}
-/**
-* Utility class to get the active class based on defaults.
-* @param propClass
-* @param globalClass
-* @param defaultClass
-*/
-var getLinkClass = (propClass, globalClass, defaultClass) => propClass != null ? propClass : globalClass != null ? globalClass : defaultClass;
 var RouterViewImpl = /*#__PURE__*/ defineComponent({
 	name: "RouterView",
 	inheritAttrs: false,
