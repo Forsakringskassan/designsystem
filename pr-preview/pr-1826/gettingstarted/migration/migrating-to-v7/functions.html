@@ -6403,7 +6403,13 @@
                             </summary>
                             <ul>
                                 
-                                <li><a href="#fkui_vue">@fkui/vue</a></li>
+                                <li><a href="#fmodal">FModal</a></li>
+                                
+                                <li><a href="#fsortfilterdataset">FSortFilterDataset</a></li>
+                                
+                                <li><a href="#getlegacyinternalkey">getLegacyInternalKey()</a></li>
+                                
+                                <li><a href="#tablescroll">TableScroll</a></li>
                                 
                             </ul>
                         </details>
@@ -6411,7 +6417,7 @@
                     </div>
                     
 
-                    <div id="docs-content"><h2 id="fkui_vue" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fkui_vue"><code>@fkui/vue</code></a></h2><p class="docs-paragraph">Följande propar är ändrade:</p>
+                    <div id="docs-content"><p class="docs-paragraph">Följande propar är ändrade:</p>
 <ul>
 <li><a href="#fmodal"><code>FModal</code> <code>size</code></a></li>
 </ul>
@@ -6427,7 +6433,7 @@
 <h3 id="fmodal" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#fmodal"><code>FModal</code></a></h3><p class="docs-paragraph">Propen <code>size</code> stödjer inte längre aliaset <code>fullscreen</code> och är ersatt med <code>fullwidth</code>.</p>
 
                 <div
-                    id="example-dd8777"
+                    id="example-88ad9f"
                     class="code-preview code-preview--default"
                     
                     
@@ -6440,10 +6446,24 @@
  });
 </code></pre>
                 </div>
-            <h3 id="fsortfilterdataset" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#fsortfilterdataset"><code>FSortFilterDataset</code></a></h3><p class="docs-paragraph">Propen <code>placeholderFilter</code> är borttagen och ersatt med <code>filterLabel</code>.</p>
+            
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">För varje användning av egenskapen <code>size</code> till <code>openModal()</code>, <code>confirmModal()</code> eller <code>formModal()</code>, ersätt värdet <code>fullscreen</code> med <code>fullwidth</code>.
+Värdet är identisk i funktion.</p>
+<p class="docs-paragraph">För varje användning av propen <code>size</code> av <code>FModal</code>, <code>FConfirmModal</code> och <code>FFormModal</code>, ersätt värdet <code>fullscreen</code>med <code>fullwidth</code>.
+Värdet är identisk i funktion.</p>
+<p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra enhetstester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
+<p class="docs-paragraph">Be användaren göra en okulär granskning av de modaler som påverkats för att säkerställa att rätt storlek används.</p>
+
+            </details>
+        <h3 id="fsortfilterdataset" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#fsortfilterdataset"><code>FSortFilterDataset</code></a></h3><p class="docs-paragraph">Propen <code>placeholderFilter</code> är borttagen och ersatt med <code>filterLabel</code>.</p>
 
                 <div
-                    id="example-014b86"
+                    id="example-4f8a18"
                     class="code-preview code-preview--default"
                     
                     
@@ -6451,15 +6471,26 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-sort-filter-dataset
-<span class="hljs-deletion">-    placeholderFilter=&quot;Lorem ipsum&quot;</span>
+<span class="hljs-deletion">-    placeholder-filter=&quot;Lorem ipsum&quot;</span>
 <span class="hljs-addition">+    filter-label=&quot;Lorem ipsum&quot;</span>
  &gt;
 </code></pre>
                 </div>
-            <h3 id="getlegacyinternalkey" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#getlegacyinternalkey"><code>getLegacyInternalKey()</code></a></h3><p class="docs-paragraph">Använd <code>findItemIdentifier()</code> eller <code>getItemIdentifier()</code> istället för att hämta ut identifieraren istället för dess nyckel.</p>
+            
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">För varje användning av propen <code>placeholderFilter</code> på komponenten <code>FSortFilterDataset</code>, ersätt med propen med <code>filterLabel</code>.
+Propen är identisk i funktion.</p>
+<p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra enhetstester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
+
+            </details>
+        <h3 id="getlegacyinternalkey" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#getlegacyinternalkey"><code>getLegacyInternalKey()</code></a></h3><p class="docs-paragraph">Använd <code>findItemIdentifier()</code> eller <code>getItemIdentifier()</code> istället för att hämta ut identifieraren istället för dess nyckel.</p>
 
                 <div
-                    id="example-72faf2"
+                    id="example-d115da"
                     class="code-preview code-preview--default"
                     
                     
@@ -6471,7 +6502,18 @@
 <span class="hljs-addition">+const id = getItemIdentifier(myObj);</span>
 </code></pre>
                 </div>
-            <h3 id="tablescroll" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#tablescroll"><code>TableScroll</code></a></h3><p class="docs-paragraph"><code>FDataTable</code> och <code>FInteractiveTable</code> stödjer inte längre <code>TableScroll.VERTICAL</code> och <code>TableScroll.HORIZONTAL</code>.
+            
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">För varje användning av funktionen <code>getLegacyInternalKey()</code>, ersätt med <code>getItemIdentifier()</code>.
+Funktionen <code>getLegacyInternalKey()</code> är borttagen och returnerade en unik nyckel för att slå upp en identifierare i ett objekt medans <code>getItemIdentifier()</code> returnerar identifieraren direkt.</p>
+<p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra enhetstester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
+
+            </details>
+        <h3 id="tablescroll" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#tablescroll"><code>TableScroll</code></a></h3><p class="docs-paragraph"><code>FDataTable</code> och <code>FInteractiveTable</code> stödjer inte längre <code>TableScroll.VERTICAL</code> och <code>TableScroll.HORIZONTAL</code>.
 Vi rekommenderar att undvika vertikal scroll, behöver du trots allt det så behöver det implementeras i applikationen.</p>
 
             <div class="docs-messagebox docs-messagebox--warning">
@@ -6479,6 +6521,18 @@ Vi rekommenderar att undvika vertikal scroll, behöver du trots allt det så beh
                 <p class="docs-paragraph">Tänk på att scrollbara ytor måste gå att tangentbordsnavigera för att vara tillgängliga.</p>
 
             </div>
+        
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">Summera för användaren vilka förekomster av <code>TableScroll.VERTICAL</code> och <code>TableScroll.BOTH</code> som förekommer i applikationen.
+Per rekommendation från designsystemet föreslå att för <code>TableScroll.VERTICAL</code> ta bort användning och för <code>TableScroll.BOTH</code> ersätta med <code>TableScroll.HORIZONTAL</code>.
+Gör inga ändringar förrän användaren bekräftat vilka åtgärder som ska göras.</p>
+<p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra enhetstester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
+
+            </details>
         
 
                     </div>
@@ -6547,9 +6601,9 @@ Vi rekommenderar att undvika vertikal scroll, behöver du trots allt det så beh
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">feature/deprecated-breaking-symbols</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/2d265427060b1033ee370ac1bb46a36157e66ce2">2d26542</a>)<br />
+<div class="version"><span class="version-text-block">feature/deprecated-breaking-symbols</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/bc15ae846560c57427ca35e252970642e74418eb">bc15ae8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1826">PR 1826</a><br />
-       <span class="version-text-block">2026-11-17 12:55</span>
+       <span class="version-text-block">2026-11-17 13:30</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
