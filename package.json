@@ -141,7 +141,7 @@
     "mocha-junit-reporter": "2.2.1",
     "npm-pkg-lint": "5.4.2",
     "npm-run-all2": "9.0.4",
-    "postcss": "8.5.32",
+    "postcss": "8.5.33",
     "rimraf": "6.1.4",
     "sass": "1.108.2",
     "typedoc": "0.28.20",
