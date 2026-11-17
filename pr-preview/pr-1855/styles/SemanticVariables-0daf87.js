@@ -1076,6 +1076,20 @@ var metadata_default = {
       }
     },
     {
+      "name": "--fkds-color-text-on-dark-primary",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#ecedef",
+          "palette": "neutral-100"
+        },
+        "dark": {
+          "value": "#ecedef",
+          "palette": "neutral-100"
+        }
+      }
+    },
+    {
       "name": "--fkds-color-text-primary",
       "comment": null,
       "values": {

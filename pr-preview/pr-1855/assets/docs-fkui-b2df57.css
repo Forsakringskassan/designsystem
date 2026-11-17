@@ -140,6 +140,7 @@
     --fkds-color-text-primary: #1b1e23;
     --fkds-color-text-secondary: #606876;
     --fkds-color-text-inverted: #ffffff;
+    --fkds-color-text-on-dark-primary: #ecedef;
     --fkds-color-text-disabled: #606876;
     --fkds-color-background-primary: #ffffff;
     --fkds-color-background-secondary: #f7f7f8;
@@ -335,6 +336,7 @@
     --fkds-color-text-primary: #ecedef;
     --fkds-color-text-secondary: #afb3bb;
     --fkds-color-text-inverted: #1b1e23;
+    --fkds-color-text-on-dark-primary: #ecedef;
     --fkds-color-text-disabled: #afb3bb;
     --fkds-color-background-primary: #1b1e23;
     --fkds-color-background-secondary: #292d34;
