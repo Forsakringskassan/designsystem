@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Version 7 migreringsguide: text to screenreaderText - FK Designsystem</title><link
+        <title>Version 7 migreringsguide: `text` har ersatts med `screenreaderText` - FK Designsystem</title><link
             rel="stylesheet"
             href="../../../assets/docs-32d03c.css"
             crossorigin
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../search-data-ad4ca3.json"
+    href="../../../search-data-1aa3dd.json"
     as="fetch"
     crossorigin
-    integrity="sha384-/W/RvU2SklRYgt03jDdoSIS88CJ67CZKKWcrBu4CCtCquYQ77lW+3X/eem3MvhF/"
+    integrity="sha384-5izc00ZPt77MXZ8M08JRAKP4aNal+oiVifbeGe301G2u3qZZ5AWjYtiwMMxyrQRw"
     id="search-data"
 />
 <script>
@@ -6361,7 +6361,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 class="docs-heading docs-heading--h1" id="docs-title">Version 7 migreringsguide: text to screenreaderText</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="docs-title">Version 7 migreringsguide: `text` har ersatts med `screenreaderText`</h1>
 
                     
                     <div id="docs-aside"><dl></dl>
@@ -6377,7 +6377,7 @@
                             </summary>
                             <ul>
                                 
-                                <li><a href="#ftable_text_har_ersatts_med_screenreadertext">FTable – text har ersatts med screenreaderText</a></li>
+                                <li><a href="#sammanfattning_av_andringar">Sammanfattning av ändringar</a></li>
                                 
                             </ul>
                         </details>
@@ -6385,8 +6385,8 @@
                     </div>
                     
 
-                    <div id="docs-content"><h2 id="ftable_text_har_ersatts_med_screenreadertext" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#ftable_text_har_ersatts_med_screenreadertext">FTable – <code>text</code> har ersatts med <code>screenreaderText</code></a></h2><p class="docs-paragraph">I <strong>FKUI v7</strong> har egenskapen <code>text</code> bytt namn till <code>screenreaderText</code> för tabellkolumner av typen <code>&quot;button&quot;</code> och <code>&quot;menu&quot;</code> i <code>FTable</code>. Ändringen förtydligar att strängen som returneras endast används som tillgänglighetstext för skärmläsare och inte visas visuellt i cellen.</p>
-<h3 id="sammanfattning_av_andringar" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#sammanfattning_av_andringar">Sammanfattning av ändringar</a></h3><table class="table">
+                    <div id="docs-content"><p class="docs-paragraph">I <strong>FKUI v7</strong> har egenskapen <code>text</code> bytt namn till <code>screenreaderText</code> för tabellkolumner av typen <code>&quot;button&quot;</code> och <code>&quot;menu&quot;</code> i <code>FTable</code>. Ändringen förtydligar att strängen som returneras endast används som tillgänglighetstext för skärmläsare och inte visas visuellt i cellen.</p>
+<h2 id="sammanfattning_av_andringar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#sammanfattning_av_andringar">Sammanfattning av ändringar</a></h2><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Typ / Funktion</th>
@@ -6405,32 +6405,12 @@
 <td class="table__column table__column--text"><code>@public</code></td>
 <td class="table__column table__column--text">Egenskapen <code>text</code> har bytt namn till <code>screenreaderText</code>.</td>
 </tr>
-<tr class="table__row">
-<td class="table__column table__column--text"><code>NormalizedTableColumnButton&lt;T, K&gt;</code></td>
-<td class="table__column table__column--text"><code>@internal</code></td>
-<td class="table__column table__column--text">Egenskapen <code>text</code> har bytt namn till <code>screenreaderText</code>.</td>
-</tr>
-<tr class="table__row">
-<td class="table__column table__column--text"><code>NormalizedTableColumnMenu&lt;T&gt;</code></td>
-<td class="table__column table__column--text"><code>@internal</code></td>
-<td class="table__column table__column--text">Egenskapen <code>text</code> har bytt namn till <code>screenreaderText</code>.</td>
-</tr>
-<tr class="table__row">
-<td class="table__column table__column--text"><code>normalizeButtonColumn</code></td>
-<td class="table__column table__column--text"><code>@internal</code></td>
-<td class="table__column table__column--text">Läser <code>column.screenreaderText</code> i stället för <code>column.text</code>.</td>
-</tr>
-<tr class="table__row">
-<td class="table__column table__column--text"><code>normalizeMenuColumn</code></td>
-<td class="table__column table__column--text"><code>@internal</code></td>
-<td class="table__column table__column--text">Läser <code>column.screenreaderText</code> i stället för <code>column.text</code>.</td>
-</tr>
 </tbody>
 </table>
 <h3 id="migrering_av_kolumndefinitioner" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#migrering_av_kolumndefinitioner">Migrering av kolumndefinitioner</a></h3><p class="docs-paragraph">Uppdatera samtliga kolumner med <code>type: &quot;button&quot;</code> eller <code>type: &quot;menu&quot;</code> i <code>defineTableColumns</code> genom att byta ut <code>text</code> mot <code>screenreaderText</code>:</p>
 
                 <div
-                    id="example-08a4f7"
+                    id="example-cde199"
                     class="code-preview code-preview--default"
                     
                     
@@ -6475,69 +6455,17 @@
 <li>[ ] Verifiera att TypeScript-kompileringen (<code>tsc</code>) går igenom utan typfel.</li>
 <li>[ ] Testa med skärmläsare eller inspektera DOM-trädet för att säkerställa att knappar och menyknappar i tabellen fortfarande har rätt tillgänglighetsnamn.</li>
 </ul>
-<h3 id="ai_agentprompt_gemma_4" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ai_agentprompt_gemma_4">AI-agentprompt (Gemma 4)</a></h3><p class="docs-paragraph">Visa kopieringsbar prompt för AI-kodagenter</p>
+<h3 id="ai_agentprompt_gemma_4" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ai_agentprompt_gemma_4">AI-agentprompt (Gemma 4)</a></h3><h3 id="execution_steps" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#execution_steps">Execution Steps</a></h3>
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">Search the codebase for <code>defineTableColumns</code> and column objects containing <code>type: &quot;button&quot;</code> or <code>type: &quot;menu&quot;</code>.
+Rename <code>text</code> to <code>screenreaderText</code> on matching column objects.
+Run TypeScript type-checking (<code>tsc</code>) to verify no remaining type errors exist.</p>
 
-                <div
-                    id="example-e402eb"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="markdown"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-markdown" tabindex="0"><span class="hljs-section">### Role</span>
-
-You are an expert TypeScript and Vue developer migrating a codebase from FKUI v6 to FKUI v7.
-
-<span class="hljs-section">### Task</span>
-
-Update all <span class="hljs-code">`FTable`</span> column definitions where <span class="hljs-code">`type`</span> is <span class="hljs-code">`&quot;button&quot;`</span> or <span class="hljs-code">`&quot;menu&quot;`</span> by renaming the property <span class="hljs-code">`text`</span> to <span class="hljs-code">`screenreaderText`</span>.
-
-<span class="hljs-section">### Rules</span>
-
-<span class="hljs-bullet">-</span> ONLY rename <span class="hljs-code">`text`</span> to <span class="hljs-code">`screenreaderText`</span> on column objects that explicitly have <span class="hljs-code">`type: &quot;button&quot;`</span> or <span class="hljs-code">`type: &quot;menu&quot;`</span>.
-<span class="hljs-bullet">-</span> Handle all function syntaxes: method shorthand (<span class="hljs-code">`text(row) {}`</span>), arrow functions (<span class="hljs-code">`text: (row) =&gt; ...`</span>), and function references (<span class="hljs-code">`text: getLabel`</span>).
-<span class="hljs-bullet">-</span> Preserve the exact function signature, implementation, comments, and formatting.
-<span class="hljs-bullet">-</span> Do NOT rename <span class="hljs-code">`text`</span> on any other column types (such as <span class="hljs-code">`type: &quot;text&quot;`</span> or columns without a <span class="hljs-code">`type`</span> property).
-<span class="hljs-bullet">-</span> Do NOT modify <span class="hljs-code">`header`</span>, <span class="hljs-code">`description`</span>, <span class="hljs-code">`key`</span>, <span class="hljs-code">`icon`</span>, <span class="hljs-code">`iconLibrary`</span>, <span class="hljs-code">`actions`</span>, or <span class="hljs-code">`onClick`</span>.
-
-<span class="hljs-section">### Examples</span>
-
-Before:
-
-<span class="hljs-code">```diff
- {
-     type: &quot;button&quot;,
-     header: &quot;Action&quot;,
-     key: &quot;id&quot;,
-     icon: &quot;trashcan&quot;,
--    text(row) {
-+    screenreaderText(row) {
-         return `Delete ${row.name}`;
-     },
- }
-```</span>
-
-Before:
-
-<span class="hljs-code">```diff
- {
-     type: &quot;menu&quot;,
-     header: &quot;Options&quot;,
--    text: () =&gt; &quot;Row actions&quot;,
-+    screenreaderText: () =&gt; &quot;Row actions&quot;,
-     actions: [{ label: &quot;Edit&quot; }],
- }
-```</span>
-
-<span class="hljs-section">### Execution Steps</span>
-
-<span class="hljs-bullet">1.</span> Search the codebase for <span class="hljs-code">`defineTableColumns`</span> and column objects containing <span class="hljs-code">`type: &quot;button&quot;`</span> or <span class="hljs-code">`type: &quot;menu&quot;`</span>.
-<span class="hljs-bullet">2.</span> Rename <span class="hljs-code">`text`</span> to <span class="hljs-code">`screenreaderText`</span> on matching column objects.
-<span class="hljs-bullet">3.</span> Run TypeScript type-checking (<span class="hljs-code">`tsc`</span>) to verify no remaining type errors exist.
-</code></pre>
-                </div>
-            
+            </details>
+        
 
                     </div>
                 </main>
@@ -6605,9 +6533,9 @@ Before:
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">bugfix/column-button-api</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/64e1d28745b5f08feeaca6ef542c2ef760996f7c">64e1d28</a>)<br />
+<div class="version"><span class="version-text-block">bugfix/column-button-api</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/124c68f857c253c68d97bdc3fd102d170c39929d">124c68f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1837">PR 1837</a><br />
-       <span class="version-text-block">2026-11-16 12:51</span>
+       <span class="version-text-block">2026-11-17 09:30</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

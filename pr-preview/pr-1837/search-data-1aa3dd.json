@@ -101,7 +101,7 @@
     "Version 7 migreringsguide: ESM only",
     "Version 7 migreringsguide: FWizard",
     "Version 7 migreringsguide: @fkui/theme-desktop",
-    "Version 7 migreringsguide: text to screenreaderText",
+    "Version 7 migreringsguide: `text` har ersatts med `screenreaderText`",
     "Version 7 migreringsguide: Modal API only",
     "Version 6 migreringsguide: Cypress Pageobjects",
     "Version 6 migreringsguide: @fkui/design",
@@ -1037,7 +1037,7 @@
     },
     {
       "url": "gettingstarted/migration/migrating-to-v7/ftable.html",
-      "title": "Version 7 migreringsguide: text to screenreaderText",
+      "title": "Version 7 migreringsguide: `text` har ersatts med `screenreaderText`",
       "terms": []
     },
     {
