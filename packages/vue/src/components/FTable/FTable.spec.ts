@@ -1285,8 +1285,8 @@ describe("select cell", () => {
         expect(listener).toHaveBeenCalled();
     });
 
-    it("should open dropdown on space", async () => {
-        expect.assertions(1);
+    it("should activate native select on space", async () => {
+        expect.assertions(3);
         const rows = [{ option: "Foo" }, { option: "Bar" }];
         const columns = defineTableColumns<(typeof rows)[number]>([
             {
@@ -1298,24 +1298,25 @@ describe("select cell", () => {
             },
         ]);
         const wrapper = mount(FTable<(typeof rows)[number]>, {
+            attachTo: document.body,
             props: {
                 columns,
                 rows: ref(rows).value,
             },
-            global: {
-                stubs: ["teleport"],
-            },
         });
 
-        const cell = wrapper.get("tbody tr:first-child td");
+        const cell = wrapper.get<HTMLTableCellElement>(
+            "tbody tr:first-child td",
+        );
         const select = cell.get<HTMLSelectElement>("select");
 
-        const showPicker = vi.fn();
-        select.element.showPicker = showPicker;
+        cell.element.focus();
 
         await cell.trigger("keydown", { key: " ", code: "Space" });
 
-        expect(showPicker).toHaveBeenCalledOnce();
+        expect(cell.element.tabIndex).toBe(0);
+        expect(select.element.tabIndex).toBe(0);
+        expect(document.activeElement).toBe(cell.element);
     });
 });
 
