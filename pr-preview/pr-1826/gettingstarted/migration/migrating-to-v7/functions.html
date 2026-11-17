@@ -6488,7 +6488,7 @@ Propen är identisk i funktion.</p>
 Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
 
             </details>
-        <h2 id="getlegacyinternalkey" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#getlegacyinternalkey"><code>getLegacyInternalKey()</code></a></h2><p class="docs-paragraph">Använd <code>findItemIdentifier()</code> eller <code>getItemIdentifier()</code> istället för att hämta ut identifieraren istället för dess nyckel.</p>
+        <h2 id="getlegacyinternalkey" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#getlegacyinternalkey"><code>getLegacyInternalKey()</code></a></h2><p class="docs-paragraph">Använd <code>findItemIdentifier()</code> om objektet kan sakna en identifierare, eller <code>getItemIdentifier()</code> om identifieraren är garanterad att finnas, istället för att hämta ut nyckeln.</p>
 
                 <div
                     id="example-b3e3e2"
@@ -6508,8 +6508,8 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
                 <summary class="docs-messagebox__title">
                     🤖 Prompt för AI Agenter
                 </summary>
-                <p class="docs-paragraph">För varje användning av funktionen <code>getLegacyInternalKey()</code>, ersätt med <code>getItemIdentifier()</code>.
-Funktionen <code>getLegacyInternalKey()</code> är borttagen och returnerade en unik nyckel för att slå upp en identifierare i ett objekt medans <code>getItemIdentifier()</code> returnerar identifieraren direkt.</p>
+                <p class="docs-paragraph">För varje användning av funktionen <code>getLegacyInternalKey()</code>, ersätt med <code>findItemIdentifier()</code> om objektet kan sakna en identifierare, annars <code>getItemIdentifier()</code>.
+Funktionen <code>getLegacyInternalKey()</code> är borttagen och returnerade en unik nyckel för att slå upp en identifierare i ett objekt medans <code>findItemIdentifier()</code>/<code>getItemIdentifier()</code> returnerar identifieraren direkt.</p>
 <p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra enhetstester.
 Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
 
@@ -6617,9 +6617,9 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">feature/deprecated-breaking-symbols</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/39a303f003a2795df7702975e7e83cc05e18f1dd">39a303f</a>)<br />
+<div class="version"><span class="version-text-block">feature/deprecated-breaking-symbols</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/e929bc6b1073eabffbae10f51057e8c3d2fabdfe">e929bc6</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1826">PR 1826</a><br />
-       <span class="version-text-block">2026-11-17 15:35</span>
+       <span class="version-text-block">2026-11-17 15:44</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
