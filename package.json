@@ -111,7 +111,7 @@
     "@forsakringskassan/stylelint-config": "3.5.2",
     "@forsakringskassan/vite-lib-config": "5.15.3",
     "@forsakringskassan/vitest-config": "5.1.0",
-    "@html-validate/release-scripts": "7.6.17",
+    "@html-validate/release-scripts": "7.6.20",
     "@types/estree": "1.0.10",
     "@types/lodash": "4.17.27",
     "@types/node": "22.20.5",
