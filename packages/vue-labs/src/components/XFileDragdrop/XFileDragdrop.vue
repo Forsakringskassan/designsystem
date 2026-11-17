@@ -238,8 +238,8 @@ EventBus.$on("RENSA_FIL_VALJARE", () => {
                 {{ srtextFilvaljare }}
             </f-file-selector>
         </div>
-        <div v-if="harValtFil || harMisslyckats">
-            <hr class="file-item__separator show_separator" />
+        <div v-if="harValtFil || harMisslyckats" class="x-file-dragdrop__selected-file">
+            <hr class="file-item__separator" />
             <!-- [html-validate-disable-next aria-label-misuse -- technical debt]-->
             <f-file-item
                 id="fillista"
@@ -300,11 +300,8 @@ EventBus.$on("RENSA_FIL_VALJARE", () => {
 .error-icon {
     vertical-align: text-top;
 }
-.file-item__separator {
+.x-file-dragdrop__selected-file > .file-item > .file-item__separator {
     visibility: hidden;
-}
-.show_separator {
-    visibility: visible;
 }
 
 // Lite av ett hack för att filnamnet inte ska se ut som en knapp, i nyaste FKUI versionen behövs inte det här för där är den inte en knapp.
