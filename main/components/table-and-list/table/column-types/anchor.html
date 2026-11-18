@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../../assets/vendor-fkui-vue-selectors-023419.js",
     "@fkui/logic": "../../../../assets/vendor-fkui-logic-61d844.js",
     "@fkui/date": "../../../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../../../assets/vendor-fkui-vue-8d8576.js",
+    "@fkui/vue": "../../../../assets/vendor-fkui-vue-1c3dae.js",
     "@fkui/vue-labs": "../../../../assets/vendor-fkui-vue-labs-a2a6fb.js",
     "@forsakringskassan/docs-live-example": "../../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js"
   },
@@ -35,7 +35,7 @@
     "../../../../assets/vendor-fkui-vue-selectors-023419.js": "sha384-VLenLmQc8v93fneTx0efSTJd7J5Ns4fB7DTS3tM7kJz9URQIILL3gC5W3VAEksP3",
     "../../../../assets/vendor-fkui-logic-61d844.js": "sha384-u+VrrunW0wzEofwwfTCUkVW/5R3NtIzcgQ1Z60e7ov5tXLYfjrUjbvH57Zgv2vnB",
     "../../../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../../../assets/vendor-fkui-vue-8d8576.js": "sha384-hswoT8+SAiMirQH47fTwelEU2pWkN9ZDHQUnXzXBS1f2mFoUp/JEmYQhnDOK724u",
+    "../../../../assets/vendor-fkui-vue-1c3dae.js": "sha384-ZkfPEr5GkkzHJRPkv+lRAaNgdWIB0tmCVKlmXFNY30dKLbIE8NKerKtzxQtB7tNw",
     "../../../../assets/vendor-fkui-vue-labs-a2a6fb.js": "sha384-h40XX4ozhvBgz6AWNQ0/PORIMa6s3scmYMA6oJTujg2racMU/GypyFfqTvLaa6oJ",
     "../../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js": "sha384-PDEuCCbROg9gW6fFneYpzXKS04rV0oMFHgqArEkyaM8h1d/H3HBtCKiyFWYKWVcy"
   }
@@ -7144,10 +7144,10 @@
                     
 
                     <div id="docs-content"><p class="docs-paragraph">Använd kolumntypen länk (<code>anchor</code>) när en cell ska navigera vidare till mer information.
-Varje rad visar en länktext och en <code>href</code>.</p>
+Varje rad visar en länktext, eventuell ikon och en <code>href</code>.</p>
 
                 <div
-                    id="example-2e4ca5"
+                    id="example-e220cf"
                     class="code-preview code-preview--default"
                     
                     
@@ -7165,6 +7165,8 @@ Varje rad visar en länktext och en <code>href</code>.</p>
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;anchor&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Ärende&quot;</span>,
+        <span class="hljs-attr">target</span>: <span class="hljs-string">&quot;_self&quot;</span>,
+        <span class="hljs-attr">iconRight</span>: <span class="hljs-string">&quot;arrow-right&quot;</span>,
         <span class="hljs-title function_">href</span>(<span class="hljs-params">row</span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-string">`https://example.com/<span class="hljs-subst">${row.id}</span>`</span>;
         },
@@ -7178,6 +7180,8 @@ Varje rad visar en länktext och en <code>href</code>.</p>
             <h2 id="bra_att_veta" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#bra_att_veta">Bra att veta</a></h2><ul>
 <li><code>text(row)</code> styr vilken text som ska visas för länken.</li>
 <li><code>href(row)</code> styr vilken adress som länken ska peka på.</li>
+<li><code>target</code> styr var länken ska öppnas, t ex samma flik eller i en ny flik i webbläsaren.</li>
+<li><code>iconLeft</code> och <code>iconRight</code> anger en ikon (<a href="../../../ficon.html">Ikon</a>) som visas till vänster respektive höger om länktexten.</li>
 <li>Som alla kolumntyper kan du även använda <code>header</code>, <code>description</code>, <code>size</code> och <code>enabled</code>.</li>
 </ul>
 <h2 id="parametrar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#parametrar">Parametrar</a></h2> <div><dl>
@@ -7218,8 +7222,14 @@ The column will grow if no other column is allowed to grow and the table can be 
 </dd>
 <dt><code>href: string | ((this: void, row: T) =&gt; string);</code></dt>
 <dd>Link destination</dd>
+<dt><code>iconLeft?: string;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Name of an icon to display on the left side of the anchor text. *</dd>
+<dt><code>iconRight?: string;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Name of an icon to display on the right side of the anchor text. *</dd>
 <dt><code>key?: K;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>‐</dd>
+<dt><code>target?: &quot;_blank&quot; | &quot;_self&quot; | &quot;_parent&quot; | &quot;_top&quot;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Target attribute on link, default is <code>&quot;_blank&quot;</code>*</dd>
 <dt><code>text(this: void, row: T): string | null;</code></dt>
 <dd>Link text</dd>
 <dt><code>type: &quot;anchor&quot;;</code></dt>
@@ -7293,9 +7303,9 @@ The column will grow if no other column is allowed to grow and the table can be 
         <a class="docs-footer__anchor" href="../../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/8f4aaeafbe1c35241c5eeba9a119992fc3142bbf">8f4aaea</a>)<br />
+<div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/b405ad2fab3841a4dbd5386ab6f1ab5f7a160dc1">b405ad2</a>)<br />
         
-       <span class="version-text-block">2026-11-18 10:32</span>
+       <span class="version-text-block">2026-11-18 12:33</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
