@@ -20681,14 +20681,6 @@ require_es_iterator_some();
 */
 var TableScroll = /* @__PURE__ */ function(TableScroll) {
 	TableScroll["HORIZONTAL"] = "horizontal";
-	/**
-	* @deprecated Only horizontal is supported. Deprecated since 6.7.0.
-	*/
-	TableScroll["VERTICAL"] = "vertical";
-	/**
-	* @deprecated Acts as horizontal. Recommended to use `TableScroll.HORIZONTAL` instead. Deprecated since 6.7.0.
-	*/
-	TableScroll["BOTH"] = "both";
 	TableScroll["NONE"] = "none";
 	return TableScroll;
 }({});
@@ -21238,7 +21230,7 @@ var FConfirmModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineCompone
 			default: "Rubrik"
 		},
 		/**
-		* The size of modal. 'large' and 'fullscreen' is valid.
+		* The size of modal in desktop mode.
 		*/
 		size: {
 			type: String,
@@ -21967,7 +21959,7 @@ var FFormModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent(
 			required: false
 		},
 		/**
-		* See <f-modal> `size` props.
+		* The size of modal in desktop mode.
 		*/
 		size: {
 			type: String,
@@ -31046,7 +31038,6 @@ var FSortFilterDataset_default = /* @__PURE__ */ defineComponent({
 			default: true
 		},
 		filterLabel: { default: () => void 0 },
-		placeholderFilter: { default: () => void 0 },
 		defaultSortAscending: {
 			type: Boolean,
 			default: true
@@ -31073,8 +31064,7 @@ var FSortFilterDataset_default = /* @__PURE__ */ defineComponent({
 		});
 		const clearableScreenReaderText = $t("fkui.sort-filter-dataset.clear.filter", "Rensa sökfält");
 		const translatedFilterLabel = computed(() => {
-			var _props$filterLabel;
-			const label = (_props$filterLabel = __props.filterLabel) !== null && _props$filterLabel !== void 0 ? _props$filterLabel : __props.placeholderFilter;
+			const label = __props.filterLabel;
 			if (label) return label;
 			return TranslationService.provider.translate("fkui.sort-filter-dataset.filter.label", "Sök");
 		});

@@ -13328,14 +13328,6 @@ require_es_iterator_some();
 */
 var TableScroll = /* @__PURE__ */ function(TableScroll) {
 	TableScroll["HORIZONTAL"] = "horizontal";
-	/**
-	* @deprecated Only horizontal is supported. Deprecated since 6.7.0.
-	*/
-	TableScroll["VERTICAL"] = "vertical";
-	/**
-	* @deprecated Acts as horizontal. Recommended to use `TableScroll.HORIZONTAL` instead. Deprecated since 6.7.0.
-	*/
-	TableScroll["BOTH"] = "both";
 	TableScroll["NONE"] = "none";
 	return TableScroll;
 }({});

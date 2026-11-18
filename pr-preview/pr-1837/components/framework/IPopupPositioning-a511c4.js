@@ -2437,7 +2437,7 @@ var FConfirmModal_default = defineComponent5({
       default: "Rubrik"
     },
     /**
-     * The size of modal. 'large' and 'fullscreen' is valid.
+     * The size of modal in desktop mode.
      */
     size: {
       type: String,
@@ -3569,7 +3569,7 @@ var FFormModal_default = defineComponent11({
       required: false
     },
     /**
-     * See <f-modal> `size` props.
+     * The size of modal in desktop mode.
      */
     size: {
       type: String,

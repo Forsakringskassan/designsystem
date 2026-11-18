@@ -3663,19 +3663,11 @@ function handleKeyboardFocusNavigation(key, focusedElement, focusableElements) {
 }
 var TableScroll = /* @__PURE__ */ (function(TableScroll2) {
   TableScroll2["HORIZONTAL"] = "horizontal";
-  TableScroll2["VERTICAL"] = "vertical";
-  TableScroll2["BOTH"] = "both";
   TableScroll2["NONE"] = "none";
   return TableScroll2;
 })({});
 var scrollClasses = {
   ["horizontal"]: ["table__scroll", "table__scroll--horizontal"],
-  ["vertical"]: ["table__scroll", "table__scroll--vertical"],
-  ["both"]: [
-    "table__scroll",
-    "table__scroll--horizontal",
-    "table__scroll--vertical"
-  ],
   ["none"]: []
 };
 function tableScrollClasses(val) {
@@ -4014,9 +4006,7 @@ var modalSizes = [
   "small",
   "medium",
   "large",
-  "fullwidth",
-  "",
-  "fullscreen"
+  "fullwidth"
 ];
 function sizeClass(size) {
   if (!size) return [];
@@ -4339,7 +4329,7 @@ var FConfirmModal_vue_vue_type_script_lang_default = /* @__PURE__ */ defineCompo
       default: "Rubrik"
     },
     /**
-    * The size of modal. 'large' and 'fullscreen' is valid.
+    * The size of modal in desktop mode.
     */
     size: {
       type: String,
@@ -5055,7 +5045,7 @@ var FFormModal_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponen
       required: false
     },
     /**
-    * See <f-modal> `size` props.
+    * The size of modal in desktop mode.
     */
     size: {
       type: String,
@@ -16840,7 +16830,6 @@ var FSortFilterDataset_default = /* @__PURE__ */ defineComponent({
       default: true
     },
     filterLabel: { default: () => void 0 },
-    placeholderFilter: { default: () => void 0 },
     defaultSortAscending: {
       type: Boolean,
       default: true
@@ -16867,8 +16856,7 @@ var FSortFilterDataset_default = /* @__PURE__ */ defineComponent({
     });
     const clearableScreenReaderText = $t2("fkui.sort-filter-dataset.clear.filter", "Rensa s\xF6kf\xE4lt");
     const translatedFilterLabel = computed(() => {
-      var _props$filterLabel;
-      const label = (_props$filterLabel = __props.filterLabel) !== null && _props$filterLabel !== void 0 ? _props$filterLabel : __props.placeholderFilter;
+      const label = __props.filterLabel;
       if (label) return label;
       return TranslationService.provider.translate("fkui.sort-filter-dataset.filter.label", "S\xF6k");
     });
@@ -17282,8 +17270,6 @@ var FDataTable_default = /* @__PURE__ */ defineComponent({
     * Can be one of the following values:
     *
     * - `"horizontal"`: Enables horizontal scrolling
-    * - `"vertical"`: Enables vertical scrolling
-    * - `"both"`: Enables scrolling in both directions
     * - `"none"`: Disables scrolling (default)
     */
     scroll: {
