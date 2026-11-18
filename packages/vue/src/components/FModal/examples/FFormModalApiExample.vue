@@ -1,48 +1,30 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { defineComponent, ref } from "vue";
 import ExampleModal from "./ExampleModal.vue";
-import { FButton, formModal } from "@fkui/vue";
+import { FButton, useModal } from "@fkui/vue";
 
-export default defineComponent({
-    name: "FFormModalApiExample",
-    components: { FButton },
-    data() {
-        return {
-            result: "",
-        };
-    },
-    methods: {
-        async onClick() {
-            this.result = "";
-            try {
-                this.result = await formModal(this, ExampleModal, {
-                    props: {
-                        dataTest: "form-modal-api-example",
-                        firstName: "Anton",
-                    },
-                });
-            } catch {
-                console.log("användaren avbröt");
-            }
-        },
-    },
-});
+const { formModal } = useModal();
+const result = ref("");
+
+async function onClick(): Promise<void> {
+    result.value = "";
+    try {
+        result.value = await formModal(ExampleModal, {
+            props: {
+                frukt: "Äpple",
+            },
+        });
+    } catch {
+        console.log("användaren avbröt");
+    }
+}
 </script>
 
 <template>
-    <div class="f-form-modal-example">
-        <f-button
-            data-test="form-modal-api-example-button"
-            size="medium"
-            variant="secondary"
-            @click="onClick"
-        >
-            Öppna Modal
-        </f-button>
-        <div v-if="result">
-            <pre>Modalen stängdes med resultatet:</pre>
-            <pre id="api-result">{{ result }}</pre>
-        </div>
+    <f-button size="medium" variant="secondary" @click="onClick"> Öppna Modal </f-button>
+    <div v-if="result">
+        <pre>Modalen stängdes med resultatet:</pre>
+        <pre id="api-result">{{ result }}</pre>
     </div>
 </template>
