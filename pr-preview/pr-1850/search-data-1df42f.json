@@ -100,11 +100,11 @@
     "Version 7 migreringsguide: @fkui/button-classes",
     "Version 7 migreringsguide: ESM only",
     "Version 7 migreringsguide: FWizard",
-    "Version 7 migreringsguide: @fkui/theme-desktop",
     "Version 7 migreringsguide: `text` till `screenreaderText`",
     "Version 7 migreringsguide: Funktioner",
     "Version 7 migreringsguide: Modal API only",
     "Version 7 migreringsguide: Cypress Pageobjects",
+    "Version 7 migreringsguide: @fkui/theme-desktop",
     "Version 6 migreringsguide: Cypress Pageobjects",
     "Version 6 migreringsguide: @fkui/design",
     "Version 6 migreringsguide: @fkui/logic",
@@ -1018,23 +1018,18 @@
       ]
     },
     {
-      "url": "gettingstarted/migration/migration-to-v7/button-classes.html",
+      "url": "gettingstarted/migration/migrating-to-v7/button-classes.html",
       "title": "Version 7 migreringsguide: @fkui/button-classes",
       "terms": []
     },
     {
-      "url": "gettingstarted/migration/migration-to-v7/esm-only.html",
+      "url": "gettingstarted/migration/migrating-to-v7/esm-only.html",
       "title": "Version 7 migreringsguide: ESM only",
       "terms": []
     },
     {
-      "url": "gettingstarted/migration/migration-to-v7/f-wizard.html",
+      "url": "gettingstarted/migration/migrating-to-v7/f-wizard.html",
       "title": "Version 7 migreringsguide: FWizard",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migration-to-v7/theme-desktop.html",
-      "title": "Version 7 migreringsguide: @fkui/theme-desktop",
       "terms": []
     },
     {
@@ -1055,6 +1050,11 @@
     {
       "url": "gettingstarted/migration/migrating-to-v7/pageobjects.html",
       "title": "Version 7 migreringsguide: Cypress Pageobjects",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v7/theme-desktop.html",
+      "title": "Version 7 migreringsguide: @fkui/theme-desktop",
       "terms": []
     },
     {
