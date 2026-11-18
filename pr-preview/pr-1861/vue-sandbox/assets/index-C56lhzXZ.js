@@ -8761,7 +8761,7 @@ var availableValidators = [
 		}
 	}
 ];
-var wrapper;
+var wrapperId = "fkui-alert-screen-reader";
 /**
 * Create an element for adding text to be read by a screen reader.
 *
@@ -8769,12 +8769,7 @@ var wrapper;
 * @param options - options for wrapper element attributes.
 */
 function createScreenReaderWrapper(options) {
-	if (getWrapper()) return;
-	wrapper = document.createElement("div");
-	wrapper.id = "fkui-alert-screen-reader";
-	wrapper.className = "sr-only";
-	updateProperties(options);
-	document.body.append(wrapper);
+	if (!findWrapper()) createWrapper(options);
 }
 /**
 * Update properties on wrapper element.
@@ -8782,17 +8777,30 @@ function createScreenReaderWrapper(options) {
 * @internal
 * @param options - options for wrapper element attributes.
 */
-function updateProperties(options) {
-	const wrapper = getWrapper();
+function updateProperties(wrapper, options) {
 	const ariaLive = options.assertive ? "assertive" : "polite";
 	wrapper.setAttribute("aria-live", ariaLive);
 }
 /**
-* Retrieve wrapper element.
+* Find the wrapper element in the DOM.
 *
 * @internal
 */
-function getWrapper() {
+function findWrapper() {
+	return document.querySelector(`#${wrapperId}`);
+}
+/**
+* Create the wrapper element for the screen reader.
+*
+* @internal
+* @returns The created wrapper element.
+*/
+function createWrapper(options) {
+	const wrapper = document.createElement("div");
+	wrapper.id = wrapperId;
+	wrapper.className = "sr-only";
+	updateProperties(wrapper, options);
+	document.body.append(wrapper);
 	return wrapper;
 }
 if (typeof document !== "undefined") createScreenReaderWrapper({ assertive: false });
