@@ -1,22 +1,51 @@
 ---
-title: "Version 7 migreringsguide: Funktioner"
-short-title: Funktioner
-name: migrating-to-v7-funktioner
+title: "Version 7 migreringsguide: @fkui/vue"
+short-title: "@fkui/vue"
+name: migrating-to-v7-vue
 layout: article
 ---
 
-Följande propar är ändrade:
+## FTable
 
-- [`FModal` `size`](#fmodal)
+I **FKUI v7** har egenskapen `text` bytt namn till `screenreaderText` för tabellkolumner av typen `"button"` och `"menu"` i `FTable`. Ändringen förtydligar att strängen som returneras endast används som tillgänglighetstext för skärmläsare och inte visas visuellt i cellen.
 
-Följande propar är borttagna:
+### Sammanfattning av ändringar
 
-- [`FSortFilterDataset` `placeholderFilter`](#fsortfilterdataset)
+### Migrering av kolumndefinitioner
 
-Följande funktioner är borttagna:
+Uppdatera samtliga kolumner med `type: "button"` eller `type: "menu"` i `defineTableColumns` genom att byta ut `text` mot `screenreaderText`:
 
-- [`getLegacyInternalKey()`](#getlegacyinternalkey)
-- [`TableScroll.VERTICAL` och `TableScroll.BOTH`](#tablescroll)
+```diff
+ const columns = defineTableColumns<Row>([
+     {
+         type: "button",
+         header: "Button",
+         description: "Column 4",
+         key: "button",
+         icon: "trashcan",
+-        text(row) {
++        screenreaderText(row) {
+             return row.button;
+         },
+     },
+     {
+         type: "menu",
+         header: "Actions",
+-        text() {
++        screenreaderText() {
+             return "Actions";
+         },
+         actions: [{ label: "foo" }, { label: "bar" }],
+     },
+ ]);
+```
+
+::: details 🤖 Prompt för AI Agenter
+
+Search the codebase for `defineTableColumns` and column objects containing `type: "button"` or `type: "menu"`.
+Rename `text` to `screenreaderText` on matching column objects.
+Run TypeScript type-checking (`tsc`) to verify no remaining type errors exist.
+:::
 
 ## `FModal`
 
@@ -115,3 +144,36 @@ Verifiera resultatet genom att bygga projektet och köra enhetstester.
 Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.
 
 :::
+
+## FWizard
+
+### Fokushantering för steg för steg-guide (`FWizard`)
+
+I version 7 är initialt fokus på det första steget avstängt som standard.
+
+Om du vill att det första steget ska få fokus när guiden öppnas, lägg till `focus-initial-step`:
+
+```diff
+-<f-wizard header-tag="h2">
++<f-wizard header-tag="h2" focus-initial-step>
+    <!-- guidesteg -->
+</f-wizard>
+```
+
+Om du inte vill att det första steget ska få fokus när guiden öppnas behöver du inte längre lägga till någon fokusprop.
+Ta bort `disable-initial-focus` från befintlig kod om den används, den finns inte längre i version 7.
+
+### Fellista för steg för steg-guide (`FWizardStep`)
+
+I version 7 visas fellistan inte längre som standard i ett guidesteg.
+
+Om du vill visa fellistan, lägg till `use-error-list` på `f-wizard-step`:
+
+```diff
+-<f-wizard-step key="step1" title="Steg 1">
++<f-wizard-step key="step1" title="Steg 1" use-error-list>
+    <!-- innehåll -->
+</f-wizard-step>
+```
+
+Om du redan använder `:use-error-list="false"` kan du ta bort propen eftersom det nu är standardbeteendet.
