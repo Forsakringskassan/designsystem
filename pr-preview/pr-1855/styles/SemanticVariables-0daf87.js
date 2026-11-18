@@ -152,20 +152,6 @@ var metadata_default = {
       }
     },
     {
-      "name": "--fkds-color-action-background-tertiary-hover",
-      "comment": null,
-      "values": {
-        "light": {
-          "value": "#dee9f7",
-          "palette": "blue-100"
-        },
-        "dark": {
-          "value": "#494f5b",
-          "palette": "neutral-700"
-        }
-      }
-    },
-    {
       "name": "--fkds-color-action-border-primary-active",
       "comment": null,
       "values": {
