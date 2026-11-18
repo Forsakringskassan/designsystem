@@ -19570,7 +19570,7 @@ var stopEditKey = Symbol();
 function useStartStopEdit() {
 	return { stopEdit: inject(stopEditKey, () => Promise.resolve()) };
 }
-var _hoisted_1$45 = ["href"];
+var _hoisted_1$45 = ["target", "href"];
 var _hoisted_2$34 = {
 	key: 1,
 	ref: "target",
@@ -19596,10 +19596,20 @@ var ITableAnchor_default = /* @__PURE__ */ defineComponent({
 				key: 0,
 				ref: "target",
 				class: "anchor anchor--block",
-				target: "_blank",
+				target: __props.column.target,
 				href: __props.column.href(__props.row),
 				tabindex: "-1"
-			}, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_1$45)) : createCommentVNode("v-if", true)], 32)) : (openBlock(), createElementBlock("td", _hoisted_2$34, null, 512));
+			}, [
+				__props.column.iconLeft ? (openBlock(), createBlock(unref(FIcon_default), {
+					key: 0,
+					name: __props.column.iconLeft
+				}, null, 8, ["name"])) : createCommentVNode("v-if", true),
+				createTextVNode(" " + toDisplayString(__props.column.text(__props.row)) + " ", 1),
+				__props.column.iconRight ? (openBlock(), createBlock(unref(FIcon_default), {
+					key: 1,
+					name: __props.column.iconRight
+				}, null, 8, ["name"])) : createCommentVNode("v-if", true)
+			], 8, _hoisted_1$45)) : createCommentVNode("v-if", true)], 32)) : (openBlock(), createElementBlock("td", _hoisted_2$34, null, 512));
 		};
 	}
 });
@@ -20520,9 +20530,13 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
 * @internal
 */
 function normalizeAnchorColumn(column) {
+	var _column$target;
 	return {
 		type: "anchor",
 		text: getValueFn(column.text, column.key, String, ""),
+		iconLeft: column.iconLeft,
+		iconRight: column.iconRight,
+		target: (_column$target = column.target) !== null && _column$target !== void 0 ? _column$target : "_blank",
 		href: typeof column.href === "function" ? column.href : () => String(column.href)
 	};
 }

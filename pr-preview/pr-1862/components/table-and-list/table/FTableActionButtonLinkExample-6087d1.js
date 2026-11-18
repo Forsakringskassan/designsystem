@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableActionButtonLinkExample.vue:FTableActionButtonLinkExample-f59edc.js
+// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableActionButtonLinkExample.vue:FTableActionButtonLinkExample-6087d1.js
 import { defineComponent as _defineComponent } from "vue";
 import { ref } from "vue";
 import { removeTableRows } from "@fkui/vue";
@@ -56,6 +56,8 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
       },
       {
         type: "anchor",
+        iconRight: "arrow-right",
+        target: "_blank",
         header: "L\xE4nk",
         text() {
           return "Mer information";
@@ -121,7 +123,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-f59edc"
+  selector: "#example-6087d1"
 });
 export {
   render
