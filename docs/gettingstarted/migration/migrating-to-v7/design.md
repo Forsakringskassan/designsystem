@@ -1,7 +1,7 @@
 ---
-title: "Version 7 migreringsguide: @fkui/button-classes"
-short-title: "@fkui/button-classes"
-name: migrating-to-v7-button-classes
+title: "Version 7 migreringsguide: @fkui/design"
+short-title: "@fkui/design"
+name: migrating-to-v7-@fkui/design
 layout: article
 ---
 
