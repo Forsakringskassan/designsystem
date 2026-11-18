@@ -181,15 +181,14 @@ export class FTablePageObject implements BasePageObject {
      *
      * @public
      * @since %version%
-     * @param row - Row number (1-indexed).
-     * @param col - Column number (1-indexed).
+     * @param descriptor - Row and column number (1-indexed).
      * @returns The native select element.
      */
-    public select(
-        row: number,
-        col: number,
-    ): Cypress.Chainable<JQuery<HTMLSelectElement>> {
-        return this.cell({ row, col }).find("select");
+    public select(descriptor: {
+        row: number;
+        col: number;
+    }): Cypress.Chainable<JQuery<HTMLSelectElement>> {
+        return this.cell(descriptor).find("select");
     }
 
     /**
@@ -201,7 +200,7 @@ export class FTablePageObject implements BasePageObject {
      * not work properly if there are several dropdowns open simultaneously.
      *
      * @internal
-     * @deprecated Since %version%. This method targets legacy combobox dropdown. Which has been replaced by native select elements. Use `select()` instad.
+     * @deprecated Since %version%. This method targets legacy combobox dropdown. Which has been replaced by native select elements. Use `select()` instead.
      * @returns Dropdown for a select cell.
      */
     public selectDropdown(): DefaultCypressChainable {

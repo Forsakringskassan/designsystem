@@ -494,9 +494,9 @@ it("select() should get native select element", () => {
         }),
     );
 
-    table.select(1, 1).should("have.prop", "tagName", "SELECT");
-    table.select(1, 1).should("have.value", "Foo");
-    table.select(2, 1).should("have.value", "Bar");
+    table.select({ row: 1, col: 1 }).should("have.prop", "tagName", "SELECT");
+    table.select({ row: 1, col: 1 }).should("have.value", "Foo");
+    table.select({ row: 2, col: 1 }).should("have.value", "Bar");
 });
 
 it("select() should get native select options", () => {
@@ -520,8 +520,20 @@ it("select() should get native select options", () => {
             rows: selectRows.value,
         }),
     );
-    table.select(1, 1).find("option").should("have.length", 3);
-    table.select(1, 1).find("option").eq(0).should("have.text", "Foo");
-    table.select(1, 1).find("option").eq(1).should("have.text", "Bar");
-    table.select(1, 1).find("option").eq(2).should("have.text", "Baz");
+    table.select({ row: 1, col: 1 }).find("option").should("have.length", 3);
+    table
+        .select({ row: 1, col: 1 })
+        .find("option")
+        .eq(0)
+        .should("have.text", "Foo");
+    table
+        .select({ row: 1, col: 1 })
+        .find("option")
+        .eq(1)
+        .should("have.text", "Bar");
+    table
+        .select({ row: 1, col: 1 })
+        .find("option")
+        .eq(2)
+        .should("have.text", "Baz");
 });

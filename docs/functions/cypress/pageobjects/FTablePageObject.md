@@ -327,16 +327,23 @@ Kolumnnumreringen inkluderar även eventuella kolumner för expanderingsknappar 
 ### Syntax
 
 ```ts nocompile nolint
-select(row, col);
+select(descriptor);
 ```
 
 #### Parametrar
 
-`row: number`
-: Radnummer (1-indexerat).
+`descriptor`
+: Rad och kolumn.
 
-`col: number`
-: Kolumnnummer (1-indexerat).
+    `row`: number
+    : Radnummer (1-indexerat).
+
+    `col: number`
+    : Kolumnnummer (1-indexerat).
+
+#### Returvärde
+
+`HTMLSelectElement` för selectcellen beskriven av `descriptor`.
 
 ### Exempel
 
@@ -356,7 +363,7 @@ FTablePageObject-select.cy.ts
 
 ::: warning
 Metoden är deprekerad och fungerar inte med native `<select>`.
-Använd `select(row, col)` tillsammans med Cypress `.select()` istället.
+Använd `select({ row, col })` tillsammans med Cypress `.select()` istället.
 :::
 
 Hämtar ett alternativ från en cell med en öppen dropplista.

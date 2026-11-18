@@ -2417,7 +2417,7 @@ describe("select cell", () => {
             }),
         );
 
-        table.select(1, 1).select("Baz");
+        table.select({ row: 1, col: 1 }).select("Baz");
         table.cell({ row: 1, col: 1 }).should("contain.text", "Baz");
         table.cell({ row: 2, col: 1 }).should("contain.text", "Bar");
     });
@@ -2425,15 +2425,15 @@ describe("select cell", () => {
     it("1.2 should not focus next row on selecting option with enter", () => {
         cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
 
-        table.select(1, 1).select("Baz");
+        table.select({ row: 1, col: 1 }).select("Baz");
         table.cell({ row: 2, col: 1 }).should("not.have.focus");
     });
 
     it("should keep focus on select after choosing an option on last row", () => {
         cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
 
-        table.select(2, 1).select("Baz");
-        table.select(2, 1).should("have.focus");
+        table.select({ row: 2, col: 1 }).select("Baz");
+        table.select({ row: 2, col: 1 }).should("have.focus");
     });
 
     it("should keep focus on select after choosing an option on last row with footer", () => {
@@ -2452,8 +2452,8 @@ describe("select cell", () => {
             ),
         );
 
-        table.select(2, 1).select("Baz");
-        table.select(2, 1).should("have.focus");
+        table.select({ row: 2, col: 1 }).select("Baz");
+        table.select({ row: 2, col: 1 }).should("have.focus");
     });
 
     it("should move focus out of select cell on tab", () => {
@@ -2502,7 +2502,7 @@ describe("select cell", () => {
         );
 
         table
-            .select(2, 1)
+            .select({ row: 2, col: 1 })
             .should("be.visible")
             .and("have.value", "Bar")
             .realClick();
@@ -2535,15 +2535,15 @@ describe("select cell", () => {
     it("1.3 should not wrap around when navigating an open select", () => {
         cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
 
-        table.select(1, 1).select("Foo").realClick();
+        table.select({ row: 1, col: 1 }).select("Foo").realClick();
         cy.focused().press(Cypress.Keyboard.Keys.UP);
         cy.focused().press(Cypress.Keyboard.Keys.ENTER);
-        table.select(1, 1).should("have.value", "Foo");
+        table.select({ row: 1, col: 1 }).should("have.value", "Foo");
 
-        table.select(1, 1).select("Baz").realClick();
+        table.select({ row: 1, col: 1 }).select("Baz").realClick();
         cy.focused().press(Cypress.Keyboard.Keys.DOWN);
         cy.focused().press(Cypress.Keyboard.Keys.ENTER);
-        table.select(1, 1).should("have.value", "Baz");
+        table.select({ row: 1, col: 1 }).should("have.value", "Baz");
     });
 });
 

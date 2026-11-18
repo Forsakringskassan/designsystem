@@ -54,7 +54,7 @@ describe("FTableDynamicContextmenuExample", () => {
         cy.focused().type("{esc}");
         table.contextmenu().should("not.exist");
 
-        table.select(3, 2).select("Godkänd");
+        table.select({ row: 3, col: 2 }).select("Godkänd");
 
         table.cell({ row: 3, col: 3 }).click();
         table.contextmenuItems().should("contain.text", "Visa beslut");
