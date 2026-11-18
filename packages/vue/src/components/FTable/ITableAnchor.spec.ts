@@ -69,6 +69,70 @@ describe("text", () => {
         expect(wrapper.find("td").text()).toBe("my awesome anchor");
     });
 
+    it("should render icon when `iconLeft` or `iconRight` is set", () => {
+        expect.assertions(3);
+        const row: Row = { value: undefined };
+        const column = normalizeTableColumn<Row, keyof Row>({
+            type: "anchor",
+            header: "header",
+            iconLeft: "chevrons-left",
+            iconRight: "arrow-right",
+            text: () => "my awesome anchor",
+            href: "",
+        });
+        const wrapper = mount(
+            ITableAnchor as unknown as ComponentPublicInstance,
+            {
+                props: { column, row },
+            },
+        );
+
+        expect(wrapper.find("a").exists()).toBeTruthy();
+        expect(wrapper.find(".f-icon-chevrons-left").exists()).toBeTruthy();
+        expect(wrapper.find(".f-icon-arrow-right").exists()).toBeTruthy();
+    });
+
+    it("should have custom target attribute when `target` is set", () => {
+        expect.assertions(2);
+        const row: Row = { value: undefined };
+        const column = normalizeTableColumn<Row, keyof Row>({
+            type: "anchor",
+            header: "header",
+            target: "_self",
+            text: () => "my awesome anchor",
+            href: "",
+        });
+        const wrapper = shallowMount(
+            ITableAnchor as unknown as ComponentPublicInstance,
+            {
+                props: { column, row },
+            },
+        );
+
+        expect(wrapper.find("a").exists()).toBeTruthy();
+        expect(wrapper.find("a").attributes("target")).toBe("_self");
+    });
+
+    it("should have default target attribute when `target` is not set", () => {
+        expect.assertions(2);
+        const row: Row = { value: undefined };
+        const column = normalizeTableColumn<Row, keyof Row>({
+            type: "anchor",
+            header: "header",
+            text: () => "my awesome anchor",
+            href: "",
+        });
+        const wrapper = shallowMount(
+            ITableAnchor as unknown as ComponentPublicInstance,
+            {
+                props: { column, row },
+            },
+        );
+
+        expect(wrapper.find("a").exists()).toBeTruthy();
+        expect(wrapper.find("a").attributes("target")).toBe("_blank");
+    });
+
     it("should render basic string href", () => {
         expect.assertions(1);
         const row: Row = { value: undefined };
