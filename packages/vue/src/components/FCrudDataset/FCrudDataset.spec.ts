@@ -738,9 +738,7 @@ describe("formModalSize", () => {
         await wrapper.get(".crud-dataset__add-button").trigger("click");
         await flushPromises();
 
-        const formModal = wrapper.findComponent(FFormModal) as VueWrapper<
-            InstanceType<typeof FFormModal>
-        >;
+        const formModal = wrapper.findComponent(FFormModal);
         expect(formModal.props("size")).toBe("large");
     });
 
@@ -762,9 +760,7 @@ describe("formModalSize", () => {
         await wrapper.get("#modify-button").trigger("click");
         await flushPromises();
 
-        const formModal = wrapper.findComponent(FFormModal) as VueWrapper<
-            InstanceType<typeof FFormModal>
-        >;
+        const formModal = wrapper.findComponent(FFormModal);
         expect(formModal.props("size")).toBe("large");
     });
 
@@ -777,9 +773,7 @@ describe("formModalSize", () => {
         await wrapper.get(".crud-dataset__add-button").trigger("click");
         await flushPromises();
 
-        const formModal = wrapper.findComponent(FFormModal) as VueWrapper<
-            InstanceType<typeof FFormModal>
-        >;
+        const formModal = wrapper.findComponent(FFormModal);
         expect(formModal.props("size")).toBe("");
     });
 
