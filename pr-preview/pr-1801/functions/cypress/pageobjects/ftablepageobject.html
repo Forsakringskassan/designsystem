@@ -8059,10 +8059,10 @@ table.<span class="hljs-title function_">rows</span>().<span class="hljs-title f
                     
                     <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FTablePageObject</span>(<span class="hljs-string">&quot;[data-test=table]&quot;</span>);
 
-table.<span class="hljs-title function_">select</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.prop&quot;</span>, <span class="hljs-string">&quot;tagName&quot;</span>, <span class="hljs-string">&quot;SELECT&quot;</span>);
-table.<span class="hljs-title function_">select</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.value&quot;</span>, <span class="hljs-string">&quot;Foo&quot;</span>);
-table.<span class="hljs-title function_">select</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>).<span class="hljs-title function_">select</span>(<span class="hljs-string">&quot;Baz&quot;</span>);
-table.<span class="hljs-title function_">select</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.value&quot;</span>, <span class="hljs-string">&quot;Baz&quot;</span>);</code></pre>
+table.<span class="hljs-title function_">select</span>({ <span class="hljs-attr">row</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">col</span>: <span class="hljs-number">2</span> }).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.prop&quot;</span>, <span class="hljs-string">&quot;tagName&quot;</span>, <span class="hljs-string">&quot;SELECT&quot;</span>);
+table.<span class="hljs-title function_">select</span>({ <span class="hljs-attr">row</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">col</span>: <span class="hljs-number">2</span> }).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.value&quot;</span>, <span class="hljs-string">&quot;Foo&quot;</span>);
+table.<span class="hljs-title function_">select</span>({ <span class="hljs-attr">row</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">col</span>: <span class="hljs-number">2</span> }).<span class="hljs-title function_">select</span>(<span class="hljs-string">&quot;Baz&quot;</span>);
+table.<span class="hljs-title function_">select</span>({ <span class="hljs-attr">row</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">col</span>: <span class="hljs-number">2</span> }).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.value&quot;</span>, <span class="hljs-string">&quot;Baz&quot;</span>);</code></pre>
                 </div>
             <h2 id="selectdropdownoption" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#selectdropdownoption">selectDropdownOption()</a></h2>
             <div class="docs-messagebox docs-messagebox--warning">
@@ -8342,9 +8342,9 @@ table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-nu
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">feat/native-table-select</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/942faab85edbdd0d8541cf4657203a3f05fc181d">942faab</a>)<br />
+<div class="version"><span class="version-text-block">feat/native-table-select</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/8087aa8c760d855cbe979238dc35ea9f2e465595">8087aa8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1801">PR 1801</a><br />
-       <span class="version-text-block">2026-11-18 07:59</span>
+       <span class="version-text-block">2026-11-18 08:11</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
