@@ -248,6 +248,15 @@ watch(
     { flush: "post" },
 );
 
+watch(
+    () => column.value(row),
+    () => {
+        if (!inEdit.value) {
+            viewValue.value = fromColumnValue();
+        }
+    },
+);
+
 watchEffect(() => {
     if (hasError.value) {
         emit("onError", {
