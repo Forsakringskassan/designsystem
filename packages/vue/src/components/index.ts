@@ -203,7 +203,6 @@ export {
     defineTableColumns,
     getTableSortableAttributes,
     numberTypes,
-    removeDatasetRows,
     removeTableRows,
     textTypes,
 } from "./FTable";

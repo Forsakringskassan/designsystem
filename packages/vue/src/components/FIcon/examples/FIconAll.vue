@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { h, onMounted } from "vue";
+import { h, onMounted, ref } from "vue";
 import { type IconPackage } from "@fkui/icon-lib-default";
-import { FIcon, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { FIcon, FTable, defineTableColumns } from "@fkui/vue";
 
 interface IconEntry {
     id: string;
@@ -22,7 +22,7 @@ function decamelize(value: string): string {
 }
 
 const iconsPromise = importIcons();
-const rows = useDatasetRef<IconEntry>([]);
+const rows = ref<IconEntry[]>([]);
 const columns = defineTableColumns<IconEntry>([
     {
         header: "Ikon",

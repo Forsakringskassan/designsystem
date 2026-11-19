@@ -148,40 +148,6 @@ export interface ContextMenuTextItem {
 // @public
 export function copyItemIdentifier<T extends object>(from: T, to: T): void;
 
-// @public @deprecated
-export type Dataset<T extends object> = T[] & {
-    readonly [datasetSymbol]: true;
-    readonly __type: T;
-};
-
-// @public @deprecated
-export interface DatasetArrayMetadata<T> {
-    readonly nestedAttribute: DatasetNestedKeyOf<T> | undefined;
-    readonly size: number;
-}
-
-// @public @deprecated
-export interface DatasetElementMetadata {
-    readonly ariaLevel: number;
-    readonly ariaPosInSet: number;
-    readonly ariaRowIndex: number;
-    readonly ariaSetSize: number;
-    readonly rowIndex: number;
-}
-
-// @public @deprecated
-export function datasetIterator<T extends object>(dataset: Dataset<T>, options?: {
-    flat?: boolean;
-}): Generator<{
-    item: T;
-    metadata: DatasetElementMetadata;
-}>;
-
-// @public @deprecated
-export type DatasetNestedKeyOf<T> = {
-    [K in keyof T]: NonNullable<T[K]> extends T[] ? K : never;
-}[keyof T];
-
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_67" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
@@ -1018,12 +984,6 @@ export function getAbsolutePosition(src: HTMLElement): Rect;
 // @internal
 export function getAbsolutePosition(src?: HTMLElement): Rect | undefined;
 
-// @public @deprecated
-export function getDatasetMetadata<T extends object>(dataset: Dataset<T>): DatasetArrayMetadata<T>;
-
-// @public @deprecated
-export function getDatasetMetadata(element: object): DatasetElementMetadata;
-
 // @public
 export function getDayEndOffset(days: FDate[]): number;
 
@@ -1392,9 +1352,6 @@ export function refIsVueArray(value: unknown): value is ComponentPublicInstance[
 export function registerLayout<T extends LayoutDefinition>(definition: T): void;
 
 // @public
-export function removeDatasetRows<T extends object>(dataset: MaybeRef<Dataset<T> | T[]>, rows: MaybeRef<T | T[]>): void;
-
-// @public
 export function removeTableRows<T extends object>(rows: MaybeRef<T[]>, rowsToRemove: MaybeRef<T | T[]>, expandableAttribute?: MaybeRefOrGetter<TableNestedKeyOf<T> | undefined>): void;
 
 // @public (undocumented)
@@ -1674,12 +1631,6 @@ export interface TextFieldSetupProps {
 // @public (undocumented)
 export const textTypes: readonly ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:date", "text:email", "text:organisationsnummer", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode", "text"];
 
-// @internal @deprecated
-export function toDataset<T extends object>(array: T[], nestedAttribute?: DatasetNestedKeyOf<T>): Dataset<T>;
-
-// @internal @deprecated
-export function toDataset<T extends object>(dataset: T[], originalDataset: Dataset<T> | T[]): Dataset<T>;
-
 // @internal (undocumented)
 export const tooltipAttachTo: InjectionKey<Readonly<ShallowRef<HTMLElement | null>>>;
 
@@ -1718,9 +1669,6 @@ export function useCombobox(inputRef: Readonly<ShallowRef<HTMLInputElement | nul
     selectOption: (value: string) => void;
     closeDropdown: () => void;
 };
-
-// @public @deprecated
-export function useDatasetRef<T extends object>(initial?: T[], nestedAttribute?: DatasetNestedKeyOf<T>): Ref<Dataset<T>, T[] | Dataset<T>>;
 
 // @public (undocumented)
 export interface UseDetailsPanel<T = unknown> {

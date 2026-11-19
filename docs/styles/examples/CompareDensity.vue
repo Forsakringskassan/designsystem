@@ -19,10 +19,9 @@ import {
     FTextareaField,
     FTooltip,
     defineTableColumns,
-    useDatasetRef,
 } from "@fkui/vue";
 
-const rows = useDatasetRef(["1", "2", "3"].map((id) => ({ id })));
+const rows = ["1", "2", "3"].map((id) => ({ id }));
 const columns = defineTableColumns([
     { type: "text", header: "Kolumnrubrik", value: () => "Text" },
     { type: "text", header: "Kolumnrubrik", value: () => "Text" },

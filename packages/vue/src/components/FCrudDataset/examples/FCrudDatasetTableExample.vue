@@ -1,16 +1,9 @@
 <script setup lang="ts">
-import { useTemplateRef } from "vue";
+import { ref, useTemplateRef } from "vue";
 import { type FruitData, fruits } from "./fruit-data";
-import {
-    FCrudDataset,
-    FTable,
-    FTextField,
-    FTextareaField,
-    defineTableColumns,
-    useDatasetRef,
-} from "@fkui/vue";
+import { FCrudDataset, FTable, FTextField, FTextareaField, defineTableColumns } from "@fkui/vue";
 
-const rows = useDatasetRef(fruits, "variant");
+const rows = ref(fruits);
 const crud = useTemplateRef("crud");
 const columns = defineTableColumns([
     { type: "text", header: "Namn", key: "name", size: "shrink" },
@@ -53,7 +46,7 @@ function saveModel(row: FruitData): void {
         @deleted="saveModel"
     >
         <template #default>
-            <f-table :rows :columns striped>
+            <f-table :rows :columns expandable-attribute="variant" striped>
                 <template #caption> <b>Frukter</b> </template>
             </f-table>
         </template>
