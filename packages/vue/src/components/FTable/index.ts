@@ -7,7 +7,6 @@ export {
     type MaybeSortableTableColumn,
     getTableSortableAttributes,
 } from "./get-table-sortable-attributes";
-export { removeDatasetRows } from "./remove-dataset-rows";
 export { removeTableRows } from "./remove-table-rows";
 export {
     type TableColumn,

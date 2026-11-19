@@ -3,7 +3,6 @@ import { type Ref, computed, nextTick, onMounted, onUnmounted, provide, watch } 
 import { TranslationService, alertScreenReader, debounce } from "@fkui/logic";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
 import { useTranslate } from "../../plugins";
-import { type Dataset } from "../../utils";
 import { FSelectField } from "../FSelectField";
 import { provideSelectableRowSource, useSelectableRowSource } from "../FTable";
 import { FSearchTextField } from "../FTextField";
@@ -31,7 +30,7 @@ const {
     /**
      * The data that you wish to sort or filter.
      */
-    data: Dataset<T> | T[];
+    data: T[];
     /**
      * All the attributes you want to enable sorting for and the corresponding name to display in the dropdown.
      * Structured as `{attributeName: "Name for dropdown", secondAttributeName: "Name for dropdown"}`
@@ -70,7 +69,7 @@ const emit = defineEmits<{
      *
      * @arg items - The sorted data.
      */
-    datasetSorted: [items: Dataset<T> | T[]];
+    datasetSorted: [items: T[]];
 
     /**
      * Emits the used sorting attributes.

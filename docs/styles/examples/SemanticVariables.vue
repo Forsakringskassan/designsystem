@@ -4,9 +4,9 @@ import { h } from "vue";
  * extension unless we add exports field to theme package :( (but that would
  * be breaking) */
 import theme from "@fkui/theme-default/dist/metadata.mjs";
-import { FSortFilterDataset, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { FSortFilterDataset, FTable, defineTableColumns } from "@fkui/vue";
 
-const rows = useDatasetRef(theme.tokens);
+const rows = theme.tokens;
 const themes = theme.themes;
 const columns = defineTableColumns([
     { type: "text", header: "Semantisk variabel", key: "name", size: "shrink" },

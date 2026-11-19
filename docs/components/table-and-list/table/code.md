@@ -51,10 +51,6 @@ const rows = ref<Row[]>([
 <f-table :columns :rows></f-table>
 ```
 
-::: info
-Tidigare definierades rader med {@link useDatasetRef `useDatasetRef()`} (numera deprekerad).
-:::
-
 ## Kolumner
 
 Du konfigurerar kolumner i tabellen med funktionen `defineTableColumns`.
