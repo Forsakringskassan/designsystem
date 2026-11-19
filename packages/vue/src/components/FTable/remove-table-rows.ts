@@ -1,5 +1,5 @@
 import { type MaybeRef, type MaybeRefOrGetter, toValue } from "vue";
-import { getNestedRows } from "./get-nested-rows";
+import { removeNestedItem } from "../../utils/remove-nested-item";
 import { type TableNestedKeyOf } from "./table-nested-key-of";
 
 /**
@@ -27,44 +27,6 @@ export function removeTableRows<T extends object>(
         : [rowsToRemoveValue];
 
     for (const row of normalizedRows) {
-        removeRow(rowsValue, row, expandableAttributeValue);
+        removeNestedItem(rowsValue, row, expandableAttributeValue);
     }
-}
-
-function removeRow<T extends object>(
-    rows: T[],
-    row: T,
-    expandableAttribute?: TableNestedKeyOf<T>,
-): void {
-    const rowIndex = rows.indexOf(row);
-    if (rowIndex !== -1) {
-        rows.splice(rowIndex, 1);
-    } else if (expandableAttribute) {
-        removeNestedRows(rows, row, expandableAttribute);
-    }
-}
-
-function removeNestedRows<T extends object>(
-    rows: T[],
-    row: T,
-    expandableAttribute: TableNestedKeyOf<T>,
-): boolean {
-    for (const currentRow of rows) {
-        const nestedRows = getNestedRows(currentRow, expandableAttribute);
-        if (!nestedRows) {
-            continue;
-        }
-        const index = nestedRows.indexOf(row);
-
-        if (index !== -1) {
-            nestedRows.splice(index, 1);
-            return true;
-        }
-
-        if (removeNestedRows(nestedRows, row, expandableAttribute)) {
-            return true;
-        }
-    }
-
-    return false;
 }

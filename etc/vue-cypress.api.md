@@ -151,13 +151,7 @@ export class FCrudDatasetPageObject implements BasePageObject {
     // (undocumented)
     addButton(): DefaultCypressChainable;
     // (undocumented)
-    cancelButton(): DefaultCypressChainable;
-    // (undocumented)
-    confirmButton(): DefaultCypressChainable;
-    // (undocumented)
     el(): DefaultCypressChainable;
-    // (undocumented)
-    form: FValidationFormPageObject;
     // (undocumented)
     get selector(): string;
 }

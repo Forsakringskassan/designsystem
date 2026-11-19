@@ -65,15 +65,11 @@ Anger i vilken ordning man vill visa knappar i bekräftelsemodal.
 
 <!-- markdownlint-disable no-inline-html -->
 
-| Komponent                                      | Inställning   | Knappordning                                                                                                                                      |
-| ---------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Bekräftelsemodal (FConfirmModal)               | LEFT_TO_RIGHT | <button inert type="button" class="docs-example-button">Spara</button><button inert type="button" class="docs-example-button">Avbryt</button>     |
-| Bekräftelsemodal (FConfirmModal)               | RIGHT_TO_LEFT | <button inert type="button" class="docs-example-button">Avbryt</button><button inert type="button" class="docs-example-button">Spara</button>     |
-| Formulärsmodal (FFormModal)                    | \*            | <button inert type="button" class="docs-example-button">Spara</button><button inert type="button" class="docs-example-button">Avbryt</button>     |
-| Datamängdredigerare (FCrudDataset) - Lägg till | \*            | <button inert type="button" class="docs-example-button">Lägg till</button><button inert type="button" class="docs-example-button">Avbryt</button> |
-| Datamängdredigerare (FCrudDataset) - Ändra     | \*            | <button inert type="button" class="docs-example-button">Spara</button><button inert type="button" class="docs-example-button">Avbryt</button>     |
-| Datamängdredigerare (FCrudDataset) - Ta bort   | LEFT_TO_RIGHT | <button inert type="button" class="docs-example-button">Ta bort</button><button inert type="button" class="docs-example-button">Avbryt</button>   |
-| Datamängdredigerare (FCrudDataset) - Ta bort   | RIGHT_TO_LEFT | <button inert type="button" class="docs-example-button">Avbryt</button><button inert type="button" class="docs-example-button">Ta bort</button>   |
+| Komponent                        | Inställning   | Knappordning                                                                                                                                  |
+| -------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Bekräftelsemodal (FConfirmModal) | LEFT_TO_RIGHT | <button inert type="button" class="docs-example-button">Spara</button><button inert type="button" class="docs-example-button">Avbryt</button> |
+| Bekräftelsemodal (FConfirmModal) | RIGHT_TO_LEFT | <button inert type="button" class="docs-example-button">Avbryt</button><button inert type="button" class="docs-example-button">Spara</button> |
+| Formulärsmodal (FFormModal)      | \*            | <button inert type="button" class="docs-example-button">Spara</button><button inert type="button" class="docs-example-button">Avbryt</button> |
 
 <!-- markdownlint-restore -->
 

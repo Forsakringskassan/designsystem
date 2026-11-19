@@ -223,6 +223,127 @@ Behåll dynamiska värden.
 Verifiera resultatet genom att bygga projektet och köra relevanta tester.
 Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.
 
+## `FCrudDataset`
+
+`FCrudDataset` öppnar inte längre några modaler själv.
+Istället anropas `onCreate`, `onUpdate` och `onDelete` med en callback `commit` som applikationen anropar när åtgärden ska genomföras.
+Applikationen ansvarar för att öppna modaler, till exempel med {@link useModal `formModal()` och `confirmModal()`}.
+
+Följande har tagits bort:
+
+- Slottarna `#add`, `#modify` och `#delete`.
+- Propparna `beforeCreate`, `beforeSubmit`, `beforeValidation`, `onCancel`, `addNewModalHeader`, `modifyModalHeader`, `deleteModalHeader` och `formModalSize`.
+  Motsvarande värden skickas istället direkt till modalerna.
+- Eventen `created`, `updated` och `deleted`.
+  Applikationen vet själv när den anropar `commit`.
+- Enumen `Operation` (`ADD`, `DELETE`, `MODIFY`, `NONE`).
+  Använd istället de åtgärdsspecifika callbackarna `onCreate`, `onUpdate` och `onDelete`, eftersom varje callback redan motsvarar en åtgärd.
+- Textnycklarna för modalernas rubriker och knappar (`fkui.crud-dataset.modal.*`).
+  Det finns inga standardtexter längre, så applikationen behöver själv ange knapptexterna.
+  För samma beteende som tidigare: "Lägg till" och "Avbryt" när en rad läggs till, "Spara" och "Avbryt" när en rad ändras samt "Ja, ta bort" och "Nej, avbryt" när en rad tas bort.
+- Metoderna `cancelButton()`, `confirmButton()` och egenskapen `form` från `FCrudDatasetPageObject` samt `cancelButton()` och `confirmButton()` från `FCrudDatasetSelectors`.
+  Använd `FModalPageObject` eller `FModalSelectors` istället.
+- `ActivateItemInjected()` och typerna `ActivateItemInterface` och `ActivateItemCallback`.
+  En egen komponent som presenterar raderna använder istället `useCrudDatasetPresenter()` med `afterCreate`, `handleDelete` och `nestedKey`.
+  `handleDelete(item, commit)` ersätter `registerCallbackBeforeItemDelete` och måste anropa `commit()` synkront.
+
+Knappen "Lägg till ny" visas när `onCreate` är satt (tidigare när slotten `#add` fanns).
+
+Innehållet kan läggas direkt i `FCrudDataset`, `<template #default>` behövs inte längre.
+
+`onCreate`, `onUpdate` och `onDelete` kan vara asynkrona.
+Om en callback returnerar ett promise som avvisas rapporteras felet till `app.config.errorHandler`.
+
+```diff
+-<f-crud-dataset v-model="rows" :before-create @created="save">
+-    <template #default> ... </template>
+-    <template #add="{ item }">
+-        <f-text-field v-model="item.name"> Namn </f-text-field>
+-    </template>
+-    <template #delete="{ item }"> Vill du ta bort {{ item.name }}? </template>
+-</f-crud-dataset>
++<f-crud-dataset v-model="rows" :on-create :on-delete>
++    ...
++</f-crud-dataset>
+```
+
+```ts static
+import { useModal } from "@fkui/vue";
+import {
+    type FCrudDatasetCommitCreate,
+    type FCrudDatasetCommitDelete,
+} from "@fkui/vue";
+
+interface Row {
+    name: string;
+}
+
+const MyRowModal = { template: "<div></div>" };
+
+const { formModal, confirmModal } = useModal();
+
+/* --- cut above --- */
+function save(row: Row): void {
+    // save implementation
+}
+
+async function onCreate(commit: FCrudDatasetCommitCreate<Row>): Promise<void> {
+    try {
+        const row = await formModal<Row>(MyRowModal, {
+            props: { row: { name: "" } },
+        });
+        save(row);
+        commit(row);
+    } catch {
+        /* användaren avbröt */
+    }
+}
+
+async function onDelete(
+    row: Row,
+    commit: FCrudDatasetCommitDelete,
+): Promise<void> {
+    const confirmed = await confirmModal({
+        heading: "Är du säker på att du vill ta bort raden?",
+        content: `Vill du ta bort ${row.name}?`,
+        confirm: "Ja, ta bort",
+        dismiss: "Nej, avbryt",
+    });
+    if (confirmed) {
+        commit();
+    }
+}
+```
+
+Innehållet från slottarna `#add` och `#modify` flyttas till en egen modalkomponent baserad på `FFormModal` (se {@link migrating-to-v7-modal-api Modal API only}).
+`onUpdate` får en kopia av objektet, så originalet lämnas orört om användaren avbryter.
+Skicka det ändrade objektet till `commit()`.
+
+::: details 🤖 Prompt för AI Agenter
+
+För varje användning av `FCrudDataset`:
+
+1. Flytta innehållet i slottarna `#add` och `#modify` till en ny komponent som använder `FFormModal` med propparna `isOpen`, `value` och vidarebefordrar `close`-eventet.
+2. Lägg till `onCreate(commit)` som öppnar modalen med `formModal()` från `useModal()`, med objektet som tidigare returnerades av `beforeCreate`, och anropar `commit(item)` med resultatet.
+   Fånga avbrott (`formModal()` avvisar promise när användaren avbryter).
+3. Lägg till `onUpdate(item, commit)` på motsvarande sätt och anropa `commit(modified)`.
+   `item` är redan en kopia, så den behöver inte klonas.
+4. Ersätt slotten `#delete` med `onDelete(item, commit)` som öppnar `confirmModal()` och anropar `commit()` om användaren bekräftar.
+   Använd tidigare `deleteModalHeader` som rubrik.
+5. Flytta logik från eventen `created`, `updated` och `deleted` till respektive callback innan `commit` anropas.
+6. Flytta `beforeSubmit`, `beforeValidation`, `formModalSize` och modalrubriker till modalkomponenten.
+7. Ange knapptexter explicit i modalerna, de har inga standardtexter längre.
+   Använd tidigare standardtexter: "Lägg till"/"Avbryt" för lägg till, "Spara"/"Avbryt" för ändra och "Ja, ta bort"/"Nej, avbryt" (`confirm`/`dismiss` i `confirmModal()`) för ta bort.
+   Sök efter översättningar av textnycklarna `fkui.crud-dataset.modal.*` i projektet, använd de värdena istället och ta bort nycklarna.
+8. Skicka med ett meddelande för skärmläsare som är specifikt för raden som argumentet `alert` till `commit`, till exempel ``commit(item, `${item.name} har lagts till`)``, ``commit(modified, `${modified.name} har ändrats`)`` och ``commit(`${item.name} har tagits bort`)``.
+   Använd ett namn eller annan egenskap som identifierar raden för användaren.
+9. Ersätt `FCrudDatasetPageObject.confirmButton()`/`cancelButton()` i tester med `new FModalPageObject(".modal").primaryButton()`/`secondaryButton()`.
+10. Ta bort importer av `Operation` från `@fkui/vue`.
+    Flytta kod som grenar på `Operation.ADD`, `Operation.MODIFY` eller `Operation.DELETE` till `onCreate`, `onUpdate` respektive `onDelete`.
+    Ta bort kod som använder `Operation.NONE`.
+
+Verifiera resultatet genom att bygga projektet och köra enhetstester.
+
 :::
 
 ## `FModal`
