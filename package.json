@@ -109,7 +109,7 @@
     "@forsakringskassan/prettier-config": "3.7.15",
     "@forsakringskassan/sass-module-importer": "3.0.0",
     "@forsakringskassan/stylelint-config": "3.5.2",
-    "@forsakringskassan/vite-lib-config": "6.0.1",
+    "@forsakringskassan/vite-lib-config": "6.0.2",
     "@forsakringskassan/vitest-config": "5.1.0",
     "@html-validate/release-scripts": "7.6.20",
     "@types/estree": "1.0.10",
