@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-023419.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-61d844.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-0a53c0.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-a3169d.js",
     "@fkui/vue-labs": "../../../assets/vendor-fkui-vue-labs-a2a6fb.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js"
   },
@@ -35,7 +35,7 @@
     "../../../assets/vendor-fkui-vue-selectors-023419.js": "sha384-VLenLmQc8v93fneTx0efSTJd7J5Ns4fB7DTS3tM7kJz9URQIILL3gC5W3VAEksP3",
     "../../../assets/vendor-fkui-logic-61d844.js": "sha384-u+VrrunW0wzEofwwfTCUkVW/5R3NtIzcgQ1Z60e7ov5tXLYfjrUjbvH57Zgv2vnB",
     "../../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../../assets/vendor-fkui-vue-0a53c0.js": "sha384-WtX3yUjmxnyNiOJUa129pmsJP1aNYVrouaSgOavzzKEjv3mvIqmL9JQkeIKP5pvx",
+    "../../../assets/vendor-fkui-vue-a3169d.js": "sha384-oFnJH+VXUoW45FOhN+jdLCBxrGxCH6p8q6+Rf3C9an9DpIcLtU7mA1hTJnG62Pq4",
     "../../../assets/vendor-fkui-vue-labs-a2a6fb.js": "sha384-h40XX4ozhvBgz6AWNQ0/PORIMa6s3scmYMA6oJTujg2racMU/GypyFfqTvLaa6oJ",
     "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js": "sha384-PDEuCCbROg9gW6fFneYpzXKS04rV0oMFHgqArEkyaM8h1d/H3HBtCKiyFWYKWVcy"
   }
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../search-data-e2b8bc.json"
+    href="../../../search-data-5504b1.json"
     as="fetch"
     crossorigin
-    integrity="sha384-2hV/EyU9x4pWVKwsKKxcjr2MwSb59mIV4SxusH/xko3XsAMD6+dfG7GyZkI1mjXN"
+    integrity="sha384-I9r4uQWQK9ODxbo7Ww8CoaJ+GCkMoABIKk4UuzIkFbchSprmlZKXUXD09CiLl3S2"
     id="search-data"
 />
 <script>
@@ -557,8 +557,6 @@
                     
                 
                     
-                
-                    
                         
                     
                 
@@ -573,19 +571,6 @@
 
             
 <ul class="docs-mobile-nav__list">
-
-<li class="link ">
-        <a
-            href="../migrating-crud-button.html"
-            
-            
-            
-            data-path="gettingstarted/migration/migrating-crud-button.html"
-            
-        >
-            FCrudButton
-        </a>
-    </li>
 
 <li class="link ">
         <a
@@ -6117,17 +6102,6 @@
             
 <ul><li class="link ">
         <a
-            href="../migrating-crud-button.html"
-            
-            
-            
-            data-path="gettingstarted/migration/migrating-crud-button.html"
-            
-        >
-            FCrudButton
-        </a>
-    </li><li class="link ">
-        <a
             href="../migrating-to-fieldset.html"
             
             
@@ -6311,6 +6285,8 @@
                             </summary>
                             <ul>
                                 
+                                <li><a href="#fcrudbutton">FCrudButton</a></li>
+                                
                                 <li><a href="#ftable">FTable</a></li>
                                 
                                 <li><a href="#fmodal">FModal</a></li>
@@ -6329,11 +6305,61 @@
                     </div>
                     
 
-                    <div id="docs-content"><h2 id="ftable" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#ftable">FTable</a></h2><p class="docs-paragraph">I <strong>FKUI v7</strong> har egenskapen <code>text</code> bytt namn till <code>screenreaderText</code> för tabellkolumner av typen <code>&quot;button&quot;</code> och <code>&quot;menu&quot;</code> i <code>FTable</code>. Ändringen förtydligar att strängen som returneras endast används som tillgänglighetstext för skärmläsare och inte visas visuellt i cellen.</p>
+                    <div id="docs-content"><h2 id="fcrudbutton" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fcrudbutton">FCrudButton</a></h2><p class="docs-paragraph">Komponenten <code>FCrudButton</code> är borttagen.</p>
+<p class="docs-paragraph">För enskilda knappar använder du <a href="../../../components/button.html">FButton</a>.
+När du placerar tabellen i <code>FCrudDataset</code> kopplar du menyåtgärdernas <code>onClick</code> till <code>updateItem(item)</code> och <code>deleteItem(item)</code>, som du når via en template ref på <code>FCrudDataset</code>.
+Utanför tabeller får du samma funktioner som slot-props i defaultslotten.</p>
+<p class="docs-paragraph">Så ersätter du propsen:</p>
+<ul>
+<li><code>action</code> ersätts med <code>updateItem(item)</code> eller <code>deleteItem(item)</code> i menyåtgärdens <code>onClick</code> eller knappens <code>@click</code>.</li>
+<li><code>icon</code> anges på en action i <code>menu</code>-kolumnen eller med <code>icon-left</code> på <code>FButton</code>.</li>
+<li><code>label</code> anges med actionens <code>label</code> eller som knappens text i <code>FButton</code>.</li>
+</ul>
+<h3 id="tabell" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#tabell">Tabell</a></h3><p class="docs-paragraph">Se <a href="../../../components/table-and-list/fcruddataset.html#tabell-med-redigering">Tabell med redigering</a> för ett exempel med <code>menu</code>-kolumn.</p>
+<h3 id="lista_och_ovrigt" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#lista_och_ovrigt">Lista och övrigt</a></h3>
+                <div
+                    id="example-645c53"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-crud-dataset&gt;
+<span class="hljs-deletion">-    &lt;template #default&gt;</span>
+<span class="hljs-addition">+    &lt;template #default=&quot;{ updateItem, deleteItem }&quot;&gt;</span>
+         &lt;f-list :items&gt;
+             &lt;template #default=&quot;{ item }&quot;&gt;
+<span class="hljs-deletion">-                &lt;f-crud-button action=&quot;modify&quot; :item icon&gt;</span>
+<span class="hljs-addition">+                &lt;f-button</span>
+<span class="hljs-addition">+                    icon-left=&quot;pen&quot;</span>
+<span class="hljs-addition">+                    size=&quot;small&quot;</span>
+<span class="hljs-addition">+                    variant=&quot;tertiary&quot;</span>
+<span class="hljs-addition">+                    @click=&quot;updateItem(item)&quot;</span>
+<span class="hljs-addition">+                &gt;</span>
+                     Ändra {{ item.name }}
+<span class="hljs-deletion">-                &lt;/f-crud-button&gt;</span>
+<span class="hljs-deletion">-                &lt;f-crud-button action=&quot;delete&quot; :item icon&gt;</span>
+<span class="hljs-addition">+                &lt;/f-button&gt;</span>
+<span class="hljs-addition">+                &lt;f-button</span>
+<span class="hljs-addition">+                    icon-left=&quot;trashcan&quot;</span>
+<span class="hljs-addition">+                    size=&quot;small&quot;</span>
+<span class="hljs-addition">+                    variant=&quot;tertiary&quot;</span>
+<span class="hljs-addition">+                    @click=&quot;deleteItem(item)&quot;</span>
+<span class="hljs-addition">+                &gt;</span>
+                     Ta bort {{ item.name }}
+<span class="hljs-deletion">-                &lt;/f-crud-button&gt;</span>
+<span class="hljs-addition">+                &lt;/f-button&gt;</span>
+             &lt;/template&gt;
+         &lt;/f-list&gt;
+     &lt;/template&gt;
+</code></pre>
+                </div>
+            <h2 id="ftable" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#ftable">FTable</a></h2><p class="docs-paragraph">I <strong>FKUI v7</strong> har egenskapen <code>text</code> bytt namn till <code>screenreaderText</code> för tabellkolumner av typen <code>&quot;button&quot;</code> och <code>&quot;menu&quot;</code> i <code>FTable</code>. Ändringen förtydligar att strängen som returneras endast används som tillgänglighetstext för skärmläsare och inte visas visuellt i cellen.</p>
 <h3 id="sammanfattning_av_andringar" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#sammanfattning_av_andringar">Sammanfattning av ändringar</a></h3><h3 id="migrering_av_kolumndefinitioner" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#migrering_av_kolumndefinitioner">Migrering av kolumndefinitioner</a></h3><p class="docs-paragraph">Uppdatera samtliga kolumner med <code>type: &quot;button&quot;</code> eller <code>type: &quot;menu&quot;</code> i <code>defineTableColumns</code> genom att byta ut <code>text</code> mot <code>screenreaderText</code>:</p>
 
                 <div
-                    id="example-440c42"
+                    id="example-b4da41"
                     class="code-preview code-preview--default"
                     
                     
@@ -6377,7 +6403,7 @@ Run TypeScript type-checking (<code>tsc</code>) to verify no remaining type erro
         <h2 id="fmodal" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fmodal"><code>FModal</code></a></h2><p class="docs-paragraph">Propen <code>size</code> stödjer inte längre aliaset <code>fullscreen</code> och är ersatt med <code>fullwidth</code>.</p>
 
                 <div
-                    id="example-39ffbb"
+                    id="example-5ce9c7"
                     class="code-preview code-preview--default"
                     
                     
@@ -6408,7 +6434,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="fsortfilterdataset" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fsortfilterdataset"><code>FSortFilterDataset</code></a></h2><p class="docs-paragraph">Propen <code>placeholderFilter</code> är borttagen och ersatt med <code>filterLabel</code>.</p>
 
                 <div
-                    id="example-f87c3e"
+                    id="example-159b87"
                     class="code-preview code-preview--default"
                     
                     
@@ -6435,7 +6461,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="getlegacyinternalkey" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#getlegacyinternalkey"><code>getLegacyInternalKey()</code></a></h2><p class="docs-paragraph">Använd <code>findItemIdentifier()</code> om objektet kan sakna en identifierare, eller <code>getItemIdentifier()</code> om identifieraren är garanterad att finnas, istället för att hämta ut nyckeln.</p>
 
                 <div
-                    id="example-1a8ee8"
+                    id="example-709311"
                     class="code-preview code-preview--default"
                     
                     
@@ -6461,7 +6487,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="tablescroll" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tablescroll"><code>TableScroll</code></a></h2><p class="docs-paragraph"><code>FDataTable</code> och <code>FInteractiveTable</code> stödjer inte längre <code>TableScroll.VERTICAL</code> och <code>TableScroll.BOTH</code>.</p>
 
                 <div
-                    id="example-e68626"
+                    id="example-5d6868"
                     class="code-preview code-preview--default"
                     
                     
@@ -6497,7 +6523,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
 <p class="docs-paragraph">Om du vill att det första steget ska få fokus när guiden öppnas, lägg till <code>focus-initial-step</code>:</p>
 
                 <div
-                    id="example-91ff89"
+                    id="example-9eb111"
                     class="code-preview code-preview--default"
                     
                     
@@ -6516,7 +6542,7 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
 <p class="docs-paragraph">Om du vill visa fellistan, lägg till <code>use-error-list</code> på <code>f-wizard-step</code>:</p>
 
                 <div
-                    id="example-90ee90"
+                    id="example-f67947"
                     class="code-preview code-preview--default"
                     
                     
@@ -6598,9 +6624,9 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/57f43541ac10d79b5d7db466d764f1ebb16f4719">57f4354</a>)<br />
+<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/d4cc48ab32e317f7fe39ef0f43e00370be422d88">d4cc48a</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1850">PR 1850</a><br />
-       <span class="version-text-block">2026-11-18 14:56</span>
+       <span class="version-text-block">2026-11-19 07:37</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
