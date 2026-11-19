@@ -12,11 +12,15 @@ export {
     isContextMenuTextItem,
 } from "./FContextMenu";
 export {
-    type ActivateItemCallback,
-    type ActivateItemInterface,
-    ActivateItemInjected,
+    type FCrudDatasetCommitCreate,
+    type FCrudDatasetCommitDelete,
+    type FCrudDatasetCommitUpdate,
+    type FCrudDatasetCreateCallback,
+    type FCrudDatasetDeleteCallback,
+    type FCrudDatasetPresenter,
+    type FCrudDatasetUpdateCallback,
     FCrudDataset,
-    Operation,
+    useCrudDatasetPresenter,
 } from "./FCrudDataset";
 export { FDataTable } from "./FDataTable";
 export { FDatepickerField } from "./FDatepickerField";

@@ -1,42 +1,15 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { type FruitData, fruits as initialFruits } from "./fruit-data";
-import { FButton, FCrudDataset, FList, FStaticField, FTextField, FTextareaField } from "@fkui/vue";
+import { useFruitCrud } from "./use-fruit-crud";
+import { FButton, FCrudDataset, FList } from "@fkui/vue";
 
 const fruits = ref<FruitData[]>(initialFruits);
-
-// Förpopulera ett objekt med värden
-function beforeCreate(): FruitData {
-    return {
-        id: String(getMaxId() + 1),
-        name: "",
-        origin: "",
-        description: "",
-    };
-}
-
-function getMaxId(): number {
-    return fruits.value.reduce((max, item) => {
-        return Math.max(max, Math.trunc(Number(item.id)));
-    }, 0);
-}
-
-function saveModel(row: FruitData): void {
-    console.log("Post model to backend", row);
-}
+const { onCreate, onUpdate, onDelete } = useFruitCrud(fruits);
 </script>
 
 <template>
-    <f-crud-dataset
-        v-model="fruits"
-        :before-create
-        add-new-modal-header="Lägg till ny frukt"
-        modify-modal-header="Ändra land"
-        delete-modal-header="Vill du ta bort frukten?"
-        @created="saveModel"
-        @updated="saveModel"
-        @deleted="saveModel"
-    >
+    <f-crud-dataset v-model="fruits" :on-create :on-update :on-delete>
         <template #default="{ updateItem, deleteItem }">
             <f-list :items="fruits" key-attribute="id">
                 <template #default="{ item }">
@@ -74,42 +47,5 @@ function saveModel(row: FruitData): void {
             </f-list>
         </template>
         <template #add-button> Lägg till ny <span class="sr-only"> frukt </span> </template>
-        <template #add="{ item }">
-            <f-text-field
-                v-model="item.name"
-                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
-                type="text"
-            >
-                Namn
-            </f-text-field>
-            <f-text-field
-                v-model="item.origin"
-                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
-                type="text"
-            >
-                Land
-            </f-text-field>
-            <f-textarea-field v-model="item.description" v-validation.required>
-                Beskrivning
-            </f-textarea-field>
-        </template>
-
-        <template #modify="{ item }">
-            <f-static-field v-model="item.name" type="text">
-                <template #label> Namn </template>
-                <template #default> {{ item.name }}</template>
-            </f-static-field>
-            <f-textarea-field
-                v-model="item.origin"
-                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
-                type="text"
-            >
-                Land
-            </f-textarea-field>
-        </template>
-
-        <template #delete="{ item }">
-            Vill du verkligen ta bort frukten "{{ item.name }}" med ID {{ item.id }}
-        </template>
     </f-crud-dataset>
 </template>

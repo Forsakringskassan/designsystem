@@ -1,9 +1,11 @@
 import FTableCrudDatasetExample from "./FTableCrudDatasetExample.vue";
-import { FCrudDatasetPageObject } from "@fkui/vue/cypress";
+import FTableCrudDatasetNestedExample from "./FTableCrudDatasetNestedExample.vue";
+import { FCrudDatasetPageObject, FModalPageObject } from "@fkui/vue/cypress";
 import { FTablePageObject } from "@fkui/vue/cypress";
 
 const crudDataset = new FCrudDatasetPageObject();
 const table = new FTablePageObject();
+const modal = new FModalPageObject(".modal");
 
 describe("FTableCrudDatasetExample", () => {
     beforeEach(() => {
@@ -36,7 +38,7 @@ describe("FTableCrudDatasetExample", () => {
         cy.get(".modal input").eq(1).clear();
         cy.get(".modal input").eq(1).type("Beskrivning för ärende D");
 
-        crudDataset.confirmButton().click();
+        modal.primaryButton().click();
 
         table.cell({ row: 4, col: 1 }).should("contain.text", "Ärende D");
         table
@@ -56,7 +58,7 @@ describe("FTableCrudDatasetExample", () => {
         cy.get(".modal input").eq(1).clear();
         cy.get(".modal input").eq(1).type("Uppdaterad beskrivning");
 
-        crudDataset.confirmButton().click();
+        modal.primaryButton().click();
 
         table
             .cell({ row: 1, col: 1 })
@@ -72,7 +74,7 @@ describe("FTableCrudDatasetExample", () => {
 
         table.contextmenuItems().eq(1).click();
 
-        crudDataset.confirmButton().click();
+        modal.primaryButton().click();
 
         cy.contains(".table-ng tbody tr", "Ärende B").should("not.exist");
         cy.contains(".table-ng tbody tr", "Beskrivning för ärende B").should(
@@ -83,14 +85,67 @@ describe("FTableCrudDatasetExample", () => {
         table.cell({ row: 2, col: 1 }).should("contain.text", "Ärende C");
     });
 
+    it("should move focus to row above after deleting a row", () => {
+        table.cell({ row: 2, col: 3 }).click();
+        table.contextmenuItems().eq(1).click();
+        modal.primaryButton().click();
+
+        cy.contains(".table-ng tbody tr", "Ärende B").should("not.exist");
+        table.cell({ row: 1, col: 3 }).find("button").should("have.focus");
+    });
+
+    it("should move focus to row below after deleting the first row", () => {
+        table.cell({ row: 1, col: 3 }).click();
+        table.contextmenuItems().eq(1).click();
+        modal.primaryButton().click();
+
+        cy.contains(".table-ng tbody tr", "Ärende A").should("not.exist");
+        table.cell({ row: 1, col: 1 }).should("contain.text", "Ärende B");
+        table.cell({ row: 1, col: 3 }).find("button").should("have.focus");
+    });
+
     it("should restore focus to menu button after closing modify modal", () => {
         table.cell({ row: 1, col: 3 }).click();
         table.contextmenu().should("exist");
 
         table.contextmenuItems().eq(0).click();
 
-        crudDataset.cancelButton().click();
+        modal.secondaryButton().click();
 
+        table.cell({ row: 1, col: 3 }).find("button").should("have.focus");
+    });
+});
+
+describe("FTableCrudDatasetNestedExample", () => {
+    beforeEach(() => {
+        cy.mount(FTableCrudDatasetNestedExample);
+    });
+
+    it("should remove an expanded child row", () => {
+        table.expandButton(1).click();
+        table.cell({ row: 3, col: 2 }).should("contain.text", "1_2");
+
+        table.cell({ row: 3, col: 3 }).click();
+
+        cy.contains(".table-ng tbody tr", "1_2").should("not.exist");
+        table.cell({ row: 2, col: 2 }).should("contain.text", "1_1");
+        table.cell({ row: 3, col: 2 }).should("contain.text", "2");
+    });
+
+    it("should move focus to row above after removing an expanded child row", () => {
+        table.expandButton(1).click();
+        table.cell({ row: 3, col: 3 }).click();
+
+        cy.contains(".table-ng tbody tr", "1_2").should("not.exist");
+        table.cell({ row: 2, col: 3 }).find("button").should("have.focus");
+    });
+
+    it("should remove a parent row with its children", () => {
+        table.expandButton(1).click();
+        table.cell({ row: 1, col: 3 }).click();
+
+        cy.contains(".table-ng tbody tr", "1_1").should("not.exist");
+        table.cell({ row: 1, col: 2 }).should("contain.text", "2");
         table.cell({ row: 1, col: 3 }).find("button").should("have.focus");
     });
 });

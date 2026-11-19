@@ -23,7 +23,7 @@ import {
     setItemIdentifiers,
 } from "../../utils";
 import { FCheckboxField } from "../FCheckboxField";
-import { ActivateItemInjected } from "../FCrudDataset";
+import { useCrudDatasetPresenter } from "../FCrudDataset";
 import { type FPaginateDatasetPageEventDetail } from "../FPaginator";
 
 /* eslint-disable-next-line vue/define-props-declaration -- technical debt */
@@ -121,10 +121,20 @@ const emit = defineEmits<{
 }>();
 const $t = useTranslate();
 const slots = useSlots();
-const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete } = ActivateItemInjected<T>();
 
 /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
 const internalKey = getLegacyInternalKey<T>();
+
+/* only selectable lists with checkboxes move focus on add/remove */
+if (props.selectable && props.checkbox) {
+    useCrudDatasetPresenter<T>({
+        afterCreate: callbackAfterItemAdd,
+        handleDelete(item, commit) {
+            callbackBeforeItemDelete(item);
+            commit();
+        },
+    });
+}
 
 const selectedItems: Ref<T[]> = ref([]);
 const activeItem = ref<T | undefined>(undefined);
@@ -177,8 +187,6 @@ onMounted(() => {
     if (!slots.screenreader) {
         throw new Error('Slot "screenreader" is required when having "selectable" & "checkbox" option.');
     }
-    registerCallbackAfterItemAdd(callbackAfterItemAdd);
-    registerCallbackBeforeItemDelete(callbackBeforeItemDelete);
 });
 
 function getLiElements(): HTMLElement[] {

@@ -1,6 +1,7 @@
 import {
     FCrudDatasetPageObject,
     FListPageObject,
+    FModalPageObject,
     FTextareaFieldPageObject,
 } from "@fkui/vue/cypress";
 
@@ -16,48 +17,52 @@ describe("FCrudDataset", () => {
         crudDataset.addButton().should("contain.text", "Lägg till");
     });
 
-    it("should provide a page object that can access form objects", () => {
+    it("should open modal with form objects when adding", () => {
         const crudDataset = new FCrudDatasetPageObject(
             '[data-test="f-crud-dataset-list-example"]',
         );
+        const modal = new FModalPageObject(".modal");
 
         crudDataset.addButton().click();
 
         const textarea = new FTextareaFieldPageObject(
-            `${crudDataset.form.selector} .textarea-field`,
+            `${modal.selector} .textarea-field`,
         );
 
         textarea.label.el().should("contain.text", "Beskrivning");
     });
 
-    it("should provide a page object that can access cancel button", () => {
+    it("should open modal with cancel button when adding", () => {
         const crudDataset = new FCrudDatasetPageObject(
             '[data-test="f-crud-dataset-list-example"]',
         );
+        const modal = new FModalPageObject(".modal");
 
         crudDataset.addButton().click();
-        crudDataset.cancelButton().should("contain.text", "Avbryt");
+        modal.secondaryButton().should("contain.text", "Avbryt");
     });
 
-    it("should provide a page object that can access confirm button", () => {
+    it("should open modal with confirm button when adding", () => {
         const crudDataset = new FCrudDatasetPageObject(
             '[data-test="f-crud-dataset-list-example"]',
         );
+        const modal = new FModalPageObject(".modal");
 
         crudDataset.addButton().click();
-        crudDataset.confirmButton().should("contain.text", "Lägg till");
+        modal.primaryButton().should("contain.text", "Lägg till");
     });
 
     it("should delete items", () => {
         const crudDataset = new FCrudDatasetPageObject(
             '[data-test="f-crud-dataset-list-example"]',
         );
+        const modal = new FModalPageObject(".modal");
 
         const list = new FListPageObject(`${crudDataset.selector} .list`);
         list.listItems().should("have.length", 4);
         const deleteButton = list.listItem(0).el().find("button").eq(1);
         deleteButton.click();
-        crudDataset.confirmButton().click();
+        modal.primaryButton().click();
         list.listItems().should("have.length", 3);
     });
 });

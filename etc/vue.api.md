@@ -32,7 +32,6 @@ import { FYear } from '@fkui/date';
 import { GlobalComponents } from 'vue';
 import { GlobalDirectives } from 'vue';
 import { HTMLAttributes } from 'vue';
-import { IfAny } from '@vue/shared';
 import { InjectionKey } from 'vue';
 import { MaybeRef } from 'vue';
 import { MaybeRefOrGetter } from 'vue';
@@ -59,7 +58,6 @@ import { Slot } from 'vue';
 import { Slots } from 'vue';
 import { StackHandle } from '@fkui/logic';
 import { TranslateFunction } from '@fkui/logic';
-import { UnwrapRef } from 'vue';
 import { ValidatableHTMLElement } from '@fkui/logic';
 import { ValidationConfigUpdateDetail } from '@fkui/logic';
 import { ValidatorConfigs } from '@fkui/logic';
@@ -70,22 +68,6 @@ import { WeekdayNaming } from '@fkui/date';
 
 // @internal (undocumented)
 export function actionFromKeyboardEvent(event: KeyboardEvent): MenuAction | null;
-
-// @public (undocumented)
-export type ActivateItemCallback<T> = (item: T) => void;
-
-// @public (undocumented)
-export function ActivateItemInjected<T>(): ActivateItemInterface<T>;
-
-// @public (undocumented)
-export interface ActivateItemInterface<T> {
-    // (undocumented)
-    registerCallbackAfterItemAdd(this: void, callback: ActivateItemCallback<T>): void;
-    // (undocumented)
-    registerCallbackBeforeItemDelete(this: void, callback: ActivateItemCallback<T>): void;
-    // (undocumented)
-    setNestedKey(this: void, key: keyof T | null | undefined): void;
-}
 
 // @public
 export type AnimationCallback = (expand: boolean) => void | Promise<void>;
@@ -292,6 +274,31 @@ export const FContextMenu: typeof __VLS_export_7;
 //
 // @public (undocumented)
 export const FCrudDataset: typeof __VLS_export_8;
+
+// @public
+export type FCrudDatasetCommitCreate<T> = (this: void, item: T, alert?: string) => void;
+
+// @public
+export type FCrudDatasetCommitDelete = (this: void, alert?: string) => void;
+
+// @public
+export type FCrudDatasetCommitUpdate<T> = (this: void, item: T, alert?: string) => void;
+
+// @public
+export type FCrudDatasetCreateCallback<T> = (this: void, commit: FCrudDatasetCommitCreate<T>) => void | Promise<void>;
+
+// @public
+export type FCrudDatasetDeleteCallback<T> = (this: void, item: T, commit: FCrudDatasetCommitDelete) => void | Promise<void>;
+
+// @public
+export interface FCrudDatasetPresenter<T> {
+    afterCreate?(item: T): void;
+    handleDelete?(item: T, commit: () => void): void;
+    nestedKey?: MaybeRefOrGetter<keyof T | null | undefined>;
+}
+
+// @public
+export type FCrudDatasetUpdateCallback<T> = (this: void, item: T, commit: FCrudDatasetCommitUpdate<T>) => void | Promise<void>;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_55" needs to be exported by the entry point index.d.ts
 //
@@ -1284,18 +1291,6 @@ export interface OpenModalModaloptions {
 }
 
 // @public (undocumented)
-export enum Operation {
-    // (undocumented)
-    ADD = 0,
-    // (undocumented)
-    DELETE = 1,
-    // (undocumented)
-    MODIFY = 2,
-    // (undocumented)
-    NONE = 3
-}
-
-// @public (undocumented)
 export interface PanelLayoutComposable {
     // (undocumented)
     gridClasses(): Record<string, boolean>;
@@ -1684,6 +1679,9 @@ export function useCombobox(inputRef: Readonly<ShallowRef<HTMLInputElement | nul
     selectOption: (value: string) => void;
     closeDropdown: () => void;
 };
+
+// @public
+export function useCrudDatasetPresenter<T>(presenter: FCrudDatasetPresenter<T>): void;
 
 // @public (undocumented)
 export interface UseDetailsPanel<T = unknown> {

@@ -103,7 +103,7 @@ describe("FCrudDataset", () => {
             it("should always show buttons left to right", () => {
                 config.buttonOrder = FKUIConfigButtonOrder.LEFT_TO_RIGHT;
                 cy.mount(FCrudDatasetTableExample);
-                table.cell({ row: 1, col: 5 }).click();
+                table.cell({ row: 1, col: 4 }).click();
                 table.contextmenuItems().eq(0).click();
                 const modal = new FModalPageObject(".modal");
                 modal
@@ -118,7 +118,7 @@ describe("FCrudDataset", () => {
             it("should ignore button order", () => {
                 config.buttonOrder = FKUIConfigButtonOrder.RIGHT_TO_LEFT;
                 cy.mount(FCrudDatasetTableExample);
-                table.cell({ row: 1, col: 5 }).click();
+                table.cell({ row: 1, col: 4 }).click();
                 table.contextmenuItems().eq(0).click();
                 const modal = new FModalPageObject(".modal");
                 modal
@@ -135,7 +135,7 @@ describe("FCrudDataset", () => {
             it("should respect button order", () => {
                 config.buttonOrder = FKUIConfigButtonOrder.LEFT_TO_RIGHT;
                 cy.mount(FCrudDatasetTableExample);
-                table.cell({ row: 1, col: 5 }).click();
+                table.cell({ row: 1, col: 4 }).click();
                 table.contextmenuItems().eq(1).click();
                 const modal = new FModalPageObject(".modal");
                 modal
@@ -150,7 +150,7 @@ describe("FCrudDataset", () => {
             it("should respect button order", () => {
                 config.buttonOrder = FKUIConfigButtonOrder.RIGHT_TO_LEFT;
                 cy.mount(FCrudDatasetTableExample);
-                table.cell({ row: 1, col: 5 }).click();
+                table.cell({ row: 1, col: 4 }).click();
                 table.contextmenuItems().eq(1).click();
                 const modal = new FModalPageObject(".modal");
                 modal
