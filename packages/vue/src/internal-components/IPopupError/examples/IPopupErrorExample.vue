@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FButton, FTable, FValidationForm, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { FButton, FTable, FValidationForm, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     id: string;
@@ -7,11 +7,11 @@ interface Row {
     postnr: string;
 }
 
-const rows = useDatasetRef<Row>([
+const rows: Row[] = [
     { id: "1", email: "", postnr: "" },
     { id: "2", email: "", postnr: "" },
     { id: "3", email: "", postnr: "" },
-]);
+];
 const columns = defineTableColumns<Row>([
     {
         type: "text:email",

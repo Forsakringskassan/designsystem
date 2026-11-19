@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { setItemIdentifiers, useDatasetRef } from "../../utils";
+import { setItemIdentifiers } from "../../utils";
 import { getMetaRows } from "./get-meta-rows";
 
 const rows = [
@@ -22,8 +22,7 @@ const rows = [
 
 it("should not add nested metadata when not expandable", () => {
     expect.assertions(3);
-    const dataset = useDatasetRef(rows);
-    const keyedRows = setItemIdentifiers(dataset.value, "name");
+    const keyedRows = setItemIdentifiers(rows, "name");
     const result = getMetaRows(keyedRows, new Set());
 
     expect(result[0].level).toBeUndefined();
@@ -33,8 +32,7 @@ it("should not add nested metadata when not expandable", () => {
 
 it("should add nested metadata when expandable", () => {
     expect.assertions(3);
-    const dataset = useDatasetRef(rows, "expandable");
-    const keyedRows = setItemIdentifiers(dataset.value, "name", "expandable");
+    const keyedRows = setItemIdentifiers(rows, "name", "expandable");
     const result = getMetaRows(keyedRows, new Set(), "expandable");
 
     expect(result[0].level).toBe(1);

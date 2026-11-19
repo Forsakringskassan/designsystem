@@ -114,6 +114,48 @@ Rename `text` to `screenreaderText` on matching column objects.
 Run TypeScript type-checking (`tsc`) to verify no remaining type errors exist.
 :::
 
+## Datamängder och radborttagning
+
+Det metadata-baserade datamängds-API:et är borttaget.
+Det omfattar typen `Dataset<T>`, typerna `DatasetArrayMetadata` och `DatasetElementMetadata` samt funktionerna `useDatasetRef()`, `datasetIterator()` och `getDatasetMetadata()`.
+
+Använd vanliga arrayer eller Vue-refar i stället för `useDatasetRef()`.
+För nästlade tabellrader anger du egenskapen med `expandable-attribute`:
+
+```diff
+-const rows = useDatasetRef<Row>(initialRows, "children");
++const rows = ref<Row[]>(initialRows);
+```
+
+```html
+<f-table :rows :columns expandable-attribute="children" />
+```
+
+Funktionen `removeDatasetRows()` är också borttagen.
+Ersätt den med {@link removeTableRows `removeTableRows()`}.
+Ange `expandableAttribute` när rader ska kunna tas bort från nästlade arrayer:
+
+```diff
+-removeDatasetRows(rows, row);
++removeTableRows(rows, row, "children");
+```
+
+::: details 🤖 Prompt för AI Agenter
+
+Sök igenom applikationen efter `Dataset<T>`, `DatasetArrayMetadata`, `DatasetElementMetadata`, `useDatasetRef()`, `datasetIterator()`, `getDatasetMetadata()` och `removeDatasetRows()`.
+
+Migrera till vanliga arrayer eller Vue-refar.
+Använd `ref<T[]>(...)` när raderna behöver vara reaktiva och en vanlig array när de inte ändras.
+Ta bort beroenden av datasetmetadata och uppdatera importer och typannoteringar.
+För nästlade rader i `FTable`, ange egenskapen med `expandable-attribute`.
+Ersätt `removeDatasetRows()` med `removeTableRows()` och ange egenskapen för nästlade rader när det behövs.
+Om befintlig funktionalitet använder metadata för att visa positioner, beräkna positionen utifrån applikationens data och bevara den avsedda presentationen.
+
+Verifiera resultatet genom att bygga projektet och köra relevanta tester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.
+
+:::
+
 ## `FModal`
 
 Propen `size` stödjer inte längre aliaset `fullscreen` och är ersatt med `fullwidth`.
