@@ -1,43 +1,29 @@
-<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
-<script lang="ts">
-import { defineComponent } from "vue";
-import { type FruitData, fruits } from "./fruit-data";
+<script setup lang="ts">
+import { ref } from "vue";
+import { type FruitData, fruits as initialFruits } from "./fruit-data";
 import { FButton, FCrudDataset, FList, FStaticField, FTextField, FTextareaField } from "@fkui/vue";
 
-export default defineComponent({
-    components: {
-        FButton,
-        FCrudDataset,
-        FList,
-        FStaticField,
-        FTextField,
-        FTextareaField,
-    },
-    data() {
-        return {
-            fruits,
-        };
-    },
-    methods: {
-        // Förpopulera ett objekt med värden
-        beforeCreate(): FruitData {
-            return {
-                id: String(this.getMaxId() + 1),
-                name: "",
-                origin: "",
-                description: "",
-            };
-        },
-        getMaxId() {
-            return this.fruits.reduce((max, item) => {
-                return Math.max(max, Math.trunc(Number(item.id)));
-            }, 0);
-        },
-        saveModel(row: FruitData) {
-            console.log("Post model to backend", row);
-        },
-    },
-});
+const fruits = ref<FruitData[]>(initialFruits);
+
+// Förpopulera ett objekt med värden
+function beforeCreate(): FruitData {
+    return {
+        id: String(getMaxId() + 1),
+        name: "",
+        origin: "",
+        description: "",
+    };
+}
+
+function getMaxId(): number {
+    return fruits.value.reduce((max, item) => {
+        return Math.max(max, Math.trunc(Number(item.id)));
+    }, 0);
+}
+
+function saveModel(row: FruitData): void {
+    console.log("Post model to backend", row);
+}
 </script>
 
 <template>
