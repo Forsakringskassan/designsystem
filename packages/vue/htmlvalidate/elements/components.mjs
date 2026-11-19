@@ -1091,17 +1091,43 @@ export default defineMetadata({
     "f-crud-dataset": {
         flow: true,
         interactive: true,
-        slots: ["default", "add", "delete", "modify", "add-button", "buttons"],
-        requiredSlots: ["default"],
+        slots: ["default", "add-button", "buttons"],
         attributes: {
-            value: ["/.*/"],
-            beforeCreate: ["/.*/"],
-            "form-modal-size": {
-                enum: ["small", "medium", "large", "fullwidth"],
-            },
-            "add-button-position": {
+            "button-position": {
                 required: false,
                 enum: ["bottom", "top"],
+            },
+            "before-create": {
+                deprecated:
+                    "prop has been removed, open modals from `onCreate`, `onUpdate` or `onDelete` instead",
+            },
+            "before-submit": {
+                deprecated:
+                    "prop has been removed, open modals from `onCreate`, `onUpdate` or `onDelete` instead",
+            },
+            "before-validation": {
+                deprecated:
+                    "prop has been removed, open modals from `onCreate`, `onUpdate` or `onDelete` instead",
+            },
+            "on-cancel": {
+                deprecated:
+                    "prop has been removed, open modals from `onCreate`, `onUpdate` or `onDelete` instead",
+            },
+            "add-new-modal-header": {
+                deprecated:
+                    "prop has been removed, open modals from `onCreate`, `onUpdate` or `onDelete` instead",
+            },
+            "modify-modal-header": {
+                deprecated:
+                    "prop has been removed, open modals from `onCreate`, `onUpdate` or `onDelete` instead",
+            },
+            "delete-modal-header": {
+                deprecated:
+                    "prop has been removed, open modals from `onCreate`, `onUpdate` or `onDelete` instead",
+            },
+            "form-modal-size": {
+                deprecated:
+                    "prop has been removed, open modals from `onCreate`, `onUpdate` or `onDelete` instead",
             },
         },
     },

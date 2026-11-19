@@ -1,8 +1,8 @@
 import FTableCrudEdit from "./FTableCrudEdit.vue";
-import { FCrudDatasetPageObject, FTablePageObject } from "@fkui/vue/cypress";
+import { FModalPageObject, FTablePageObject } from "@fkui/vue/cypress";
 
 const table = new FTablePageObject();
-const crud = new FCrudDatasetPageObject();
+const modal = new FModalPageObject(".modal");
 
 it("should have working (c)rud", () => {
     // read
@@ -15,13 +15,13 @@ it("should have working (c)rud", () => {
     table.contextmenuItems().eq(0).click();
     cy.get(".modal input").eq(0).clear();
     cy.get(".modal input").eq(0).type("888");
-    crud.confirmButton().click();
+    modal.primaryButton().click();
     table.cell({ row: 1, col: 3 }).should("contain.text", "888");
 
     // delete
     table.cell({ row: 1, col: 4 }).click();
     table.contextmenu().should("exist");
     table.contextmenuItems().eq(1).click();
-    crud.confirmButton().click();
+    modal.primaryButton().click();
     table.rows().should("have.length", 2);
 });

@@ -1,837 +1,665 @@
 import "html-validate/vitest";
-import { type PropType, defineComponent, h } from "vue";
+import { defineComponent, nextTick } from "vue";
 import * as logic from "@fkui/logic";
-import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import {
-    type VueWrapper,
-    flushPromises,
-    mount,
-    shallowMount,
-} from "@vue/test-utils";
-import { afterAll, afterEach, describe, expect, it, vi } from "vitest";
-import { ValidationPlugin } from "../../plugins";
-import { type ListItem } from "../../types";
-import {
-    type FModalSize,
-    FFormModal,
-    FFormModalAction,
-    FModal,
-} from "../FModal";
+import { type VueWrapper, flushPromises, mount } from "@vue/test-utils";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { FTableButton } from "../FTableButton";
-import { FTextField } from "../FTextField";
-import { type FValidationFormCallback } from "../FValidationForm";
 import FCrudDataset from "./FCrudDataset.vue";
 
-vi.useFakeTimers();
+interface Item {
+    id: number;
+    name: string;
+}
 
 afterEach(() => {
-    vi.clearAllTimers();
     vi.clearAllMocks();
 });
 
-afterAll(() => {
-    vi.useRealTimers();
-});
-
-const ADD_TEMPLATE = /* HTML */ `
-    <template #add="{ item }">
-        <span> add </span>
-        <input id="id-input" type="number" v-model.number="item.id" />
-        <input id="name-input" type="text" v-model="item.name" />
-    </template>
+const TABLE = /* HTML */ `
+    <table>
+        <tbody>
+            <tr v-for="item in items" :key="item.id">
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>
+                    <f-table-button
+                        :id="'modify-' + item.id"
+                        icon="pen"
+                        label
+                        @click="updateItem(item)"
+                    >
+                        Ändra
+                    </f-table-button>
+                </td>
+                <td>
+                    <f-table-button
+                        :id="'delete-' + item.id"
+                        icon="trashcan"
+                        label
+                        @click="deleteItem(item)"
+                    >
+                        Ta bort
+                    </f-table-button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 `;
-
-const ADD_TEMPLATE_REQUIRED = /* HTML */ `
-    <template #add="{ item }">
-        <span> add </span>
-        <f-text-field
-            v-validation.required
-            id="id-input-required"
-            type="number"
-            v-model.number="item.id"
-        ></f-text-field>
-        <f-text-field
-            v-validation.required
-            id="name-input-required"
-            type="text"
-            v-model="item.name"
-        ></f-text-field>
-        <input />
-    </template>
-`;
-
-const MODIFY_TEMPLATE = /* HTML */ `
-    <template #modify="{ item }">
-        <span> modify </span>
-        <input id="name-input" type="text" v-model="item.name" />
-        <input id="child-name-input" type="text" v-model="item.child.name" />
-    </template>
-`;
-
-const DELETE_TEMPLATE = /* HTML */ `
-    <template #delete="{ item }">
-        <span> delete </span>
-        {{ item.name }}?
-    </template>
-`;
-
-const TestComponent = defineComponent({
-    name: "TestComponent",
-    components: {
-        FCrudDataset,
-        FModal,
-        FTableButton,
-        FTextField,
-    },
-    props: {
-        beforeSubmit: {
-            type: Function as PropType<FValidationFormCallback>,
-            required: false,
-            default(): void {
-                /* do nothing */
-            },
-        },
-        beforeValidation: {
-            type: Function as PropType<FValidationFormCallback>,
-            required: false,
-            default(): void {
-                /* do nothing */
-            },
-        },
-        onCancel: {
-            type: Function as PropType<FValidationFormCallback>,
-            required: false,
-            default(): void {
-                /* do nothing */
-            },
-        },
-        formModalSize: {
-            type: String as PropType<FModalSize>,
-            required: false,
-            default: "small",
-        },
-    },
-    data() {
-        return {
-            items: [
-                { id: 1, name: "a", child: { name: "a1" } },
-                { id: 2, name: "b", child: { name: "b1" } },
-                { id: 3, name: "c", child: { name: "c1" } },
-            ],
-            createdEventData: null as null | ListItem,
-            updatedEventData: null as null | ListItem,
-            deletedEventData: null as null | ListItem,
-            showBeforeValidationMessage: false,
-        };
-    },
-    methods: {
-        onCreatedEvent(item: ListItem): void {
-            this.createdEventData = item;
-        },
-        onUpdatedEvent(item: ListItem): void {
-            this.updatedEventData = item;
-        },
-        onDeletedEvent(item: ListItem): void {
-            this.deletedEventData = item;
-        },
-    },
-});
 
 function createWrapper(
-    templates = new Array<string>(),
-    { stubs = [] as string[], props = {} } = {},
-): VueWrapper<InstanceType<typeof TestComponent>> {
-    const templateStart = `
-        <f-crud-dataset
-            v-model="items"
-            :on-cancel="onCancel"
-            :before-validation="beforeValidation"
-            :before-submit="beforeSubmit"
-            :form-modal-size="formModalSize"
-            @created="onCreatedEvent"
-            @updated="onUpdatedEvent"
-            @deleted="onDeletedEvent"
-        >
-            <template #default="{ updateItem, deleteItem }">
-                <div id="cancelMessage">Modalen har stängts</div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="item in items" :key="item.id">
-                            <td>{{ item.id }}</td>
-                            <td>{{ item.name }}</td>
-                            <td>
-                                <f-table-button
-                                    id="modifyButton"
-                                    icon="pen"
-                                    label
-                                    @click="updateItem(item)"
-                                >
-                                    Ändra
-                                </f-table-button>
-                            </td>
-                            <td>
-                                <f-table-button
-                                    id="deleteButton"
-                                    icon="trashcan"
-                                    label
-                                    @click="deleteItem(item)"
-                                >
-                                    Ta bort
-                                </f-table-button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </template>
-    `;
-    const templateEnd = "</f-crud-dataset>";
-
-    let templateMiddle = "";
-    for (const t of templates) {
-        templateMiddle += t;
-    }
-    const newComponent = defineComponent({
-        template: templateStart.concat(templateMiddle).concat(templateEnd),
-        extends: TestComponent,
-    });
-
-    return mount(newComponent, {
-        global: {
-            plugins: [ValidationPlugin],
-            stubs: ["FIcon", ...stubs],
+    props: Record<string, unknown> = {},
+    slots = "",
+    errorHandler?: (err: unknown) => void,
+): VueWrapper {
+    const TestComponent = defineComponent({
+        components: { FCrudDataset, FTableButton },
+        data() {
+            return {
+                items: [
+                    { id: 1, name: "a" },
+                    { id: 2, name: "b" },
+                ] as Item[],
+                props,
+            };
         },
-        props,
-        attachTo: createPlaceholderInDocument(),
-    }) as VueWrapper<InstanceType<typeof TestComponent>>;
-}
-
-async function submitForm(wrapper: VueWrapper): Promise<void> {
-    await wrapper.find(".modal form").trigger("submit");
-
-    // hasFormErrors in FValidationForm
-    await flushPromises(); // ValidationService.validateAllElements
-    await wrapper.vm.$nextTick(); // FValidationForm.hasFormErrors.$nextTick
-    vi.runAllTimers(); // FValidationForm.hasFormErrors.setTimeout
-
-    // hasFormErrors is called twice
-    await flushPromises();
-    await wrapper.vm.$nextTick();
-    vi.runAllTimers();
-
-    await wrapper.vm.$nextTick(); // Remove modal from DOM
-}
-
-describe("snapshot", () => {
-    it("should match snapshot", () => {
-        expect.assertions(1);
-        const wrapper = createWrapper([ADD_TEMPLATE], {
-            stubs: ["FFormModal", "FConfirmModal"],
-        });
-        expect(wrapper.element).toMatchSnapshot();
+        template: /* HTML */ `
+            <f-crud-dataset v-model="items" v-bind="props">
+                <template #default="{ updateItem, deleteItem }"
+                    >${TABLE}</template
+                >
+                ${slots}
+            </f-crud-dataset>
+        `,
     });
-});
+    return mount(TestComponent, {
+        global: { stubs: ["FIcon"], config: { errorHandler } },
+    });
+}
 
-it("should not show add button when #add slot is absent", () => {
+function getItems(wrapper: VueWrapper): Item[] {
+    return (wrapper.vm as unknown as { items: Item[] }).items;
+}
+
+it("should throw if no callback is given", () => {
     expect.assertions(1);
-    const template = /* HTML */ `
-        <f-crud-dataset>
-            <template #modify></template>
-            <template #buttons="{ buttonClasses }">
-                <button type="button" :class="buttonClasses">Foo</button>
-                <button type="button" :class="buttonClasses">Bar</button>
-            </template>
-        </f-crud-dataset>
-    `;
-    const TestComponent = defineComponent({
-        components: { FCrudDataset },
-        template,
+    const errorSpy = vi.spyOn(console, "warn").mockImplementation(() => {
+        /* do nothing */
     });
-    const wrapper = mount(TestComponent, { stubs: ["FConfirmModal", "FIcon"] });
-    const buttons = wrapper.findAll(".crud-dataset__add-button");
-    expect(buttons).toHaveLength(0);
+    expect(() => createWrapper()).toThrow(
+        "At least one of the following props must be set: onCreate, onUpdate or onDelete",
+    );
+    errorSpy.mockRestore();
 });
 
-it("should show add button when #add slot is present", () => {
-    expect.assertions(2);
-    const template = /* HTML */ `
-        <f-crud-dataset>
-            <template #add></template>
-        </f-crud-dataset>
-    `;
-    const TestComponent = defineComponent({
-        components: { FCrudDataset },
-        template,
+describe("add button", () => {
+    it("should not show add button when onCreate is absent", () => {
+        expect.assertions(1);
+        const wrapper = createWrapper({ onUpdate: vi.fn() });
+        expect(wrapper.findAll(".crud-dataset__add-button")).toHaveLength(0);
     });
-    const wrapper = mount(TestComponent, { stubs: ["FConfirmModal", "FIcon"] });
-    const buttons = wrapper.findAll(".crud-dataset__add-button");
-    expect(buttons).toHaveLength(1);
-    expect(buttons.at(0)?.text()).toBe("Lägg till ny");
+
+    it("should show add button when onCreate is present", () => {
+        expect.assertions(2);
+        const wrapper = createWrapper({ onCreate: vi.fn() });
+        const buttons = wrapper.findAll(".crud-dataset__add-button");
+        expect(buttons).toHaveLength(1);
+        expect(buttons.at(0)?.text()).toBe("Lägg till ny");
+    });
+
+    it("should show custom buttons when onCreate is present", () => {
+        expect.assertions(4);
+        const wrapper = createWrapper(
+            { onCreate: vi.fn() },
+            /* HTML */ `
+                <template #buttons="{ buttonClasses }">
+                    <button type="button" :class="buttonClasses">Foo</button>
+                    <button type="button" :class="buttonClasses">Bar</button>
+                </template>
+            `,
+        );
+        const buttons = wrapper.findAll(".crud-dataset__add-button");
+        expect(buttons).toHaveLength(3);
+        expect(buttons.at(0)?.text()).toBe("Lägg till ny");
+        expect(buttons.at(1)?.text()).toBe("Foo");
+        expect(buttons.at(2)?.text()).toBe("Bar");
+    });
 });
 
 describe("buttonPosition", () => {
-    it("should render add button at the top when position is top", () => {
-        expect.assertions(2);
-
-        const wrapper = createWrapper([ADD_TEMPLATE], {
-            stubs: ["FConfirmModal"],
-            props: {
-                buttonPosition: "top",
-            },
-        });
-
-        const addButton = wrapper.find(".crud-dataset__add-button");
-        const table = wrapper.find("table");
-
-        expect(addButton.exists()).toBe(true);
-        expect(addButton.element.compareDocumentPosition(table.element)).toBe(
-            Node.DOCUMENT_POSITION_FOLLOWING,
-        );
-    });
-
-    it("should render add button at the bottom when position is bottom", () => {
-        expect.assertions(2);
-
-        const wrapper = createWrapper([ADD_TEMPLATE], {
-            stubs: ["FConfirmModal"],
-            props: {
-                buttonPosition: "bottom",
-            },
-        });
-
-        const addButton = wrapper.find(".crud-dataset__add-button");
-        const table = wrapper.find("table");
-
-        expect(addButton.exists()).toBe(true);
-        expect(addButton.element.compareDocumentPosition(table.element)).toBe(
-            Node.DOCUMENT_POSITION_PRECEDING,
-        );
-    });
-
-    it("should render add button at the bottom by default", () => {
-        expect.assertions(2);
-
-        const wrapper = createWrapper([ADD_TEMPLATE], {
-            stubs: ["FConfirmModal"],
-        });
-
-        const addButton = wrapper.find(".crud-dataset__add-button");
-        const table = wrapper.find("table");
-
-        expect(addButton.exists()).toBe(true);
-        expect(addButton.element.compareDocumentPosition(table.element)).toBe(
-            Node.DOCUMENT_POSITION_PRECEDING,
-        );
-    });
-});
-
-it("should show custom buttons when #add slot is present", () => {
-    expect.assertions(4);
-    const template = /* HTML */ `
-        <f-crud-dataset>
-            <template #add></template>
-            <template #buttons="{ buttonClasses }">
-                <button type="button" :class="buttonClasses">Foo</button>
-                <button type="button" :class="buttonClasses">Bar</button>
-            </template>
-        </f-crud-dataset>
-    `;
-    const TestComponent = defineComponent({
-        components: { FCrudDataset },
-        template,
-    });
-    const wrapper = mount(TestComponent, { stubs: ["FConfirmModal", "FIcon"] });
-    const buttons = wrapper.findAll(".crud-dataset__add-button");
-    expect(buttons).toHaveLength(3);
-    expect(buttons.at(0)?.text()).toBe("Lägg till ny");
-    expect(buttons.at(1)?.text()).toBe("Foo");
-    expect(buttons.at(2)?.text()).toBe("Bar");
-});
-
-it("should show add modal when the add button is pressed", async () => {
-    expect.assertions(1);
-    const wrapper = createWrapper(
-        [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-        {
-            stubs: ["FConfirmModal"],
-        },
-    );
-    const button = wrapper.find(".crud-dataset__add-button");
-    await button.trigger("click");
-    expect(wrapper.find("form > span").text()).toBe("add");
-});
-
-it("should show modify modal when the modify button is pressed", async () => {
-    expect.assertions(1);
-    const wrapper = createWrapper(
-        [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-        {
-            stubs: ["FConfirmModal"],
-        },
-    );
-    const button = wrapper.find("#modifyButton");
-    await button.trigger("click");
-    expect(wrapper.find("form > span").text()).toBe("modify");
-});
-
-it("should show delete modal when the delete button is pressed", async () => {
-    expect.assertions(2);
-    const wrapper = createWrapper(
-        [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-        {
-            stubs: ["FConfirmModal"],
-        },
-    );
-
-    const confirmModal = wrapper.find("f-confirm-modal-stub");
-    expect(confirmModal.attributes().isopen).toBe("false");
-    const button = wrapper.find("#deleteButton");
-    await button.trigger("click");
-    expect(confirmModal.attributes().isopen).toBe("true");
-});
-
-it("should add item", async () => {
-    expect.assertions(2);
-    const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
-
-    const wrapper = createWrapper(
-        [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-        {
-            stubs: ["FConfirmModal"],
-        },
-    );
-    await wrapper.find(".crud-dataset__add-button").trigger("click");
-
-    await wrapper.find("#id-input").setValue(4);
-    await wrapper.find("#name-input").setValue("d");
-    await submitForm(wrapper);
-
-    const modifiedItem = wrapper.vm.$data.items[3];
-    expect(modifiedItem.name).toBe("d");
-    expect(alertScreenReader).toHaveBeenCalledWith("En rad har lagts till", {
-        assertive: true,
-    });
-});
-
-it("should modify items", async () => {
-    expect.assertions(3);
-    const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
-
-    const wrapper = createWrapper(
-        [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-        {
-            stubs: ["FConfirmModal"],
-        },
-    );
-    await wrapper.find("#modifyButton").trigger("click");
-
-    await wrapper.find("#name-input").setValue("test");
-    await wrapper.find("#child-name-input").setValue("test child");
-
-    await submitForm(wrapper);
-
-    const modifiedItem = wrapper.vm.$data.items[0];
-    expect(modifiedItem.name).toBe("test");
-    expect(modifiedItem.child.name).toBe("test child");
-    expect(alertScreenReader).toHaveBeenCalledWith("Raden har ändrats", {
-        assertive: true,
-    });
-});
-
-it("should not modify original item on cancel", async () => {
-    expect.assertions(1);
-    const wrapper = createWrapper([MODIFY_TEMPLATE], {
-        stubs: ["FConfirmModal"],
-    });
-    const originalItem = wrapper.vm.$data.items[0];
-
-    await wrapper.find("#modifyButton").trigger("click");
-
-    await wrapper.find("#name-input").setValue("test");
-    await wrapper.find("#child-name-input").setValue("test child");
-
-    await wrapper.find(".button-group .button--secondary").trigger("click");
-    vi.runAllTimers();
-    await flushPromises();
-
-    const updatedItem = wrapper.vm.$data.items[0];
-    expect(originalItem).toEqual(updatedItem);
-});
-
-it("should emit created event when items are added", async () => {
-    expect.assertions(2);
-    const wrapper = createWrapper(
-        [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-        {
-            stubs: ["FConfirmModal"],
-        },
-    );
-    await wrapper.find(".crud-dataset__add-button").trigger("click");
-
-    await wrapper.find("#id-input").setValue(4);
-    await wrapper.find("#name-input").setValue("d");
-    await submitForm(wrapper);
-
-    expect(wrapper.vm.$data.createdEventData?.id).toBe(4);
-    expect(wrapper.vm.$data.createdEventData?.name).toBe("d");
-});
-
-it("should emit updated event when items are updated", async () => {
-    expect.assertions(2);
-    const wrapper = createWrapper(
-        [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-        {
-            stubs: ["FConfirmModal"],
-        },
-    );
-    await wrapper.find("#modifyButton").trigger("click");
-
-    await wrapper.find("#name-input").setValue("test");
-    await submitForm(wrapper);
-
-    expect(wrapper.vm.$data.updatedEventData?.id).toBe(1);
-    expect(wrapper.vm.$data.updatedEventData?.name).toBe("test");
-});
-
-it("should call :onCancel after cancel", async () => {
-    expect.assertions(1);
-    const wrapper = createWrapper(
-        [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-        {
-            stubs: ["FConfirmModal"],
-        },
-    );
-
-    await wrapper.find(".crud-dataset__add-button").trigger("click");
-
-    await wrapper.find(".button-group .button--secondary").trigger("click");
-    vi.runAllTimers();
-    await flushPromises();
-
-    expect(wrapper.find("#cancelMessage").text()).toBe("Modalen har stängts");
-});
-
-describe("beforeSubmit", () => {
-    it('should call "beforeSubmit" when it is provided and submit button clicked', async () => {
-        expect.assertions(2);
-        const beforeSubmit = vi.fn();
-        const wrapper = createWrapper(
-            [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-            {
-                stubs: ["FConfirmModal"],
-                props: {
-                    isOpen: true,
-                    beforeSubmit,
-                },
-            },
-        );
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
-
-        expect(beforeSubmit).toHaveBeenCalledTimes(0);
-
-        await submitForm(wrapper);
-
-        expect(beforeSubmit).toHaveBeenCalledTimes(1);
-    });
-
-    it("should not emit submit when beforeSubmit returns CANCEL", async () => {
-        expect.assertions(1);
-        function onBeforeSubmit(): FFormModalAction {
-            return FFormModalAction.CANCEL;
-        }
-        const wrapper = createWrapper(
-            [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-            {
-                stubs: ["FConfirmModal"],
-                props: {
-                    isOpen: true,
-                    beforeSubmit: onBeforeSubmit,
-                },
-            },
-        );
-
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
-        await submitForm(wrapper);
-
-        const crud = wrapper.findComponent(FCrudDataset) as VueWrapper;
-        const modal = crud.findComponent(FFormModal) as VueWrapper;
-
-        expect(modal.emitted().submit).toBeFalsy();
-    });
-
-    it("should emit submit when beforeSubmit returns CONTINUE", async () => {
-        expect.assertions(1);
-        function onBeforeSubmit(): FFormModalAction {
-            return FFormModalAction.CONTINUE;
-        }
-        const wrapper = createWrapper(
-            [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-            {
-                stubs: ["FConfirmModal"],
-                props: {
-                    isOpen: true,
-                    beforeSubmit: onBeforeSubmit,
-                },
-            },
-        );
-
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
-        await submitForm(wrapper);
-
-        const crud = wrapper.findComponent(FCrudDataset) as VueWrapper;
-        const modal = crud.findComponent(FFormModal) as VueWrapper;
-
-        expect(modal.emitted().submit).toBeTruthy();
-    });
-
-    it("should emit submit when beforeSubmit returns undefined", async () => {
-        expect.assertions(1);
-        function onBeforeSubmit(): void {
-            return;
-        }
-        const wrapper = createWrapper(
-            [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-            {
-                stubs: ["FConfirmModal"],
-                props: {
-                    isOpen: true,
-                    beforeSubmit: onBeforeSubmit,
-                },
-            },
-        );
-
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
-        await submitForm(wrapper);
-
-        const crud = wrapper.findComponent(FCrudDataset) as VueWrapper;
-        const modal = crud.findComponent(FFormModal) as VueWrapper;
-
-        expect(modal.emitted().submit).toBeTruthy();
-    });
-
-    it("should emit submit when beforeSubmit props not set (default)", async () => {
-        expect.assertions(1);
-        const wrapper = createWrapper(
-            [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-            {
-                stubs: ["FConfirmModal"],
-                props: {
-                    isOpen: true,
-                },
-            },
-        );
-
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
-        await submitForm(wrapper);
-
-        const crud = wrapper.findComponent(FCrudDataset) as VueWrapper;
-        const modal = crud.findComponent(FFormModal) as VueWrapper;
-
-        expect(modal.emitted().submit).toBeTruthy();
-    });
-});
-
-it("should call before validation", async () => {
-    expect.assertions(3);
-    const beforeValidation = vi.fn();
-    const wrapper = createWrapper(
-        [ADD_TEMPLATE_REQUIRED, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-        {
-            stubs: ["FConfirmModal"],
-            props: {
-                isOpen: true,
-                beforeValidation,
-            },
-        },
-    );
-    await wrapper.find(".crud-dataset__add-button").trigger("click");
-
-    await wrapper.find("#id-input-required").setValue("");
-    await wrapper.find("#name-input-required").setValue("");
-
-    expect(beforeValidation).toHaveBeenCalledTimes(0);
-    await submitForm(wrapper);
-    expect(beforeValidation).toHaveBeenCalledTimes(1);
-
-    const crud = wrapper.findComponent(FCrudDataset) as VueWrapper;
-    const modal = crud.findComponent(FFormModal) as VueWrapper;
-
-    expect(modal.emitted().submit).toBeFalsy();
-});
-
-describe("onCancel", () => {
-    it("should be called on cancel-event emitted", async () => {
-        expect.assertions(2);
-        const onCancel = vi.fn();
-        const wrapper = createWrapper(
-            [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-            {
-                stubs: ["FConfirmModal"],
-                props: {
-                    isOpen: true,
-                    onCancel,
-                },
-            },
-        );
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
-
-        expect(onCancel).toHaveBeenCalledTimes(0);
-
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
-        wrapper
-            .findComponent(FCrudDataset)
-            .findComponent(FFormModal)
-            .vm.$emit("cancel");
-
-        expect(onCancel).toHaveBeenCalledTimes(1);
-    });
-
-    it("should be called on close-button clicked", async () => {
-        expect.assertions(2);
-        const onCancel = vi.fn();
-        const wrapper = createWrapper(
-            [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-            {
-                stubs: ["FConfirmModal"],
-                props: {
-                    isOpen: true,
-                    onCancel,
-                },
-            },
-        );
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
-
-        expect(onCancel).toHaveBeenCalledTimes(0);
-
-        await wrapper.find(".close-button").trigger("click");
-
-        expect(onCancel).toHaveBeenCalledTimes(1);
-    });
-
-    it("should be called on cancel-button clicked", async () => {
-        expect.assertions(2);
-        const onCancel = vi.fn();
-        const wrapper = createWrapper(
-            [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
-            {
-                stubs: ["FConfirmModal"],
-                props: {
-                    isOpen: true,
-                    onCancel,
-                },
-            },
-        );
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
-
-        expect(onCancel).toHaveBeenCalledTimes(0);
-
-        await wrapper.find(".button-group .button--secondary").trigger("click");
-
-        expect(onCancel).toHaveBeenCalledTimes(1);
-    });
-});
-
-describe("formModalSize", () => {
-    it("should pass size prop to FFormModal when opening add modal", async () => {
-        expect.assertions(1);
-        const wrapper = shallowMount(FCrudDataset, {
-            props: { formModalSize: "large" },
-            slots: { add: "..." },
-        });
-
-        await wrapper.get(".crud-dataset__add-button").trigger("click");
-        await flushPromises();
-
-        const formModal = wrapper.findComponent(FFormModal);
-        expect(formModal.props("size")).toBe("large");
-    });
-
-    it("should pass size prop to FFormModal when opening modify modal", async () => {
-        expect.assertions(1);
-        const wrapper = mount(FCrudDataset, {
-            props: { formModalSize: "large" },
-            slots: {
-                default({
-                    updateItem,
-                }: {
-                    updateItem(this: void, obj: unknown): void;
-                }) {
-                    return h(FTableButton, {
-                        id: "modify-button",
-                        onClick() {
-                            updateItem({});
-                        },
-                    });
-                },
-                modify: "...",
-            },
-            stubs: [FFormModal],
-        });
-
-        await wrapper.get("#modify-button").trigger("click");
-        await flushPromises();
-
-        const formModal = wrapper.findComponent(FFormModal);
-        expect(formModal.props("size")).toBe("large");
-    });
-
-    it("should use default size (empty string) when prop not provided", async () => {
-        expect.assertions(1);
-        const wrapper = shallowMount(FCrudDataset, {
-            slots: { add: "..." },
-        });
-
-        await wrapper.get(".crud-dataset__add-button").trigger("click");
-        await flushPromises();
-
-        const formModal = wrapper.findComponent(FFormModal);
-        expect(formModal.props("size")).toBe("");
-    });
-
     it.each`
-        size
-        ${""}
-        ${"small"}
-        ${"medium"}
-        ${"large"}
-        ${"fullscreen"}
-        ${"fullwidth"}
-    `("should accept valid size '$size'", ({ size }) => {
+        buttonPosition | expected
+        ${"top"}       | ${Node.DOCUMENT_POSITION_FOLLOWING}
+        ${"bottom"}    | ${Node.DOCUMENT_POSITION_PRECEDING}
+        ${undefined}   | ${Node.DOCUMENT_POSITION_PRECEDING}
+    `(
+        "should render add button relative to content when position is $buttonPosition",
+        ({ buttonPosition, expected }) => {
+            expect.assertions(2);
+            const wrapper = createWrapper({
+                onCreate: vi.fn(),
+                buttonPosition,
+            });
+            const addButton = wrapper.find(".crud-dataset__add-button");
+            const table = wrapper.find("table");
+            expect(addButton.exists()).toBe(true);
+            expect(
+                addButton.element.compareDocumentPosition(table.element),
+            ).toBe(expected);
+        },
+    );
+});
+
+describe("onCreate", () => {
+    it("should call onCreate when add button is pressed", async () => {
         expect.assertions(1);
-        const consoleSpy = vi.spyOn(console, "warn").mockImplementation(() => {
-            // Intentionally empty
-        });
+        const onCreate = vi.fn();
+        const wrapper = createWrapper({ onCreate });
+        await wrapper.get(".crud-dataset__add-button").trigger("click");
+        expect(onCreate).toHaveBeenCalledWith(expect.any(Function));
+    });
 
-        createWrapper([ADD_TEMPLATE], {
-            stubs: ["FConfirmModal"],
-            props: { formModalSize: size },
-        });
+    it("should not add item until commit is called", async () => {
+        expect.assertions(1);
+        const wrapper = createWrapper({ onCreate: vi.fn() });
+        await wrapper.get(".crud-dataset__add-button").trigger("click");
+        expect(getItems(wrapper)).toHaveLength(2);
+    });
 
-        expect(consoleSpy).not.toHaveBeenCalledWith(
-            expect.stringMatching(/Invalid prop.*formModalSize/),
+    it("should add item when commit is called", async () => {
+        expect.assertions(3);
+        const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
+        const onCreate = vi.fn<(commit: (item: Item) => void) => void>();
+        const wrapper = createWrapper({ onCreate });
+        await wrapper.get(".crud-dataset__add-button").trigger("click");
+        const [commit] = onCreate.mock.calls[0];
+        commit({ id: 3, name: "c" });
+        await nextTick();
+        expect(getItems(wrapper)).toEqual([
+            { id: 1, name: "a" },
+            { id: 2, name: "b" },
+            { id: 3, name: "c" },
+        ]);
+        expect(wrapper.text()).toContain("c");
+        expect(alertScreenReader).toHaveBeenCalledWith(
+            "En rad har lagts till",
+            {
+                assertive: true,
+            },
         );
+    });
 
-        consoleSpy.mockRestore();
+    it("should use custom alert message when provided", async () => {
+        expect.assertions(1);
+        const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
+        const onCreate =
+            vi.fn<(commit: (item: Item, alert?: string) => void) => void>();
+        const wrapper = createWrapper({ onCreate });
+        await wrapper.get(".crud-dataset__add-button").trigger("click");
+        const [commit] = onCreate.mock.calls[0];
+        commit({ id: 3, name: "c" }, "Custom add message");
+        await nextTick();
+        expect(alertScreenReader).toHaveBeenCalledWith("Custom add message", {
+            assertive: true,
+        });
+    });
+
+    it("should use default alert message when not provided", async () => {
+        expect.assertions(1);
+        const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
+        const onCreate =
+            vi.fn<(commit: (item: Item, alert?: string) => void) => void>();
+        const wrapper = createWrapper({ onCreate });
+        await wrapper.get(".crud-dataset__add-button").trigger("click");
+        const [commit] = onCreate.mock.calls[0];
+        commit({ id: 3, name: "c" });
+        await nextTick();
+        expect(alertScreenReader).toHaveBeenCalledWith(
+            "En rad har lagts till",
+            { assertive: true },
+        );
+    });
+});
+
+describe("onUpdate", () => {
+    it("should call onUpdate with item when modify button is pressed", async () => {
+        expect.assertions(1);
+        const onUpdate = vi.fn();
+        const wrapper = createWrapper({ onUpdate });
+        await wrapper.get("#modify-1").trigger("click");
+        expect(onUpdate).toHaveBeenCalledWith(
+            { id: 1, name: "a" },
+            expect.any(Function),
+        );
+    });
+
+    it("should update original item with committed item", async () => {
+        expect.assertions(3);
+        const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
+        const wrapper = createWrapper({
+            onUpdate: (item: Item, commit: (item: Item) => void) => {
+                commit({ ...item, name: "modified" });
+            },
+        });
+        const original = getItems(wrapper)[0];
+        await wrapper.get("#modify-1").trigger("click");
+        expect(getItems(wrapper)[0]).toBe(original);
+        expect(original).toEqual({ id: 1, name: "modified" });
+        expect(alertScreenReader).toHaveBeenCalledWith("Raden har ändrats", {
+            assertive: true,
+        });
+    });
+
+    it("should call onUpdate with a copy of the item", async () => {
+        expect.assertions(2);
+        const onUpdate = vi.fn();
+        const wrapper = createWrapper({ onUpdate });
+        const original = getItems(wrapper)[0];
+        await wrapper.get("#modify-1").trigger("click");
+        const [received] = onUpdate.mock.calls[0] as [Item];
+        expect(received).toEqual(original);
+        expect(received).not.toBe(original);
+    });
+
+    it("should leave original item untouched when copy is modified without commit", async () => {
+        expect.assertions(1);
+        const wrapper = createWrapper({
+            onUpdate: (item: Item) => {
+                item.name = "modified";
+            },
+        });
+        await wrapper.get("#modify-1").trigger("click");
+        expect(getItems(wrapper)[0]).toEqual({ id: 1, name: "a" });
+    });
+
+    it("should update original item when modified copy is committed", async () => {
+        expect.assertions(2);
+        const wrapper = createWrapper({
+            onUpdate: (item: Item, commit: (item: Item) => void) => {
+                item.name = "modified";
+                commit(item);
+            },
+        });
+        const original = getItems(wrapper)[0];
+        await wrapper.get("#modify-1").trigger("click");
+        expect(getItems(wrapper)[0]).toBe(original);
+        expect(original).toEqual({ id: 1, name: "modified" });
+    });
+
+    it("should not modify item until commit is called", async () => {
+        expect.assertions(1);
+        const wrapper = createWrapper({ onUpdate: vi.fn() });
+        await wrapper.get("#modify-1").trigger("click");
+        expect(getItems(wrapper)[0]).toEqual({ id: 1, name: "a" });
+    });
+
+    it("should use custom alert message when provided", async () => {
+        expect.assertions(1);
+        const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
+        const wrapper = createWrapper({
+            onUpdate: (
+                item: Item,
+                commit: (modified: Item, alert?: string) => void,
+            ) => {
+                commit({ ...item, name: "modified" }, "Custom edit message");
+            },
+        });
+        await wrapper.get("#modify-1").trigger("click");
+        expect(alertScreenReader).toHaveBeenCalledWith("Custom edit message", {
+            assertive: true,
+        });
+    });
+
+    it("should use default alert message when not provided", async () => {
+        expect.assertions(1);
+        const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
+        const wrapper = createWrapper({
+            onUpdate: (
+                item: Item,
+                commit: (modified: Item, alert?: string) => void,
+            ) => {
+                commit({ ...item, name: "modified" });
+            },
+        });
+        await wrapper.get("#modify-1").trigger("click");
+        expect(alertScreenReader).toHaveBeenCalledWith("Raden har ändrats", {
+            assertive: true,
+        });
+    });
+
+    it("should throw when committing a primitive item", () => {
+        expect.assertions(3);
+        const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
+        const wrapper = mount(FCrudDataset, {
+            props: {
+                modelValue: [1, 2],
+                onUpdate: (
+                    item: unknown,
+                    commit: (modified: unknown) => void,
+                ) => {
+                    commit(3);
+                },
+            },
+            global: { stubs: ["FIcon"] },
+        });
+        const crud = wrapper.vm as unknown as {
+            updateItem(item: number): void;
+        };
+        expect(() => {
+            crud.updateItem(1);
+        }).toThrow("FCrudDataset can only modify object items");
+        expect(wrapper.emitted("update:modelValue")).toBeUndefined();
+        expect(alertScreenReader).not.toHaveBeenCalled();
+    });
+});
+
+describe("onDelete", () => {
+    it("should call onDelete with item when delete button is pressed", async () => {
+        expect.assertions(1);
+        const onDelete = vi.fn();
+        const wrapper = createWrapper({ onDelete });
+        await wrapper.get("#delete-1").trigger("click");
+        expect(onDelete).toHaveBeenCalledWith(
+            { id: 1, name: "a" },
+            expect.any(Function),
+        );
+    });
+
+    it("should remove item when commit is called", async () => {
+        expect.assertions(2);
+        const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
+        const wrapper = createWrapper({
+            onDelete: (_item: Item, commit: () => void) => {
+                commit();
+            },
+        });
+        await wrapper.get("#delete-1").trigger("click");
+        expect(getItems(wrapper)).toEqual([{ id: 2, name: "b" }]);
+        expect(alertScreenReader).toHaveBeenCalledWith(
+            "Raden har tagits bort",
+            {
+                assertive: true,
+            },
+        );
+    });
+
+    it("should not remove item until commit is called", async () => {
+        expect.assertions(1);
+        const wrapper = createWrapper({ onDelete: vi.fn() });
+        await wrapper.get("#delete-1").trigger("click");
+        expect(getItems(wrapper)).toHaveLength(2);
+    });
+
+    it("should use custom alert message when provided", async () => {
+        expect.assertions(1);
+        const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
+        const wrapper = createWrapper({
+            onDelete: (_item: Item, commit: (alert?: string) => void) => {
+                commit("Custom delete message");
+            },
+        });
+        await wrapper.get("#delete-1").trigger("click");
+        expect(alertScreenReader).toHaveBeenCalledWith(
+            "Custom delete message",
+            { assertive: true },
+        );
+    });
+
+    it("should use default alert message when not provided", async () => {
+        expect.assertions(1);
+        const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
+        const wrapper = createWrapper({
+            onDelete: (_item: Item, commit: (alert?: string) => void) => {
+                commit();
+            },
+        });
+        await wrapper.get("#delete-1").trigger("click");
+        expect(alertScreenReader).toHaveBeenCalledWith(
+            "Raden har tagits bort",
+            { assertive: true },
+        );
+    });
+});
+
+describe("missing callback", () => {
+    interface Exposed {
+        createItem(): void;
+        updateItem(item: Item): void;
+        deleteItem(item: Item): void;
+    }
+
+    function getExposed(wrapper: VueWrapper): Exposed {
+        const vm: unknown = wrapper.findComponent(FCrudDataset).vm;
+        return vm as Exposed;
+    }
+
+    it("should throw when adding without onCreate", () => {
+        expect.assertions(1);
+        const wrapper = createWrapper({ onDelete: vi.fn() });
+        expect(() => {
+            getExposed(wrapper).createItem();
+        }).toThrow("No onCreate callback is defined");
+    });
+
+    it("should throw when modifying without onUpdate", () => {
+        expect.assertions(1);
+        const wrapper = createWrapper({ onCreate: vi.fn() });
+        const item = getItems(wrapper)[0];
+        expect(() => {
+            getExposed(wrapper).updateItem(item);
+        }).toThrow("No onUpdate callback is defined");
+    });
+
+    it("should throw when removing without onDelete", () => {
+        expect.assertions(1);
+        const wrapper = createWrapper({ onCreate: vi.fn() });
+        const item = getItems(wrapper)[0];
+        expect(() => {
+            getExposed(wrapper).deleteItem(item);
+        }).toThrow("No onDelete callback is defined");
+    });
+});
+
+describe("rejected callbacks", () => {
+    it("should report rejection from onCreate to errorHandler", async () => {
+        expect.assertions(2);
+        const error = new Error("add failed");
+        const errorHandler = vi.fn();
+        const onCreate = vi.fn(() => Promise.reject(error));
+        const wrapper = createWrapper({ onCreate }, "", errorHandler);
+        await wrapper.get(".crud-dataset__add-button").trigger("click");
+        await flushPromises();
+        expect(errorHandler).toHaveBeenCalledWith(
+            error,
+            expect.anything(),
+            expect.anything(),
+        );
+        expect(getItems(wrapper)).toHaveLength(2);
+    });
+
+    it("should report rejection from onUpdate to errorHandler", async () => {
+        expect.assertions(2);
+        const error = new Error("edit failed");
+        const errorHandler = vi.fn();
+        const onUpdate = vi.fn(() => Promise.reject(error));
+        const wrapper = createWrapper({ onUpdate }, "", errorHandler);
+        await wrapper.get("#modify-1").trigger("click");
+        await flushPromises();
+        expect(errorHandler).toHaveBeenCalledWith(
+            error,
+            expect.anything(),
+            expect.anything(),
+        );
+        expect(getItems(wrapper)[0]).toEqual({ id: 1, name: "a" });
+    });
+
+    it("should report rejection from onDelete to errorHandler", async () => {
+        expect.assertions(2);
+        const error = new Error("remove failed");
+        const errorHandler = vi.fn();
+        const onDelete = vi.fn(() => Promise.reject(error));
+        const wrapper = createWrapper({ onDelete }, "", errorHandler);
+        await wrapper.get("#delete-1").trigger("click");
+        await flushPromises();
+        expect(errorHandler).toHaveBeenCalledWith(
+            error,
+            expect.anything(),
+            expect.anything(),
+        );
+        expect(getItems(wrapper)).toHaveLength(2);
+    });
+
+    it("should return the promise from exposed methods", async () => {
+        expect.assertions(3);
+        const error = new Error("failed");
+        const wrapper = createWrapper({
+            onCreate: () => Promise.reject(error),
+            onUpdate: () => Promise.reject(error),
+            onDelete: () => Promise.reject(error),
+        });
+        const crud = wrapper.findComponent(FCrudDataset).vm as unknown as {
+            createItem(): Promise<void>;
+            updateItem(item: Item): Promise<void>;
+            deleteItem(item: Item): Promise<void>;
+        };
+        const item = getItems(wrapper)[0];
+        await expect(crud.createItem()).rejects.toBe(error);
+        await expect(crud.updateItem(item)).rejects.toBe(error);
+        await expect(crud.deleteItem(item)).rejects.toBe(error);
+    });
+
+    it("should return undefined from exposed methods for synchronous callbacks", () => {
+        expect.assertions(1);
+        const wrapper = createWrapper({ onCreate: () => undefined });
+        const crud = wrapper.findComponent(FCrudDataset).vm as unknown as {
+            createItem(): unknown;
+        };
+        expect(crud.createItem()).toBeUndefined();
+    });
+});
+
+describe("commit after unmount", () => {
+    it("should ignore onCreate commit after unmount", async () => {
+        expect.assertions(3);
+        const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
+        const onCreate = vi.fn<(commit: (item: Item) => void) => void>();
+        const wrapper = createWrapper({ onCreate });
+        await wrapper.get(".crud-dataset__add-button").trigger("click");
+        const [commit] = onCreate.mock.calls[0];
+        const crud = wrapper.findComponent(FCrudDataset);
+        wrapper.unmount();
+        commit({ id: 3, name: "c" });
+        expect(getItems(wrapper)).toHaveLength(2);
+        expect(crud.emitted("update:modelValue")).toBeUndefined();
+        expect(alertScreenReader).not.toHaveBeenCalled();
+    });
+
+    it("should ignore onUpdate commit after unmount", async () => {
+        expect.assertions(3);
+        const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
+        const onUpdate =
+            vi.fn<(item: Item, commit: (item: Item) => void) => void>();
+        const wrapper = createWrapper({ onUpdate });
+        const original = getItems(wrapper)[0];
+        await wrapper.get("#modify-1").trigger("click");
+        const [item, commit] = onUpdate.mock.calls[0];
+        const crud = wrapper.findComponent(FCrudDataset);
+        wrapper.unmount();
+        commit({ ...item, name: "modified" });
+        expect(original).toEqual({ id: 1, name: "a" });
+        expect(crud.emitted("update:modelValue")).toBeUndefined();
+        expect(alertScreenReader).not.toHaveBeenCalled();
+    });
+
+    it("should ignore onDelete commit after unmount", async () => {
+        expect.assertions(3);
+        const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
+        const onDelete = vi.fn<(item: Item, commit: () => void) => void>();
+        const wrapper = createWrapper({ onDelete });
+        await wrapper.get("#delete-1").trigger("click");
+        const [, commit] = onDelete.mock.calls[0];
+        const crud = wrapper.findComponent(FCrudDataset);
+        wrapper.unmount();
+        commit();
+        expect(getItems(wrapper)).toHaveLength(2);
+        expect(crud.emitted("update:modelValue")).toBeUndefined();
+        expect(alertScreenReader).not.toHaveBeenCalled();
+    });
+});
+
+describe("v-model", () => {
+    function getEmitted(wrapper: VueWrapper): Item[][] {
+        const crud = wrapper.findComponent(FCrudDataset);
+        return (crud.emitted("update:modelValue") ?? []) as Item[][];
+    }
+
+    it("should emit update:modelValue when item is added", async () => {
+        expect.assertions(4);
+        const wrapper = createWrapper({
+            onCreate: (commit: (item: Item) => void) => {
+                commit({ id: 3, name: "c" });
+            },
+        });
+        const original = getItems(wrapper);
+        await wrapper.get(".crud-dataset__add-button").trigger("click");
+        const emitted = getEmitted(wrapper);
+        expect(emitted).toHaveLength(1);
+        expect(emitted[0][0]).toEqual([
+            { id: 1, name: "a" },
+            { id: 2, name: "b" },
+            { id: 3, name: "c" },
+        ]);
+        expect(getItems(wrapper)).toEqual(emitted[0][0]);
+        expect(original).toHaveLength(2);
+    });
+
+    it("should emit update:modelValue when item is edited", async () => {
+        expect.assertions(3);
+        const wrapper = createWrapper({
+            onUpdate: (item: Item, commit: (item: Item) => void) => {
+                commit({ ...item, name: "modified" });
+            },
+        });
+        await wrapper.get("#modify-1").trigger("click");
+        const emitted = getEmitted(wrapper);
+        expect(emitted).toHaveLength(1);
+        expect(emitted[0][0]).toEqual([
+            { id: 1, name: "modified" },
+            { id: 2, name: "b" },
+        ]);
+        expect(getItems(wrapper)).toEqual(emitted[0][0]);
+    });
+
+    it("should emit update:modelValue when item is removed", async () => {
+        expect.assertions(4);
+        const wrapper = createWrapper({
+            onDelete: (_item: Item, commit: () => void) => {
+                commit();
+            },
+        });
+        const original = getItems(wrapper);
+        await wrapper.get("#delete-1").trigger("click");
+        const emitted = getEmitted(wrapper);
+        expect(emitted).toHaveLength(1);
+        expect(emitted[0][0]).toEqual([{ id: 2, name: "b" }]);
+        expect(getItems(wrapper)).toEqual(emitted[0][0]);
+        expect(original).toHaveLength(2);
+    });
+
+    it("should not emit update:modelValue until commit is called", async () => {
+        expect.assertions(1);
+        const wrapper = createWrapper({
+            onCreate: vi.fn(),
+            onUpdate: vi.fn(),
+            onDelete: vi.fn(),
+        });
+        await wrapper.get(".crud-dataset__add-button").trigger("click");
+        await wrapper.get("#modify-1").trigger("click");
+        await wrapper.get("#delete-1").trigger("click");
+        expect(getEmitted(wrapper)).toHaveLength(0);
     });
 });
 
 describe("html-validate", () => {
-    it("should require default slot", async () => {
-        expect.assertions(1);
-        const markup = /* HTML */ ` <f-crud-dataset></f-crud-dataset> `;
-        await expect(markup).toMatchInlineCodeframe(`
-          "error: <f-crud-dataset> component requires slot "default" to be implemented (vue/required-slots)
-          > 1 |  <f-crud-dataset></f-crud-dataset>
-              |   ^^^^^^^^^^^^^^
-          Selector: f-crud-dataset"
-        `);
-    });
-
     it("should html-validate", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `

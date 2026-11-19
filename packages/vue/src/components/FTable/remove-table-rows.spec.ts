@@ -1,4 +1,4 @@
-import { computed, ref } from "vue";
+import { computed, reactive, ref } from "vue";
 import { describe, expect, it } from "vitest";
 import { removeTableRows } from "./remove-table-rows";
 
@@ -24,21 +24,6 @@ describe("removeTableRows", () => {
         removeTableRows(rows, [rows[0], rows[2]]);
 
         expect(rows).toEqual([{ id: 2 }]);
-    });
-
-    it("should remove rows at any nesting level", () => {
-        expect.assertions(1);
-        const rows: Row[] = [
-            { id: 1 },
-            {
-                id: 2,
-                children: [{ id: 21, children: [{ id: 211 }, { id: 212 }] }],
-            },
-        ];
-
-        removeTableRows(rows, rows[1].children![0].children![0], "children");
-
-        expect(rows[1].children![0].children).toEqual([{ id: 212 }]);
     });
 
     it("should remove all rows when the same array is passed as rows and rowsToRemove", () => {
@@ -74,5 +59,14 @@ describe("removeTableRows", () => {
         );
 
         expect(rows.value[0].children).toEqual([{ id: 12 }]);
+    });
+
+    it("should remove a raw row when given its reactive proxy", () => {
+        expect.assertions(1);
+        const rows = [{ id: 1 }, { id: 2 }, { id: 3 }];
+
+        removeTableRows(rows, reactive(rows[1]));
+
+        expect(rows.map((it) => it.id)).toEqual([1, 3]);
     });
 });

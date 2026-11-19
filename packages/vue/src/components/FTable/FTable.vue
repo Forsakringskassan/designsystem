@@ -16,6 +16,7 @@ import { assertRef, assertSet } from "@fkui/logic";
 import { useSlotUtils } from "../../composables";
 import { useTranslate } from "../../plugins";
 import { type ItemIdentifier, setItemIdentifiers } from "../../utils";
+import { useCrudDatasetPresenter } from "../FCrudDataset/crud-dataset-presenter";
 import { FSortFilterDatasetInjected, useSortFilterDatasetEvents } from "../FSortFilterDataset";
 import ITableExpandButton from "./ITableExpandButton.vue";
 import ITableExpandable from "./ITableExpandable.vue";
@@ -365,8 +366,16 @@ const { selectableHeaderState, toggleSelectableHeader, selectableRowState, toggl
 const tableApi = useTabstop(tableRef, metaRows);
 defineExpose(tableApi);
 
+useCrudDatasetPresenter<T>({
+    nestedKey: expandableAttributeName,
+    handleDelete(_row, commit) {
+        void tableApi.withTabstopBehaviour("row-removal", commit);
+    },
+});
+
 onMounted(() => {
     assertRef(tableRef);
+
     registerCallbackOnMount(callbackSortableColumns);
     registerCallbackOnSort(callbackOnSort);
     sortFilterDatasetEvents.onFilter(() => (selectedRows.value = []));
