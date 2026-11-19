@@ -17,12 +17,10 @@ export default defineComponent({
     name: "IAnimateExpand",
     props: {
         /**
-         * Perform animation or not
+         * Disable animations
          */
-        animate: {
+        noanimate: {
             type: Boolean,
-            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-            default: true,
         },
         /**
          * Use v-show instead of v-if when hiding content.
@@ -38,11 +36,11 @@ export default defineComponent({
             type: [String, Number, Boolean],
             default: true,
         },
-        /* Toggle opacity in animation */
-        opacity: {
+        /**
+         * Disable opacity change during animation
+         */
+        noopacity: {
             type: Boolean,
-            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-            default: true,
         },
         /**
          * Optional callback for performing actions before animation.
