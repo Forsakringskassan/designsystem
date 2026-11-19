@@ -133,8 +133,9 @@ functions/cypress/pageobjects/FFileItemPageObject/filename.html
 functions/cypress/pageobjects/FFileItemPageObject/index.html
 functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html
 functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html
-functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html
+functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html -> functions/cypress/pageobjects/FInteractiveTablePageObject/selectable.html
 functions/cypress/pageobjects/FInteractiveTablePageObject/header.html
+functions/cypress/pageobjects/FInteractiveTablePageObject/selectable.html
 functions/cypress/pageobjects/FLabelPageObject/description.html
 functions/cypress/pageobjects/FLabelPageObject/error-icon.html
 functions/cypress/pageobjects/FLabelPageObject/error-message.html
@@ -257,7 +258,7 @@ gettingstarted/contribute-to-fkds/testing.html
 gettingstarted/contribute-to-fkds/testverktyg.html
 gettingstarted/help-and-support.html
 gettingstarted/index.html
-gettingstarted/migration/migrating-crud-button.html
+gettingstarted/migration/migrating-crud-button.html -> gettingstarted/migration/migrating-to-v7/vue.html
 gettingstarted/migration/migrating-to-fieldset.html
 gettingstarted/migration/migrating-to-ftable.html
 gettingstarted/migration/migrating-to-v5.html
@@ -266,6 +267,11 @@ gettingstarted/migration/migrating-to-v6/design.html
 gettingstarted/migration/migrating-to-v6/logic.html
 gettingstarted/migration/migrating-to-v6/overview.html
 gettingstarted/migration/migrating-to-v6/vue.html
+gettingstarted/migration/migrating-to-v7/design.html
+gettingstarted/migration/migrating-to-v7/modal-api-only.html
+gettingstarted/migration/migrating-to-v7/overview.html
+gettingstarted/migration/migrating-to-v7/pageobjects.html
+gettingstarted/migration/migrating-to-v7/vue.html
 gettingstarted/use-design-system/getting-started-application.html
 gettingstarted/use-design-system/getting-started.html
 gettingstarted/use-design-system/icon-library.html

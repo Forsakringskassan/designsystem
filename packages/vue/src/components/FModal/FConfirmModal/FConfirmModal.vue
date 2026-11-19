@@ -50,10 +50,10 @@ export default defineComponent({
             default: "Rubrik",
         },
         /**
-         * The size of modal. 'large' and 'fullscreen' is valid.
+         * The size of modal in desktop mode.
          */
         size: {
-            type: String as PropType<FModalSize | "fullscreen" | "">,
+            type: String as PropType<FModalSize | "">,
             default: "",
         },
         /**

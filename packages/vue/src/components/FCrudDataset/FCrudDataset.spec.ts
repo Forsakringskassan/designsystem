@@ -17,9 +17,9 @@ import {
     FFormModalAction,
     FModal,
 } from "../FModal";
+import { FTableButton } from "../FTableButton";
 import { FTextField } from "../FTextField";
 import { type FValidationFormCallback } from "../FValidationForm";
-import FCrudButton from "./FCrudButton.vue";
 import FCrudDataset from "./FCrudDataset.vue";
 
 vi.useFakeTimers();
@@ -77,7 +77,12 @@ const DELETE_TEMPLATE = /* HTML */ `
 
 const TestComponent = defineComponent({
     name: "TestComponent",
-    components: { FCrudDataset, FCrudButton, FModal, FTextField },
+    components: {
+        FCrudDataset,
+        FModal,
+        FTableButton,
+        FTextField,
+    },
     props: {
         beforeSubmit: {
             type: Function as PropType<FValidationFormCallback>,
@@ -147,7 +152,7 @@ function createWrapper(
             @updated="onUpdatedEvent"
             @deleted="onDeletedEvent"
         >
-            <template #default>
+            <template #default="{ updateItem, deleteItem }">
                 <div id="cancelMessage">Modalen har stängts</div>
                 <table>
                     <thead>
@@ -161,20 +166,24 @@ function createWrapper(
                             <td>{{ item.id }}</td>
                             <td>{{ item.name }}</td>
                             <td>
-                                <f-crud-button
+                                <f-table-button
                                     id="modifyButton"
-                                    action="modify"
-                                    :item="item"
+                                    icon="pen"
                                     label
-                                />
+                                    @click="updateItem(item)"
+                                >
+                                    Ändra
+                                </f-table-button>
                             </td>
                             <td>
-                                <f-crud-button
+                                <f-table-button
                                     id="deleteButton"
-                                    action="delete"
-                                    :item="item"
+                                    icon="trashcan"
                                     label
-                                />
+                                    @click="deleteItem(item)"
+                                >
+                                    Ta bort
+                                </f-table-button>
                             </td>
                         </tr>
                     </tbody>
@@ -747,11 +756,18 @@ describe("formModalSize", () => {
         const wrapper = mount(FCrudDataset, {
             props: { formModalSize: "large" },
             slots: {
-                default: h(FCrudButton, {
-                    id: "modify-button",
-                    action: "modify",
-                    item: {},
-                }),
+                default({
+                    updateItem,
+                }: {
+                    updateItem(this: void, obj: unknown): void;
+                }) {
+                    return h(FTableButton, {
+                        id: "modify-button",
+                        onClick() {
+                            updateItem({});
+                        },
+                    });
+                },
                 modify: "...",
             },
             stubs: [FFormModal],

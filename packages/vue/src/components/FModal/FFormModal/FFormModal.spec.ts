@@ -315,6 +315,7 @@ describe("props", () => {
                 expect.assertions(1);
                 const wrapper = mount(FFormModal, {
                     props: {
+                        isOpen: true,
                         size,
                     },
                 });

@@ -86,7 +86,7 @@ const columns = defineTableColumns<Row>([
         description: "Column 4",
         key: "button",
         icon: "trashcan",
-        text(row) {
+        screenreaderText(row) {
             return row.button;
         },
     },

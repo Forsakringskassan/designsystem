@@ -75,8 +75,6 @@ export default defineComponent({
         useErrorList: {
             type: Boolean,
             required: false,
-            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-            default: true,
         },
     },
     setup(): FWizardApi {
@@ -190,11 +188,11 @@ export default defineComponent({
             }
 
             this.ignoreClick = false;
-            // Skip focus once for first step when `disableInitialFocus` is set
+            // Skip initial focus on the first step unless explicitly enabled.
             if (this.isOpenedFirstTime) {
                 this.isOpenedFirstTime = false;
 
-                if (this.inheritedProps.disableInitialFocus && this.stepNumber === 1) {
+                if (!this.inheritedProps.focusInitialStep && this.stepNumber === 1) {
                     return;
                 }
             }

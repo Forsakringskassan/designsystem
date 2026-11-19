@@ -13,22 +13,3 @@ it("should generate classes for HORIZONTAL", () => {
         "table__scroll--horizontal",
     ]);
 });
-
-it("should generate classes for VERTICAL", () => {
-    expect.assertions(1);
-    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
-    expect(tableScrollClasses(TableScroll.VERTICAL)).toEqual([
-        "table__scroll",
-        "table__scroll--vertical",
-    ]);
-});
-
-it("should generate classes for BOTH", () => {
-    expect.assertions(1);
-    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
-    expect(tableScrollClasses(TableScroll.BOTH)).toEqual([
-        "table__scroll",
-        "table__scroll--horizontal",
-        "table__scroll--vertical",
-    ]);
-});

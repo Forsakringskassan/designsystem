@@ -1124,7 +1124,7 @@ export default defineMetadata({
         requiredAncestors: ["f-crud-dataset"],
         deprecated: {
             message:
-                "<f-crud-button> is deprecated, for table replace with <f-table-button> or <button> in other cases",
+                "<f-crud-button> has been removed, use <f-button> instead.",
             source: "@fkui/vue",
         },
     },
@@ -1335,6 +1335,10 @@ export default defineMetadata({
         permittedContent: ["f-wizard-step", "@flow"],
         attributes: {
             "disable-initial-focus": {
+                deprecated:
+                    "Initial focus is disabled by default; remove this obsolete prop. Use focus-initial-step to enable initial focus.",
+            },
+            "focus-initial-step": {
                 required: false,
                 boolean: true,
             },
@@ -1361,6 +1365,7 @@ export default defineMetadata({
             },
             "use-error-list": {
                 required: false,
+                boolean: true,
             },
         },
         permittedContent: ["@flow", "template"],
