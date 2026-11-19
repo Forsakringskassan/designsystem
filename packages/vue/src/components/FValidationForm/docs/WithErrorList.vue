@@ -22,8 +22,9 @@ export default defineComponent({
     },
 });
 </script>
+
 <template>
-    <f-validation-form @submit="onSubmit">
+    <f-validation-form use-error-list @submit="onSubmit">
         <template #error-message> <span> Custom message </span> </template>
         <template #default>
             <f-text-field

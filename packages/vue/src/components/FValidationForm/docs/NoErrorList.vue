@@ -23,7 +23,7 @@ export default defineComponent({
 });
 </script>
 <template>
-    <f-validation-form :use-error-list="false" @submit="onSubmit">
+    <f-validation-form @submit="onSubmit">
         <template #error-message> <span> Custom message </span> </template>
         <template #default>
             <f-text-field

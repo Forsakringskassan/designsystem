@@ -21,7 +21,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-validation-form :use-error-list="false" @submit="onSubmit">
+    <f-validation-form @submit="onSubmit">
         <f-text-field v-model="model" v-validation.required> Fyll i minst ett tecken </f-text-field>
         <div class="button-group">
             <f-button

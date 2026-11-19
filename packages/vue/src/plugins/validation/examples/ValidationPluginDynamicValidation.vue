@@ -34,7 +34,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-validation-form :use-error-list="false">
+    <f-validation-form>
         <p>Namn får inte vara kortare än minsta längd.</p>
 
         <template #error-message> Alla frågor är inte korrekt ifyllda. Titta i: </template>
