@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T">
-import { type PropType, type Ref, computed, onMounted, provide, ref, useSlots, watch } from "vue";
+import { type Ref, computed, onMounted, provide, ref, useSlots, watch } from "vue";
 import { TranslationService, alertScreenReader, deepClone } from "@fkui/logic";
 
 import { useTranslate } from "../../plugins";
@@ -10,103 +10,73 @@ import { type FValidationFormCallback } from "../FValidationForm";
 import { filterItem } from "./filter-item";
 import { Operation } from "./operation";
 
-/* eslint-disable-next-line vue/define-props-declaration -- technical debt */
-const props = defineProps({
-    /**
-     * The list of items that should be deleted, modified or added to.
-     * If the prop is not set an empty array will be used.
-     */
-    modelValue: {
-        type: Array as PropType<T[]>,
-        required: false,
-        default: () => [],
-    },
-    /**
-     * A function that returns an item to the #add template. Can be used to populate data that the user should not input themself e.g. an id.
-     * Or to give the user suggestions for inputs. If the prop is not used an empty item will be returned.
-     */
-    beforeCreate: {
-        type: Function as PropType<(() => T) | undefined>,
-        required: false,
-        default: undefined,
-    },
-    /**
-     * If given, this function is called before the [[submit]] event is emitted.
-     * See <f-validation-form> `beforeSubmit` props for more info.
-     */
-    beforeSubmit: {
-        type: Function as PropType<FValidationFormCallback>,
-        required: false,
-        default(): void {
+const props = withDefaults(
+    defineProps<{
+        /**
+         * The list of items that should be deleted, modified or added to.
+         * If the prop is not set an empty array will be used.
+         */
+        modelValue?: T[];
+        /**
+         * A function that returns an item to the #add template. Can be used to populate data that the user should not input themself e.g. an id.
+         * Or to give the user suggestions for inputs. If the prop is not used an empty item will be returned.
+         */
+        beforeCreate?: () => T;
+        /**
+         * If given, this function is called before the [[submit]] event is emitted.
+         * See <f-validation-form> `beforeSubmit` props for more info.
+         */
+        beforeSubmit?: FValidationFormCallback;
+        /**
+         * If given, this function is called before the form data is validated and the [[submit]] event is emitted.
+         * See <f-validation-form> `beforeValidation` props for more info.
+         */
+        beforeValidation?: FValidationFormCallback;
+        /**
+         * If given, this function is called after the modal has been closed.
+         */
+        onCancel?: () => void;
+        /**
+         * Property for changing the "add new" modal heading
+         */
+        addNewModalHeader?: string;
+        /**
+         * Property for changing the "modify" modal heading
+         */
+        modifyModalHeader?: string;
+        /**
+         * Property for changing the "delete" modal heading
+         */
+        deleteModalHeader?: string;
+        /**
+         * Property for changing the "add" and "modify" modal size
+         */
+        formModalSize?: FModalSize | "";
+        /**
+         * Property for setting the position of the add button
+         */
+        buttonPosition?: "bottom" | "top";
+    }>(),
+    {
+        modelValue: () => [],
+        beforeCreate: undefined,
+        beforeSubmit: () => {
             /* do nothing */
         },
-    },
-    /**
-     * If given, this function is called before the form data is validated and the [[submit]] event is emitted.
-     * See <f-validation-form> `beforeValidation` props for more info.
-     */
-    beforeValidation: {
-        type: Function as PropType<FValidationFormCallback>,
-        required: false,
-        default(): void {
+        beforeValidation: () => {
             /* do nothing */
         },
-    },
-    /**
-     * If given, this function is called after the modal has been closed.
-     */
-    onCancel: {
-        type: Function as PropType<() => void>,
-        required: false,
-        default() {
-            return undefined;
-        },
-    },
-
-    /**
-     * Property for changing the "add new" modal heading
-     */
-    addNewModalHeader: {
-        type: String,
-        required: false,
-        default: TranslationService.provider.translate("fkui.crud-dataset.modal.header.add", "Lägg till rad"),
-    },
-    /**
-     * Property for changing the "modify" modal heading
-     */
-    modifyModalHeader: {
-        type: String,
-        required: false,
-        default: TranslationService.provider.translate("fkui.crud-dataset.modal.header.modify", "Ändra rad"),
-    },
-    /**
-     * Property for changing the "delete" modal heading
-     */
-    deleteModalHeader: {
-        type: String,
-        required: false,
-        default: TranslationService.provider.translate(
+        onCancel: () => undefined,
+        addNewModalHeader: TranslationService.provider.translate("fkui.crud-dataset.modal.header.add", "Lägg till rad"),
+        modifyModalHeader: TranslationService.provider.translate("fkui.crud-dataset.modal.header.modify", "Ändra rad"),
+        deleteModalHeader: TranslationService.provider.translate(
             "fkui.crud-dataset.modal.header.delete",
             "Är du säker på att du vill ta bort raden?",
         ),
+        formModalSize: "",
+        buttonPosition: "bottom",
     },
-    /**
-     * Property for changing the "add" and "modify" modal size
-     */
-    formModalSize: {
-        type: String as PropType<FModalSize | "">,
-        required: false,
-        default: "",
-    },
-    /**
-     * Property for setting the position of the add button
-     */
-    buttonPosition: {
-        type: String as PropType<"bottom" | "top">,
-        required: false,
-        default: "bottom",
-    },
-});
+);
 const emit = defineEmits<{
     /**
      * Emitted when an item is added.
@@ -285,7 +255,7 @@ function onDeleteConfirm(): void {
 
 function onDeleteClose(e: { reason: string }): void {
     onModalClose();
-    if (e.reason === "close" && props.onCancel) {
+    if (e.reason === "close") {
         props.onCancel();
     }
 }
