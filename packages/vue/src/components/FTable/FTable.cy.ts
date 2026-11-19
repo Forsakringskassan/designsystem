@@ -864,6 +864,63 @@ describe("3.1 Feedback to user on invalid input components", () => {
 });
 
 describe("3.6 Feedback to user on table validation errors at submit", () => {
+    it("should validate a required value cleared by another cell", () => {
+        interface Row {
+            category: string;
+            amount: number | string | null;
+        }
+
+        const rows = ref<Row[]>([{ category: "A", amount: 42 }]);
+        const columns = defineTableColumns<Row>([
+            {
+                type: "select",
+                header: "Kategori",
+                key: "category",
+                options: ["A", "B"],
+                update(row, value) {
+                    row.category = value;
+                    row.amount = null;
+                },
+            },
+            {
+                type: "text:number",
+                header: "Belopp",
+                key: "amount",
+                editable: true,
+                validation: {
+                    required: {},
+                },
+            },
+        ]);
+        const onSubmit = cy.spy().as("onSubmit");
+
+        cy.mount(() =>
+            h(FValidationForm, { useErrorList: false, onSubmit }, () => [
+                h(FTable<Row>, {
+                    rows: rows.value,
+                    columns,
+                }),
+                renderButton("submit", { type: "submit" }),
+            ]),
+        );
+
+        table.cell({ row: 1, col: 2 }).click();
+        cy.focused().clear();
+        cy.focused().type("100{enter}");
+
+        table.cell({ row: 1, col: 1 }).click();
+        table.selectDropdownOption(2).click();
+        cy.wrap(rows.value[0]).should("have.property", "amount", null);
+
+        cy.get('button[type="submit"]').click();
+
+        table
+            .cell({ row: 1, col: 2 })
+            .should("have.class", "table-ng__cell--error")
+            .and("have.attr", "aria-invalid", "true");
+        cy.get("@onSubmit").should("not.have.been.called");
+    });
+
     it("should focus on first error when form is submitted", () => {
         interface Row {
             text: string;
