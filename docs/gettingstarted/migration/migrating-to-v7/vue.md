@@ -278,8 +278,6 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
 
 ## FWizard
 
-### Fokushantering för steg för steg-guide (`FWizard`)
-
 I version 7 är initialt fokus på det första steget avstängt som standard.
 
 Om du vill att det första steget ska få fokus när guiden öppnas, lägg till `focus-initial-step`:
@@ -294,11 +292,11 @@ Om du vill att det första steget ska få fokus när guiden öppnas, lägg till 
 Om du inte vill att det första steget ska få fokus när guiden öppnas behöver du inte längre lägga till någon fokusprop.
 Ta bort `disable-initial-focus` från befintlig kod om den används, den finns inte längre i version 7.
 
-### Fellista för steg för steg-guide (`FWizardStep`)
+## `FWizardStep`
 
-I version 7 visas fellistan inte längre som standard i ett guidesteg.
+Propen `useErrorList` är inte längre aktiv som standard.
 
-Om du vill visa fellistan, lägg till `use-error-list` på `f-wizard-step`:
+Om du vill behålla fellistan, lägg till propen explicit:
 
 ```diff
 -<f-wizard-step key="step1" title="Steg 1">
@@ -307,4 +305,25 @@ Om du vill visa fellistan, lägg till `use-error-list` på `f-wizard-step`:
 </f-wizard-step>
 ```
 
-Om du redan använder `:use-error-list="false"` kan du ta bort propen eftersom det nu är standardbeteendet.
+Om du redan använder `:use-error-list="false"` kan du ta bort det:
+
+```diff
+-<f-wizard-step key="step1" title="Steg 1" :use-error-list="false">
++<f-wizard-step key="step1" title="Steg 1">
+    <!-- innehåll -->
+</f-wizard-step>
+```
+
+Om du sätter värdet dynamiskt behöver du inte ändra något.
+
+::: details 🤖 Prompt för AI Agenter
+
+Sök igenom applikationen efter användningar av `FWizardStep` och `<f-wizard-step>`.
+För varje användning där `useErrorList`/`use-error-list` saknas, lägg till `use-error-list` för att behålla det tidigare standardbeteendet där fellistan visas.
+Ta bort statiska `:use-error-list="false"` eftersom det nu är standardbeteendet.
+Behåll dynamiska värden.
+
+Verifiera resultatet genom att bygga projektet och köra relevanta tester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.
+
+:::
