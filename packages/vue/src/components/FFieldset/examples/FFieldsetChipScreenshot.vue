@@ -14,7 +14,7 @@ const choices2 = ref([]);
 </script>
 
 <template>
-    <f-validation-form id="screenshot" :use-error-list="false">
+    <f-validation-form id="screenshot">
         <template #default>
             <f-fieldset v-validation.required name="chips" chip horizontal>
                 <template #label> Fieldset-etikett </template>
