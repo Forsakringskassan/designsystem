@@ -33,7 +33,7 @@ const columns = defineTableColumns<Row>([
 </script>
 
 <template>
-    <f-validation-form :use-error-list="false">
+    <f-validation-form>
         <f-table :rows :columns>
             <template #caption> PopupError example </template>
         </f-table>

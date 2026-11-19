@@ -29,8 +29,9 @@ export default defineComponent({
     },
 });
 </script>
+
 <template>
-    <f-validation-form :error-list-before-navigate="expandPanel" @submit="onSubmit">
+    <f-validation-form use-error-list :error-list-before-navigate="expandPanel" @submit="onSubmit">
         <template #error-message> <span> Custom message </span> </template>
         <template #default>
             <f-expandable-panel :expanded="expand" @toggle="onToggle">
