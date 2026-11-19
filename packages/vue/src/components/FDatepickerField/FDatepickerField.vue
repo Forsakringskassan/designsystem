@@ -14,6 +14,7 @@ import {
     parseDate,
     waitForScreenReader,
 } from "@fkui/logic";
+import { ICloseButton } from "../../internal-components/ICloseButton";
 import { IPopup } from "../../internal-components/IPopup";
 import { TranslationMixin } from "../../plugins";
 import { getHTMLElementFromVueRef, getInputElement } from "../../utils";
@@ -28,6 +29,7 @@ export default defineComponent({
     name: "FDatepickerField",
     components: {
         FCalendar,
+        ICloseButton,
         IPopup,
         FTextField,
         FIcon,
@@ -424,15 +426,13 @@ export default defineComponent({
                 </f-calendar>
 
                 <div class="datepicker-field__close">
-                    <button
-                        class="button button--tertiary button--tertiary--muted datepicker-field__close__button"
-                        type="button"
+                    <i-close-button
+                        class="datepicker-field__close__button"
                         @click="onClickCloseCalendarButton"
                         @keyup.esc.stop="onKeyupEsc"
                     >
-                        <span>{{ $t("fkui.datepicker-field.close", "Stäng") }}</span>
-                        <f-icon aria-hidden="true" class="button__icon" name="close" />
-                    </button>
+                        {{ $t("fkui.datepicker-field.close", "Stäng") }}
+                    </i-close-button>
                 </div>
             </div>
         </i-popup>
