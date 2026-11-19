@@ -58,11 +58,11 @@ var isMap = (val) => toTypeString(val) === "[object Map]";
 var isSet$1 = (val) => toTypeString(val) === "[object Set]";
 var isDate = (val) => toTypeString(val) === "[object Date]";
 var isFunction = (val) => typeof val === "function";
-var isString = (val) => typeof val === "string";
+var isString$1 = (val) => typeof val === "string";
 var isSymbol = (val) => typeof val === "symbol";
-var isObject$2 = (val) => val !== null && typeof val === "object";
+var isObject = (val) => val !== null && typeof val === "object";
 var isPromise = (val) => {
-	return (isObject$2(val) || isFunction(val)) && isFunction(val.then) && isFunction(val.catch);
+	return (isObject(val) || isFunction(val)) && isFunction(val.then) && isFunction(val.catch);
 };
 var objectToString = Object.prototype.toString;
 var toTypeString = (value) => objectToString.call(value);
@@ -70,7 +70,7 @@ var toRawType = (value) => {
 	return toTypeString(value).slice(8, -1);
 };
 var isPlainObject = (val) => toTypeString(val) === "[object Object]";
-var isIntegerKey = (key) => isString(key) && key !== "NaN" && key[0] !== "-" && "" + parseInt(key, 10) === key;
+var isIntegerKey = (key) => isString$1(key) && key !== "NaN" && key[0] !== "-" && "" + parseInt(key, 10) === key;
 var isReservedProp = /* @__PURE__ */ makeMap(",key,ref,ref_for,ref_key,onVnodeBeforeMount,onVnodeMounted,onVnodeBeforeUpdate,onVnodeUpdated,onVnodeBeforeUnmount,onVnodeUnmounted");
 var cacheStringFunction = (fn) => {
 	const cache = /* @__PURE__ */ Object.create(null);
@@ -106,10 +106,6 @@ var looseToNumber = (val) => {
 	const n = parseFloat(val);
 	return isNaN(n) ? val : n;
 };
-var toNumber = (val) => {
-	const n = isString(val) ? Number(val) : NaN;
-	return isNaN(n) ? val : n;
-};
 var _globalThis;
 var getGlobalThis = () => {
 	return _globalThis || (_globalThis = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : {});
@@ -119,11 +115,11 @@ function normalizeStyle(value) {
 		const res = {};
 		for (let i = 0; i < value.length; i++) {
 			const item = value[i];
-			const normalized = isString(item) ? parseStringStyle(item) : normalizeStyle(item);
+			const normalized = isString$1(item) ? parseStringStyle(item) : normalizeStyle(item);
 			if (normalized) for (const key in normalized) res[key] = normalized[key];
 		}
 		return res;
-	} else if (isString(value) || isObject$2(value)) return value;
+	} else if (isString$1(value) || isObject(value)) return value;
 }
 var listDelimiterRE = /;(?![^(]*\))/g;
 var propertyDelimiterRE = /:([^]+)/;
@@ -140,12 +136,12 @@ function parseStringStyle(cssText) {
 }
 function normalizeClass(value) {
 	let res = "";
-	if (isString(value)) res = value;
+	if (isString$1(value)) res = value;
 	else if (isArray$1(value)) for (let i = 0; i < value.length; i++) {
 		const normalized = normalizeClass(value[i]);
 		if (normalized) res += normalized + " ";
 	}
-	else if (isObject$2(value)) {
+	else if (isObject(value)) {
 		for (const name in value) if (value[name]) res += name + " ";
 	}
 	return res.trim();
@@ -153,7 +149,7 @@ function normalizeClass(value) {
 function normalizeProps(props) {
 	if (!props) return null;
 	let { class: klass, style } = props;
-	if (klass && !isString(klass)) props.class = normalizeClass(klass);
+	if (klass && !isString$1(klass)) props.class = normalizeClass(klass);
 	if (style) props.style = normalizeStyle(style);
 	return props;
 }
@@ -219,8 +215,8 @@ function looseEqual(a, b, seen) {
 	aValidType = isArray$1(a);
 	bValidType = isArray$1(b);
 	if (aValidType || bValidType) return aValidType && bValidType ? looseCompareNested(a, b, seen, looseCompareArrays) : false;
-	aValidType = isObject$2(a);
-	bValidType = isObject$2(b);
+	aValidType = isObject(a);
+	bValidType = isObject(b);
 	if (aValidType || bValidType) {
 		if (!aValidType || !bValidType) return false;
 		return looseCompareNested(a, b, seen, looseCompareObjects);
@@ -234,7 +230,7 @@ var isRef$1 = (val) => {
 	return !!(val && val["__v_isRef"] === true);
 };
 var toDisplayString = (val) => {
-	return isString(val) ? val : val == null ? "" : isArray$1(val) || isObject$2(val) && (val.toString === objectToString || !isFunction(val.toString)) ? isRef$1(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
+	return isString$1(val) ? val : val == null ? "" : isArray$1(val) || isObject(val) && (val.toString === objectToString || !isFunction(val.toString)) ? isRef$1(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
 };
 var replacer = (_key, val) => {
 	if (isRef$1(val)) return replacer(_key, val.value);
@@ -244,7 +240,7 @@ var replacer = (_key, val) => {
 	}, {}) };
 	else if (isSet$1(val)) return { [`Set(${val.size})`]: [...val.values()].map((v) => stringifySymbol(v)) };
 	else if (isSymbol(val)) return stringifySymbol(val);
-	else if (isObject$2(val) && !isArray$1(val) && !isPlainObject(val)) return String(val);
+	else if (isObject(val) && !isArray$1(val) && !isPlainObject(val)) return String(val);
 	return val;
 };
 var stringifySymbol = (v, i = "") => {
@@ -386,17 +382,8 @@ var EffectScope = class {
 		}
 	}
 };
-function effectScope(detached) {
-	return new EffectScope(detached);
-}
 function getCurrentScope() {
 	return activeEffectScope;
-}
-function onScopeDispose(fn, failSilently = false) {
-	if (activeEffectScope) {
-		if (activeEffectScope.active) activeEffectScope.cleanups.push(fn);
-		else fn();
-	}
 }
 var activeSub;
 var pausedQueueEffects = /* @__PURE__ */ new WeakSet();
@@ -1031,9 +1018,9 @@ var BaseReactiveHandler = class {
 		if (isShallow2) return res;
 		if (/* @__PURE__ */ isRef(res)) {
 			const value = targetIsArray && isIntegerKey(key) ? res : res.value;
-			return isReadonly2 && isObject$2(value) ? /* @__PURE__ */ readonly(value) : value;
+			return isReadonly2 && isObject(value) ? /* @__PURE__ */ readonly(value) : value;
 		}
-		if (isObject$2(res)) return isReadonly2 ? /* @__PURE__ */ readonly(res) : /* @__PURE__ */ reactive(res);
+		if (isObject(res)) return isReadonly2 ? /* @__PURE__ */ readonly(res) : /* @__PURE__ */ reactive(res);
 		return res;
 	}
 };
@@ -1274,7 +1261,7 @@ function readonly(target) {
 	return createReactiveObject(target, true, readonlyHandlers, readonlyCollectionHandlers, readonlyMap);
 }
 function createReactiveObject(target, isReadonly2, baseHandlers, collectionHandlers, proxyMap) {
-	if (!isObject$2(target)) return target;
+	if (!isObject(target)) return target;
 	if (target["__v_raw"] && !(isReadonly2 && target["__v_isReactive"])) return target;
 	if (target["__v_skip"] || !Object.isExtensible(target)) return target;
 	const existingProxy = proxyMap.get(target);
@@ -1311,8 +1298,8 @@ function markRaw(value) {
 	if (!hasOwn(value, "__v_skip") && Object.isExtensible(value)) def(value, "__v_skip", true);
 	return value;
 }
-var toReactive = (value) => isObject$2(value) ? /* @__PURE__ */ reactive(value) : value;
-var toReadonly = (value) => isObject$2(value) ? /* @__PURE__ */ readonly(value) : value;
+var toReactive = (value) => isObject(value) ? /* @__PURE__ */ reactive(value) : value;
+var toReadonly = (value) => isObject(value) ? /* @__PURE__ */ readonly(value) : value;
 // @__NO_SIDE_EFFECTS__
 function isRef(r) {
 	return r ? r["__v_isRef"] === true : false;
@@ -1372,25 +1359,6 @@ var shallowUnwrapHandlers = {
 function proxyRefs(objectWithRefs) {
 	return /* @__PURE__ */ isReactive(objectWithRefs) ? objectWithRefs : new Proxy(objectWithRefs, shallowUnwrapHandlers);
 }
-var CustomRefImpl = class {
-	constructor(factory) {
-		this["__v_isRef"] = true;
-		this._value = void 0;
-		const dep = this.dep = new Dep();
-		const { get, set } = factory(dep.track.bind(dep), dep.trigger.bind(dep));
-		this._get = get;
-		this._set = set;
-	}
-	get value() {
-		return this._value = this._get();
-	}
-	set value(newVal) {
-		this._set(newVal);
-	}
-};
-function customRef(factory) {
-	return new CustomRefImpl(factory);
-}
 var ObjectRefImpl = class {
 	constructor(_object, key, _defaultValue) {
 		this._object = _object;
@@ -1440,7 +1408,7 @@ var GetterRefImpl = class {
 function toRef(source, key, defaultValue) {
 	if (/* @__PURE__ */ isRef(source)) return source;
 	else if (isFunction(source)) return new GetterRefImpl(source);
-	else if (isObject$2(source) && arguments.length > 1) return propertyToRef(source, key, defaultValue);
+	else if (isObject(source) && arguments.length > 1) return propertyToRef(source, key, defaultValue);
 	else return /* @__PURE__ */ ref(source);
 }
 function propertyToRef(source, key, defaultValue) {
@@ -1642,7 +1610,7 @@ function watch$1(source, cb, options = EMPTY_OBJ) {
 	return watchHandle;
 }
 function traverse(value, depth = Infinity, seen) {
-	if (depth <= 0 || !isObject$2(value) || value["__v_skip"]) return value;
+	if (depth <= 0 || !isObject(value) || value["__v_skip"]) return value;
 	seen = seen || /* @__PURE__ */ new Map();
 	if ((seen.get(value) || 0) >= depth) return value;
 	seen.set(value, depth);
@@ -1949,9 +1917,6 @@ function inject(key, defaultValue, treatDefaultAsFactory = false) {
 		else if (arguments.length > 1) return treatDefaultAsFactory && isFunction(defaultValue) ? defaultValue.call(instance && instance.proxy) : defaultValue;
 	}
 }
-function hasInjectionContext() {
-	return !!(getCurrentInstance() || currentApp);
-}
 var ssrContextKey = /* @__PURE__ */ Symbol.for("v-scx");
 var useSSRContext = () => {
 	{
@@ -1962,9 +1927,6 @@ var useSSRContext = () => {
 };
 function watchEffect(effect, options) {
 	return doWatch(effect, null, options);
-}
-function watchSyncEffect(effect, options) {
-	return doWatch(effect, null, { flush: "sync" });
 }
 function watch(source, cb, options) {
 	return doWatch(source, cb, options);
@@ -2019,7 +1981,7 @@ function doWatch(source, cb, options = EMPTY_OBJ) {
 }
 function instanceWatch(source, value, options) {
 	const publicThis = this.proxy;
-	const getter = isString(source) ? source.includes(".") ? createPathGetter(publicThis, source) : () => publicThis[source] : source.bind(publicThis, publicThis);
+	const getter = isString$1(source) ? source.includes(".") ? createPathGetter(publicThis, source) : () => publicThis[source] : source.bind(publicThis, publicThis);
 	let cb;
 	if (isFunction(value)) cb = value;
 	else {
@@ -2042,13 +2004,13 @@ function createPathGetter(ctx, path) {
 var pendingMounts = /* @__PURE__ */ new WeakMap();
 var TeleportEndKey = /* @__PURE__ */ Symbol("_vte");
 var isTeleport = (type) => type.__isTeleport;
-var isTeleportDisabled$1 = (props) => props && (props.disabled || props.disabled === "");
+var isTeleportDisabled = (props) => props && (props.disabled || props.disabled === "");
 var isTeleportDeferred = (props) => props && (props.defer || props.defer === "");
 var isTargetSVG = (target) => typeof SVGElement !== "undefined" && target instanceof SVGElement;
 var isTargetMathML = (target) => typeof MathMLElement === "function" && target instanceof MathMLElement;
 var resolveTarget = (props, select) => {
 	const targetSelector = props && props.to;
-	if (isString(targetSelector)) {
+	if (isString$1(targetSelector)) {
 		if (!select) return null;
 		else return select(targetSelector);
 	} else return targetSelector;
@@ -2058,13 +2020,13 @@ var TeleportImpl = {
 	__isTeleport: true,
 	process(n1, n2, container, anchor, parentComponent, parentSuspense, namespace, slotScopeIds, optimized, internals) {
 		const { mc: mountChildren, pc: patchChildren, pbc: patchBlockChildren, o: { insert, querySelector, createText, createComment, parentNode } } = internals;
-		const disabled = isTeleportDisabled$1(n2.props);
+		const disabled = isTeleportDisabled(n2.props);
 		let { dynamicChildren } = n2;
 		const mount = (vnode, container2, anchor2) => {
 			if (vnode.shapeFlag & 16) mountChildren(vnode.children, container2, anchor2, parentComponent, parentSuspense, namespace, slotScopeIds, optimized);
 		};
 		const mountToTarget = (vnode = n2) => {
-			const disabled2 = isTeleportDisabled$1(vnode.props);
+			const disabled2 = isTeleportDisabled(vnode.props);
 			const target = vnode.target = resolveTarget(vnode.props, querySelector);
 			const targetAnchor = prepareAnchor(target, vnode, createText, insert);
 			if (target) {
@@ -2081,7 +2043,7 @@ var TeleportImpl = {
 			const mountJob = () => {
 				if (pendingMounts.get(vnode) !== mountJob) return;
 				pendingMounts.delete(vnode);
-				if (isTeleportDisabled$1(vnode.props)) {
+				if (isTeleportDisabled(vnode.props)) {
 					const mountContainer = parentNode(vnode.el) || container;
 					mount(vnode, mountContainer, vnode.anchor);
 					updateCssVars(vnode, true);
@@ -2118,7 +2080,7 @@ var TeleportImpl = {
 			n2.targetStart = n1.targetStart;
 			const target = n2.target = n1.target;
 			const targetAnchor = n2.targetAnchor = n1.targetAnchor;
-			const wasDisabled = isTeleportDisabled$1(n1.props);
+			const wasDisabled = isTeleportDisabled(n1.props);
 			const currentContainer = wasDisabled ? container : target;
 			const currentAnchor = wasDisabled ? mainAnchor : targetAnchor;
 			if (namespace === "svg" || isTargetSVG(target)) namespace = "svg";
@@ -2142,7 +2104,7 @@ var TeleportImpl = {
 	},
 	remove(vnode, parentComponent, parentSuspense, { um: unmount, o: { remove: hostRemove } }, doRemove) {
 		const { shapeFlag, children, anchor, targetStart, targetAnchor, target, props } = vnode;
-		const disabled = isTeleportDisabled$1(props);
+		const disabled = isTeleportDisabled(props);
 		const shouldRemove = doRemove || !disabled;
 		const pendingMount = pendingMounts.get(vnode);
 		if (pendingMount) {
@@ -2171,7 +2133,7 @@ function moveTeleport(vnode, container, parentAnchor, { o: { insert }, m: move }
 	const { el, anchor, shapeFlag, children, props } = vnode;
 	const isReorder = moveType === 2;
 	if (isReorder) insert(el, container, parentAnchor);
-	if (!pendingMounts.has(vnode) && (!isReorder || isTeleportDisabled$1(props))) {
+	if (!pendingMounts.has(vnode) && (!isReorder || isTeleportDisabled(props))) {
 		if (shapeFlag & 16) for (let i = 0; i < children.length; i++) move(children[i], container, parentAnchor, 2);
 	}
 	if (isReorder) insert(anchor, container, parentAnchor);
@@ -2195,7 +2157,7 @@ function hydrateTeleport(node, vnode, parentComponent, parentSuspense, slotScope
 		vnode2.anchor = hydrateChildren(nextSibling(node2), vnode2, parentNode(node2), parentComponent, parentSuspense, slotScopeIds, optimized);
 	}
 	const target = vnode.target = resolveTarget(vnode.props, querySelector);
-	const disabled = isTeleportDisabled$1(vnode.props);
+	const disabled = isTeleportDisabled(vnode.props);
 	if (target) {
 		const targetNode = target._lpa || target.firstChild;
 		if (vnode.shapeFlag & 16) {
@@ -2357,7 +2319,7 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
 	};
 	if (oldRef != null && oldRef !== ref) {
 		invalidatePendingSetRef(oldRawRef);
-		if (isString(oldRef)) {
+		if (isString$1(oldRef)) {
 			refs[oldRef] = null;
 			if (canSetSetupRef(oldRef)) setupState[oldRef] = null;
 		} else if (/* @__PURE__ */ isRef(oldRef)) {
@@ -2368,7 +2330,7 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
 	}
 	if (isFunction(ref)) callWithErrorHandling(ref, owner, 12, [value, refs]);
 	else {
-		const _isString = isString(ref);
+		const _isString = isString$1(ref);
 		const _isRef = /* @__PURE__ */ isRef(ref);
 		if (_isString || _isRef) {
 			const doSet = () => {
@@ -2480,13 +2442,13 @@ function onErrorCaptured(hook, target = currentInstance) {
 	injectHook("ec", hook, target);
 }
 var COMPONENTS = "components";
+var DIRECTIVES = "directives";
 function resolveComponent(name, maybeSelfReference) {
 	return resolveAsset(COMPONENTS, name, true, maybeSelfReference) || name;
 }
 var NULL_DYNAMIC_COMPONENT = /* @__PURE__ */ Symbol.for("v-ndc");
-function resolveDynamicComponent(component) {
-	if (isString(component)) return resolveAsset(COMPONENTS, component, false) || component;
-	else return component || NULL_DYNAMIC_COMPONENT;
+function resolveDirective(name) {
+	return resolveAsset(DIRECTIVES, name);
 }
 function resolveAsset(type, name, warnMissing = true, maybeSelfReference = false) {
 	const instance = currentRenderingInstance || currentInstance;
@@ -2508,7 +2470,7 @@ function renderList(source, renderItem, cache, index) {
 	let ret;
 	const cached = cache && cache[index];
 	const sourceIsArray = isArray$1(source);
-	if (sourceIsArray || isString(source)) {
+	if (sourceIsArray || isString$1(source)) {
 		const sourceIsReactiveArray = sourceIsArray && /* @__PURE__ */ isReactive(source);
 		let needsWrap = false;
 		let isReadonlySource = false;
@@ -2525,7 +2487,7 @@ function renderList(source, renderItem, cache, index) {
 			ret = new Array(source);
 			for (let i = 0; i < source; i++) ret[i] = renderItem(i + 1, i, void 0, cached && cached[i]);
 		}
-	} else if (isObject$2(source)) {
+	} else if (isObject(source)) {
 		if (source[Symbol.iterator]) ret = Array.from(source, (item, i) => renderItem(item, i, void 0, cached && cached[i]));
 		else {
 			const keys = Object.keys(source);
@@ -2538,6 +2500,18 @@ function renderList(source, renderItem, cache, index) {
 	} else ret = [];
 	if (cache) cache[index] = ret;
 	return ret;
+}
+function createSlots(slots, dynamicSlots) {
+	for (let i = 0; i < dynamicSlots.length; i++) {
+		const slot = dynamicSlots[i];
+		if (isArray$1(slot)) for (let j = 0; j < slot.length; j++) slots[slot[j].name] = slot[j].fn;
+		else if (slot) slots[slot.name] = slot.key ? (...args) => {
+			const res = slot.fn(...args);
+			if (res) res.key = slot.key;
+			return res;
+		} : slot.fn;
+	}
+	return slots;
 }
 function renderSlot(slots, name, props, fallback, noSlotted, branchKey) {
 	if (props == null) props = {};
@@ -2658,23 +2632,8 @@ var PublicInstanceProxyHandlers = {
 		return Reflect.defineProperty(target, key, descriptor);
 	}
 };
-function useSlots() {
-	return getContext("useSlots").slots;
-}
-function useAttrs() {
-	return getContext("useAttrs").attrs;
-}
-function getContext(calledFunctionName) {
-	const i = getCurrentInstance();
-	return i.setupContext || (i.setupContext = createSetupContext(i));
-}
 function normalizePropsOrEmits(props) {
 	return isArray$1(props) ? props.reduce((normalized, p) => (normalized[p] = null, normalized), {}) : props;
-}
-function mergeModels(a, b) {
-	if (!a || !b) return a || b;
-	if (isArray$1(a) && isArray$1(b)) return a.concat(b);
-	return extend({}, normalizePropsOrEmits(a), normalizePropsOrEmits(b));
 }
 var shouldCacheAccess = true;
 function applyOptions(instance) {
@@ -2692,7 +2651,7 @@ function applyOptions(instance) {
 	}
 	if (dataOptions) {
 		const data = dataOptions.call(publicThis, publicThis);
-		if (!isObject$2(data)) {} else instance.data = /* @__PURE__ */ reactive(data);
+		if (!isObject(data)) {} else instance.data = /* @__PURE__ */ reactive(data);
 	}
 	shouldCacheAccess = true;
 	if (computedOptions) for (const key in computedOptions) {
@@ -2755,7 +2714,7 @@ function resolveInjections(injectOptions, ctx, checkDuplicateProperties = NOOP) 
 	for (const key in injectOptions) {
 		const opt = injectOptions[key];
 		let injected;
-		if (isObject$2(opt)) {
+		if (isObject(opt)) {
 			if ("default" in opt) injected = inject(opt.from || key, opt.default, true);
 			else injected = inject(opt.from || key);
 		} else injected = inject(opt);
@@ -2773,11 +2732,11 @@ function callHook$1(hook, instance, type) {
 }
 function createWatcher(raw, ctx, publicThis, key) {
 	let getter = key.includes(".") ? createPathGetter(publicThis, key) : () => publicThis[key];
-	if (isString(raw)) {
+	if (isString$1(raw)) {
 		const handler = ctx[raw];
 		if (isFunction(handler)) watch(getter, handler);
 	} else if (isFunction(raw)) watch(getter, raw.bind(publicThis));
-	else if (isObject$2(raw)) {
+	else if (isObject(raw)) {
 		if (isArray$1(raw)) raw.forEach((r) => createWatcher(r, ctx, publicThis, key));
 		else {
 			const handler = isFunction(raw.handler) ? raw.handler.bind(publicThis) : ctx[raw.handler];
@@ -2798,7 +2757,7 @@ function resolveMergedOptions(instance) {
 		if (globalMixins.length) globalMixins.forEach((m) => mergeOptions$1(resolved, m, optionMergeStrategies, true));
 		mergeOptions$1(resolved, base, optionMergeStrategies);
 	}
-	if (isObject$2(base)) cache.set(base, resolved);
+	if (isObject(base)) cache.set(base, resolved);
 	return resolved;
 }
 function mergeOptions$1(to, from, strats, asMixin = false) {
@@ -2899,7 +2858,7 @@ var uid$1 = 0;
 function createAppAPI(render, hydrate) {
 	return function createApp(rootComponent, rootProps = null) {
 		if (!isFunction(rootComponent)) rootComponent = extend({}, rootComponent);
-		if (rootProps != null && !isObject$2(rootProps)) rootProps = null;
+		if (rootProps != null && !isObject(rootProps)) rootProps = null;
 		const context = createAppContext();
 		const installedPlugins = /* @__PURE__ */ new WeakSet();
 		const pluginCleanupFns = [];
@@ -2982,55 +2941,6 @@ function createAppAPI(render, hydrate) {
 	};
 }
 var currentApp = null;
-function useModel(props, name, options = EMPTY_OBJ) {
-	const i = getCurrentInstance();
-	const camelizedName = camelize(name);
-	const hyphenatedName = hyphenate(name);
-	const modifiers = getModelModifiers(props, camelizedName);
-	const res = customRef((track, trigger) => {
-		let localValue;
-		let prevSetValue = EMPTY_OBJ;
-		let prevEmittedValue;
-		watchSyncEffect(() => {
-			const propValue = props[camelizedName];
-			if (hasChanged(localValue, propValue)) {
-				localValue = propValue;
-				trigger();
-			}
-		});
-		return {
-			get() {
-				track();
-				return options.get ? options.get(localValue) : localValue;
-			},
-			set(value) {
-				const emittedValue = options.set ? options.set(value) : value;
-				if (!hasChanged(emittedValue, localValue) && !(prevSetValue !== EMPTY_OBJ && hasChanged(value, prevSetValue))) return;
-				const rawProps = i.vnode.props;
-				const hasVModel = !!(rawProps && (name in rawProps || camelizedName in rawProps || hyphenatedName in rawProps) && (`onUpdate:${name}` in rawProps || `onUpdate:${camelizedName}` in rawProps || `onUpdate:${hyphenatedName}` in rawProps));
-				if (!hasVModel) {
-					localValue = value;
-					trigger();
-				}
-				i.emit(`update:${name}`, emittedValue);
-				if (hasChanged(value, prevSetValue) && (hasChanged(value, emittedValue) && !hasChanged(emittedValue, prevEmittedValue) || hasVModel && prevSetValue !== EMPTY_OBJ && !hasChanged(emittedValue, localValue))) trigger();
-				prevSetValue = value;
-				prevEmittedValue = emittedValue;
-			}
-		};
-	});
-	res[Symbol.iterator] = () => {
-		let i2 = 0;
-		return { next() {
-			if (i2 < 2) return {
-				value: i2++ ? modifiers || EMPTY_OBJ : res,
-				done: false
-			};
-			else return { done: true };
-		} };
-	};
-	return res;
-}
 var getModelModifiers = (props, modelName) => {
 	return modelName === "modelValue" || modelName === "model-value" ? props.modelModifiers : props[`${modelName}Modifiers`] || props[`${camelize(modelName)}Modifiers`] || props[`${hyphenate(modelName)}Modifiers`];
 };
@@ -3041,7 +2951,7 @@ function emit(instance, event, ...rawArgs) {
 	const isModelListener = event.startsWith("update:");
 	const modifiers = isModelListener && getModelModifiers(props, event.slice(7));
 	if (modifiers) {
-		if (modifiers.trim) args = rawArgs.map((a) => isString(a) ? a.trim() : a);
+		if (modifiers.trim) args = rawArgs.map((a) => isString$1(a) ? a.trim() : a);
 		if (modifiers.number) args = args.map(looseToNumber);
 	}
 	let handlerName;
@@ -3077,12 +2987,12 @@ function normalizeEmitsOptions(comp, appContext, asMixin = false) {
 		if (comp.mixins) comp.mixins.forEach(extendEmits);
 	}
 	if (!raw && !hasExtends) {
-		if (isObject$2(comp)) cache.set(comp, null);
+		if (isObject(comp)) cache.set(comp, null);
 		return null;
 	}
 	if (isArray$1(raw)) raw.forEach((key) => normalized[key] = null);
 	else extend(normalized, raw);
-	if (isObject$2(comp)) cache.set(comp, normalized);
+	if (isObject(comp)) cache.set(comp, normalized);
 	return normalized;
 }
 function isEmitListener(options, key) {
@@ -3199,7 +3109,7 @@ function hasPropsChanged(prevProps, nextProps, emitsOptions) {
 function hasPropValueChanged(nextProps, prevProps, key) {
 	const nextProp = nextProps[key];
 	const prevProp = prevProps[key];
-	if (key === "style" && isObject$2(nextProp) && isObject$2(prevProp)) return !looseEqual(nextProp, prevProp);
+	if (key === "style" && isObject(nextProp) && isObject(prevProp)) return !looseEqual(nextProp, prevProp);
 	return nextProp !== prevProp;
 }
 function updateHOCHostEl({ vnode, parent, suspense }, el) {
@@ -3348,7 +3258,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
 		if (comp.mixins) comp.mixins.forEach(extendProps);
 	}
 	if (!raw && !hasExtends) {
-		if (isObject$2(comp)) cache.set(comp, EMPTY_ARR);
+		if (isObject(comp)) cache.set(comp, EMPTY_ARR);
 		return EMPTY_ARR;
 	}
 	if (isArray$1(raw)) for (let i = 0; i < raw.length; i++) {
@@ -3378,7 +3288,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
 		}
 	}
 	const res = [normalized, needCastKeys];
-	if (isObject$2(comp)) cache.set(comp, res);
+	if (isObject(comp)) cache.set(comp, res);
 	return res;
 }
 function validatePropName(key) {
@@ -4234,7 +4144,7 @@ function isSameVNodeType(n1, n2) {
 var normalizeKey = ({ key }) => key != null ? key : null;
 var normalizeRef = ({ ref, ref_key, ref_for }) => {
 	if (typeof ref === "number") ref = "" + ref;
-	return ref != null ? isString(ref) || /* @__PURE__ */ isRef(ref) || isFunction(ref) ? {
+	return ref != null ? isString$1(ref) || /* @__PURE__ */ isRef(ref) || isFunction(ref) ? {
 		i: currentRenderingInstance,
 		r: ref,
 		k: ref_key,
@@ -4274,7 +4184,7 @@ function createBaseVNode(type, props = null, children = null, patchFlag = 0, dyn
 	if (needFullChildrenNormalization) {
 		normalizeChildren(vnode, children);
 		if (shapeFlag & 128) type.normalize(vnode);
-	} else if (children) vnode.shapeFlag |= isString(children) ? 8 : 16;
+	} else if (children) vnode.shapeFlag |= isString$1(children) ? 8 : 16;
 	if (isBlockTreeEnabled > 0 && !isBlockNode && currentBlock && (vnode.patchFlag > 0 || shapeFlag & 6) && vnode.patchFlag !== 32) currentBlock.push(vnode);
 	return vnode;
 }
@@ -4295,13 +4205,13 @@ function _createVNode(type, props = null, children = null, patchFlag = 0, dynami
 	if (props) {
 		props = guardReactiveProps(props);
 		let { class: klass, style } = props;
-		if (klass && !isString(klass)) props.class = normalizeClass(klass);
-		if (isObject$2(style)) {
+		if (klass && !isString$1(klass)) props.class = normalizeClass(klass);
+		if (isObject(style)) {
 			if (/* @__PURE__ */ isProxy(style) && !isArray$1(style)) style = extend({}, style);
 			props.style = normalizeStyle(style);
 		}
 	}
-	const shapeFlag = isString(type) ? 1 : isSuspense(type) ? 128 : isTeleport(type) ? 64 : isObject$2(type) ? 4 : isFunction(type) ? 2 : 0;
+	const shapeFlag = isString$1(type) ? 1 : isSuspense(type) ? 128 : isTeleport(type) ? 64 : isObject(type) ? 4 : isFunction(type) ? 2 : 0;
 	return createBaseVNode(type, props, children, patchFlag, dynamicProps, shapeFlag, isBlockNode, true);
 }
 function guardReactiveProps(props) {
@@ -4585,7 +4495,7 @@ function handleSetupResult(instance, setupResult, isSSR) {
 	if (isFunction(setupResult)) {
 		if (instance.type.__ssrInlineRender) instance.ssrRender = setupResult;
 		else instance.render = setupResult;
-	} else if (isObject$2(setupResult)) instance.setupState = proxyRefs(setupResult);
+	} else if (isObject(setupResult)) instance.setupState = proxyRefs(setupResult);
 	finishComponentSetup(instance, isSSR);
 }
 function finishComponentSetup(instance, isSSR, skipOptions) {
@@ -4644,7 +4554,7 @@ function h(type, propsOrChildren, children) {
 		setBlockTracking(-1);
 		const l = arguments.length;
 		if (l === 2) {
-			if (isObject$2(propsOrChildren) && !isArray$1(propsOrChildren)) {
+			if (isObject(propsOrChildren) && !isArray$1(propsOrChildren)) {
 				if (isVNode(propsOrChildren)) return createVNode(type, null, [propsOrChildren]);
 				return createVNode(type, propsOrChildren);
 			} else return createVNode(type, null, propsOrChildren);
@@ -4730,45 +4640,15 @@ function patchClass(el, value, isSVG) {
 }
 var vShowOriginalDisplay = /* @__PURE__ */ Symbol("_vod");
 var vShowHidden = /* @__PURE__ */ Symbol("_vsh");
-var vShow = {
-	name: "show",
-	beforeMount(el, { value }, { transition }) {
-		el[vShowOriginalDisplay] = el.style.display === "none" ? "" : el.style.display;
-		if (transition && value) transition.beforeEnter(el);
-		else setDisplay(el, value);
-	},
-	mounted(el, { value }, { transition }) {
-		if (transition && value) transition.enter(el);
-	},
-	updated(el, { value, oldValue }, { transition }) {
-		if (!value === !oldValue) return;
-		if (transition) {
-			if (value) {
-				transition.beforeEnter(el);
-				setDisplay(el, true);
-				transition.enter(el);
-			} else transition.leave(el, () => {
-				setDisplay(el, false);
-			});
-		} else setDisplay(el, value);
-	},
-	beforeUnmount(el, { value }) {
-		setDisplay(el, value);
-	}
-};
-function setDisplay(el, value) {
-	el.style.display = value ? el[vShowOriginalDisplay] : "none";
-	el[vShowHidden] = !value;
-}
 var CSS_VAR_TEXT = /* @__PURE__ */ Symbol("");
 var displayRE = /(?:^|;)\s*display\s*:/;
 function patchStyle(el, prev, next) {
 	const style = el.style;
-	const isCssString = isString(next);
+	const isCssString = isString$1(next);
 	let hasControlledDisplay = false;
 	if (next && !isCssString) {
 		if (prev) {
-			if (!isString(prev)) {
+			if (!isString$1(prev)) {
 				for (const key in prev) if (next[key] == null) setStyle(style, key, "");
 			} else for (const prevStyle of prev.split(";")) {
 				const key = prevStyle.slice(0, prevStyle.indexOf(":")).trim();
@@ -4779,7 +4659,7 @@ function patchStyle(el, prev, next) {
 			if (key === "display") hasControlledDisplay = true;
 			const value = next[key];
 			if (value != null) {
-				if (!shouldPreserveTextareaResizeStyle(el, key, !isString(prev) && prev ? prev[key] : void 0, value)) setStyle(style, key, value);
+				if (!shouldPreserveTextareaResizeStyle(el, key, !isString$1(prev) && prev ? prev[key] : void 0, value)) setStyle(style, key, value);
 			} else setStyle(style, key, "");
 		}
 	} else if (isCssString) {
@@ -4829,7 +4709,7 @@ function autoPrefix(style, rawName) {
 	return rawName;
 }
 function shouldPreserveTextareaResizeStyle(el, key, prev, next) {
-	return el.tagName === "TEXTAREA" && (key === "width" || key === "height") && isString(next) && prev === next;
+	return el.tagName === "TEXTAREA" && (key === "width" || key === "height") && isString$1(next) && prev === next;
 }
 var xlinkNS = "http://www.w3.org/1999/xlink";
 function patchAttr(el, key, value, isSVG, instance, isBoolean = isSpecialBooleanAttr(key)) {
@@ -4939,7 +4819,7 @@ var patchProp = (el, key, prevValue, nextValue, namespace, parentComponent) => {
 	} else if (key[0] === "." ? (key = key.slice(1), true) : key[0] === "^" ? (key = key.slice(1), false) : shouldSetAsProp(el, key, nextValue, isSVG)) {
 		patchDOMProp(el, key, nextValue);
 		if (!el.tagName.includes("-") && (key === "value" || key === "checked" || key === "selected")) patchAttr(el, key, nextValue, isSVG, parentComponent, key !== "value");
-	} else if (el._isVueCE && (shouldSetAsPropForVueCE(el, key) || el._def.__asyncLoader && (/[A-Z]/.test(key) || !isString(nextValue)))) patchDOMProp(el, camelize(key), nextValue, parentComponent, key);
+	} else if (el._isVueCE && (shouldSetAsPropForVueCE(el, key) || el._def.__asyncLoader && (/[A-Z]/.test(key) || !isString$1(nextValue)))) patchDOMProp(el, camelize(key), nextValue, parentComponent, key);
 	else {
 		if (key === "true-value") el._trueValue = nextValue;
 		else if (key === "false-value") el._falseValue = nextValue;
@@ -4961,7 +4841,7 @@ function shouldSetAsProp(el, key, value, isSVG) {
 		const tag = el.tagName;
 		if (tag === "IMG" || tag === "VIDEO" || tag === "CANVAS" || tag === "SOURCE") return false;
 	}
-	if (isNativeOn(key) && isString(value)) return false;
+	if (isNativeOn(key) && isString$1(value)) return false;
 	return key in el;
 }
 function shouldSetAsPropForVueCE(el, key) {
@@ -4970,338 +4850,6 @@ function shouldSetAsPropForVueCE(el, key) {
 	const camelKey = camelize(key);
 	return Array.isArray(props) ? props.some((prop) => camelize(prop) === camelKey) : Object.keys(props).some((prop) => camelize(prop) === camelKey);
 }
-var REMOVAL = {};
-// @__NO_SIDE_EFFECTS__
-function defineCustomElement(options, extraOptions, _createApp) {
-	let Comp = /* @__PURE__ */ defineComponent(options, extraOptions);
-	if (isPlainObject(Comp)) Comp = extend({}, Comp, extraOptions);
-	class VueCustomElement extends VueElement {
-		constructor(initialProps) {
-			super(Comp, initialProps, _createApp);
-		}
-	}
-	VueCustomElement.def = Comp;
-	return VueCustomElement;
-}
-var BaseClass = typeof HTMLElement !== "undefined" ? HTMLElement : class {};
-var VueElement = class VueElement extends BaseClass {
-	constructor(_def, _props = {}, _createApp = createApp) {
-		super();
-		this._def = _def;
-		this._props = _props;
-		this._createApp = _createApp;
-		this._isVueCE = true;
-		/**
-		* @internal
-		*/
-		this._instance = null;
-		/**
-		* @internal
-		*/
-		this._app = null;
-		/**
-		* @internal
-		*/
-		this._nonce = this._def.nonce;
-		this._connected = false;
-		this._resolved = false;
-		this._patching = false;
-		this._dirty = false;
-		this._numberProps = null;
-		this._styleChildren = /* @__PURE__ */ new WeakSet();
-		this._styleAnchors = /* @__PURE__ */ new WeakMap();
-		this._ob = null;
-		if (this.shadowRoot && _createApp !== createApp) this._root = this.shadowRoot;
-		else if (_def.shadowRoot !== false) {
-			this.attachShadow(extend({}, _def.shadowRootOptions, { mode: "open" }));
-			this._root = this.shadowRoot;
-		} else this._root = this;
-	}
-	connectedCallback() {
-		if (!this.isConnected) return;
-		if (!this.shadowRoot && !this._resolved) this._parseSlots();
-		this._connected = true;
-		let parent = this;
-		while (parent = parent && (parent.assignedSlot || parent.parentNode || parent.host)) if (parent instanceof VueElement) {
-			this._parent = parent;
-			break;
-		}
-		if (!this._instance) {
-			if (this._resolved) this._mount(this._def);
-			else if (parent && parent._pendingResolve) this._pendingResolve = parent._pendingResolve.then(() => {
-				this._pendingResolve = void 0;
-				if (this.isConnected) return this._resolveDef();
-			});
-			else this._resolveDef();
-		}
-	}
-	_setParent(parent = this._parent) {
-		if (parent) {
-			this._instance.parent = parent._instance;
-			this._inheritParentContext(parent);
-		}
-	}
-	_inheritParentContext(parent = this._parent) {
-		if (parent && this._app) Object.setPrototypeOf(this._app._context.provides, parent._instance.provides);
-	}
-	disconnectedCallback() {
-		this._connected = false;
-		nextTick(() => {
-			if (!this._connected) {
-				if (this._ob) {
-					this._ob.disconnect();
-					this._ob = null;
-				}
-				this._app && this._app.unmount();
-				if (this._instance) this._instance.ce = void 0;
-				this._app = this._instance = null;
-				if (this._teleportTargets) {
-					this._teleportTargets.clear();
-					this._teleportTargets = void 0;
-				}
-			}
-		});
-	}
-	_processMutations(mutations) {
-		for (const m of mutations) this._setAttr(m.attributeName);
-	}
-	/**
-	* resolve inner component definition (handle possible async component)
-	*/
-	_resolveDef() {
-		if (this._pendingResolve) return this._pendingResolve;
-		for (let i = 0; i < this.attributes.length; i++) this._setAttr(this.attributes[i].name);
-		this._ob = new MutationObserver(this._processMutations.bind(this));
-		this._ob.observe(this, { attributes: true });
-		const resolve = (def, isAsync = false) => {
-			this._resolved = true;
-			this._pendingResolve = void 0;
-			const { props, styles } = def;
-			let numberProps;
-			if (props && !isArray$1(props)) for (const key in props) {
-				const opt = props[key];
-				if (opt === Number || opt && opt.type === Number) {
-					if (key in this._props) this._props[key] = toNumber(this._props[key]);
-					(numberProps || (numberProps = /* @__PURE__ */ Object.create(null)))[camelize(key)] = true;
-				}
-			}
-			this._numberProps = numberProps;
-			this._resolveProps(def);
-			if (this.shadowRoot) this._applyStyles(styles);
-			if (this._connected) this._mount(def);
-		};
-		const asyncDef = this._def.__asyncLoader;
-		if (asyncDef) {
-			this._pendingResolve = asyncDef().then((def) => {
-				def.configureApp = this._def.configureApp;
-				resolve(this._def = def, true);
-			});
-			return this._pendingResolve;
-		} else resolve(this._def);
-	}
-	_mount(def) {
-		this._app = this._createApp(def);
-		this._inheritParentContext();
-		if (def.configureApp) def.configureApp(this._app);
-		this._app._ceVNode = this._createVNode();
-		this._app.mount(this._root);
-		const exposed = this._instance && this._instance.exposed;
-		if (!exposed) return;
-		for (const key in exposed) if (!hasOwn(this, key)) Object.defineProperty(this, key, { get: () => unref(exposed[key]) });
-	}
-	_resolveProps(def) {
-		const { props } = def;
-		const declaredPropKeys = isArray$1(props) ? props : Object.keys(props || {});
-		for (const key of Object.keys(this)) if (key[0] !== "_" && declaredPropKeys.includes(key)) this._setProp(key, this[key]);
-		for (const key of declaredPropKeys.map(camelize)) Object.defineProperty(this, key, {
-			get() {
-				return this._getProp(key);
-			},
-			set(val) {
-				this._setProp(key, val, true, !this._patching);
-			}
-		});
-	}
-	_setAttr(key) {
-		if (key.startsWith("data-v-")) return;
-		const has = this.hasAttribute(key);
-		let value = has ? this.getAttribute(key) : REMOVAL;
-		const camelKey = camelize(key);
-		if (has && this._numberProps && this._numberProps[camelKey]) value = toNumber(value);
-		this._setProp(camelKey, value, false, true);
-	}
-	/**
-	* @internal
-	*/
-	_getProp(key) {
-		return this._props[key];
-	}
-	/**
-	* @internal
-	*/
-	_setProp(key, val, shouldReflect = true, shouldUpdate = false) {
-		if (val !== this._props[key]) {
-			this._dirty = true;
-			if (val === REMOVAL) delete this._props[key];
-			else {
-				this._props[key] = val;
-				if (key === "key" && this._app) this._app._ceVNode.key = val;
-			}
-			if (shouldUpdate && this._instance) this._update();
-			if (shouldReflect) {
-				const ob = this._ob;
-				if (ob) {
-					this._processMutations(ob.takeRecords());
-					ob.disconnect();
-				}
-				if (val === true) this.setAttribute(hyphenate(key), "");
-				else if (typeof val === "string" || typeof val === "number") this.setAttribute(hyphenate(key), val + "");
-				else if (!val) this.removeAttribute(hyphenate(key));
-				ob && ob.observe(this, { attributes: true });
-			}
-		}
-	}
-	_update() {
-		const vnode = this._createVNode();
-		if (this._app) vnode.appContext = this._app._context;
-		render(vnode, this._root);
-	}
-	_createVNode() {
-		const baseProps = {};
-		if (!this.shadowRoot) baseProps.onVnodeMounted = baseProps.onVnodeUpdated = this._renderSlots.bind(this);
-		const vnode = createVNode(this._def, extend(baseProps, this._props));
-		if (!this._instance) vnode.ce = (instance) => {
-			this._instance = instance;
-			instance.ce = this;
-			instance.isCE = true;
-			const dispatch = (event, args) => {
-				this.dispatchEvent(new CustomEvent(event, isPlainObject(args[0]) ? extend({ detail: args }, args[0]) : { detail: args }));
-			};
-			instance.emit = (event, ...args) => {
-				dispatch(event, args);
-				if (hyphenate(event) !== event) dispatch(hyphenate(event), args);
-			};
-			this._setParent();
-		};
-		return vnode;
-	}
-	_applyStyles(styles, owner, parentComp) {
-		if (!styles) return;
-		if (owner) {
-			if (owner === this._def || this._styleChildren.has(owner)) return;
-			this._styleChildren.add(owner);
-		}
-		const nonce = this._nonce;
-		const root = this.shadowRoot;
-		const insertionAnchor = parentComp ? this._getStyleAnchor(parentComp) || this._getStyleAnchor(this._def) : this._getRootStyleInsertionAnchor(root);
-		let last = null;
-		for (let i = styles.length - 1; i >= 0; i--) {
-			const s = document.createElement("style");
-			if (nonce) s.setAttribute("nonce", nonce);
-			s.textContent = styles[i];
-			root.insertBefore(s, last || insertionAnchor);
-			last = s;
-			if (i === 0) {
-				if (!parentComp) this._styleAnchors.set(this._def, s);
-				if (owner) this._styleAnchors.set(owner, s);
-			}
-		}
-	}
-	_getStyleAnchor(comp) {
-		if (!comp) return null;
-		const anchor = this._styleAnchors.get(comp);
-		if (anchor && anchor.parentNode === this.shadowRoot) return anchor;
-		if (anchor) this._styleAnchors.delete(comp);
-		return null;
-	}
-	_getRootStyleInsertionAnchor(root) {
-		for (let i = 0; i < root.childNodes.length; i++) {
-			const node = root.childNodes[i];
-			if (!(node instanceof HTMLStyleElement)) return node;
-		}
-		return null;
-	}
-	/**
-	* Only called when shadowRoot is false
-	*/
-	_parseSlots() {
-		const slots = this._slots = {};
-		let n;
-		while (n = this.firstChild) {
-			const slotName = n.nodeType === 1 && n.getAttribute("slot") || "default";
-			(slots[slotName] || (slots[slotName] = [])).push(n);
-			this.removeChild(n);
-		}
-	}
-	/**
-	* Only called when shadowRoot is false
-	*/
-	_renderSlots() {
-		const outlets = this._getSlots();
-		const scopeId = this._instance.type.__scopeId;
-		for (let i = 0; i < outlets.length; i++) {
-			const o = outlets[i];
-			const slotName = o.getAttribute("name") || "default";
-			const content = this._slots[slotName];
-			const parent = o.parentNode;
-			if (content) for (const n of content) {
-				if (scopeId && n.nodeType === 1) {
-					const id = scopeId + "-s";
-					const walker = document.createTreeWalker(n, 1);
-					n.setAttribute(id, "");
-					let child;
-					while (child = walker.nextNode()) child.setAttribute(id, "");
-				}
-				parent.insertBefore(n, o);
-			}
-			else while (o.firstChild) parent.insertBefore(o.firstChild, o);
-			parent.removeChild(o);
-		}
-	}
-	/**
-	* @internal
-	*/
-	_getSlots() {
-		const roots = [this];
-		if (this._teleportTargets) roots.push(...this._teleportTargets);
-		const slots = /* @__PURE__ */ new Set();
-		for (const root of roots) {
-			const found = root.querySelectorAll("slot");
-			for (let i = 0; i < found.length; i++) slots.add(found[i]);
-		}
-		return Array.from(slots);
-	}
-	/**
-	* @internal
-	*/
-	_injectChildStyle(comp, parentComp) {
-		this._applyStyles(comp.styles, comp, parentComp);
-	}
-	/**
-	* @internal
-	*/
-	_beginPatch() {
-		this._patching = true;
-		this._dirty = false;
-	}
-	/**
-	* @internal
-	*/
-	_endPatch() {
-		this._patching = false;
-		if (this._dirty && this._instance) this._update();
-	}
-	/**
-	* @internal
-	*/
-	_hasShadowRoot() {
-		return this._def.shadowRoot !== false;
-	}
-	/**
-	* @internal
-	*/
-	_removeChildStyle(comp) {}
-};
 var getModelAssigner = (vnode) => {
 	const fn = vnode.props["onUpdate:modelValue"] || false;
 	return isArray$1(fn) ? (value) => invokeArrayFns(fn, value) : fn;
@@ -5363,6 +4911,62 @@ var vModelText = {
 			if (trim && el.value.trim() === newValue) return;
 		}
 		el.value = newValue;
+	}
+};
+var vModelCheckbox = {
+	deep: true,
+	created(el, _, vnode) {
+		el[assignKey] = getModelAssigner(vnode);
+		addEventListener(el, "change", () => {
+			const modelValue = el._modelValue;
+			const elementValue = getValue(el);
+			const checked = el.checked;
+			const assign = el[assignKey];
+			if (isArray$1(modelValue)) {
+				const index = looseIndexOf(modelValue, elementValue);
+				const found = index !== -1;
+				if (checked && !found) assign(modelValue.concat(elementValue));
+				else if (!checked && found) {
+					const filtered = [...modelValue];
+					filtered.splice(index, 1);
+					assign(filtered);
+				}
+			} else if (isSet$1(modelValue)) {
+				const cloned = new Set(modelValue);
+				if (checked) cloned.add(elementValue);
+				else cloned.delete(elementValue);
+				assign(cloned);
+			} else assign(getCheckboxValue(el, checked));
+		});
+	},
+	mounted: setChecked,
+	beforeUpdate(el, binding, vnode) {
+		el[assignKey] = getModelAssigner(vnode);
+		setChecked(el, binding, vnode);
+	}
+};
+function setChecked(el, { value, oldValue }, vnode) {
+	el._modelValue = value;
+	let checked;
+	if (isArray$1(value)) checked = looseIndexOf(value, vnode.props.value) > -1;
+	else if (isSet$1(value)) checked = value.has(vnode.props.value);
+	else {
+		if (value === oldValue) return;
+		checked = looseEqual(value, getCheckboxValue(el, true));
+	}
+	if (el.checked !== checked) el.checked = checked;
+}
+var vModelRadio = {
+	created(el, { value }, vnode) {
+		el.checked = looseEqual(value, vnode.props.value);
+		el[assignKey] = getModelAssigner(vnode);
+		addEventListener(el, "change", () => {
+			el[assignKey](getValue(el));
+		});
+	},
+	beforeUpdate(el, { value, oldValue }, vnode) {
+		el[assignKey] = getModelAssigner(vnode);
+		if (value !== oldValue) el.checked = looseEqual(value, vnode.props.value);
 	}
 };
 var vModelSelect = {
@@ -5430,6 +5034,39 @@ function setSelected(el, value, number = false) {
 function getValue(el) {
 	return "_value" in el ? el._value : el.value;
 }
+function getCheckboxValue(el, checked) {
+	const key = checked ? "_trueValue" : "_falseValue";
+	return key in el ? el[key] : checked;
+}
+var vModelDynamic = {
+	created(el, binding, vnode) {
+		callModelHook(el, binding, vnode, null, "created");
+	},
+	mounted(el, binding, vnode) {
+		callModelHook(el, binding, vnode, null, "mounted");
+	},
+	beforeUpdate(el, binding, vnode, prevVNode) {
+		callModelHook(el, binding, vnode, prevVNode, "beforeUpdate");
+	},
+	updated(el, binding, vnode, prevVNode) {
+		callModelHook(el, binding, vnode, prevVNode, "updated");
+	}
+};
+function resolveDynamicModel(tagName, type) {
+	switch (tagName) {
+		case "SELECT": return vModelSelect;
+		case "TEXTAREA": return vModelText;
+		default: switch (type) {
+			case "checkbox": return vModelCheckbox;
+			case "radio": return vModelRadio;
+			default: return vModelText;
+		}
+	}
+}
+function callModelHook(el, binding, vnode, prevVNode, hook) {
+	const fn = resolveDynamicModel(el.tagName, vnode.props && vnode.props.type)[hook];
+	fn && fn(el, binding, vnode, prevVNode);
+}
 var systemModifiers = [
 	"ctrl",
 	"shift",
@@ -5484,9 +5121,6 @@ var renderer;
 function ensureRenderer() {
 	return renderer || (renderer = createRenderer(rendererOptions));
 }
-var render = ((...args) => {
-	ensureRenderer().render(...args);
-});
 var createApp = ((...args) => {
 	const app = ensureRenderer().createApp(...args);
 	const { mount } = app;
@@ -5510,7 +5144,7 @@ function resolveRootNamespace(container) {
 	if (typeof MathMLElement === "function" && container instanceof MathMLElement) return "mathml";
 }
 function normalizeContainer(container) {
-	if (isString(container)) return document.querySelector(container);
+	if (isString$1(container)) return document.querySelector(container);
 	return container;
 }
 // ../../packages/icon-lib-default/dist/f/index.js
@@ -5555,79 +5189,25 @@ function isSet(value) {
 	return value !== void 0 && value !== null;
 }
 /**
-* An error indicating that a mandatory value is not set.
-*
 * @public
 */
-var MissingValueError = class MissingValueError extends Error {
-	constructor(message) {
-		super(message);
-		this.name = "MissingValueError";
-		Object.setPrototypeOf(this, MissingValueError.prototype);
-	}
-};
-/**
-* [Assertion function][ts-handbook] to assert that a nullable Vue ref holds a
-* non-null value. Typically used with template refs but any nullable ref can be
-* used.
-*
-* Throws {@link MissingValueError} if the ref holds `null` or `undefined`, or
-* the ref itself is `null` or `undefined`.
-*
-* [ts-handbook]: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#assertion-functions
-*
-*  @example
-*
-* ```ts
-* const element = useTemplateRef("my-template-ref");
-* //    ^?   Readonly<ShallowRef<HTMLElement | null>>
-*
-* assertRef(element);
-*
-* // element is now guaranteed to be a HTMLElement ref
-* ```
-*
-* @public
-* @since v6.15.0
-* @param ref - the value asserted to be a ref.
-* @param message - an optional exception message to use if the check fails.
-* @throws {@link MissingValueError} if value is not set.
-*/
-function assertRef(ref, message = "Expected ref to have a non-null value, but it did not") {
-	if (!isSet(ref?.value)) throw new MissingValueError(message);
-}
-/**
-* [Assertion function][ts-handbook] to assert that a value is set.
-* Any value that is not null or undefined is considered set including falsy values such as 0 or "".
-*
-* Throws {@link MissingValueError} if value is not set.
-*
-* [ts-handbook]: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#assertion-functions
-*
-*  @example
-*
-* ```ts
-* const value = getValue();
-* //    ^?   string | null
-*
-* assertSet(value);
-*
-* // value is now guaranteed to be non-null
-* ```
-*
-* @public
-* @since v6.15.0
-* @param value - the value asserted to be set.
-* @param message - an optional exception message to use if the check fails.
-* @throws {@link MissingValueError} if value is not set.
-*/
-function assertSet(value, message = "Expected value to be set, but it was not") {
-	if (!isSet(value)) throw new MissingValueError(message);
+function isString(value) {
+	return typeof value === "string" || value instanceof String;
 }
 /**
 * @public
 */
 var configLogic = { production: true };
+var DATE_REGEXP_WITH_DASH = /^\d{4}-\d{2}-\d{2}$/;
+/**
+* @public
+*/
+function validLimit(limit) {
+	if (typeof limit !== "string" || isEmpty(limit)) throw new Error(`limit must be a non-empty string`);
+	const limitAsString = limit;
+	if (!DATE_REGEXP_WITH_DASH.test(limitAsString)) throw new Error(`limit has invalid format`);
+	return limitAsString;
+}
 /**
 * Executes a function when it stops being invoked for n seconds. Usually used together with resize,
 * scroll and keyup/keydown-events to improve application's performance.
@@ -7128,6 +6708,12 @@ function testLuhnChecksum(inputString) {
 	}
 	return sum % 10 === 0;
 }
+/**
+* @public
+*/
+function validChecksum(value) {
+	return testLuhnChecksum(value.slice(2).replaceAll("-", ""));
+}
 var BANK_ACCOUNT_NUMBER_REGEXP = /^\d{3,16}$/;
 var BANK_ACCOUNT_NUMBER_TRIM_REGEXP = /[ ,.-]+/g;
 /**
@@ -8036,23 +7622,6 @@ function replaceCommaWithDot(str) {
 function replaceMinusSignWithDash(str) {
 	return str.replace("−", "-");
 }
-function replaceDotWithComma(str) {
-	return str.replace(".", ",");
-}
-function formatSwedishNotation(value, decimals) {
-	if (decimals !== void 0) value = Number(value.toFixed(decimals));
-	return replaceDotWithComma(value.toLocaleString("sv-SE", { minimumFractionDigits: decimals }));
-}
-/**
-* Format number with thousand separator and use comma as decimal separator.
-*
-* @public
-*/
-function formatNumber(value, decimals) {
-	if (typeof value === "string") value = parseNumber(value) ?? "";
-	if (typeof value !== "number" || Number.isNaN(value)) return;
-	return formatSwedishNotation(value, decimals);
-}
 /**
 * @public
 */
@@ -8130,14 +7699,25 @@ function parsePersonnummer(value, now = FDate.now()) {
 	return getPersonnummerString(century, year, month, day, check);
 }
 /**
-* Formats personnummer to a 10-digit string.
+* Parses 10- and 12-digit personnummers with Luhn validation.
 *
 * @public
 */
-function formatPersonnummer(value) {
-	if (!isSet(value)) return;
-	if (FDate.now().year - Number(value.slice(0, 4)) >= 100) return value.slice(2).replace("-", "+");
-	return value.slice(2);
+function parsePersonnummerLuhn(value) {
+	const parsed = parsePersonnummer(value);
+	if (!parsed) return;
+	if (!validChecksum(parsed)) return;
+	return parsed;
+}
+/**
+* Formats personnummer to a 8-digit date.
+*
+* @public
+*/
+function formatPersonnummerToDate(value) {
+	const datePart = parseDate(parsePersonnummer(value)?.slice(0, 8) ?? "");
+	if (!datePart) return;
+	return FDate.fromIso(datePart);
 }
 var PLUSGIRO_REGEXP = /^\d{1,7}-?\d$/;
 function hyphenShouldBeAdded(value) {
@@ -8177,6 +7757,12 @@ function formatPostalCode(value) {
 	if (match === null) return;
 	return `${match[1]} ${match[2]}`;
 }
+/**
+* @public
+*/
+function parsePostalCode(value) {
+	return formatPostalCode(value);
+}
 var ORGANISATIONSNUMMER_REGEXP = /^(\d{6})-?(\d{4})$/;
 /**
 * @public
@@ -8187,223 +7773,6 @@ function parseOrganisationsnummer(value) {
 	if (!match) return;
 	if (!testLuhnChecksum(`${match[1]}${match[2]}`)) return;
 	return `${match[1]}-${match[2]}`;
-}
-/**
-* Check if an element is visible in the dom
-*
-* @public
-*/
-function isVisible(element) {
-	return Boolean(element.offsetWidth || element.offsetHeight || element.getClientRects().length > 0);
-}
-var FRAMERATE = 60;
-function easeInEaseOut(a, b, s) {
-	return a + (b - a) * (1 + Math.cos(Math.PI + s * Math.PI)) / 2;
-}
-function elementTop(element) {
-	const rect = element.getBoundingClientRect();
-	const scrollTop = window.pageYOffset;
-	const clientTop = document.documentElement.clientTop;
-	return rect.top + scrollTop - clientTop;
-}
-function scrollTo(element, arg = 0) {
-	if (typeof arg === "number") {
-		const offset = arg;
-		const bodyRect = document.body.getBoundingClientRect();
-		const scroll = element.getBoundingClientRect().top - bodyRect.top - offset;
-		window.scrollTo({
-			top: scroll,
-			behavior: "smooth"
-		});
-		return Promise.resolve();
-	}
-	return scrollToSlow(element, arg.duration ?? 500, arg.offset ?? 0);
-}
-/**
-* Scroll to element with given duration
-*
-* @param element - Element to scroll into view
-* @param duration - Duration in milliseconds
-* @param offset - Set vertical offset, default 0px
-*/
-function scrollToSlow(element, duration, offset = 0) {
-	const steps = duration / 1e3 * FRAMERATE;
-	const interval = duration / steps;
-	const target = elementTop(element) - offset;
-	const scrollRange = target - window.pageYOffset;
-	function tween(s) {
-		return target - easeInEaseOut(scrollRange, 0, s);
-	}
-	return new Promise((resolve) => {
-		let stepsLeft = steps;
-		const requestAnimationFrame = setInterval(() => {
-			if (stepsLeft-- > 0) {
-				const top = tween(1 - stepsLeft / steps);
-				window.scrollTo({
-					top,
-					left: 0
-				});
-			} else {
-				clearInterval(requestAnimationFrame);
-				resolve();
-			}
-		}, interval);
-	});
-}
-var sym$1 = /* @__PURE__ */ Symbol("focus-stack");
-var _stackHandleCounter = 0;
-var _focusElementStack = [];
-var TABBABLE_ELEMENT_SELECTOR = /* @__PURE__ */ [
-	"a[href]",
-	"area[href]",
-	"input",
-	"select",
-	"textarea",
-	"button",
-	"iframe",
-	"object",
-	"embed",
-	"*[contenteditable]",
-	"*[tabindex]:not([tabindex=\"-1\"])"
-].join(", ");
-function isHTMLElement(element) {
-	return Boolean(element && element instanceof HTMLElement);
-}
-/**
-* Give focus to a given element.
-*
-* For convenience it will ignore `null` and `undefined` as element parameter.
-*
-* If in a Vue context, please refer to the `focus` method included in `@fkui/vue`.
-*
-* @public
-* @param element - Element to focus.
-* @param options - Focus options. If you pass boolean `true` or `false` it sets the `force` option.
-*/
-function focus$1(element, options = {}) {
-	if (typeof options === "boolean") options = { force: options };
-	if (!isHTMLElement(element)) return;
-	if (options.force && !isFocusable(element)) element.setAttribute("tabindex", "-1");
-	const { force, scrollToTop, ...params } = options;
-	element.focus(params);
-	if (scrollToTop) {
-		element.focus({
-			...params,
-			preventScroll: true
-		});
-		scrollTo(element);
-	} else element.focus(params);
-}
-/**
-* Check if an element is focusable (visible and either interactive or with
-* tabindex). This includes programatically focusable elements.
-*
-* @public
-* @param element - An `Element` for which to test focusability.
-* @returns `true` if the element is focusable, otherwise `false`.
-*/
-function isFocusable(element) {
-	const visible = element instanceof HTMLElement ? isVisible(element) : false;
-	return isTabbable(element) || visible && element.matches("*[tabindex=\"-1\"]");
-}
-/**
-* Check if an element is disabled.
-*
-* @public
-* @param element - An `Element`to test disabled.
-* @returns `true`if the element is disabled.
-*
-*/
-function isDisabled(element) {
-	return Boolean(element.disabled);
-}
-/**
-* Check if an element is tabbable (visible and either interactive or
-* non-negative tabindex). This does not include programatically focusable
-* elements.
-*
-* @public
-* @param element - An `Element` for which to test focusability.
-* @returns `true` if the element is focusable, otherwise `false`.
-*/
-function isTabbable(element) {
-	const tabindexAttr = element instanceof HTMLElement ? element.tabIndex : 0;
-	const visible = element instanceof HTMLElement ? isVisible(element) : false;
-	return !isDisabled(element) && tabindexAttr !== -1 && visible && element.matches(TABBABLE_ELEMENT_SELECTOR);
-}
-/**
-* Find all visible and tabbable elements.
-*
-* @public
-* @param root - Element or document to find tabbable elements in.
-* @returns List of matching elements
-*/
-function findTabbableElements(root) {
-	const selector = TABBABLE_ELEMENT_SELECTOR;
-	const nodes = root.querySelectorAll(selector);
-	return Array.from(nodes).filter(isTabbable);
-}
-/**
-* Save current active element focus on the stack and set focus on element
-*
-* @public
-* @param element - The element to set focus on
-*/
-function pushFocus(element) {
-	const stackFrame = {
-		id: _stackHandleCounter++,
-		element: document.activeElement
-	};
-	_focusElementStack.push(stackFrame);
-	focus$1(element);
-	return { [sym$1]: stackFrame.id };
-}
-/**
-* Restore the focus on the last element from the stack
-*
-* @public
-* @param handle - The stack handle returned from the corresponding `pushFocus` call.
-* @param options - Options for `popFocus`.
-* @throws Error when pop is called on an empty focus stack
-* @throws Error when pop is called without a valid StackHandle
-*/
-function popFocus(handle, options = {}) {
-	const { restoreFocus = true } = options;
-	if (_focusElementStack.length === 0) {
-		const emptyStackErrorMsg = "Can not call pop on an empty focus stack";
-		if (configLogic.production) {
-			console.error(emptyStackErrorMsg);
-			return;
-		}
-		throw new Error(emptyStackErrorMsg);
-	}
-	const top = _focusElementStack.pop();
-	if (top?.id !== handle[sym$1]) {
-		const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${String(top?.id)} but got ${String(handle[sym$1])}`;
-		if (configLogic.production) {
-			console.error(outOfOrderErrorMsg);
-			return;
-		}
-		throw new Error(outOfOrderErrorMsg);
-	}
-	if (restoreFocus) focus$1(top?.element);
-}
-/**
-* Handle tab focus between given containers focusable elements
-*
-* @public
-* @param event - tab KeyboardEvent
-* @param container - containing focusable elements
-*/
-function handleTab(event, container) {
-	const elements = findTabbableElements(container);
-	let targetIndex = elements.indexOf(event.target);
-	if (event.shiftKey) targetIndex--;
-	else targetIndex++;
-	if (targetIndex < 0) targetIndex = elements.length - 1;
-	else if (targetIndex >= elements.length) targetIndex = 0;
-	focus$1(elements[targetIndex]);
-	event.preventDefault();
 }
 /**
 * Check if element is of type radiobutton or checkbox
@@ -9031,6 +8400,367 @@ var ValidationServiceImpl = class {
 * @public
 */
 var ValidationService = /* @__PURE__ */ new ValidationServiceImpl();
+/**
+* @public
+*/
+var allowListValidator = {
+	name: "allowList",
+	validation(value, element, config) {
+		if (isEmpty(value) || config.list === void 0 || config.list.length === 0) return true;
+		return config.list.includes(value);
+	}
+};
+var bankAccountNumberValidator = {
+	name: "bankAccountNumber",
+	validation(value) {
+		return isEmpty(value) || isSet(parseBankAccountNumber(value));
+	}
+};
+var bankgiroValidator = {
+	name: "bankgiro",
+	validation(value) {
+		return isEmpty(value) || isSet(parseBankgiro(value));
+	}
+};
+function toArray(value) {
+	if (Array.isArray(value)) return value;
+	return [value];
+}
+var blacklistValidator = {
+	name: "blacklist",
+	validation(value, _element, config) {
+		if (!config.values) throw new Error("config.exclude must have values");
+		return !toArray(config.values).some((it) => String(it) === value);
+	}
+};
+var clearingNumberValidator = {
+	name: "clearingNumber",
+	validation(value) {
+		return isEmpty(value) || isSet(parseClearingNumber(value));
+	}
+};
+var currencyValidator = {
+	name: "currency",
+	validation(value) {
+		return isEmpty(value) || isSet(parseNumber(value));
+	}
+};
+var dateValidator = {
+	name: "date",
+	validation(value) {
+		if (isEmpty(value)) return true;
+		const normalized = normalizeDateFormat(value);
+		if (!normalized) return false;
+		return FDate.fromIso(normalized).isValid();
+	}
+};
+var dateFormatValidator = {
+	name: "dateFormat",
+	validation(value) {
+		if (isEmpty(value)) return true;
+		const normalized = normalizeDateFormat(value);
+		return Boolean(normalized);
+	}
+};
+function createNumberRegexp(minDecimals = 0, maxDecimals = 2) {
+	return new RegExp(`^([-\u{2212}]?[0-9]+)([,.][0-9]{${String(minDecimals)},${String(maxDecimals)}})(?<![,.])$`);
+}
+var decimalValidator = {
+	name: "decimal",
+	validation(value, _element, config) {
+		const valueWithoutWhitespace = isSet(value) ? stripWhitespace(String(value)) : value;
+		const minDecimalsAsNumber = isSet(config.minDecimals) ? Number(config.minDecimals) : void 0;
+		const maxDecimalsAsNumber = isSet(config.maxDecimals) ? Number(config.maxDecimals) : void 0;
+		if (config.minDecimals && Number.isNaN(minDecimalsAsNumber)) throw new Error("config.minDecimals must be a number");
+		if (config.maxDecimals && Number.isNaN(maxDecimalsAsNumber)) throw new Error("config.maxDecimals must be a number");
+		return isEmpty(valueWithoutWhitespace) || createNumberRegexp(minDecimalsAsNumber, maxDecimalsAsNumber).test(valueWithoutWhitespace);
+	}
+};
+var emailValidator = {
+	name: "email",
+	validation(value, _element, config) {
+		const maxLength = config.maxLength ?? 254;
+		const EMAIL_REGEXP = new RegExp(`^(?=.{1,${String(maxLength)}}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+(\\.[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$`);
+		return isEmpty(value) || EMAIL_REGEXP.test(value);
+	}
+};
+/**
+* @internal
+*/
+function numberValidator$1(value, config, name, compare) {
+	if (value === "") return true;
+	const limit = config[name];
+	if (!isSet(limit)) return false;
+	const limitAsNumber = parseNumber(String(config[name]));
+	if (limitAsNumber === void 0) throw new Error(`config.${String(name)} must be a number`);
+	const valueAsNumber = parseNumber(value);
+	if (valueAsNumber === void 0) return false;
+	return compare(valueAsNumber, limitAsNumber);
+}
+var greaterThanValidator = {
+	name: "greaterThan",
+	validation(value, _element, config) {
+		return numberValidator$1(value, config, "limit", (value, limit) => value > limit);
+	}
+};
+var NUMBER_REGEXP = /^(?:[−-]?\d+)?$/;
+var integerValidator = {
+	name: "integer",
+	validation(value) {
+		const valueWithoutWhitespace = isSet(value) ? stripWhitespace(String(value)) : value;
+		return isEmpty(valueWithoutWhitespace) || NUMBER_REGEXP.test(valueWithoutWhitespace);
+	}
+};
+/**
+* @public
+*/
+function isInvalidDatesConfig(value) {
+	return Boolean(value.dates);
+}
+/**
+* @public
+*/
+var invalidDatesValidator = {
+	name: "invalidDates",
+	validation(value, element, config) {
+		if (isEmpty(value)) return true;
+		if (!isInvalidDatesConfig(config)) throw new Error(`Invalid invalidDates config for ${element.id}`);
+		return !config.dates.includes(value);
+	}
+};
+/**
+* @public
+*/
+function isInvalidWeekdaysConfig(value) {
+	return Boolean(value.days);
+}
+/**
+* @public
+*/
+var invalidWeekdaysValidator = {
+	name: "invalidWeekdays",
+	validation(value, element, config) {
+		if (isEmpty(value)) return true;
+		if (!isInvalidWeekdaysConfig(config)) throw new Error(`Invalid invalidWeekdays config for ${element.id}`);
+		const day = FDate.fromIso(value).weekDay;
+		return !config.days.includes(day);
+	}
+};
+var lessThanValidator = {
+	name: "lessThan",
+	validation(value, _element, config) {
+		return numberValidator$1(value, config, "limit", (value, limit) => value < limit);
+	}
+};
+var matchesValidator = {
+	name: "matches",
+	validation(value, _element, config) {
+		if (!isSet(config.id) || !isSet(value)) return true;
+		return document.querySelector(`#${config.id}`).value === value;
+	}
+};
+var maxDateValidator = {
+	name: "maxDate",
+	validation(value, _element, config) {
+		if (isEmpty(value)) return true;
+		const normalizedValue = normalizeDateFormat(value);
+		if (!normalizedValue) return false;
+		const parsed = FDate.fromIso(normalizedValue);
+		const limit = FDate.fromIso(validLimit(config.limit));
+		return parsed.equals(limit) || parsed.isBefore(limit);
+	}
+};
+var maxLengthValidator = {
+	name: "maxLength",
+	validation(value, _element, config) {
+		const { length = 0 } = config;
+		return length > 0 && value ? value.length <= length : true;
+	}
+};
+var maxValueValidator = {
+	name: "maxValue",
+	validation(value, _element, config) {
+		return numberValidator$1(value, config, this.name, (value, limit) => value <= limit);
+	}
+};
+var minDateValidator = {
+	name: "minDate",
+	validation(value, _element, config) {
+		if (isEmpty(value)) return true;
+		const normalizedValue = normalizeDateFormat(value);
+		if (!normalizedValue) return false;
+		const parsed = FDate.fromIso(normalizedValue);
+		const limit = FDate.fromIso(validLimit(config.limit));
+		return parsed.equals(limit) || parsed.isAfter(limit);
+	}
+};
+var minLengthValidator = {
+	name: "minLength",
+	validation(value, _element, config) {
+		const { length = 0 } = config;
+		return length > 0 && value ? value.length >= length : true;
+	}
+};
+var minValueValidator = {
+	name: "minValue",
+	validation(value, _element, config) {
+		return numberValidator$1(value, config, this.name, (value, limit) => value >= limit);
+	}
+};
+var numberValidator = {
+	name: "number",
+	validation(value) {
+		return isEmpty(value) || isSet(parseNumber(value));
+	}
+};
+var organisationsnummerValidator = {
+	name: "organisationsnummer",
+	validation(value) {
+		return isEmpty(value) || isSet(parseOrganisationsnummer(value));
+	}
+};
+var PERCENT_REGEXP = /^[+-]?\d+(?:[,.]\d+)?$/;
+var percentValidator = {
+	name: "percent",
+	validation(value) {
+		const valueWithoutWhitespace = isSet(value) ? stripWhitespace(String(value)) : value;
+		return isEmpty(valueWithoutWhitespace) || PERCENT_REGEXP.test(valueWithoutWhitespace);
+	}
+};
+var personnummerFormatValidator = {
+	name: "personnummerFormat",
+	validation(value) {
+		return isEmpty(value) || isSet(parsePersonnummer(value));
+	}
+};
+var personnummerLuhnValidator = {
+	name: "personnummerLuhn",
+	validation(value) {
+		return isEmpty(value) || isSet(parsePersonnummerLuhn(value));
+	}
+};
+var personnummerNotSame = {
+	name: "personnummerNotSame",
+	validation(value, _element, config) {
+		const valuePnr = parsePersonnummer(value);
+		if (!valuePnr) return true;
+		const otherFieldPnr = parsePersonnummer(String(config.otherField));
+		if (!otherFieldPnr) return true;
+		if (valuePnr === otherFieldPnr) return false;
+		return true;
+	}
+};
+var personnummerOlder = {
+	name: "personnummerOlder",
+	validation(value, _element, config) {
+		const valueAsDate = formatPersonnummerToDate(value);
+		const otherAsDate = formatPersonnummerToDate(String(config.otherField));
+		if (!valueAsDate || !otherAsDate) return true;
+		return FDate.compare(valueAsDate, otherAsDate) !== 1;
+	}
+};
+var personnummerYounger = {
+	name: "personnummerYounger",
+	validation(value, _element, config) {
+		const valueAsDate = formatPersonnummerToDate(value);
+		const otherAsDate = formatPersonnummerToDate(String(config.otherField));
+		if (!valueAsDate || !otherAsDate) return true;
+		return FDate.compare(valueAsDate, otherAsDate) !== -1;
+	}
+};
+var PHONE_NUMBER_REGEXP = /^\+?[ ()/_-]*(?:\d[ ()/_-]*){3,17}$/;
+var phoneNumberValidator = {
+	name: "phoneNumber",
+	validation(value) {
+		if (isEmpty(value)) return true;
+		if (!isString(value) || value.length > 21) return false;
+		return PHONE_NUMBER_REGEXP.test(value);
+	}
+};
+var plusgiroValidator = {
+	name: "plusgiro",
+	validation(value) {
+		return isEmpty(value) || isSet(parsePlusgiro(value));
+	}
+};
+var postalCodeValidator = {
+	name: "postalCode",
+	validation(value) {
+		return isEmpty(value) || isSet(parsePostalCode(value));
+	}
+};
+var REQUIRED_REGEXP = /^\S+/;
+function isRelevantElement(input) {
+	return isRadiobuttonOrCheckbox(input) && !input.disabled;
+}
+function validateFieldset(fieldset) {
+	const inputs = Array.from(fieldset.elements).filter(isRelevantElement);
+	return inputs.length > 0 ? inputs.some((input) => input.checked) : true;
+}
+function validateChecked(element) {
+	return element.checked;
+}
+function validateInput(value) {
+	return REQUIRED_REGEXP.test(value);
+}
+var requiredValidator = {
+	name: "required",
+	validation(value, element) {
+		if (element instanceof HTMLFieldSetElement) return validateFieldset(element);
+		if (isRadiobuttonOrCheckbox(element)) return validateChecked(element);
+		return validateInput(value);
+	}
+};
+var WHITELIST_REGEXP = /^[\d\n\r !()*+,.:=?@A-Za-z\u{C0}-\u{FF}-]*$/u;
+/**
+* List of all available builtin validators.
+*
+* @public
+*/
+var availableValidators = [
+	allowListValidator,
+	bankAccountNumberValidator,
+	bankgiroValidator,
+	blacklistValidator,
+	clearingNumberValidator,
+	currencyValidator,
+	dateFormatValidator,
+	dateValidator,
+	decimalValidator,
+	emailValidator,
+	greaterThanValidator,
+	integerValidator,
+	invalidDatesValidator,
+	invalidWeekdaysValidator,
+	lessThanValidator,
+	matchesValidator,
+	maxDateValidator,
+	maxLengthValidator,
+	maxValueValidator,
+	minDateValidator,
+	minLengthValidator,
+	minValueValidator,
+	numberValidator,
+	organisationsnummerValidator,
+	percentValidator,
+	personnummerFormatValidator,
+	personnummerLuhnValidator,
+	personnummerNotSame,
+	personnummerOlder,
+	personnummerYounger,
+	phoneNumberValidator,
+	plusgiroValidator,
+	postalCodeValidator,
+	requiredValidator,
+	{
+		name: "whitelist",
+		instant: true,
+		validation(_value, element) {
+			const value = "value" in element ? element.value : "";
+			return isEmpty(value) || WHITELIST_REGEXP.test(value);
+		}
+	}
+];
 var wrapperId = "fkui-alert-screen-reader";
 /**
 * Create an element for adding text to be read by a screen reader.
@@ -9532,7 +9262,28 @@ var Weekday;
 })(Weekday || (Weekday = {}));
 Locale.SWEDISH, Weekday.MONDAY, Weekday.TUESDAY, Weekday.WEDNESDAY, Weekday.THURSDAY, Weekday.FRIDAY, Weekday.SATURDAY, Weekday.SUNDAY, Locale.ENGLISH, Weekday.MONDAY, Weekday.TUESDAY, Weekday.WEDNESDAY, Weekday.THURSDAY, Weekday.FRIDAY, Weekday.SATURDAY, Weekday.SUNDAY;
 Locale.SWEDISH, DateFormat.FULL, DateFormat.LONG, DateFormat.ISO8601, DateFormat.YYYYMMDD, Locale.ENGLISH, DateFormat.FULL, DateFormat.LONG, DateFormat.ISO8601, DateFormat.YYYYMMDD;
+// ../../packages/vue/dist/esm/index.esm.js
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod, mod.exports), cb = null), mod.exports);
+var __copyProps = (to, from, except, desc) => {
+	if (from && typeof from === "object" || typeof from === "function") for (var keys = __getOwnPropNames(from), i = 0, n = keys.length, key; i < n; i++) {
+		key = keys[i];
+		if (!__hasOwnProp.call(to, key) && key !== except) __defProp(to, key, {
+			get: ((k) => from[k]).bind(null, key),
+			enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
+		});
+	}
+	return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp.call(mod, "default") ? __defProp(target, "default", {
+	value: mod,
+	enumerable: true
+}) : target, mod));
 var require_global_this = /* @__PURE__ */ __commonJSMin(((exports, module, this$1) => {
 	var check = function(it) {
 		return it && it.Math === Math && it;
@@ -11073,7 +10824,7 @@ var _plugin_vue_export_helper_default$1 = (sfc, props) => {
 	for (const [key, val] of props) target[key] = val;
 	return target;
 };
-var _hoisted_1$80 = ["aria-hidden"];
+var _hoisted_1$81 = ["aria-hidden"];
 var _hoisted_2$58 = ["href"];
 function _sfc_render$50(_ctx, _cache, $props, $setup, $data, $options) {
 	return openBlock(), createElementBlock("svg", mergeProps(_ctx.$attrs, {
@@ -11084,234 +10835,32 @@ function _sfc_render$50(_ctx, _cache, $props, $setup, $data, $options) {
 		renderSlot(_ctx.$slots, "default"),
 		_cache[0] || (_cache[0] = createTextVNode()),
 		createBaseVNode("use", { href: _ctx.spriteId }, null, 8, _hoisted_2$58)
-	], 16, _hoisted_1$80);
+	], 16, _hoisted_1$81);
 }
 var FIcon_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FIcon_vue_vue_type_script_lang_default, [["render", _sfc_render$50]]);
+var DATA_TEST_ATTRIBUTE_NAME = "data-test";
+function throwErrorIfEmpty(value) {
+	if (!value) throw new Error(`Did you forgot to add a value to v-test?`);
+}
+/**
+* @internal
+*/
+var TestDirective = {
+	mounted(el, { value }) {
+		throwErrorIfEmpty(value);
+		el.setAttribute(DATA_TEST_ATTRIBUTE_NAME, value);
+	},
+	updated(el, { value }) {
+		throwErrorIfEmpty(value);
+		el.setAttribute(DATA_TEST_ATTRIBUTE_NAME, value);
+	}
+};
 /**
 * @public
 */
-var buttonInflightInjectionKey = Symbol();
-function useInflight(fn, disabled) {
-	const inflight = /* @__PURE__ */ ref(false);
-	if (!fn || typeof fn !== "function") return {
-		inflight,
-		fn: void 0
-	};
-	const originalFn = fn;
-	async function wrapper() {
-		if (disabled.value) return;
-		try {
-			inflight.value = true;
-			await originalFn();
-		} finally {
-			inflight.value = false;
-		}
-	}
-	return {
-		inflight,
-		fn: wrapper
-	};
-}
-var _hoisted_1$79 = ["type", "aria-disabled"];
-var _hoisted_2$57 = {
-	key: 1,
-	class: "spinner--before"
-};
-var _hoisted_3$43 = {
-	key: 3,
-	class: "spinner--after"
-};
-var FButton_default = /* @__PURE__ */ defineComponent({
-	inheritAttrs: false,
-	__name: "FButton",
-	props: {
-		/**
-		* Type of button, can be one of:
-		* - `primary`
-		* - `secondary`
-		* - `tertiary`
-		*/
-		variant: {
-			type: String,
-			required: true,
-			validator(value) {
-				return [
-					"primary",
-					"secondary",
-					"tertiary"
-				].includes(value);
-			}
-		},
-		/**
-		* Button size, can be one of:
-		* - `small`
-		* - `medium`
-		* - `large`
-		*/
-		size: {
-			type: String,
-			required: true,
-			validator(value) {
-				return [
-					"small",
-					"medium",
-					"large"
-				].includes(value);
-			}
-		},
-		/**
-		* Name of an icon to display on the left side of the button.
-		*/
-		iconLeft: {
-			type: String,
-			default: void 0
-		},
-		/**
-		* Name of an icon to display on the right side of the button.
-		*/
-		iconRight: {
-			type: String,
-			default: void 0
-		},
-		/**
-		* Icon library to use.
-		*/
-		iconLibrary: {
-			type: String,
-			required: false,
-			default: "f"
-		},
-		/**
-		* Tertiary button style, used in conjunction with button variant `tertiary`.
-		* Can be one of:
-		* - `standard`
-		* - `muted`
-		* - `inverted`
-		*/
-		tertiaryStyle: {
-			type: String,
-			default: "standard",
-			validator(value) {
-				return [
-					"standard",
-					"muted",
-					"black",
-					"inverted"
-				].includes(value);
-			}
-		},
-		/**
-		* Align button text and icon with content above or below.
-		* Used in conjunction with button variant `tertiary`.
-		*/
-		alignText: { type: Boolean },
-		/**
-		*
-		* Enable full width on mobile for sizes `small` and `medium`, always active for button size `large`.
-		*/
-		mobileFullWidth: { type: Boolean },
-		/**
-		* The default behavior of the button. Possible values are:
-		* - `submit`
-		* - `reset`
-		* - `button`
-		*/
-		type: {
-			type: String,
-			default: "button",
-			validator(value) {
-				return [
-					"submit",
-					"reset",
-					"button"
-				].includes(value);
-			}
-		},
-		/**
-		* Disable the button.
-		*/
-		disabled: {
-			type: Boolean,
-			required: false
-		}
-	},
-	setup(__props) {
-		const props = __props;
-		const originalAttrs = useAttrs();
-		const disabled = computed(() => {
-			return props.disabled || inflight.value || hasSubmitInflight.value;
-		});
-		const { inflight, fn: onClick } = useInflight(originalAttrs.onClick, disabled);
-		const attrs = {
-			...originalAttrs,
-			onClick
-		};
-		const hasIconLeft = computed(() => {
-			return Boolean(props.iconLeft);
-		});
-		const hasIconRight = computed(() => {
-			return Boolean(props.iconRight);
-		});
-		const hasIcon = computed(() => {
-			return hasIconLeft.value || hasIconRight.value;
-		});
-		const hasIconInflight = computed(() => inflight.value || hasSubmitInflight.value);
-		const hasSubmitInflight = computed(() => props.type === "submit" && isParentInflight.value);
-		const buttonClass = computed(() => {
-			const classes = [
-				"button",
-				`button--${props.variant}`,
-				`button--${props.size}`
-			];
-			if (props.variant === "tertiary" && props.alignText) classes.push(`button--align-text`);
-			if (props.variant === "tertiary") classes.push(`button--tertiary--${props.tertiaryStyle}`);
-			if (props.variant === "tertiary" && !hasIcon.value) classes.push(`button--tertiary--underline`);
-			if (props.mobileFullWidth && props.size !== "large") classes.push(`button--full-width`);
-			if (inflight.value || hasSubmitInflight.value) classes.push(`button__inflight`);
-			return classes;
-		});
-		const isParentInflight = inject(buttonInflightInjectionKey, computed(() => false));
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("button", mergeProps({
-				type: __props.type,
-				class: buttonClass.value,
-				"aria-disabled": disabled.value
-			}, attrs), [
-				hasIconLeft.value ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [hasIconInflight.value ? (openBlock(), createBlock(unref(FIcon_default), {
-					key: 0,
-					name: "circle-notch-solid",
-					class: "button__icon button__spinner"
-				})) : props.iconLeft ? (openBlock(), createBlock(unref(FIcon_default), {
-					key: 1,
-					class: "button__icon",
-					name: props.iconLeft,
-					library: props.iconLibrary
-				}, null, 8, ["name", "library"])) : createCommentVNode("v-if", true)], 64)) : createCommentVNode("v-if", true),
-				_cache[0] || (_cache[0] = createTextVNode()),
-				!hasIcon.value ? (openBlock(), createElementBlock("span", _hoisted_2$57, [hasIconInflight.value ? (openBlock(), createBlock(unref(FIcon_default), {
-					key: 0,
-					name: "circle-notch-solid",
-					class: "button__icon button__spinner"
-				})) : createCommentVNode("v-if", true)])) : createCommentVNode("v-if", true),
-				_cache[1] || (_cache[1] = createTextVNode()),
-				createBaseVNode("span", null, [renderSlot(_ctx.$slots, "default")]),
-				_cache[2] || (_cache[2] = createTextVNode()),
-				hasIconRight.value ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [hasIconInflight.value ? (openBlock(), createBlock(unref(FIcon_default), {
-					key: 0,
-					name: "circle-notch-solid",
-					class: "button__icon button__spinner"
-				})) : props.iconRight ? (openBlock(), createBlock(unref(FIcon_default), {
-					key: 1,
-					class: "button__icon",
-					name: props.iconRight,
-					library: props.iconLibrary
-				}, null, 8, ["name", "library"])) : createCommentVNode("v-if", true)], 64)) : createCommentVNode("v-if", true),
-				_cache[3] || (_cache[3] = createTextVNode()),
-				!hasIcon.value ? (openBlock(), createElementBlock("span", _hoisted_3$43)) : createCommentVNode("v-if", true)
-			], 16, _hoisted_1$79);
-		};
-	}
-});
+var TestPlugin = { install(app) {
+	app.directive("test", TestDirective);
+} };
 /**
 * @internal
 */
@@ -11319,10 +10868,6 @@ function translate(key, defaultValueOrArgs, args) {
 	const { provider } = TranslationService;
 	return provider.translate(key, defaultValueOrArgs, args);
 }
-/**
-* @public
-*/
-var TranslationMixin = { methods: { $t: translate } };
 /**
 * Translation function.
 * @public
@@ -13899,7 +13444,7 @@ var require_es_iterator_some = /* @__PURE__ */ __commonJSMin((() => {
 		}).stopped;
 	} });
 }));
-require_isEqual();
+var import_isEqual = /* @__PURE__ */ __toESM(require_isEqual());
 require_es_iterator_constructor();
 require_es_iterator_some();
 /**
@@ -13923,120 +13468,20 @@ function dispatchComponentValidityEvent(element, detail) {
 		bubbles: true
 	}));
 }
-require_es_iterator_map();
 /**
-* Verifies that a ref is a single `Element` and nothing else.
+* Dispatch an ComponentUnmountEvent to the given element.
 *
-* @public
-* @param value - The value to type check.
-* @returns `true` if the ref is an `Element`, otherwise false.
+* @internal
+* @param element - the element to dispatch event to
 */
-function refIsElement(value) {
-	return value instanceof Element;
-}
-/**
-* Verifies that a ref is an array containing at least one `HTMLElement`.
-*
-* @public
-* @param value - The value to type check.
-* @returns `true` if the ref is an `HTMLElement` array with at least one item,
-* otherwise false.
-*/
-function refIsHTMLElementArray(value) {
-	return Array.isArray(value) && value.length > 0 && value[0] instanceof HTMLElement;
-}
-/**
-* Verifies that a ref is a single Vue component and nothing else.
-*
-* @public
-* @param value - The value to type check.
-* @returns `true` if the ref is a `Vue` (component), otherwise false.
-*/
-function refIsVue(value) {
-	return value?.$el !== void 0;
-}
-/**
-* Verifies that a ref is an array containing at least one Vue component.
-*
-* @public
-* @param value - The value to type check.
-* @returns `true` if the ref is a `Vue` (component) array with at least one
-* item, otherwise false.
-*/
-function refIsVueArray(value) {
-	return Array.isArray(value) && value.length > 0 && refIsVue(value[0]);
-}
-/**
-* Gets an array of `HTMLElement` items from a ref. If there are none, the array
-* returned will be empty rather than `undefined`.
-* The items are sorted according to the attribute data-ref-index. Elements missing data-ref-index will be sorted as -Infinity.
-*
-* @public
-* @param ref - The ref to extract `HTMLElement` items from.
-* @returns An `Array` of `HTMLElement` items. Possibly empty.
-* @throws An error if an `HTMLElement` could not be found from a valid ref.
-*/
-function getSortedHTMLElementsFromVueRef(ref) {
-	const htmlElements = getHTMLElementsFromVueRef(ref);
-	htmlElements.sort((lhs, rhs) => {
-		const lhsIndex = parseIntOrDefault(lhs.dataset.refIndex, -Infinity);
-		const rhsIndex = parseIntOrDefault(rhs.dataset.refIndex, -Infinity);
-		return lhsIndex === rhsIndex ? 0 : lhsIndex - rhsIndex;
+function dispatchComponentUnmountEvent(element) {
+	const event = new CustomEvent("component-unmount", {
+		detail: { elementId: element.id },
+		bubbles: true
 	});
-	return htmlElements;
+	element.dispatchEvent(event);
 }
-function parseIntOrDefault(value, defaultValue) {
-	if (typeof value === "string") {
-		const parsed = Math.trunc(Number(value));
-		if (!Number.isNaN(parsed)) return parsed;
-	}
-	return defaultValue;
-}
-/**
-* Gets an array of `HTMLElement` items from a ref. If there are none, the array
-* returned will be empty rather than `undefined`.
-*
-* @public
-* @param ref - The ref to extract `HTMLElement` items from.
-* @returns An `Array` of `HTMLElement` items. Possibly empty.
-* @throws An error if an `HTMLElement` could not be found from a valid ref.
-*/
-function getHTMLElementsFromVueRef(ref) {
-	let result = [];
-	if (isEmptyArray(ref)) result = [];
-	else if (refIsVueArray(ref)) result = ref.map((vueRef) => vueRef.$el);
-	else if (refIsHTMLElementArray(ref)) result = [...ref];
-	else if (isSet(ref)) result = [getHTMLElementFromVueRef(ref)];
-	return result;
-}
-function isEmptyArray(value) {
-	return Array.isArray(value) && value.length === 0;
-}
-/**
-* Find an `Element` from a ref, provided it is defined and not an array.
-*
-* @public
-* @param ref - The ref to extract the `Element` from.
-* @returns An `Element` if ref is `Vue` or `Element`. Otherwise `undefined`.
-*/
-function findElementFromVueRef(ref) {
-	if (refIsElement(ref)) return ref;
-	if (refIsVue(ref)) return ref.$el;
-}
-/**
-* Gets an `HTMLElement` a ref, provided it is defined and not an array.
-*
-* @public
-* @param ref - The ref to extract the `HTMLElement` from.
-* @returns An `HTMLElement` if ref is `Vue` or `Element`.
-* @throws An error if an `HTMLElement` could not be found.
-*/
-function getHTMLElementFromVueRef(ref) {
-	const element = findElementFromVueRef(ref);
-	if (!isSet(element)) throw new Error(`Unable to find element from ${String(ref)}.`);
-	if (element instanceof HTMLElement) return element;
-	throw new Error(`Not instance of HTMLELement ${String(ref)}.`);
-}
+require_es_iterator_map();
 var require_map_helpers = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var uncurryThis = require_function_uncurry_this();
 	var MapPrototype = Map.prototype;
@@ -14127,32 +13572,14 @@ var config = {
 		return production;
 	}
 };
-var ICloseButton_default = /* @__PURE__ */ defineComponent({
-	__name: "ICloseButton",
-	props: {
-		compact: { type: Boolean },
-		iconOnly: { type: Boolean }
-	},
-	setup(__props) {
-		const $t = useTranslate();
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("button", {
-				type: "button",
-				class: normalizeClass(["i-close-button", {
-					"i-close-button--compact": __props.compact,
-					"i-close-button--icon-only": __props.iconOnly
-				}])
-			}, [
-				createBaseVNode("span", { class: normalizeClass({ "sr-only": __props.iconOnly }) }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(unref($t)("fkui.close-button.text", "Stäng")), 1)])], 2),
-				_cache[0] || (_cache[0] = createTextVNode()),
-				createVNode(unref(FIcon_default), {
-					name: "close",
-					class: "i-close-button__icon"
-				})
-			], 2);
-		};
-	}
-});
+/**
+* @public
+* @param app - Running app
+*/
+function setRunningContext(app) {
+	const fkuiContext = { appContext: app._context };
+	app.config.globalProperties.$fkui = fkuiContext;
+}
 (/* @__PURE__ */ __commonJSMin((() => {
 	var $ = require_export();
 	var call = require_function_call();
@@ -14217,129 +13644,6 @@ var ICloseButton_default = /* @__PURE__ */ defineComponent({
 	var _it$event;
 	return (_it$event = it.event) !== null && _it$event !== void 0 ? _it$event : "";
 })];
-var GAP = [
-	"1x",
-	"2x",
-	"3x",
-	"4x",
-	"5x",
-	"6x",
-	"7x",
-	"8x"
-];
-var ALIGNMENT = [
-	"top",
-	"center",
-	"bottom"
-];
-var FLOAT = [
-	"left",
-	"center",
-	"right"
-];
-var IFlex_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
-	name: "IFlex",
-	inheritAttrs: true,
-	props: {
-		/**
-		* Set gap (gutter) between items.
-		*
-		* Must be one of:
-		*
-		* - `"1x"`
-		* - `"2x"`
-		* - `"3x"`
-		* - ...
-		* - `"8x"`
-		*
-		* Example: a value of `"3x"` corresponds to a gap of `3 * 0.25 = 0.75rem`.
-		*/
-		gap: {
-			type: String,
-			default: "",
-			validator(val) {
-				return val === "" || GAP.includes(val);
-			}
-		},
-		/**
-		* If set the IFlexItems will be fullwidth and
-		* stacked on top of each other when breakpoint is small (aka mobile).
-		*/
-		collapse: { type: Boolean },
-		/**
-		* If set the IFlexItems will wrap when out of space
-		*/
-		wrap: { type: Boolean },
-		/**
-		* Set how IFlexItems should float.
-		*
-		* Must be one of:
-		*
-		* - `"left"`
-		* - `"center"`
-		* - `"right"`
-		*/
-		float: {
-			type: String,
-			default: "",
-			validator(val) {
-				return val === "" || FLOAT.includes(val);
-			}
-		}
-	},
-	computed: { classList() {
-		const classes = [];
-		if (this.collapse) classes.push("iflex--collapse");
-		if (this.gap) classes.push(`iflex--gap-${this.gap}`);
-		if (this.wrap) classes.push(`iflex--wrap`);
-		if (this.float) classes.push(`iflex--float-${this.float}`);
-		return classes;
-	} }
-});
-function _sfc_render$47(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("div", { class: normalizeClass(["iflex", _ctx.classList]) }, [renderSlot(_ctx.$slots, "default")], 2);
-}
-var IFlex_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(IFlex_vue_vue_type_script_lang_default, [["render", _sfc_render$47]]);
-var IFlexItem_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
-	name: "IFlexItem",
-	inheritAttrs: true,
-	props: {
-		/**
-		* If set this item will grow to its largest possible size.
-		*/
-		grow: { type: Boolean },
-		/**
-		* If set this item will shrink to its smallest possible size.
-		*/
-		shrink: { type: Boolean },
-		/**
-		* Vertical positioning of content.
-		*
-		* Must be one of:
-		*
-		* - `"top"`
-		* - `"center"`
-		* - `"bottom"`
-		*/
-		align: {
-			type: String,
-			default: "top",
-			validator(val) {
-				return ALIGNMENT.includes(val);
-			}
-		}
-	},
-	computed: { classList() {
-		const classList = [`iflex--align-${this.align}`];
-		if (this.grow) classList.push("iflex--grow");
-		else if (this.shrink) classList.push("iflex--shrink");
-		return classList;
-	} }
-});
-function _sfc_render$46(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("div", { class: normalizeClass(["iflex__item", _ctx.classList]) }, [renderSlot(_ctx.$slots, "default")], 2);
-}
-var IFlexItem_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(IFlexItem_vue_vue_type_script_lang_default, [["render", _sfc_render$46]]);
 var require_es_iterator_every = /* @__PURE__ */ __commonJSMin((() => {
 	var $ = require_export();
 	var call = require_function_call();
@@ -14418,37 +13722,6 @@ var require_es_iterator_filter = /* @__PURE__ */ __commonJSMin((() => {
 }));
 require_es_iterator_every();
 require_es_iterator_filter();
-function isVueComponent(element) {
-	return Boolean(element && typeof element === "object" && "$el" in element);
-}
-/**
-* Give browser focus to a given element.
-*
-* If an array is passed, only the first element will receive focus.
-*
-* Vue components containing a `focusTarget` attribute will recursively pass along the focus to that
-* value.
-*
-* For convenience it will ignore `null` and `undefined` as element parameter.
-*
-* @public
-* @param element - Element to focus.
-* @param options - Focus options. If you pass boolean `true` or `false` it sets the `force` option.
-*
-* @returns `true` if successfully found an HTMLElement to focus. Otherwise, `false`.
-*/
-function focus(element, options = {}) {
-	if (Array.isArray(element)) element = element[0];
-	if (isVueComponent(element)) {
-		var _element$focusTarget;
-		return focus((_element$focusTarget = element.focusTarget) !== null && _element$focusTarget !== void 0 ? _element$focusTarget : element.$el, options);
-	}
-	if (element instanceof HTMLElement) {
-		focus$1(element, options);
-		return true;
-	}
-	return false;
-}
 var defaultOptions$1 = {
 	stripClasses: ["sr-only"],
 	componentPlaceholder: false
@@ -14543,41 +13816,6 @@ require_es_iterator_for_each();
 require_es_array_buffer_detached();
 require_es_array_buffer_transfer();
 require_es_array_buffer_transfer_to_fixed_length();
-/**
-* @public
-*/
-var MenuAction = /* @__PURE__ */ function(MenuAction) {
-	MenuAction[MenuAction["MOVE_NEXT"] = 0] = "MOVE_NEXT";
-	MenuAction[MenuAction["MOVE_PREV"] = 1] = "MOVE_PREV";
-	MenuAction[MenuAction["MOVE_FIRST"] = 2] = "MOVE_FIRST";
-	MenuAction[MenuAction["MOVE_LAST"] = 3] = "MOVE_LAST";
-	MenuAction[MenuAction["ACTIVATE"] = 4] = "ACTIVATE";
-	return MenuAction;
-}({});
-/**
-* @internal
-*/
-function actionFromKeyboardEvent(event) {
-	switch (event.key) {
-		case "End": return MenuAction.MOVE_LAST;
-		case "Home": return MenuAction.MOVE_FIRST;
-		case "Up":
-		case "ArrowUp": return MenuAction.MOVE_PREV;
-		case "Down":
-		case "ArrowDown": return MenuAction.MOVE_NEXT;
-		case "Left":
-		case "ArrowLeft": return MenuAction.MOVE_PREV;
-		case "Right":
-		case "ArrowRight": return MenuAction.MOVE_NEXT;
-		case "Tab":
-			if (event.shiftKey) return MenuAction.MOVE_PREV;
-			return MenuAction.MOVE_NEXT;
-		case " ":
-		case "Spacebar":
-		case "Enter": return MenuAction.ACTIVATE;
-		default: return null;
-	}
-}
 function getAbsolutePosition(src) {
 	if (!src) return;
 	if (src.isSameNode(document.documentElement)) return {
@@ -14593,188 +13831,6 @@ function getAbsolutePosition(src) {
 		width: Math.floor(rect.width),
 		height: Math.floor(rect.height)
 	};
-}
-var sym = Symbol("item-identifier");
-var internalIndex = 0;
-function isObject$1(value) {
-	return Boolean(value && typeof value === "object");
-}
-/**
-* Get an identifier previously set by a call to `setItemIdentifier()` or `undefined`
-* if no identifier was set.
-*
-* @public
-* @since v6.34.0
-* @param item - An item to get identifier from.
-*/
-function findItemIdentifier(item) {
-	if (isObject$1(item) && Object.prototype.hasOwnProperty.call(item, sym)) return item[sym];
-}
-/**
-* Get an identifier previously set by a call to `setItemIdentifier()` or throws an error
-* if no identifier was set.
-*
-* @public
-* @since v6.34.0
-* @param item - An item to get key from.
-*/
-function getItemIdentifier(item) {
-	const identifier = findItemIdentifier(item);
-	if (identifier !== void 0) return identifier;
-	throw new TypeError("Expected item to have an internal key but no key was set");
-}
-/**
-* Set or generate an identifier for given item. The identifier should be unique
-* within your set of data.
-*
-* If an identifier already exists it will *not* be overwritten.
-*
-* @public
-* @since v6.34.0
-* @param item - An item to set the identifier on.
-* @param value - Specific identifier to use instead of generated one.
-*/
-function setItemIdentifier(item, value) {
-	if (findItemIdentifier(item) !== void 0) return;
-	Object.defineProperty(item, sym, {
-		value: value !== null && value !== void 0 ? value : internalIndex++,
-		enumerable: false,
-		writable: true
-	});
-}
-/**
-* Recursively assigns identifiers to items (and optionally to nested items).
-*
-* @public
-* @param items - The array of items to process. Items are mutated in place.
-* @param attribute - Optional property on each item whose value should be used as the identifier. If omitted, an identifier is generated.
-* @param expandableAttribute - Optional property key on each item whose value is expected to be an array of nested items to process recursively.
-*
-* @throws Error If an item is missing or has an invalid value for `attribute` when `attribute` is provided.
-* @throws Error If a duplicate `attribute` value is encountered when `attribute` is provided.
-* @returns The same `items` array (with items mutated to include identifiers).
-*/
-function setItemIdentifiers(items, attribute, expandableAttribute) {
-	const seenValues = /* @__PURE__ */ new Set();
-	const process = (items) => {
-		return items.map((item, index) => {
-			const value = attribute ? item[attribute] : void 0;
-			if (attribute) ensureUniqueKey(attribute, value, index, seenValues);
-			setItemIdentifier(item, value);
-			if (expandableAttribute !== void 0) {
-				const nestedItem = item[expandableAttribute];
-				if (Array.isArray(nestedItem)) process(nestedItem);
-			}
-			return item;
-		});
-	};
-	return process(items);
-}
-function ensureUniqueKey(attribute, value, index, seenValues) {
-	const keyString = String(attribute);
-	if (value === void 0 || value === null || String(value).length === 0) throw new Error(`Key [${keyString}] is missing or has invalid value in item index ${String(index)}`);
-	if (seenValues.has(value)) throw new Error(`Expected each item to have identifier [${keyString}] with unique value but encountered duplicate of "${String(value)}" in item index ${String(index)}.`);
-	seenValues.add(value);
-}
-var datasetSymbol = Symbol("dataset");
-/**
-* @internal
-*/
-function getArrayMetadata(dataset) {
-	return Object.getOwnPropertyDescriptor(dataset, datasetSymbol)?.value;
-}
-/**
-* @internal
-*/
-function getElementMetadata(dataset) {
-	return Object.getOwnPropertyDescriptor(dataset, datasetSymbol)?.value;
-}
-function getDatasetMetadata(item) {
-	if (Array.isArray(item)) {
-		const metadata = getArrayMetadata(item);
-		return Object.freeze({ ...metadata });
-	}
-	const metadata = getElementMetadata(item);
-	if (!metadata) throw new Error("Element not found in dataset");
-	return Object.freeze({ ...metadata });
-}
-/**
-* Check if a dataset is a dataset.
-*
-* @deprecated Dataset metadata is no longer required; use regular arrays instead (v6.63.0).
-* @internal
-* @since v6.39.0
-*/
-function isDataset(dataset) {
-	if (!Array.isArray(dataset)) return false;
-	return Boolean(Object.getOwnPropertyDescriptor(dataset, datasetSymbol));
-}
-/**
-* @internal
-*/
-function setArrayMetadata(array, value) {
-	return Object.defineProperty(array, datasetSymbol, {
-		value,
-		enumerable: false,
-		configurable: true,
-		writable: true
-	});
-}
-/**
-* @internal
-*/
-function setElementMetadata(item, value) {
-	Object.defineProperty(item, datasetSymbol, {
-		value,
-		enumerable: false,
-		configurable: true,
-		writable: true
-	});
-}
-function assignElementMetadata(options) {
-	const { element, index, ariaRowIndex, totalSize, ariaLevel } = options;
-	setElementMetadata(element, {
-		rowIndex: index,
-		ariaRowIndex,
-		ariaLevel,
-		ariaSetSize: totalSize,
-		ariaPosInSet: index + 1
-	});
-}
-function applyElementMetadata(array, nestedAttribute, options) {
-	const { depth, rowCounter } = options;
-	for (let i = 0; i < array.length; i++) {
-		const element = array[i];
-		if (!getElementMetadata(element)) {
-			rowCounter.value++;
-			assignElementMetadata({
-				element,
-				index: i,
-				ariaRowIndex: rowCounter.value,
-				totalSize: array.length,
-				ariaLevel: depth
-			});
-		}
-		if (!nestedAttribute) continue;
-		const nested = element[nestedAttribute];
-		if (Array.isArray(nested) && nested.length > 0) applyElementMetadata(nested, nestedAttribute, {
-			depth: depth + 1,
-			rowCounter
-		});
-	}
-}
-/**
-* Applies metadata to new elements only. All elements with existing metadata is
-* preserved.
-*
-* @internal
-*/
-function preserveDataset(dataset) {
-	const { size, nestedAttribute } = getArrayMetadata(dataset);
-	applyElementMetadata(dataset, nestedAttribute, {
-		depth: 1,
-		rowCounter: { value: size }
-	});
 }
 var require_function_apply = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var NATIVE_BIND = require_function_bind_native();
@@ -14828,107 +13884,54 @@ var require_function_apply = /* @__PURE__ */ __commonJSMin(((exports, module) =>
 		return accumulator;
 	} });
 })))();
-/**
-* @internal
-*/
-function getSize(array, nestedAttribute) {
-	if (!Array.isArray(array)) return 0;
-	if (nestedAttribute === void 0) return array.length;
-	return array.reduce((sum, item) => {
-		const nested = item[nestedAttribute];
-		return sum + getSize(nested, nestedAttribute);
-	}, array.length);
+function getValidatableElement(element) {
+	if (isValidatableHTMLElement(element)) return element;
+	const validatableInsideElement = element.querySelector("input, textarea, select");
+	if (validatableInsideElement) return validatableInsideElement;
+	throw new Error(`Couldn't find any validatable element`);
 }
-function reindex$1(array, nestedAttribute, options) {
-	const { depth, rowCounter } = options;
-	for (let i = 0; i < array.length; i++) {
-		const element = array[i];
-		setElementMetadata(element, {
-			rowIndex: rowCounter.value,
-			ariaRowIndex: rowCounter.value + 1,
-			ariaLevel: depth + 1,
-			ariaSetSize: array.length,
-			ariaPosInSet: i + 1
-		});
-		rowCounter.value++;
-		if (!nestedAttribute) continue;
-		const nested = element[nestedAttribute];
-		if (Array.isArray(nested)) reindex$1(nested, nestedAttribute, {
-			depth: depth + 1,
-			rowCounter
-		});
+function triggerInitialValidation(el) {
+	const target = getValidatableElement(el);
+	ValidationService.validateElement(target);
+}
+function registerValidators(el, binding) {
+	const { modifiers: bindingModifiers = {}, value: bindingValue = {} } = binding;
+	const target = getValidatableElement(el);
+	for (const validatorName of Object.keys(bindingValue)) if (!Object.hasOwn(bindingModifiers, validatorName)) throw new Error(`Have you forget to add '${validatorName}' to v-validation.${validatorName}?`);
+	const validatorConfigs = {};
+	for (const validatorName of Object.keys(bindingModifiers)) validatorConfigs[validatorName] = bindingValue[validatorName] || {};
+	ValidationService.addValidatorsToElement(target, validatorConfigs);
+}
+var ValidationDirective = {
+	beforeMount(el, binding) {
+		registerValidators(el, binding);
+	},
+	beforeUnmount(el, _binding) {
+		const validatableElement = getValidatableElement(el);
+		dispatchComponentUnmountEvent(validatableElement);
+		ValidationService.removeValidatorsFromElement(validatableElement);
+	},
+	updated(el, binding) {
+		if (!(0, import_isEqual.default)(binding.value, binding.oldValue)) registerValidators(el, binding);
+	},
+	mounted(el) {
+		triggerInitialValidation(el);
 	}
-}
+};
+var ValidationPrefixDirective = { beforeMount(el, binding) {
+	el.addEventListener("component-validity", (event) => {
+		const e = event;
+		e.detail.errorMessage = `${String(binding.value)}${e.detail.errorMessage}`;
+	});
+} };
 /**
-* @internal
-*/
-function reindexDataset(dataset, nestedAttribute) {
-	setArrayMetadata(dataset, {
-		size: getSize(dataset, nestedAttribute),
-		nestedAttribute
-	});
-	reindex$1(dataset, nestedAttribute, {
-		depth: 0,
-		rowCounter: { value: 0 }
-	});
-}
-function createDataset(array, nestedAttribute) {
-	setArrayMetadata(array, {
-		size: 0,
-		nestedAttribute
-	});
-	const dataset = array;
-	reindexDataset(dataset, nestedAttribute);
-	return dataset;
-}
-function inheritDataset(array, originalDataset) {
-	const metadata = getDatasetMetadata(originalDataset);
-	const result = setArrayMetadata(array, {
-		get size() {
-			return metadata.size;
-		},
-		get nestedAttribute() {
-			return metadata.nestedAttribute;
-		}
-	});
-	preserveDataset(result);
-	return result;
-}
-function toDataset(array, ...args) {
-	if (isDataset(array)) return array;
-	const [arg] = args;
-	if (Array.isArray(arg)) {
-		if (isDataset(arg)) return inheritDataset(array, arg);
-		return createDataset(array, void 0);
-	}
-	return createDataset(array, arg);
-}
-/**
-* Creates a dataset as a Vue ref.
-*
-* @deprecated Use Vue's `ref()` instead. For expandable rows in `FTable`, pass
-*   the nested property name to `expandable-attribute` (v6.63.0).
 * @public
-* @since v6.39.0
 */
-function useDatasetRef(initial, nestedAttribute) {
-	const inner = /* @__PURE__ */ ref(toDataset(initial !== null && initial !== void 0 ? initial : [], nestedAttribute));
-	function* collect(array) {
-		yield array;
-		yield array.length;
-		if (nestedAttribute) for (const item of array) {
-			const nested = item[nestedAttribute];
-			if (Array.isArray(nested)) yield* collect(nested);
-		}
-	}
-	watch(() => Array.from(collect(inner.value)), () => {
-		reindexDataset(/* @__PURE__ */ toRaw(inner.value), nestedAttribute);
-	}, {
-		deep: 1,
-		flush: "sync"
-	});
-	return inner;
-}
+var ValidationPlugin = { install(app) {
+	for (const validator of availableValidators) ValidationService.registerValidator(validator);
+	app.directive("validation", ValidationDirective);
+	app.directive("validationPrefix", ValidationPrefixDirective);
+} };
 /* istanbul ignore file */
 var require_get_iterator_flattenable = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var call = require_function_call();
@@ -16595,336 +15598,11 @@ require_web_url_search_params_has();
 require_web_url_search_params_size();
 require_es_weak_map_get_or_insert();
 require_es_weak_map_get_or_insert_computed();
-/**
-* Call onScopeDispose() if it's inside an effect scope lifecycle, if not, do nothing
-*
-* @param fn
-*/
-function tryOnScopeDispose(fn, failSilently) {
-	if (getCurrentScope()) {
-		onScopeDispose(fn, failSilently);
-		return true;
-	}
-	return false;
-}
-var localProvidedStateMap = /* @__PURE__ */ new WeakMap();
-/**
-* On the basis of `inject`, it is allowed to directly call inject to obtain the value after call provide in the same component.
-*
-* @example
-* ```ts
-* injectLocal('MyInjectionKey', 1)
-* const injectedValue = injectLocal('MyInjectionKey') // injectedValue === 1
-* ```
-*
-* @NO_SIDE_EFFECTS
-*/
-var injectLocal = /* @__NO_SIDE_EFFECTS__ */ (...args) => {
-	var _getCurrentInstance;
-	const key = args[0];
-	const instance = (_getCurrentInstance = getCurrentInstance()) === null || _getCurrentInstance === void 0 ? void 0 : _getCurrentInstance.proxy;
-	const owner = instance !== null && instance !== void 0 ? instance : getCurrentScope();
-	if (owner == null && !hasInjectionContext()) throw new Error("injectLocal must be called in setup");
-	if (owner && localProvidedStateMap.has(owner) && key in localProvidedStateMap.get(owner)) return localProvidedStateMap.get(owner)[key];
-	return inject(...args);
-};
 var isClient = typeof window !== "undefined" && typeof document !== "undefined";
 typeof WorkerGlobalScope !== "undefined" && globalThis instanceof WorkerGlobalScope;
-var notNullish = (val) => val != null;
-var toString = Object.prototype.toString;
-var isObject = (val) => toString.call(val) === "[object Object]";
-var noop$4 = () => {};
-/**
-* Get a px value for SSR use, do not rely on this method outside of SSR as REM unit is assumed at 16px, which might not be the case on the client
-*/
-function pxValue(px) {
-	return px.endsWith("rem") ? Number.parseFloat(px) * 16 : Number.parseFloat(px);
-}
-function toArray(value) {
-	return Array.isArray(value) ? value : [value];
-}
-/**
-* Shorthand for watching value with {immediate: true}
-*
-* @see https://vueuse.org/watchImmediate
-*/
-function watchImmediate(source, cb, options) {
-	return watch(source, cb, {
-		...options,
-		immediate: true
-	});
-}
-var defaultWindow = isClient ? window : void 0;
 isClient && window.document;
 isClient && window.navigator;
 isClient && window.location;
-/**
-* Get the dom element of a ref of element or Vue component instance
-*
-* @param elRef
-*/
-function unrefElement(elRef) {
-	var _$el;
-	const plain = toValue(elRef);
-	return (_$el = plain === null || plain === void 0 ? void 0 : plain.$el) !== null && _$el !== void 0 ? _$el : plain;
-}
-function useEventListener$1(...args) {
-	const register = (el, event, listener, options) => {
-		el.addEventListener(event, listener, options);
-		return () => el.removeEventListener(event, listener, options);
-	};
-	const firstParamTargets = computed(() => {
-		const test = toArray(toValue(args[0])).filter((e) => e != null);
-		return test.every((e) => typeof e !== "string") ? test : void 0;
-	});
-	return watchImmediate(() => {
-		var _firstParamTargets$va, _firstParamTargets$va2;
-		return [
-			(_firstParamTargets$va = (_firstParamTargets$va2 = firstParamTargets.value) === null || _firstParamTargets$va2 === void 0 ? void 0 : _firstParamTargets$va2.map((e) => unrefElement(e))) !== null && _firstParamTargets$va !== void 0 ? _firstParamTargets$va : [defaultWindow].filter((e) => e != null),
-			toArray(toValue(firstParamTargets.value ? args[1] : args[0])),
-			toArray(unref(firstParamTargets.value ? args[2] : args[1])),
-			toValue(firstParamTargets.value ? args[3] : args[2])
-		];
-	}, ([raw_targets, raw_events, raw_listeners, raw_options], _, onCleanup) => {
-		if (!(raw_targets === null || raw_targets === void 0 ? void 0 : raw_targets.length) || !(raw_events === null || raw_events === void 0 ? void 0 : raw_events.length) || !(raw_listeners === null || raw_listeners === void 0 ? void 0 : raw_listeners.length)) return;
-		const optionsClone = isObject(raw_options) ? { ...raw_options } : raw_options;
-		const cleanups = raw_targets.flatMap((el) => raw_events.flatMap((event) => raw_listeners.map((listener) => register(el, event, listener, optionsClone))));
-		onCleanup(() => {
-			cleanups.forEach((fn) => fn());
-		});
-	}, { flush: "post" });
-}
-/**
-* Mounted state in ref.
-*
-* @see https://vueuse.org/useMounted
-*
-* @__NO_SIDE_EFFECTS__
-*/
-function useMounted() {
-	const isMounted = /* @__PURE__ */ shallowRef(false);
-	const instance = getCurrentInstance();
-	if (instance) onMounted(() => {
-		isMounted.value = true;
-	}, instance);
-	return isMounted;
-}
-/* @__NO_SIDE_EFFECTS__ */
-function useSupported(callback) {
-	const isMounted = useMounted();
-	return computed(() => {
-		isMounted.value;
-		return Boolean(callback());
-	});
-}
-/**
-* Watch for changes being made to the DOM tree.
-*
-* @see https://vueuse.org/useMutationObserver
-* @see https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver MutationObserver MDN
-* @param target
-* @param callback
-* @param options
-*/
-function useMutationObserver(target, callback, options = {}) {
-	const { window = defaultWindow, ...mutationOptions } = options;
-	let observer;
-	const isSupported = /* @__PURE__ */ useSupported(() => window && "MutationObserver" in window);
-	const cleanup = () => {
-		if (observer) {
-			observer.disconnect();
-			observer = void 0;
-		}
-	};
-	const stopWatch = watch(computed(() => {
-		const items = toArray(toValue(target)).map(unrefElement).filter(notNullish);
-		return new Set(items);
-	}), (newTargets) => {
-		cleanup();
-		if (isSupported.value && newTargets.size) {
-			observer = new MutationObserver(callback);
-			newTargets.forEach((el) => observer.observe(el, mutationOptions));
-		}
-	}, {
-		immediate: true,
-		flush: "post"
-	});
-	const takeRecords = () => {
-		return observer === null || observer === void 0 ? void 0 : observer.takeRecords();
-	};
-	const stop = () => {
-		stopWatch();
-		cleanup();
-	};
-	tryOnScopeDispose(stop);
-	return {
-		isSupported,
-		stop,
-		takeRecords
-	};
-}
-/**
-* Fires when the element or any element containing it is removed.
-*
-* @param target
-* @param callback
-* @param options
-*/
-function onElementRemoval(target, callback, options = {}) {
-	const { window = defaultWindow, document = window === null || window === void 0 ? void 0 : window.document, flush = "sync" } = options;
-	if (!window || !document) return noop$4;
-	let stopFn;
-	const cleanupAndUpdate = (fn) => {
-		stopFn === null || stopFn === void 0 || stopFn();
-		stopFn = fn;
-	};
-	const stopWatch = watchEffect(() => {
-		const el = unrefElement(target);
-		if (el) {
-			const { stop } = useMutationObserver(document, (mutationsList) => {
-				if (mutationsList.map((mutation) => [...mutation.removedNodes]).flat().some((node) => node === el || node.contains(el))) callback(mutationsList);
-			}, {
-				window,
-				childList: true,
-				subtree: true
-			});
-			cleanupAndUpdate(stop);
-		}
-	}, { flush });
-	const stopHandle = () => {
-		stopWatch();
-		cleanupAndUpdate();
-	};
-	tryOnScopeDispose(stopHandle);
-	return stopHandle;
-}
-/**
-* Reactive `document.activeElement`
-*
-* @see https://vueuse.org/useActiveElement
-* @param options
-*
-* @__NO_SIDE_EFFECTS__
-*/
-function useActiveElement(options = {}) {
-	var _options$document;
-	const { window = defaultWindow, deep = true, triggerOnRemoval = false } = options;
-	const document = (_options$document = options.document) !== null && _options$document !== void 0 ? _options$document : window === null || window === void 0 ? void 0 : window.document;
-	const getDeepActiveElement = () => {
-		let element = document === null || document === void 0 ? void 0 : document.activeElement;
-		if (deep) {
-			var _element$shadowRoot;
-			while (element === null || element === void 0 ? void 0 : element.shadowRoot) element = element === null || element === void 0 || (_element$shadowRoot = element.shadowRoot) === null || _element$shadowRoot === void 0 ? void 0 : _element$shadowRoot.activeElement;
-		}
-		return element;
-	};
-	const activeElement = /* @__PURE__ */ shallowRef();
-	const trigger = () => {
-		activeElement.value = getDeepActiveElement();
-	};
-	if (window) {
-		const listenerOptions = {
-			capture: true,
-			passive: true
-		};
-		useEventListener$1(window, "blur", (event) => {
-			if (event.relatedTarget !== null) return;
-			trigger();
-		}, listenerOptions);
-		useEventListener$1(window, "focus", trigger, listenerOptions);
-	}
-	if (triggerOnRemoval) onElementRemoval(activeElement, trigger, { document });
-	trigger();
-	return activeElement;
-}
-var ssrWidthSymbol = Symbol("vueuse-ssr-width");
-/* @__NO_SIDE_EFFECTS__ */
-function useSSRWidth() {
-	const ssrWidth = hasInjectionContext() ? /* @__PURE__ */ injectLocal(ssrWidthSymbol, null) : null;
-	return typeof ssrWidth === "number" ? ssrWidth : void 0;
-}
-/**
-* Reactive Media Query.
-*
-* @see https://vueuse.org/useMediaQuery
-* @param query
-* @param options
-*/
-function useMediaQuery(query, options = {}) {
-	const { window = defaultWindow, ssrWidth = /* @__PURE__ */ useSSRWidth() } = options;
-	const isSupported = /* @__PURE__ */ useSupported(() => window && "matchMedia" in window && typeof window.matchMedia === "function");
-	const ssrSupport = /* @__PURE__ */ shallowRef(typeof ssrWidth === "number");
-	const mediaQuery = /* @__PURE__ */ shallowRef();
-	const matches = /* @__PURE__ */ shallowRef(false);
-	const handler = (event) => {
-		matches.value = event.matches;
-	};
-	watchEffect(() => {
-		if (ssrSupport.value) {
-			ssrSupport.value = !isSupported.value;
-			const queryStrings = toValue(query).split(",");
-			matches.value = queryStrings.some((queryString) => {
-				const not = queryString.includes("not all");
-				const minWidth = queryString.match(/\(\s*min-width:\s*(-?\d+(?:\.\d*)?[a-z]+\s*)\)/);
-				const maxWidth = queryString.match(/\(\s*max-width:\s*(-?\d+(?:\.\d*)?[a-z]+\s*)\)/);
-				let res = Boolean(minWidth || maxWidth);
-				if (minWidth && res) res = ssrWidth >= pxValue(minWidth[1]);
-				if (maxWidth && res) res = ssrWidth <= pxValue(maxWidth[1]);
-				return not ? !res : res;
-			});
-			return;
-		}
-		if (!isSupported.value) return;
-		mediaQuery.value = window.matchMedia(toValue(query));
-		matches.value = mediaQuery.value.matches;
-	});
-	useEventListener$1(mediaQuery, "change", handler, { passive: true });
-	return computed(() => matches.value);
-}
-function useElementHover(el, options = {}) {
-	const { delayEnter = 0, delayLeave = 0, triggerOnRemoval = false, window = defaultWindow } = options;
-	const isHovered = /* @__PURE__ */ shallowRef(false);
-	let timer;
-	const toggle = (entering) => {
-		const delay = entering ? delayEnter : delayLeave;
-		if (timer) {
-			clearTimeout(timer);
-			timer = void 0;
-		}
-		if (delay) timer = setTimeout(() => isHovered.value = entering, delay);
-		else isHovered.value = entering;
-	};
-	if (!window) return isHovered;
-	useEventListener$1(el, "mouseenter", () => toggle(true), { passive: true });
-	useEventListener$1(el, "mouseleave", () => toggle(false), { passive: true });
-	if (triggerOnRemoval) onElementRemoval(computed(() => unrefElement(el)), () => toggle(false));
-	return isHovered;
-}
-var EVENT_FOCUS_IN = "focusin";
-var EVENT_FOCUS_OUT = "focusout";
-var PSEUDO_CLASS_FOCUS_WITHIN = ":focus-within";
-/**
-* Track if focus is contained within the target element
-*
-* @see https://vueuse.org/useFocusWithin
-* @param target The target element to track
-* @param options Focus within options
-*/
-function useFocusWithin(target, options = {}) {
-	const { window = defaultWindow } = options;
-	const targetElement = computed(() => unrefElement(target));
-	const _focused = /* @__PURE__ */ shallowRef(false);
-	const focused = computed(() => _focused.value);
-	const activeElement = useActiveElement(options);
-	if (!window || !activeElement.value) return { focused };
-	const listenerOptions = { passive: true };
-	useEventListener$1(targetElement, EVENT_FOCUS_IN, () => _focused.value = true, listenerOptions);
-	useEventListener$1(targetElement, EVENT_FOCUS_OUT, () => {
-		var _targetElement$value$, _targetElement$value, _targetElement$value$2;
-		return _focused.value = (_targetElement$value$ = (_targetElement$value = targetElement.value) === null || _targetElement$value === void 0 || (_targetElement$value$2 = _targetElement$value.matches) === null || _targetElement$value$2 === void 0 ? void 0 : _targetElement$value$2.call(_targetElement$value, PSEUDO_CLASS_FOCUS_WITHIN)) !== null && _targetElement$value$ !== void 0 ? _targetElement$value$ : false;
-	}, listenerOptions);
-	return { focused };
-}
 /**
 * Uses event listener while the underlying component is mounted.
 * Currently there is no support for replacing the `target` element.
@@ -16938,45 +15616,6 @@ function useEventListener(target, event, callback) {
 	onUnmounted(() => {
 		toValue(target)?.removeEventListener(event, callback);
 	});
-}
-/**
-* @public
-*/
-function useSlotUtils() {
-	const $slots = useSlots();
-	return { hasSlot(...args) {
-		return hasSlot({ $slots }, ...args);
-	} };
-}
-/**
-* Get container element from one of the following sources (in order):
-*
-* 1. An explicit element given by the container prop.
-* 2. A parent marked as a popup container.
-* 3. Default configured popup container element (e.g. `<body>`).
-*/
-function getContainer(element, prop) {
-	if (prop) return prop;
-	const parent = element.closest(".popup__container");
-	if (parent) return parent;
-	return config.popupContainer;
-}
-function getFocusableElement(rootElement, callback) {
-	var _elements$;
-	if (callback) return callback();
-	return (_elements$ = findTabbableElements(getHTMLElementFromVueRef(rootElement))[0]) !== null && _elements$ !== void 0 ? _elements$ : null;
-}
-function offset(page, el) {
-	const rect = el.getBoundingClientRect();
-	return {
-		top: rect.top + page.pageYOffset,
-		left: rect.left + page.pageXOffset
-	};
-}
-function getElement(anchor) {
-	if (!anchor) return null;
-	if (typeof anchor === "string") return document.querySelector(`#${anchor}`);
-	return anchor;
 }
 /**
 * @public
@@ -17234,21 +15873,6 @@ function fitInsideArea(options) {
 	};
 }
 /**
-* When opening poupup inline this metod
-* calculates the need scroll to get the
-* popup within the viewport.
-*/
-function getScrollToPopup(param) {
-	const popupOffset = offset({
-		pageXOffset: 0,
-		pageYOffset: param.scrollTop
-	}, param.popup);
-	const popupHeight = param.popup.offsetHeight;
-	const neededScroll = popupOffset.top - param.windowInnerHeight + popupHeight + param.spacing;
-	if (neededScroll > param.scrollTop) return neededScroll;
-	return param.scrollTop;
-}
-/**
 * Get the fallback position coordinates
 * try to align with anchor.x if there is room for the target
 * if target is outside the clippedArea, use no horizontal alignment
@@ -17267,339 +15891,6 @@ function getFallbackPosition(anchor, target, clippedArea, spacing) {
 		y
 	};
 }
-/**
-* @internal
-*/
-function isTeleportDisabled(options) {
-	const { window, placement, forceInline, forceOverlay } = options;
-	const isMobileSize = window.innerWidth < 640;
-	let disableTeleport = isMobileSize || placement === Placement.Fallback;
-	if (forceInline) disableTeleport = true;
-	else if (forceOverlay) disableTeleport = false;
-	else if (placement === Placement.NotCalculated && !isMobileSize) disableTeleport = false;
-	return disableTeleport;
-}
-var IPopup_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
-	name: "IPopup",
-	inheritAttrs: false,
-	props: {
-		/**
-		* Toggle open/closed popup.
-		*/
-		isOpen: {
-			type: Boolean,
-			required: true
-		},
-		/**
-		* DOM element or element id to position popup at.
-		*/
-		anchor: {
-			type: [HTMLElement, String],
-			required: false,
-			default: void 0
-		},
-		/**
-		* Type of inline behaviour.
-		* - `"auto"` changes between overlay or inline depending on window size.
-		* - `"always"` forces the popup to always be inline.
-		* - `"never"` forces the popup to never be inline.
-		*/
-		inline: {
-			type: String,
-			required: false,
-			validator(value) {
-				return [
-					"always",
-					"never",
-					"auto"
-				].includes(value);
-			},
-			default: "auto"
-		},
-		/**
-		* Controls whether the popup may overlap its anchor.
-		* - `"allow"` allows placements that overlap the anchor.
-		* - `"never"` excludes placement candidates that overlap the anchor.
-		*/
-		anchorOverlap: {
-			type: String,
-			required: false,
-			validator(value) {
-				return ["allow", "never"].includes(value);
-			},
-			default: "allow"
-		},
-		/**
-		* Which element to use as container.
-		*/
-		container: {
-			type: HTMLElement,
-			required: false,
-			default: void 0
-		},
-		/**
-		* Which element to use as viewport.
-		*/
-		viewport: {
-			type: HTMLElement,
-			required: false,
-			default() {
-				return document.documentElement;
-			}
-		},
-		/**
-		* Prevents tabbing outside of component.
-		*/
-		keyboardTrap: {
-			type: Boolean,
-			required: false,
-			default: true
-		},
-		/**
-		* Function that returns the element that will receive focus
-		*/
-		focusElement: {
-			type: Function,
-			required: false,
-			default: null
-		},
-		/**
-		* Set focus on first tabbable element (or element in the `focusElement` prop if provided) when opened.
-		*/
-		setFocus: {
-			type: Boolean,
-			required: false,
-			default: true
-		}
-	},
-	emits: ["open", "close"],
-	data() {
-		return {
-			teleportDisabled: false,
-			placement: Placement.NotCalculated,
-			focus: null,
-			anchorOffset: null
-		};
-	},
-	computed: {
-		popupClasses() {
-			return ["popup", ...this.isInline ? ["popup--inline"] : ["popup--overlay"]];
-		},
-		isInline() {
-			let isInline = this.teleportDisabled || this.placement === Placement.Fallback;
-			if (this.forceInline) isInline = true;
-			else if (this.forceOverlay) isInline = false;
-			else if (this.placement === Placement.NotCalculated && !this.isMobileSize()) isInline = false;
-			return isInline;
-		},
-		forceInline() {
-			return this.inline === "always";
-		},
-		forceOverlay() {
-			return this.inline === "never";
-		},
-		teleportTarget() {
-			return config.teleportTarget;
-		}
-	},
-	watch: {
-		isOpen: {
-			immediate: true,
-			handler(value) {
-				this.toggleIsOpen(value);
-				if (value) {
-					const { placement, forceInline, forceOverlay } = this;
-					this.teleportDisabled = isTeleportDisabled({
-						window,
-						placement,
-						forceInline,
-						forceOverlay
-					});
-					setTimeout(() => {
-						if (!this.isOpen) return;
-						document.addEventListener("click", this.onDocumentClickHandler);
-						window.addEventListener("resize", this.onWindowResizeDebounced);
-						window.addEventListener("scroll", this.onScrollEvent, { capture: true });
-					}, 0);
-				} else {
-					document.removeEventListener("click", this.onDocumentClickHandler);
-					window.removeEventListener("resize", this.onWindowResizeDebounced);
-					window.removeEventListener("scroll", this.onScrollEvent, { capture: true });
-				}
-			}
-		},
-		anchorOverlap() {
-			if (this.isOpen && this.placement !== Placement.NotCalculated) this.recalculatePlacement();
-		}
-	},
-	created() {
-		this.onWindowResizeDebounced = debounce(this.onWindowResize, 100).bind(this);
-		this.onScrollDebounced = debounce(this.onScroll, 100).bind(this);
-	},
-	unmounted() {
-		document.removeEventListener("click", this.onDocumentClickHandler);
-		window.removeEventListener("resize", this.onWindowResizeDebounced);
-		window.removeEventListener("scroll", this.onScrollEvent, { capture: true });
-	},
-	methods: {
-		async toggleIsOpen(isOpen) {
-			if (!isOpen) {
-				this.placement = Placement.NotCalculated;
-				this.anchorOffset = null;
-				if (this.focus) {
-					popFocus(this.focus);
-					this.focus = null;
-				}
-				return;
-			}
-			await this.$nextTick();
-			await this.calculatePlacement();
-			this.applyFocus();
-			this.$emit("open");
-		},
-		async calculatePlacement(options) {
-			const popup = getHTMLElementFromVueRef(this.$refs.popup);
-			const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
-			const anchor = getElement(this.anchor);
-			if (!anchor) throw new Error("No anchor element found");
-			if (this.forceOverlay || !(this.isMobileSize() || this.forceInline)) {
-				const area = getContainer(popup, this.container);
-				const viewport = this.viewport;
-				const result = fitInsideArea({
-					area,
-					anchor,
-					target: wrapper,
-					viewport,
-					spacing: 20,
-					candidateOrder: CandidateOrder.Default,
-					allowAnchorOverlap: this.anchorOverlap === "allow"
-				});
-				this.placement = result.placement;
-				if (this.forceOverlay || result.placement !== Placement.Fallback) {
-					wrapper.style.left = `${String(result.x)}px`;
-					if (options?.horizontalOnly) return;
-					wrapper.style.top = `${String(result.y)}px`;
-					if (this.anchorOverlap === "never") this.saveAnchorOffset(wrapper, anchor);
-					return;
-				}
-			}
-			this.teleportDisabled = true;
-			wrapper.style.removeProperty("left");
-			wrapper.style.removeProperty("top");
-			await new Promise((resolve) => setTimeout(resolve, 200));
-			const scrollTarget = popup.closest(".scroll-target");
-			const hasScrollTarget = scrollTarget !== null;
-			const scrollOptions = {
-				top: getScrollToPopup({
-					popup: wrapper,
-					windowInnerHeight: window.innerHeight,
-					scrollTop: hasScrollTarget ? scrollTarget.scrollTop : window.scrollY,
-					spacing: 20
-				}),
-				behavior: "smooth"
-			};
-			if (hasScrollTarget) scrollTarget.scrollTo(scrollOptions);
-			else window.scrollTo(scrollOptions);
-		},
-		applyFocus() {
-			if (!this.setFocus) return;
-			const wrapper = this.$refs.wrapper;
-			if (!wrapper) return;
-			const focusableElement = getFocusableElement(wrapper, this.focusElement);
-			this.focus = pushFocus(focusableElement);
-		},
-		isMobileSize() {
-			return window.innerWidth < 640;
-		},
-		onDocumentClickHandler() {
-			this.$emit("close", "click-outside");
-		},
-		onWindowResizeDebounced() {},
-		onScrollDebounced(event) {},
-		async onScrollEvent(event) {
-			if (this.anchorOverlap === "never") await this.onScroll(event);
-			else this.onScrollDebounced(event);
-		},
-		async onWindowResize() {
-			await this.recalculatePlacement();
-		},
-		async onScroll(event) {
-			if (!this.isOpen || this.isInline) return;
-			if (event.target instanceof HTMLElement && Boolean(event.target.closest(".popup"))) return;
-			if (this.anchorOverlap === "never") {
-				this.followAnchor();
-				return;
-			}
-			await this.recalculatePlacement({ horizontalOnly: true });
-		},
-		saveAnchorOffset(wrapper, anchor) {
-			const wrapperPosition = getAbsolutePosition(wrapper);
-			const anchorPosition = getAbsolutePosition(anchor);
-			this.anchorOffset = {
-				x: wrapperPosition.x - anchorPosition.x,
-				y: wrapperPosition.y - anchorPosition.y
-			};
-		},
-		followAnchor() {
-			if (!this.anchorOffset) return;
-			const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
-			const anchor = getElement(this.anchor);
-			if (!anchor) throw new Error("No anchor element found");
-			const anchorPosition = getAbsolutePosition(anchor);
-			const offsetParent = wrapper.offsetParent?.getBoundingClientRect();
-			const offsetLeft = offsetParent ? offsetParent.left + window.pageXOffset : 0;
-			const offsetTop = offsetParent ? offsetParent.top + window.pageYOffset : 0;
-			wrapper.style.left = `${String(anchorPosition.x + this.anchorOffset.x - offsetLeft)}px`;
-			wrapper.style.top = `${String(anchorPosition.y + this.anchorOffset.y - offsetTop)}px`;
-		},
-		async recalculatePlacement(options) {
-			if (!this.isOpen) return;
-			if (this.forceInline) return;
-			if (this.isInline && this.isMobileSize()) return;
-			if (this.isInline) {
-				this.placement = Placement.NotCalculated;
-				this.teleportDisabled = false;
-				await this.$nextTick();
-			}
-			await this.calculatePlacement(options);
-			const { placement, forceInline, forceOverlay } = this;
-			this.teleportDisabled = isTeleportDisabled({
-				window,
-				placement,
-				forceInline,
-				forceOverlay
-			});
-		},
-		onPopupClickHandler(event) {
-			event.stopPropagation();
-		},
-		onKeyEsc() {
-			this.$emit("close", "escape");
-		},
-		onKeyTab(event) {
-			if (!this.keyboardTrap) return;
-			handleTab(event, getHTMLElementFromVueRef(this.$refs.wrapper));
-		}
-	}
-});
-function _sfc_render$34(_ctx, _cache, $props, $setup, $data, $options) {
-	return _ctx.isOpen ? (openBlock(), createBlock(Teleport, {
-		key: 0,
-		to: _ctx.teleportTarget,
-		disabled: _ctx.teleportDisabled
-	}, [createBaseVNode("div", mergeProps({ ref: "popup" }, _ctx.$attrs, { class: _ctx.popupClasses }), [createBaseVNode("div", {
-		ref: "wrapper",
-		role: "presentation",
-		class: "popup__wrapper",
-		onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onPopupClickHandler && _ctx.onPopupClickHandler(...args)),
-		onKeyup: _cache[1] || (_cache[1] = withKeys(withModifiers((...args) => _ctx.onKeyEsc && _ctx.onKeyEsc(...args), ["stop"]), ["esc"])),
-		onKeydown: _cache[2] || (_cache[2] = withKeys((...args) => _ctx.onKeyTab && _ctx.onKeyTab(...args), ["tab"]))
-	}, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
-		toggleIsOpen: _ctx.toggleIsOpen,
-		placement: _ctx.placement
-	})))], 544)], 16)], 8, ["to", "disabled"])) : createCommentVNode("v-if", true);
-}
-var IPopup_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(IPopup_vue_vue_type_script_lang_default, [["render", _sfc_render$34]]);
 function computeArrowOffset(placement, inputIconRect, wrapperRect) {
 	switch (placement) {
 		case Placement.A: return {
@@ -17636,7 +15927,7 @@ function computeArrowOffset(placement, inputIconRect, wrapperRect) {
 		};
 	}
 }
-var _hoisted_1$66 = {
+var _hoisted_1$67 = {
 	ref: "wrapper",
 	class: "popup-error__wrapper"
 };
@@ -17746,7 +16037,7 @@ var IPopupError_default = /* @__PURE__ */ defineComponent({
 			}, [createBaseVNode("div", {
 				class: normalizeClass(popupClasses.value),
 				"aria-hidden": "true"
-			}, [createBaseVNode("div", _hoisted_1$66, [createBaseVNode("div", {
+			}, [createBaseVNode("div", _hoisted_1$67, [createBaseVNode("div", {
 				class: normalizeClass(arrowClass.value),
 				style: normalizeStyle(errorStyle.value)
 			}, [
@@ -17833,7 +16124,7 @@ function computeListboxRect(anchor, options, root = document.documentElement, { 
 	const above = tryAbove(itemHeight, numOfItems, anchorRect, viewportRect, verticalSpacing);
 	if (above) return above;
 }
-var _hoisted_1$65 = ["onKeyup"];
+var _hoisted_1$66 = ["onKeyup"];
 var _hoisted_2$46 = { ref: "content" };
 var teleportDisabled = false;
 var IPopupListbox_default = /* @__PURE__ */ defineComponent({
@@ -17964,316 +16255,193 @@ var IPopupListbox_default = /* @__PURE__ */ defineComponent({
 				tabindex: "0",
 				onKeyup: withKeys(withModifiers(onKeyEsc, ["stop"]), ["esc"]),
 				onClick: _cache[0] || (_cache[0] = withModifiers(() => {}, ["stop"]))
-			}), [createBaseVNode("div", _hoisted_2$46, [renderSlot(_ctx.$slots, "default")], 512)], 16, _hoisted_1$65)], 512)], 8, ["to"])) : createCommentVNode("v-if", true);
+			}), [createBaseVNode("div", _hoisted_2$46, [renderSlot(_ctx.$slots, "default")], 512)], 16, _hoisted_1$66)], 512)], 8, ["to"])) : createCommentVNode("v-if", true);
 		};
 	}
 });
-function getNewItemIndexFromMenuAction$2(action, index, n) {
-	if (n <= 0) return 0;
-	let newIndex;
-	switch (action) {
-		case MenuAction.MOVE_NEXT:
-			newIndex = (index + 1) % n;
-			break;
-		case MenuAction.MOVE_PREV:
-			newIndex = (index - 1 + n) % n;
-			break;
-		case MenuAction.MOVE_FIRST:
-			newIndex = 0;
-			break;
-		case MenuAction.MOVE_LAST:
-			newIndex = Math.max(n - 1, 0);
-			break;
-		default: newIndex = index;
-	}
-	return newIndex;
+function filterOptions(options, filter, selectMode) {
+	if (isEmpty(filter) || selectMode) return options;
+	const filterLowerCased = filter.toLowerCase();
+	return options.filter((it) => it.toLowerCase().includes(filterLowerCased));
 }
-async function doMenuAction$1(action, target) {
-	const itemsLength = target.items.length;
-	const currentIndex = target.currentFocusedItemIndex;
-	const newFocusedItemIndex = getNewItemIndexFromMenuAction$2(action, currentIndex, itemsLength);
-	switch (action) {
-		case MenuAction.MOVE_NEXT:
-		case MenuAction.MOVE_PREV:
-		case MenuAction.MOVE_FIRST:
-		case MenuAction.MOVE_LAST:
-			await target.setFocusOnItem(newFocusedItemIndex);
-			break;
-		case MenuAction.ACTIVATE: await target.activateItem(newFocusedItemIndex);
+var $t$1 = useTranslate();
+/**
+* @public
+*/
+function useCombobox(inputRef, options, onOptionSelected) {
+	if (options.value === void 0) return {
+		dropdownId: "",
+		dropdownIsOpen: /* @__PURE__ */ ref(false),
+		dropdownOptions: /* @__PURE__ */ ref([]),
+		activeOptionId: "",
+		activeOption: /* @__PURE__ */ ref(null),
+		toggleDropdown() {},
+		selectOption() {},
+		closeDropdown() {}
+	};
+	useEventListener(inputRef, "click", onInputClick);
+	useEventListener(inputRef, "focus", onInputFocus);
+	useEventListener(inputRef, "keydown", onInputKeyDown);
+	useEventListener(inputRef, "keyup", onInputKeyUp);
+	const dropdownId = ElementIdService.generateElementId();
+	const dropdownIsOpen = /* @__PURE__ */ ref(false);
+	const activeOptionId = ElementIdService.generateElementId();
+	const activeOption = /* @__PURE__ */ ref(null);
+	const filter = /* @__PURE__ */ ref("");
+	const selectMode = /* @__PURE__ */ ref(false);
+	const selectedOption = /* @__PURE__ */ ref(null);
+	const dropdownOptions = computed(() => {
+		var _options$value;
+		return filterOptions((_options$value = options.value) !== null && _options$value !== void 0 ? _options$value : [], filter.value, selectMode.value);
+	});
+	const hasOptions = computed(() => {
+		return dropdownOptions.value.length > 0;
+	});
+	const hasMultipleOptions = computed(() => {
+		return dropdownOptions.value.length > 1;
+	});
+	watchEffect(() => {
+		if (!inputRef.value) return;
+		inputRef.value.setAttribute("aria-expanded", String(dropdownIsOpen.value));
+		if (dropdownIsOpen.value) inputRef.value.setAttribute("aria-controls", dropdownId);
+		else inputRef.value.removeAttribute("aria-controls");
+	});
+	watchEffect(() => {
+		if (!inputRef.value) return;
+		if (activeOption.value) inputRef.value.setAttribute("aria-activedescendant", activeOptionId);
+		else inputRef.value.removeAttribute("aria-activedescendant");
+	});
+	watchEffect(() => {
+		if (!inputRef.value) return;
+		let description = selectMode.value ? `${$t$1("fkui.combobox.selected", "Valt förslag")} ` : "";
+		if (isEmpty(filter.value) || selectMode.value) description += $t$1("fkui.combobox.listDetails", `Det finns {{ count }} förslag. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`, { count: options.value ? options.value.length : 0 });
+		else if (hasOptions.value) description += $t$1("fkui.combobox.matchesListDetails", `Det finns {{ count }} förslag som matchar. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`, { count: dropdownOptions.value.length });
+		else description = $t$1("fkui.combobox.noMatchesListDetails", "Det finns inga förslag som matchar.");
+		inputRef.value.setAttribute("aria-description", description);
+	});
+	onMounted(() => {
+		if (!inputRef.value) throw new Error("missing input ref");
+		filter.value = inputRef.value.value;
+		inputRef.value.setAttribute("role", "combobox");
+		inputRef.value.setAttribute("aria-autocomplete", "list");
+	});
+	return {
+		dropdownId,
+		dropdownIsOpen,
+		dropdownOptions,
+		activeOptionId,
+		activeOption,
+		toggleDropdown,
+		selectOption,
+		closeDropdown: close
+	};
+	function selectOption(value) {
+		selectedOption.value = value;
+		if (!selectedOption.value) return;
+		close();
+		filter.value = selectedOption.value;
+		selectMode.value = true;
+		if (onOptionSelected) onOptionSelected(value);
 	}
-}
-var preventKeys$1 = /* @__PURE__ */ new Set([
-	"Tab",
-	"Up",
-	"Down",
-	"ArrowUp",
-	"ArrowDown",
-	"Home",
-	"End",
-	" ",
-	"Spacebar",
-	"Enter"
-]);
-var IPopupMenu_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
-	name: "IPopupMenu",
-	components: { IPopup: IPopup_default },
-	props: {
-		/**
-		* Key of the currently selected and highlighted item.
-		*/
-		modelValue: {
-			type: String,
-			required: false,
-			default: ""
-		},
-		/**
-		* Key of the currently focused item.
-		* Sets focus on matching item element when value changes.
-		*/
-		focusedItem: {
-			type: String,
-			required: false,
-			default: ""
-		},
-		/**
-		* Toggle open/closed popup.
-		*/
-		isOpen: {
-			type: Boolean,
-			required: true
-		},
-		/**
-		* DOM element or element id to position popup at.
-		*/
-		anchor: {
-			type: [HTMLElement, String],
-			default: void 0
-		},
-		/**
-		* The items to be diplayed in the menu
-		*/
-		items: {
-			type: Array,
-			required: true
-		},
-		/**
-		* If true, enable built-in keyboard navigation
-		*/
-		enableKeyboardNavigation: {
-			type: Boolean,
-			required: false
-		},
-		/**
-		* Unique accessible name for navigation landmark.
-		*/
-		ariaLabel: {
-			type: String,
-			required: false,
-			default: "Popupmeny"
-		},
-		/**
-		* Text for selected item for screen reader
-		*/
-		selectedMenuItemScreenReaderText: {
-			type: String,
-			required: false,
-			default: "vald nu"
+	async function openSelected(fallback = null) {
+		if (!hasOptions.value) return;
+		dropdownIsOpen.value = true;
+		await nextTick();
+		if (selectMode.value) activeOption.value = filter.value;
+		else if (fallback === "first") activeOption.value = dropdownOptions.value[0];
+		else if (fallback === "last") activeOption.value = dropdownOptions.value.at(-1);
+		else activeOption.value = null;
+		inputRef.value?.focus();
+	}
+	function close() {
+		dropdownIsOpen.value = false;
+		activeOption.value = null;
+	}
+	function toggleDropdown() {
+		if (!dropdownIsOpen.value) {
+			const input = inputRef.value;
+			if (!input) return;
+			filter.value = input.value;
+			if (options.value) selectMode.value = options.value.includes(filter.value);
+			else selectMode.value = false;
+			openSelected();
+		} else close();
+	}
+	function setNextOption() {
+		if (activeOption.value && hasMultipleOptions.value) {
+			const index = dropdownOptions.value.indexOf(activeOption.value);
+			if (index === dropdownOptions.value.length - 1) activeOption.value = dropdownOptions.value[0];
+			else activeOption.value = dropdownOptions.value[index + 1];
+		} else activeOption.value = dropdownOptions.value[0];
+	}
+	function setPreviousOption() {
+		if (activeOption.value && hasMultipleOptions.value) {
+			const index = dropdownOptions.value.indexOf(activeOption.value);
+			if (index === 0) activeOption.value = dropdownOptions.value.at(-1);
+			else activeOption.value = dropdownOptions.value[index - 1];
+		} else activeOption.value = dropdownOptions.value.at(-1);
+	}
+	function onInputClick() {
+		toggleDropdown();
+	}
+	async function onInputFocus() {
+		var _inputRef$value$value;
+		await nextTick();
+		filter.value = (_inputRef$value$value = inputRef.value?.value) !== null && _inputRef$value$value !== void 0 ? _inputRef$value$value : "";
+		if (options.value) selectMode.value = options.value.includes(filter.value);
+		else selectMode.value = false;
+	}
+	function onInputKeyDown(event) {
+		if (event.ctrlKey || event.shiftKey) return;
+		let flag = false;
+		switch (event.key) {
+			case "Enter":
+				if (dropdownIsOpen.value) {
+					if (activeOption.value) {
+						inputRef.value?.dispatchEvent(new CustomEvent("optionSelect", {
+							bubbles: false,
+							detail: activeOption.value
+						}));
+						selectOption(activeOption.value);
+						flag = true;
+					}
+					close();
+				}
+				break;
+			case "Down":
+			case "ArrowDown":
+				if (dropdownIsOpen.value) setNextOption();
+				else openSelected("first");
+				flag = true;
+				break;
+			case "Up":
+			case "ArrowUp":
+				if (dropdownIsOpen.value) setPreviousOption();
+				else openSelected("last");
+				flag = true;
+				break;
+			case "Esc":
+			case "Escape":
+				if (dropdownIsOpen.value) close();
+				flag = true;
+				break;
+			case "Tab": if (dropdownIsOpen.value) close();
 		}
-	},
-	emits: [
-		"close",
-		"select",
-		"update:modelValue",
-		"update:focusedItem"
-	],
-	data() {
-		return {
-			currentFocusedItemIndex: 0,
-			lastSelectedItem: ""
-		};
-	},
-	watch: {
-		isOpen: {
-			immediate: true,
-			handler(newVal) {
-				if (newVal) return;
-				this.currentFocusedItemIndex = 0;
-				this.lastSelectedItem = "";
-				this.$emit("update:focusedItem", "");
-			}
-		},
-		modelValue: { async handler(newVal) {
-			if (this.enableKeyboardNavigation) return;
-			const index = this.indexOfItemByKey(newVal);
-			if (index >= 0) await this.activateItem(index);
-			else this.setFocusedItemIndex(0);
-		} },
-		focusedItem: { async handler(newVal) {
-			if (newVal.length === 0) return;
-			const index = this.indexOfItemByKey(newVal);
-			if (index >= 0) await this.setFocusOnItem(index);
-			else this.setFocusedItemIndex(0);
-		} }
-	},
-	methods: {
-		isSelected(index) {
-			return this.items[index].key === this.modelValue;
-		},
-		focusElement() {
-			return null;
-		},
-		findItemByKey(key) {
-			return this.items.find((it) => it.key === key);
-		},
-		indexOfItemByKey(key) {
-			const item = this.findItemByKey(key);
-			if (!item) return -1;
-			return this.items.indexOf(item);
-		},
-		onClickItem(event, item) {
-			this.selectItem(item.key);
-			const target = event.target;
-			if (!(target instanceof HTMLElement && target.tagName === "A")) this.clickItemAnchor(item);
-		},
-		clickItemAnchor(item) {
-			if (!item.href) return;
-			const index = this.items.indexOf(item);
-			getSortedHTMLElementsFromVueRef(this.$refs.anchors)[index].click();
-		},
-		selectItem(key) {
-			if (key !== this.lastSelectedItem) {
-				this.$emit("update:modelValue", key);
-				this.$emit("select", key);
-				this.lastSelectedItem = key;
-			}
-			this.$emit("close");
-		},
-		itemClasses(item) {
-			return ["ipopupmenu__list__item", ...item.key === this.modelValue ? ["ipopupmenu__list__item--highlight"] : []];
-		},
-		async setFocusOnItem(index) {
-			this.setFocusedItemIndex(index);
-			await this.$nextTick();
-			if (!this.isOpen) return;
-			const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
-			if (anchors.length === 0) return;
-			const itemAnchor = anchors[index];
-			focus$1(itemAnchor, { preventScroll: true });
-			const key = this.items[index].key;
-			this.$emit("update:focusedItem", key);
-		},
-		async activateItem(index) {
-			if (index !== this.currentFocusedItemIndex) await this.setFocusOnItem(index);
-			const item = this.items[index];
-			this.selectItem(item.key);
-			this.clickItemAnchor(item);
-		},
-		setFocusedItemIndex(index) {
-			this.currentFocusedItemIndex = index;
-		},
-		onKeyUp(event) {
-			if (!this.enableKeyboardNavigation) return;
-			if (preventKeys$1.has(event.key)) event.preventDefault();
-		},
-		async onKeyDown(event) {
-			if (!this.enableKeyboardNavigation) return;
-			if (!preventKeys$1.has(event.key)) return;
-			const firstItemFocused = this.currentFocusedItemIndex === 0;
-			const lastItemFocused = this.currentFocusedItemIndex === this.items.length - 1;
-			const tabOutPrev = event.key === "Tab" && event.shiftKey && firstItemFocused;
-			const tabOutNext = event.key === "Tab" && !event.shiftKey && lastItemFocused;
-			if (tabOutPrev || tabOutNext) {
-				if (tabOutPrev) event.preventDefault();
-				this.$emit("close");
-				return;
-			}
-			const action = actionFromKeyboardEvent(event);
-			if (action === null) return;
-			event.preventDefault();
-			await doMenuAction$1(action, this);
-		}
+		if (!flag) return;
+		event.stopPropagation();
+		event.preventDefault();
 	}
-});
-var _hoisted_1$64 = ["aria-label"];
-var _hoisted_2$45 = {
-	role: "menu",
-	class: "ipopupmenu__list"
-};
-var _hoisted_3$34 = ["onClick"];
-var _hoisted_4$27 = [
-	"data-ref-index",
-	"href",
-	"target"
-];
-var _hoisted_5$21 = {
-	key: 0,
-	class: "sr-only"
-};
-function _sfc_render$33(_ctx, _cache, $props, $setup, $data, $options) {
-	const _component_i_popup = resolveComponent("i-popup");
-	return openBlock(), createBlock(_component_i_popup, {
-		class: "ipopupmenu",
-		"is-open": _ctx.isOpen,
-		"keyboard-trap": false,
-		anchor: _ctx.anchor,
-		"focus-element": _ctx.focusElement,
-		onClose: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("close")),
-		onKeyup: _ctx.onKeyUp,
-		onKeydown: _ctx.onKeyDown
-	}, {
-		default: withCtx(() => [createBaseVNode("nav", {
-			class: "ipopupmenu ipopupmenu--vertical",
-			"aria-label": _ctx.ariaLabel
-		}, [createBaseVNode("ul", _hoisted_2$45, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.items, (item, index) => {
-			return openBlock(), createElementBlock("li", {
-				ref_for: true,
-				ref: "items",
-				key: item.key,
-				role: "presentation",
-				class: normalizeClass(_ctx.itemClasses(item)),
-				onClick: (event) => _ctx.onClickItem(event, item)
-			}, [createBaseVNode("a", {
-				ref_for: true,
-				ref: "anchors",
-				"data-ref-index": index,
-				href: item.href,
-				role: "menuitem",
-				target: item.target,
-				tabindex: "0"
-			}, [_ctx.isSelected(index) ? (openBlock(), createElementBlock("span", _hoisted_5$21, [createBaseVNode("span", null, toDisplayString(_ctx.selectedMenuItemScreenReaderText) + "\xA0", 1)])) : createCommentVNode("v-if", true), createTextVNode(" " + toDisplayString(item.label), 1)], 8, _hoisted_4$27)], 10, _hoisted_3$34);
-		}), 128))])], 8, _hoisted_1$64)]),
-		_: 1
-	}, 8, [
-		"is-open",
-		"anchor",
-		"focus-element",
-		"onKeyup",
-		"onKeydown"
-	]);
+	function onInputKeyUp() {
+		if (!inputRef.value) throw new Error("missing input ref");
+		if (filter.value === inputRef.value.value) return;
+		filter.value = inputRef.value.value;
+		activeOption.value = null;
+		selectMode.value = false;
+		if (!dropdownIsOpen.value) openSelected();
+		else if (!hasOptions.value) close();
+	}
 }
-var IPopupMenu_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(IPopupMenu_vue_vue_type_script_lang_default, [["render", _sfc_render$33]]);
-var ISkipLink_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
-	name: "ISkipLink",
-	mixins: [TranslationMixin],
-	props: { 
-	/**
-	* Target for skiplink.
-	*/
-href: {
-		type: String,
-		required: false,
-		default: "main"
-	} }
-});
-var _hoisted_1$62 = ["href"];
-function _sfc_render$31(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("a", {
-		class: "iskiplink",
-		href: _ctx.href
-	}, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.$t("fkui.skip-link.text", "Gå direkt till innehåll")), 1)])], 8, _hoisted_1$62);
-}
-var ISkipLink_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(ISkipLink_vue_vue_type_script_lang_default, [["render", _sfc_render$31]]);
-var _hoisted_1$61 = { class: "combobox" };
+var _hoisted_1$62 = { class: "combobox" };
 var _hoisted_2$44 = ["id"];
 var _hoisted_3$33 = [
 	"id",
@@ -18311,7 +16479,7 @@ var IComboboxDropdown_default = /* @__PURE__ */ defineComponent({
 			activeElement.value = activeOptionNode !== null && activeOptionNode !== void 0 ? activeOptionNode : void 0;
 		});
 		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1$61, [createVNode(unref(IPopupListbox_default), {
+			return openBlock(), createElementBlock("div", _hoisted_1$62, [createVNode(unref(IPopupListbox_default), {
 				"is-open": __props.isOpen,
 				anchor: __props.inputNode,
 				"num-of-items": __props.options.length,
@@ -18346,3052 +16514,655 @@ var IComboboxDropdown_default = /* @__PURE__ */ defineComponent({
 		};
 	}
 });
-TranslationService.provider.translate("fkui.tooltip.close", "Stäng");
-/**
-* @internal
-*/
-function getNewItemIndexFromMenuAction$1(action, index, n) {
-	if (n <= 0) return 0;
-	let newIndex;
-	switch (action) {
-		case MenuAction.MOVE_NEXT:
-			newIndex = (index + 1) % n;
-			break;
-		case MenuAction.MOVE_PREV:
-			newIndex = (index - 1 + n) % n;
-			break;
-		case MenuAction.MOVE_FIRST:
-			newIndex = 0;
-			break;
-		case MenuAction.MOVE_LAST:
-			newIndex = Math.max(n - 1, 0);
-			break;
-		default: newIndex = index;
-	}
-	return newIndex;
-}
-/**
-* @internal
-*/
-function useMenuAction(options) {
-	const { currentFocusedItemIndex, popupItems, setFocusOnItem, activateItem } = options;
-	return { async doMenuAction(action) {
-		const itemsLength = toValue(popupItems).length;
-		const newFocusedItemIndex = getNewItemIndexFromMenuAction$1(action, toValue(currentFocusedItemIndex), itemsLength);
-		switch (action) {
-			case MenuAction.MOVE_NEXT:
-			case MenuAction.MOVE_PREV:
-			case MenuAction.MOVE_FIRST:
-			case MenuAction.MOVE_LAST:
-				await setFocusOnItem(newFocusedItemIndex);
-				break;
-			case MenuAction.ACTIVATE: await activateItem(newFocusedItemIndex);
-		}
-	} };
-}
-/**
-* @public
-*/
-function isContextMenuTextItem(value) {
-	return typeof value.key === "string";
-}
-/**
-* @public
-*/
-function isContextMenuSeparatorItem(value) {
-	return typeof value.separator === "boolean" && value.separator;
-}
-var _hoisted_1$56 = ["aria-label"];
-var _hoisted_2$40 = {
-	ref: "contextmenu",
-	role: "menu",
-	tabindex: "-1",
-	class: "contextmenu__list"
-};
-var _hoisted_3$29 = ["onClick"];
-var _hoisted_4$23 = ["tabindex"];
-var _hoisted_5$18 = {
-	key: 0,
-	class: "contextmenu__separator"
-};
-var FContextMenu_default = /* @__PURE__ */ defineComponent({
-	__name: "FContextMenu",
-	props: {
-		isOpen: { type: Boolean },
-		anchor: { default: () => void 0 },
-		items: {},
-		ariaLabel: { default: () => void 0 }
-	},
-	emits: ["close", "select"],
+var _hoisted_1$61 = ["aria-label"];
+var IComboboxToggleButton_default = /* @__PURE__ */ defineComponent({
+	__name: "IComboboxToggleButton",
+	props: { isOpen: { type: Boolean } },
+	emits: ["toggle"],
 	setup(__props, { emit: __emit }) {
 		const emit = __emit;
-		const $t = useTranslate();
-		const preventKeys = /* @__PURE__ */ new Set([
-			"Tab",
-			"Up",
-			"Down",
-			"ArrowUp",
-			"ArrowDown",
-			"Home",
-			"End",
-			" ",
-			"Spacebar",
-			"Enter",
-			"Escape"
-		]);
-		const keyUp = /* @__PURE__ */ new Set(["ArrowUp", "Up"]);
-		const contextmenuRef = useTemplateRef("contextmenu");
-		const itemElementsRef = useTemplateRef("items");
-		const selectedItem = /* @__PURE__ */ ref("");
-		const currentFocusedItemIndex = /* @__PURE__ */ ref(-1);
-		const popupItems = computed(() => __props.items.filter(isContextMenuTextItem));
-		const hasIcons = computed(() => __props.items.some((it) => isContextMenuTextItem(it) && it.icon));
-		let focusHandle = null;
-		const ariaLabel = computed(() => {
-			if (__props.ariaLabel) return __props.ariaLabel;
-			/** Skärmläsartext för `<nav>` elementet. Används bara när `ariaLabel`-propen inte är satt. */
-			return $t("fkui.contextmenu.aria-label", "Kontextmeny");
-		});
-		const separatorPositions = computed(() => {
-			const res = [];
-			if (__props.items.length > 1) __props.items.forEach((it, i) => {
-				if (!isContextMenuSeparatorItem(it)) return;
-				const pos = i - 1 - res.length;
-				if (pos >= 0 && pos < __props.items.length - 1) res.push(pos);
-			});
-			return res;
-		});
-		const { doMenuAction } = useMenuAction({
-			currentFocusedItemIndex,
-			popupItems,
-			setFocusOnItem,
-			activateItem
-		});
-		watch(() => __props.isOpen, (isOpen) => {
-			if (isOpen) {
-				currentFocusedItemIndex.value = -1;
-				selectedItem.value = "";
-			} else if (focusHandle) {
-				popFocus(focusHandle, { restoreFocus: true });
-				focusHandle = null;
-			}
-		}, { immediate: true });
-		function onPopupOpen() {
-			if (!contextmenuRef.value) return;
-			focusHandle = pushFocus(contextmenuRef.value);
-		}
-		function hasSeparatorAfterItemAt(index) {
-			return separatorPositions.value.includes(index);
-		}
-		function closePopup(reason) {
-			if (focusHandle) {
-				switch (reason) {
-					case "click-outside":
-						popFocus(focusHandle, { restoreFocus: false });
-						break;
-					default: popFocus(focusHandle, { restoreFocus: true });
-				}
-				focusHandle = null;
-			}
-			emit("close");
-		}
-		function onClickItem(item) {
-			if (!(isContextMenuTextItem(item) && item.key)) return;
-			selectedItem.value = item.key;
-			emit("select", selectedItem.value);
-			closePopup("select");
-		}
-		function tabIndex(index) {
-			return index === currentFocusedItemIndex.value ? 0 : -1;
-		}
-		function onKeyUp(event) {
-			if (preventKeys.has(event.key)) event.preventDefault();
-		}
-		async function onKeyDown(event) {
-			if (!preventKeys.has(event.key)) return;
-			if (event.key === "Escape") {
-				closePopup("escape");
-				return;
-			}
-			if (event.key === "Tab") {
-				event.preventDefault();
-				closePopup("tab");
-				return;
-			}
-			const action = actionFromKeyboardEvent(event);
-			if (action === null) return;
-			if (keyUp.has(event.key) && currentFocusedItemIndex.value === -1) currentFocusedItemIndex.value = popupItems.value.length > 0 ? popupItems.value.length : 1;
-			event.preventDefault();
-			await doMenuAction(action);
-		}
-		async function setFocusOnItem(index) {
-			var _itemElementsRef$valu;
-			if (index < 0 || index >= popupItems.value.length) return;
-			currentFocusedItemIndex.value = index;
-			await nextTick();
-			if (!__props.isOpen) return;
-			const items = (_itemElementsRef$valu = itemElementsRef.value) !== null && _itemElementsRef$valu !== void 0 ? _itemElementsRef$valu : [];
-			if (items.length === 0) return;
-			const popupMenuItem = items[index];
-			focus$1(popupMenuItem, { preventScroll: true });
-		}
-		async function activateItem(index) {
-			if (index < 0 || index >= popupItems.value.length) return;
-			if (index !== currentFocusedItemIndex.value) await setFocusOnItem(index);
-			onClickItem(popupItems.value[currentFocusedItemIndex.value]);
-		}
+		const ariaLabel = useTranslate()("fkui.combobox.toggle", "Öppna förslagen");
 		return (_ctx, _cache) => {
-			return openBlock(), createBlock(unref(IPopup_default), {
-				"is-open": __props.isOpen,
-				"keyboard-trap": false,
-				anchor: __props.anchor,
-				"set-focus": false,
-				inline: "never",
-				onClose: _cache[0] || (_cache[0] = ($event) => closePopup($event)),
-				onOpen: onPopupOpen
-			}, {
-				default: withCtx(() => [createBaseVNode("nav", {
-					class: "contextmenu",
-					"aria-label": ariaLabel.value,
-					onKeyup: onKeyUp,
-					onKeydown: onKeyDown
-				}, [createBaseVNode("ul", _hoisted_2$40, [(openBlock(true), createElementBlock(Fragment, null, renderList(popupItems.value, (item, index) => {
-					return openBlock(), createElementBlock("li", {
-						key: item.key,
-						role: "menuitem",
-						onClick: ($event) => onClickItem(item)
-					}, [
-						createBaseVNode("div", {
-							ref_for: true,
-							ref: "items",
-							tabindex: tabIndex(index),
-							class: "contextmenu__list__item"
-						}, [
-							hasIcons.value ? (openBlock(), createBlock(unref(FIcon_default), {
-								key: 0,
-								class: "contextmenu__lefticon",
-								name: item.icon ? item.icon : "",
-								library: item.iconLibrary ? item.iconLibrary : "f"
-							}, null, 8, ["name", "library"])) : createCommentVNode("v-if", true),
-							_cache[1] || (_cache[1] = createTextVNode()),
-							createBaseVNode("a", {
-								ref_for: true,
-								ref: "anchors"
-							}, toDisplayString(item.label), 513)
-						], 8, _hoisted_4$23),
-						_cache[2] || (_cache[2] = createTextVNode()),
-						hasSeparatorAfterItemAt(index) ? (openBlock(), createElementBlock("hr", _hoisted_5$18)) : createCommentVNode("v-if", true)
-					], 8, _hoisted_3$29);
-				}), 128))], 512)], 40, _hoisted_1$56)]),
-				_: 1
-			}, 8, ["is-open", "anchor"]);
-		};
-	}
-});
-TranslationService.provider.translate("fkui.crud-dataset.modal.header.add", "Lägg till rad"), TranslationService.provider.translate("fkui.crud-dataset.modal.header.modify", "Ändra rad"), TranslationService.provider.translate("fkui.crud-dataset.modal.header.delete", "Är du säker på att du vill ta bort raden?");
-/**
-* Empty dummy methods to be used when no FSortFilterDataset is used
-*
-* @public
-*/
-function FSortFilterDatasetInjected() {
-	return {
-		sort: inject("sort", () => void 0),
-		registerCallbackOnSort: inject("registerCallbackOnSort", () => void 0),
-		registerCallbackOnMount: inject("registerCallbackOnMount", () => void 0)
-	};
-}
-var _hoisted_1$52 = {
-	key: 0,
-	class: "table-ng__cell table-ng__cell--expand"
-};
-var _hoisted_2$38 = ["aria-label", "aria-expanded"];
-var _hoisted_3$27 = {
-	key: 1,
-	ref: "expandable",
-	tabindex: "-1",
-	class: "table-ng__cell table-ng__cell--expand"
-};
-var ITableExpandButton_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableExpandButton",
-	props: {
-		isExpandable: { type: Boolean },
-		isExpanded: { type: Boolean },
-		rowKey: {}
-	},
-	emits: ["toggle"],
-	setup(__props, { expose: __expose, emit: __emit }) {
-		const emit = __emit;
-		const expandableRef = useTemplateRef("expandable");
-		const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
-		const expandLabel = computed(() => __props.isExpanded ? "Stäng rad" : "Expandera rad");
-		function onClick() {
-			assertRef(expandableRef);
-			expandableRef.value.tabIndex = 0;
-			emit("toggle", __props.rowKey);
-		}
-		__expose({ tabstopEl: expandableRef });
-		return (_ctx, _cache) => {
-			return __props.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_1$52, [createBaseVNode("button", {
-				ref: "expandable",
-				tabindex: "-1",
-				"aria-label": expandLabel.value,
-				"aria-expanded": __props.isExpanded,
+			return openBlock(), createElementBlock("button", {
+				class: "combobox__button",
 				type: "button",
-				onClick
+				"aria-label": unref(ariaLabel),
+				tabindex: "-1",
+				onClick: _cache[0] || (_cache[0] = ($event) => emit("toggle"))
 			}, [createVNode(unref(FIcon_default), {
-				class: "button__icon",
-				name: toggleIcon.value
-			}, null, 8, ["name"])], 8, _hoisted_2$38)])) : (openBlock(), createElementBlock("td", _hoisted_3$27, null, 512));
-		};
-	}
-});
-var _hoisted_1$51 = ["colspan"];
-var ITableExpandable_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableExpandable",
-	props: { colspan: {} },
-	setup(__props) {
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("td", {
-				class: "table-ng__cell--custom",
-				colspan: __props.colspan,
-				tabindex: "-1"
-			}, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_1$51);
-		};
-	}
-});
-/**
-* @public
-*/
-var textTypes = [
-	"text:bankAccountNumber",
-	"text:bankgiro",
-	"text:clearingNumber",
-	"text:date",
-	"text:email",
-	"text:organisationsnummer",
-	"text:personnummer",
-	"text:phoneNumber",
-	"text:plusgiro",
-	"text:postalCode",
-	"text"
-];
-/**
-* @public
-*/
-var numberTypes = [
-	"text:currency",
-	"text:number",
-	"text:percent"
-];
-/**
-* @internal
-*/
-function isInputTypeNumber(value) {
-	return numberTypes.includes(value);
-}
-/**
-* @internal
-*/
-function isInputTypeText(value) {
-	return textTypes.includes(value);
-}
-/**
-* @internal
-*/
-var inputFieldConfig = {
-	"text:personnummer": {
-		formatter(value) {
-			return formatPersonnummer(parsePersonnummer(value));
-		},
-		parser(value) {
-			return parsePersonnummer(value);
-		},
-		validationConfig: {
-			maxLength: { length: 20 },
-			personnummerFormat: {},
-			personnummerLuhn: {}
-		},
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "23"
-			};
-		}
-	},
-	"text:bankAccountNumber": {
-		formatter(value) {
-			return value;
-		},
-		parser(value) {
-			return parseBankAccountNumber(value);
-		},
-		validationConfig: { bankAccountNumber: {} },
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "40"
-			};
-		}
-	},
-	"text:bankgiro": {
-		formatter(value) {
-			return parseBankgiro(value);
-		},
-		parser(value) {
-			return parseBankgiro(value);
-		},
-		validationConfig: {
-			maxLength: { length: 9 },
-			bankgiro: {}
-		},
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "40"
-			};
-		}
-	},
-	"text:clearingNumber": {
-		formatter(value) {
-			return parseClearingNumber(value.trim());
-		},
-		parser(value) {
-			return parseClearingNumber(value.trim());
-		},
-		validationConfig: { clearingNumber: {} },
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "16"
-			};
-		}
-	},
-	"text:currency": {
-		formatter(value) {
-			return formatNumber(value);
-		},
-		parser(value) {
-			return parseNumber(value);
-		},
-		validationConfig: {
-			currency: {},
-			integer: {}
-		},
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "20"
-			};
-		}
-	},
-	"text:date": {
-		formatter(value) {
-			return parseDate(value);
-		},
-		parser(value) {
-			return parseDate(value);
-		},
-		validationConfig: { date: {} },
-		attributes: () => {
-			return { type: "text" };
-		}
-	},
-	"text:email": {
-		formatter(value) {
-			return value;
-		},
-		parser(value) {
-			return value;
-		},
-		validationConfig: {
-			email: {},
-			maxLength: { length: 80 }
-		},
-		attributes: () => {
-			return {
-				type: "email",
-				maxlength: "80"
-			};
-		}
-	},
-	"text:number": {
-		formatter(value) {
-			var _this$decimals;
-			return formatNumber(value, (_this$decimals = this.decimals) !== null && _this$decimals !== void 0 ? _this$decimals : 2);
-		},
-		parser(value) {
-			var _this$decimals2;
-			return parseNumber(value, (_this$decimals2 = this.decimals) !== null && _this$decimals2 !== void 0 ? _this$decimals2 : 2);
-		},
-		validationConfig: { number: {} },
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "20"
-			};
-		}
-	},
-	"text:organisationsnummer": {
-		formatter(value) {
-			return parseOrganisationsnummer(value);
-		},
-		parser(value) {
-			return parseOrganisationsnummer(value);
-		},
-		validationConfig: {
-			maxLength: { length: 11 },
-			organisationsnummer: {}
-		},
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "20"
-			};
-		}
-	},
-	"text:percent": {
-		formatter(value) {
-			var _this$decimals3;
-			return formatNumber(value, (_this$decimals3 = this.decimals) !== null && _this$decimals3 !== void 0 ? _this$decimals3 : 2);
-		},
-		parser(value) {
-			var _this$decimals4;
-			return parseNumber(value, (_this$decimals4 = this.decimals) !== null && _this$decimals4 !== void 0 ? _this$decimals4 : 2);
-		},
-		validationConfig: {
-			percent: {},
-			minValue: { minValue: 0 },
-			maxValue: { maxValue: 999 }
-		},
-		attributes: (options) => {
-			return {
-				inputmode: options?.decimals ? "decimal" : "numeric",
-				maxlength: "10"
-			};
-		}
-	},
-	"text:phoneNumber": {
-		formatter(value) {
-			return value;
-		},
-		parser(value) {
-			return value;
-		},
-		validationConfig: {
-			maxLength: { length: 80 },
-			phoneNumber: {}
-		},
-		attributes: () => {
-			return {
-				maxlength: "80",
-				type: "tel"
-			};
-		}
-	},
-	"text:plusgiro": {
-		formatter(value) {
-			return parsePlusgiro(value);
-		},
-		parser(value) {
-			return parsePlusgiro(value);
-		},
-		validationConfig: {
-			maxLength: { length: 11 },
-			plusgiro: {}
-		},
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "16"
-			};
-		}
-	},
-	"text:postalCode": {
-		formatter(value) {
-			return formatPostalCode(value.trim());
-		},
-		parser(value) {
-			return formatPostalCode(value.trim());
-		},
-		validationConfig: {
-			maxLength: { length: 13 },
-			postalCode: {}
-		},
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "15"
-			};
-		}
-	},
-	text: {
-		formatter(value) {
-			return value;
-		},
-		parser(value) {
-			return value;
-		},
-		validationConfig: {},
-		attributes: () => {
-			return {};
-		}
-	}
-};
-var _hoisted_1$50 = ["aria-sort", "onKeydown"];
-var ITableHeader_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableHeader",
-	props: {
-		column: {},
-		sortEnabled: { type: Boolean },
-		sortOrder: {}
-	},
-	emits: ["toggleSortOrder"],
-	setup(__props, { emit: __emit }) {
-		const emit = __emit;
-		const thElement = useTemplateRef("th");
-		const columnClasses = computed(() => {
-			let size;
-			if (__props.column.width !== void 0) size = "table-ng__column--fixed";
-			else size = __props.column.size.value === "shrink" ? "table-ng__column--shrink" : "table-ng__column--grow";
-			return ["table-ng__column", size];
-		});
-		const columnStyles = computed(() => {
-			const styles = {};
-			if (__props.column.width !== void 0) {
-				styles.width = __props.column.width;
-				styles.minWidth = __props.column.width;
-				styles.maxWidth = __props.column.width;
-			}
-			return styles;
-		});
-		const sortIconClass = computed(() => {
-			return {
-				"table-ng__column__sort-icon": true,
-				"table-ng__column__sort-icon--discrete": __props.sortOrder === "unsorted"
-			};
-		});
-		const sortIcon = computed(() => {
-			switch (__props.sortOrder) {
-				case "unsorted": return "sort";
-				case "ascending": return "caret-up";
-				case "descending": return "caret-down";
-				default: return "";
-			}
-		});
-		const sortValue = computed(() => {
-			switch (__props.sortOrder) {
-				case "ascending":
-				case "descending": return __props.sortOrder;
-				default: return;
-			}
-		});
-		function isAlignableColumn(column) {
-			if (column.type === void 0) return false;
-			return isInputTypeText(column.type) || isInputTypeNumber(column.type);
-		}
-		const alignment = computed(() => {
-			return isAlignableColumn(__props.column) ? __props.column.align : "left";
-		});
-		function onClickCell() {
-			assertRef(thElement);
-			thElement.value.tabIndex = 0;
-			if (!__props.column.sortable || !__props.sortEnabled) return;
-			emit("toggleSortOrder", String(__props.column.sortable));
-		}
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("th", {
-				ref: "th",
-				"aria-sort": sortValue.value,
-				class: normalizeClass(columnClasses.value),
-				style: normalizeStyle(columnStyles.value),
-				tabindex: "-1",
-				onKeydown: withKeys(withModifiers(onClickCell, ["prevent"]), ["enter", "space"]),
-				onClick: withModifiers(onClickCell, ["stop"])
-			}, [
-				createVNode(unref(IFlex_default), {
-					gap: "1x",
-					float: alignment.value
-				}, {
-					default: withCtx(() => [
-						createVNode(unref(IFlexItem_default), {
-							shrink: "",
-							class: "table-ng__column__title"
-						}, {
-							default: withCtx(() => [createTextVNode(toDisplayString(__props.column.header), 1)]),
-							_: 1
-						}),
-						_cache[0] || (_cache[0] = createTextVNode()),
-						__props.sortEnabled ? (openBlock(), createBlock(unref(IFlexItem_default), {
-							key: 0,
-							shrink: "",
-							align: "center"
-						}, {
-							default: withCtx(() => [createVNode(unref(FIcon_default), {
-								name: sortIcon.value,
-								class: normalizeClass(sortIconClass.value)
-							}, null, 8, ["name", "class"])]),
-							_: 1
-						})) : createCommentVNode("v-if", true)
-					]),
-					_: 1
-				}, 8, ["float"]),
-				_cache[1] || (_cache[1] = createTextVNode()),
-				__props.column.description.value ? (openBlock(), createBlock(unref(IFlex_default), {
-					key: 0,
-					gap: "1x",
-					float: alignment.value,
-					class: "table-ng__column__description"
-				}, {
-					default: withCtx(() => [createVNode(unref(IFlexItem_default), { shrink: "" }, {
-						default: withCtx(() => [createTextVNode(toDisplayString(__props.column.description), 1)]),
-						_: 1
-					})]),
-					_: 1
-				}, 8, ["float"])) : createCommentVNode("v-if", true)
-			], 46, _hoisted_1$50);
-		};
-	}
-});
-var _hoisted_1$49 = {
-	scope: "col",
-	class: "table-ng__column table-ng__column--selectable table-ng__column--shrink"
-};
-var _hoisted_2$37 = [
-	"checked",
-	"indeterminate",
-	"aria-label"
-];
-var ITableHeaderSelectable_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableHeaderSelectable",
-	props: {
-		selectable: {},
-		state: { type: [Boolean, String] }
-	},
-	emits: ["toggle"],
-	setup(__props, { expose: __expose, emit: __emit }) {
-		const emit = __emit;
-		const $t = useTranslate();
-		const indeterminate = computed(() => __props.state === "indeterminate");
-		const checked = computed(() => __props.state === "indeterminate" ? false : __props.state);
-		const expose = {};
-		const ariaLabel = computed(() => {
-			if (!checked.value || indeterminate.value)
- /** Screenreader text for "toggle all" checkbox when not all rows are selected. */
-			return $t("fkui.ftable.select-all.aria-label", "Välj alla rader");
-			/** Screenreader text for "toggle all" checkbox when all rows are selected. */
-			return $t("fkui.ftable.unselect-all.aria-label", "Avmarkera alla rader");
-		});
-		if (__props.selectable === "multi") expose.tabstopEl = useTemplateRef("input");
-		__expose(expose);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("th", _hoisted_1$49, [__props.selectable === "multi" ? (openBlock(), createElementBlock("input", {
-				key: 0,
-				ref: "input",
-				checked: checked.value,
-				indeterminate: indeterminate.value,
-				type: "checkbox",
-				"aria-label": ariaLabel.value,
-				tabindex: "-1",
-				onChange: _cache[0] || (_cache[0] = ($event) => emit("toggle"))
-			}, null, 40, _hoisted_2$37)) : createCommentVNode("v-if", true)]);
+				name: "arrow-down",
+				rotate: __props.isOpen ? "180" : void 0,
+				class: "text-field__icon"
+			}, null, 8, ["rotate"])], 8, _hoisted_1$61);
 		};
 	}
 });
 /**
 * @internal
 */
-function isVisible$1(visible, row) {
-	return visible(row);
-}
-var _hoisted_1$48 = { class: "table-ng__cell table-ng__cell--checkbox" };
-var _hoisted_2$36 = ["checked", "aria-label"];
-var ITableCheckbox_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableCheckbox",
-	props: {
-		column: {},
-		row: {}
+var tooltipAttachTo = Symbol("tooltipAttachTo");
+TranslationService.provider.translate("fkui.tooltip.close", "Stäng");
+TranslationService.provider.translate("fkui.crud-dataset.modal.header.add", "Lägg till rad"), TranslationService.provider.translate("fkui.crud-dataset.modal.header.modify", "Ändra rad"), TranslationService.provider.translate("fkui.crud-dataset.modal.header.delete", "Är du säker på att du vill ta bort raden?");
+var FLabel_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
+	name: "FLabel",
+	components: { FIcon: FIcon_default },
+	props: { 
+	/**
+	* The id for the form element the label is bound to.
+	*/
+for: {
+		type: String,
+		required: false,
+		default: void 0
+	} },
+	setup() {
+		provide(tooltipAttachTo, useTemplateRef("tooltipAttachTo"));
 	},
-	setup(__props, { expose: __expose }) {
-		const targetElement = useTemplateRef("target");
-		const ariaLabel = computed(() => {
-			const value = __props.column.label(__props.row);
-			return value.length > 0 ? value : void 0;
-		});
-		const visible = computed(() => isVisible$1(__props.column.visible, __props.row));
-		function onChange(e) {
-			const checked = e.target.checked;
-			__props.column.update(__props.row, checked, !checked);
-		}
-		__expose({ tabstopEl: targetElement });
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("td", _hoisted_1$48, [visible.value ? (openBlock(), createElementBlock("input", {
-				key: 0,
-				ref: "target",
-				checked: Boolean(__props.column.checked(__props.row)),
-				type: "checkbox",
-				"aria-label": ariaLabel.value,
-				tabindex: "-1",
-				onChange
-			}, null, 40, _hoisted_2$36)) : createCommentVNode("v-if", true)]);
-		};
-	}
-});
-var _hoisted_1$47 = { class: "table-ng__cell table-ng__cell--radio" };
-var _hoisted_2$35 = ["checked", "aria-label"];
-var ITableRadio_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableRadio",
-	props: {
-		column: {},
-		row: {}
-	},
-	setup(__props, { expose: __expose }) {
-		const inputElement = useTemplateRef("input");
-		const ariaLabel = computed(() => {
-			const value = __props.column.label(__props.row);
-			return value.length > 0 ? value : void 0;
-		});
-		const visible = computed(() => isVisible$1(__props.column.visible, __props.row));
-		function onChange(_e) {
-			assertRef(inputElement);
-			__props.column.update(__props.row, inputElement.value.checked, !inputElement.value.checked);
-		}
-		__expose({ tabstopEl: inputElement });
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("td", _hoisted_1$47, [visible.value ? (openBlock(), createElementBlock("input", {
-				key: 0,
-				ref: "input",
-				type: "radio",
-				checked: Boolean(__props.column.checked(__props.row)),
-				"aria-label": ariaLabel.value,
-				tabindex: "-1",
-				onChange
-			}, null, 40, _hoisted_2$35)) : createCommentVNode("v-if", true)]);
-		};
-	}
-});
-var _hoisted_1$46 = {
-	key: 0,
-	tabindex: "-1",
-	class: "table-ng__cell"
-};
-var ITableSelectable_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableSelectable",
-	props: {
-		selectable: {},
-		row: {},
-		state: { type: Boolean },
-		level: { default: 1 }
-	},
-	emits: ["toggle"],
-	setup(__props, { expose: __expose, emit: __emit }) {
-		const emit = __emit;
-		const expose = {};
-		if (__props.level === 1) {
-			const childRef = useTemplateRef("child");
-			expose.tabstopEl = computed(() => {
-				var _childRef$value$tabst;
-				return (_childRef$value$tabst = childRef.value?.tabstopEl) !== null && _childRef$value$tabst !== void 0 ? _childRef$value$tabst : null;
-			});
-		}
-		__expose(expose);
-		const $t = useTranslate();
-		const multiSelectColumn = {
-			type: "checkbox",
-			id: Symbol("multi-select"),
-			header: /* @__PURE__ */ ref("selectable"),
-			description: /* @__PURE__ */ ref(null),
-			sortable: null,
-			size: /* @__PURE__ */ ref(null),
-			component: ITableCheckbox_default,
-			label() {
-				/** Screenreader text for checkbox in multi select table row. */
-				return $t("fkui.table.selectable.checkbox", "Välj rad");
-			},
-			checked() {
-				return __props.state;
-			},
-			update() {
-				emit("toggle", __props.row);
-			},
-			enabled: true,
-			visible: () => true
-		};
-		const singleSelectColumn = {
-			type: "radio",
-			id: Symbol("single-select"),
-			header: /* @__PURE__ */ ref("Välj en rad"),
-			description: /* @__PURE__ */ ref(null),
-			sortable: null,
-			size: /* @__PURE__ */ ref(null),
-			component: ITableRadio_default,
-			label() {
-				/** Screenreader text for radio button in single select table row. */
-				return $t("fkui.table.selectable.radio", "Välj rad");
-			},
-			checked() {
-				return __props.state;
-			},
-			update() {
-				emit("toggle", __props.row);
-			},
-			enabled: true,
-			visible: () => true
-		};
-		return (_ctx, _cache) => {
-			return __props.level > 1 ? (openBlock(), createElementBlock("td", _hoisted_1$46)) : __props.selectable === "multi" ? (openBlock(), createBlock(ITableCheckbox_default, {
-				key: 1,
-				ref: "child",
-				row: __props.row,
-				column: multiSelectColumn,
-				class: "table-ng__cell--selectable"
-			}, null, 8, ["row"])) : __props.selectable === "single" ? (openBlock(), createBlock(ITableRadio_default, {
-				key: 2,
-				ref: "child",
-				row: __props.row,
-				column: singleSelectColumn,
-				class: "table-ng__cell--selectable"
-			}, null, 8, ["row"])) : createCommentVNode("v-if", true);
-		};
-	}
-});
-/**
-* @internal
-*/
-function isFTableCellApi(value) {
-	return value !== null && typeof value === "object" && Boolean(value.tabstopEl);
-}
-/**
-* Key used on HTMLElement to store table cell api.
-*
-* @internal
-*/
-var tableCellApiSymbol = Symbol("table:cell-api");
-var navKeys = /* @__PURE__ */ new Set([
-	"ArrowLeft",
-	"ArrowRight",
-	"ArrowUp",
-	"ArrowDown",
-	"Home",
-	"End"
-]);
-var prevCellIndex = void 0;
-/** @internal */
-function getCellTarget(tableElement, rowIndex, cellIndex) {
-	return tableElement.rows[rowIndex].cells[cellIndex];
-}
-function getTr(td) {
-	return td.parentElement;
-}
-function getTable(tr) {
-	return tr.closest("table");
-}
-function getLastRowIndex(tableElement) {
-	return tableElement.rows.length - 1;
-}
-function getLastCellIndex(tableElement) {
-	return tableElement.rows[0].cells.length - 1;
-}
-/** @internal */
-function getVerticalNavIndex(table, from, to) {
-	const target = { ...to };
-	const currentMax = table.rows[from.row].cells.length - 1;
-	const targetMax = table.rows[to.row].cells.length - 1;
-	if (prevCellIndex && currentMax < targetMax) {
-		target.cell = prevCellIndex;
-		prevCellIndex = void 0;
-	} else target.cell = Math.min(targetMax, from.cell);
-	if (targetMax < from.cell) prevCellIndex = from.cell;
-	return target;
-}
-function isDefined(value) {
-	return value.row !== void 0 && value.cell !== void 0;
-}
-function navigate(e, table, from, last) {
-	if (!isDefined(from) || !isDefined(last)) return;
-	if (!navKeys.has(e.code)) return;
-	e.preventDefault();
-	if (e.code === "ArrowLeft") {
-		if (from.cell === 0) return;
-		prevCellIndex = void 0;
+	data() {
 		return {
-			row: from.row,
-			cell: from.cell - 1
+			descriptionClass: ["label__description"],
+			formatDescriptionClass: ["label__description", "label__description--format"]
 		};
-	}
-	if (e.code === "ArrowRight") {
-		if (from.cell === last.cell) return;
-		if (table.rows[from.row].cells.length - 1 <= from.cell) return;
-		prevCellIndex = void 0;
-		return {
-			row: from.row,
-			cell: from.cell + 1
-		};
-	}
-	if (e.code === "ArrowUp") {
-		if (from.row === 0) return;
-		return getVerticalNavIndex(table, from, {
-			row: from.row - 1,
-			cell: from.cell
-		});
-	}
-	if (e.code === "ArrowDown") {
-		if (from.row === last.row) return;
-		return getVerticalNavIndex(table, from, {
-			row: from.row + 1,
-			cell: from.cell
-		});
-	}
-	if (e.code === "Home") {
-		if (e.ctrlKey) return {
-			row: 1,
-			cell: 0
-		};
-		return {
-			row: from.row,
-			cell: 0
-		};
-	}
-	if (e.code !== "End") return;
-	if (e.ctrlKey) return {
-		row: last.row,
-		cell: table.rows[last.row].cells.length - 1
-	};
-	return {
-		row: from.row,
-		cell: table.rows[from.row].cells.length - 1
-	};
-}
-function getCell(element) {
-	const closest = element.closest("td, th");
-	if (!closest) throw new Error("expected th or td parent");
-	return closest;
-}
-/** @internal */
-async function setDefaultCellTarget(table) {
-	await nextTick();
-	if (!table.tHead) return null;
-	const target = getCellTarget(table, 1, 0);
-	activateCell(target, { focus: false });
-	return target;
-}
-function getHorizontalScrollParents(element) {
-	const scrollParents = [];
-	let parent = element.parentElement;
-	while (parent) {
-		const style = window.getComputedStyle(parent);
-		if ((style.overflowX === "auto" || style.overflowX === "scroll") && parent.scrollWidth > parent.clientWidth) scrollParents.push(parent);
-		parent = parent.parentElement;
-	}
-	return scrollParents;
-}
-function scrollCellIntoView(cell) {
-	cell.scrollIntoView({
-		block: "nearest",
-		inline: "nearest"
-	});
-}
-function isHorizontallyVisibleWithinContainer(element, container) {
-	const elementRect = element.getBoundingClientRect();
-	const containerRect = container.getBoundingClientRect();
-	return elementRect.left >= containerRect.left && elementRect.right <= containerRect.right;
-}
-function isHorizontallyVisibleWithinViewport(element) {
-	const rect = element.getBoundingClientRect();
-	return rect.left >= 0 && rect.right <= window.innerWidth;
-}
-function ensureCellVisible(cell) {
-	if (getHorizontalScrollParents(cell).every((scrollParent) => isHorizontallyVisibleWithinContainer(cell, scrollParent)) && isHorizontallyVisibleWithinViewport(cell)) return;
-	scrollCellIntoView(cell);
-}
-/** @internal */
-function maybeNavigateToCell(e) {
-	const cell = getCell(e.target);
-	const tr = getTr(cell);
-	const table = getTable(tr);
-	const navigateTo = navigate(e, table, {
-		row: tr.rowIndex,
-		cell: cell.cellIndex
-	}, {
-		row: getLastRowIndex(table),
-		cell: getLastCellIndex(table)
-	});
-	if (!navigateTo) return;
-	const newCellTarget = getCellTarget(table, navigateTo.row, navigateTo.cell);
-	activateCell(newCellTarget, { focus: true });
-	ensureCellVisible(newCellTarget);
-}
-/** @internal */
-function activateCell(element, options) {
-	var _toValue;
-	const api = element[tableCellApiSymbol];
-	const targetEl = (_toValue = toValue(api?.tabstopEl)) !== null && _toValue !== void 0 ? _toValue : element;
-	targetEl.tabIndex = 0;
-	if (options?.focus) targetEl.focus();
-	return targetEl;
-}
-/** @internal */
-function stopEdit(element, reason) {
-	const td = getCell(element);
-	const tr = getTr(td);
-	const table = getTable(tr);
-	const rowIndex = tr.rowIndex;
-	const cellIndex = td.cellIndex;
-	const lastRowIndex = getLastRowIndex(table);
-	const lastCellIndex = getLastCellIndex(table);
-	let newCellTarget = td;
-	switch (reason) {
-		case "enter": {
-			const nextRowIndex = rowIndex + 1;
-			const hasFooter = Boolean(table.tFoot);
-			if (!(rowIndex === lastRowIndex) && !(hasFooter && nextRowIndex === lastRowIndex)) {
-				newCellTarget = getCellTarget(table, nextRowIndex, cellIndex);
-				activateCell(newCellTarget, { focus: true });
-			} else activateCell(newCellTarget, { focus: true });
-			return newCellTarget;
-		}
-		case "escape":
-			activateCell(newCellTarget, { focus: true });
-			return newCellTarget;
-		case "tab":
-			if (cellIndex === lastCellIndex && rowIndex === lastRowIndex) activateCell(newCellTarget, { focus: true });
-			else if (cellIndex === lastCellIndex) {
-				newCellTarget = getCellTarget(table, rowIndex + 1, 0);
-				activateCell(newCellTarget, { focus: true });
-			} else {
-				newCellTarget = getCellTarget(table, rowIndex, cellIndex + 1);
-				activateCell(newCellTarget, { focus: true });
-			}
-			return newCellTarget;
-		case "shift-tab":
-			if (cellIndex === 0 && rowIndex === 1) activateCell(newCellTarget, { focus: true });
-			else if (cellIndex === 0) {
-				newCellTarget = getCellTarget(table, rowIndex - 1, 0);
-				activateCell(newCellTarget, { focus: true });
-			} else {
-				newCellTarget = getCellTarget(table, rowIndex, cellIndex - 1);
-				activateCell(newCellTarget, { focus: true });
-			}
-			return newCellTarget;
-		case "blur": return newCellTarget;
-	}
-}
-/**
-* Get the nested rows of a row (if any).
-*
-* The nested rows may be of another type than the parent row (e.g. custom
-* expandable content) but are treated as rows when walking the table.
-*
-* @internal
-* @param row - The parent row.
-* @param key - Key of the property holding the nested rows.
-* @returns The nested rows or `undefined` if the property is not an array.
-*/
-function getNestedRows(row, key) {
-	const value = row[key];
-	return Array.isArray(value) ? value : void 0;
-}
-/**
-* Visits each item in an array and executes given callback.
-*
-* @internal
-* @param array - Array of items.
-* @param childKey - Key to check for nested items.
-* @param visit - Callback to execute on each item.
-* @param level - Nested level of current item (1 for root level).
-*/
-function walk(array, childKey, visit, level = 1) {
-	for (const [i, item] of array.entries()) {
-		if (!visit(item, level, array.length, i + 1) || !childKey) continue;
-		const children = getNestedRows(item, childKey);
-		if (children) walk(children, childKey, visit, level + 1);
-	}
-}
-/**
-* Return number of rows from array used to generate the rows in table body.
-*
-* @internal
-* @param rows - Array of rows to count.
-* @param childKey - Key to check for nested rows.
-* @returns Number of rows.
-*/
-function getBodyRowCount(rows, childKey) {
-	let count = 0;
-	walk(rows, childKey, () => {
-		count++;
-		return true;
-	});
-	return count;
-}
-function countDescendants(rows, expandableAttribute) {
-	let count = 0;
-	for (const row of rows) {
-		const children = getNestedRows(row, expandableAttribute);
-		count += 1;
-		if (children) count += countDescendants(children, expandableAttribute);
-	}
-	return count;
-}
-/**
-* @internal
-*/
-function getMetaRows(keyedRows, expandedKeys, expandableAttribute) {
-	if (expandableAttribute === void 0) return keyedRows.map((row, index) => ({
-		key: getItemIdentifier(row),
-		row,
-		rowindex: index + 1
-	}));
-	const array = [];
-	let nextRowindex = 1;
-	walk(keyedRows, expandableAttribute, (row, level, setsize, posinset) => {
-		const key = getItemIdentifier(row);
-		const children = getNestedRows(row, expandableAttribute);
-		const isExpandable = children !== void 0 && children.length > 0;
-		const isExpanded = isExpandable && expandedKeys.has(key);
-		const metarow = {
-			key,
-			row,
-			isExpandable,
-			isExpanded,
-			level,
-			setsize,
-			posinset,
-			rowindex: nextRowindex++
-		};
-		array.push(metarow);
-		if (!isExpanded && isExpandable) nextRowindex += countDescendants(children, expandableAttribute);
-		return isExpanded;
-	});
-	return array;
-}
-var selectableRowsKey = Symbol("fTableSelectableRows");
-var selectableRowsProvidedKey = Symbol("fTableSelectableRowsProvided");
-/**
-* Injects `SelectableRowSource`.
-*
-* @internal
-* @since v6.44.0
-*/
-function useSelectableRowSource() {
-	return {
-		rows: inject(selectableRowsKey, /* @__PURE__ */ ref([])),
-		isProvided: inject(selectableRowsProvidedKey, /* @__PURE__ */ ref(false))
-	};
-}
-/**
-* @internal
-*/
-var stopEditKey = Symbol();
-/**
-* @internal
-*/
-function useStartStopEdit() {
-	return { stopEdit: inject(stopEditKey, () => Promise.resolve()) };
-}
-var _hoisted_1$45 = ["href"];
-var _hoisted_2$34 = {
-	key: 1,
-	ref: "target",
-	tabindex: "-1",
-	class: "table-ng__cell"
-};
-var ITableAnchor_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableAnchor",
-	props: {
-		column: {},
-		row: {}
 	},
-	setup(__props, { expose: __expose }) {
-		const targetElement = useTemplateRef("target");
-		const visible = computed(() => isVisible$1(__props.column.visible, __props.row));
-		__expose({ tabstopEl: targetElement });
-		return (_ctx, _cache) => {
-			return __props.column.text(__props.row) ? (openBlock(), createElementBlock("td", {
-				key: 0,
-				class: "table-ng__cell table-ng__cell--anchor",
-				onKeydown: _cache[0] || (_cache[0] = withKeys(withModifiers(() => {}, ["prevent"]), ["space"]))
-			}, [visible.value ? (openBlock(), createElementBlock("a", {
-				key: 0,
-				ref: "target",
-				class: "anchor anchor--block",
-				target: "_blank",
-				href: __props.column.href(__props.row),
-				tabindex: "-1"
-			}, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_1$45)) : createCommentVNode("v-if", true)], 32)) : (openBlock(), createElementBlock("td", _hoisted_2$34, null, 512));
-		};
+	computed: {
+		forProperty() {
+			return this.for;
+		},
+		hasDefaultSlot() {
+			return hasSlot(this, "default");
+		},
+		hasErrorMessageSlot() {
+			return hasSlot(this, "error-message");
+		},
+		hasDescriptionSlot() {
+			return hasSlot(this, "description");
+		}
 	}
 });
-var _hoisted_1$44 = { class: "table-ng__cell table-ng__cell--button" };
-var _hoisted_2$33 = { class: "sr-only" };
-var ITableButton_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableButton",
-	props: {
-		column: {},
-		row: {}
-	},
-	setup(__props, { expose: __expose }) {
-		const buttonElement = useTemplateRef("button");
-		const visible = computed(() => isVisible$1(__props.column.visible, __props.row));
-		function onClickButton() {
-			assertRef(buttonElement);
-			buttonElement.value.tabIndex = 0;
-			setTimeout(() => {
-				if (__props.column.onClick) __props.column.onClick(__props.row);
-			}, 0);
-		}
-		__expose({ tabstopEl: buttonElement });
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("td", _hoisted_1$44, [visible.value ? (openBlock(), createElementBlock("button", {
-				key: 0,
-				ref: "button",
-				class: "icon-button",
-				type: "button",
-				tabindex: "-1",
-				onClick: onClickButton
-			}, [
-				__props.column.icon ? (openBlock(), createBlock(unref(FIcon_default), {
-					key: 0,
-					library: __props.column.iconLibrary,
-					name: __props.column.icon
-				}, null, 8, ["library", "name"])) : createCommentVNode("v-if", true),
-				_cache[0] || (_cache[0] = createTextVNode()),
-				createBaseVNode("span", _hoisted_2$33, toDisplayString(__props.column.screenreaderText(__props.row)), 1)
-			], 512)) : createCommentVNode("v-if", true)]);
-		};
-	}
-});
-var _hoisted_1$43 = { class: "sr-only" };
-var ITableMenu_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableMenu",
-	props: {
-		column: {},
-		row: {}
-	},
-	setup(__props, { expose: __expose }) {
-		const buttonRef = useTemplateRef("button");
-		const expose = { tabstopEl: buttonRef };
-		const isOpen = /* @__PURE__ */ ref(false);
-		function resolveLabel(label, row) {
-			return typeof label === "function" ? label(row) : label;
-		}
-		const actions = computed(() => {
-			return (typeof __props.column.actions === "function" ? __props.column.actions(__props.row) : __props.column.actions).map((it, index) => {
-				return {
-					...it,
-					label: resolveLabel(it.label, __props.row),
-					key: `item-${String(index + 1)}`
-				};
-			});
-		});
-		const menuitems = computed(() => {
-			return actions.value.map((it) => {
-				var _it$icon;
-				return {
-					label: it.label,
-					icon: (_it$icon = it.icon) !== null && _it$icon !== void 0 ? _it$icon : void 0,
-					key: it.key
-				};
-			});
-		});
-		const visible = computed(() => isVisible$1(__props.column.visible, __props.row));
-		function onToggle(event) {
-			event.stopPropagation();
-			isOpen.value = !isOpen.value;
-		}
-		function onClose() {
-			isOpen.value = false;
-		}
-		function onFocusout(event) {
-			const relatedTarget = event.relatedTarget;
-			const inPopup = event.relatedTarget && event.relatedTarget instanceof HTMLElement && Boolean(event.relatedTarget.closest(".popup"));
-			const isOwnButton = relatedTarget === buttonRef.value;
-			if (inPopup || isOwnButton) return;
-			isOpen.value = false;
-		}
-		function onSelect(key) {
-			actions.value.find((it) => it.key === key)?.onClick(__props.row);
-		}
-		__expose(expose);
-		return (_ctx, _cache) => {
-			var _buttonRef$value;
-			return openBlock(), createElementBlock("td", { class: normalizeClass(["table-ng__cell table-ng__cell--button", { "table-ng__cell--menu-open": isOpen.value }]) }, [visible.value ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-				createBaseVNode("button", {
-					ref: "button",
-					class: "icon-button",
-					type: "button",
-					tabindex: "-1",
-					"aria-haspopup": "menu",
-					onClick: onToggle
-				}, [
-					createVNode(unref(FIcon_default), {
-						library: __props.column.iconLibrary,
-						name: __props.column.icon
-					}, null, 8, ["library", "name"]),
-					_cache[0] || (_cache[0] = createTextVNode()),
-					createBaseVNode("span", _hoisted_1$43, toDisplayString(__props.column.screenreaderText(__props.row)), 1)
-				], 512),
-				_cache[1] || (_cache[1] = createTextVNode()),
-				createVNode(unref(FContextMenu_default), {
-					"is-open": isOpen.value,
-					items: menuitems.value,
-					anchor: (_buttonRef$value = buttonRef.value) !== null && _buttonRef$value !== void 0 ? _buttonRef$value : void 0,
-					onClose,
-					onSelect,
-					onFocusout
-				}, null, 8, [
-					"is-open",
-					"items",
-					"anchor"
-				])
-			], 64)) : createCommentVNode("v-if", true)], 2);
-		};
-	}
-});
-var _hoisted_1$42 = {
-	ref: "th",
-	class: "table-ng__cell table-ng__cell--rowheader",
-	scope: "row"
-};
-var ITableRowheader_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableRowheader",
-	props: {
-		row: {},
-		column: {}
-	},
-	setup(__props) {
-		const visible = computed(() => isVisible$1(__props.column.visible, __props.row));
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("th", _hoisted_1$42, [visible.value ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [createTextVNode(toDisplayString(__props.column.text(__props.row)), 1)], 64)) : createCommentVNode("v-if", true)], 512);
-		};
-	}
-});
-var _hoisted_1$41 = ["id", "aria-invalid"];
-var _hoisted_2$32 = ["id"];
-var _hoisted_3$26 = ["value"];
-var _hoisted_4$21 = { class: "table-ng__editable" };
-var _hoisted_5$16 = { class: "table-ng__editable__text" };
-var _hoisted_6$13 = {
-	ref: "arrowAnchor",
-	"aria-hidden": "true"
-};
-var _hoisted_7$10 = {
+var _hoisted_1$55 = { key: 0 };
+var _hoisted_2$39 = {
 	key: 0,
-	class: "sr-only"
+	ref: "tooltipAttachTo"
 };
-var _hoisted_8$7 = [
-	"aria-expanded",
-	"aria-controls",
-	"aria-activedescendant",
-	"aria-label",
-	"aria-invalid",
-	"aria-required"
-];
-var _hoisted_9$5 = { class: "table-ng__editable__text" };
-var _hoisted_10$3 = {
-	key: 1,
-	tabindex: "-1",
-	class: "table-ng__cell table-ng__cell--static"
-};
-var _hoisted_11$3 = {
+var _hoisted_3$28 = ["for"];
+var _hoisted_4$22 = ["for"];
+var _hoisted_5$17 = {
 	key: 0,
-	class: "table-ng__cell--static__text"
+	class: "label__message label__message--error"
 };
-var ITableSelect_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableSelect",
-	props: {
-		row: {},
-		column: {},
-		activeErrorAnchor: { default: () => void 0 }
-	},
-	emits: ["onError", "closeError"],
-	setup(__props, { emit: __emit }) {
-		const emit = __emit;
-		const validationSelectId = ElementIdService.generateElementId();
-		const editing = /* @__PURE__ */ ref(false);
-		const editRef = useTemplateRef("edit");
-		const validationSelectElement = useTemplateRef("validationSelect");
-		const tdElement = useTemplateRef("td");
-		const arrowAnchorElement = useTemplateRef("arrowAnchor");
-		const isHovered = useElementHover(tdElement, { delayEnter: 200 });
-		const { focused } = useFocusWithin(tdElement);
-		const openPopupError = computed(() => {
-			if (!tdElement.value || dropdownIsOpen.value) return false;
-			return tdElement.value === __props.activeErrorAnchor;
-		});
-		const wrapperClasses = computed(() => ({
-			"table-ng__cell": true,
-			"table-ng__cell--select": true,
-			"table-ng__cell--valid": !hasError.value,
-			"table-ng__cell--error": hasError.value
-		}));
-		const { stopEdit } = useStartStopEdit();
-		const viewValue = /* @__PURE__ */ ref(__props.column.selected(__props.row));
-		const cellId = ElementIdService.generateElementId();
-		const validity = /* @__PURE__ */ ref({
-			isValid: true,
-			validationMessage: "",
-			validityMode: "INITIAL"
-		});
-		const hasError = computed(() => validity.value.validityMode === "ERROR");
-		const viewModeAriaInvalid = computed(() => !editing.value && hasError.value || void 0);
-		const viewModeErrorMessage = computed(() => !editing.value && hasError.value ? validity.value.validationMessage : void 0);
-		const ariaLabel = computed(() => {
-			const value = __props.column.label(__props.row);
-			return value.length > 0 ? value : void 0;
-		});
-		const dropdownId = ElementIdService.generateElementId();
-		const dropdownIsOpen = /* @__PURE__ */ ref(false);
-		const activeOptionId = ElementIdService.generateElementId();
-		const activeOption = /* @__PURE__ */ ref(null);
-		const visible = computed(() => isVisible$1(__props.column.visible, __props.row));
-		const options = computed(() => __props.column.options(__props.row));
-		async function onCellKeyDown(e) {
-			if (e.code === "Enter" || e.code === "NumpadEnter" || e.code === "Space") await startEditing(e);
-		}
-		async function onCellClick(e) {
-			if (editing.value) return;
-			await startEditing(e);
-		}
-		async function startEditing(e) {
-			assertRef(editRef);
-			e.preventDefault();
-			editing.value = true;
-			await nextTick();
-			editRef.value.tabIndex = 0;
-			editRef.value.focus();
-			await openDropdown();
-		}
-		async function selectDropdownOption(value) {
-			assertRef(editRef);
-			assertSet(stopEdit);
-			const oldValue = viewValue.value;
-			viewValue.value = value;
-			__props.column.update(__props.row, value, oldValue);
-			if (__props.column.hasValidation && validationSelectElement.value) {
-				await nextTick();
-				await ValidationService.validateElement(validationSelectElement.value);
-			}
-			closeDropdown();
-			await stopEdit(editRef.value, "enter");
-		}
-		async function onDropdownClose() {
-			assertSet(stopEdit);
-			assertRef(editRef);
-			closeDropdown();
-			await stopEdit(editRef.value, "blur");
-		}
-		async function openDropdown() {
-			dropdownIsOpen.value = true;
-			await nextTick();
-			if (viewValue.value) activeOption.value = viewValue.value;
-			else activeOption.value = null;
-			assertRef(editRef);
-			editRef.value.focus();
-		}
-		function closeDropdown() {
-			dropdownIsOpen.value = false;
-			editing.value = false;
-			activeOption.value = null;
-		}
-		function setNextOption() {
-			if (activeOption.value) {
-				const index = options.value.indexOf(activeOption.value);
-				if (index === options.value.length - 1) activeOption.value = options.value[0];
-				else activeOption.value = options.value[index + 1];
-			} else activeOption.value = options.value[0];
-		}
-		function setPreviousOption() {
-			if (activeOption.value) {
-				const index = options.value.indexOf(activeOption.value);
-				if (index === 0) activeOption.value = options.value.at(-1);
-				else activeOption.value = options.value[index - 1];
-			} else activeOption.value = options.value.at(-1);
-		}
-		async function onEditKeyDown(e) {
-			var _activeOption$value;
-			assertRef(editRef);
-			assertSet(stopEdit);
-			switch (e.code) {
-				case "Escape":
-					e.preventDefault();
-					closeDropdown();
-					await stopEdit(editRef.value, "escape");
-					break;
-				case "Enter":
-				case "NumpadEnter":
-					e.preventDefault();
-					await selectDropdownOption((_activeOption$value = activeOption.value) !== null && _activeOption$value !== void 0 ? _activeOption$value : viewValue.value);
-					await stopEdit(editRef.value, "enter");
-					break;
-				case "Tab":
-					e.preventDefault();
-					closeDropdown();
-					await stopEdit(editRef.value, e.shiftKey ? "shift-tab" : "tab");
-					break;
-				case "ArrowDown":
-					e.preventDefault();
-					setNextOption();
-					break;
-				case "ArrowUp":
-					e.preventDefault();
-					setPreviousOption();
-					break;
-				case "Space": e.preventDefault();
-			}
-		}
-		async function onEditBlur(event) {
-			if (event.relatedTarget && event.relatedTarget instanceof HTMLElement && event.relatedTarget.closest(".combobox__listbox")) return;
-			assertSet(stopEdit);
-			assertRef(editRef);
-			closeDropdown();
-			await nextTick();
-			await stopEdit(editRef.value, "blur");
-		}
-		function onValidity(event) {
-			const { isValid, validationMessage, validityMode } = event.detail;
-			validity.value = {
-				isValid,
-				validationMessage,
-				validityMode
-			};
-			assertRef(validationSelectElement);
-			dispatchComponentValidityEvent(validationSelectElement.value, {
-				...event.detail,
-				errorMessage: validationMessage,
-				focusElementId: cellId
-			});
-		}
-		function onPendingValidity() {
-			validity.value = {
-				...validity.value,
-				validityMode: "INITIAL"
-			};
-		}
-		watch(() => __props.column.selected(__props.row), (value) => {
-			viewValue.value = value;
-		});
-		watch(validationSelectElement, (element) => {
-			if (!element || !__props.column.hasValidation) return;
-			ValidationService.addValidatorsToElement(element, __props.column.validation);
-			nextTick().then(() => ValidationService.validateElement(element));
-		}, { flush: "post" });
-		watchEffect(() => {
-			if (hasError.value) {
-				var _tdElement$value, _arrowAnchorElement$v;
-				emit("onError", {
-					anchor: (_tdElement$value = tdElement.value) !== null && _tdElement$value !== void 0 ? _tdElement$value : void 0,
-					arrowAnchor: (_arrowAnchorElement$v = arrowAnchorElement.value) !== null && _arrowAnchorElement$v !== void 0 ? _arrowAnchorElement$v : void 0,
-					message: validity.value.validationMessage,
-					hasFocus: focused.value,
-					hasHover: isHovered.value,
-					inEdit: editing.value
-				});
-			} else {
-				var _tdElement$value2, _arrowAnchorElement$v2;
-				emit("closeError", {
-					anchor: (_tdElement$value2 = tdElement.value) !== null && _tdElement$value2 !== void 0 ? _tdElement$value2 : void 0,
-					arrowAnchor: (_arrowAnchorElement$v2 = arrowAnchorElement.value) !== null && _arrowAnchorElement$v2 !== void 0 ? _arrowAnchorElement$v2 : void 0,
-					message: validity.value.validationMessage,
-					hasFocus: focused.value,
-					hasHover: isHovered.value,
-					inEdit: editing.value
-				});
-			}
-		});
-		return (_ctx, _cache) => {
-			return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", {
-				key: 0,
-				id: unref(cellId),
-				ref: "td",
-				class: normalizeClass(wrapperClasses.value),
-				"aria-invalid": viewModeAriaInvalid.value,
-				tabindex: "-1",
-				onKeydown: onCellKeyDown,
-				onClick: withModifiers(onCellClick, ["stop"])
-			}, [visible.value ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-				withDirectives(createBaseVNode("select", {
-					id: unref(validationSelectId),
-					ref: "validationSelect",
-					"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => viewValue.value = $event),
-					tabindex: "-1",
-					"aria-hidden": "true",
-					class: "sr-only",
-					onValidity,
-					onPendingValidity
-				}, [
-					_cache[4] || (_cache[4] = createBaseVNode("option", {
-						value: "",
-						disabled: ""
-					}, "Välj...", -1)),
-					_cache[5] || (_cache[5] = createTextVNode()),
-					(openBlock(true), createElementBlock(Fragment, null, renderList(options.value, (option) => {
-						return openBlock(), createElementBlock("option", {
-							key: option,
-							value: option
-						}, toDisplayString(option), 9, _hoisted_3$26);
-					}), 128))
-				], 40, _hoisted_2$32), [[vModelSelect, viewValue.value]]),
-				_cache[8] || (_cache[8] = createTextVNode()),
-				withDirectives(createBaseVNode("div", _hoisted_4$21, [
-					createBaseVNode("span", _hoisted_5$16, toDisplayString(viewValue.value), 1),
-					_cache[6] || (_cache[6] = createTextVNode()),
-					createBaseVNode("span", _hoisted_6$13, null, 512),
-					_cache[7] || (_cache[7] = createTextVNode()),
-					viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_7$10, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("v-if", true)
-				], 512), [[vShow, !editing.value]]),
-				_cache[9] || (_cache[9] = createTextVNode()),
-				withDirectives(createBaseVNode("div", {
-					ref: "edit",
-					role: "combobox",
-					tabindex: "-1",
-					"aria-expanded": dropdownIsOpen.value,
-					"aria-controls": dropdownIsOpen.value ? unref(dropdownId) : void 0,
-					"aria-activedescendant": dropdownIsOpen.value ? unref(activeOptionId) : void 0,
-					"aria-autocomplete": "list",
-					class: "table-ng__editable",
-					"aria-label": ariaLabel.value,
-					"aria-invalid": hasError.value ? true : void 0,
-					"aria-required": Boolean(__props.column.validation.required),
-					onClick: _cache[1] || (_cache[1] = withModifiers(() => {}, ["stop"])),
-					onDblclick: _cache[2] || (_cache[2] = withModifiers(() => {}, ["prevent"])),
-					onKeydown: withModifiers(onEditKeyDown, ["stop"]),
-					onFocusout: _cache[3] || (_cache[3] = (e) => onEditBlur(e))
-				}, [createBaseVNode("span", _hoisted_9$5, toDisplayString(viewValue.value), 1)], 40, _hoisted_8$7), [[vShow, editing.value]]),
-				_cache[10] || (_cache[10] = createTextVNode()),
-				withDirectives(createVNode(unref(IComboboxDropdown_default), {
-					id: unref(dropdownId),
-					"is-open": dropdownIsOpen.value,
-					options: options.value,
-					"active-option": activeOption.value,
-					"active-option-id": unref(activeOptionId),
-					"input-node": editRef.value,
-					onSelect: selectDropdownOption,
-					onClose: onDropdownClose
-				}, null, 8, [
-					"id",
-					"is-open",
-					"options",
-					"active-option",
-					"active-option-id",
-					"input-node"
-				]), [[vShow, editing.value]]),
-				_cache[11] || (_cache[11] = createTextVNode()),
-				createVNode(unref(IPopupError_default), {
-					anchor: tdElement.value,
-					"is-open": openPopupError.value,
-					"error-message": validity.value.validationMessage,
-					"arrow-anchor": arrowAnchorElement.value,
-					layout: "f-table"
-				}, null, 8, [
-					"anchor",
-					"is-open",
-					"error-message",
-					"arrow-anchor"
-				])
-			], 64)) : createCommentVNode("v-if", true)], 42, _hoisted_1$41)) : (openBlock(), createElementBlock("td", _hoisted_10$3, [visible.value ? (openBlock(), createElementBlock("div", _hoisted_11$3, toDisplayString(__props.column.selected(__props.row)), 1)) : createCommentVNode("v-if", true)]));
-		};
-	}
-});
-/**
-* @internal
-*/
-function defaultTnumValue(type) {
-	return [
-		"text:bankAccountNumber",
-		"text:bankgiro",
-		"text:clearingNumber",
-		"text:currency",
-		"text:date",
-		"text:number",
-		"text:organisationsnummer",
-		"text:percent",
-		"text:personnummer",
-		"text:phoneNumber",
-		"text:plusgiro",
-		"text:postalCode"
-	].includes(type);
-}
-var defaultLabelFn = () => "";
-/**
-* @internal
-*/
-function getLabelFn(fn) {
-	if (fn) return fn;
-	return defaultLabelFn;
-}
-var defaultUpdateFn = () => void 0;
-/**
-* @internal
-*/
-function getUpdateFn(fn, key) {
-	if (fn) return fn;
-	if (key) return (row, value) => {
-		row[key] = value;
-	};
-	return defaultUpdateFn;
-}
-/**
-*  @internal
-*/
-function getValueFn(fn, key, coerce, defaultValue) {
-	if (fn) return fn;
-	if (key) return (row) => {
-		var _row$key;
-		return coerce((_row$key = row[key]) !== null && _row$key !== void 0 ? _row$key : defaultValue);
-	};
-	return () => defaultValue;
-}
-/**
-*  @internal
-*/
-function isColumnTypeNumber(column) {
-	const type = column.type;
-	return numberTypes.includes(type);
-}
-/** @internal */
-function addInputValidators(inputElement, type) {
-	ValidationService.addValidatorsToElement(inputElement, inputFieldConfig[type].validationConfig, true);
-}
-/**
-* @internal
-*/
-function isAlphanumeric(e) {
-	return e.key.length === 1 && !e.ctrlKey && !e.metaKey;
-}
-var _hoisted_1$40 = ["id", "aria-invalid"];
-var _hoisted_2$31 = {
+var _hoisted_6$14 = ["for"];
+var _hoisted_7$11 = {
 	key: 0,
-	class: "sr-only"
+	class: "label__message label__message--error"
 };
-var _hoisted_3$25 = [
-	"id",
-	"aria-label",
-	"aria-hidden"
-];
-var _hoisted_4$20 = {
-	ref: "arrowAnchor",
-	"aria-hidden": "true"
-};
-var ITableText_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableText",
-	props: {
-		row: {},
-		column: {},
-		activeErrorAnchor: { default: () => void 0 }
-	},
-	emits: ["onError", "closeError"],
-	setup(__props, { emit: __emit }) {
-		const emit = __emit;
-		const viewValue = /* @__PURE__ */ ref("");
-		const inEdit = /* @__PURE__ */ ref(false);
-		const cellId = ElementIdService.generateElementId();
-		const inputId = ElementIdService.generateElementId();
-		const validity = /* @__PURE__ */ ref({
-			isValid: true,
-			validationMessage: "",
-			validityMode: "INITIAL"
-		});
-		let validationFacade = {
-			validateElement: () => Promise.resolve({
-				isValid: true,
-				error: "",
-				isSubmitted: false,
-				isTouched: false
+function _sfc_render$26(_ctx, _cache, $props, $setup, $data, $options) {
+	const _component_f_icon = resolveComponent("f-icon");
+	return _ctx.$slots.tooltip ? (openBlock(), createElementBlock("div", _hoisted_1$55, [
+		_ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", _hoisted_2$39, [createBaseVNode("label", {
+			class: "label",
+			for: _ctx.forProperty
+		}, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$28)], 512)) : createCommentVNode("v-if", true),
+		_cache[2] || (_cache[2] = createTextVNode()),
+		renderSlot(_ctx.$slots, "tooltip"),
+		_cache[3] || (_cache[3] = createTextVNode()),
+		_ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("label", {
+			key: 1,
+			class: "label sr-separator",
+			for: _ctx.forProperty
+		}, [
+			renderSlot(_ctx.$slots, "description", {
+				descriptionClass: _ctx.descriptionClass,
+				formatDescriptionClass: _ctx.formatDescriptionClass
 			}),
-			dispatchComponentValidityEvent: () => void 0
-		};
-		const hasError = computed(() => validity.value.validityMode === "ERROR");
-		const viewModeAriaInvalid = computed(() => !inEdit.value && hasError.value ? true : void 0);
-		const viewModeErrorMessage = computed(() => !inEdit.value && hasError.value ? validity.value.validationMessage : void 0);
-		let initialValidity = { ...validity.value };
-		const divClasses = computed(() => {
-			return {
-				"table-ng__editable": true,
-				"table-ng__editable__numeric": __props.column.tnum
-			};
-		});
-		const wrapperClasses = computed(() => {
-			return {
-				"table-ng__cell": true,
-				"table-ng__cell--text": true,
-				"table-ng__cell--valid": !hasError.value,
-				"table-ng__cell--error": hasError.value,
-				"table-ng__cell--align-left": __props.column.align === "left",
-				"table-ng__cell--align-right": __props.column.align === "right"
-			};
-		});
-		const staticClasses = computed(() => {
-			return {
-				"table-ng__cell": true,
-				"table-ng__cell--static": true,
-				"table-ng__cell--align-left": __props.column.align === "left",
-				"table-ng__cell--align-right": __props.column.align === "right",
-				"table-ng__cell--numeric": __props.column.tnum
-			};
-		});
-		const inputClasses = computed(() => {
-			return { "table-ng__textedit": true };
-		});
-		const ariaLabel = computed(() => {
-			let value = __props.column.label(__props.row);
-			if (hasError.value) value += ` ${validity.value.validationMessage}`;
-			return value.length > 0 ? value : void 0;
-		});
-		const columnAttributes = computed(() => {
-			if (__props.column.attributes && typeof __props.column.attributes === "function") return __props.column.attributes(__props.row);
-			return __props.column.attributes;
-		});
-		const configAttributes = computed(() => {
-			let decimals = void 0;
-			if (isColumnTypeNumber(__props.column)) decimals = __props.column.decimals;
-			return inputFieldConfig[__props.column.type].attributes({ decimals });
-		});
-		const visible = computed(() => isVisible$1(__props.column.visible, __props.row));
-		const tdElement = useTemplateRef("td");
-		const inputElement = useTemplateRef("input");
-		const arrowAnchorElement = useTemplateRef("arrowAnchor");
-		const { stopEdit } = useStartStopEdit();
-		const isHovered = useElementHover(tdElement, { delayEnter: 200 });
-		const { focused } = useFocusWithin(tdElement);
-		const openPopupError = computed(() => {
-			if (!tdElement.value) return false;
-			return tdElement.value === __props.activeErrorAnchor;
-		});
-		let initialViewValue = "";
-		let pendingStopEditReason = null;
-		function setUpValidation(el) {
-			addInputValidators(el, __props.column.type);
-			ValidationService.addValidatorsToElement(el, __props.column.validation);
-			validationFacade = {
-				validateElement: (el) => ValidationService.validateElement(el),
-				dispatchComponentValidityEvent
-			};
-		}
-		function setUpFakeValidation(el) {
-			assertRef(inputElement);
-			const input = inputElement.value;
-			function emitFakeValidity(nativeEvent) {
-				if (inputElement.value !== input) return;
-				onValidity(new CustomEvent("validity", { detail: {
-					isValid: true,
-					nativeEvent,
-					validityMode: "INITIAL",
-					validationMessage: "",
-					target: input,
-					elementId: String(input.id)
-				} }));
-			}
-			for (const nativeEvent of ["change", "blur"]) useEventListener$1(el, nativeEvent, () => {
-				emitFakeValidity(nativeEvent);
-			});
-			validationFacade = {
-				validateElement: () => {
-					emitFakeValidity("validate");
-					return Promise.resolve({
-						isValid: true,
-						error: "",
-						isSubmitted: false,
-						isTouched: false
-					});
-				},
-				dispatchComponentValidityEvent: () => void 0
-			};
-			useEventListener$1(el, "input", onPendingValidity);
-			useEventListener$1(el, "component-validity", (e) => {
-				e.stopPropagation();
-			});
-		}
-		let fakeValidationScope;
-		onScopeDispose(() => {
-			fakeValidationScope?.stop();
-		});
-		watch(inputElement, (el) => {
-			fakeValidationScope?.stop();
-			fakeValidationScope = void 0;
-			if (!el) return;
-			viewValue.value = fromColumnValue();
-			if (__props.column.hasValidation) setUpValidation(el);
-			else {
-				fakeValidationScope = effectScope();
-				fakeValidationScope.run(() => {
-					setUpFakeValidation(el);
-				});
-			}
-			nextTick().then(() => validationFacade.validateElement(el));
-		}, { flush: "post" });
-		watchEffect(() => {
-			if (hasError.value) {
-				var _tdElement$value, _arrowAnchorElement$v;
-				emit("onError", {
-					anchor: (_tdElement$value = tdElement.value) !== null && _tdElement$value !== void 0 ? _tdElement$value : void 0,
-					arrowAnchor: (_arrowAnchorElement$v = arrowAnchorElement.value) !== null && _arrowAnchorElement$v !== void 0 ? _arrowAnchorElement$v : void 0,
-					message: validity.value.validationMessage,
-					hasFocus: focused.value,
-					hasHover: isHovered.value,
-					inEdit: inEdit.value
-				});
-			} else {
-				var _tdElement$value2, _arrowAnchorElement$v2;
-				emit("closeError", {
-					anchor: (_tdElement$value2 = tdElement.value) !== null && _tdElement$value2 !== void 0 ? _tdElement$value2 : void 0,
-					arrowAnchor: (_arrowAnchorElement$v2 = arrowAnchorElement.value) !== null && _arrowAnchorElement$v2 !== void 0 ? _arrowAnchorElement$v2 : void 0,
-					message: validity.value.validationMessage,
-					hasFocus: focused.value,
-					hasHover: isHovered.value,
-					inEdit: inEdit.value
-				});
-			}
-		});
-		function onStartEdit(value) {
-			if (inEdit.value) return;
-			inEdit.value = true;
-			assertRef(tdElement);
-			assertRef(inputElement);
-			const { width } = tdElement.value.getBoundingClientRect();
-			initialViewValue = viewValue.value;
-			initialValidity = { ...validity.value };
-			viewValue.value = value;
-			tdElement.value.style.setProperty("width", `${String(width)}px`);
-			inputElement.value.tabIndex = 0;
-			inputElement.value.focus();
-		}
-		function onStopEdit(options) {
-			const { reason } = options;
-			inEdit.value = false;
-			assertRef(inputElement);
-			inputElement.value.tabIndex = -1;
-			assertRef(tdElement);
-			tdElement.value.style.removeProperty("width");
-			if (reason === "blur") tdElement.value.tabIndex = 0;
-			else if (reason === "tab" || reason === "shift-tab") {
-				tdElement.value.tabIndex = 0;
-				nextTick().then(() => {
-					tdElement.value?.focus();
-				});
-			}
-			stopEdit(inputElement.value, reason);
-		}
-		function fromColumnValue() {
-			assertRef(validity);
-			const value = __props.column.value(__props.row);
-			if (validity.value.isValid) {
-				var _props$column$format;
-				return (_props$column$format = __props.column.formatter(value)) !== null && _props$column$format !== void 0 ? _props$column$format : value.toString();
-			}
-			return value.toString();
-		}
-		function toColumnValue(value) {
-			assertRef(validity);
-			if (validity.value.isValid) {
-				var _props$column$parser;
-				return (_props$column$parser = __props.column.parser(value)) !== null && _props$column$parser !== void 0 ? _props$column$parser : value;
-			}
-			return value;
-		}
-		function updateColumnValue() {
-			const oldValue = __props.column.value(__props.row);
-			const newValue = toColumnValue(viewValue.value);
-			if (oldValue !== newValue) __props.column.update(__props.row, newValue, oldValue);
-		}
-		function onClickCell(event) {
-			assertRef(tdElement);
-			if (event.target && tdElement.value.contains(event.target)) onStartEdit(fromColumnValue());
-		}
-		function onViewingKeydown(event) {
-			if (isAlphanumeric(event)) {
-				event.stopPropagation();
-				onStartEdit("");
-			}
-			if (event.key !== "Enter") return;
-			event.preventDefault();
-			event.stopPropagation();
-			onStartEdit(fromColumnValue());
-		}
-		function onEditingKeydown(event) {
-			assertRef(inputElement);
-			event.stopPropagation();
-			switch (event.key) {
-				case "Enter":
-					event.preventDefault();
-					if (viewValue.value === initialViewValue) {
-						validity.value = { ...initialValidity };
-						onStopEdit({ reason: "enter" });
-					} else {
-						pendingStopEditReason = "enter";
-						validationFacade.validateElement(inputElement.value);
-					}
-					break;
-				case "Escape":
-					onStopEdit({ reason: "escape" });
-					viewValue.value = initialViewValue;
-					inputElement.value.value = initialViewValue;
-					validationFacade.validateElement(inputElement.value);
-					break;
-				case "Tab":
-					event.preventDefault();
-					pendingStopEditReason = event.shiftKey ? "shift-tab" : "tab";
-					validationFacade.validateElement(inputElement.value);
-			}
-		}
-		function onKeydown(event) {
-			if (document.activeElement === inputElement.value) onEditingKeydown(event);
-			else onViewingKeydown(event);
-		}
-		function updateValidity(eventDetail) {
-			const { isValid, validationMessage, validityMode } = eventDetail;
-			validity.value = {
-				isValid,
-				validationMessage,
-				validityMode
-			};
-			assertRef(inputElement);
-			validationFacade.dispatchComponentValidityEvent(inputElement.value, {
-				...eventDetail,
-				errorMessage: validationMessage,
-				focusElementId: cellId
-			});
-		}
-		function onValidity(event) {
-			const nativeEvent = event.detail.nativeEvent;
-			const reason = pendingStopEditReason !== null && pendingStopEditReason !== void 0 ? pendingStopEditReason : nativeEvent === "blur" ? "blur" : null;
-			pendingStopEditReason = null;
-			if (inEdit.value && reason) {
-				onStopEdit({ reason });
-				updateValidity(event.detail);
-				updateColumnValue();
-				return;
-			}
-			if (nativeEvent === "input") {
-				updateValidity(event.detail);
-				updateColumnValue();
-				return;
-			}
-			if (nativeEvent === "validate") updateValidity(event.detail);
-		}
-		function onPendingValidity() {
-			assertRef(validity);
-			validity.value.validityMode = "INITIAL";
-		}
-		return (_ctx, _cache) => {
-			return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", {
-				key: 0,
-				id: unref(cellId),
-				ref: "td",
-				tabindex: "-1",
-				class: normalizeClass(wrapperClasses.value),
-				"aria-invalid": viewModeAriaInvalid.value,
-				onClick: withModifiers(onClickCell, ["stop"]),
-				onKeydown
-			}, [visible.value ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-				createBaseVNode("div", { class: normalizeClass(divClasses.value) }, [
-					createBaseVNode("span", { class: normalizeClass(["table-ng__editable__text", { "table-ng__editable__text--wrap": __props.column.wrap }]) }, toDisplayString(fromColumnValue()), 3),
-					_cache[2] || (_cache[2] = createTextVNode()),
-					viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_2$31, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("v-if", true),
-					_cache[3] || (_cache[3] = createTextVNode()),
-					withDirectives(createBaseVNode("input", mergeProps({
-						id: unref(inputId),
-						ref: "input",
-						"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => viewValue.value = $event),
-						class: inputClasses.value,
-						type: "text",
-						maxlength: "40",
-						tabindex: "-1",
-						"aria-label": ariaLabel.value
-					}, {
-						...configAttributes.value,
-						...columnAttributes.value
-					}, {
-						"aria-hidden": !inEdit.value,
-						onValidity,
-						onPendingValidity
-					}), null, 16, _hoisted_3$25), [[vModelText, viewValue.value]]),
-					_cache[4] || (_cache[4] = createTextVNode()),
-					createBaseVNode("span", _hoisted_4$20, null, 512)
-				], 2),
-				_cache[5] || (_cache[5] = createTextVNode()),
-				createVNode(unref(IPopupError_default), {
-					anchor: tdElement.value,
-					"is-open": openPopupError.value,
-					"error-message": validity.value.validationMessage,
-					"arrow-anchor": arrowAnchorElement.value,
-					layout: "f-table"
-				}, null, 8, [
-					"anchor",
-					"is-open",
-					"error-message",
-					"arrow-anchor"
-				])
-			], 64)) : createCommentVNode("v-if", true)], 42, _hoisted_1$40)) : (openBlock(), createElementBlock("td", {
-				key: 1,
-				ref: "td",
-				tabindex: "-1",
-				class: normalizeClass(staticClasses.value),
-				onKeydown: _cache[1] || (_cache[1] = withKeys(withModifiers(() => {}, ["prevent"]), ["space"]))
-			}, [visible.value ? (openBlock(), createElementBlock("div", {
-				key: 0,
-				class: normalizeClass(["table-ng__cell--static__text", { "table-ng__cell--static__text--wrap": __props.column.wrap }])
-			}, toDisplayString(fromColumnValue()), 3)) : createCommentVNode("v-if", true)], 34));
-		};
-	}
-});
-/**
-* @internal
-*/
-function normalizeAnchorColumn(column) {
-	return {
-		type: "anchor",
-		text: getValueFn(column.text, column.key, String, ""),
-		href: typeof column.href === "function" ? column.href : () => String(column.href)
-	};
+			_cache[1] || (_cache[1] = createTextVNode()),
+			_ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_5$17, [
+				createVNode(_component_f_icon, {
+					class: "label__icon--left",
+					name: "error"
+				}),
+				_cache[0] || (_cache[0] = createTextVNode()),
+				renderSlot(_ctx.$slots, "error-message")
+			])) : createCommentVNode("v-if", true)
+		], 8, _hoisted_4$22)) : createCommentVNode("v-if", true)
+	])) : (openBlock(), createElementBlock("label", {
+		key: 1,
+		class: "label",
+		for: _ctx.forProperty
+	}, [
+		renderSlot(_ctx.$slots, "default"),
+		_cache[5] || (_cache[5] = createTextVNode()),
+		renderSlot(_ctx.$slots, "description", {
+			descriptionClass: _ctx.descriptionClass,
+			formatDescriptionClass: _ctx.formatDescriptionClass
+		}),
+		_cache[6] || (_cache[6] = createTextVNode()),
+		_ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_7$11, [
+			createVNode(_component_f_icon, {
+				class: "label__icon--left",
+				name: "error"
+			}),
+			_cache[4] || (_cache[4] = createTextVNode()),
+			renderSlot(_ctx.$slots, "error-message")
+		])) : createCommentVNode("v-if", true)
+	], 8, _hoisted_6$14));
+}
+var FLabel_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FLabel_vue_vue_type_script_lang_default, [["render", _sfc_render$26]]);
+function resolveWidthClass(words, inline) {
+	return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
+}
+function setCursorAtEnd(input) {
+	input.setSelectionRange(input.value.length, input.value.length);
 }
 /**
-* Determines the sortable value for a table column based on the sort property and key.
+* Setup logic used by `FTextField`.
+* Components extending `FTextField` reuse the same setup.
 *
-* @param column - An object with sort and key properties
-* @returns The key if sorting should be enabled, null otherwise
-*
-* @internal
-*/
-function getSortable(column) {
-	var _column$sort, _column$key;
-	return ((_column$sort = column.sort) !== null && _column$sort !== void 0 ? _column$sort : !!column.key) ? (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null : null;
-}
-/**
-* @internal
-*/
-function normalizeBaseColumn(column) {
-	var _column$enabled, _column$visible;
-	const id = Symbol();
-	const header = /* @__PURE__ */ toRef(column.header);
-	const description = column.description !== void 0 ? /* @__PURE__ */ toRef(column.description) : /* @__PURE__ */ ref("");
-	const size = column.size !== void 0 ? /* @__PURE__ */ toRef(column.size) : /* @__PURE__ */ ref("grow");
-	return {
-		id,
-		header,
-		description,
-		sortable: getSortable(column),
-		size,
-		enabled: (_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true,
-		visible: (_column$visible = column.visible) !== null && _column$visible !== void 0 ? _column$visible : () => true,
-		width: column.width
-	};
-}
-/**
-* @internal
-*/
-function normalizeButtonColumn(column) {
-	var _column$icon;
-	return {
-		type: "button",
-		screenreaderText: getValueFn(column.screenreaderText, column.key, String, ""),
-		onClick: column.onClick,
-		icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
-		iconLibrary: column.iconLibrary
-	};
-}
-/**
-* @internal
-*/
-function normalizeCheckboxColumn(column) {
-	return {
-		type: "checkbox",
-		label: getLabelFn(column.label),
-		checked: getValueFn(column.checked, column.key, Boolean, false),
-		update: getUpdateFn(column.update, column.key)
-	};
-}
-function noop$2() {}
-/**
-* @internal
-*/
-function normalizeMenuAction(action) {
-	var _action$icon, _action$onClick;
-	return {
-		label: action.label,
-		icon: (_action$icon = action.icon) !== null && _action$icon !== void 0 ? _action$icon : null,
-		onClick: (_action$onClick = action.onClick) !== null && _action$onClick !== void 0 ? _action$onClick : noop$2
-	};
-}
-/**
-* @internal
-*/
-function normalizeMenuColumn(column) {
-	var _column$actions, _column$icon;
-	const actions = (_column$actions = column.actions) !== null && _column$actions !== void 0 ? _column$actions : [];
-	return {
-		type: "menu",
-		screenreaderText: getValueFn(column.screenreaderText, void 0, String, ""),
-		actions: typeof actions === "function" ? (row) => actions(row).map(normalizeMenuAction) : actions.map(normalizeMenuAction),
-		icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : "bars",
-		iconLibrary: column.iconLibrary
-	};
-}
-/**
-* @internal
-*/
-function normalizeNumberColumn(column) {
-	var _column$parser, _column$formatter, _column$tnum, _column$wrap, _column$align, _column$validation;
-	const type = column.type;
-	const config = inputFieldConfig[type];
-	const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser.bind(column);
-	const formatter = (_column$formatter = column.formatter) !== null && _column$formatter !== void 0 ? _column$formatter : config.formatter.bind(column);
-	const decimals = type === "text:currency" ? 0 : column.decimals;
-	return {
-		type,
-		label: getLabelFn(column.label),
-		decimals,
-		tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
-		wrap: (_column$wrap = column.wrap) !== null && _column$wrap !== void 0 ? _column$wrap : false,
-		align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "right",
-		attributes: column.attributes,
-		value: getValueFn(column.value, column.key, String, ""),
-		update: getUpdateFn(column.update, column.key),
-		editable: typeof column.editable === "function" ? column.editable : () => {
-			var _column$editable;
-			return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
-		},
-		validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
-		hasValidation: column.type.startsWith("text:") || Boolean(column.validation),
-		formatter,
-		parser
-	};
-}
-/**
-* @internal
-*/
-function normalizeRenderColumn(column) {
-	var _column$visible;
-	return {
-		type: void 0,
-		render: column.render,
-		sortable: null,
-		visible: (_column$visible = column.visible) !== null && _column$visible !== void 0 ? _column$visible : () => true
-	};
-}
-/**
-* @internal
-*/
-function normalizeRowHeaderColumn(column) {
-	return {
-		type: "rowheader",
-		text: getValueFn(column.text, column.key, String, "")
-	};
-}
-/**
-* @internal
-*/
-function normalizeSelectColumn(column) {
-	var _column$validation;
-	return {
-		type: "select",
-		label: getLabelFn(column.label),
-		selected: getValueFn(column.selected, column.key, String, ""),
-		update: getUpdateFn(column.update, column.key),
-		options: (row) => typeof column.options === "function" ? column.options(row) : column.options,
-		editable: typeof column.editable === "function" ? column.editable : () => {
-			var _column$editable;
-			return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : true);
-		},
-		validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
-		hasValidation: Boolean(column.validation)
-	};
-}
-/**
-* @internal
-*/
-function normalizeSimpleColumn(column) {
-	var _column$wrap;
-	return {
-		type: "text",
-		label: () => "",
-		tnum: false,
-		wrap: (_column$wrap = column.wrap) !== null && _column$wrap !== void 0 ? _column$wrap : false,
-		align: "left",
-		value: getValueFn(column.value, column.key, String, ""),
-		update() {},
-		editable: () => false,
-		validation: {},
-		hasValidation: false,
-		formatter: (value) => value,
-		parser: (value) => value
-	};
-}
-/**
-* @internal
-*/
-function normalizeTextColumn(column) {
-	var _column$parser, _column$formatter, _column$tnum, _column$wrap, _column$align, _column$validation;
-	const type = column.type;
-	const config = inputFieldConfig[type];
-	const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser;
-	const formatter = (_column$formatter = column.formatter) !== null && _column$formatter !== void 0 ? _column$formatter : config.formatter;
-	return {
-		type,
-		tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
-		wrap: (_column$wrap = column.wrap) !== null && _column$wrap !== void 0 ? _column$wrap : false,
-		align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "left",
-		attributes: column.attributes,
-		label: getLabelFn(column.label),
-		value: getValueFn(column.value, column.key, String, ""),
-		update: getUpdateFn(column.update, column.key),
-		editable: typeof column.editable === "function" ? column.editable : () => {
-			var _column$editable;
-			return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
-		},
-		validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
-		hasValidation: column.type.startsWith("text:") || Boolean(column.validation),
-		formatter,
-		parser
-	};
-}
-function normalizeTableColumn(column) {
-	const base = normalizeBaseColumn(column);
-	if ("render" in column) return Object.freeze({
-		...normalizeRenderColumn(column),
-		...base
-	});
-	switch (column.type) {
-		case "checkbox": return Object.freeze({
-			...normalizeCheckboxColumn(column),
-			...base,
-			component: ITableCheckbox_default
-		});
-		case "text:currency":
-		case "text:number":
-		case "text:percent": return Object.freeze({
-			...normalizeNumberColumn(column),
-			...base,
-			component: ITableText_default
-		});
-		case "text":
-		case "text:bankAccountNumber":
-		case "text:bankgiro":
-		case "text:clearingNumber":
-		case "text:date":
-		case "text:email":
-		case "text:organisationsnummer":
-		case "text:personnummer":
-		case "text:phoneNumber":
-		case "text:plusgiro":
-		case "text:postalCode": return Object.freeze({
-			...normalizeTextColumn(column),
-			...base,
-			component: ITableText_default
-		});
-		case "rowheader": return Object.freeze({
-			...normalizeRowHeaderColumn(column),
-			...base,
-			component: ITableRowheader_default
-		});
-		case "anchor": return Object.freeze({
-			...normalizeAnchorColumn(column),
-			...base,
-			component: ITableAnchor_default
-		});
-		case "button": return Object.freeze({
-			...normalizeButtonColumn(column),
-			...base,
-			component: ITableButton_default
-		});
-		case "select": return Object.freeze({
-			...normalizeSelectColumn(column),
-			...base,
-			component: ITableSelect_default
-		});
-		case "menu": return Object.freeze({
-			...normalizeMenuColumn(column),
-			...base,
-			component: ITableMenu_default
-		});
-		case void 0: return Object.freeze({
-			...normalizeSimpleColumn(column),
-			...base,
-			component: ITableText_default
-		});
-	}
-}
-/**
 * @public
 */
-function defineTableColumns(columns) {
-	return columns;
-}
-/**
-* @internal
-*/
-function normalizeTableColumns(columns) {
-	return columns.map((column) => {
-		return normalizeTableColumn(column);
-	});
-}
-function usePopupError() {
-	const errorAnchor = /* @__PURE__ */ ref(void 0);
-	const errorArrowAnchor = /* @__PURE__ */ ref(void 0);
-	const errorMessage = /* @__PURE__ */ ref(void 0);
-	const activeErrorAnchor = /* @__PURE__ */ ref(void 0);
-	async function onPopupError(popupError) {
-		const { anchor, arrowAnchor, hasFocus, hasHover } = popupError;
-		if (!anchor || !arrowAnchor) return;
-		if (hasFocus || hasHover) await open(popupError);
-		else onClosePopupError(popupError);
-	}
-	async function open(popupError) {
-		const { message, anchor, arrowAnchor } = popupError;
-		if (!anchor || !arrowAnchor) return;
-		activeErrorAnchor.value = void 0;
-		errorMessage.value = message;
-		errorAnchor.value = anchor;
-		errorArrowAnchor.value = arrowAnchor;
+function useTextFieldSetup(props) {
+	const inputNode = useTemplateRef("input");
+	const textFieldTableMode = inject("textFieldTableMode", false);
+	const viewValue = /* @__PURE__ */ ref("");
+	async function onOptionSelected(value) {
+		if (!inputNode.value) return;
+		viewValue.value = value;
 		await nextTick();
-		activeErrorAnchor.value = anchor;
+		inputNode.value.focus();
+		setCursorAtEnd(inputNode.value);
+		inputNode.value.dispatchEvent(new CustomEvent("pending-validity", { bubbles: false }));
 	}
-	function onClosePopupError(popupError) {
-		var _errorAnchor$value;
-		if (!popupError) return;
-		const { anchor } = popupError;
-		if (anchor?.isSameNode((_errorAnchor$value = errorAnchor.value) !== null && _errorAnchor$value !== void 0 ? _errorAnchor$value : null)) activeErrorAnchor.value = void 0;
-	}
+	const { dropdownId, dropdownIsOpen, dropdownOptions, activeOptionId, activeOption, toggleDropdown, selectOption, closeDropdown } = useCombobox(inputNode, /* @__PURE__ */ toRef(props, "options"), onOptionSelected);
 	return {
-		onPopupError,
-		onClosePopupError,
-		errorAnchor,
-		errorArrowAnchor,
-		errorMessage,
-		activeErrorAnchor
+		textFieldTableMode,
+		viewValue,
+		onOptionSelected,
+		dropdownId,
+		dropdownIsOpen,
+		dropdownOptions,
+		activeOptionId,
+		activeOption,
+		toggleDropdown,
+		selectOption,
+		closeDropdown
 	};
 }
-function rowKey(row) {
-	var _findItemIdentifier;
-	return (_findItemIdentifier = findItemIdentifier(row)) !== null && _findItemIdentifier !== void 0 ? _findItemIdentifier : "";
-}
-/** @internal */
-function useSelectable(options) {
-	const { selectable, selectedRows, rows } = options;
-	if (!selectable) return {
-		selectableHeaderState: () => false,
-		toggleSelectableHeader: () => void 0,
-		selectableRowState: () => false,
-		toggleSelectableRow: () => void 0
-	};
-	const headerState = /* @__PURE__ */ ref(false);
-	function selectableHeaderState() {
-		return headerState.value;
-	}
-	watchEffect(() => {
-		switch (selectedRows.value.length) {
-			case 0:
-				headerState.value = false;
-				break;
-			case toValue(rows).length:
-				headerState.value = true;
-				break;
-			default: headerState.value = "indeterminate";
-		}
-	});
-	function toggleSelectableHeader() {
-		if (toValue(rows).length === 0) {
-			headerState.value = headerState.value !== true;
-			return;
-		}
-		if (headerState.value !== true) selectedRows.value = [...toValue(rows)];
-		else selectedRows.value = [];
-	}
-	function toggleSelectableRow(row) {
-		assertRef(selectedRows);
-		if (selectable === "single") selectedRows.value = [row];
-		else {
-			const index = selectedRows.value.indexOf(row);
-			if (index === -1) selectedRows.value.push(row);
-			else selectedRows.value.splice(index, 1);
-		}
-	}
-	function selectableRowState(row) {
-		const key = rowKey(row);
-		return selectedRows.value.some((selectedRow) => rowKey(selectedRow) === key);
-	}
-	watch(() => toValue(rows), (newValue) => {
-		selectedRows.value = selectedRows.value.filter((it) => newValue.includes(it));
-	}, {
-		deep: 1,
-		immediate: true
-	});
-	return {
-		toggleSelectableHeader,
-		toggleSelectableRow,
-		selectableHeaderState,
-		selectableRowState
-	};
-}
-/** @internal */
-function focusCell(cell) {
-	activateCell(cell, { focus: true });
-	cell.click();
-}
-function matching(needle) {
-	const id = getItemIdentifier(needle.row);
-	return (item) => getItemIdentifier(item.row) === id;
-}
-function findClosestRemainingRowIndex(oldRows, newRows, oldIndex, direction) {
-	const isMatchingRow = (candidate, index) => {
-		return (direction === "above" ? index < oldIndex : index > oldIndex) && newRows.some(matching(candidate));
-	};
-	const index = direction === "above" ? oldRows.findLastIndex(isMatchingRow) : oldRows.findIndex(isMatchingRow);
-	return index === -1 ? void 0 : index;
-}
-/**
-* A table composable responsible for setting new tabstop and focus when a table row
-* with tabstop is removed.
-*
-* Since a row removal can occur because of multiple reasons, the default behavior
-* is to fallback to the first data cell.
-*
-* During a known row removal operation it is possible to alter this behavior by using
-* the function `withTabstopBehaviour` provided from this composable.
-*
-* ```
-* const { withTabstopBehaviour } = useTemplateRef("table");
-* withTabstopBehaviour("row-removal", removeRowLogic);
-* ```
-*
-* @internal
-*/
-function useTabstop(tableRef, metaRows) {
-	let pendingRowRemoval = false;
-	const renderOptions = /* @__PURE__ */ ref({
-		fallbackToFirstCell: false,
-		focus: false
-	});
-	function fallbackToFirstCell(newRows, oldRows, focus) {
-		assertRef(tableRef);
-		const needle = newRows[0];
-		const newFirstRowOldIndex = oldRows.findIndex(matching(needle));
-		if (newFirstRowOldIndex !== -1) activateCell(getCellTarget(tableRef.value, newFirstRowOldIndex + 1, 0), { focus });
-		else {
-			renderOptions.value.focus = focus;
-			renderOptions.value.fallbackToFirstCell = true;
-		}
-	}
-	watch(metaRows, (newRows, oldRows) => {
-		const tabFallback = pendingRowRemoval ? "sticky" : "first-cell";
-		pendingRowRemoval = false;
-		assertRef(tableRef);
-		const oldTabstopElement = tableRef.value.querySelector(`[tabindex="0"]`);
-		if (!oldTabstopElement) {
-			renderOptions.value.fallbackToFirstCell = true;
-			renderOptions.value.focus = false;
-			return;
-		}
-		assertSet(oldTabstopElement);
-		const oldTabstopFocused = oldTabstopElement === document.activeElement;
-		if (oldTabstopElement.closest("th")) return;
-		if (oldRows.length === 0 || newRows.length === 0) {
-			renderOptions.value.fallbackToFirstCell = true;
-			renderOptions.value.focus = oldTabstopFocused;
-			return;
-		}
-		const oldTabstopTd = oldTabstopElement.closest("td");
-		assertSet(oldTabstopTd);
-		const oldTabstopTr = oldTabstopTd.parentElement;
-		const needle = oldRows[oldTabstopTr.rowIndex - 1];
-		const isBeingRemoved = !newRows.some(matching(needle));
-		if (oldTabstopFocused && !isBeingRemoved) return;
-		if (!isBeingRemoved) {
-			if (oldTabstopFocused) return;
-			fallbackToFirstCell(newRows, oldRows, false);
-			return;
-		}
-		if (tabFallback === "first-cell") {
-			fallbackToFirstCell(newRows, oldRows, oldTabstopFocused);
-			return;
-		}
-		const oldIndex = oldTabstopTr.rowIndex - 1;
-		const oldCellIndex = oldTabstopTd.cellIndex;
-		const rowAboveIndex = findClosestRemainingRowIndex(oldRows, newRows, oldIndex, "above");
-		const rowBelowIndex = findClosestRemainingRowIndex(oldRows, newRows, oldIndex, "below");
-		const targetRowIndex = rowAboveIndex !== null && rowAboveIndex !== void 0 ? rowAboveIndex : rowBelowIndex;
-		if (targetRowIndex !== void 0) activateCell(getCellTarget(tableRef.value, targetRowIndex + 1, oldCellIndex), { focus: oldTabstopFocused });
-		else fallbackToFirstCell(newRows, oldRows, oldTabstopFocused);
-	});
-	onUpdated(() => {
-		if (!renderOptions.value.fallbackToFirstCell) return;
-		assertRef(tableRef);
-		activateCell(getCellTarget(tableRef.value, 1, 0), { focus: renderOptions.value.focus });
-		renderOptions.value.fallbackToFirstCell = false;
-	});
-	async function withTabstopBehaviour(behaviour, action) {
-		if (behaviour === "row-removal") pendingRowRemoval = true;
-		try {
-			await action();
-		} finally {
-			pendingRowRemoval = false;
-		}
-	}
-	return {
-		withTabstopBehaviour,
-		focusCell(cell) {
-			focusCell(cell);
-		}
-	};
-}
-var _hoisted_1$39 = ["role", "aria-rowcount"];
-var _hoisted_2$30 = {
-	key: 0,
-	"data-test": "caption"
-};
-var _hoisted_3$24 = { key: 1 };
-var _hoisted_4$19 = ["aria-rowindex"];
-var _hoisted_5$15 = {
-	key: 0,
-	scope: "col",
-	tabindex: "-1",
-	class: "table-ng__column table-ng__column--expandable"
-};
-var _hoisted_6$12 = { key: 2 };
-var _hoisted_7$9 = {
-	key: 0,
-	class: "table-ng__row--empty"
-};
-var _hoisted_8$6 = ["colspan"];
-var _hoisted_9$4 = [
-	"aria-rowindex",
-	"aria-level",
-	"aria-setsize",
-	"aria-posinset",
-	"aria-selected"
-];
-var _hoisted_10$2 = { key: 3 };
-var _hoisted_11$2 = ["aria-rowindex"];
-var _hoisted_12$2 = ["colspan"];
-var FTable_default = /* @__PURE__ */ defineComponent({
-	__name: "FTable",
-	props: /*@__PURE__*/ mergeModels({
-		columns: {},
-		rows: {},
-		keyAttribute: { default: () => void 0 },
-		rowClass: {
+var FTextField_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
+	name: "FTextField",
+	components: {
+		FLabel: FLabel_default,
+		FIcon: FIcon_default,
+		IPopupError: IPopupError_default,
+		IComboboxDropdown: IComboboxDropdown_default,
+		IComboboxToggleButton: IComboboxToggleButton_default
+	},
+	inheritAttrs: false,
+	props: {
+		/**
+		* The id for the input id attribute.
+		* The id for the label for attribute.
+		* If the prop is not set a random value will be generated.
+		*/
+		id: {
+			type: String,
+			required: false,
+			default: () => ElementIdService.generateElementId()
+		},
+		/**
+		* Show the component inline.
+		*/
+		inline: {
+			type: Boolean,
+			required: false
+		},
+		/**
+		* The value for the input.
+		* If the prop is not used or set to undefined
+		* or null then the default value will be used.
+		*/
+		modelValue: {
+			type: [
+				String,
+				Number,
+				null
+			],
+			required: false,
+			default: ""
+		},
+		/**
+		* The type used for the input.
+		* If the prop is not set text will be used.
+		*/
+		type: {
+			type: String,
+			required: false,
+			default: "text"
+		},
+		/**
+		* - The `formatter` function must only be used on a component that uses validation.
+		* - The `formatter` function acts differently depending on if the `parser` function is defined or not.
+		*
+		* | formatter without parser | formatter with parser |
+		* | ----- | -----|
+		* | modelvalue = parsed viewvalue using formatter function | modelvalue = parsed viewvalue using parser function |
+		* | viewvalue = modelvalue (where modelvalue is already parsed) | viewvalue = formatted modelvalue using formatter function (where modelvalue is already parsed) |
+		*/
+		formatter: {
 			type: Function,
+			required: false,
 			default: void 0
 		},
-		striped: { type: Boolean },
-		disableDividers: { type: Boolean },
-		selectable: { default: () => void 0 },
-		expandableAttribute: { default: () => void 0 }
-	}, {
-		"selectedRows": { default: () => [] },
-		"selectedRowsModifiers": {}
-	}),
-	emits: ["update:selectedRows"],
-	setup(__props, { expose: __expose }) {
-		const selectedRows = useModel(__props, "selectedRows");
-		const sortFilterDatasetEvents = useSortFilterDatasetEvents();
-		const $t = useTranslate();
-		const { hasSlot } = useSlotUtils();
-		const tableRef = useTemplateRef("table");
-		const expandedKeys = /* @__PURE__ */ ref(/* @__PURE__ */ new Set());
-		const expandableAttributeName = isDataset(__props.rows) ? computed(() => getDatasetMetadata(__props.rows).nestedAttribute) : computed(() => __props.expandableAttribute);
-		const keyedRows = computed(() => setItemIdentifiers(__props.rows, __props.keyAttribute, expandableAttributeName.value));
-		const { rows: selectableSourceRows, isProvided: isSelectableSourceProvided } = useSelectableRowSource();
-		const selectableRows = computed(() => {
-			if (!isSelectableSourceProvided.value) return keyedRows.value;
-			return setItemIdentifiers(selectableSourceRows.value, __props.keyAttribute, expandableAttributeName.value);
-		});
-		const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttributeName.value));
-		const isTreegrid = computed(() => Boolean(expandableAttributeName.value));
-		const role = computed(() => isTreegrid.value ? "treegrid" : "grid");
-		const hasCaption = computed(() => {
-			return hasSlot("caption", {}, { stripClasses: [] });
-		});
-		const isEmpty = computed(() => {
-			return metaRows.value.length === 0;
-		});
-		const ariaRowcount = computed(() => {
-			if (!isTreegrid.value) return;
-			const footerRow = hasFooter.value ? 1 : 0;
-			if (!hasColumns.value) return footerRow;
-			return getBodyRowCount(keyedRows.value, expandableAttributeName.value) + 1 + footerRow;
-		});
-		const fullColspan = computed(() => {
-			if (!hasColumns.value) return 0;
-			let count = columns.value.length;
-			if (isTreegrid.value) count += 1;
-			if (__props.selectable) count += 1;
-			return count;
-		});
-		const expandedColspan = computed(() => {
-			return fullColspan.value - 1;
-		});
-		const hasFooter = computed(() => {
-			return hasSlot("footer");
-		});
-		const normalizedColumns = computed(() => normalizeTableColumns(__props.columns));
-		const columns = computed(() => normalizedColumns.value.filter((col) => toValue(col.enabled)));
-		const hasColumns = computed(() => columns.value.length > 0);
-		const tableClasses = computed(() => {
-			return ["table-ng", {
-				"table-ng--striped": __props.striped,
-				"table-ng--divided": !__props.disableDividers
-			}];
-		});
-		const slots = useSlots();
-		const hasExpandableSlot = computed(() => {
-			return Boolean(slots.expandable);
-		});
-		async function stopEditHandler(element, reason) {
-			stopEdit(element, reason);
+		/**
+		* - The `parser` function must only be used on a component that uses validation.
+		* - The `parser` function acts differently depending on if the `formatter` function is defined or not.
+		*   - For parser combined with formatter, refer to formatter prop doc.
+		*
+		* | parser without formatter |
+		* | ----- |
+		* | modelvalue = parsed viewvalue using parser function |
+		* | viewvalue = never updated except when modelvalue differs from parsed viewvalue |
+		*/
+		parser: {
+			type: Function,
+			required: false,
+			default: void 0
+		},
+		/**
+		* Set responsive width for label section.
+		*
+		* ```
+		* label-width="md-9 lg-6"
+		* ```
+		*/
+		labelWidth: {
+			type: String,
+			required: false,
+			default: "sm-12"
+		},
+		/**
+		* Set responsive width for input section that wraps input element and icons.
+		*
+		* ```
+		* input-width="md-6 lg-3"
+		* ```
+		*/
+		inputWidth: {
+			type: String,
+			required: false,
+			default: "sm-12"
+		},
+		/**
+		* List of options.
+		*
+		* When set, the user can select a value from the list of options and filter while typing.
+		*
+		* If options will be set at a later time, initially specify as an empty array.
+		*
+		* If a formatter is used by the component, make sure the options are formatted as well.
+		*/
+		options: {
+			type: Array,
+			required: false,
+			default: () => void 0
+		},
+		/**
+		* Disables the text field.
+		*/
+		disabled: {
+			type: Boolean,
+			required: false
 		}
-		provide(stopEditKey, stopEditHandler);
-		function getRowClass(row) {
-			return typeof __props.rowClass === "function" ? __props.rowClass(row) : void 0;
-		}
-		function onToggleExpanded(key) {
-			if (expandedKeys.value.has(key)) expandedKeys.value.delete(key);
-			else expandedKeys.value.add(key);
-		}
-		function onKeydown(e) {
-			maybeNavigateToCell(e);
-			if (e.defaultPrevented || e.key !== "Enter" && e.key !== " ") return;
-			if (!(e.target instanceof Element)) return;
-			const cell = e.target.closest("td, th");
-			if (!cell) return;
-			const targetEl = activateCell(cell, { focus: true });
-			if (e.key === " " && e.target === cell) e.preventDefault();
-			if (targetEl.contains(e.target)) return;
-			e.preventDefault();
-			targetEl.click();
-		}
-		function onClick(e) {
-			const cell = e.target.closest("td, th");
-			if (!cell) return;
-			const targetEl = activateCell(cell, { focus: true });
-			if (e.target instanceof Node && !targetEl.contains(e.target)) targetEl.click();
-		}
-		function onTableFocusin(e) {
-			assertRef(tableRef);
-			for (const it of tableRef.value.querySelectorAll(`[tabindex="0"]`)) if (it !== e.target) it.setAttribute("tabindex", "-1");
-		}
-		function isInExpandable(el) {
-			if (!el.parentElement) return false;
-			return Boolean(el.parentElement.closest(".table-ng__custom-expandable"));
-		}
-		function onTableFocusout(e) {
-			const { target, relatedTarget } = e;
-			if (!(target instanceof HTMLElement && relatedTarget instanceof HTMLElement)) return;
-			if (isInExpandable(target)) return;
-			if (!tableRef.value) return;
-			if (!tableRef.value.contains(relatedTarget)) {
-				const cell = target.closest("td, th");
-				if (cell) activateCell(cell, { focus: false });
-			} else target.tabIndex = -1;
-		}
-		const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
-		const sortableColumns = /* @__PURE__ */ ref([]);
-		const sortedColumn = /* @__PURE__ */ ref("");
-		const sortedAscending = /* @__PURE__ */ ref(false);
-		function callbackSortableColumns(columnNames) {
-			sortableColumns.value = columnNames;
-		}
-		function callbackOnSort(columnName, ascending) {
-			sortedColumn.value = columnName;
-			sortedAscending.value = ascending;
-		}
-		function isSortEnabled(column) {
-			if (!column.sortable) return false;
-			return sortableColumns.value.indexOf(String(column.sortable)) > -1;
-		}
-		function getSortOrder(column) {
-			if (sortedColumn.value !== column.sortable) return "unsorted";
-			return sortedAscending.value ? "ascending" : "descending";
-		}
-		function onToggleSortOrder(sortable) {
-			if (sortable === sortedColumn.value) {
-				if (sortedAscending.value) sort(sortable, false);
-				else sort("", true);
-			} else sort(sortable, true);
-		}
-		function bindCellApiRef(ref) {
-			if (!isFTableCellApi(ref)) return;
-			const apiEl = toValue(ref.tabstopEl);
-			if (!apiEl) return;
-			const cell = apiEl.closest("td, th");
-			assertSet(cell);
-			cell[tableCellApiSymbol] = ref;
-		}
-		function isAriaSelected(level = 1, row) {
-			return level < 2 && selectableRowState(row);
-		}
-		const { onPopupError, onClosePopupError, activeErrorAnchor } = usePopupError();
-		const { selectableHeaderState, toggleSelectableHeader, selectableRowState, toggleSelectableRow } = useSelectable({
-			selectable: __props.selectable,
-			selectedRows,
-			rows: selectableRows
-		});
-		__expose(useTabstop(tableRef, metaRows));
-		onMounted(() => {
-			assertRef(tableRef);
-			registerCallbackOnMount(callbackSortableColumns);
-			registerCallbackOnSort(callbackOnSort);
-			sortFilterDatasetEvents.onFilter(() => selectedRows.value = []);
-			setDefaultCellTarget(tableRef.value);
-		});
-		onBeforeUnmount(() => {
-			selectedRows.value = [];
-		});
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("table", {
-				ref: "table",
-				role: role.value,
-				class: normalizeClass(tableClasses.value),
-				"aria-rowcount": ariaRowcount.value,
-				onFocusin: onTableFocusin,
-				onFocusout: onTableFocusout,
-				onClick,
-				onKeydown
-			}, [
-				hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$30, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("v-if", true),
-				_cache[6] || (_cache[6] = createTextVNode()),
-				hasColumns.value ? (openBlock(), createElementBlock("thead", _hoisted_3$24, [createBaseVNode("tr", {
-					class: "table-ng__row",
-					"aria-rowindex": isTreegrid.value ? 1 : void 0
-				}, [
-					isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_5$15)) : createCommentVNode("v-if", true),
-					_cache[2] || (_cache[2] = createTextVNode()),
-					__props.selectable ? (openBlock(), createBlock(ITableHeaderSelectable_default, {
-						key: 1,
-						ref: bindCellApiRef,
-						state: unref(selectableHeaderState)(),
-						selectable: __props.selectable,
-						onToggle: unref(toggleSelectableHeader)
-					}, null, 8, [
-						"state",
-						"selectable",
-						"onToggle"
-					])) : createCommentVNode("v-if", true),
-					_cache[3] || (_cache[3] = createTextVNode()),
-					(openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
-						return openBlock(), createBlock(ITableHeader_default, {
-							key: column.id,
-							column,
-							"sort-enabled": isSortEnabled(column),
-							"sort-order": getSortOrder(column),
-							scope: "col",
-							onToggleSortOrder
-						}, null, 8, [
-							"column",
-							"sort-enabled",
-							"sort-order"
-						]);
-					}), 128))
-				], 8, _hoisted_4$19)])) : createCommentVNode("v-if", true),
-				_cache[7] || (_cache[7] = createTextVNode()),
-				hasColumns.value ? (openBlock(), createElementBlock("tbody", _hoisted_6$12, [isEmpty.value ? (openBlock(), createElementBlock("tr", _hoisted_7$9, [createBaseVNode("td", {
-					colspan: fullColspan.value,
-					class: "table-ng__cell",
-					onKeydown: _cache[0] || (_cache[0] = withKeys(withModifiers(() => {}, ["prevent"]), ["space"]))
-				}, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref($t)("fkui.ftable.empty.text", "Tabellen är tom")), 1)])], 40, _hoisted_8$6)])) : (openBlock(true), createElementBlock(Fragment, { key: 1 }, renderList(metaRows.value, ({ key, row, level, setsize, posinset, rowindex, isExpandable, isExpanded }) => {
-					return openBlock(), createElementBlock("tr", {
-						key,
-						class: normalizeClass(["table-ng__row", getRowClass(row)]),
-						"aria-rowindex": isTreegrid.value ? rowindex + 1 : void 0,
-						"aria-level": level,
-						"aria-setsize": setsize,
-						"aria-posinset": posinset,
-						"aria-selected": isAriaSelected(level, row)
-					}, [
-						isTreegrid.value ? (openBlock(), createBlock(ITableExpandButton_default, {
-							key: 0,
-							ref_for: true,
-							ref: bindCellApiRef,
-							"is-expandable": isExpandable,
-							"is-expanded": isExpanded,
-							"row-key": key,
-							onToggle: onToggleExpanded
-						}, null, 8, [
-							"is-expandable",
-							"is-expanded",
-							"row-key"
-						])) : createCommentVNode("v-if", true),
-						_cache[5] || (_cache[5] = createTextVNode()),
-						level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(ITableExpandable_default, {
-							key: 1,
-							colspan: expandedColspan.value
-						}, {
-							default: withCtx(() => [renderSlot(_ctx.$slots, "expandable", mergeProps({ ref_for: true }, { row }))]),
-							_: 2
-						}, 1032, ["colspan"])) : (openBlock(), createElementBlock(Fragment, { key: 2 }, [
-							__props.selectable ? (openBlock(), createBlock(ITableSelectable_default, {
-								key: 0,
-								ref_for: true,
-								ref: bindCellApiRef,
-								level,
-								selectable: __props.selectable,
-								state: unref(selectableRowState)(row),
-								row,
-								onToggle: unref(toggleSelectableRow)
-							}, null, 8, [
-								"level",
-								"selectable",
-								"state",
-								"row",
-								"onToggle"
-							])) : createCommentVNode("v-if", true),
-							_cache[4] || (_cache[4] = createTextVNode()),
-							(openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
-								return openBlock(), createElementBlock(Fragment, { key: column.id }, ["component" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.component), {
-									key: 0,
-									ref_for: true,
-									ref: bindCellApiRef,
-									row,
-									column,
-									"active-error-anchor": unref(activeErrorAnchor),
-									onCloseError: unref(onClosePopupError),
-									onOnError: unref(onPopupError)
-								}, null, 40, [
-									"row",
-									"column",
-									"active-error-anchor",
-									"onCloseError",
-									"onOnError"
-								])) : "render" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.render(row)), {
-									key: 1,
-									row
-								}, null, 8, ["row"])) : createCommentVNode("v-if", true)], 64);
-							}), 128))
-						], 64))
-					], 10, _hoisted_9$4);
-				}), 128))])) : createCommentVNode("v-if", true),
-				_cache[8] || (_cache[8] = createTextVNode()),
-				hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_10$2, [createBaseVNode("tr", {
-					class: "table-ng__row",
-					"aria-rowindex": ariaRowcount.value
-				}, [createBaseVNode("td", {
-					colspan: fullColspan.value,
-					class: "table-ng__cell--custom",
-					onKeydown: _cache[1] || (_cache[1] = withKeys(withModifiers(() => {}, ["prevent"]), ["space"]))
-				}, [renderSlot(_ctx.$slots, "footer")], 40, _hoisted_12$2)], 8, _hoisted_11$2)])) : createCommentVNode("v-if", true)
-			], 42, _hoisted_1$39);
+	},
+	emits: [
+		"blur",
+		"change",
+		"update:modelValue"
+	],
+	setup(props) {
+		const { textFieldTableMode, viewValue, onOptionSelected, dropdownId, dropdownIsOpen, dropdownOptions, activeOptionId, activeOption, toggleDropdown, selectOption, closeDropdown } = useTextFieldSetup(props);
+		return {
+			textFieldTableMode,
+			viewValue,
+			onOptionSelected,
+			dropdownId,
+			dropdownIsOpen,
+			dropdownOptions,
+			activeOptionId,
+			activeOption,
+			toggleDropdown,
+			selectOption,
+			closeDropdown
 		};
+	},
+	data() {
+		return {
+			showErrorPopup: false,
+			lastModelValue: "",
+			validationMessage: "",
+			validityMode: "INITIAL",
+			isAfterInitialRender: false,
+			defaultText: "",
+			descriptionText: "",
+			descriptionScreenReaderText: "",
+			discreteDescriptionText: "",
+			discreteDescriptionScreenReaderText: "",
+			dropdownOpenedWithoutVisibleError: false
+		};
+	},
+	computed: {
+		showPopupError() {
+			return this.textFieldTableMode && this.hasError && this.showErrorPopup;
+		},
+		labelClass() {
+			return this.textFieldTableMode ? "sr-only" : "";
+		},
+		isValid() {
+			return this.validityMode === "VALID";
+		},
+		hasError() {
+			if (this.dropdownIsOpen && this.dropdownOpenedWithoutVisibleError) return false;
+			return this.validityMode === "ERROR";
+		},
+		rootClass() {
+			return {
+				"text-field--error": this.hasError,
+				"text-field--inline": this.inline,
+				"text-field--table": this.textFieldTableMode
+			};
+		},
+		labelWrapperClass() {
+			return resolveWidthClass(this.labelWidth, this.inline);
+		},
+		inputWrapperClass() {
+			return resolveWidthClass(this.inputWidth, this.inline);
+		},
+		isModelUpdatedProgrammatically() {
+			return this.lastModelValue !== this.modelValue;
+		}
+	},
+	watch: {
+		modelValue: {
+			immediate: true,
+			handler() {
+				if (this.modelValue === void 0 || this.modelValue === null) {
+					this.viewValue = "";
+					return;
+				}
+				if (!this.isModelUpdatedProgrammatically) return;
+				this.setViewValueToFormattedValueOrFallbackToValue();
+				this.lastModelValue = this.modelValue;
+			}
+		},
+		dropdownIsOpen: { handler() {
+			if (this.dropdownIsOpen) this.dropdownOpenedWithoutVisibleError = this.validityMode === "INITIAL";
+		} }
+	},
+	beforeUpdate() {
+		this.isAfterInitialRender = true;
+	},
+	methods: {
+		onDropdownSelect(value) {
+			this.selectOption(value);
+			this.$emit("update:modelValue", value);
+			this.$emit("change", value);
+		},
+		onDropdownClose() {
+			this.closeDropdown();
+		},
+		onInputSelect(event) {
+			const targetEvent = event;
+			this.$emit("update:modelValue", targetEvent.detail);
+			this.$emit("change", targetEvent.detail);
+		},
+		getErrorPopupAnchor() {
+			return this.$refs.input;
+		},
+		closePopupError() {
+			this.showErrorPopup = false;
+		},
+		async onChange() {
+			if (!this.$refs.input) return;
+			const element = this.$refs.input;
+			if (Object.hasOwn(element.dataset, "validation")) return;
+			this.$emit("update:modelValue", this.viewValue);
+			await this.$nextTick();
+			this.$emit("change", this.viewValue);
+		},
+		onFocus() {
+			this.showErrorPopup = true;
+		},
+		async onBlur() {
+			this.showErrorPopup = false;
+			if (!this.$refs.input) return;
+			const element = this.$refs.input;
+			if (Object.hasOwn(element.dataset, "validation")) return;
+			this.$emit("update:modelValue", this.viewValue);
+			await this.$nextTick();
+			this.$emit("blur", this.viewValue);
+		},
+		async onValidity({ detail }) {
+			this.validationMessage = detail.validationMessage;
+			this.validityMode = detail.validityMode;
+			if (detail.nativeEvent === "change" || detail.nativeEvent === "blur") {
+				let newModelValue;
+				if (detail.isValid) newModelValue = this.resolveNewModelValue(this.viewValue);
+				else newModelValue = this.viewValue;
+				this.lastModelValue = newModelValue;
+				this.$emit("update:modelValue", newModelValue);
+				await this.$nextTick();
+				this.$emit(detail.nativeEvent, newModelValue);
+				if (detail.isValid) this.syncViewValueAfterModelUpdate(newModelValue);
+			}
+			this.triggerComponentValidityEvent(detail);
+		},
+		onPendingValidity() {
+			this.validityMode = "INITIAL";
+		},
+		async onValidationConfigUpdate() {
+			if (!this.isAfterInitialRender) return;
+			await this.$nextTick();
+			if (!this.$refs.input) return;
+			ValidationService.validateElement(this.$refs.input);
+		},
+		resolveNewModelValue(viewValue) {
+			const trimmedViewValue = viewValue.trim();
+			if (trimmedViewValue === "") return "";
+			if (isSet(this.parser)) {
+				var _this$parser;
+				return (_this$parser = this.parser(trimmedViewValue)) !== null && _this$parser !== void 0 ? _this$parser : trimmedViewValue;
+			}
+			if (isSet(this.formatter)) {
+				var _this$formatter;
+				return (_this$formatter = this.formatter(trimmedViewValue)) !== null && _this$formatter !== void 0 ? _this$formatter : trimmedViewValue;
+			}
+			return trimmedViewValue;
+		},
+		syncViewValueAfterModelUpdate(newModelValue) {
+			if (newModelValue === "") this.viewValue = "";
+			else if (isSet(this.parser)) {
+				if (isSet(this.formatter)) this.viewValue = this.formatter(newModelValue) || this.viewValue;
+			} else this.viewValue = String(newModelValue);
+		},
+		triggerComponentValidityEvent(validityEvent) {
+			var _renderSlotText;
+			const errorMessage = (_renderSlotText = renderSlotText(this.$slots.default, {}, { stripClasses: [] })) !== null && _renderSlotText !== void 0 ? _renderSlotText : this.defaultText;
+			const element = this.$el.querySelector(`#${validityEvent.elementId}`);
+			if (element) dispatchComponentValidityEvent(element, {
+				...validityEvent,
+				errorMessage,
+				focusElementId: validityEvent.elementId
+			});
+		},
+		setViewValueToFormattedValueOrFallbackToValue() {
+			if (!isSet(this.formatter)) {
+				this.viewValue = String(this.modelValue);
+				return;
+			}
+			/**
+			* A formatter function expects a proper parsed value as input.
+			* If the modelvalue is a `string` type, it can be both valid or invalid.
+			* Otherwise it is expected to be a type understood by the formatter, i.e. `number`.
+			*/
+			const parsedValue = isSet(this.parser) && typeof this.modelValue === "string" ? this.parser(this.modelValue) : this.modelValue;
+			const formattedValue = isSet(parsedValue) ? this.formatter(parsedValue) : void 0;
+			this.viewValue = isSet(formattedValue) ? formattedValue : String(this.modelValue);
+		}
 	}
 });
+var _hoisted_1$39 = { key: 0 };
+var _hoisted_2$29 = {
+	key: 0,
+	class: "sr-only"
+};
+var _hoisted_3$23 = {
+	key: 0,
+	class: "sr-only"
+};
+var _hoisted_4$18 = { class: "text-field__icon-wrapper" };
+var _hoisted_5$14 = [
+	"id",
+	"disabled",
+	"type"
+];
+var _hoisted_6$11 = {
+	key: 2,
+	class: "text-field__append-inner"
+};
+var _hoisted_7$8 = {
+	key: 3,
+	class: "text-field__append-inner"
+};
+function _sfc_render$24(_ctx, _cache, $props, $setup, $data, $options) {
+	const _component_f_label = resolveComponent("f-label");
+	const _component_f_icon = resolveComponent("f-icon");
+	const _component_i_popup_error = resolveComponent("i-popup-error");
+	const _component_i_combobox_toggle_button = resolveComponent("i-combobox-toggle-button");
+	const _component_i_combobox_dropdown = resolveComponent("i-combobox-dropdown");
+	return openBlock(), createElementBlock("div", { class: normalizeClass(["text-field", _ctx.rootClass]) }, [
+		createBaseVNode("div", { class: normalizeClass(_ctx.labelWrapperClass) }, [createVNode(_component_f_label, {
+			for: _ctx.id,
+			class: normalizeClass(_ctx.labelClass)
+		}, createSlots({
+			default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [_ctx.defaultText !== "" ? (openBlock(), createElementBlock("span", _hoisted_1$39, toDisplayString(_ctx.defaultText), 1)) : createCommentVNode("v-if", true)])]),
+			description: withCtx(({ descriptionClass, formatDescriptionClass }) => [renderSlot(_ctx.$slots, "description", {
+				descriptionClass,
+				formatDescriptionClass
+			}, () => [
+				_ctx.descriptionText ? (openBlock(), createElementBlock("span", {
+					key: 0,
+					class: normalizeClass(descriptionClass)
+				}, [
+					_ctx.descriptionScreenReaderText ? (openBlock(), createElementBlock("span", _hoisted_2$29, toDisplayString(_ctx.descriptionScreenReaderText), 1)) : createCommentVNode("v-if", true),
+					_cache[8] || (_cache[8] = createTextVNode()),
+					createBaseVNode("span", null, toDisplayString(_ctx.descriptionText), 1)
+				], 2)) : createCommentVNode("v-if", true),
+				_cache[10] || (_cache[10] = createTextVNode()),
+				_ctx.discreteDescriptionText ? (openBlock(), createElementBlock("span", {
+					key: 1,
+					class: normalizeClass(formatDescriptionClass)
+				}, [
+					_ctx.discreteDescriptionScreenReaderText ? (openBlock(), createElementBlock("span", _hoisted_3$23, toDisplayString(_ctx.discreteDescriptionScreenReaderText), 1)) : createCommentVNode("v-if", true),
+					_cache[9] || (_cache[9] = createTextVNode()),
+					createBaseVNode("span", null, toDisplayString(_ctx.discreteDescriptionText), 1)
+				], 2)) : createCommentVNode("v-if", true)
+			])]),
+			"error-message": withCtx(() => [renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
+				hasError: _ctx.hasError,
+				validationMessage: _ctx.validationMessage
+			})), () => [_ctx.hasError ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [createTextVNode(toDisplayString(_ctx.validationMessage), 1)], 64)) : createCommentVNode("v-if", true)])]),
+			_: 2
+		}, [_ctx.$slots.tooltip ? {
+			name: "tooltip",
+			fn: withCtx(() => [renderSlot(_ctx.$slots, "tooltip")]),
+			key: "0"
+		} : void 0]), 1032, ["for", "class"])], 2),
+		_cache[20] || (_cache[20] = createTextVNode()),
+		createBaseVNode("div", { class: normalizeClass(["text-field__input-wrapper", _ctx.inputWrapperClass]) }, [
+			renderSlot(_ctx.$slots, "input-left"),
+			_cache[18] || (_cache[18] = createTextVNode()),
+			createBaseVNode("div", _hoisted_4$18, [
+				withDirectives(createBaseVNode("input", mergeProps({
+					id: _ctx.id,
+					ref: "input",
+					"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.viewValue = $event),
+					disabled: _ctx.disabled,
+					type: _ctx.type,
+					class: "text-field__input"
+				}, _ctx.$attrs, {
+					"on:optionSelect": _cache[1] || (_cache[1] = (...args) => _ctx.onInputSelect && _ctx.onInputSelect(...args)),
+					onBlur: _cache[2] || (_cache[2] = (...args) => _ctx.onBlur && _ctx.onBlur(...args)),
+					onFocus: _cache[3] || (_cache[3] = (...args) => _ctx.onFocus && _ctx.onFocus(...args)),
+					onChange: _cache[4] || (_cache[4] = (...args) => _ctx.onChange && _ctx.onChange(...args)),
+					onValidationConfigUpdate: _cache[5] || (_cache[5] = (...args) => _ctx.onValidationConfigUpdate && _ctx.onValidationConfigUpdate(...args)),
+					onValidity: _cache[6] || (_cache[6] = (...args) => _ctx.onValidity && _ctx.onValidity(...args)),
+					onPendingValidity: _cache[7] || (_cache[7] = (...args) => _ctx.onPendingValidity && _ctx.onPendingValidity(...args))
+				}), null, 16, _hoisted_5$14), [[vModelDynamic, _ctx.viewValue]]),
+				_cache[14] || (_cache[14] = createTextVNode()),
+				_ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_f_icon, {
+					key: 0,
+					ref: "icon",
+					class: "text-field__icon input-icon text-field__append-inner text-field__error-popup-icon",
+					name: "error"
+				}, null, 512)) : createCommentVNode("v-if", true),
+				_cache[15] || (_cache[15] = createTextVNode()),
+				_ctx.textFieldTableMode ? (openBlock(), createBlock(_component_i_popup_error, {
+					key: 1,
+					anchor: _ctx.getErrorPopupAnchor(),
+					"is-open": _ctx.showPopupError,
+					"error-message": _ctx.validationMessage,
+					layout: "f-interactive-table",
+					onClose: _ctx.closePopupError
+				}, null, 8, [
+					"anchor",
+					"is-open",
+					"error-message",
+					"onClose"
+				])) : createCommentVNode("v-if", true),
+				_cache[16] || (_cache[16] = createTextVNode()),
+				_ctx.$slots["append-inner"] ? (openBlock(), createElementBlock("div", _hoisted_6$11, [renderSlot(_ctx.$slots, "append-inner")])) : createCommentVNode("v-if", true),
+				_cache[17] || (_cache[17] = createTextVNode()),
+				_ctx.options ? (openBlock(), createElementBlock("div", _hoisted_7$8, [createVNode(_component_i_combobox_toggle_button, {
+					disabled: _ctx.disabled,
+					"is-open": _ctx.dropdownIsOpen,
+					"aria-controls": _ctx.dropdownIsOpen ? _ctx.dropdownId : void 0,
+					"aria-expanded": _ctx.dropdownIsOpen,
+					onToggle: _ctx.toggleDropdown
+				}, null, 8, [
+					"disabled",
+					"is-open",
+					"aria-controls",
+					"aria-expanded",
+					"onToggle"
+				])])) : createCommentVNode("v-if", true)
+			]),
+			_cache[19] || (_cache[19] = createTextVNode()),
+			renderSlot(_ctx.$slots, "input-right")
+		], 2),
+		_cache[21] || (_cache[21] = createTextVNode()),
+		_ctx.options && _ctx.$refs.input ? (openBlock(), createBlock(_component_i_combobox_dropdown, {
+			key: 0,
+			id: _ctx.dropdownId,
+			"is-open": _ctx.dropdownIsOpen,
+			options: _ctx.dropdownOptions,
+			"active-option": _ctx.activeOption,
+			"active-option-id": _ctx.activeOptionId,
+			"input-node": _ctx.$refs.input,
+			onSelect: _ctx.onDropdownSelect,
+			onClose: _ctx.onDropdownClose
+		}, null, 8, [
+			"id",
+			"is-open",
+			"options",
+			"active-option",
+			"active-option-id",
+			"input-node",
+			"onSelect",
+			"onClose"
+		])) : createCommentVNode("v-if", true)
+	], 2);
+}
+var FTextField_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FTextField_vue_vue_type_script_lang_default, [["render", _sfc_render$24]]);
 TranslationService.provider.translate("fkui.email-text-field.error.pasting", "Du kan inte kopiera mejladressen. Du måste skriva in den igen.");
 TranslationService.provider.translate("fkui.search-text-field.search-screen-reader", "Töm inmatningsfält");
-/**
-* @internal
-* @since v6.44.0
-*/
-var sortFilterDatasetEventsKey = Symbol();
-/**
-* Injects `SortFilterDatasetEvents`.
-*
-* @internal
-* @since v6.44.0
-*/
-function useSortFilterDatasetEvents() {
-	return inject(sortFilterDatasetEventsKey, {
-		onFilter: () => void 0,
-		onSort: () => void 0,
-		onLazyRowsAdded: () => void 0
-	});
-}
 var require_get_built_in_prototype_method = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var globalThis = require_global_this();
 	module.exports = function(CONSTRUCTOR, METHOD) {
@@ -21431,23 +17202,8 @@ var layoutRegister = {};
 /**
 * @internal
 */
-function getLayout(name) {
-	var _layoutRegister$name;
-	return (_layoutRegister$name = layoutRegister[name]) !== null && _layoutRegister$name !== void 0 ? _layoutRegister$name : null;
-}
-/**
-* @internal
-*/
 function setLayout(name, layout) {
 	layoutRegister[name] = layout;
-}
-/**
-* Defines a new layout for usage with {@link FPageLayout}.
-*
-* @internal
-*/
-function defineLayout(definition) {
-	return normalizeDefinition(definition);
 }
 /**
 * Register a new layout for usage with {@link FPageLayout}.
@@ -21473,76 +17229,6 @@ function normalizeAreasDefinition(areas) {
 		}];
 	}));
 }
-var panels = [];
-var exclusiveGroups = /* @__PURE__ */ new Map();
-/**
-* Resets all registered panels.
-*
-* All panels has to be remounted after this,
-*
-* @internal
-*/
-function resetDetailPanels() {
-	panels = [];
-}
-/**
-* @internal
-*/
-function createDetailsPanel(name, options) {
-	const { exclusive } = options;
-	const control = {
-		name: /* @__PURE__ */ ref(name),
-		item: /* @__PURE__ */ ref(null),
-		callback: /* @__PURE__ */ ref(null),
-		open(item, options) {
-			var _options$onClose;
-			if (exclusive) {
-				const existing = exclusiveGroups.get(exclusive);
-				if (existing) existing.closeMeMaybe();
-				exclusiveGroups.set(exclusive, { closeMeMaybe: () => {
-					this.close();
-				} });
-			}
-			this.item.value = item;
-			this.callback.value = (_options$onClose = options?.onClose) !== null && _options$onClose !== void 0 ? _options$onClose : null;
-		},
-		close() {
-			this.item.value = null;
-			this.callback.value = null;
-			if (exclusive) exclusiveGroups.delete(exclusive);
-		},
-		destroy() {}
-	};
-	panels.push(control);
-	return control;
-}
-function findPanelByName(name) {
-	return panels.find((it) => it.name.value === name);
-}
-/**
-* Get a API object to access details panels (FDetailsPanel).
-*
-* @public
-* @param name - Name of panel.
-*/
-function useDetailsPanel(name) {
-	return {
-		open(item, options) {
-			const panel = findPanelByName(name);
-			if (panel) panel.open(item, options);
-		},
-		close() {
-			const panel = findPanelByName(name);
-			if (panel) panel.close();
-		}
-	};
-}
-/** @internal */
-var VAR_NAME_AREA = "--f-layout-area";
-/** @internal */
-var VAR_NAME_ATTACH_PANEL = "--f-layout-panel";
-/** @internal */
-var VAR_NAME_DIRECTION = "--f-layout-direction";
 registerLayout({
 	name: "simple",
 	areas: {
@@ -21631,1524 +17317,27 @@ registerLayout({
 		}
 	}
 });
-var _hoisted_1$30 = ["part"];
-var _hoisted_2$24 = ["part", "data-direction"];
-var FPageLayout_ce_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(/* @__PURE__ */ defineComponent({
-	__name: "FPageLayout.ce",
-	props: { layout: { type: String } },
-	emits: ["update"],
-	setup(__props, { emit: __emit }) {
-		const emit = __emit;
-		const rootRef = useTemplateRef("root");
-		const slotNames = /* @__PURE__ */ ref([]);
-		const stubLayout = defineLayout({
-			name: "",
-			areas: {}
-		});
-		const layoutDefinition = computed(() => {
-			var _getLayout;
-			return (_getLayout = getLayout(__props.layout)) !== null && _getLayout !== void 0 ? _getLayout : stubLayout;
-		});
-		const part = computed(() => `grid ${__props.layout}`);
-		function getSlotNames(element) {
-			return Array.from(element.querySelectorAll(":scope > [slot]"), (it) => it.slot);
-		}
-		const resolvedSlots = computed(() => {
-			return slotNames.value.filter((it) => Object.hasOwn(layoutDefinition.value.areas, it)).map((slotName) => {
-				const { attachPanel: attach, direction, scroll } = layoutDefinition.value.areas[slotName];
-				const style = [
-					`grid-area: ${slotName};`,
-					`${VAR_NAME_AREA}: "${slotName}";`,
-					`${VAR_NAME_ATTACH_PANEL}: "${attach}";`,
-					`${VAR_NAME_DIRECTION}: "${direction}";`
-				].join("\n");
-				return {
-					name: slotName,
-					part: `area ${slotName}`,
-					direction,
-					scroll,
-					style
-				};
-			});
-		});
-		onMounted(() => {
-			if (!rootRef.value) return;
-			const host = rootRef.value.getRootNode().host;
-			slotNames.value = getSlotNames(host);
-			nextTick(() => {
-				emit("update");
-			});
-			useMutationObserver(host, () => {
-				slotNames.value = getSlotNames(host);
-				nextTick(() => {
-					emit("update");
-				});
-			}, { childList: true });
-		});
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", {
-				ref: "root",
-				class: "page-layout",
-				part: part.value
-			}, [(openBlock(true), createElementBlock(Fragment, null, renderList(resolvedSlots.value, (item) => {
-				return openBlock(), createElementBlock("div", {
-					key: item.name,
-					class: "page-layout__area",
-					part: item.part,
-					"data-direction": item.direction,
-					style: normalizeStyle(item.style)
-				}, [renderSlot(_ctx.$slots, item.name)], 12, _hoisted_2$24);
-			}), 128))], 8, _hoisted_1$30);
-		};
-	}
-}), [["styles", [":host {\n  display: block;\n}\n.page-layout {\n  display: grid;\n  height: 100cqh;\n  width: min(100%, 100cqw);\n&[part~=simple] {\n    grid-template: \"header\" min-content \"content\" 1fr \"footer\" min-content/1fr;\n[part=\"area header\"] {\n      --f-page-layout-background: var(\n          --fkds-color-header-background-primary\n      );\n      --f-page-layout-color: var(--fkds-color-header-text-primary);\n}\n[part=\"area footer\"] {\n      --f-page-layout-background: var(\n          --fkds-color-footer-background-primary\n      );\n      --f-page-layout-color: var(--fkds-color-footer-text-primary);\n}\n[part=\"area content\"] {\n      --f-page-layout-background: var(--fkds-color-background-primary);\n      --f-page-layout-color: var(--fkds-color-text-primary);\n}\n}\n&[part~=left-panel] {\n    grid-template: \"header header\" min-content \"left content\" 1fr \"footer footer\" min-content/min-content 1fr;\n[part=\"area header\"] {\n      --f-page-layout-background: var(\n          --fkds-color-header-background-primary\n      );\n      --f-page-layout-color: var(--fkds-color-header-text-primary);\n}\n[part=\"area footer\"] {\n      --f-page-layout-background: var(\n          --fkds-color-footer-background-primary\n      );\n      --f-page-layout-color: var(--fkds-color-footer-text-primary);\n}\n[part=\"area left\"] {\n      --f-page-layout-background: var(--fkds-color-background-secondary);\n}\n[part=\"area content\"] {\n      --f-page-layout-background: var(--fkds-color-background-primary);\n      --f-page-layout-color: var(--fkds-color-text-primary);\n}\n}\n&[part~=right-panel] {\n    grid-template: \"header header\" min-content \"content right\" 1fr \"footer footer\" min-content/1fr min-content;\n[part=\"area header\"] {\n      --f-page-layout-background: var(\n          --fkds-color-header-background-primary\n      );\n      --f-page-layout-color: var(--fkds-color-header-text-primary);\n}\n[part=\"area footer\"] {\n      --f-page-layout-background: var(\n          --fkds-color-footer-background-primary\n      );\n      --f-page-layout-color: var(--fkds-color-footer-text-primary);\n}\n[part=\"area right\"] {\n      --f-page-layout-background: var(--fkds-color-background-secondary);\n      --f-page-layout-color: var(--fkds-color-text-primary);\n}\n[part=\"area content\"] {\n      --f-page-layout-background: var(--fkds-color-background-primary);\n      --f-page-layout-color: var(--fkds-color-text-primary);\n}\n}\n&[part~=three-column] {\n    grid-template: \"header header header\" min-content \"left content right\" 1fr \"footer footer footer\" min-content/min-content 1fr min-content;\n[part=\"area header\"] {\n      --f-page-layout-background: var(\n          --fkds-color-header-background-primary\n      );\n      --f-page-layout-color: var(--fkds-color-header-text-primary);\n}\n[part=\"area footer\"] {\n      --f-page-layout-background: var(\n          --fkds-color-footer-background-primary\n      );\n      --f-page-layout-color: var(--fkds-color-footer-text-primary);\n}\n[part=\"area left\"],\n    [part=\"area right\"] {\n      --f-page-layout-background: var(--fkds-color-background-secondary);\n      --f-page-layout-color: var(--fkds-color-text-primary);\n}\n[part=\"area content\"] {\n      --f-page-layout-background: var(--fkds-color-background-primary);\n      --f-page-layout-color: var(--fkds-color-text-primary);\n}\n}\n}\n.page-layout__area {\n  display: flex;\n  position: relative;\n  background: var(--f-page-layout-background);\n  color: var(--f-page-layout-color);\n&[data-direction=column] {\n    flex-direction: column;\n}\n&[data-direction=row] {\n    flex-direction: row;\n}\n&[data-scroll] {\n    overflow-y: auto;\n}\n&:empty {\n    display: none;\n}\n}"]]]);
-var ceTag$2 = "ce-page-layout";
-var FPageLayout_default = /* @__PURE__ */ defineComponent({
-	__name: "FPageLayout",
-	props: { layout: {} },
-	emits: ["update"],
-	setup(__props, { emit: __emit }) {
-		const emit = __emit;
-		const proxy = new Proxy({}, { get(_, property) {
-			if (property.startsWith("__v")) return;
-			return property;
-		} });
-		onMounted(() => {
-			if (!customElements.get(ceTag$2)) customElements.define(ceTag$2, /* @__PURE__ */ defineCustomElement(FPageLayout_ce_default));
-		});
-		onUnmounted(() => {
-			resetDetailPanels();
-		});
-		return (_ctx, _cache) => {
-			return openBlock(), createBlock(resolveDynamicComponent(ceTag$2), {
-				layout: __props.layout,
-				onUpdate: _cache[0] || (_cache[0] = ($event) => emit("update"))
-			}, {
-				default: withCtx(() => [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps(unref(proxy))))]),
-				_: 3
-			}, 40, ["layout"]);
-		};
-	}
-});
-function getProperty(style, key) {
-	const value = style.getPropertyValue(key);
-	if (value === "") return null;
-	return JSON.parse(value);
-}
-function findLayoutElement(element) {
-	if (!element) return null;
-	const parent = element.closest("ce-page-layout");
-	if (parent) return parent;
-	const root = element.getRootNode();
-	if (root instanceof ShadowRoot) return findLayoutElement(root.host);
-	return null;
-}
-/**
-* Fetch information about the layout area given element belongs to.
-*
-* @public
-*/
-function useAreaData(element) {
-	const area = /* @__PURE__ */ ref(null);
-	const attachPanel = /* @__PURE__ */ ref(null);
-	const direction = /* @__PURE__ */ ref(null);
-	useEventListener$1(computed(() => findLayoutElement(toValue(element))), "update", () => {
-		if (element.value) update(element.value);
-	});
-	watchEffect(() => {
-		if (element.value) update(element.value);
-	});
-	return {
-		area,
-		attachPanel,
-		direction
-	};
-	function update(element) {
-		const style = getComputedStyle(element);
-		area.value = getProperty(style, VAR_NAME_AREA);
-		attachPanel.value = getProperty(style, VAR_NAME_ATTACH_PANEL);
-		direction.value = getProperty(style, VAR_NAME_DIRECTION);
-	}
-}
-/**
-* Takes a string with a `<length>` (number and unit) or the keyword `auto` and
-* returns the computed value in pixels.
-*
-* Handles both `px` and `%` as units.
-*
-* @internal
-*/
-function computeCssValue(raw, total, auto) {
-	if (raw.endsWith("px")) return Math.trunc(Number(raw.slice(0, -2)));
-	if (raw.endsWith("%")) return Math.trunc(Number(raw.slice(0, -1))) / 100 * total;
-	if (raw === "0") return 0;
-	if (raw === "auto" || raw === "") return auto;
-	throw new Error(`Cant parse size from "${raw}"`);
-}
-/**
-* Takes a space-separated list of `<length>`, computes the values and using the
-* given aggregator function returns a single value from the list.
-*
-* Typically used with `Math.min` or `Math.max` to get the smallest or largest
-* value from the list.
-*
-* @example
-*
-* Assuming we have the width of the browser window:
-*
-* ```ts
-* const totalWidth = /* ... *;
-* ```
-*
-* We can pass in one static value and one in percent:
-*
-* ```ts
-* aggregateCssValue("200px 25%", totalWidth, 0, Math.max);
-* ```
-*
-* - If 25% of the width if greater than 200 it's computed value is returned.
-* - If 25% of the width is less than 200, 200 is returned instead.
-*
-* By changing `Math.max` to `Math.min` we can do the inverse and only return
-* the percentage if it is less than the static value.
-*
-*@internal
-*/
-function aggregateCssValue(raw, total, auto, take) {
-	if (raw === "auto") return auto;
-	return take(...raw.split(/\s+/).map((it) => it.trim()).map((it) => computeCssValue(it, total, auto)));
-}
-/**
-* Ensures value is within range.
-*
-* Returns value if value is between `min` and `max` (both inclusive) or it
-* returns the lower or upper limit.
-*
-* @internal
-*/
-function clamp$1(value, min, max) {
-	return Math.min(Math.max(value, min), max);
-}
-var keymap = {
-	left: {
-		ArrowLeft: "decrease",
-		ArrowRight: "increase",
-		Home: "minimize",
-		End: "maximize"
-	},
-	right: {
-		ArrowLeft: "increase",
-		ArrowRight: "decrease",
-		Home: "minimize",
-		End: "maximize"
-	},
-	top: {
-		ArrowUp: "decrease",
-		ArrowDown: "increase",
-		Home: "minimize",
-		End: "maximize"
-	},
-	bottom: {
-		ArrowUp: "increase",
-		ArrowDown: "decrease",
-		Home: "minimize",
-		End: "maximize"
-	},
-	none: {}
-};
-/**
-* @internal
-*/
-function useKeyboardHandler(options) {
-	const { attachment, separator } = options;
-	useEventListener$1(separator, "keydown", (event) => {
-		if (!attachment.value) return;
-		const action = keymap[attachment.value][event.key];
-		if (!action) return;
-		event.preventDefault();
-		options[action]();
-	});
-}
-function usePointerHandler(options) {
-	const { separator, attachment } = options;
-	const invert = computed(() => {
-		if (attachment.value === "right" || attachment.value === "bottom") return -1;
-		return 1;
-	});
-	const orientation = computed(() => {
-		if (attachment.value === "top" || attachment.value === "bottom") return "horizontal";
-		return "vertical";
-	});
-	useEventListener$1(separator, "pointerdown", (event) => {
-		const { isPrimary, button, target, pointerId } = event;
-		if (!separator.value) return;
-		if (!isPrimary || button !== 0 || target !== separator.value) return;
-		const separatorElement = separator.value;
-		const property = orientation.value === "horizontal" ? "clientY" : "clientX";
-		const reference = event[property];
-		const resize = createResizer();
-		function onPointerMove(event) {
-			if (event.pointerId === pointerId) resize(event[property] - reference);
-		}
-		function onLostPointerCapture(event) {
-			if (event.pointerId !== pointerId) return;
-			separatorElement.removeEventListener("pointermove", onPointerMove);
-			separatorElement.removeEventListener("lostpointercapture", onLostPointerCapture);
-		}
-		onPointerMove(event);
-		separatorElement.addEventListener("lostpointercapture", onLostPointerCapture);
-		separatorElement.addEventListener("pointermove", onPointerMove);
-		separatorElement.setPointerCapture(pointerId);
-		event.preventDefault();
-	});
-	function createResizer() {
-		const { min, max, current: value } = options.state.value;
-		return (amount) => {
-			options.movement(clamp$1(value + amount * invert.value, min, max));
-		};
-	}
-}
-/**
-* @internal
-*/
-function useStorage(options) {
-	const { state, storageKey } = options;
-	const loaded = /* @__PURE__ */ ref(false);
-	let last = -1;
-	watchEffect(() => {
-		if (!loaded.value) return;
-		if (!storageKey.value) return;
-		if (state.value.current < 0 || state.value.current === last) return;
-		const json = JSON.stringify(state.value.current);
-		window.localStorage.setItem(storageKey.value, json);
-		last = state.value.current;
-	});
-	watchEffect(() => {
-		if (!storageKey.value) return;
-		const json = window.localStorage.getItem(storageKey.value);
-		if (json) {
-			const value = JSON.parse(json);
-			state.value.current = clamp$1(value, state.value.min, state.value.max);
-			last = value;
-		}
-		loaded.value = true;
-	});
-}
-var _hoisted_1$29 = {
-	key: 0,
-	class: "resize__offset"
-};
-var _hoisted_2$23 = ["aria-orientation"];
-var _hoisted_3$18 = ["aria-orientation"];
-var STEP_SIZE = 10;
-var FResizePane_ce_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(/* @__PURE__ */ defineComponent({
-	inheritAttrs: false,
-	__name: "FResizePane.ce",
-	props: {
-		disabled: { type: Boolean },
-		min: {
-			default: "0",
-			type: String
-		},
-		max: {
-			default: "100%",
-			type: String
-		},
-		initial: {
-			default: "50%",
-			type: String
-		},
-		overlay: { type: Boolean },
-		offset: {
-			default: 0,
-			type: Number
-		}
-	},
-	emits: ["resize"],
-	setup(__props, { emit: __emit }) {
-		const props = __props;
-		const emit = __emit;
-		const root = useTemplateRef("root");
-		const content = useTemplateRef("content");
-		const separator = useTemplateRef("separator");
-		const state = /* @__PURE__ */ ref({
-			min: -1,
-			max: -1,
-			current: -1
-		});
-		const layoutSize = /* @__PURE__ */ ref(0);
-		const storageKey = computed(() => area.value ? `layout/${area.value}/size` : null);
-		const { attachPanel: attachment, direction, area } = useAreaData(root);
-		useKeyboardHandler({
-			increase() {
-				state.value.current = Math.min(state.value.current + STEP_SIZE, state.value.max);
-			},
-			decrease() {
-				state.value.current = Math.max(state.value.current - STEP_SIZE, state.value.min);
-			},
-			maximize() {
-				state.value.current = state.value.max;
-			},
-			minimize() {
-				state.value.current = state.value.min;
-			},
-			attachment,
-			separator
-		});
-		useStorage({
-			state,
-			storageKey
-		});
-		usePointerHandler({
-			movement(value) {
-				state.value.current = value;
-			},
-			separator,
-			state,
-			attachment
-		});
-		const minSize = computed(() => {
-			const total = layoutSize.value;
-			return Math.floor(aggregateCssValue(props.min, total, 0, Math.max));
-		});
-		const maxSize = computed(() => {
-			const total = layoutSize.value;
-			return Math.max(Math.floor(aggregateCssValue(props.max, total, total, Math.min)), minSize.value);
-		});
-		const initialSize = computed(() => {
-			const total = layoutSize.value;
-			return Math.floor(computeCssValue(props.initial, total, total * .5));
-		});
-		const orientation = computed(() => {
-			if (attachment.value === "top" || attachment.value === "bottom") return "horizontal";
-			return "vertical";
-		});
-		const classes = computed(() => {
-			return [
-				`resize--${String(attachment.value)}`,
-				`resize--${String(direction.value)}`,
-				props.overlay ? "resize--overlay" : void 0,
-				props.disabled ? "resize--disabled" : void 0
-			];
-		});
-		const layoutElement = computed(() => {
-			var _host$closest;
-			if (!root.value) return;
-			return (_host$closest = root.value.getRootNode().host.closest("ce-page-layout")) !== null && _host$closest !== void 0 ? _host$closest : void 0;
-		});
-		watch(() => props.min, onResize);
-		watch(() => props.max, onResize);
-		watchEffect(() => {
-			const { min, max, current: value } = state.value;
-			if (root.value) {
-				const host = root.value.getRootNode().host;
-				host.style.setProperty("--size", `${String(value)}px`);
-				host.style.setProperty("--min", `${String(min)}px`);
-				host.style.setProperty("--max", `${String(max)}px`);
-				host.style.setProperty("--offset", `${String(props.offset)}px`);
-			}
-			if (separator.value) {
-				separator.value.setAttribute("aria-valuemin", String(Math.floor(min)));
-				separator.value.setAttribute("aria-valuemax", String(Math.floor(max)));
-				separator.value.setAttribute("aria-valuenow", String(Math.floor(value)));
-			}
-			if (value >= 0) emit("resize", value);
-		});
-		onMounted(() => {
-			layoutSize.value = getLayoutSize();
-			state.value = {
-				min: minSize.value,
-				max: maxSize.value,
-				current: clamp$1(initialSize.value, minSize.value, maxSize.value)
-			};
-		});
-		useEventListener(window, "resize", debounce(onResize, 20));
-		function onResize() {
-			layoutSize.value = getLayoutSize();
-			state.value = {
-				min: minSize.value,
-				max: maxSize.value,
-				current: initialSize.value
-			};
-		}
-		function getLayoutSize() {
-			if (!layoutElement.value) return 0;
-			switch (orientation.value) {
-				case "horizontal": return layoutElement.value.offsetHeight;
-				case "vertical": return layoutElement.value.offsetWidth;
-			}
-		}
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock(Fragment, null, [
-				__props.overlay && __props.offset ? (openBlock(), createElementBlock("div", _hoisted_1$29)) : createCommentVNode("v-if", true),
-				_cache[1] || (_cache[1] = createTextVNode()),
-				createBaseVNode("div", mergeProps({
-					ref_key: "root",
-					ref: root,
-					class: ["resize", classes.value]
-				}, _ctx.$attrs), [
-					createBaseVNode("div", {
-						ref_key: "content",
-						ref: content,
-						class: "resize__content"
-					}, [renderSlot(_ctx.$slots, "content")], 512),
-					_cache[0] || (_cache[0] = createTextVNode()),
-					!props.disabled ? (openBlock(), createElementBlock("div", {
-						key: 0,
-						ref_key: "separator",
-						ref: separator,
-						role: "separator",
-						class: "resize__handle",
-						tabindex: "0",
-						"aria-orientation": orientation.value
-					}, null, 8, _hoisted_2$23)) : (openBlock(), createElementBlock("div", {
-						key: 1,
-						role: "separator",
-						class: "resize__handle disabled",
-						"aria-orientation": orientation.value
-					}, null, 8, _hoisted_3$18))
-				], 16)
-			], 64);
-		};
-	}
-}), [["styles", ["/* background color */\n/* highlight color */\n/* the width of the visible handle */\n/* how much extra click/hover area the handle has */\n/* how much extra space the handle occupies when hovering (not counting the click area) */\n/* how long before visually indicating the hover state */\n/* how long the animation for the visual indicator is */\n:host {\n  display: contents;\n}\n:host([hidden]) {\n  display: none;\n}\n:host ::slotted(*) {\n  display: contents;\n}\n.resize {\n  flex-grow: 1;\n  display: flex;\n  align-items: stretch;\n}\n.resize--overlay {\n  position: absolute;\n  z-index: 1;\n  background: var(--f-page-layout-background);\n}\n.resize--left {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) {\n  width: calc(var(--size) + 2px);\n}\n.resize--left .resize__content {\n  flex-direction: row;\n}\n.resize--left.resize--overlay {\n  left: 0;\n  top: 0;\n  bottom: 0;\n}\n.resize--right {\n  flex-direction: row-reverse;\n}\n.resize--right:not(.resize--disabled) {\n  width: calc(var(--size) + 2px);\n}\n.resize--right .resize__content {\n  flex-direction: row;\n}\n.resize--right.resize--overlay {\n  right: 0;\n  top: 0;\n  bottom: 0;\n}\n.resize--top {\n  flex-direction: column;\n}\n.resize--top:not(.resize--disabled) {\n  height: calc(var(--size) + 2px);\n}\n.resize--bottom {\n  flex-direction: column-reverse;\n}\n.resize--bottom:not(.resize--disabled) {\n  height: calc(var(--size) + 2px);\n}\n.resize__offset {\n  width: calc(var(--offset) + 2px);\n}\n.resize__content {\n  flex: 1 1 auto;\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n}\n.resize--column .resize__content {\n  flex-direction: column;\n}\n.resize--row .resize__content {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) .resize__content, .resize--right:not(.resize--disabled) .resize__content {\n  min-width: var(--min);\n  max-width: var(--max);\n  flex-basis: var(--size);\n}\n.resize--top:not(.resize--disabled) .resize__content, .resize--bottom:not(.resize--disabled) .resize__content {\n  min-height: var(--min);\n  max-height: var(--max);\n  flex-basis: var(--size);\n}\n.resize__handle {\n  flex: 0 0 2px;\n  background: var(--fkds-color-border-primary);\n  touch-action: none;\n  user-select: none;\n  z-index: 1;\n  position: relative;\n  transition: z-index 0s 200ms;\n}\n@media (forced-colors: active) {\n.resize__handle {\n    background: CanvasText;\n}\n}\n.resize__handle[aria-orientation=horizontal] {\n  cursor: row-resize;\n  height: 2px;\n}\n.resize__handle[aria-orientation=horizontal]::before {\n  inset: -2px 0;\n}\n.resize__handle[aria-orientation=horizontal]::after {\n  inset: -4px 0;\n}\n.resize__handle[aria-orientation=vertical] {\n  cursor: col-resize;\n  width: 2px;\n}\n.resize__handle[aria-orientation=vertical]::before {\n  inset: 0 -2px;\n}\n.resize__handle[aria-orientation=vertical]::after {\n  inset: 0 -4px;\n}\n.resize__handle::before {\n  content: \"\";\n  pointer-events: none;\n  position: absolute;\n  background-color: transparent;\n  transition: background-color 200ms ease-in;\n}\n.resize__handle::after {\n  content: \"\";\n  position: absolute;\n}\n@media (hover: hover) {\n.resize__handle:hover::before {\n    background-color: var(--fkds-color-action-border-primary-hover);\n    transition-delay: 200ms;\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.resize__handle:hover::before {\n    background-color: Highlight;\n}\n}\n.resize__handle:focus::before, .resize__handle.drag::before {\n  background-color: var(--fkds-color-action-border-primary-hover);\n  transition-delay: 200ms;\n}\n@media (forced-colors: active) {\n.resize__handle:focus::before, .resize__handle.drag::before {\n    background-color: Highlight;\n}\n}\n.resize__handle {\n  /* disable regular focus indicator as this component has its own */\n}\n.resize__handle:focus-visible {\n  outline: none;\n  box-shadow: none;\n}\n.resize__handle {\n  /* when focus by keyboard we dont want the delay or transition */\n}\n.resize__handle:focus-visible::before {\n  transition: none;\n}\n.resize__handle {\n  /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */\n}\n.resize__handle:hover, .resize__handle:focus-visible, .resize__handle.drag {\n  z-index: 2;\n  transition: z-index 0s 0s;\n}\n.resize__handle.disabled {\n  cursor: auto;\n}\n.resize__handle.disabled::before {\n  display: none;\n}"]]]);
-/**
-* @internal
-*/
-var injectionKey = Symbol.for("FResizePane:useResize");
-function toOptionalRef(value) {
-	if (value === void 0) return;
-	return /* @__PURE__ */ toRef(value);
-}
-function noop$7() {}
-/**
-* Provides an API to control functionallity of an ancestor `FResizePane` component.
-*
-* @public
-* @param options - Optional refs controlling behaviour.
-*/
-function useResize(options = {}) {
-	const api = inject(injectionKey, {
-		register() {
-			return noop$7;
-		},
-		size: /* @__PURE__ */ ref(0)
-	});
-	onUnmounted(api.register({
-		enabled: toOptionalRef(options.enabled),
-		visible: toOptionalRef(options.visible),
-		overlay: toOptionalRef(options.overlay),
-		offset: toOptionalRef(options.offset)
-	}));
-	return { size: api.size };
-}
-var _hoisted_1$28 = { slot: "content" };
-var tagName$1 = "ce-resize-pane";
-var FResizePane_default = /* @__PURE__ */ defineComponent({
-	__name: "FResizePane",
-	props: {
-		min: { default: "0" },
-		max: { default: "100%" },
-		initial: { default: "50%" }
-	},
-	setup(__props) {
-		const props = __props;
-		if (!customElements.get(tagName$1)) customElements.define(tagName$1, /* @__PURE__ */ defineCustomElement(FResizePane_ce_default));
-		const anyEnabled = /* @__PURE__ */ ref(true);
-		const anyVisible = /* @__PURE__ */ ref(true);
-		const anyOverlay = /* @__PURE__ */ ref(false);
-		const size = /* @__PURE__ */ ref(-1);
-		const offset = /* @__PURE__ */ ref(0);
-		let components = [];
-		let n = 0;
-		function any(src, predicate) {
-			return src.length === 0 || src.some(predicate);
-		}
-		provide(injectionKey, {
-			register(options) {
-				const component = {
-					...options,
-					id: n++
-				};
-				components.push(component);
-				const scope = effectScope();
-				scope.run(() => {
-					watchEffect(() => {
-						anyEnabled.value = any(components, (it) => {
-							var _it$enabled$value;
-							return (_it$enabled$value = it.enabled?.value) !== null && _it$enabled$value !== void 0 ? _it$enabled$value : true;
-						});
-					});
-					watchEffect(() => {
-						anyVisible.value = any(components, (it) => {
-							var _it$visible$value;
-							return (_it$visible$value = it.visible?.value) !== null && _it$visible$value !== void 0 ? _it$visible$value : true;
-						});
-					});
-					watchEffect(() => {
-						anyOverlay.value = any(components, (it) => {
-							var _it$overlay$value;
-							return (_it$overlay$value = it.overlay?.value) !== null && _it$overlay$value !== void 0 ? _it$overlay$value : false;
-						});
-					});
-					watchEffect(() => {
-						if (components.length === 0) return 0;
-						const offsets = components.map((it) => it.offset?.value).filter((it) => typeof it === "number");
-						offset.value = Math.max(0, ...offsets);
-					});
-				});
-				return () => {
-					components = components.filter((it) => it.id !== component.id);
-					scope.stop();
-				};
-			},
-			size
-		});
-		const disabled = computed(() => !anyEnabled.value);
-		const hidden = computed(() => !anyVisible.value);
-		const overlay = computed(() => anyOverlay.value);
-		function onResize(event) {
-			size.value = event.detail[0];
-		}
-		return (_ctx, _cache) => {
-			return openBlock(), createBlock(resolveDynamicComponent(tagName$1), mergeProps({
-				disabled: disabled.value,
-				hidden: hidden.value,
-				overlay: overlay.value,
-				offset: offset.value
-			}, props, { onResize }), {
-				default: withCtx(() => [createBaseVNode("div", _hoisted_1$28, [renderSlot(_ctx.$slots, "default")])]),
-				_: 3
-			}, 16, [
-				"disabled",
-				"hidden",
-				"overlay",
-				"offset"
-			]);
-		};
-	}
-});
-var _hoisted_1$27 = {
-	ref: "root",
-	class: "panel__wrapper"
-};
-var _hoisted_2$22 = {
-	class: "panel__header",
-	part: "header"
-};
-var _hoisted_3$17 = { class: "panel__title" };
-var _hoisted_4$14 = {
-	class: "panel__content",
-	part: "content"
-};
-var _hoisted_5$12 = {
-	class: "panel__footer",
-	part: "footer"
-};
-var FDetailsPanel_ce_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(/* @__PURE__ */ defineComponent({
-	__name: "FDetailsPanel.ce",
-	setup(__props) {
-		const { attachPanel } = useAreaData(useTemplateRef("root"));
-		const attachClass = computed(() => {
-			switch (attachPanel.value) {
-				case "left": return "attach-left";
-				case "right": return "attach-right";
-			}
-		});
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1$27, [createBaseVNode("div", { class: normalizeClass(["panel panel--details", [attachClass.value]]) }, [
-				createBaseVNode("div", _hoisted_2$22, [
-					createBaseVNode("div", _hoisted_3$17, [renderSlot(_ctx.$slots, "header")]),
-					_cache[0] || (_cache[0] = createTextVNode()),
-					renderSlot(_ctx.$slots, "close-button")
-				]),
-				_cache[1] || (_cache[1] = createTextVNode()),
-				createBaseVNode("div", _hoisted_4$14, [renderSlot(_ctx.$slots, "content")]),
-				_cache[2] || (_cache[2] = createTextVNode()),
-				createBaseVNode("div", _hoisted_5$12, [renderSlot(_ctx.$slots, "footer")])
-			], 2)], 512);
-		};
-	}
-}), [["styles", ["/* spacing around the panel (space from layout area/resize handle to header, content, footer) */\n/* distance between each slot: header, content, footer) */\n/* panel background color */\n/* Reuse the select token to keep hover visible in dark mode until a shared close button is available. */\n:host {\n  display: contents;\n}\n:host([hidden]) {\n  display: none;\n}\n::slotted([slot=header]) {\n  font-weight: 700 !important;\n  font-size: 1.25rem !important;\n  line-height: 1 !important;\n  margin: 0 !important;\n}\n.panel__wrapper {\n  flex-grow: 1;\n  display: flex;\n}\n.panel {\n  background: var(--f-page-layout-background);\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  padding: 0.5rem;\n  gap: 0.5rem;\n}\n.panel__header {\n  flex: 0 0 auto;\n  display: flex;\n  gap: 0.25rem;\n  align-items: baseline;\n  justify-content: center;\n}\n.attach-left .panel__header {\n  flex-direction: row;\n}\n.attach-right .panel__header {\n  flex-direction: row-reverse;\n}\n::slotted([slot=close-button]) {\n  flex: 0 0 auto;\n}\n@media (hover: hover) {\n::slotted([slot=close-button]:enabled:hover) {\n    background-color: var(--fkds-color-select-background-tertiary-hover) !important;\n}\n}\n::slotted([slot=close-button]:enabled:active) {\n  background-color: var(--fkds-color-select-background-tertiary-hover) !important;\n}\n.panel__title {\n  flex: 1 1 auto;\n}\n.panel__content {\n  flex: 1 0 auto;\n}\n.panel__footer {\n  flex: 0 0 auto;\n}"]]]);
-var tagName = "ce-details-panel";
-var header$1 = "header";
-var content$1 = "content";
-var footer$1 = "footer";
-var FDetailsPanel_default = /* @__PURE__ */ defineComponent({
-	__name: "FDetailsPanel",
-	props: {
-		name: {},
-		exclusive: { default: () => void 0 }
-	},
-	setup(__props) {
-		if (!customElements.get(tagName)) customElements.define(tagName, /* @__PURE__ */ defineCustomElement(FDetailsPanel_ce_default));
-		const overlay = useMediaQuery("(width < 640px)");
-		const panel = createDetailsPanel(__props.name, { exclusive: __props.exclusive });
-		const $t = useTranslate();
-		const visible = computed(() => Boolean(panel.item.value));
-		const closeText = $t("fkui.details-panel.close", "Stäng");
-		useResize({
-			visible,
-			overlay
-		});
-		onUnmounted(() => {
-			panel.destroy();
-		});
-		function onClose(reason = "close") {
-			if (panel.callback.value) {
-				const item = panel.item.value;
-				panel.callback.value({
-					item,
-					reason
-				});
-			}
-			panel.close();
-		}
-		return (_ctx, _cache) => {
-			return visible.value ? (openBlock(), createBlock(resolveDynamicComponent(tagName), {
-				key: 0,
-				"data-panel-name": __props.name
-			}, {
-				default: withCtx(() => [
-					renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
-						item: unref(panel).item.value,
-						close: onClose,
-						header: header$1,
-						footer: footer$1,
-						content: content$1
-					}))),
-					_cache[1] || (_cache[1] = createTextVNode()),
-					createVNode(unref(ICloseButton_default), {
-						slot: "close-button",
-						"icon-only": "",
-						onClick: _cache[0] || (_cache[0] = ($event) => onClose())
-					}, {
-						default: withCtx(() => [createTextVNode(toDisplayString(unref(closeText)), 1)]),
-						_: 1
-					})
-				]),
-				_: 3
-			}, 8, ["data-panel-name"])) : createCommentVNode("v-if", true);
-		};
-	}
-});
-var _hoisted_1$14 = ["aria-label"];
-var FLogo_default = /* @__PURE__ */ defineComponent({
-	.../* @__PURE__ */ defineComponent({ computed: { ariaLabel() {
-		const content = renderSlotText(this.$slots.default);
-		if (!content) throw new Error("`f-logo` requires text content.");
-		return content;
-	} } }),
-	__name: "FLogo",
-	props: { 
-	/**
-	* Size of the logo: `"small"`, `"large"`, or `"responsive"`.
-	* Requires matching CSS variable to be set (`--f-logo-image-{small/large}`), or both if "responsive".
-	*/
-size: {
-		type: String,
-		default: "responsive",
-		required: false,
-		validator(value) {
-			return [
-				"small",
-				"large",
-				"responsive"
-			].includes(value);
-		}
-	} },
-	setup(__props) {
-		const props = __props;
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("span", {
-				class: normalizeClass(`logo logo--${props.size}`),
-				"aria-label": _ctx.ariaLabel,
-				role: "img"
-			}, null, 10, _hoisted_1$14);
-		};
-	}
-});
-var _hoisted_1$12 = {
-	ref: "root",
-	class: "panel__wrapper"
-};
-var _hoisted_2$9 = { class: "panel__header" };
-var _hoisted_3$6 = {
-	key: 0,
-	class: "panel__title"
-};
-var _hoisted_4$5 = ["aria-expanded", "aria-label"];
-var _hoisted_5$5 = { class: "panel__content" };
-var _hoisted_6$4 = { class: "panel__footer" };
-var FMinimizablePanel_ce_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(/* @__PURE__ */ defineComponent({
-	__name: "FMinimizablePanel.ce",
-	props: {
-		openPrefix: {
-			default: "Återställ",
-			type: String
-		},
-		closePrefix: {
-			default: "Minimera",
-			type: String
-		},
-		context: {
-			default: "panel",
-			type: String
-		},
-		modelValue: {
-			type: Boolean,
-			default: true
-		}
-	},
-	emits: ["toggle", "update:modelValue"],
-	setup(__props, { emit: __emit }) {
-		const emit = __emit;
-		const rootRef = useTemplateRef("root");
-		const { attachPanel } = useAreaData(rootRef);
-		const isDesktop = useMediaQuery("(width >= 640px)");
-		const isOpen = computed(() => __props.modelValue);
-		function updateIsOpen(value) {
-			if (value && !isDesktop.value && rootRef.value) {
-				const offset = rootRef.value.getBoundingClientRect().width;
-				emit("toggle", value, true, offset);
-			} else emit("toggle", value, false);
-			emit("update:modelValue", value);
-		}
-		watch(() => [isDesktop, isOpen], ([isDesktopVal, isOpenVal]) => {
-			if (!isDesktopVal.value) updateIsOpen(false);
-			else updateIsOpen(isOpenVal.value);
-		}, { immediate: true });
-		const expandedClass = computed(() => {
-			return isOpen.value ? "expanded" : "collapsed";
-		});
-		const attachClass = computed(() => {
-			switch (attachPanel.value) {
-				case "left": return "attach-left";
-				case "right": return "attach-right";
-			}
-		});
-		const ariaLabel = computed(() => {
-			return `${isOpen.value ? __props.closePrefix : __props.openPrefix} ${__props.context}`;
-		});
-		function onToggle() {
-			updateIsOpen(!isOpen.value);
-		}
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1$12, [createBaseVNode("div", { class: normalizeClass(["panel", [expandedClass.value, attachClass.value]]) }, [
-				createBaseVNode("div", _hoisted_2$9, [
-					isOpen.value ? (openBlock(), createElementBlock("div", _hoisted_3$6, [renderSlot(_ctx.$slots, "header")])) : createCommentVNode("v-if", true),
-					_cache[0] || (_cache[0] = createTextVNode()),
-					createBaseVNode("button", {
-						class: "panel__button",
-						type: "button",
-						"aria-expanded": isOpen.value,
-						"aria-label": ariaLabel.value,
-						onClick: onToggle
-					}, [renderSlot(_ctx.$slots, "icon")], 8, _hoisted_4$5)
-				]),
-				_cache[1] || (_cache[1] = createTextVNode()),
-				createBaseVNode("div", _hoisted_5$5, [renderSlot(_ctx.$slots, "content")]),
-				_cache[2] || (_cache[2] = createTextVNode()),
-				createBaseVNode("div", _hoisted_6$4, [renderSlot(_ctx.$slots, "footer")])
-			], 2)], 512);
-		};
-	}
-}), [["styles", ["@charset \"UTF-8\";\n*,\n*::before,\n*::after {\n  box-sizing: border-box;\n}\np,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  margin-top: 0;\n}\n:where(article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section) {\n  display: block;\n}\nselect::-ms-expand {\n  display: none;\n}\nselect:focus::-ms-value {\n  background: none;\n  color: #000;\n  outline: 1px dotted #000;\n}\nul,\nol {\n  padding-left: 1rem;\n  margin-top: 0;\n  margin-bottom: 1rem;\n}\na {\n  text-decoration: none;\n}\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  font: inherit;\n  margin: 0;\n}\nhtml {\n  font-size: var(--f-font-size-default-rem);\n  overflow-y: scroll;\n  scrollbar-gutter: stable;\n}\n@media (min-width: 1024px) {\nhtml {\n    font-size: var(--f-font-size-default-large-up-rem);\n}\n}\nbody {\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-normal);\n  line-height: var(--f-line-height-large);\n}\np {\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-normal);\n  line-height: var(--f-line-height-large);\n  margin-bottom: 1rem;\n}\nb,\nstrong {\n  font-weight: var(--f-font-weight-medium);\n}\ncode {\n  font-size: var(--f-font-size-standard);\n  border-radius: var(--f-border-radius-small);\n  font-family: var(--f-font-family-code);\n  background-color: var(--fkds-color-background-secondary);\n  display: inline-block;\n  margin: 0 0.25rem;\n  padding: 0 0.25rem;\n}\npre code {\n  display: block;\n}\nh1, .heading--h1,\nh2,\n.heading--h2,\nh3,\n.heading--h3,\nh4,\n.heading--h4,\nh5,\n.heading--h5,\nh6,\n.heading--h6 {\n  font-weight: var(--f-font-weight-bold);\n  margin-bottom: 0.25rem;\n  line-height: var(--f-line-height-medium);\n}\nh1, .heading--h1 {\n  font-size: var(--f-font-size-h1);\n  color: var(--f-text-color-heading-1);\n}\nh2, .heading--h2 {\n  font-size: var(--f-font-size-h2);\n  color: var(--f-text-color-heading-2);\n}\nh3, .heading--h3 {\n  font-size: var(--f-font-size-h3);\n  color: var(--f-text-color-heading-3);\n}\nh4, .heading--h4 {\n  font-size: var(--f-font-size-h4);\n  color: var(--f-text-color-heading-4);\n}\nh5, .heading--h5 {\n  font-size: var(--f-font-size-large);\n  color: var(--f-text-color-heading-5);\n}\nh6, .heading--h6 {\n  font-size: var(--f-font-size-standard);\n  color: var(--f-text-color-heading-6);\n}\n.heading--strong {\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-medium);\n}\n* + h1, * + .heading--h1,\n* + h2,\n* + .heading--h2,\n* + h3,\n* + .heading--h3,\n* + h4,\n* + .heading--h4,\n* + h5,\n* + .heading--h5,\n* + h6,\n* + .heading--h6 {\n  margin-top: 2rem;\n}\n@media (max-width: 640px) {\nh1, .heading--h1 {\n    font-size: var(--f-font-size-h2);\n}\nh2, .heading--h2 {\n    font-size: var(--f-font-size-xxx-large);\n}\nh3, .heading--h3 {\n    font-size: var(--f-font-size-h4);\n}\nh4, .heading--h4 {\n    font-size: var(--f-font-size-large);\n}\nh5, .heading--h5 {\n    font-size: var(--f-font-size-standard);\n}\nh6, .heading--h6 {\n    font-size: var(--f-font-size-standard);\n}\n.heading--strong {\n    font-size: var(--f-font-size-large);\n    font-weight: var(--f-font-weight-medium);\n}\n}\n.heading--h1 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\n.heading--h2 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\n.heading--h3 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\n.heading--h4 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\n.heading--h5 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\n.heading--h6 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\nh1 + h2, .heading--h1 + h2, h1 + .heading--h2, .heading--h1 + .heading--h2 {\n  margin-top: 1rem;\n}\nh2 + h3, .heading--h2 + h3, h2 + .heading--h3, .heading--h2 + .heading--h3 {\n  margin-top: 1rem;\n}\nh3 + h4, .heading--h3 + h4, h3 + .heading--h4, .heading--h3 + .heading--h4 {\n  margin-top: 1rem;\n}\nh4 + h5, .heading--h4 + h5, h4 + .heading--h5, .heading--h4 + .heading--h5 {\n  margin-top: 1rem;\n}\nh5 + h6, .heading--h5 + h6, h5 + .heading--h6, .heading--h5 + .heading--h6 {\n  margin-top: 1rem;\n}\n.sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n}\n.sr-separator {\n  display: block !important;\n}\nbutton:focus-visible,\na:focus-visible,\na.button:focus-visible,\nimg:focus-visible,\nselect:focus-visible,\ntextarea:focus-visible,\ninput[type=submit]:focus-visible,\ninput[type=text]:focus-visible,\ninput[type=email]:focus-visible,\ninput[type=tel]:focus-visible,\ninput[type=image]:focus-visible,\ninput[type=search]:focus-visible,\n[tabindex]:focus-visible {\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n[tabindex=\"-1\"]:focus-visible {\n  box-shadow: none;\n  outline: none;\n}\n\n/*\n    For help-classes, it is alright to use `!important` when the intent is to\n    overwrite standard behaviour for components.\n\n    All help-classes shall be prefixed with `h-`.\n*/\n.h-no-margin {\n  margin: 0 !important;\n}\n.h-root-size {\n  font-size: 1rem !important;\n}\n.h-display-flex {\n  display: flex;\n}\n.container-fluid {\n  width: 100%;\n  padding-right: 1rem;\n  padding-left: 1rem;\n  margin-right: auto;\n  margin-left: auto;\n}\n.container {\n  width: 100%;\n  padding-right: 1rem;\n  padding-left: 1rem;\n  margin-right: auto;\n  margin-left: auto;\n  max-width: 95%;\n}\n@media (min-width: 640px) {\n.container {\n    max-width: 90%;\n}\n}\n@media (min-width: 1024px) {\n.container {\n    max-width: 80%;\n}\n}\n@media (min-width: 1280px) {\n.container {\n    max-width: 1280px;\n}\n}\n.row {\n  display: flex;\n  flex-wrap: wrap;\n  margin-right: -1rem;\n  margin-left: -1rem;\n}\n.row--align-end {\n  justify-content: flex-end;\n}\n.row--align-center {\n  justify-content: center;\n}\n.row--align-justify {\n  justify-content: space-between;\n}\n.row--align-spaced {\n  justify-content: space-around;\n}\n.row--align-middle {\n  align-items: center;\n}\n.row--align-bottom {\n  align-items: flex-end;\n}\n.row--align-top {\n  align-items: flex-start;\n}\n.col {\n  position: relative;\n  min-height: 1px;\n  box-sizing: border-box;\n  padding-right: 1rem;\n  padding-left: 1rem;\n  width: auto;\n  max-width: none;\n}\n.col--align-bottom {\n  align-self: flex-end;\n}\n.col--align-middle {\n  align-self: center;\n}\n.col--align-stretch {\n  align-self: stretch;\n}\n.col--align-top {\n  align-self: flex-start;\n}\n.col.col--order-1 {\n  order: 1;\n}\n.col.col--order-2 {\n  order: 2;\n}\n.col.col--order-3 {\n  order: 3;\n}\n.col.col--order-4 {\n  order: 4;\n}\n.col.col--order-5 {\n  order: 5;\n}\n.col.col--order-6 {\n  order: 6;\n}\n.col.col--order-7 {\n  order: 7;\n}\n.col.col--order-8 {\n  order: 8;\n}\n.col.col--order-9 {\n  order: 9;\n}\n.col.col--order-10 {\n  order: 10;\n}\n.col.col--order-11 {\n  order: 11;\n}\n.col.col--order-12 {\n  order: 12;\n}\n.col.col--sm-1 {\n  width: 100%;\n}\n.col.col--sm-2 {\n  width: 100%;\n}\n.col.col--sm-3 {\n  width: 100%;\n}\n.col.col--sm-4 {\n  width: 100%;\n}\n.col.col--sm-5 {\n  width: 100%;\n}\n.col.col--sm-6 {\n  width: 100%;\n}\n.col.col--sm-7 {\n  width: 100%;\n}\n.col.col--sm-8 {\n  width: 100%;\n}\n.col.col--sm-9 {\n  width: 100%;\n}\n.col.col--sm-10 {\n  width: 100%;\n}\n.col.col--sm-11 {\n  width: 100%;\n}\n.col.col--sm-12 {\n  width: 100%;\n}\n.col.col--sm-1 {\n  flex: 0 0 8.3333333333%;\n  max-width: 8.3333333333%;\n}\n.col.col--sm-order-1 {\n  order: 1;\n}\n.col.col--sm-2 {\n  flex: 0 0 16.6666666667%;\n  max-width: 16.6666666667%;\n}\n.col.col--sm-order-2 {\n  order: 2;\n}\n.col.col--sm-3 {\n  flex: 0 0 25%;\n  max-width: 25%;\n}\n.col.col--sm-order-3 {\n  order: 3;\n}\n.col.col--sm-4 {\n  flex: 0 0 33.3333333333%;\n  max-width: 33.3333333333%;\n}\n.col.col--sm-order-4 {\n  order: 4;\n}\n.col.col--sm-5 {\n  flex: 0 0 41.6666666667%;\n  max-width: 41.6666666667%;\n}\n.col.col--sm-order-5 {\n  order: 5;\n}\n.col.col--sm-6 {\n  flex: 0 0 50%;\n  max-width: 50%;\n}\n.col.col--sm-order-6 {\n  order: 6;\n}\n.col.col--sm-7 {\n  flex: 0 0 58.3333333333%;\n  max-width: 58.3333333333%;\n}\n.col.col--sm-order-7 {\n  order: 7;\n}\n.col.col--sm-8 {\n  flex: 0 0 66.6666666667%;\n  max-width: 66.6666666667%;\n}\n.col.col--sm-order-8 {\n  order: 8;\n}\n.col.col--sm-9 {\n  flex: 0 0 75%;\n  max-width: 75%;\n}\n.col.col--sm-order-9 {\n  order: 9;\n}\n.col.col--sm-10 {\n  flex: 0 0 83.3333333333%;\n  max-width: 83.3333333333%;\n}\n.col.col--sm-order-10 {\n  order: 10;\n}\n.col.col--sm-11 {\n  flex: 0 0 91.6666666667%;\n  max-width: 91.6666666667%;\n}\n.col.col--sm-order-11 {\n  order: 11;\n}\n.col.col--sm-12 {\n  flex: 0 0 100%;\n  max-width: 100%;\n}\n.col.col--sm-order-12 {\n  order: 12;\n}\n.col.col--md-1 {\n  width: 100%;\n}\n.col.col--md-2 {\n  width: 100%;\n}\n.col.col--md-3 {\n  width: 100%;\n}\n.col.col--md-4 {\n  width: 100%;\n}\n.col.col--md-5 {\n  width: 100%;\n}\n.col.col--md-6 {\n  width: 100%;\n}\n.col.col--md-7 {\n  width: 100%;\n}\n.col.col--md-8 {\n  width: 100%;\n}\n.col.col--md-9 {\n  width: 100%;\n}\n.col.col--md-10 {\n  width: 100%;\n}\n.col.col--md-11 {\n  width: 100%;\n}\n.col.col--md-12 {\n  width: 100%;\n}\n@media (min-width: 640px) {\n.col.col--md-1 {\n    flex: 0 0 8.3333333333%;\n    max-width: 8.3333333333%;\n}\n.col.col--md-order-1 {\n    order: 1;\n}\n.col.col--md-2 {\n    flex: 0 0 16.6666666667%;\n    max-width: 16.6666666667%;\n}\n.col.col--md-order-2 {\n    order: 2;\n}\n.col.col--md-3 {\n    flex: 0 0 25%;\n    max-width: 25%;\n}\n.col.col--md-order-3 {\n    order: 3;\n}\n.col.col--md-4 {\n    flex: 0 0 33.3333333333%;\n    max-width: 33.3333333333%;\n}\n.col.col--md-order-4 {\n    order: 4;\n}\n.col.col--md-5 {\n    flex: 0 0 41.6666666667%;\n    max-width: 41.6666666667%;\n}\n.col.col--md-order-5 {\n    order: 5;\n}\n.col.col--md-6 {\n    flex: 0 0 50%;\n    max-width: 50%;\n}\n.col.col--md-order-6 {\n    order: 6;\n}\n.col.col--md-7 {\n    flex: 0 0 58.3333333333%;\n    max-width: 58.3333333333%;\n}\n.col.col--md-order-7 {\n    order: 7;\n}\n.col.col--md-8 {\n    flex: 0 0 66.6666666667%;\n    max-width: 66.6666666667%;\n}\n.col.col--md-order-8 {\n    order: 8;\n}\n.col.col--md-9 {\n    flex: 0 0 75%;\n    max-width: 75%;\n}\n.col.col--md-order-9 {\n    order: 9;\n}\n.col.col--md-10 {\n    flex: 0 0 83.3333333333%;\n    max-width: 83.3333333333%;\n}\n.col.col--md-order-10 {\n    order: 10;\n}\n.col.col--md-11 {\n    flex: 0 0 91.6666666667%;\n    max-width: 91.6666666667%;\n}\n.col.col--md-order-11 {\n    order: 11;\n}\n.col.col--md-12 {\n    flex: 0 0 100%;\n    max-width: 100%;\n}\n.col.col--md-order-12 {\n    order: 12;\n}\n}\n.col.col--lg-1 {\n  width: 100%;\n}\n.col.col--lg-2 {\n  width: 100%;\n}\n.col.col--lg-3 {\n  width: 100%;\n}\n.col.col--lg-4 {\n  width: 100%;\n}\n.col.col--lg-5 {\n  width: 100%;\n}\n.col.col--lg-6 {\n  width: 100%;\n}\n.col.col--lg-7 {\n  width: 100%;\n}\n.col.col--lg-8 {\n  width: 100%;\n}\n.col.col--lg-9 {\n  width: 100%;\n}\n.col.col--lg-10 {\n  width: 100%;\n}\n.col.col--lg-11 {\n  width: 100%;\n}\n.col.col--lg-12 {\n  width: 100%;\n}\n@media (min-width: 1024px) {\n.col.col--lg-1 {\n    flex: 0 0 8.3333333333%;\n    max-width: 8.3333333333%;\n}\n.col.col--lg-order-1 {\n    order: 1;\n}\n.col.col--lg-2 {\n    flex: 0 0 16.6666666667%;\n    max-width: 16.6666666667%;\n}\n.col.col--lg-order-2 {\n    order: 2;\n}\n.col.col--lg-3 {\n    flex: 0 0 25%;\n    max-width: 25%;\n}\n.col.col--lg-order-3 {\n    order: 3;\n}\n.col.col--lg-4 {\n    flex: 0 0 33.3333333333%;\n    max-width: 33.3333333333%;\n}\n.col.col--lg-order-4 {\n    order: 4;\n}\n.col.col--lg-5 {\n    flex: 0 0 41.6666666667%;\n    max-width: 41.6666666667%;\n}\n.col.col--lg-order-5 {\n    order: 5;\n}\n.col.col--lg-6 {\n    flex: 0 0 50%;\n    max-width: 50%;\n}\n.col.col--lg-order-6 {\n    order: 6;\n}\n.col.col--lg-7 {\n    flex: 0 0 58.3333333333%;\n    max-width: 58.3333333333%;\n}\n.col.col--lg-order-7 {\n    order: 7;\n}\n.col.col--lg-8 {\n    flex: 0 0 66.6666666667%;\n    max-width: 66.6666666667%;\n}\n.col.col--lg-order-8 {\n    order: 8;\n}\n.col.col--lg-9 {\n    flex: 0 0 75%;\n    max-width: 75%;\n}\n.col.col--lg-order-9 {\n    order: 9;\n}\n.col.col--lg-10 {\n    flex: 0 0 83.3333333333%;\n    max-width: 83.3333333333%;\n}\n.col.col--lg-order-10 {\n    order: 10;\n}\n.col.col--lg-11 {\n    flex: 0 0 91.6666666667%;\n    max-width: 91.6666666667%;\n}\n.col.col--lg-order-11 {\n    order: 11;\n}\n.col.col--lg-12 {\n    flex: 0 0 100%;\n    max-width: 100%;\n}\n.col.col--lg-order-12 {\n    order: 12;\n}\n}\n.col.col--xl-1 {\n  width: 100%;\n}\n.col.col--xl-2 {\n  width: 100%;\n}\n.col.col--xl-3 {\n  width: 100%;\n}\n.col.col--xl-4 {\n  width: 100%;\n}\n.col.col--xl-5 {\n  width: 100%;\n}\n.col.col--xl-6 {\n  width: 100%;\n}\n.col.col--xl-7 {\n  width: 100%;\n}\n.col.col--xl-8 {\n  width: 100%;\n}\n.col.col--xl-9 {\n  width: 100%;\n}\n.col.col--xl-10 {\n  width: 100%;\n}\n.col.col--xl-11 {\n  width: 100%;\n}\n.col.col--xl-12 {\n  width: 100%;\n}\n@media (min-width: 1280px) {\n.col.col--xl-1 {\n    flex: 0 0 8.3333333333%;\n    max-width: 8.3333333333%;\n}\n.col.col--xl-order-1 {\n    order: 1;\n}\n.col.col--xl-2 {\n    flex: 0 0 16.6666666667%;\n    max-width: 16.6666666667%;\n}\n.col.col--xl-order-2 {\n    order: 2;\n}\n.col.col--xl-3 {\n    flex: 0 0 25%;\n    max-width: 25%;\n}\n.col.col--xl-order-3 {\n    order: 3;\n}\n.col.col--xl-4 {\n    flex: 0 0 33.3333333333%;\n    max-width: 33.3333333333%;\n}\n.col.col--xl-order-4 {\n    order: 4;\n}\n.col.col--xl-5 {\n    flex: 0 0 41.6666666667%;\n    max-width: 41.6666666667%;\n}\n.col.col--xl-order-5 {\n    order: 5;\n}\n.col.col--xl-6 {\n    flex: 0 0 50%;\n    max-width: 50%;\n}\n.col.col--xl-order-6 {\n    order: 6;\n}\n.col.col--xl-7 {\n    flex: 0 0 58.3333333333%;\n    max-width: 58.3333333333%;\n}\n.col.col--xl-order-7 {\n    order: 7;\n}\n.col.col--xl-8 {\n    flex: 0 0 66.6666666667%;\n    max-width: 66.6666666667%;\n}\n.col.col--xl-order-8 {\n    order: 8;\n}\n.col.col--xl-9 {\n    flex: 0 0 75%;\n    max-width: 75%;\n}\n.col.col--xl-order-9 {\n    order: 9;\n}\n.col.col--xl-10 {\n    flex: 0 0 83.3333333333%;\n    max-width: 83.3333333333%;\n}\n.col.col--xl-order-10 {\n    order: 10;\n}\n.col.col--xl-11 {\n    flex: 0 0 91.6666666667%;\n    max-width: 91.6666666667%;\n}\n.col.col--xl-order-11 {\n    order: 11;\n}\n.col.col--xl-12 {\n    flex: 0 0 100%;\n    max-width: 100%;\n}\n.col.col--xl-order-12 {\n    order: 12;\n}\n}\n.i-width-sm-1 {\n  width: 8.3333333333%;\n}\n.i-width-sm-2 {\n  width: 16.6666666667%;\n}\n.i-width-sm-3 {\n  width: 25%;\n}\n.i-width-sm-4 {\n  width: 33.3333333333%;\n}\n.i-width-sm-5 {\n  width: 41.6666666667%;\n}\n.i-width-sm-6 {\n  width: 50%;\n}\n.i-width-sm-7 {\n  width: 58.3333333333%;\n}\n.i-width-sm-8 {\n  width: 66.6666666667%;\n}\n.i-width-sm-9 {\n  width: 75%;\n}\n.i-width-sm-10 {\n  width: 83.3333333333%;\n}\n.i-width-sm-11 {\n  width: 91.6666666667%;\n}\n.i-width-sm-12 {\n  width: 100%;\n}\n@media (min-width: 640px) {\n.i-width-md-1 {\n    width: 8.3333333333%;\n}\n.i-width-md-2 {\n    width: 16.6666666667%;\n}\n.i-width-md-3 {\n    width: 25%;\n}\n.i-width-md-4 {\n    width: 33.3333333333%;\n}\n.i-width-md-5 {\n    width: 41.6666666667%;\n}\n.i-width-md-6 {\n    width: 50%;\n}\n.i-width-md-7 {\n    width: 58.3333333333%;\n}\n.i-width-md-8 {\n    width: 66.6666666667%;\n}\n.i-width-md-9 {\n    width: 75%;\n}\n.i-width-md-10 {\n    width: 83.3333333333%;\n}\n.i-width-md-11 {\n    width: 91.6666666667%;\n}\n.i-width-md-12 {\n    width: 100%;\n}\n}\n@media (min-width: 1024px) {\n.i-width-lg-1 {\n    width: 8.3333333333%;\n}\n.i-width-lg-2 {\n    width: 16.6666666667%;\n}\n.i-width-lg-3 {\n    width: 25%;\n}\n.i-width-lg-4 {\n    width: 33.3333333333%;\n}\n.i-width-lg-5 {\n    width: 41.6666666667%;\n}\n.i-width-lg-6 {\n    width: 50%;\n}\n.i-width-lg-7 {\n    width: 58.3333333333%;\n}\n.i-width-lg-8 {\n    width: 66.6666666667%;\n}\n.i-width-lg-9 {\n    width: 75%;\n}\n.i-width-lg-10 {\n    width: 83.3333333333%;\n}\n.i-width-lg-11 {\n    width: 91.6666666667%;\n}\n.i-width-lg-12 {\n    width: 100%;\n}\n}\n@media (min-width: 1280px) {\n.i-width-xl-1 {\n    width: 8.3333333333%;\n}\n.i-width-xl-2 {\n    width: 16.6666666667%;\n}\n.i-width-xl-3 {\n    width: 25%;\n}\n.i-width-xl-4 {\n    width: 33.3333333333%;\n}\n.i-width-xl-5 {\n    width: 41.6666666667%;\n}\n.i-width-xl-6 {\n    width: 50%;\n}\n.i-width-xl-7 {\n    width: 58.3333333333%;\n}\n.i-width-xl-8 {\n    width: 66.6666666667%;\n}\n.i-width-xl-9 {\n    width: 75%;\n}\n.i-width-xl-10 {\n    width: 83.3333333333%;\n}\n.i-width-xl-11 {\n    width: 91.6666666667%;\n}\n.i-width-xl-12 {\n    width: 100%;\n}\n}\n.sticky {\n  /* Double position is specified due to E11-compability.\n  `fixed` is used by IE11.\n  `sticky` is used by other web browsers. */\n  position: fixed;\n  position: sticky;\n  z-index: 9999;\n}\n.sticky--top {\n  right: 0;\n  top: 0;\n  left: 0;\n}\n.density-default {\n  --f-density-factor: 1;\n}\n.density-dense {\n  --f-density-factor: 0.8;\n}\n.density-densest {\n  --f-density-factor: 0.6;\n}\n.formatter--date, .formatter--date-full, .formatter--date-long, .formatter--date-range, .formatter--text {\n  white-space: nowrap;\n}\n.formatter--bankgiro, .formatter--number, .formatter--orgnr, .formatter--plusgiro, .formatter--pnr, .formatter--postnummer {\n  white-space: nowrap;\n  font-feature-settings: \"tnum\";\n}\n.anchor, .file-item__file-open {\n  color: var(--fkds-color-action-text-primary-default);\n  font-weight: var(--f-font-weight-medium);\n  line-height: var(--f-line-height-large);\n  text-decoration-color: var(--fkds-color-action-text-primary-default);\n  text-decoration-line: underline;\n  text-decoration-skip-ink: none;\n  text-decoration-thickness: 2px;\n  text-underline-offset: 0.25em;\n}\n@media (hover: hover) {\n.anchor:hover, .file-item__file-open:hover {\n    color: var(--fkds-color-action-text-primary-default);\n    text-decoration-color: var(--fkds-color-action-text-primary-default);\n    text-decoration-thickness: 3px;\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.anchor:hover, .file-item__file-open:hover {\n    color: LinkText;\n}\n}\n.anchor:active, .file-item__file-open:active {\n  color: var(--fkds-color-action-text-primary-default);\n  text-decoration-color: var(--fkds-color-action-text-primary-default);\n  text-decoration-thickness: 3px;\n  text-underline-offset: calc(0.25em + 1px);\n}\n@media (forced-colors: active) {\n.anchor:active, .file-item__file-open:active {\n    color: LinkText;\n}\n}\n@media (forced-colors: active) {\n.anchor, .file-item__file-open {\n    color: LinkText;\n}\n}\n.anchor.anchor--block, .file-item__file-open {\n  display: inline-flex;\n}\n.anchor.anchor--block > svg, .file-item__file-open > svg, .anchor.anchor--block > .icon-stack, .file-item__file-open > .icon-stack {\n  flex-shrink: 0;\n  margin: calc((var(--f-line-height-large) * 1rem - var(--f-icon-size-small)) / 2) 0.25rem 0;\n}\n.anchor.anchor--discrete, .anchor--discrete.file-item__file-open {\n  color: var(--fkds-color-action-text-secondary-default);\n  text-decoration-color: var(--fkds-color-border-primary);\n}\n@media (hover: hover) {\n.anchor.anchor--discrete:hover, .anchor--discrete.file-item__file-open:hover {\n    color: var(--fkds-color-action-text-secondary-default);\n    text-decoration-color: var(--fkds-color-border-primary);\n}\n}\n.badge {\n  border-radius: var(--f-border-radius-medium);\n  border-style: solid;\n  border-width: var(--f-border-width-small);\n  box-sizing: border-box;\n  display: inline-block;\n  font-size: var(--f-font-size-standard);\n  line-height: calc(var(--f-line-height-large) * var(--f-density-factor));\n  font-weight: var(--f-font-weight-normal);\n  padding: 0 0.5rem;\n}\n.badge--default {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-neutral-strong);\n  border-color: var(--fkds-color-feedback-background-neutral-strong);\n}\n.badge--default-inverted {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-neutral);\n  border-color: var(--fkds-color-feedback-border-neutral);\n}\n.badge--warning {\n  color: var(--fkds-color-feedback-text-on-warning);\n  background-color: var(--fkds-color-feedback-background-warning-strong);\n  border-color: var(--fkds-color-feedback-background-warning-strong);\n}\n.badge--warning-inverted {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-warning);\n  border-color: var(--fkds-color-feedback-border-warning);\n}\n.badge--error {\n  color: var(--fkds-color-text-inverted);\n  background-color: var(--fkds-color-feedback-background-negative-strong);\n  border-color: var(--fkds-color-feedback-background-negative-strong);\n}\n.badge--error-inverted {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-negative);\n  border-color: var(--fkds-color-feedback-border-negative);\n}\n.badge--success {\n  color: var(--fkds-color-text-inverted);\n  background-color: var(--fkds-color-feedback-background-positive-strong);\n  border-color: var(--fkds-color-feedback-background-positive-strong);\n}\n.badge--success-inverted {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-positive);\n  border-color: var(--fkds-color-feedback-border-positive);\n}\n.badge--info {\n  color: var(--fkds-color-text-inverted);\n  background-color: var(--fkds-color-feedback-background-info-strong);\n  border-color: var(--fkds-color-feedback-background-info-strong);\n}\n.badge--info-inverted {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-info);\n  border-color: var(--fkds-color-feedback-border-info);\n}\n.button--large, .button, .calendar-navbar__year-selector-button {\n  line-height: 1.5rem;\n  min-width: 9.5rem;\n  padding: calc(1rem * var(--f-density-factor)) 1.5rem;\n}\n.button, .calendar-navbar__year-selector-button {\n  align-items: center;\n  border-radius: var(--f-border-radius-medium);\n  border-style: solid;\n  cursor: pointer;\n  display: inline-flex;\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  justify-content: center;\n  letter-spacing: var(--f-button-letter-spacing);\n  line-height: var(--f-button-default-line-height);\n  margin-bottom: calc(1.5rem * var(--f-density-factor));\n  margin-top: calc(0.25rem * var(--f-density-factor));\n  min-width: var(--f-button-min-width);\n  position: relative;\n  text-align: center;\n}\n@media (max-width: 639.98px) {\n.button, .calendar-navbar__year-selector-button {\n    max-width: var(--f-width-full);\n    width: var(--f-width-full);\n}\n}\n.button, .calendar-navbar__year-selector-button {\n  background-color: var(--fkds-color-action-background-secondary-default);\n  border-color: var(--fkds-color-action-border-primary-default);\n  border-width: var(--f-border-width-medium);\n  box-shadow: var(--f-button-shadow);\n  color: var(--fkds-color-action-text-primary-default);\n  padding: calc(var(--f-button-secondary-padding-top) * var(--f-density-factor)) var(--f-button-secondary-padding-right) calc(var(--f-button-secondary-padding-bottom) * var(--f-density-factor)) var(--f-button-secondary-padding-left);\n  transition-duration: var(--f-animation-duration-extra-short);\n  transition-property: background-color, border-color, transform;\n  transition-timing-function: var(--f-button-animation-curve);\n}\n.button:focus-visible, .calendar-navbar__year-selector-button:focus-visible {\n  background-color: var(--fkds-color-action-background-secondary-focus);\n  border-color: var(--fkds-color-action-border-primary-default);\n  color: var(--fkds-color-action-text-primary-default);\n}\n@media (hover: hover) {\n.button:hover, .calendar-navbar__year-selector-button:hover {\n    background-color: var(--fkds-color-action-background-secondary-hover);\n    border-color: var(--fkds-color-action-border-primary-default);\n    box-shadow: var(--f-button-shadow-hover);\n    color: var(--fkds-color-action-text-primary-default);\n}\n}\n.button:active, .calendar-navbar__year-selector-button:active {\n  background-color: var(--fkds-color-action-background-secondary-active);\n  border-color: var(--fkds-color-action-border-primary-default);\n  box-shadow: var(--f-button-shadow-active);\n  color: var(--fkds-color-action-text-primary-default);\n  transform: translateY(1px);\n}\n.button:focus-visible, .calendar-navbar__year-selector-button:focus-visible {\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.button.disabled, .disabled.calendar-navbar__year-selector-button, .button.disabled:hover, .button:disabled, .calendar-navbar__year-selector-button:disabled, .button:disabled:hover, .button[aria-disabled=true], [aria-disabled=true].calendar-navbar__year-selector-button, .button[aria-disabled=true]:hover, .button.button--disabled, .button--disabled.calendar-navbar__year-selector-button, .button.button--disabled:hover {\n  background-color: var(--fkds-color-background-disabled);\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n  pointer-events: none;\n}\n.button[aria-disabled=true], [aria-disabled=true].calendar-navbar__year-selector-button {\n  pointer-events: none;\n}\n@media (forced-colors: active) {\n.button[aria-disabled=true], [aria-disabled=true].calendar-navbar__year-selector-button {\n    border-color: GrayText;\n    color: GrayText;\n}\n}\n.button--primary {\n  background-color: var(--fkds-color-action-background-primary-default);\n  border-color: transparent;\n  border-width: var(--f-border-width-medium);\n  box-shadow: var(--f-button-shadow);\n  color: var(--fkds-color-action-text-inverted-default);\n  padding: calc(var(--f-button-primary-padding-top) * var(--f-density-factor)) var(--f-button-primary-padding-right) calc(var(--f-button-primary-padding-bottom) * var(--f-density-factor)) var(--f-button-primary-padding-left);\n  transition-duration: var(--f-animation-duration-extra-short);\n  transition-property: background-color, border-color, transform;\n  transition-timing-function: var(--f-button-animation-curve);\n}\n.button--primary:focus-visible {\n  background-color: var(--fkds-color-action-background-primary-focus);\n  border-color: transparent;\n  color: var(--fkds-color-action-text-inverted-default);\n}\n@media (hover: hover) {\n.button--primary:hover {\n    background-color: var(--fkds-color-action-background-primary-hover);\n    border-color: transparent;\n    box-shadow: var(--f-button-shadow-hover);\n    color: var(--fkds-color-action-text-inverted-default);\n}\n}\n.button--primary:active {\n  background-color: var(--fkds-color-action-background-primary-active);\n  border-color: transparent;\n  box-shadow: var(--f-button-shadow-active);\n  color: var(--fkds-color-action-text-inverted-default);\n  transform: translateY(1px);\n}\n.button--primary:focus-visible {\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.button--primary.disabled, .button--primary.disabled:hover, .button--primary:disabled, .button--primary:disabled:hover, .button--primary[aria-disabled=true], .button--primary[aria-disabled=true]:hover, .button--primary.button--disabled, .button--primary.button--disabled:hover {\n  background-color: var(--fkds-color-background-disabled);\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n  pointer-events: none;\n}\n.button--primary[aria-disabled=true] {\n  pointer-events: none;\n}\n@media (forced-colors: active) {\n.button--primary[aria-disabled=true] {\n    border-color: GrayText;\n    color: GrayText;\n}\n}\n.button--secondary {\n  background-color: var(--fkds-color-action-background-secondary-default);\n  border-color: var(--fkds-color-action-border-primary-default);\n  border-width: var(--f-border-width-medium);\n  box-shadow: var(--f-button-shadow);\n  color: var(--fkds-color-action-text-primary-default);\n  padding: calc(var(--f-button-secondary-padding-top) * var(--f-density-factor)) var(--f-button-secondary-padding-right) calc(var(--f-button-secondary-padding-bottom) * var(--f-density-factor)) var(--f-button-secondary-padding-left);\n  transition-duration: var(--f-animation-duration-extra-short);\n  transition-property: background-color, border-color, transform;\n  transition-timing-function: var(--f-button-animation-curve);\n}\n.button--secondary:focus-visible {\n  background-color: var(--fkds-color-action-background-secondary-focus);\n  border-color: var(--fkds-color-action-border-primary-default);\n  color: var(--fkds-color-action-text-primary-default);\n}\n@media (hover: hover) {\n.button--secondary:hover {\n    background-color: var(--fkds-color-action-background-secondary-hover);\n    border-color: var(--fkds-color-action-border-primary-default);\n    box-shadow: var(--f-button-shadow-hover);\n    color: var(--fkds-color-action-text-primary-default);\n}\n}\n.button--secondary:active {\n  background-color: var(--fkds-color-action-background-secondary-active);\n  border-color: var(--fkds-color-action-border-primary-default);\n  box-shadow: var(--f-button-shadow-active);\n  color: var(--fkds-color-action-text-primary-default);\n  transform: translateY(1px);\n}\n.button--secondary:focus-visible {\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.button--secondary.disabled, .button--secondary.disabled:hover, .button--secondary:disabled, .button--secondary:disabled:hover, .button--secondary[aria-disabled=true], .button--secondary[aria-disabled=true]:hover, .button--secondary.button--disabled, .button--secondary.button--disabled:hover {\n  background-color: var(--fkds-color-background-disabled);\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n  pointer-events: none;\n}\n.button--secondary[aria-disabled=true] {\n  pointer-events: none;\n}\n@media (forced-colors: active) {\n.button--secondary[aria-disabled=true] {\n    border-color: GrayText;\n    color: GrayText;\n}\n}\n.button--discrete-inverted {\n  width: inherit;\n  min-width: 0;\n  font-weight: var(--f-font-weight-bold);\n  outline-offset: 0.25rem;\n  /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */\n  padding-top: calc(var(--f-button-discrete-padding-top) * var(--f-density-factor));\n  padding-right: var(--f-button-discrete-padding-right);\n  padding-bottom: calc(var(--f-button-discrete-padding-bottom) * var(--f-density-factor));\n  padding-left: var(--f-button-discrete-padding-left);\n  /* stylelint-enable declaration-block-no-redundant-longhand-properties */\n  line-height: calc(1.25 * var(--f-font-size-standard));\n  background-color: transparent;\n  border-color: transparent;\n  border-width: 0;\n  box-shadow: none;\n  color: var(--fkds-color-action-text-inverted-default);\n  padding: calc(var(--f-button-discrete-padding-top) * var(--f-density-factor)) var(--f-button-discrete-padding-right) calc(var(--f-button-discrete-padding-bottom) * var(--f-density-factor)) var(--f-button-discrete-padding-left);\n  transition-duration: var(--f-animation-duration-extra-short);\n  transition-property: background-color, border-color, transform;\n  transition-timing-function: var(--f-button-animation-curve);\n}\n.button--discrete-inverted:focus-visible {\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-action-text-inverted-default);\n}\n@media (hover: hover) {\n.button--discrete-inverted:hover {\n    background-color: transparent;\n    border-color: transparent;\n    box-shadow: var(--f-button-shadow-hover);\n    color: var(--fkds-color-action-text-inverted-hover);\n}\n}\n.button--discrete-inverted:active {\n  background-color: transparent;\n  border-color: transparent;\n  box-shadow: none;\n  color: var(--fkds-color-action-text-inverted-hover);\n  transform: translateY(1px);\n}\n.button--discrete-inverted:focus-visible {\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.button--discrete-inverted.disabled, .button--discrete-inverted.disabled:hover, .button--discrete-inverted:disabled, .button--discrete-inverted:disabled:hover, .button--discrete-inverted[aria-disabled=true], .button--discrete-inverted[aria-disabled=true]:hover, .button--discrete-inverted.button--disabled, .button--discrete-inverted.button--disabled:hover {\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-text-disabled);\n  pointer-events: none;\n}\n.button--discrete-inverted[aria-disabled=true] {\n  pointer-events: none;\n}\n@media (forced-colors: active) {\n.button--discrete-inverted[aria-disabled=true] {\n    border-color: GrayText;\n    color: GrayText;\n}\n}\n@media (max-width: 639.98px) {\n.button--discrete-inverted {\n    width: auto;\n}\n}\n.button--discrete-inverted, .button--discrete-inverted:focus-visible, .button--discrete-inverted:active, .button--discrete-inverted:hover {\n  border-radius: var(--f-button-discrete-radius-hover);\n}\n.button--tertiary, .calendar-navbar__year-selector-button {\n  outline-offset: 0.25rem;\n  background-color: transparent;\n  border-color: transparent;\n  border-width: var(--f-border-width-medium);\n  box-shadow: none;\n  color: var(--fkds-color-action-text-primary-default);\n  padding: calc(var(--f-button-tertiary-padding-top) * var(--f-density-factor)) var(--f-button-tertiary-padding-right) calc(var(--f-button-tertiary-padding-bottom) * var(--f-density-factor)) var(--f-button-tertiary-padding-left);\n  transition-duration: var(--f-animation-duration-extra-short);\n  transition-property: background-color, border-color, transform;\n  transition-timing-function: var(--f-button-animation-curve);\n}\n.button--tertiary:focus-visible, .calendar-navbar__year-selector-button:focus-visible {\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-action-text-primary-default);\n}\n@media (hover: hover) {\n.button--tertiary:hover, .calendar-navbar__year-selector-button:hover {\n    background-color: var(--fkds-color-action-background-secondary-hover);\n    border-color: transparent;\n    box-shadow: none;\n    color: var(--fkds-color-action-text-primary-default);\n}\n}\n.button--tertiary:active, .calendar-navbar__year-selector-button:active {\n  background-color: var(--fkds-color-action-background-secondary-active);\n  border-color: transparent;\n  box-shadow: none;\n  color: var(--fkds-color-action-text-primary-default);\n  transform: translateY(1px);\n}\n.button--tertiary:focus-visible, .calendar-navbar__year-selector-button:focus-visible {\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.button--tertiary.disabled, .disabled.calendar-navbar__year-selector-button, .button--tertiary.disabled:hover, .button--tertiary:disabled, .calendar-navbar__year-selector-button:disabled, .button--tertiary:disabled:hover, .button--tertiary[aria-disabled=true], [aria-disabled=true].calendar-navbar__year-selector-button, .button--tertiary[aria-disabled=true]:hover, .button--tertiary.button--disabled, .button--disabled.calendar-navbar__year-selector-button, .button--tertiary.button--disabled:hover {\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-text-disabled);\n  pointer-events: none;\n}\n.button--tertiary[aria-disabled=true], [aria-disabled=true].calendar-navbar__year-selector-button {\n  pointer-events: none;\n}\n@media (forced-colors: active) {\n.button--tertiary[aria-disabled=true], [aria-disabled=true].calendar-navbar__year-selector-button {\n    border-color: GrayText;\n    color: GrayText;\n}\n}\n@media (max-width: 639.98px) {\n.button--tertiary, .calendar-navbar__year-selector-button {\n    width: auto;\n}\n}\n.button--tertiary--muted, .calendar-navbar__year-selector-button, .button--tertiary--black {\n  color: var(--fkds-color-action-text-secondary-default);\n}\n.button--tertiary--muted:focus-visible, .calendar-navbar__year-selector-button:focus-visible, .button--tertiary--black:focus-visible {\n  color: var(--fkds-color-action-text-secondary-default);\n}\n@media (hover: hover) {\n.button--tertiary--muted:hover, .calendar-navbar__year-selector-button:hover, .button--tertiary--black:hover {\n    color: var(--fkds-color-action-text-secondary-default);\n}\n}\n.button--tertiary--muted:active, .calendar-navbar__year-selector-button:active, .button--tertiary--black:active {\n  color: var(--fkds-color-action-text-secondary-default);\n}\n.button--tertiary--inverted {\n  color: var(--fkds-color-action-text-inverted-default);\n}\n.button--tertiary--inverted:focus-visible {\n  color: var(--fkds-color-action-text-inverted-default);\n  background-color: transparent;\n}\n@media (hover: hover) {\n.button--tertiary--inverted:hover {\n    color: var(--fkds-color-action-text-inverted-default);\n    background-color: transparent;\n}\n}\n.button--tertiary--inverted:active {\n  color: var(--fkds-color-action-text-inverted-default);\n  background-color: transparent;\n}\n.button--tertiary--inverted:disabled, .button--tertiary--inverted[aria-disabled=true] {\n  color: var(--fkds-color-text-disabled);\n  background-color: transparent;\n}\n.button--tertiary--underline {\n  text-decoration: underline;\n  text-decoration-thickness: 2px;\n  text-underline-offset: 4px;\n}\n.button--tertiary--underline:disabled, .button--tertiary--underline[aria-disabled=true] {\n  text-decoration: none;\n}\n.button--tertiary.button--align-text, .button--align-text.calendar-navbar__year-selector-button {\n  padding-left: 0.5rem;\n  padding-right: 0.5rem;\n  margin-left: -0.5rem;\n  min-width: 0;\n}\n@media (max-width: 639.98px) {\n.button--tertiary.button--full-width, .button--full-width.calendar-navbar__year-selector-button {\n    min-width: var(--f-width-full);\n}\n}\n.button--full-width {\n  min-width: var(--f-width-full);\n}\n.button--margin-bottom-0, .calendar-navbar__year-selector-button {\n  margin-bottom: 0;\n}\n.button--small {\n  font-size: 14px;\n  line-height: 1.25rem;\n  min-width: 4rem;\n  padding: calc(0.25rem * var(--f-density-factor)) 0.75rem;\n}\n@media (max-width: 639.98px) {\n.button--small:not(.button--full-width) {\n    width: auto;\n}\n}\n.button--small > .button__icon {\n  height: 14px;\n  width: 14px;\n}\n.button--medium {\n  line-height: 1.5rem;\n  min-width: 8rem;\n  padding: calc(0.625rem * var(--f-density-factor)) 1.25rem;\n}\n@media (max-width: 639.98px) {\n.button--medium:not(.button--full-width) {\n    width: auto;\n}\n}\n@media (max-width: 639.98px) {\n.button--large {\n    max-width: var(--f-width-full);\n    width: var(--f-width-full);\n}\n}\n.button .button__icon, .calendar-navbar__year-selector-button .button__icon {\n  margin-right: 0.25rem;\n}\n.button .button__icon:not(:first-child), .calendar-navbar__year-selector-button .button__icon:not(:first-child) {\n  margin-left: 0.25rem;\n  margin-right: 0;\n}\n.button.disabled, .disabled.calendar-navbar__year-selector-button, .button.disabled:hover, .button:disabled, .calendar-navbar__year-selector-button:disabled, .button:disabled:hover, .button[aria-disabled=true], [aria-disabled=true].calendar-navbar__year-selector-button, .button[aria-disabled=true]:hover, .button.button--disabled, .button--disabled.calendar-navbar__year-selector-button {\n  border-width: var(--f-border-width-medium);\n  box-shadow: none;\n  cursor: default;\n}\n@keyframes button-spinner-rotation {\n0% {\n    transform: rotate(0deg);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes button-spinner-delay {\n0%, 99% {\n    opacity: 0;\n}\n100% {\n    opacity: 1;\n}\n}\n.button .button__spinner, .calendar-navbar__year-selector-button .button__spinner {\n  display: inline-block;\n  width: var(--f-icon-size-small);\n  height: var(--f-icon-size-small);\n  animation: button-spinner-rotation 1250ms linear infinite, button-spinner-delay 300ms linear;\n}\n.button .spinner--before, .calendar-navbar__year-selector-button .spinner--before,\n.button .spinner--after,\n.calendar-navbar__year-selector-button .spinner--after {\n  display: inline-flex;\n  width: calc(var(--f-icon-size-small) * 0.5 + 0.125rem);\n  height: var(--f-icon-size-small);\n  align-self: center;\n  transition: width 300ms ease-out;\n}\n.button--small .button__spinner {\n  width: 14px;\n  height: 14px;\n}\n.button--small .spinner--before,\n.button--small .spinner--after {\n  width: calc(7px + 0.125rem);\n  height: 14px;\n}\n.button__inflight.button--small .spinner--after {\n  width: 0;\n}\n.button__inflight.button--small .spinner--before {\n  width: calc(14px + 0.25rem);\n}\n.button__inflight .spinner--after {\n  width: 0;\n}\n.button__inflight .spinner--before {\n  width: calc(var(--f-icon-size-small) + 0.25rem);\n}\n.button-group {\n  align-items: center;\n  display: flex;\n  flex-wrap: wrap;\n  margin-bottom: calc(0.5rem * var(--f-density-factor));\n  margin-top: calc(0.25rem * var(--f-density-factor));\n}\n.button-group--end {\n  justify-content: flex-end;\n}\n.button-group__item {\n  margin: 0;\n  margin-bottom: calc(1rem * var(--f-density-factor));\n}\n@media (min-width: 640px) {\n.button-group__item {\n    margin-bottom: calc(1rem * var(--f-density-factor));\n    margin-right: 1.25rem;\n}\n.button-group__item:last-child {\n    margin-right: 0;\n}\n}\n.button-group > .button--discrete {\n  margin-bottom: calc(1rem * var(--f-density-factor));\n  margin-right: 1.5rem;\n}\n.button-group > .button--discrete:last-child {\n  margin-right: 0;\n}\n.button-group > .button--small {\n  margin-bottom: calc(0.75rem * var(--f-density-factor));\n  margin-right: 0.75rem;\n}\n.button-group > .button--small:last-child {\n  margin-right: 0;\n}\n@media (max-width: 639.98px) {\n.button-group > .button--small.button--full-width {\n    margin-right: 0;\n}\n}\n.button-group > .button--medium {\n  margin-bottom: calc(0.75rem * var(--f-density-factor));\n  margin-right: 1rem;\n}\n.button-group > .button--medium:last-child {\n  margin-right: 0;\n}\n@media (max-width: 639.98px) {\n.button-group > .button--medium.button--full-width {\n    margin-right: 0;\n}\n}\n@media (min-width: 640px) {\n.button-group > .button--large {\n    margin-bottom: calc(1rem * var(--f-density-factor));\n    margin-right: 1.25rem;\n}\n.button-group > .button--large:last-child {\n    margin-right: 0;\n}\n}\n.button-list {\n  list-style-type: none;\n  margin-bottom: calc(0.5rem * var(--f-density-factor));\n  margin-top: calc(0.25rem * var(--f-density-factor));\n  padding-left: 0;\n}\n.button-list > li button {\n  margin: 0;\n  margin-bottom: calc(1rem * var(--f-density-factor));\n}\n.button-list > li button.button--small, .button-list > li button.button--medium {\n  margin-bottom: calc(0.75rem * var(--f-density-factor));\n}\n.button-list > li button.button--large {\n  margin-bottom: calc(1rem * var(--f-density-factor));\n}\n\n/* stylelint-disable no-invalid-position-declaration -- the selector is set when the mixin is included */\n.calendar-day {\n  align-items: center;\n  display: inline-flex;\n  font-weight: var(--f-font-weight-medium);\n  justify-content: center;\n  height: 2.75rem;\n  width: 100%;\n  color: var(--fkds-color-text-primary);\n}\n.calendar-day--highlight {\n  position: relative;\n}\n.calendar-day--highlight::before {\n  border-radius: 50%;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-strong);\n  width: 2rem;\n  height: 2rem;\n  content: \"\";\n  position: absolute;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-strong);\n}\n.calendar-day--highlight.calendar-day--selected::before {\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-inverted);\n}\n@media (forced-colors: active) {\n.calendar-day--highlight.calendar-day--selected::before {\n    border-color: highlightText;\n}\n}\n.calendar-day--highlight:active:not(.calendar-day--highlight--disabled)::before {\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-inverted);\n}\n@media (forced-colors: active) {\n.calendar-day--highlight:active:not(.calendar-day--highlight--disabled)::before {\n    border-color: highlightText;\n}\n}\n.calendar-day--highlight.calendar-day--disabled {\n  position: relative;\n}\n.calendar-day--highlight.calendar-day--disabled::before {\n  border-radius: 50%;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-strong);\n  width: 2rem;\n  height: 2rem;\n  content: \"\";\n  position: absolute;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-strong);\n}\n.calendar-day--highlight.calendar-day--disabled::after {\n  content: \"\";\n  z-index: 1;\n  position: absolute;\n  border-top: var(--f-border-width-medium) solid;\n  width: 60%;\n}\n.calendar-day--selected {\n  color: var(--fkds-color-text-inverted);\n  background-color: var(--fkds-color-select-background-primary-default);\n}\n@media (forced-colors: active) {\n.calendar-day--selected {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.calendar-day--disabled {\n  position: relative;\n}\n.calendar-day--disabled::before {\n  content: \"\";\n  position: absolute;\n  border-top: var(--f-border-width-medium) solid;\n  width: 60%;\n}\n@media (hover: hover) {\n.calendar-day:hover:not(.calendar-day--disabled, .calendar-day--selected), .calendar-day--hover:not(.calendar-day--disabled, .calendar-day--selected) {\n    background-color: var(--fkds-color-select-background-tertiary-hover);\n    color: var(--fkds-color-text-primary);\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.calendar-day:hover:not(.calendar-day--disabled, .calendar-day--selected), .calendar-day--hover:not(.calendar-day--disabled, .calendar-day--selected) {\n    border: 2px solid highlight;\n}\n}\n.calendar-day:active:not(.calendar-day--disabled), .calendar-day--active:not(.calendar-day--disabled) {\n  color: var(--fkds-color-text-inverted);\n  background-color: var(--fkds-color-select-background-primary-default);\n}\n@media (forced-colors: active) {\n.calendar-day:active:not(.calendar-day--disabled), .calendar-day--active:not(.calendar-day--disabled) {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.card {\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n  margin: calc(1rem * var(--f-density-factor)) 0;\n}\n.card--default {\n  background-color: var(--fkds-color-background-primary);\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n}\n.card--error {\n  background-color: var(--fkds-color-background-primary);\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-feedback-border-negative);\n}\n.card__content {\n  color: var(--fkds-color-text-primary);\n}\n.card__content > p:last-child,\n.card__content > div:last-child {\n  margin-bottom: 0;\n}\n.card__content > p:last-child > *:last-child,\n.card__content > div:last-child > *:last-child {\n  margin-bottom: 0;\n}\n.card__header-label {\n  color: var(--fkds-color-text-primary);\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-bold);\n  line-height: var(--f-line-height-large);\n  margin-bottom: calc(0.25rem * var(--f-density-factor));\n  display: block;\n}\n.card__footer {\n  padding-top: calc(1.25rem * var(--f-density-factor));\n}\n.card__footer > .button-group {\n  margin-bottom: 0;\n}\n.card__footer > .button-group .button-group__item {\n  margin-bottom: 0 !important;\n}\n.card__error-message {\n  color: var(--fkds-color-feedback-text-negative);\n}\n.list__item {\n  display: flex;\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  background: var(--fkds-color-background-primary);\n}\n.list__item--active {\n  background: var(--fkds-color-select-background-primary-active);\n}\n.list {\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  padding-left: 0;\n}\n.list--striped .list__item:nth-child(even) {\n  background: var(--fkds-color-background-secondary);\n}\n.list__item:not(:last-child) {\n  border-bottom: none;\n}\n.list__item__itempane {\n  width: 100%;\n  padding: calc(var(--f-list-item-itempane-padding) * var(--f-density-factor)) var(--f-list-item-itempane-padding);\n  color: var(--fkds-color-text-primary);\n  --f-margin-component-bottom: 0.5rem;\n}\n.list__item__itempane .button {\n  margin-bottom: 0;\n}\n.list__item__itempane ul:not(.button-list) {\n  list-style-type: disc;\n}\n.list__item__itempane ul:not(.button-list) ul {\n  list-style-type: circle;\n}\n.list__item__selectpane {\n  padding: calc((var(--f-list-item-itempane-padding) - 0.2rem) * var(--f-density-factor)) 0 calc((var(--f-list-item-itempane-padding) - 0.2rem) * var(--f-density-factor)) calc(var(--f-list-item-itempane-padding) - 0.2rem);\n}\n.list__item__selectpane__input {\n  margin-top: 0.1rem;\n}\n.list__item__selectpane__input .checkbox__label,\n.list__item__selectpane__input .radio-button__label {\n  min-width: 1.75rem;\n  height: 1.75rem;\n  padding: 0;\n}\n.list__item__selectpane__input .checkbox__label::after,\n.list__item__selectpane__input .checkbox__label::before,\n.list__item__selectpane__input .radio-button__label::after,\n.list__item__selectpane__input .radio-button__label::before {\n  top: calc(0.2rem * var(--f-density-factor));\n  left: 0.2rem;\n}\n.list__item:focus-visible {\n  box-shadow: none;\n  outline: 3px solid var(--fkds-focus-indicator-color);\n  outline-offset: -3px;\n}\n@media (hover: hover) {\n.list--hover .list__item:hover {\n    cursor: pointer;\n}\n.list--hover .list__item:hover:not(.disabled) {\n    background: var(--fkds-color-select-background-tertiary-hover);\n}\n.list--hover .list__item:hover.list__item--active {\n    background: var(--fkds-color-select-background-primary-active);\n}\n}\n.radio-button-group--border .radio-button-group__content .radio-button, .checkbox-group--border .checkbox-group__content .checkbox {\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  margin-bottom: 0;\n  width: 100%;\n  cursor: pointer;\n  border-bottom: none;\n}\n.radio-button-group--border .radio-button-group__content .radio-button:last-child, .checkbox-group--border .checkbox-group__content .checkbox:last-child {\n  border-bottom: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n}\n.radio-button-group--border .radio-button-group__content .radio-button input:focus-visible + label, .checkbox-group--border .checkbox-group__content .checkbox input:focus-visible + label {\n  outline: 2px solid var(--fkds-color-border-primary);\n  outline-offset: -2px;\n}\n.radio-button-group--border .radio-button-group__content .radio-button input + label::after, .checkbox-group--border .checkbox-group__content .checkbox input + label::after {\n  top: 0.9rem;\n  left: 1rem;\n}\n.radio-button-group--border .radio-button-group__content .radio-button input:checked + label::after, .checkbox-group--border .checkbox-group__content .checkbox input:checked + label::after {\n  top: 0.9rem;\n  left: 1rem;\n}\n@media (hover: hover) {\n.radio-button-group--border .radio-button-group__content .radio-button:hover, .checkbox-group--border .checkbox-group__content .checkbox:hover {\n    background: var(--fkds-color-select-background-primary-hover);\n}\n}\n.radio-button-group--border .radio-button-group__content .radio-button label::before, .checkbox-group--border .checkbox-group__content .checkbox label::before {\n  top: 0.9rem;\n  left: 1rem;\n}\n.radio-button-group--border .radio-button-group__content .radio-button label, .checkbox-group--border .checkbox-group__content .checkbox label {\n  padding: 1rem;\n  padding-left: 3rem;\n  width: 100%;\n}\n.radio-button__details,\n.checkbox__details {\n  color: var(--fkds-color-text-secondary);\n  display: block;\n  margin-top: calc(0.25rem * var(--f-density-factor));\n}\n.radio-button__width,\n.checkbox__width {\n  width: 100%;\n}\n.radio-button.disabled .radio-button__details,\n.checkbox.disabled .checkbox__details {\n  color: inherit;\n}\n.checkbox-group__content {\n  display: flex;\n  flex-direction: column;\n}\n.checkbox__label::after {\n  mask-image: url(\"data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE3LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9ImNoZWNrYm94LWljb24iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgogICAgICAgICB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHJlY3QgeD0iMy40NzQiIHk9IjkuMTk0IiBmaWxsPSIjM0M1NTkyIiB3aWR0aD0iMCIgaGVpZ2h0PSIwIi8+CjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTguMzc2LDE1LjAwNWMtMC40MTYsMC0wLjgzMi0wLjE1OC0xLjE0OS0wLjQ3NWwtMy4yNS0zLjI0M2MtMC42MzUtMC42MzQtMC42MzUtMS42NiwwLTIuMjkzCiAgICAgICAgYzAuNjM1LTAuNjMzLDEuNjYzLTAuNjMzLDIuMjk4LDBsMi4xMDEsMi4wOTdsNS4zNTEtNS4zNGMwLjYzNS0wLjYzNCwxLjY2My0wLjYzNCwyLjI5OCwwYzAuNjM1LDAuNjMzLDAuNjM1LDEuNjU5LDAsMi4yOTMKICAgICAgICBsLTYuNSw2LjQ4N0M5LjIwNywxNC44NDcsOC43OTIsMTUuMDA1LDguMzc2LDE1LjAwNXoiLz4KPC9zdmc+Cg==\");\n  mask-repeat: no-repeat;\n}\n.checkbox {\n  min-height: var(--f-height-medium);\n  margin-bottom: calc(1rem * var(--f-density-factor));\n  display: flex;\n}\n.checkbox:last-child {\n  margin-bottom: 0;\n}\n.checkbox__input {\n  appearance: none;\n  outline: none;\n  border: none;\n  width: 0;\n}\n.checkbox__label {\n  min-width: 4.5rem;\n  display: inline-block;\n  cursor: pointer;\n  font-size: var(--f-font-size-standard);\n  line-height: var(--f-line-height-small);\n  padding-left: 1.75rem;\n  padding-top: 0.1rem;\n  padding-bottom: 0.1rem;\n  position: relative;\n  color: var(--fkds-color-text-primary);\n}\n.checkbox__label * {\n  pointer-events: none;\n}\n.checkbox__label::before, .checkbox__label::after {\n  content: \"\";\n  height: var(--f-icon-size-medium);\n  left: 0;\n  margin: 0.1rem 0;\n  position: absolute;\n  top: 0;\n  width: var(--f-icon-size-medium);\n}\n.checkbox__label::before {\n  background-color: var(--fkds-color-background-primary);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-radius: var(--f-border-radius-small);\n  cursor: pointer;\n  display: block;\n  transition: background-color ease var(--f-animation-duration-medium), border-color ease var(--f-animation-duration-medium), opacity ease var(--f-animation-duration-medium);\n}\n.checkbox__label::after {\n  background-color: var(--fkds-color-text-inverted);\n  opacity: 0;\n  transition: opacity ease var(--f-animation-duration-medium);\n}\n@media (forced-colors: active) {\n.checkbox__label::after {\n    background-color: Canvas;\n}\n}\n.checkbox.disabled {\n  color: var(--fkds-color-text-disabled);\n}\n@media (forced-colors: active) {\n.checkbox.disabled {\n    color: GrayText;\n}\n}\n.checkbox.disabled .checkbox__label {\n  color: var(--fkds-color-text-disabled);\n  cursor: default;\n}\n.checkbox.disabled .checkbox__label::before {\n  background-color: var(--fkds-color-background-disabled);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-disabled);\n  cursor: inherit;\n}\n.checkbox.disabled input[type=checkbox]:checked + label::before {\n  background-color: var(--fkds-color-background-disabled);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-disabled);\n}\n@media (forced-colors: active) {\n.checkbox.disabled input[type=checkbox]:checked + label::before {\n    border-color: GrayText;\n}\n}\n.checkbox.disabled input[type=checkbox]:checked + .checkbox__label::after {\n  background-color: var(--fkds-color-text-disabled);\n}\n.checkbox input[type=checkbox]:checked + label::before {\n  background-color: var(--fkds-color-select-background-primary-default);\n  border: var(--f-border-width-medium) solid transparent;\n}\n@media (forced-colors: active) {\n.checkbox input[type=checkbox]:checked + label::before {\n    background-color: HighLight;\n    border-color: HighLight;\n}\n}\n.checkbox input[type=checkbox]:checked + .checkbox__label::after {\n  opacity: 1;\n}\n.checkbox input[type=checkbox]:focus-visible + .checkbox__label {\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.radio-button-group--chip .radio-button-group__label {\n  margin-bottom: 0.25rem;\n}\n.radio-button-group--chip .radio-button-group__content {\n  margin: -0.25rem;\n}\n.radio-button-group--chip .radio-button {\n  margin: 0;\n  padding: 0.25rem;\n}\n.radio-button-group--chip .radio-button.disabled .radio-button__label {\n  background: var(--fkds-color-background-disabled);\n  border-color: var(--fkds-color-border-primary);\n  color: var(--fkds-color-text-disabled);\n}\n@media (forced-colors: active) {\n.radio-button-group--chip .radio-button.disabled .radio-button__label {\n    color: GrayText;\n}\n}\n.radio-button-group--chip .radio-button__label {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n  font-weight: var(--f-font-weight-medium);\n  padding: 0.5rem 1rem;\n  border-radius: 20px;\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n  justify-content: center;\n  max-width: 400px;\n  user-select: none;\n}\n.radio-button-group--chip .radio-button__label::before, .radio-button-group--chip .radio-button__label::after {\n  display: none;\n}\n.radio-button-group--chip .radio-button__label svg {\n  margin-right: 0.5rem;\n}\n@media (hover: hover) {\n.radio-button-group--chip .radio-button__label:hover {\n    border-color: var(--fkds-color-border-primary);\n    background-color: var(--fkds-color-select-background-secondary-hover);\n    color: var(--fkds-color-text-primary);\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.radio-button-group--chip .radio-button__label:hover {\n    border: var(--f-border-width-medium) solid highlight;\n}\n}\n.radio-button-group--chip input[type=radio]:checked + .radio-button__label {\n  background: var(--fkds-color-select-background-secondary-default);\n  border-color: transparent;\n  color: var(--fkds-color-text-inverted);\n}\n@media (forced-colors: active) {\n.radio-button-group--chip input[type=radio]:checked + .radio-button__label {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.radio-button-group--chip input[type=radio]:focus-visible + label.radio-button__label {\n  border-radius: 20px;\n}\n.radio-button-group--chip.radio-button-group--horizontal .radio-button-group__content {\n  flex-flow: row wrap;\n}\n.radio-button-group--chip.radio-button-group--horizontal .radio-button-group__content .radio-button {\n  width: fit-content;\n  margin-bottom: 0;\n}\n@media (max-width: 639.98px) {\n.radio-button-group--chip.radio-button-group--horizontal .radio-button-group__content {\n    flex-flow: row wrap;\n}\n.radio-button-group--chip.radio-button-group--horizontal .radio-button-group__content .radio-button {\n    margin-bottom: 0;\n}\n}\n.checkbox-group--chip .checkbox-group__label {\n  margin-bottom: 0.25rem;\n}\n.checkbox-group--chip .checkbox-group__content {\n  margin: -0.25rem;\n}\n.checkbox-group--chip .checkbox {\n  margin: 0;\n  padding: 0.25rem;\n}\n.checkbox-group--chip .checkbox.disabled .checkbox__label {\n  background: var(--fkds-color-background-disabled);\n  border-color: var(--fkds-color-border-primary);\n  color: var(--fkds-color-text-disabled);\n}\n@media (forced-colors: active) {\n.checkbox-group--chip .checkbox.disabled .checkbox__label {\n    color: GrayText;\n}\n}\n.checkbox-group--chip .checkbox__label {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n  font-weight: var(--f-font-weight-medium);\n  padding: 0.5rem 1rem;\n  border-radius: 20px;\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n  justify-content: center;\n  max-width: 400px;\n  user-select: none;\n}\n.checkbox-group--chip .checkbox__label::before, .checkbox-group--chip .checkbox__label::after {\n  display: none;\n}\n.checkbox-group--chip .checkbox__label svg {\n  margin-right: 0.5rem;\n}\n@media (hover: hover) {\n.checkbox-group--chip .checkbox__label:hover {\n    border-color: var(--fkds-color-border-primary);\n    background-color: var(--fkds-color-select-background-secondary-hover);\n    color: var(--fkds-color-text-primary);\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.checkbox-group--chip .checkbox__label:hover {\n    border: var(--f-border-width-medium) solid highlight;\n}\n}\n.checkbox-group--chip input[type=checkbox]:checked + .checkbox__label {\n  background: var(--fkds-color-select-background-secondary-default);\n  border-color: transparent;\n  color: var(--fkds-color-text-inverted);\n}\n@media (forced-colors: active) {\n.checkbox-group--chip input[type=checkbox]:checked + .checkbox__label {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.checkbox-group--chip input[type=checkbox]:focus-visible + label.checkbox__label {\n  border-radius: 20px;\n}\n.checkbox-group--chip.checkbox-group--horizontal .checkbox-group__content {\n  flex-flow: row wrap;\n}\n.checkbox-group--chip.checkbox-group--horizontal .checkbox-group__content .checkbox {\n  width: fit-content;\n  margin-bottom: 0;\n}\n@media (max-width: 639.98px) {\n.checkbox-group--chip.checkbox-group--horizontal .checkbox-group__content {\n    flex-flow: row wrap;\n}\n.checkbox-group--chip.checkbox-group--horizontal .checkbox-group__content .checkbox {\n    margin-bottom: 0;\n}\n}\n.close-button {\n  align-items: center;\n  background: inherit;\n  border: none;\n  color: var(--fkds-color-action-text-secondary-default);\n  cursor: pointer;\n  display: flex;\n  font-weight: 700;\n  gap: 0.5rem;\n  margin: 0.375rem;\n  padding: 0.125rem 0.625rem;\n}\n.close-button .icon {\n  min-width: var(--f-icon-size-small);\n}\n.i-close-button {\n  align-items: center;\n  background-color: transparent;\n  border: var(--f-border-width-medium) solid transparent;\n  border-radius: var(--f-border-radius-medium);\n  color: var(--fkds-color-action-text-secondary-default);\n  cursor: pointer;\n  display: inline-flex;\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  gap: 0.25rem;\n  justify-content: center;\n  letter-spacing: 0.01rem;\n  line-height: 1.5rem;\n  margin: 0.5rem;\n  min-width: 0;\n  outline-offset: 0.25rem;\n  padding-block: calc(0.375rem * var(--f-density-factor));\n  padding-inline: 0.5rem;\n  text-align: center;\n}\n.i-close-button:focus-visible {\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n@media (hover: hover) {\n.i-close-button:enabled:not(.i-close-button--compact):hover {\n    background-color: var(--fkds-color-action-background-secondary-hover);\n}\n}\n.i-close-button:enabled:not(.i-close-button--compact):active {\n  background-color: var(--fkds-color-action-background-secondary-active);\n}\n.i-close-button--icon-only {\n  box-sizing: content-box;\n  block-size: 1.5rem;\n  inline-size: 1.5rem;\n  padding: calc(0.375rem * var(--f-density-factor));\n}\n.i-close-button--compact {\n  border-width: 0;\n  padding-block: 0;\n}\n.i-close-button--compact.i-close-button--icon-only {\n  padding-inline: 0;\n}\n.i-close-button__icon {\n  flex-shrink: 0;\n}\n.popup .popup__wrapper.combobox__listbox {\n  background-color: var(--fkds-color-background-primary);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-radius: var(--f-border-radius-medium);\n  box-shadow: var(--f-box-modal-shadow);\n  margin-top: 4px;\n  margin-bottom: 4px;\n  padding: 2px;\n  scrollbar-gutter: stable;\n}\n.combobox__listbox__list {\n  margin: 0;\n  padding: 0;\n}\n.combobox__listbox__option {\n  color: var(--fkds-color-text-primary);\n  cursor: pointer;\n  list-style-type: none;\n  padding: 0.75rem;\n  white-space: nowrap;\n  box-sizing: border-box;\n  margin-right: 0.5rem;\n}\n@media (hover: hover) {\n.combobox__listbox__option.is-hover, .combobox__listbox__option:hover:not(.combobox__listbox__option--highlight) {\n    background-color: var(--fkds-color-select-background-primary-hover);\n    color: var(--fkds-color-text-primary);\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.combobox__listbox__option.is-hover, .combobox__listbox__option:hover:not(.combobox__listbox__option--highlight) {\n    outline-offset: -2px;\n    margin-right: 1.5rem;\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.combobox__listbox__option.is-hover, .combobox__listbox__option:hover:not(.combobox__listbox__option--highlight) {\n    outline: 2px solid highlight;\n}\n}\n.combobox__listbox__option--highlight {\n  background-color: var(--fkds-color-select-background-primary-default);\n  color: var(--fkds-color-text-inverted);\n  font-weight: var(--f-font-weight-medium);\n}\n@media (forced-colors: active) {\n.combobox__listbox__option--highlight {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.combobox__button {\n  background: inherit;\n  border: none;\n  color: var(--fkds-color-action-text-primary-default);\n  cursor: pointer;\n  margin: 0;\n  padding: 0;\n}\n.combobox__button:disabled {\n  color: var(--fkds-color-text-disabled);\n  cursor: default;\n}\n.contextmenu {\n  min-width: 260px;\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n}\n.contextmenu__list {\n  margin: 0;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-primary);\n  padding: 0.5rem;\n  display: block;\n  list-style-type: none;\n}\n.contextmenu__list__item {\n  cursor: pointer;\n  white-space: normal;\n  display: flex;\n  align-items: center;\n  padding: 0.75rem;\n  margin: 0.5rem 0;\n}\n.contextmenu__list__item a,\n.contextmenu__list__item a:visited,\n.contextmenu__list__item a:active {\n  color: var(--fkds-color-text-primary);\n}\n@media (hover: hover) {\n.contextmenu__list__item:hover {\n    color: var(--fkds-color-text-primary);\n    background-color: var(--fkds-color-action-background-secondary-hover);\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.contextmenu__list__item:hover {\n    outline: 2px solid highlight;\n}\n}\n@media (min-width: 640px) {\n.contextmenu__list__item {\n    white-space: nowrap;\n}\n}\n.contextmenu__separator {\n  margin: 0.75rem;\n  height: 1px;\n  border: none;\n  border-top: var(--f-border-width-small) solid var(--fkds-color-border-primary);\n}\n.contextmenu__lefticon {\n  margin-right: 0.75rem;\n  min-width: var(--f-icon-size-small);\n}\n.crud-dataset {\n  margin: 0 0 var(--f-margin-component-bottom);\n}\n.crud-dataset__add-button {\n  margin-bottom: 0 !important;\n  margin-top: 0.5rem !important;\n  margin-left: 2px;\n}\n.crud-dataset .list,\n.crud-dataset .table {\n  margin-bottom: 0;\n}\n.datepicker-field__button {\n  background: transparent;\n  border: 0;\n  border-radius: var(--f-border-radius-medium);\n  flex: 0 0 auto;\n  padding: 0;\n  cursor: pointer;\n}\n.datepicker-field__button .icon {\n  color: var(--fkds-color-action-text-primary-default);\n  min-height: var(--f-icon-size-large);\n  min-width: var(--f-icon-size-large);\n  height: calc(var(--f-icon-size-x-large) * var(--f-density-factor));\n  width: calc(var(--f-icon-size-x-large) * var(--f-density-factor));\n  vertical-align: middle;\n}\n@media (forced-colors: active) {\n.datepicker-field__button .icon {\n    color: ButtonBorder;\n}\n}\n@media (hover: hover) {\n.datepicker-field__button:hover .icon {\n    color: var(--fkds-color-action-text-primary-hover);\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.datepicker-field__button:hover .icon {\n    color: LinkText;\n}\n}\n.datepicker-field__button:disabled .icon {\n  color: var(--fkds-color-text-disabled);\n}\n@media (forced-colors: active) {\n.datepicker-field__button:disabled .icon {\n    color: GrayText;\n}\n}\n.datepicker-field__popup {\n  margin-top: -16px;\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  background-color: var(--fkds-color-background-primary);\n}\n.datepicker-field__close {\n  display: flex;\n  justify-content: flex-end;\n}\n.popup--overlay .datepicker-field__popup {\n  width: calc(100vw - 40px);\n  max-width: 28rem;\n}\n.popup--inline .datepicker-field__popup {\n  width: 100%;\n}\n.popup--inline .datepicker-field__table {\n  margin-top: 0;\n}\n.popup--inline .datepicker-field__table .calendar-month__cell {\n  padding: 0;\n  border-bottom: unset;\n}\n.popup--inline .datepicker-field__table .calendar-month__header-cell {\n  background-color: unset;\n  border: unset;\n}\n.definition-list {\n  margin: 0;\n  color: var(--fkds-color-text-primary);\n}\n.definition-list__term {\n  float: left;\n  clear: left;\n  margin-right: 0.25rem;\n  font-weight: var(--f-font-weight-medium);\n}\n.definition-list__term::after {\n  content: \":\";\n}\n.definition-list__definition {\n  margin-left: 0;\n  margin-bottom: 0.25rem;\n}\n.dialogue-tree {\n  margin: 0 0 var(--f-margin-component-bottom);\n}\n.dialogue-tree__list {\n  margin-left: 0;\n  padding-left: 0;\n  list-style-type: none;\n  border-radius: 2px;\n}\n.dialogue-tree__list-item:has(:focus-visible) {\n  z-index: 2;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.dialogue-tree__list-item:has(:focus-visible):not(:first-child) {\n  border-top: 1px solid var(--fkds-color-border-primary);\n}\n.dialogue-tree__list-item {\n  background-color: var(--fkds-color-background-primary);\n  border-bottom: 1px solid var(--fkds-color-border-primary);\n  border-left: 1px solid var(--fkds-color-border-primary);\n  border-right: 1px solid var(--fkds-color-border-primary);\n  border-top: 1px solid transparent;\n  height: 60px;\n  position: relative;\n  box-sizing: border-box;\n}\n.dialogue-tree__list-item:first-child {\n  border-top: 1px solid var(--fkds-color-border-primary);\n}\n@media (hover: hover) {\n.dialogue-tree__list-item.is-hover, .dialogue-tree__list-item:hover {\n    background-color: var(--fkds-color-action-background-secondary-hover);\n    z-index: 1;\n}\n}\n.dialogue-tree__list-item button:focus-visible {\n  box-shadow: none;\n}\n.dialogue-tree__list-item button {\n  padding: 0 0.75em;\n  border: 0;\n  width: 100%;\n  height: 100%;\n  background-color: inherit;\n  color: var(--fkds-color-action-text-secondary-default);\n  display: flex;\n  align-items: center;\n  outline: none;\n  justify-content: space-between;\n  cursor: pointer;\n}\n.dialogue-tree__list-item button span {\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n  overflow: hidden;\n  font-weight: var(--f-font-weight-medium);\n  font-size: var(--f-font-size-standard);\n  text-align: left;\n}\n.dialogue-tree__list-item button .icon {\n  flex-shrink: 0;\n  margin-left: 1.25rem;\n}\n.entrypoint {\n  background-color: var(--fkds-color-action-background-primary-default);\n  border-color: transparent;\n  border-width: var(--f-border-width-medium);\n  box-shadow: var(--f-button-shadow);\n  color: var(--fkds-color-action-text-inverted-default);\n  padding: calc(var(--f-button-primary-padding-top) * var(--f-density-factor)) var(--f-button-primary-padding-right) calc(var(--f-button-primary-padding-bottom) * var(--f-density-factor)) var(--f-button-primary-padding-left);\n  transition-duration: var(--f-animation-duration-extra-short);\n  transition-property: background-color, border-color, transform;\n  transition-timing-function: var(--f-button-animation-curve);\n}\n.entrypoint:focus-visible {\n  background-color: var(--fkds-color-action-background-primary-focus);\n  border-color: transparent;\n  color: var(--fkds-color-action-text-inverted-default);\n}\n@media (hover: hover) {\n.entrypoint:hover {\n    background-color: var(--fkds-color-action-background-primary-hover);\n    border-color: transparent;\n    box-shadow: var(--f-button-shadow-hover);\n    color: var(--fkds-color-action-text-inverted-default);\n}\n}\n.entrypoint:active {\n  background-color: var(--fkds-color-action-background-primary-active);\n  border-color: transparent;\n  box-shadow: var(--f-button-shadow-active);\n  color: var(--fkds-color-action-text-inverted-default);\n  transform: translateY(1px);\n}\n.entrypoint:focus-visible {\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.entrypoint.disabled, .entrypoint.disabled:hover, .entrypoint:disabled, .entrypoint:disabled:hover, .entrypoint[aria-disabled=true], .entrypoint[aria-disabled=true]:hover, .entrypoint.entrypoint--disabled, .entrypoint.entrypoint--disabled:hover {\n  background-color: var(--fkds-color-background-disabled);\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n  pointer-events: none;\n}\n.entrypoint[aria-disabled=true] {\n  pointer-events: none;\n}\n@media (forced-colors: active) {\n.entrypoint[aria-disabled=true] {\n    border-color: GrayText;\n    color: GrayText;\n}\n}\n.entrypoint {\n  align-items: center;\n  border-radius: var(--f-border-radius-medium);\n  border-style: solid;\n  cursor: pointer;\n  display: inline-flex;\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  justify-content: space-between;\n  line-height: var(--f-line-height-large);\n  margin-bottom: calc(1.5rem * var(--f-density-factor));\n  margin-top: calc(0.25rem * var(--f-density-factor));\n  text-align: left;\n  width: 100%;\n}\n.entrypoint__icon {\n  flex-shrink: 0;\n  margin-left: 2rem;\n}\n.error-list {\n  color: var(--fkds-color-feedback-text-negative);\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n}\n.error-list--list-style-none {\n  list-style-type: none;\n  padding: 0;\n}\n.error-list--padding-left {\n  padding-left: 1rem;\n}\n.error-list__list {\n  margin: 0;\n  line-height: max(1.5, 2 * var(--f-density-factor));\n}\n.error-list__bullet::before {\n  color: var(--fkds-color-feedback-text-negative);\n  content: \"•\";\n  display: inline;\n  font-size: var(--f-font-size-h4);\n  line-height: 0;\n  margin-right: 0.75rem;\n}\n.error-list__link {\n  color: var(--fkds-color-feedback-text-negative);\n  list-style-position: inside;\n  text-decoration: underline;\n  text-underline-offset: 0.25em;\n}\n.error-list__link a {\n  color: var(--fkds-color-feedback-text-negative);\n}\n@media (hover: hover) {\n.error-list__link:hover {\n    text-decoration-thickness: 2px;\n}\n}\n.error-list__icon {\n  max-width: none;\n  position: relative;\n  top: 3px;\n}\n.error-list--list-item {\n  display: list-item;\n}\n.offline .icon, .icon-stack,\n.icon--stack, .offline .icon-stack, .icon {\n  display: inline-block;\n  height: var(--f-icon-size-small);\n  max-height: 100%;\n  max-width: 100%;\n  pointer-events: none;\n  width: var(--f-icon-size-small);\n}\n.select-field__icon, .label__icon {\n  display: inline;\n  height: var(--f-icon-size-large);\n  position: absolute;\n  right: 0.75rem;\n  top: calc(0.5rem * var(--f-density-factor));\n  transition: opacity var(--f-animation-duration-medium) ease-in-out;\n  width: var(--f-icon-size-large);\n}\n.icon--flip-horizontal {\n  transform: scaleX(-1);\n}\n.icon--flip-vertical {\n  transform: scaleY(-1);\n}\n.icon--rotate-90 {\n  transform: rotate(90deg);\n}\n.icon--rotate-180 {\n  transform: rotate(180deg);\n}\n.icon--rotate-270 {\n  transform: rotate(270deg);\n}\n.icon--new-window .icon.f-icon-new-window {\n  width: 55%;\n  height: 55%;\n  top: 0;\n  right: 0;\n}\n.icon--new-window .icon:not(.f-icon-new-window) {\n  width: 83%;\n  height: 83%;\n  bottom: 0;\n  left: 5%;\n}\n.expandable-panel {\n  margin-bottom: calc(2rem * var(--f-density-factor));\n}\n.expandable-panel__icon svg {\n  width: var(--f-icon-size-medium);\n  height: var(--f-icon-size-medium);\n  max-height: initial;\n  max-width: initial;\n  vertical-align: middle;\n}\n.expandable-panel.expandable-panel--expanded .expandable-panel__icon svg {\n  transform: rotate(180deg);\n}\n.expandable-panel.expandable-panel--expanded .expandable-panel__content {\n  height: auto;\n}\n.expandable-panel.expandable-panel--expanded .expandable-panel__heading button {\n  border-radius: var(--f-border-radius-medium) var(--f-border-radius-medium) 0 0;\n}\n.expandable-panel.expandable-panel--collapsed .expandable-panel__icon svg {\n  transform: rotate(0);\n}\n.expandable-panel__heading {\n  margin-bottom: 0 !important;\n}\n.expandable-panel__heading button {\n  background-color: var(--fkds-color-interactive-surface-background-primary-default);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-radius: var(--f-border-radius-medium);\n  color: var(--fkds-color-text-primary);\n  cursor: pointer;\n  display: inline-flex;\n  align-items: center;\n  margin: 0;\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n  text-align: left;\n  width: 100%;\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-bold);\n  line-height: var(--f-line-height-large);\n}\n.expandable-panel__heading button:focus-visible {\n  background-color: var(--fkds-color-interactive-surface-background-primary-hover);\n}\n@media (hover: hover) {\n.expandable-panel__heading button:hover {\n    background-color: var(--fkds-color-interactive-surface-background-primary-hover);\n}\n}\n.expandable-panel__title {\n  flex-grow: 1;\n  text-wrap: pretty;\n}\n.expandable-panel__title__text {\n  vertical-align: middle;\n}\n.expandable-panel__notification {\n  margin-left: 0.25em;\n  width: var(--f-icon-size-large);\n  height: var(--f-icon-size-large);\n  background: var(--fkds-color-feedback-background-negative-strong);\n  border: var(--f-border-radius-small) solid transparent;\n  border-radius: 50%;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  vertical-align: middle;\n}\n@media (forced-colors: active) {\n.expandable-panel__notification {\n    background: canvas;\n}\n}\n.expandable-panel__notification svg {\n  color: var(--fkds-color-text-inverted);\n  width: var(--f-icon-size-small);\n  height: var(--f-icon-size-small);\n}\n@media (forced-colors: active) {\n.expandable-panel__notification svg {\n    color: buttonText;\n}\n}\n.expandable-panel__content {\n  overflow: hidden;\n  transition: height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96);\n}\n.expandable-panel__body {\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-top: 0;\n  border-radius: 0 0 var(--f-border-radius-medium) var(--f-border-radius-medium);\n  line-height: inherit;\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n}\n.expandable-paragraph {\n  color: var(--fkds-color-text-primary);\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n}\n.expandable-paragraph__heading {\n  line-height: var(--f-line-height-medium);\n  margin: 0;\n}\n.expandable-paragraph__heading button {\n  border: none;\n  background-color: transparent;\n  cursor: pointer;\n  margin: 0;\n  display: flex;\n  text-align: left;\n  padding: 0;\n  flex-shrink: 0;\n}\n.expandable-paragraph__icon {\n  border-radius: 50%;\n  background-color: var(--fkds-color-select-background-secondary-default);\n  width: var(--f-icon-size-small);\n  height: var(--f-icon-size-small);\n  margin-top: calc((var(--f-line-height-medium) * 1em - var(--f-icon-size-small)) / 2);\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);\n  outline: 2px solid transparent;\n  display: flex;\n  color: var(--fkds-color-text-inverted);\n  padding: 3px;\n  flex-shrink: 0;\n  margin-right: 0.5rem;\n}\n.expandable-paragraph__icon .icon {\n  transition: transform var(--f-animation-duration-long) ease;\n}\n.expandable-paragraph.expandable-paragraph--open .expandable-paragraph__icon svg:nth-child(2) {\n  transform: rotate(0);\n}\n.expandable-paragraph.expandable-paragraph--open .expandable-paragraph__container {\n  height: auto;\n}\n.expandable-paragraph.expandable-paragraph--closed .expandable-paragraph__icon svg:nth-child(2) {\n  transform: rotate(-90deg);\n}\n.expandable-paragraph__container {\n  height: 0;\n  overflow: hidden;\n  transition: height var(--f-animation-duration-medium) cubic-bezier(0.46, 0.03, 0.52, 0.96);\n}\n.expandable-paragraph__content, .expandable-paragraph__related-information {\n  margin-left: calc(var(--f-icon-size-small) + 0.5rem);\n}\n.expandable-paragraph__related-information {\n  color: var(--fkds-color-text-secondary);\n  font-size: 0.875rem;\n}\n.expandable-paragraph__content {\n  margin-top: calc(0.75rem * var(--f-density-factor));\n  margin-bottom: calc(1rem * var(--f-density-factor));\n  overflow: hidden;\n  transition: height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96);\n}\n.expandable-paragraph__separator {\n  border-bottom: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  margin: 0 0.5rem calc(0.5rem * var(--f-density-factor)) 0.5rem;\n}\n.expandable-paragraph--list {\n  margin-bottom: calc(0.5rem * var(--f-density-factor));\n  padding-bottom: calc(0.5rem * var(--f-density-factor));\n  border-bottom: var(--f-border-width-small) solid var(--fkds-color-border-primary);\n}\n.fieldset {\n  border: 0;\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  min-width: 0;\n  padding: 0;\n  width: var(--f-width-full);\n}\n.fieldset__label.label {\n  padding: 0;\n  margin-bottom: calc(0.75rem * var(--f-density-factor));\n}\n.fieldset__content {\n  display: flex;\n  flex-direction: column;\n}\n.file-item-list {\n  list-style-type: none;\n  padding-left: 0;\n}\n.file-item .button--discrete {\n  padding: 0;\n  min-width: auto;\n  text-align: left;\n  margin-right: 0.25rem;\n}\n.file-item__row {\n  margin-bottom: 1.25rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.file-item__row button,\n.file-item__row a {\n  margin-bottom: 0;\n}\n.file-item__file-open {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n  flex: 0 1 auto;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.file-item__change-info {\n  color: var(--fkds-color-text-primary);\n  margin-top: -1.25rem;\n}\n.file-item__file-name {\n  margin-left: 0.25rem;\n  min-width: 0;\n  overflow-wrap: anywhere;\n  hyphens: auto;\n  white-space: normal;\n}\n.file-item__separator {\n  margin-bottom: 1.25rem;\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-weak);\n}\n.file-selector input[type=file] {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n}\n.file-selector input[type=file]:focus-visible + label {\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n@media (forced-colors: active) {\n.file-selector label.button--tertiary {\n    border-color: ButtonBorder;\n    color: ButtonText;\n}\n}\n.file-selector label.button--tertiary {\n  cursor: pointer;\n}\n.file-selector input[aria-disabled=true] + label.button--tertiary {\n  cursor: default;\n}\n@media (forced-colors: active) {\n.file-selector input[aria-disabled=true] + label.button--tertiary {\n    color: GrayText;\n    border-color: GrayText;\n}\n}\n.file-uploader__message-box {\n  margin-top: 1.25rem;\n}\n.component-group > .component-group__item:not(:only-child) {\n  margin-bottom: 1rem;\n}\n.component-group > .component-group__item:last-child:not(:first-child) {\n  margin-bottom: 2rem;\n}\n.offline .icon-stack, .icon-stack,\n.icon--stack {\n  position: relative;\n}\n.icon-stack .icon,\n.icon--stack .icon {\n  position: absolute;\n}\n.icon-stack--new-window .icon.f-icon-new-window,\n.icon--stack--new-window .icon.f-icon-new-window {\n  width: 55%;\n  height: 55%;\n  top: 0;\n  right: 0;\n}\n.icon-stack--new-window .icon:not(.f-icon-new-window),\n.icon--stack--new-window .icon:not(.f-icon-new-window) {\n  width: 83%;\n  height: 83%;\n  bottom: 0;\n  left: 5%;\n}\n.icon-stack--tooltip .f-icon-circle,\n.icon--stack--tooltip .f-icon-circle {\n  color: var(--fkds-color-action-background-primary-default);\n  fill: var(--fkds-color-action-border-primary-default);\n}\n.icon-stack--tooltip .f-icon-i,\n.icon--stack--tooltip .f-icon-i {\n  color: var(--fkds-color-text-inverted);\n}\n.icon-stack--info .f-icon-circle,\n.icon--stack--info .f-icon-circle {\n  color: var(--fkds-color-feedback-background-info);\n  fill: var(--fkds-color-feedback-border-info);\n}\n.icon-stack--info .f-icon-i,\n.icon--stack--info .f-icon-i {\n  color: var(--fkds-color-text-primary);\n}\n.icon-stack--warning .f-icon-circle,\n.icon--stack--warning .f-icon-circle {\n  color: var(--fkds-color-feedback-background-warning);\n  fill: var(--fkds-color-feedback-border-warning);\n}\n.icon-stack--warning .f-icon-alert,\n.icon--stack--warning .f-icon-alert {\n  color: var(--fkds-color-text-primary);\n}\n.icon-stack--error .f-icon-triangle,\n.icon--stack--error .f-icon-triangle {\n  color: var(--fkds-color-feedback-background-negative);\n  fill: var(--fkds-color-feedback-border-negative);\n}\n.icon-stack--error .f-icon-alert,\n.icon--stack--error .f-icon-alert {\n  color: var(--fkds-color-text-primary);\n}\n.icon-stack--success .f-icon-circle,\n.icon--stack--success .f-icon-circle {\n  color: var(--fkds-color-feedback-background-positive);\n  fill: var(--fkds-color-feedback-border-positive);\n}\n.icon-stack--success .f-icon-success,\n.icon--stack--success .f-icon-success {\n  color: var(--fkds-color-text-primary);\n  transform: scale(0.6);\n}\n@media (forced-colors: active) {\n.icon-stack--info .f-icon-circle,\n  .icon-stack--info .f-icon-triangle, .icon-stack--warning .f-icon-circle,\n  .icon-stack--warning .f-icon-triangle, .icon-stack--error .f-icon-circle,\n  .icon-stack--error .f-icon-triangle, .icon-stack--success .f-icon-circle,\n  .icon-stack--success .f-icon-triangle,\n  .icon--stack--info .f-icon-circle,\n  .icon--stack--info .f-icon-triangle,\n  .icon--stack--warning .f-icon-circle,\n  .icon--stack--warning .f-icon-triangle,\n  .icon--stack--error .f-icon-circle,\n  .icon--stack--error .f-icon-triangle,\n  .icon--stack--success .f-icon-circle,\n  .icon--stack--success .f-icon-triangle {\n    color: Canvas;\n    fill: CanvasText;\n}\n.icon-stack--info .f-icon-alert,\n  .icon-stack--info .f-icon-i,\n  .icon-stack--info .f-icon-success, .icon-stack--warning .f-icon-alert,\n  .icon-stack--warning .f-icon-i,\n  .icon-stack--warning .f-icon-success, .icon-stack--error .f-icon-alert,\n  .icon-stack--error .f-icon-i,\n  .icon-stack--error .f-icon-success, .icon-stack--success .f-icon-alert,\n  .icon-stack--success .f-icon-i,\n  .icon-stack--success .f-icon-success,\n  .icon--stack--info .f-icon-alert,\n  .icon--stack--info .f-icon-i,\n  .icon--stack--info .f-icon-success,\n  .icon--stack--warning .f-icon-alert,\n  .icon--stack--warning .f-icon-i,\n  .icon--stack--warning .f-icon-success,\n  .icon--stack--error .f-icon-alert,\n  .icon--stack--error .f-icon-i,\n  .icon--stack--error .f-icon-success,\n  .icon--stack--success .f-icon-alert,\n  .icon--stack--success .f-icon-i,\n  .icon--stack--success .f-icon-success {\n    color: CanvasText;\n}\n.icon-stack--tooltip .f-icon-circle,\n  .icon--stack--tooltip .f-icon-circle {\n    color: Canvas;\n    fill: ButtonBorder;\n}\n.icon-stack--tooltip .f-icon-i,\n  .icon--stack--tooltip .f-icon-i {\n    color: ButtonText;\n}\n}\n.icon-stack--large,\n.icon--stack--large {\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.icon-stack--large svg,\n.icon--stack--large svg {\n  width: 100%;\n  height: 100%;\n}\n.icon-stack--circle, .icon-stack--circle-bottom,\n.icon--stack--circle,\n.icon--stack--circle-bottom {\n  width: 4rem;\n  height: 4rem;\n  border-radius: 100%;\n  overflow: hidden;\n}\n.icon-stack--circle .f-icon-circle, .icon-stack--circle-bottom .f-icon-circle,\n.icon--stack--circle .f-icon-circle,\n.icon--stack--circle-bottom .f-icon-circle {\n  color: #dbe9e2;\n  fill: #dbe9e2;\n  width: 100%;\n  height: 100%;\n}\n.icon-stack--circle .icon:not(.f-icon-circle), .icon-stack--circle-bottom .icon:not(.f-icon-circle),\n.icon--stack--circle .icon:not(.f-icon-circle),\n.icon--stack--circle-bottom .icon:not(.f-icon-circle) {\n  color: #35805b;\n  position: absolute;\n}\n.icon-stack--circle .icon:not(.f-icon-circle),\n.icon--stack--circle .icon:not(.f-icon-circle) {\n  width: 70%;\n  height: 70%;\n  inset: 0;\n  margin: auto;\n}\n.icon-stack--circle-bottom .icon:not(.f-icon-circle),\n.icon--stack--circle-bottom .icon:not(.f-icon-circle) {\n  width: 80%;\n  height: 80%;\n  left: 0;\n  right: 0;\n  margin: 0 auto;\n  bottom: 0%;\n}\n.indent {\n  border-left: var(--f-border-width-medium) solid var(--fkds-color-border-weak);\n  margin-bottom: 1rem;\n  margin-left: 0.5rem;\n  padding-left: 1.5rem;\n}\n.label {\n  color: var(--fkds-color-text-primary);\n  display: inline-block;\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  line-height: var(--f-line-height-large);\n  margin-bottom: calc(0.25rem * var(--f-density-factor));\n  width: var(--f-width-full);\n}\n.label.sr-only {\n  width: auto;\n}\n.label__message {\n  display: block;\n  font-weight: var(--f-font-weight-normal);\n  margin-top: var(--f-label-message-margin-top);\n}\n.label__message--error {\n  color: var(--fkds-color-feedback-text-negative);\n}\n.label__icon-wrapper {\n  position: relative;\n}\n.label__icon--left {\n  position: relative;\n  top: calc(3px * var(--f-density-factor));\n}\n.label__description {\n  display: block;\n  font-weight: var(--f-font-weight-normal);\n  color: var(--fkds-color-text-primary);\n}\n.label__description--format {\n  color: var(--fkds-color-text-secondary);\n}\n.layout-application-template {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n}\n.layout-application-template__header {\n  z-index: 9994;\n  position: sticky;\n  align-self: flex-start;\n  top: 0;\n  width: 100%;\n  background-color: var(--fkds-color-background-primary);\n}\n.layout-application-template__footer {\n  flex-shrink: 0;\n}\n.layout-application-template__main {\n  flex-grow: 1;\n}\n.layout-application-template__main > .container-fluid {\n  margin: 20px;\n  width: initial;\n  max-width: 1440px;\n}\n.layout-application-template__body {\n  margin: 0;\n  padding: 0;\n  min-height: 100vh;\n}\n.layout-application-template__body > div {\n  height: 100%;\n}\n.layout-application-template__html {\n  height: 100%;\n}\n.grid--force .col.col--sm-1 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-2 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-3 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-4 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-5 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-6 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-7 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-8 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-9 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-10 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-11 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-12 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force-sm .col.col--sm-1 {\n  flex: 0 0 8.3333333333%;\n  max-width: 8.3333333333%;\n}\n.grid--force-sm .col.col--sm-order-1 {\n  order: 1;\n}\n.grid--force-sm .col.col--sm-2 {\n  flex: 0 0 16.6666666667%;\n  max-width: 16.6666666667%;\n}\n.grid--force-sm .col.col--sm-order-2 {\n  order: 2;\n}\n.grid--force-sm .col.col--sm-3 {\n  flex: 0 0 25%;\n  max-width: 25%;\n}\n.grid--force-sm .col.col--sm-order-3 {\n  order: 3;\n}\n.grid--force-sm .col.col--sm-4 {\n  flex: 0 0 33.3333333333%;\n  max-width: 33.3333333333%;\n}\n.grid--force-sm .col.col--sm-order-4 {\n  order: 4;\n}\n.grid--force-sm .col.col--sm-5 {\n  flex: 0 0 41.6666666667%;\n  max-width: 41.6666666667%;\n}\n.grid--force-sm .col.col--sm-order-5 {\n  order: 5;\n}\n.grid--force-sm .col.col--sm-6 {\n  flex: 0 0 50%;\n  max-width: 50%;\n}\n.grid--force-sm .col.col--sm-order-6 {\n  order: 6;\n}\n.grid--force-sm .col.col--sm-7 {\n  flex: 0 0 58.3333333333%;\n  max-width: 58.3333333333%;\n}\n.grid--force-sm .col.col--sm-order-7 {\n  order: 7;\n}\n.grid--force-sm .col.col--sm-8 {\n  flex: 0 0 66.6666666667%;\n  max-width: 66.6666666667%;\n}\n.grid--force-sm .col.col--sm-order-8 {\n  order: 8;\n}\n.grid--force-sm .col.col--sm-9 {\n  flex: 0 0 75%;\n  max-width: 75%;\n}\n.grid--force-sm .col.col--sm-order-9 {\n  order: 9;\n}\n.grid--force-sm .col.col--sm-10 {\n  flex: 0 0 83.3333333333%;\n  max-width: 83.3333333333%;\n}\n.grid--force-sm .col.col--sm-order-10 {\n  order: 10;\n}\n.grid--force-sm .col.col--sm-11 {\n  flex: 0 0 91.6666666667%;\n  max-width: 91.6666666667%;\n}\n.grid--force-sm .col.col--sm-order-11 {\n  order: 11;\n}\n.grid--force-sm .col.col--sm-12 {\n  flex: 0 0 100%;\n  max-width: 100%;\n}\n.grid--force-sm .col.col--sm-order-12 {\n  order: 12;\n}\n.grid--force .col.col--md-1 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-2 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-3 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-4 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-5 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-6 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-7 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-8 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-9 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-10 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-11 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-12 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force-md .col.col--md-1 {\n  flex: 0 0 8.3333333333%;\n  max-width: 8.3333333333%;\n}\n.grid--force-md .col.col--md-order-1 {\n  order: 1;\n}\n.grid--force-md .col.col--md-2 {\n  flex: 0 0 16.6666666667%;\n  max-width: 16.6666666667%;\n}\n.grid--force-md .col.col--md-order-2 {\n  order: 2;\n}\n.grid--force-md .col.col--md-3 {\n  flex: 0 0 25%;\n  max-width: 25%;\n}\n.grid--force-md .col.col--md-order-3 {\n  order: 3;\n}\n.grid--force-md .col.col--md-4 {\n  flex: 0 0 33.3333333333%;\n  max-width: 33.3333333333%;\n}\n.grid--force-md .col.col--md-order-4 {\n  order: 4;\n}\n.grid--force-md .col.col--md-5 {\n  flex: 0 0 41.6666666667%;\n  max-width: 41.6666666667%;\n}\n.grid--force-md .col.col--md-order-5 {\n  order: 5;\n}\n.grid--force-md .col.col--md-6 {\n  flex: 0 0 50%;\n  max-width: 50%;\n}\n.grid--force-md .col.col--md-order-6 {\n  order: 6;\n}\n.grid--force-md .col.col--md-7 {\n  flex: 0 0 58.3333333333%;\n  max-width: 58.3333333333%;\n}\n.grid--force-md .col.col--md-order-7 {\n  order: 7;\n}\n.grid--force-md .col.col--md-8 {\n  flex: 0 0 66.6666666667%;\n  max-width: 66.6666666667%;\n}\n.grid--force-md .col.col--md-order-8 {\n  order: 8;\n}\n.grid--force-md .col.col--md-9 {\n  flex: 0 0 75%;\n  max-width: 75%;\n}\n.grid--force-md .col.col--md-order-9 {\n  order: 9;\n}\n.grid--force-md .col.col--md-10 {\n  flex: 0 0 83.3333333333%;\n  max-width: 83.3333333333%;\n}\n.grid--force-md .col.col--md-order-10 {\n  order: 10;\n}\n.grid--force-md .col.col--md-11 {\n  flex: 0 0 91.6666666667%;\n  max-width: 91.6666666667%;\n}\n.grid--force-md .col.col--md-order-11 {\n  order: 11;\n}\n.grid--force-md .col.col--md-12 {\n  flex: 0 0 100%;\n  max-width: 100%;\n}\n.grid--force-md .col.col--md-order-12 {\n  order: 12;\n}\n.grid--force .col.col--lg-1 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-2 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-3 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-4 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-5 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-6 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-7 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-8 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-9 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-10 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-11 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-12 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force-lg .col.col--lg-1 {\n  flex: 0 0 8.3333333333%;\n  max-width: 8.3333333333%;\n}\n.grid--force-lg .col.col--lg-order-1 {\n  order: 1;\n}\n.grid--force-lg .col.col--lg-2 {\n  flex: 0 0 16.6666666667%;\n  max-width: 16.6666666667%;\n}\n.grid--force-lg .col.col--lg-order-2 {\n  order: 2;\n}\n.grid--force-lg .col.col--lg-3 {\n  flex: 0 0 25%;\n  max-width: 25%;\n}\n.grid--force-lg .col.col--lg-order-3 {\n  order: 3;\n}\n.grid--force-lg .col.col--lg-4 {\n  flex: 0 0 33.3333333333%;\n  max-width: 33.3333333333%;\n}\n.grid--force-lg .col.col--lg-order-4 {\n  order: 4;\n}\n.grid--force-lg .col.col--lg-5 {\n  flex: 0 0 41.6666666667%;\n  max-width: 41.6666666667%;\n}\n.grid--force-lg .col.col--lg-order-5 {\n  order: 5;\n}\n.grid--force-lg .col.col--lg-6 {\n  flex: 0 0 50%;\n  max-width: 50%;\n}\n.grid--force-lg .col.col--lg-order-6 {\n  order: 6;\n}\n.grid--force-lg .col.col--lg-7 {\n  flex: 0 0 58.3333333333%;\n  max-width: 58.3333333333%;\n}\n.grid--force-lg .col.col--lg-order-7 {\n  order: 7;\n}\n.grid--force-lg .col.col--lg-8 {\n  flex: 0 0 66.6666666667%;\n  max-width: 66.6666666667%;\n}\n.grid--force-lg .col.col--lg-order-8 {\n  order: 8;\n}\n.grid--force-lg .col.col--lg-9 {\n  flex: 0 0 75%;\n  max-width: 75%;\n}\n.grid--force-lg .col.col--lg-order-9 {\n  order: 9;\n}\n.grid--force-lg .col.col--lg-10 {\n  flex: 0 0 83.3333333333%;\n  max-width: 83.3333333333%;\n}\n.grid--force-lg .col.col--lg-order-10 {\n  order: 10;\n}\n.grid--force-lg .col.col--lg-11 {\n  flex: 0 0 91.6666666667%;\n  max-width: 91.6666666667%;\n}\n.grid--force-lg .col.col--lg-order-11 {\n  order: 11;\n}\n.grid--force-lg .col.col--lg-12 {\n  flex: 0 0 100%;\n  max-width: 100%;\n}\n.grid--force-lg .col.col--lg-order-12 {\n  order: 12;\n}\n.grid--force .col.col--xl-1 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-2 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-3 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-4 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-5 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-6 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-7 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-8 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-9 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-10 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-11 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-12 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force-xl .col.col--xl-1 {\n  flex: 0 0 8.3333333333%;\n  max-width: 8.3333333333%;\n}\n.grid--force-xl .col.col--xl-order-1 {\n  order: 1;\n}\n.grid--force-xl .col.col--xl-2 {\n  flex: 0 0 16.6666666667%;\n  max-width: 16.6666666667%;\n}\n.grid--force-xl .col.col--xl-order-2 {\n  order: 2;\n}\n.grid--force-xl .col.col--xl-3 {\n  flex: 0 0 25%;\n  max-width: 25%;\n}\n.grid--force-xl .col.col--xl-order-3 {\n  order: 3;\n}\n.grid--force-xl .col.col--xl-4 {\n  flex: 0 0 33.3333333333%;\n  max-width: 33.3333333333%;\n}\n.grid--force-xl .col.col--xl-order-4 {\n  order: 4;\n}\n.grid--force-xl .col.col--xl-5 {\n  flex: 0 0 41.6666666667%;\n  max-width: 41.6666666667%;\n}\n.grid--force-xl .col.col--xl-order-5 {\n  order: 5;\n}\n.grid--force-xl .col.col--xl-6 {\n  flex: 0 0 50%;\n  max-width: 50%;\n}\n.grid--force-xl .col.col--xl-order-6 {\n  order: 6;\n}\n.grid--force-xl .col.col--xl-7 {\n  flex: 0 0 58.3333333333%;\n  max-width: 58.3333333333%;\n}\n.grid--force-xl .col.col--xl-order-7 {\n  order: 7;\n}\n.grid--force-xl .col.col--xl-8 {\n  flex: 0 0 66.6666666667%;\n  max-width: 66.6666666667%;\n}\n.grid--force-xl .col.col--xl-order-8 {\n  order: 8;\n}\n.grid--force-xl .col.col--xl-9 {\n  flex: 0 0 75%;\n  max-width: 75%;\n}\n.grid--force-xl .col.col--xl-order-9 {\n  order: 9;\n}\n.grid--force-xl .col.col--xl-10 {\n  flex: 0 0 83.3333333333%;\n  max-width: 83.3333333333%;\n}\n.grid--force-xl .col.col--xl-order-10 {\n  order: 10;\n}\n.grid--force-xl .col.col--xl-11 {\n  flex: 0 0 91.6666666667%;\n  max-width: 91.6666666667%;\n}\n.grid--force-xl .col.col--xl-order-11 {\n  order: 11;\n}\n.grid--force-xl .col.col--xl-12 {\n  flex: 0 0 100%;\n  max-width: 100%;\n}\n.grid--force-xl .col.col--xl-order-12 {\n  order: 12;\n}\n.layout-navigation {\n  min-height: 100%;\n  width: 100%;\n}\n.layout-navigation__primary {\n  flex: auto;\n}\n.layout-navigation__primary > .container-fluid {\n  width: initial;\n  max-width: 1440px;\n  padding: 1.5rem;\n  margin-left: 0;\n  margin-right: 0;\n}\n.layout-navigation__navigation {\n  background-color: var(--fkds-color-background-secondary);\n  display: flex;\n  position: fixed;\n  z-index: 9994;\n  left: 0;\n  bottom: 0;\n}\n.layout-navigation__navigation__border {\n  width: 4px;\n  background-color: var(--fkds-color-background-secondary);\n  cursor: w-resize;\n  flex-shrink: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n}\n.layout-navigation__navigation__border__dot {\n  background-color: var(--fkds-color-action-text-secondary-default);\n  width: 4px;\n  height: 4px;\n  border-radius: 2px;\n  margin-top: 4px;\n}\n.layout-navigation__navigation__border:hover {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n}\n.layout-navigation__navigation__inner {\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  margin-right: 12px;\n  overflow-wrap: break-word;\n  padding: 1rem;\n}\n.layout-navigation__navigation__inner__title {\n  display: flex;\n  align-items: center;\n  padding: 4px;\n}\n.layout-navigation__navigation__inner__title h3 {\n  flex: auto;\n  margin: 0;\n  min-width: 40%;\n}\n.layout-navigation__navigation__inner__title button {\n  position: absolute;\n  right: 1rem;\n}\n.layout-navigation__navigation__inner__button {\n  background-color: transparent;\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid transparent;\n  box-shadow: none;\n  color: var(--fkds-color-action-text-secondary-default);\n  cursor: pointer;\n  display: inline-flex;\n  justify-content: center;\n  outline-offset: 0.25rem;\n  padding: 0.5rem;\n  transition: background-color var(--f-animation-duration-medium) ease-out;\n}\n.layout-navigation__navigation__inner__button:focus-visible {\n  background-color: transparent;\n}\n@media (hover: hover) {\n.layout-navigation__navigation__inner__button:hover {\n    background-color: var(--fkds-color-action-background-secondary-hover);\n}\n}\n.layout-navigation__navigation__inner__button:active {\n  background-color: var(--fkds-color-action-background-secondary-active);\n}\n.layout-navigation__navigation__inner__button:focus-visible {\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.layout-navigation__navigation__inner__content {\n  flex-grow: 1;\n  overflow-y: auto;\n  padding: 4px;\n}\n.layout-navigation__navigation__inner__content::-webkit-scrollbar {\n  width: 6px;\n}\n.layout-navigation__navigation__inner__content::-webkit-scrollbar-thumb {\n  background: var(--fkds-color-border-primary);\n  border: 1px solid var(--fkds-color-border-primary);\n  box-sizing: border-box;\n  border-radius: 33px;\n}\n.layout-navigation__navigation__inner--minimized {\n  margin-left: -0.6rem;\n  margin-right: -0.8rem;\n  padding: 0;\n}\n.layout-secondary {\n  width: 100%;\n  min-height: 100%;\n}\n.layout-secondary__primary {\n  flex: auto;\n}\n.layout-secondary__primary > .container-fluid {\n  width: initial;\n  max-width: 1440px;\n  padding: 1.5rem;\n  margin-left: 0;\n  margin-right: 0;\n}\n.layout-secondary__secondary {\n  background-color: var(--fkds-color-background-secondary);\n  position: fixed;\n  display: flex;\n  right: 0;\n  bottom: 0;\n  z-index: 9994;\n}\n@media (hover: hover) {\n.layout-secondary__secondary .button--tertiary:hover {\n    background-color: var(--fkds-color-action-background-secondary-hover);\n}\n}\n.layout-secondary__secondary__border {\n  width: 5px;\n  background-color: var(--fkds-color-background-secondary);\n  cursor: w-resize;\n  flex-shrink: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n}\n.layout-secondary__secondary__border__dot {\n  background-color: var(--fkds-color-action-text-secondary-default);\n  width: 4px;\n  height: 4px;\n  border-radius: 2px;\n  margin-top: 4px;\n}\n@media (hover: hover) {\n.layout-secondary__secondary__border:hover {\n    background-color: var(--fkds-color-action-background-secondary-hover);\n}\n}\n.layout-secondary__secondary__inner {\n  position: relative;\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  overflow-wrap: break-word;\n  margin: 16px;\n  margin-left: 11px;\n}\n.layout-secondary__secondary__inner__title {\n  display: flex;\n  align-items: center;\n  padding: 4px;\n}\n.layout-secondary__secondary__inner__title h3 {\n  flex: auto;\n  margin: 0;\n  min-width: 40%;\n}\n.layout-secondary__secondary__inner__close.button {\n  position: absolute;\n  top: 0;\n  right: 0;\n  margin-bottom: 0;\n}\n.layout-secondary__secondary__inner__content {\n  flex-grow: 1;\n  overflow-y: auto;\n  padding: 4px;\n}\n.layout-secondary__secondary__inner__content::-webkit-scrollbar {\n  width: 6px;\n}\n.layout-secondary__secondary__inner__content::-webkit-scrollbar-thumb {\n  background: var(--fkds-color-border-primary);\n  border: 1px solid var(--fkds-color-border-primary);\n  box-sizing: border-box;\n  border-radius: 33px;\n}\n@media (width <= 1280px) {\n.layout-secondary__secondary {\n    box-shadow: 4px 0 2px rgba(0, 0, 0, 0.5), -4px 0 2px rgba(0, 0, 0, 0.5);\n}\n}\n@keyframes bouncedelay {\n0%, 80%, 100% {\n    transform: scale(0);\n}\n40% {\n    transform: scale(1);\n}\n}\n@keyframes spinner-delay {\nfrom {\n    opacity: 0;\n}\nto {\n    opacity: 1;\n}\n}\n.loader div[tabindex] {\n  outline: none;\n}\n.loader__wrapper {\n  height: var(--f-loader-size);\n  margin: var(--f-loader-margin);\n  position: relative;\n  width: var(--f-loader-size);\n}\n.loader--delay {\n  animation: spinner-delay var(--f-animation-duration-short) forwards;\n  animation-delay: 1s;\n  opacity: 0;\n}\n.loader__spinner {\n  height: 100%;\n  position: absolute;\n  width: 100%;\n}\n.loader__circle {\n  animation: bouncedelay 1.2s infinite ease-in-out;\n  animation-fill-mode: both;\n  background-color: var(--fkds-color-text-secondary);\n  border-radius: 100%;\n  height: 1rem;\n  position: absolute;\n  width: 1rem;\n}\n@media (forced-colors: active) {\n.loader__circle {\n    background-color: CanvasText;\n}\n}\n.loader__wait-text {\n  align-items: center;\n  color: var(--fkds-color-text-primary);\n  display: flex;\n  justify-content: center;\n  white-space: pre-wrap;\n}\n.loader--overlay .loader__backdrop {\n  align-items: center;\n  background: var(--f-background-overlay);\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  justify-content: center;\n  left: 0;\n  position: fixed;\n  top: 0;\n  width: 100%;\n  z-index: 9999;\n}\n.loader--overlay .loader__wait-text {\n  color: var(--fkds-color-text-on-dark-primary);\n}\n.loader--overlay .loader__circle {\n  background-color: var(--fkds-color-text-on-dark-primary);\n}\n@media (forced-colors: active) {\n.loader--overlay .loader__circle {\n    background-color: CanvasText;\n}\n}\n.loader .loader__spinner-1-circle2 {\n  animation-delay: -0.9s;\n}\n.loader .loader__spinner-1-circle3 {\n  animation-delay: -0.6s;\n}\n.loader .loader__spinner-1-circle4 {\n  animation-delay: -0.3s;\n}\n.loader .loader__spinner-2 {\n  height: 100%;\n  position: absolute;\n  width: 100%;\n  transform: rotateZ(45deg);\n}\n.loader .loader__spinner-2-circle1 {\n  animation-delay: -1.1s;\n}\n.loader .loader__spinner-2-circle2 {\n  animation-delay: -0.8s;\n}\n.loader .loader__spinner-2-circle3 {\n  animation-delay: -0.5s;\n}\n.loader .loader__spinner-2-circle4 {\n  animation-delay: -0.2s;\n}\n.loader .loader__spinner-3 {\n  height: 100%;\n  position: absolute;\n  width: 100%;\n  transform: rotateZ(90deg);\n}\n.loader .loader__spinner-3-circle1 {\n  animation-delay: -1s;\n}\n.loader .loader__spinner-3-circle2 {\n  animation-delay: -0.7s;\n}\n.loader .loader__spinner-3-circle3 {\n  animation-delay: -0.4s;\n}\n.loader .loader__spinner-3-circle4 {\n  animation-delay: -0.1s;\n}\n.loader__circle--1 {\n  left: 0;\n  top: 0;\n}\n.loader__circle--2 {\n  right: 0;\n  top: 0;\n}\n.loader__circle--3 {\n  bottom: 0;\n  right: 0;\n}\n.loader__circle--4 {\n  bottom: 0;\n  left: 0;\n}\n.loader__delay__spinner {\n  animation: spinner-delay var(--f-animation-duration-short) forwards;\n  animation-delay: 1s;\n  opacity: 0;\n}\n.logo {\n  display: inline-block;\n}\n.logo--small {\n  padding: var(--f-logo-size-small);\n  background: var(--f-logo-image-small);\n  background-repeat: no-repeat;\n  background-position: center;\n}\n.logo--large {\n  padding: var(--f-logo-size-large);\n  background: var(--f-logo-image-large);\n  background-repeat: no-repeat;\n  background-position: center;\n}\n.logo--responsive {\n  padding: var(--f-logo-size-large);\n  background: var(--f-logo-image-large);\n  background-repeat: no-repeat;\n  background-position: center;\n}\n@media (max-width: 639.98px) {\n.logo--responsive {\n    padding: var(--f-logo-size-small);\n    background: var(--f-logo-image-small);\n    background-repeat: no-repeat;\n    background-position: center;\n}\n}\n.message-box {\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n  margin: 1.5rem 0 calc(1.5rem * var(--f-density-factor)) 0;\n  color: var(--fkds-color-text-primary);\n}\n.message-box__heading {\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-medium);\n  color: var(--fkds-color-text-primary);\n  line-height: var(--f-line-height-medium);\n  align-items: flex-start;\n  margin-bottom: calc(0.5rem * var(--f-density-factor));\n  margin-top: 0;\n}\n.message-box__icon {\n  line-height: var(--f-line-height-large);\n}\n.message-box__content {\n  text-align: left;\n}\n.message-box--info {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-info);\n  background-color: var(--fkds-color-feedback-background-info);\n  border-radius: var(--f-border-radius-small);\n  border-top: 1rem solid var(--fkds-color-feedback-border-info);\n}\n.message-box--info .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--info-short {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-info);\n  background-color: var(--fkds-color-feedback-background-info);\n  border-radius: var(--f-border-radius-small);\n  border-left: 1rem solid var(--fkds-color-feedback-border-info);\n}\n.message-box--info-short .message-box__icon {\n  font-size: 0;\n}\n.message-box--info-short .message-box__icon .icon {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--info-short .message-box__icon .icon-stack {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--info-short .message-box__icon .icon__exclamation {\n  transform: translateY(-0.05rem);\n}\n.message-box--info-short .message-box__icon .icon__banner {\n  fill: var(--fkds-color-feedback-text-negative);\n  color: white;\n}\n.message-box--info-short .message-box__icon__banner {\n  margin-top: 0;\n}\n.message-box--info-short .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--error {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-negative);\n  background-color: var(--fkds-color-feedback-background-negative);\n  border-radius: var(--f-border-radius-small);\n  border-top: 1rem solid var(--fkds-color-feedback-border-negative);\n}\n.message-box--error .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--error-short {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-negative);\n  background-color: var(--fkds-color-feedback-background-negative);\n  border-radius: var(--f-border-radius-small);\n  border-left: 1rem solid var(--fkds-color-feedback-border-negative);\n}\n.message-box--error-short .message-box__icon {\n  font-size: 0;\n}\n.message-box--error-short .message-box__icon .icon {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--error-short .message-box__icon .icon-stack {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--error-short .message-box__icon .icon__exclamation {\n  transform: translateY(-0.05rem);\n}\n.message-box--error-short .message-box__icon .icon__banner {\n  fill: var(--fkds-color-feedback-text-negative);\n  color: white;\n}\n.message-box--error-short .message-box__icon__banner {\n  margin-top: 0;\n}\n.message-box--error-short .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--warning {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-warning);\n  background-color: var(--fkds-color-feedback-background-warning);\n  border-radius: var(--f-border-radius-small);\n  border-top: 1rem solid var(--fkds-color-feedback-border-warning);\n}\n.message-box--warning .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--warning-short {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-warning);\n  background-color: var(--fkds-color-feedback-background-warning);\n  border-radius: var(--f-border-radius-small);\n  border-left: 1rem solid var(--fkds-color-feedback-border-warning);\n}\n.message-box--warning-short .message-box__icon {\n  font-size: 0;\n}\n.message-box--warning-short .message-box__icon .icon {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--warning-short .message-box__icon .icon-stack {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--warning-short .message-box__icon .icon__exclamation {\n  transform: translateY(-0.05rem);\n}\n.message-box--warning-short .message-box__icon .icon__banner {\n  fill: var(--fkds-color-feedback-text-negative);\n  color: white;\n}\n.message-box--warning-short .message-box__icon__banner {\n  margin-top: 0;\n}\n.message-box--warning-short .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--success {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-positive);\n  background-color: var(--fkds-color-feedback-background-positive);\n  border-radius: var(--f-border-radius-small);\n  border-top: 1rem solid var(--fkds-color-feedback-border-positive);\n}\n.message-box--success .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--success-short {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-positive);\n  background-color: var(--fkds-color-feedback-background-positive);\n  border-radius: var(--f-border-radius-small);\n  border-left: 1rem solid var(--fkds-color-feedback-border-positive);\n}\n.message-box--success-short .message-box__icon {\n  font-size: 0;\n}\n.message-box--success-short .message-box__icon .icon {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--success-short .message-box__icon .icon-stack {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--success-short .message-box__icon .icon__exclamation {\n  transform: translateY(-0.05rem);\n}\n.message-box--success-short .message-box__icon .icon__banner {\n  fill: var(--fkds-color-feedback-text-negative);\n  color: white;\n}\n.message-box--success-short .message-box__icon__banner {\n  margin-top: 0;\n}\n.message-box--success-short .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--banner {\n  width: var(--f-width-full);\n  box-shadow: var(--f-box-modal-shadow);\n  border-collapse: separate;\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-negative);\n  background-color: var(--fkds-color-feedback-background-negative);\n  border-radius: var(--f-border-radius-small);\n  border-top: 1rem solid var(--fkds-color-feedback-border-negative);\n}\n.message-box--banner .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--banner .iflex__item > p {\n  margin-bottom: 0;\n}\n.modal__backdrop {\n  background: var(--f-background-overlay);\n  display: flex;\n  height: 100%;\n  inset: 0;\n  position: fixed;\n  width: 100%;\n  z-index: 9994;\n}\n.modal__outer-container {\n  align-items: center;\n  display: flex;\n  height: 100%;\n  justify-content: center;\n  overflow: auto;\n  width: 100%;\n}\n.modal__inner-container {\n  align-items: center;\n  justify-content: center;\n  max-height: 100%;\n  width: 100%;\n}\n.modal__shelf {\n  justify-content: flex-end;\n  display: flex;\n  background-color: var(--fkds-color-background-primary);\n  border-top-left-radius: var(--f-border-radius-medium);\n  border-top-right-radius: var(--f-border-radius-medium);\n  margin-bottom: 1rem;\n}\n.modal__close {\n  align-items: flex-start;\n  display: flex;\n  justify-content: flex-end;\n  min-block-size: 4rem;\n}\n.modal__header {\n  display: flex;\n  margin-bottom: 0.5rem;\n  width: 100%;\n}\n.modal__header .modal__title {\n  font-size: var(--f-modal-title-font-size);\n  font-weight: var(--f-font-weight-bold);\n  margin-bottom: 0;\n  margin-top: 0;\n  color: var(--fkds-color-text-primary);\n}\n.modal__dialog-container {\n  background: transparent;\n  display: flex;\n  margin: auto;\n  width: calc(100vw - 40px);\n}\n@media (min-width: 640px) {\n.modal__dialog-container {\n    max-width: var(--f-modal-size-small);\n}\n.modal__dialog-container--small {\n    max-width: var(--f-modal-size-small);\n}\n.modal__dialog-container--medium {\n    max-width: var(--f-modal-size-medium);\n}\n.modal__dialog-container--large {\n    max-width: var(--f-modal-size-large);\n}\n.modal__dialog-container--fullwidth {\n    max-width: var(--f-modal-size-fullwidth);\n}\n}\n@media (max-width: 639.98px) {\n.modal__dialog-container--fullscreen {\n    width: 100%;\n    max-width: none;\n}\n.modal__dialog-container--fullscreen .modal__dialog {\n    min-height: 100vh;\n    min-height: 100dvh;\n}\n.modal__dialog-container--fullscreen .modal__dialog-inner {\n    flex: 1 1 auto;\n    display: flex;\n    flex-direction: column;\n}\n.modal__dialog-container--fullscreen .modal__content {\n    flex: 1 1 auto;\n}\n}\n.modal__dialog {\n  color: var(--fkds-color-text-primary);\n  background: var(--fkds-color-background-primary);\n  outline: 2px solid transparent;\n  border-radius: var(--f-border-radius-medium);\n  display: flex;\n  flex-direction: column-reverse;\n  height: auto;\n  margin: auto;\n  width: 100%;\n  position: relative;\n  z-index: 9995;\n}\n.modal__dialog .modal__dialog-inner {\n  height: auto;\n  margin: 0 1.5rem 1.5rem;\n}\n@media (max-width: 639.98px) {\n.modal__dialog .modal__dialog-inner {\n    margin: 0 1rem 1rem;\n}\n}\n.modal__dialog .modal__footer {\n  margin-top: 2rem;\n}\n.modal__dialog .modal__footer > .button-group {\n  margin-bottom: 0;\n}\n.modal__dialog .modal__footer > .button-group .button-group__item:last-child:not(.button--small, .button--medium) {\n  margin-bottom: 0;\n}\n@media (min-width: 640px) {\n.modal__dialog .modal__footer > .button-group .button-group__item {\n    margin-bottom: 0;\n}\n}\n.modal__dialog > .button-group {\n  margin: 0;\n}\n.modal__dialog > .button-group .button-group__item:last-child {\n  margin: var(--f-modal-close-button-margin);\n  padding: var(--f-modal-close-button-padding);\n}\n.modal--information .modal__shelf {\n  background-color: var(--fkds-color-feedback-background-info-strong);\n}\n.modal--information .modal__shelf .modal__close-button {\n  color: var(--fkds-color-action-text-inverted-default);\n}\n.modal--warning .modal__shelf {\n  background-color: var(--fkds-color-feedback-background-warning-strong);\n}\n.modal--warning .modal__shelf .modal__close-button {\n  color: var(--fkds-color-feedback-text-on-warning);\n}\n.modal--error .modal__shelf {\n  background-color: var(--fkds-color-feedback-background-negative-strong);\n}\n.modal--error .modal__shelf .modal__close-button {\n  color: var(--fkds-color-action-text-inverted-default);\n}\n.imenu__list {\n  background-color: var(--fkds-color-background-secondary);\n  margin: 0;\n  padding: 0;\n}\n.imenu__list__item {\n  cursor: pointer;\n  list-style-type: none;\n  white-space: nowrap;\n}\n.imenu__list__item a,\n.imenu__list__item a:visited,\n.imenu__list__item a:active {\n  color: var(--fkds-color-text-primary);\n}\n@media (forced-colors: active) {\n.imenu__list__item a,\n  .imenu__list__item a:visited,\n  .imenu__list__item a:active {\n    color: LinkText;\n}\n}\n@media (hover: hover) {\n.imenu__list__item a:hover {\n    color: var(--fkds-color-text-primary);\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.imenu__list__item a:hover {\n    color: LinkText;\n}\n}\n.imenu__popup-item {\n  position: relative;\n  list-style-type: none;\n  white-space: nowrap;\n}\n.imenu__popup-item__wrapper {\n  display: inline-flex;\n  position: absolute;\n  left: 0;\n  padding-top: 1rem;\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n}\n.imenu--vertical .imenu__list {\n  display: block;\n}\n.imenu--vertical .imenu__list__item {\n  padding: 0.75rem;\n  display: block;\n}\n@media (hover: hover) {\n.imenu--vertical .imenu__list__item:hover {\n    font-weight: var(--f-font-weight-normal);\n    background-color: var(--fkds-color-navigation-background-hover);\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.imenu--vertical .imenu__list__item:hover {\n    outline: 2px solid highlight;\n}\n}\n.imenu--vertical .imenu__list__item--highlight {\n  font-weight: var(--f-font-weight-medium);\n  background-color: var(--fkds-color-navigation-background-selected);\n}\n@media (forced-colors: active) {\n.imenu--vertical .imenu__list__item--highlight {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.imenu--vertical .imenu__list__item--highlight .imenu__list__anchor {\n  color: var(--fkds-color-text-inverted);\n}\n@media (forced-colors: active) {\n.imenu--vertical .imenu__list__item--highlight .imenu__list__anchor {\n    color: HighlightText;\n}\n}\n@media (hover: hover) {\n.imenu--vertical .imenu__list__item--highlight:hover {\n    background-color: var(--fkds-color-navigation-background-selected);\n    font-weight: var(--f-font-weight-medium);\n    color: var(--fkds-color-text-inverted);\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.imenu--vertical .imenu__list__item--highlight:hover {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.imenu--horizontal {\n  overflow: hidden;\n}\n.imenu--horizontal .imenu__list {\n  display: flex;\n}\n.imenu--horizontal .imenu__list__item {\n  display: inline-flex;\n  padding-top: 1rem;\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n}\n.imenu--horizontal .imenu__list__item--highlight {\n  font-weight: var(--f-font-weight-medium);\n}\n.imenu--horizontal .imenu__list__item--highlight .imenu__list__anchor-container {\n  border-bottom: 5px solid var(--fkds-color-navigation-border-selected);\n}\n@media (forced-colors: active) {\n.imenu--horizontal .imenu__list__item--highlight .imenu__list__anchor-container {\n    border-bottom: 5px solid highlight;\n}\n}\n@media (hover: hover) {\n.imenu--horizontal .imenu__list__item--highlight .imenu__list__anchor:hover {\n    font-weight: var(--f-font-weight-medium);\n}\n}\n.imenu--horizontal .imenu__list__item--hidden {\n  visibility: hidden;\n}\n@media (hover: hover) {\n.imenu--horizontal .imenu__list__item:not(.imenu__list__item--highlight) .imenu__list__anchor-container:hover {\n    border-bottom: 5px solid var(--fkds-color-navigation-border-hover);\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.imenu--horizontal .imenu__list__item:not(.imenu__list__item--highlight) .imenu__list__anchor-container:hover {\n    border-bottom: 5px solid highlight;\n}\n}\n.imenu--horizontal .imenu__list__anchor-container {\n  padding-bottom: 0.5rem;\n  border-bottom: 5px solid transparent;\n}\n@media (forced-colors: active) {\n.imenu--horizontal .imenu__list__anchor-container {\n    border-bottom: none;\n}\n}\n.imenu--horizontal .imenu__list__anchor {\n  display: inline-flex;\n}\n.imenu--horizontal .imenu__list__anchor-icon-right {\n  flex: 1 0 auto;\n  padding-top: 0.25rem;\n  margin-left: 0.25rem;\n}\n.offline {\n  width: var(--f-width-full);\n  box-shadow: var(--f-box-modal-shadow);\n  border-collapse: separate;\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-negative);\n  background-color: var(--fkds-color-feedback-background-negative);\n  border-radius: var(--f-border-radius-small);\n  border-left: 1rem solid var(--fkds-color-feedback-border-negative);\n}\n.offline .offline__icon {\n  font-size: 0;\n}\n.offline .offline__icon .icon {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.offline .offline__icon .icon-stack {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.offline .offline__icon .icon__exclamation {\n  transform: translateY(-0.05rem);\n}\n.offline .offline__icon .icon__banner {\n  fill: var(--fkds-color-feedback-text-negative);\n  color: white;\n}\n.offline .offline__icon__banner {\n  margin-top: 0;\n}\n.offline .iflex__item > p {\n  margin-bottom: 0;\n}\n.offline .iflex__item > p {\n  margin-bottom: 0;\n}\n.offline {\n  color: var(--fkds-color-text-primary);\n  padding: 1.5rem;\n}\n.offline__wrapper {\n  position: fixed;\n  position: sticky;\n  z-index: 9998;\n  right: 0;\n  top: 0;\n  left: 0;\n}\n.output-field {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  line-height: max(1, var(--f-line-height-large) * var(--f-density-factor));\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  position: relative;\n  width: var(--f-width-full);\n}\n.output-field__output {\n  color: var(--fkds-color-text-primary);\n  line-height: max(1, var(--f-line-height-large) * var(--f-density-factor));\n  font-size: var(--f-font-size-standard);\n  min-height: var(--f-height-medium);\n  position: relative;\n  width: var(--f-width-full);\n  margin-bottom: 0;\n}\n.page-header {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  color: var(--fkds-color-header-text-primary);\n  background-color: var(--fkds-color-header-background-primary);\n  padding: 1rem 0 1rem 1rem;\n  align-items: center;\n  overflow: hidden;\n}\n.page-header__logo {\n  display: flex;\n  margin: 0;\n  padding: 0;\n  align-items: center;\n  box-sizing: border-box;\n}\n.page-header__logo > a {\n  display: inline-flex;\n}\n.page-header__logo::after {\n  content: \" \";\n  height: 1.38rem;\n  padding: 0.5px;\n  margin: 0 1rem 0.155rem;\n}\n.page-header__app-name {\n  padding-top: 0.22rem;\n  margin: 0;\n  font-size: var(--f-font-size-h3);\n  font-weight: var(--f-font-weight-medium);\n  color: var(--fkds-color-header-text-primary);\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  min-width: 9rem;\n}\n.page-header__right {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  flex-grow: 1;\n  white-space: nowrap;\n  padding-top: 0.4rem;\n  font-size: var(--f-font-size-standard);\n}\n.page-header__right-slot {\n  padding-left: 1rem;\n  padding-right: 1rem;\n}\n.paginator {\n  display: flex;\n  gap: 0.5rem;\n  align-items: center;\n  justify-content: center;\n  white-space: nowrap;\n  container-type: inline-size;\n}\n.paginator__icon {\n  align-items: center;\n}\n.paginator__page, .paginator__previous, .paginator__next {\n  border: 2px solid transparent;\n  color: var(--fkds-color-text-primary);\n  height: 2.5rem;\n  background-color: transparent;\n  padding: 0.25rem;\n  border-radius: 2px;\n  cursor: pointer;\n}\n.paginator__page--active, .paginator__previous--active, .paginator__next--active {\n  color: var(--fkds-color-action-text-inverted-default);\n  background-color: var(--fkds-color-select-background-primary-default);\n}\n@media (forced-colors: active) {\n.paginator__page--active, .paginator__previous--active, .paginator__next--active {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n@media (hover: hover) {\n.paginator__page:hover:enabled:not(.paginator__page--active, .paginator__previous--active, .paginator__next--active), .paginator__previous:hover:enabled:not(.paginator__page--active, .paginator__previous--active, .paginator__next--active), .paginator__next:hover:enabled:not(.paginator__page--active, .paginator__previous--active, .paginator__next--active) {\n    background-color: var(--fkds-color-action-background-secondary-hover);\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.paginator__page:hover:enabled:not(.paginator__page--active, .paginator__previous--active, .paginator__next--active), .paginator__previous:hover:enabled:not(.paginator__page--active, .paginator__previous--active, .paginator__next--active), .paginator__next:hover:enabled:not(.paginator__page--active, .paginator__previous--active, .paginator__next--active) {\n    border: 2px solid highlight;\n}\n}\n.paginator__next, .paginator__previous {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 0.25rem;\n}\n.paginator__page {\n  width: 2.5rem;\n  display: none;\n}\n.paginator__next, .paginator__page-counter, .paginator__previous {\n  width: 8rem;\n}\n.paginator__page-counter {\n  padding: 0.25rem;\n  text-align: center;\n  color: var(--fkds-color-text-primary);\n}\n@container (width >= 43.5rem) {\n.paginator__page-counter {\n    display: none;\n}\n.paginator__page {\n    display: inline-block;\n}\n}\n.progress {\n  background-color: var(--fkds-color-background-primary);\n  border-radius: var(--f-border-radius-medium);\n  height: var(--f-height-small);\n  margin-bottom: 1.5rem;\n  padding: 0;\n  border: var(--f-border-width-medium) solid var(--fkds-color-feedback-background-positive-strong);\n}\n@media (forced-colors: active) {\n.progress {\n    border: var(--f-border-width-medium) solid highlight;\n}\n}\n.progress__meter {\n  display: block;\n  float: left;\n  height: calc(var(--f-height-small) - var(--f-border-width-medium) * 2);\n  transition: width var(--f-animation-duration-medium) ease-out, background-color var(--f-animation-duration-medium) ease-out;\n}\n.progress__meter--inprogress {\n  background: var(--fkds-color-feedback-background-positive-strong);\n}\n@media (forced-colors: active) {\n.progress__meter--inprogress {\n    background: highlight;\n}\n}\n.progress__meter--finished {\n  background: var(--fkds-color-feedback-background-positive-strong);\n}\n@media (forced-colors: active) {\n.progress__meter--finished {\n    background: highlight;\n}\n}\n.radio-button {\n  display: flex;\n  min-height: var(--f-height-medium);\n  margin-bottom: calc(1rem * var(--f-density-factor));\n  margin-right: 1.5rem;\n}\n.radio-button:last-child {\n  margin-bottom: 0;\n  margin-right: 0;\n}\n.radio-button__input {\n  appearance: none;\n  outline: none;\n  border: none;\n  width: 0;\n}\n.radio-button__label {\n  min-width: 4.5rem;\n  cursor: pointer;\n  display: inline-block;\n  font-size: var(--f-font-size-standard);\n  line-height: var(--f-line-height-small);\n  padding-left: 1.75rem;\n  padding-top: 0.1rem;\n  padding-bottom: 0.1rem;\n  position: relative;\n  color: var(--fkds-color-text-primary);\n}\n.radio-button__label * {\n  pointer-events: none;\n}\n.radio-button__label::before, .radio-button__label::after {\n  border-radius: 50%;\n  content: \"\";\n  height: var(--f-icon-size-medium);\n  left: 0;\n  margin: 0.1rem 0;\n  position: absolute;\n  top: 0;\n  cursor: pointer;\n  width: var(--f-icon-size-medium);\n  background-color: var(--fkds-color-background-primary);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  display: block;\n  transition: background-color ease var(--f-animation-duration-medium), border-color ease var(--f-animation-duration-medium), opacity ease var(--f-animation-duration-medium);\n}\n.radio-button__label::after {\n  background-color: var(--fkds-color-select-background-primary-default);\n  box-shadow: inset 0 0 0 var(--f-border-width-medium) var(--fkds-color-background-primary);\n  opacity: 0;\n}\n@media (forced-colors: active) {\n.radio-button__label::after {\n    forced-color-adjust: none;\n    background-color: Highlight;\n    box-shadow: inset 0 0 0 var(--f-border-width-medium) Canvas;\n}\n}\n.radio-button.disabled {\n  color: var(--fkds-color-text-disabled);\n}\n@media (forced-colors: active) {\n.radio-button.disabled {\n    color: GrayText;\n}\n}\n.radio-button.disabled .radio-button__label {\n  color: var(--fkds-color-text-disabled);\n  cursor: default;\n}\n.radio-button.disabled .radio-button__label::before, .radio-button.disabled .radio-button__label::after {\n  background: var(--fkds-color-background-disabled);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-disabled);\n  cursor: default;\n}\n@media (forced-colors: active) {\n.radio-button.disabled .radio-button__label::before, .radio-button.disabled .radio-button__label::after {\n    border: var(--f-border-width-medium) solid GrayText;\n}\n}\n.radio-button input[type=radio] + label::after {\n  opacity: 0;\n}\n.radio-button input[type=radio]:checked + label::after {\n  border: var(--f-border-width-medium) solid transparent;\n  opacity: 1;\n}\n.radio-button input[type=radio]:focus-visible + label {\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.radio-button-group__content {\n  display: flex;\n  flex-direction: column;\n}\n.radio-button-group--horizontal .radio-button-group__content {\n  flex-direction: row;\n}\n.radio-button-group--horizontal .radio-button-group__content .radio-button {\n  margin-bottom: 0;\n}\n@media (max-width: 639.98px) {\n.radio-button-group--horizontal .radio-button-group__content {\n    flex-direction: column;\n}\n.radio-button-group--horizontal .radio-button-group__content .radio-button {\n    margin-bottom: 1rem;\n}\n}\n.select-field {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  position: relative;\n  width: var(--f-width-full);\n}\n@media (min-width: 640px) {\n.select-field--inline {\n    margin-bottom: calc(0.75rem * var(--f-density-factor));\n    flex-direction: row;\n    justify-content: flex-start;\n    width: auto;\n}\n.select-field--inline .label {\n    width: auto;\n    margin-right: 1rem;\n    padding-top: calc(0.5rem * var(--f-density-factor));\n}\n}\n.select-field--table {\n  margin-bottom: 0;\n}\n.select-field--table-error .select-field__select {\n  padding-right: calc(var(--f-icon-size-large) + 2.25rem);\n}\n.select-field__select {\n  appearance: none;\n  background-color: var(--fkds-color-background-primary);\n  box-shadow: var(--f-input-shadow-inset);\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  color: var(--fkds-color-text-primary);\n  cursor: pointer;\n  min-height: calc(var(--f-height-large) * var(--f-density-factor));\n  padding: var(--padding-input-fields);\n  width: var(--f-width-full);\n}\n@media (forced-colors: active) {\n.select-field__select {\n    border-color: ButtonBorder;\n}\n}\n@media (hover: hover) {\n.select-field__select:hover {\n    background-color: var(--fkds-color-action-background-secondary-hover);\n}\n}\n.select-field__select:focus-visible {\n  background-color: var(--fkds-color-background-primary);\n}\n.select-field__select:disabled {\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n  background-color: var(--fkds-color-background-disabled);\n  opacity: 1;\n}\n.select-field__select:open + .select-field__icon {\n  transform: rotate(180deg);\n}\n.select-field__select:disabled + .select-field__icon {\n  color: var(--fkds-color-text-disabled);\n}\n.select-field__icon-wrapper {\n  position: relative;\n}\n.select-field__icon {\n  color: var(--fkds-color-action-text-primary-default);\n}\n@media (forced-colors: active) {\n.select-field__icon {\n    color: buttonText;\n}\n}\n.select-field__error-popup-icon {\n  color: var(--fkds-color-feedback-text-negative);\n  display: inline;\n  position: absolute;\n  right: calc(var(--f-icon-size-large) + 0.75rem);\n  top: 0.5rem;\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n  overflow: hidden;\n  text-align: center;\n}\n.select-field--error .select-field__select {\n  border-color: var(--fkds-color-feedback-border-negative);\n}\n.sort-filter-dataset__sort {\n  min-width: 80px;\n}\n@media (min-width: 640px) {\n.sort-filter-dataset__search input {\n    width: 160px;\n}\n}\n.static-panel {\n  margin-bottom: 2.5rem;\n}\n.static-panel__heading {\n  background: var(--fkds-color-background-secondary);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-radius: var(--f-border-radius-medium) var(--f-border-radius-medium) 0 0;\n  border-bottom: 0;\n  color: var(--fkds-color-text-primary);\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-bold);\n  line-height: var(--f-line-height-large);\n  margin: 0;\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n}\n.static-panel__content {\n  border-top: 0;\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-radius: 0 0 var(--f-border-radius-medium) var(--f-border-radius-medium);\n  padding: 1.75rem 1.5rem;\n  background: var(--fkds-color-background-primary);\n}\n.static-panel__icon {\n  height: var(--f-icon-size-x-large);\n  margin-right: 0.25rem;\n  position: relative;\n  top: 0.5rem;\n  width: var(--f-icon-size-x-large);\n}\n.table tbody .table__column--numeric, .table tbody .table__column--date {\n  font-feature-settings: tnum 1;\n  font-variant-numeric: tabular-nums;\n}\n.table tbody .table__expandable-row, .table tbody .table__row--normal, .table tbody .table__row {\n  background: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n}\n.table--striped tbody .table__row:nth-child(even), .table tbody .table__row--striped {\n  background: var(--fkds-color-background-secondary);\n  color: var(--fkds-color-text-primary);\n}\n.table tbody .table__row--hover {\n  background: var(--fkds-color-select-background-tertiary-hover);\n  color: var(--fkds-color-text-primary);\n  outline: 1px solid var(--fkds-color-border-primary);\n}\n.table tbody .table__row:has(:focus-visible), .table tbody .table__row--focus-within {\n  background: var(--fkds-color-select-background-primary-hover);\n  color: var(--fkds-color-text-primary);\n}\n.table tbody .table__row:focus-visible, .table tbody .table__row--focus {\n  background: var(--fkds-color-select-background-primary-hover);\n  color: var(--fkds-color-text-primary);\n  outline: 2px solid var(--fkds-color-border-strong);\n  box-shadow: none;\n}\n.table--striped tbody .table__row:nth-child(even).table__row--active, .table tbody .table__row--active, .table tbody .table__row:focus-visible.table__row--active, .table tbody .table__row--focus.table__row--active, .table tbody .table__row:has(:focus-visible).table__row--active, .table tbody .table__row--focus-within.table__row--active {\n  background: var(--fkds-color-select-background-primary-active);\n  color: var(--fkds-color-text-primary);\n}\n.table tbody .table__row--expanded-border td,\n.table tbody .table__row--expanded-border th {\n  border-bottom-color: var(--fkds-color-border-weak);\n}\n.table tbody .table__row--expandable {\n  cursor: pointer;\n}\n.table {\n  border-collapse: separate;\n  border-spacing: 0;\n  font-size: var(--f-font-size-standard);\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  width: 100%;\n  border: 2px solid transparent;\n}\n.table:focus-visible {\n  border-color: var(--fkds-color-border-strong);\n  box-shadow: none;\n}\n.table caption {\n  background: transparent;\n  color: var(--fkds-color-text-primary);\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  line-height: var(--f-line-height-large);\n  margin-bottom: calc(0.25rem * var(--f-density-factor));\n  width: var(--f-width-full);\n  text-align: left;\n}\n.table thead th {\n  background: var(--fkds-color-background-secondary);\n  border-bottom: 2px solid var(--fkds-color-border-primary);\n  border-right: 1px solid var(--fkds-color-border-primary);\n  color: var(--fkds-color-text-primary);\n  font-weight: var(--f-font-weight-medium);\n  line-height: var(--f-line-height-large);\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  text-align: left;\n  vertical-align: top;\n}\n.table thead th:last-child {\n  border-right: none;\n}\n.table thead th .table__column__header__icon {\n  height: var(--f-icon-size-x-small);\n  width: var(--f-icon-size-x-small);\n  min-width: var(--f-icon-size-x-small);\n}\n.table thead th .table__column__header__icon--discrete {\n  color: var(--fkds-color-text-disabled);\n}\n.table thead .table__column--numeric {\n  text-align: right;\n}\n.table tbody .table__expandable-row--collapsed {\n  display: none;\n}\n.table tbody td,\n.table tbody th {\n  padding: calc(var(--f-table-body-row-padding) * var(--f-density-factor)) var(--f-table-body-row-padding);\n  border-bottom: 1px solid var(--fkds-color-border-primary);\n  vertical-align: top;\n}\n.table tbody td {\n  line-height: calc(1.5rem * var(--f-density-factor));\n  font-weight: var(--f-font-weight-normal);\n}\n.table tbody th {\n  border-right: 1px solid var(--fkds-color-border-primary);\n  font-weight: var(--f-font-weight-medium);\n  line-height: calc(1.5rem * var(--f-density-factor));\n}\n.table tbody .table__column--action {\n  white-space: nowrap;\n}\n.table tbody .table__column--selectable {\n  padding: calc(0.2rem * var(--f-density-factor)) 0.2rem;\n}\n.table tbody .table__column--placeholder + .table__column {\n  padding-left: 1.5rem;\n}\n.table tbody .table__column--action .button--discrete, .table tbody .table__column--action .button--tertiary {\n  margin: var(--f-button-tertiary-table-column-action-margin);\n  min-width: 24px;\n  width: max-content;\n}\n.table tbody .table__column--action .button--discrete .button__icon, .table tbody .table__column--action .button--tertiary .button__icon {\n  margin: var(--f-button-tertiary-table-column-action-icon-margin);\n  transform: translate(0, 10%);\n}\n.table__column--text {\n  text-align: left;\n}\n.table__column--numeric {\n  text-align: right;\n}\n.table__column--date {\n  text-align: left;\n}\n.table__column--action {\n  text-align: center;\n}\n.table__column--shrink {\n  width: 1px;\n  white-space: nowrap;\n}\n.table__column--sortable {\n  cursor: pointer;\n}\n.table__column__description {\n  display: block;\n  background: transparent;\n  color: var(--fkds-color-text-secondary);\n  font-weight: var(--f-font-weight-normal);\n}\n.table__column__wrapper {\n  pointer-events: none;\n}\n.table__column__wrapper > * {\n  pointer-events: auto;\n}\n@media (hover: hover) {\n.table--hover tbody .table__row:hover {\n    background: var(--fkds-color-select-background-tertiary-hover);\n    color: var(--fkds-color-text-primary);\n    outline: 1px solid var(--fkds-color-border-primary);\n}\n.table--hover tbody .table__row:hover.table__row--active {\n    background: var(--fkds-color-select-background-primary-active);\n    color: var(--fkds-color-text-primary);\n}\n}\n@media (hover: hover) {\n.table--selectable .table__row td:hover,\n  .table--selectable .table__row th:hover {\n    cursor: pointer;\n}\n}\n.table__scroll {\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  overflow: hidden;\n}\n.table__scroll thead th,\n.table__scroll thead td,\n.table__scroll tbody th,\n.table__scroll tbody td {\n  white-space: nowrap;\n}\n.table__scroll .table {\n  margin: 0;\n}\n.table__scroll--horizontal {\n  overflow-x: auto;\n}\n.table__input {\n  margin-top: calc(0.25rem * var(--f-density-factor));\n}\n.table__input .checkbox__label,\n.table__input .radio-button__label {\n  min-width: 1.75rem;\n  min-height: 1.75rem;\n  padding: 0;\n}\n.table__input .checkbox__label::after,\n.table__input .checkbox__label::before,\n.table__input .radio-button__label::after,\n.table__input .radio-button__label::before {\n  top: calc(0.15rem * var(--f-density-factor));\n  left: 0.25rem;\n}\n.table__expand-icon {\n  color: var(--fkds-color-action-text-primary-default);\n  background: transparent;\n  border: 0;\n  flex: 0 0 auto;\n  padding: 0;\n  pointer-events: none;\n  width: 1.5rem;\n  height: 1.5rem;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n@media (forced-colors: active) {\n.table__expand-icon {\n    color: ButtonText;\n}\n}\n.table__anchor {\n  cursor: pointer;\n  display: inline-flex;\n  gap: 0.25rem;\n}\n.table__anchor > svg.icon {\n  flex-shrink: 0;\n  align-self: center;\n  min-width: auto;\n  max-width: none;\n}\n.table__button {\n  background-color: transparent;\n  border-color: transparent;\n  border-width: var(--f-border-width-medium);\n  box-shadow: none;\n  color: var(--fkds-color-action-text-primary-default);\n  padding: calc(var(--f-button-tertiary-padding-top) * var(--f-density-factor)) var(--f-button-tertiary-padding-right) calc(var(--f-button-tertiary-padding-bottom) * var(--f-density-factor)) var(--f-button-tertiary-padding-left);\n  transition-duration: var(--f-animation-duration-extra-short);\n  transition-property: background-color, border-color, transform;\n  transition-timing-function: var(--f-button-animation-curve);\n}\n.table__button:focus-visible {\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-action-text-primary-default);\n}\n@media (hover: hover) {\n.table__button:hover {\n    background-color: var(--fkds-color-action-background-secondary-hover);\n    border-color: transparent;\n    box-shadow: none;\n    color: var(--fkds-color-action-text-primary-default);\n}\n}\n.table__button:active {\n  background-color: var(--fkds-color-action-background-secondary-active);\n  border-color: transparent;\n  box-shadow: none;\n  color: var(--fkds-color-action-text-primary-default);\n  transform: translateY(1px);\n}\n.table__button:focus-visible {\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.table__button.disabled, .table__button.disabled:hover, .table__button:disabled, .table__button:disabled:hover, .table__button[aria-disabled=true], .table__button[aria-disabled=true]:hover, .table__button.table__button--disabled, .table__button.table__button--disabled:hover {\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-text-disabled);\n  pointer-events: none;\n}\n.table__button[aria-disabled=true] {\n  pointer-events: none;\n}\n@media (forced-colors: active) {\n.table__button[aria-disabled=true] {\n    border-color: GrayText;\n    color: GrayText;\n}\n}\n.table__button {\n  font-weight: var(--f-font-weight-medium);\n  outline-offset: 0.25rem;\n  font-size: 14px;\n  line-height: 1.25rem;\n  min-width: 24px;\n  padding: calc(0.375rem * var(--f-density-factor)) 0.25rem;\n  text-underline-offset: 3.5px;\n  margin: var(--f-button-tertiary-table-column-action-margin);\n  width: max-content;\n  border: none;\n}\n.table__button .button__icon {\n  margin: var(--f-button-tertiary-table-column-action-icon-margin);\n  height: 14px;\n  width: 14px;\n}\n.table-ng {\n  border-collapse: collapse;\n  border-spacing: 0;\n  font-size: var(--f-font-size-standard);\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  width: 100%;\n}\n.table-ng caption {\n  background: transparent;\n  color: var(--fkds-color-text-primary);\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  line-height: var(--f-line-height-large);\n  margin-bottom: calc(0.25rem * var(--f-density-factor));\n  width: var(--f-width-full);\n  text-align: left;\n}\n.table-ng thead tr:not(:has(.table-ng__column--grow)) .table-ng__column--fixed {\n  width: unset !important;\n}\n.table-ng thead th {\n  background: var(--fkds-color-background-secondary);\n  border-bottom: 2px solid var(--fkds-color-border-primary);\n  border-right: 1px solid var(--fkds-color-border-primary);\n  color: var(--fkds-color-text-primary);\n  font-weight: var(--f-font-weight-medium);\n  line-height: var(--f-line-height-large);\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  text-align: left;\n  vertical-align: top;\n}\n.table-ng thead th:last-child {\n  border-right: none;\n}\n.table-ng tbody .table-ng__row,\n.table-ng tfoot .table-ng__row {\n  background: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n}\n.table-ng tbody .table-ng__row--empty,\n.table-ng tfoot .table-ng__row--empty {\n  background: var(--fkds-color-background-primary);\n  text-align: center;\n}\n.table-ng__column__description {\n  background: transparent;\n  color: var(--fkds-color-text-secondary);\n  font-weight: var(--f-font-weight-normal);\n}\n.table-ng--striped tbody .table-ng__row:nth-child(even) {\n  background: var(--fkds-color-background-secondary);\n  color: var(--fkds-color-text-primary);\n}\n.table-ng--divided tbody > tr > td,\n.table-ng--divided tbody > tr > th {\n  border-bottom: 1px solid var(--fkds-color-border-primary);\n}\n.table-ng__cell {\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  text-wrap: nowrap;\n  border: 1px solid transparent;\n}\n.table-ng__cell:focus-visible, .table-ng__cell:has(:focus-visible) {\n  box-shadow: none;\n  outline: 3px solid var(--fkds-focus-indicator-color);\n  outline-offset: -3px;\n}\n@media (hover: hover) {\n.table-ng__cell:not(.table-ng__cell--menu-open):hover:has(button) {\n    background: var(--fkds-color-action-background-secondary-hover);\n}\n}\n.table-ng__cell input:focus-visible,\n.table-ng__cell button:focus-visible,\n.table-ng__cell a:focus-visible,\n.table-ng__cell [role=combobox]:focus-visible {\n  box-shadow: none;\n}\n.table-ng__cell--static__text {\n  white-space: nowrap;\n}\n.table-ng__cell--static__text--wrap {\n  white-space: pre-wrap;\n}\n.table-ng__cell--align-left {\n  text-align: left;\n}\n.table-ng__cell--align-left span,\n.table-ng__cell--align-left input {\n  text-align: left;\n}\n.table-ng__cell--align-left .table-ng__cell--static__text {\n  justify-content: flex-start;\n  text-align: left;\n}\n.table-ng__cell--align-right {\n  text-align: right;\n}\n.table-ng__cell--align-right span,\n.table-ng__cell--align-right input {\n  text-align: right;\n}\n.table-ng__cell--align-right .table-ng__cell--static__text {\n  justify-content: flex-end;\n  text-align: right;\n}\n.table-ng__cell--numeric {\n  font-feature-settings: \"tnum\" 1;\n}\n.table-ng__cell--select, .table-ng__cell--text {\n  padding: 0;\n}\n@media (hover: hover) {\n.table-ng__cell--select:hover, .table-ng__cell--text:hover {\n    background: var(--fkds-color-action-background-secondary-hover);\n}\n}\n.table-ng__cell--select:focus-within {\n  box-shadow: none;\n  outline: 3px solid var(--fkds-focus-indicator-color);\n  outline-offset: -3px;\n}\n.table-ng__cell--select:focus-within .table-ng__editable {\n  box-shadow: inset 0 -3px 0 0 var(--fkds-color-border-strong);\n  border-radius: 0;\n}\n.table-ng__cell--text:focus-visible .table-ng__editable, .table-ng__cell--text:has(:focus-visible) .table-ng__editable {\n  box-shadow: inset 0 -3px 0 0 var(--fkds-color-border-strong);\n  border-radius: 0;\n}\n@media (hover: hover) {\n.table-ng__cell--text:hover:has(.table-ng__textedit:focus-visible) {\n    background: transparent;\n}\n}\n.table-ng__cell .table-ng__editable {\n  min-block-size: calc(var(--f-font-size-standard) * var(--f-line-height-large) + 0.25rem * var(--f-density-factor) * 2 + 6px);\n}\n.table-ng__cell .table-ng__editable:has(:focus-visible) {\n  box-shadow: inset 0 -3px 0 0 var(--fkds-color-border-strong);\n  border-radius: 0;\n  background: transparent;\n}\n@media (hover: hover) {\n.table-ng__cell .table-ng__editable:hover:not(:has(:focus-visible)) {\n    box-shadow: inset 0 -3px 0 0 var(--fkds-color-border-strong);\n    border-radius: 0;\n}\n}\n.table-ng__cell--select .table-ng__editable {\n  border: 3px solid transparent;\n  box-sizing: border-box;\n}\n.table-ng__cell--select.table-ng__cell--error:not(:has(:focus-visible)) .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:not(:has(:focus-visible)) .table-ng__editable {\n  box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-text-negative);\n  border-radius: 0;\n}\n@media (hover: hover) {\n.table-ng__cell--select.table-ng__cell--error:hover:not(:has(:focus-visible)) .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:hover:not(:has(:focus-visible)) .table-ng__editable {\n    box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-text-negative);\n    border-radius: 0;\n}\n}\n.table-ng__cell--select.table-ng__cell--error:focus-visible .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:focus-visible .table-ng__editable {\n  box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-text-negative);\n  border-radius: 0;\n}\n.table-ng__cell--text:focus-visible {\n  box-shadow: none !important;\n}\n.table-ng__cell--text .table-ng__editable {\n  border: 3px solid transparent;\n  box-sizing: border-box;\n  position: relative;\n}\n.table-ng__cell--text .table-ng__editable:has(:focus-visible) {\n  box-shadow: inset 0 -3px 0 0 var(--fkds-color-border-strong);\n  border-radius: 0;\n}\n.table-ng__cell--text .table-ng__editable:has(:focus-visible) .table-ng__editable__text {\n  visibility: hidden;\n}\n.table-ng__cell--text .table-ng__editable:has(:focus-visible) .table-ng__textedit {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  min-width: 0;\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n}\n@media (hover: hover) {\n.table-ng__cell--text .table-ng__editable:hover {\n    box-shadow: inset 0 -3px 0 0 var(--fkds-color-border-strong);\n    border-radius: 0;\n}\n}\n.table-ng__cell--checkbox, .table-ng__cell--radio {\n  text-align: center;\n  padding: calc(0.25rem * var(--f-density-factor));\n}\n.table-ng__cell--checkbox input, .table-ng__cell--radio input {\n  height: var(--f-icon-size-medium);\n  width: var(--f-icon-size-medium);\n  vertical-align: middle;\n  accent-color: var(--fkds-color-action-background-primary-default);\n}\n@media (hover: hover) {\n.table-ng__cell--checkbox:hover, .table-ng__cell--radio:hover {\n    background: var(--fkds-color-action-background-secondary-hover);\n    accent-color: var(--fkds-color-action-background-primary-hover);\n}\n}\n.table-ng__cell--expand button, .table-ng__cell--button button {\n  padding: 0;\n  margin: 0;\n  border: 0;\n  min-width: var(--f-icon-size-medium);\n  width: 100%;\n  background: inherit;\n  color: var(--fkds-color-action-background-primary-default);\n  cursor: pointer;\n}\n@media (hover: hover) {\n.table-ng__cell--expand button:hover, .table-ng__cell--button button:hover {\n    color: var(--fkds-color-action-background-primary-hover);\n}\n}\n.table-ng__cell--expand button svg, .table-ng__cell--button button svg {\n  vertical-align: middle;\n}\n.table-ng__cell--expand {\n  width: var(--f-icon-size-medium);\n  padding: calc(0.25rem * var(--f-density-factor));\n}\n.table-ng__cell--selectable {\n  width: var(--f-icon-size-medium);\n}\n@media (hover: hover) {\n.table-ng__cell--selectable:hover {\n    background: var(--fkds-color-action-background-secondary-hover);\n}\n}\n.table-ng__cell--rowheader {\n  font-weight: var(--f-font-weight-medium);\n  text-align: left;\n}\n.table-ng__cell--static .table-ng__cell--static__text {\n  display: flex;\n  align-items: center;\n  min-block-size: calc(var(--f-font-size-standard) * var(--f-line-height-large) + 0.25rem * var(--f-density-factor) * 2 + 6px - 4px);\n  border: 3px solid transparent;\n}\n.table-ng__cell--custom {\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  border: 1px solid transparent;\n}\n.table-ng__cell--custom:focus-visible {\n  box-shadow: none;\n  outline: 3px solid var(--fkds-focus-indicator-color);\n  outline-offset: -3px;\n}\n.table-ng__cell--menu-open, .table-ng__cell--menu-open:hover {\n  background: var(--fkds-color-action-background-primary-active);\n}\n.table-ng__cell--menu-open .icon-button, .table-ng__cell--menu-open:hover .icon-button {\n  color: var(--fkds-color-text-inverted);\n}\n.table-ng__cell--menu-open .table-ng__editable:hover, .table-ng__cell--menu-open:hover .table-ng__editable:hover {\n  background: transparent;\n}\n.table-ng__cell--select:has([role=combobox][aria-expanded=true]) {\n  background: transparent;\n}\n.table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable,\n.table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable:hover,\n.table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable:hover:not(:focus-within),\n.table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable:focus,\n.table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable:focus-within {\n  box-shadow: none;\n  border-radius: 0;\n}\n.table-ng__textedit {\n  flex: 0 1 0;\n  width: 0;\n  border: none;\n  padding: 0;\n  background: transparent;\n}\n.table-ng__textedit:focus-visible {\n  box-shadow: none !important;\n}\n.table-ng__editable {\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  display: flex;\n  align-items: center;\n  margin-block: 2px;\n}\n.table-ng__editable__text {\n  flex: 1 1 auto;\n  white-space: nowrap;\n}\n.table-ng__editable__text--wrap {\n  white-space: pre-wrap;\n}\n.table-ng__editable__numeric span,\n.table-ng__editable__numeric input {\n  font-feature-settings: \"tnum\" 1;\n}\n@media (forced-colors: active) {\n.table-ng__editable {\n    forced-color-adjust: none;\n    color: CanvasText;\n}\n.table-ng__cell--static__text {\n    forced-color-adjust: none;\n    color: CanvasText;\n}\n}\n@media (forced-colors: active) and (hover: hover) {\n.table-ng__cell--text:hover .table-ng__editable,\n  .table-ng__cell--select:hover .table-ng__editable {\n    box-shadow: inset 0 -3px 0 0 Highlight;\n    border-radius: 0;\n}\n}\n@media (forced-colors: active) {\n.table-ng__cell--text:has(:focus-visible) .table-ng__editable,\n  .table-ng__cell--select:focus-within .table-ng__editable {\n    box-shadow: inset 0 -3px 0 0 Highlight;\n    border-radius: 0;\n}\n.table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable,\n  .table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable:hover,\n  .table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable:hover:not(:focus-within),\n  .table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable:focus,\n  .table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable:focus-within {\n    box-shadow: none;\n    border-radius: 0;\n}\n.table-ng [tabindex=\"0\"]:focus-visible {\n    outline: 3px solid CanvasText;\n    outline-offset: -3px;\n    background: transparent;\n}\n.table-ng__cell :is(button, a, input, select, [role=combobox]):focus-visible {\n    outline: none;\n}\n}\n.table-ng__column {\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  border-bottom: 2px solid transparent;\n  border-right: 1px solid transparent;\n}\n.table-ng__column:focus-visible, .table-ng__column:has(:focus-visible) {\n  box-shadow: none;\n  outline: 3px solid var(--fkds-focus-indicator-color);\n  outline-offset: -3px;\n}\n.table-ng__column--selectable {\n  text-align: center;\n  padding: calc(0.25rem * var(--f-density-factor));\n}\n.table-ng__column--selectable input {\n  height: var(--f-icon-size-medium);\n  width: var(--f-icon-size-medium);\n  vertical-align: middle;\n  accent-color: var(--fkds-color-action-background-primary-default);\n}\n.table-ng__column--selectable input[type=checkbox]:focus-visible {\n  box-shadow: none;\n}\n.table-ng__column--expandable {\n  min-width: 2rem;\n  width: 2rem;\n}\n.table-ng__column--rowheader {\n  text-align: left;\n  padding: calc(0.25rem * var(--f-density-factor));\n}\n.table-ng__column--shrink {\n  width: 1px;\n  white-space: nowrap;\n}\n.table-ng__column__sort-icon {\n  color: var(--fkds-color-text-primary);\n  height: var(--f-icon-size-x-small);\n  width: var(--f-icon-size-x-small);\n  min-width: var(--f-icon-size-x-small);\n}\n.table-ng__column__sort-icon--discrete {\n  color: var(--fkds-color-text-secondary);\n}\n@media (forced-colors: active) {\n.table-ng__column__sort-icon,\n  .table-ng__column__sort-icon--discrete {\n    color: CanvasText;\n}\n}\n.text-field {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  position: relative;\n  width: var(--f-width-full);\n}\n@media (min-width: 640px) {\n.text-field--inline {\n    margin-bottom: calc(0.75rem * var(--f-density-factor));\n    flex-direction: row;\n    justify-content: flex-start;\n    width: auto;\n}\n.text-field--inline .label {\n    width: auto;\n    margin-right: 1rem;\n    padding-top: calc(0.5rem * var(--f-density-factor));\n}\n}\n.text-field--table {\n  margin-bottom: 0;\n}\n.text-field input[type=text]::-ms-clear {\n  display: none;\n}\n.text-field__error-popup-icon {\n  color: var(--fkds-color-feedback-text-negative);\n  height: 16px;\n}\n@media (forced-colors: active) {\n.text-field__error-popup-icon {\n    color: CanvasText;\n}\n}\n.text-field__input-wrapper {\n  display: flex;\n  gap: calc(0.5rem * var(--f-density-factor));\n}\n.text-field__input {\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n  box-shadow: var(--f-input-shadow-inset);\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  min-height: calc(var(--f-height-large) * var(--f-density-factor));\n  padding: 0 0.75rem;\n  width: var(--f-width-full);\n}\n.text-field__icon-wrapper {\n  color: var(--fkds-color-text-primary);\n  flex: 1 1 auto;\n  position: relative;\n}\n.text-field__icon-wrapper:has(.text-field__append-inner) .text-field__input {\n  padding: var(--padding-input-fields);\n}\n.text-field__append-inner {\n  display: inline;\n  position: absolute;\n  right: calc(0.75rem * var(--f-density-factor));\n  top: calc(0.5rem * var(--f-density-factor));\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n  overflow: hidden;\n  text-align: center;\n}\n.text-field__icon {\n  height: var(--f-icon-size-large);\n  transition: opacity var(--f-animation-duration-medium) ease-in-out;\n  width: var(--f-icon-size-large);\n}\n.text-field__icon--left {\n  position: relative;\n  top: 3px;\n}\n.text-field__input:disabled + .text-field__icon {\n  color: var(--fkds-color-text-disabled);\n}\n.text-field__input:disabled {\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n  background-color: var(--fkds-color-background-disabled);\n}\n.text-field--error .text-field__input {\n  border-color: var(--fkds-color-feedback-border-negative);\n}\n.text-field--search + .text-field__append-inner {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  top: 0;\n  right: calc(0.25rem * var(--f-density-factor));\n  min-height: calc(var(--f-height-large) * var(--f-density-factor));\n  width: 2.5rem;\n}\n.text-field .clear-button {\n  background: none;\n  border: 0;\n  cursor: pointer;\n}\n.text-field .clear-button__icon {\n  color: var(--fkds-color-text-secondary);\n  height: var(--f-icon-size-x-small);\n  width: var(--f-icon-size-x-small);\n}\n@media (forced-colors: active) {\n.text-field .clear-button__icon {\n    color: buttonText;\n}\n}\n.text-field {\n  /* stylelint-disable property-no-vendor-prefix */\n}\n.text-field input[type=search]::-webkit-search-decoration,\n.text-field input[type=search]::-webkit-search-cancel-button,\n.text-field input[type=search]::-webkit-search-results-button,\n.text-field input[type=search]::-webkit-search-results-decoration {\n  -webkit-appearance: none;\n}\n.textarea-field {\n  --i-textarea-field-min-height: 4lh;\n  --i-textarea-field-max-height: 4lh;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  line-height: var(--f-line-height-large);\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  position: relative;\n  width: var(--f-width-full);\n}\n@media (min-width: 640px) {\n.textarea-field--inline {\n    margin-bottom: calc(0.75rem * var(--f-density-factor));\n    flex-direction: row;\n    justify-content: flex-start;\n    width: auto;\n}\n.textarea-field--inline .label {\n    width: auto;\n    margin-right: 1rem;\n    padding-top: calc(0.5rem * var(--f-density-factor));\n}\n}\n.textarea-field__textarea {\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n  box-shadow: var(--f-input-shadow-inset);\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  box-sizing: border-box;\n  font-size: var(--f-font-size-standard);\n  min-height: calc(var(--f-height-large) * var(--f-density-factor));\n  padding: calc(0.5rem * var(--f-density-factor)) 0.75rem;\n  width: var(--f-width-full);\n}\n.textarea-field__textarea[rows] {\n  height: auto;\n}\n.textarea-field__textarea:disabled {\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n  background-color: var(--fkds-color-background-disabled);\n}\n.textarea-field--error .textarea-field__textarea {\n  border-color: var(--fkds-color-feedback-border-negative);\n}\n.textarea-field__resize--none {\n  resize: none;\n}\n.textarea-field__resize--auto {\n  min-height: calc(max(var(--i-textarea-field-min-height), 4lh) + calc(2 * calc(0.5rem * var(--f-density-factor)) + 2 * var(--f-border-width-medium)));\n  resize: vertical;\n}\n.textarea-field__resize--max-rows {\n  min-height: calc(min(max(var(--i-textarea-field-min-height), 4lh), var(--i-textarea-field-max-height)) + calc(2 * calc(0.5rem * var(--f-density-factor)) + 2 * var(--f-border-width-medium)));\n  max-height: calc(var(--i-textarea-field-max-height) + calc(2 * calc(0.5rem * var(--f-density-factor)) + 2 * var(--f-border-width-medium)));\n  overflow-y: auto;\n  resize: none;\n}\n@supports (field-sizing: content) {\n.textarea-field__resize--auto {\n    field-sizing: content;\n    min-height: calc(var(--i-textarea-field-min-height) + calc(2 * calc(0.5rem * var(--f-density-factor)) + 2 * var(--f-border-width-medium)));\n    resize: none;\n}\n}\n.textarea-field__resize--vertical {\n  resize: vertical;\n}\n.tooltip {\n  display: none;\n  overflow: hidden;\n  width: 100%;\n  margin-bottom: calc(1rem * var(--f-density-factor));\n}\n.tooltip.expanded, .tooltip.animating {\n  display: block;\n}\n.tooltip__container {\n  text-wrap: pretty;\n  margin-bottom: calc(0.25rem * var(--f-density-factor));\n}\n.tooltip__container:has(+ .tooltip.expanded), .tooltip__container:has(+ .tooltip.animating) {\n  margin-bottom: 0;\n}\n.tooltip__container .label {\n  display: inline;\n  width: max-content;\n}\n.tooltip__container h1,\n.tooltip__container h2,\n.tooltip__container h3,\n.tooltip__container h4,\n.tooltip__container h5,\n.tooltip__container h6 {\n  display: inline;\n  width: max-content;\n}\n.tooltip__button {\n  display: inline-flex;\n  appearance: none;\n  background: none;\n  border: 0;\n  cursor: pointer;\n  min-height: 24px;\n  min-width: 24px;\n  margin-left: 6px;\n  padding: 0;\n  position: relative;\n  transform: translateY(2px);\n}\n.tooltip__button .icon {\n  top: 0;\n  left: 0;\n}\n.tooltip__button .icon,\n.tooltip__button .icon-stack {\n  height: var(--f-icon-size-medium);\n  width: var(--f-icon-size-medium);\n  padding: 0;\n  margin: auto;\n}\n.tooltip__body {\n  color: var(--fkds-color-text-primary);\n  padding: 0 1rem;\n}\n.tooltip__header {\n  color: var(--fkds-color-text-primary);\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-bold);\n  line-height: var(--f-line-height-medium);\n  padding: 0 1rem;\n  margin-bottom: 0.5rem;\n}\n.tooltip__footer {\n  display: flex;\n  justify-content: flex-end;\n}\n.tooltip__bubble {\n  display: flex;\n  flex-direction: column;\n  position: relative;\n  margin-top: 10px;\n  margin-bottom: 0.5rem;\n  border: 2px solid var(--fkds-color-feedback-border-info);\n  border-radius: var(--f-border-radius-small);\n  background-color: var(--fkds-color-feedback-background-info);\n  padding-top: 1rem;\n}\n.tooltip__bubble::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: clamp(20px / 2, var(--f-tooltip-offset), 100% - 20px / 2);\n  border-style: solid;\n  border-width: 0 10px 10px 10px;\n  border-color: transparent transparent var(--fkds-color-feedback-border-info);\n  translate: -50% -100%;\n}\n@media (forced-colors: active) {\n.tooltip__bubble::before {\n    border-color: transparent transparent CanvasText;\n    forced-color-adjust: none;\n}\n}\n.tooltip__bubble::after {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: clamp(20px / 2, var(--f-tooltip-offset), 100% - 20px / 2);\n  border-style: solid;\n  border-width: 0 7.2px 7.2px 7.2px;\n  border-color: transparent transparent var(--fkds-color-feedback-background-info);\n  translate: -50% -100%;\n}\n@media (forced-colors: active) {\n.tooltip__bubble::after {\n    border-color: transparent transparent Canvas;\n    forced-color-adjust: none;\n}\n}\n.wizard {\n  margin-top: 20px;\n}\n\n/* Selectors */\n/* position adjustments for lines */\n/* change line-gap-to-circle variable to change distances */\n.wizard-step {\n  display: grid;\n  grid-template: \"wizard-step__line-up wizard-step__step-of\" min-content \"wizard-step__icon-container wizard-step__header\" min-content \"wizard-step__content wizard-step__content\" min-content/min-content 1fr;\n  gap: 0 0.5rem;\n}\n.wizard-step:first-of-type .wizard-step__line-up {\n  border: 0;\n}\n.wizard-step:last-of-type .wizard-step__line-down,\n.wizard-step:last-of-type .wizard-step__icon-container__line-down {\n  border: 0;\n}\n.wizard-step .wizard-step__buttons {\n  margin-top: calc(4rem * var(--f-density-factor));\n}\n.wizard-step .wizard-step__header__title {\n  font-size: 1.125rem;\n  margin-top: 2px;\n  margin-bottom: 20px;\n}\n.wizard-step .wizard-step__icon-container {\n  grid-area: wizard-step__icon-container;\n  display: flex;\n  flex-direction: column;\n}\n.wizard-step .wizard-step__icon-container__circle {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  border: 2px solid var(--fkds-color-border-strong);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 1rem;\n  font-weight: bold;\n  text-align: center;\n  color: var(--fkds-color-text-primary);\n  transition: background-color 400ms ease-out, border-color 400ms ease-out, opacity 400ms ease-out;\n}\n@media (max-width: 639.98px) {\n.wizard-step .wizard-step-body__border-container {\n    display: none;\n}\n}\n.wizard-step .wizard-step-body__border-container .wizard-step__line-down {\n  margin-top: 0;\n}\n.wizard-step .wizard-step__icon-container__success {\n  display: none;\n}\n.wizard-step .wizard-step__header {\n  grid-area: wizard-step__header;\n}\n.wizard-step .wizard-step__step-of {\n  color: var(--fkds-color-text-secondary);\n  font-weight: normal;\n  font-size: 1rem;\n}\n.wizard-step .wizard-step__line-down,\n.wizard-step .wizard-step__icon-container__line-down,\n.wizard-step .wizard-step__line-up {\n  border-left: 2px solid var(--fkds-color-border-strong);\n  margin-left: 14px;\n}\n.wizard-step .wizard-step__icon-container__line-down {\n  margin-top: 4px;\n}\n.wizard-step .wizard-step__content {\n  color: var(--fkds-color-text-primary);\n  margin-left: 0.5rem;\n  min-width: 0;\n  grid-area: wizard-step__content;\n}\n.wizard-step .wizard-step__line-up {\n  margin-bottom: 4px;\n  grid-area: wizard-step__line-up;\n}\n.wizard-step--open + .wizard-step--pending .wizard-step__line-up {\n  padding-top: 20px;\n  margin-top: -0.5rem;\n}\n.wizard-step .wizard-step__icon-container__line-down {\n  flex: 1;\n}\n@media (min-width: 640px) {\n.wizard-step {\n    grid-template: \"wizard-step__line-up wizard-step__step-of\" min-content \"wizard-step__icon-container wizard-step__header\" min-content \"wizard-step__line-down wizard-step__content\" min-content/min-content 1fr;\n}\n.wizard-step--open + .wizard-step--pending .wizard-step__line-up {\n    margin-top: 0;\n    padding-top: 0;\n}\n.wizard-step .wizard-step__content {\n    margin-left: 0;\n}\n.wizard-step .wizard-step__line-down {\n    grid-area: wizard-step__line-down;\n}\n}\n.wizard-step--open .wizard-step__header__title {\n  color: var(--fkds-color-text-primary);\n}\n.wizard-step--open .wizard-step__step-of {\n  display: block;\n}\n.wizard-step--done .wizard-step__header__title .anchor {\n  color: var(--fkds-color-feedback-text-positive);\n  text-decoration-color: currentcolor;\n  text-decoration-thickness: 2px;\n  text-underline-offset: 0.25em;\n}\n@media (hover: hover) {\n.wizard-step--done .wizard-step__header__title .anchor:hover {\n    text-decoration-thickness: 3px;\n    text-underline-offset: 0.25em;\n}\n}\n.wizard-step--done .wizard-step__icon-container__success {\n  display: block;\n  color: var(--fkds-color-text-inverted);\n  width: 16px;\n  height: auto;\n}\n.wizard-step--done .wizard-step__icon-container__circle {\n  background-color: var(--fkds-color-feedback-background-positive-strong);\n  border-color: var(--fkds-color-feedback-border-positive);\n}\n.wizard-step--done .wizard-step__icon-container__number {\n  display: none;\n}\n.wizard-step--done .wizard-step__line-down {\n  display: none;\n}\n.wizard-step--pending .wizard-step__header__title {\n  color: var(--fkds-color-text-primary);\n}\n.wizard-step--pending .wizard-step__icon-container__circle {\n  border: 2px solid var(--fkds-color-border-strong);\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n}\n.wizard-step--pending .wizard-step__line-down {\n  display: none;\n}\n@media (forced-colors: active) {\n.wizard-step .wizard-step__icon-container__success {\n    color: CanvasText;\n}\n}\n.animate-expand {\n  transition: var(--f-animation-expand-close);\n  overflow: hidden;\n  visibility: hidden;\n}\n.animate-expand--expanded {\n  transition: var(--f-animation-expand-open);\n  opacity: 1;\n  visibility: visible;\n}\n.animate-expand--opacity {\n  opacity: 0;\n}\n.calendar-month__table {\n  border-spacing: 2px;\n  padding: 0 0.5rem 1rem;\n  width: 100%;\n  border-collapse: separate;\n  border: none;\n  margin: 0;\n}\n.calendar-month__col--week {\n  width: 2%;\n}\n.calendar-month__col--day {\n  width: 14%;\n}\n.calendar-month__header-cell {\n  padding: 0.5rem 0;\n  text-align: center;\n}\n.calendar-month__header-cell abbr,\n.calendar-month__header-cell span {\n  font-weight: var(--f-font-weight-normal);\n  text-decoration: none;\n  border-bottom: none;\n  text-transform: none;\n  font-size: 1rem;\n  cursor: auto;\n  color: var(--fkds-color-text-secondary);\n}\n.calendar-month__cell {\n  height: 2.75rem;\n  padding: 0;\n}\n.calendar-month__cell--week-number {\n  vertical-align: middle;\n  padding-right: 0.25rem;\n  text-align: right;\n  min-width: 2rem;\n  color: var(--fkds-color-text-secondary);\n}\n.calendar-month__button {\n  appearance: none;\n  border: 0;\n  cursor: pointer;\n  padding: 0;\n  width: 100%;\n  background-color: var(--fkds-color-background-secondary);\n  font-size: 1rem;\n}\n.calendar-month__button:focus-visible {\n  position: relative;\n  z-index: 9997;\n}\n.calendar-month__button:focus-visible[tabindex=\"-1\"] {\n  box-shadow: var(--f-focus-box-shadow);\n}\n.calendar-navbar__year-selector-button--title, .calendar-navbar__month--title {\n  font-size: 1.5rem;\n  font-weight: bold;\n}\n.calendar-navbar {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  text-align: center;\n  border-bottom: var(--f-border-width-medium) solid var(--fkds-color-border-weak);\n  color: var(--fkds-color-text-primary);\n  padding: 1rem;\n  gap: 1rem;\n  margin-bottom: 0.75rem;\n  font-size: var(--f-font-size-h3);\n}\n.calendar-navbar__month {\n  margin-right: auto;\n}\n.calendar-navbar__arrow--previous {\n  transform: scaleX(-1);\n}\n.calendar-navbar__arrow--up {\n  transform: rotate(0.5turn);\n}\n.calendar-navbar__year-selector-button {\n  /* stylelint-disable scss/at-extend-no-missing-placeholder -- technical debt */\n  /* stylelint-enable */\n  display: flex;\n  gap: 0.5rem;\n  align-items: center;\n  font-size: 14px;\n  line-height: 1.25rem;\n  min-width: 24px;\n  padding: calc(0.375rem * var(--f-density-factor)) 0.25rem;\n  text-underline-offset: 3.5px;\n}\n.calendar-navbar__icon {\n  color: var(--fkds-color-action-text-inverted-default);\n  background-color: var(--fkds-color-action-background-primary-default);\n  width: var(--f-icon-size-large);\n  height: var(--f-icon-size-large);\n  padding: 5px;\n  border-radius: 50%;\n  box-shadow: var(--f-button-shadow);\n}\n@media (forced-colors: active) {\n.calendar-navbar__icon {\n    background-color: transparent;\n    border: 2px solid ButtonBorder;\n    color: ButtonText;\n    padding: 3px;\n}\n}\n.calendar-navbar__icon--disabled {\n  color: var(--fkds-color-text-disabled);\n  background-color: var(--fkds-color-background-disabled);\n  padding: 4px;\n  border: 1px solid var(--fkds-color-border-disabled);\n  box-shadow: none;\n}\n@media (forced-colors: active) {\n.calendar-navbar__icon--disabled {\n    background-color: transparent;\n    border-color: GrayText;\n    border-width: 2px;\n    color: GrayText;\n    padding: 3px;\n}\n}\n.calendar-navbar__arrow {\n  padding: 0;\n  display: flex;\n  border: none;\n  background-color: transparent;\n  flex-shrink: 0;\n  cursor: pointer;\n}\n@media (forced-colors: active) {\n.calendar-navbar__arrow {\n    border-color: ButtonBorder;\n}\n}\n.calendar__wrapper {\n  width: 100%;\n}\n.calendar__year-selector {\n  height: var(--f-calendar-height);\n  overflow-x: auto;\n  position: relative;\n}\n.calendar__year-selector__listbox {\n  margin: 0;\n  padding: 0;\n}\n.calendar__year-selector__year {\n  color: var(--fkds-color-text-primary);\n  cursor: pointer;\n  list-style-type: none;\n  padding: 0.75rem;\n  white-space: nowrap;\n  box-sizing: border-box;\n  margin-right: 0.5rem;\n  margin: 5px;\n}\n@media (hover: hover) {\n.calendar__year-selector__year.is-hover, .calendar__year-selector__year:hover:not(.calendar__year-selector__year--highlight) {\n    background-color: var(--fkds-color-select-background-primary-hover);\n    color: var(--fkds-color-text-primary);\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.calendar__year-selector__year.is-hover, .calendar__year-selector__year:hover:not(.calendar__year-selector__year--highlight) {\n    outline-offset: -2px;\n    margin-right: 1.5rem;\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.calendar__year-selector__year.is-hover, .calendar__year-selector__year:hover:not(.calendar__year-selector__year--highlight) {\n    outline: 2px solid highlight;\n}\n}\n.calendar__year-selector__year--highlight {\n  background-color: var(--fkds-color-select-background-primary-default);\n  color: var(--fkds-color-text-inverted);\n  font-weight: var(--f-font-weight-medium);\n}\n@media (forced-colors: active) {\n.calendar__year-selector__year--highlight {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.iflex {\n  display: flex;\n}\n.iflex--gap-1x {\n  margin-left: -0.25rem;\n  margin-right: -0.25rem;\n}\n.iflex--gap-1x .iflex__item {\n  padding-left: 0.25rem;\n  padding-right: 0.25rem;\n}\n.iflex--gap-2x {\n  margin-left: -0.5rem;\n  margin-right: -0.5rem;\n}\n.iflex--gap-2x .iflex__item {\n  padding-left: 0.5rem;\n  padding-right: 0.5rem;\n}\n.iflex--gap-3x {\n  margin-left: -0.75rem;\n  margin-right: -0.75rem;\n}\n.iflex--gap-3x .iflex__item {\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n}\n.iflex--gap-4x {\n  margin-left: -1rem;\n  margin-right: -1rem;\n}\n.iflex--gap-4x .iflex__item {\n  padding-left: 1rem;\n  padding-right: 1rem;\n}\n.iflex--gap-5x {\n  margin-left: -1.25rem;\n  margin-right: -1.25rem;\n}\n.iflex--gap-5x .iflex__item {\n  padding-left: 1.25rem;\n  padding-right: 1.25rem;\n}\n.iflex--gap-6x {\n  margin-left: -1.5rem;\n  margin-right: -1.5rem;\n}\n.iflex--gap-6x .iflex__item {\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n}\n.iflex--gap-7x {\n  margin-left: -1.75rem;\n  margin-right: -1.75rem;\n}\n.iflex--gap-7x .iflex__item {\n  padding-left: 1.75rem;\n  padding-right: 1.75rem;\n}\n.iflex--gap-8x {\n  margin-left: -2rem;\n  margin-right: -2rem;\n}\n.iflex--gap-8x .iflex__item {\n  padding-left: 2rem;\n  padding-right: 2rem;\n}\n.iflex__item {\n  flex: 1 0 0%;\n}\n.iflex--grow {\n  flex: 1 1 auto;\n}\n.iflex--shrink {\n  flex: 0 1 auto;\n}\n.iflex--align-top {\n  align-self: flex-start;\n}\n.iflex--align-center {\n  align-self: center;\n}\n.iflex--align-bottom {\n  align-self: flex-end;\n}\n@media (max-width: 639.98px) {\n.iflex--collapse {\n    display: block;\n}\n}\n.iflex--wrap {\n  flex-wrap: wrap;\n}\n.iflex--float-right {\n  justify-content: flex-end;\n}\n.iflex--float-center {\n  justify-content: center;\n}\n.popup-error {\n  --i-popup-error-offset: 24px;\n}\n.popup-error--overlay {\n  position: absolute;\n  top: 0;\n}\n.popup-error--overlay .popup-error__wrapper {\n  left: -10000px;\n  position: absolute;\n  z-index: 9996;\n  white-space: nowrap;\n  color: var(--fkds-color-text-primary);\n}\n.popup-error--inline {\n  position: static;\n}\n.popup-error--inline .popup-error__wrapper {\n  box-sizing: border-box;\n  margin-top: 0.5rem;\n  margin-bottom: 0.5rem;\n  position: static;\n}\n.popup-error--arrow {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0.5em 10px;\n  background: var(--fkds-color-feedback-border-negative);\n  line-height: 24px;\n  position: relative;\n}\n.popup-error--arrow .popup-error__icon {\n  margin-right: 5px;\n  padding: 0;\n  color: var(--fkds-color-feedback-text-negative);\n  min-height: var(--f-icon-size-medium);\n  min-width: var(--f-icon-size-medium);\n}\n@media (forced-colors: active) {\n.popup-error--arrow .popup-error__icon {\n    color: CanvasText;\n}\n}\n.popup-error--arrow .popup-error__button {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  min-height: 24px;\n  min-width: 24px;\n  padding: 0;\n  border: 1px solid transparent;\n  background-color: transparent;\n}\n@media (forced-colors: active) {\n.popup-error--arrow {\n    background: CanvasText;\n    --fkds-color-feedback-border-negative: CanvasText;\n    --fkds-color-feedback-background-negative: Canvas;\n}\n}\n.popup-error--arrow::before {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  inset: 0;\n  padding: var(--f-border-width-medium);\n  border-radius: inherit;\n  background: var(--fkds-color-feedback-background-negative) content-box;\n}\n.popup-error--top {\n  border-radius: min(5.7735026919px, 100% - var(--i-popup-error-offset) - 60deg) min(5.7735026919px, 100% - (100% - var(--i-popup-error-offset)) - 60deg) 5.7735026919px 5.7735026919px/5.7735026919px;\n  border-image: conic-gradient(var(--fkds-color-feedback-border-negative) 0 0) fill 0/0 max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px)/10px 0 0 0;\n  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, min(100%, 100% - var(--i-popup-error-offset) + 5.7735026919px) 0, calc(100% - var(--i-popup-error-offset)) -10px, max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 0);\n}\n.popup-error--bottom {\n  border-radius: 5.7735026919px 5.7735026919px min(5.7735026919px, 100% - (100% - var(--i-popup-error-offset)) - 60deg) min(5.7735026919px, 100% - var(--i-popup-error-offset) - 60deg)/5.7735026919px;\n  border-image: conic-gradient(var(--fkds-color-feedback-border-negative) 0 0) fill 0/0.2em max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0 max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px)/0 0 10px 0;\n  clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%, min(100%, 100% - var(--i-popup-error-offset) + 5.7735026919px) 100%, calc(100% - var(--i-popup-error-offset)) calc(100% + 10px), max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 100%);\n}\n.popup-error--left {\n  border-radius: 5.7735026919px/min(5.7735026919px, 100% - var(--i-popup-error-offset) - 60deg) 5.7735026919px 5.7735026919px min(5.7735026919px, 100% - (100% - var(--i-popup-error-offset)) - 60deg);\n  border-image: conic-gradient(var(--fkds-color-feedback-border-negative) 0 0) fill 0/max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 0.2em max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0/0 0 0 10px;\n  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 min(100%, 100% - var(--i-popup-error-offset) + 5.7735026919px), -10px calc(100% - var(--i-popup-error-offset)), 0 max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px));\n}\n.popup-error--right {\n  border-radius: 5.7735026919px/5.7735026919px min(5.7735026919px, 100% - var(--i-popup-error-offset) - 60deg) min(5.7735026919px, 100% - (100% - var(--i-popup-error-offset)) - 60deg) 5.7735026919px;\n  border-image: conic-gradient(var(--fkds-color-feedback-border-negative) 0 0) fill 0/max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 0 max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em/0 10px 0 0;\n  clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%, 100% min(100%, 100% - var(--i-popup-error-offset) + 5.7735026919px), calc(100% + 10px) calc(100% - var(--i-popup-error-offset)), 100% max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px));\n}\n.popup-error--top::before {\n  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692) var(--f-border-width-medium), calc(100% - var(--i-popup-error-offset)) calc(var(--f-border-width-medium) / 0.5 - 10px), max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692) var(--f-border-width-medium));\n  border-image: conic-gradient(var(--fkds-color-feedback-background-negative) 0 0) fill 0/0 max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px)/10px 0 0 0;\n}\n.popup-error--bottom::before {\n  clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%, min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692) calc(100% - var(--f-border-width-medium)), calc(100% - var(--i-popup-error-offset)) calc(100% + 10px - var(--f-border-width-medium) / 0.5), max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692) calc(100% - var(--f-border-width-medium)));\n  border-image: conic-gradient(var(--fkds-color-feedback-background-negative) 0 0) fill 0/0.2em max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0 max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px)/0 0 10px 0;\n}\n.popup-error--left::before {\n  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, var(--f-border-width-medium) min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692), calc(var(--f-border-width-medium) / 0.5 - 10px) calc(100% - var(--i-popup-error-offset)), var(--f-border-width-medium) max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692));\n  border-image: conic-gradient(var(--fkds-color-feedback-background-negative) 0 0) fill 0/max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px) 0.2em max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0/0 0 0 10px;\n}\n.popup-error--right::before {\n  clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%, calc(100% - var(--f-border-width-medium)) min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692), calc(100% + 10px - var(--f-border-width-medium) / 0.5) calc(100% - var(--i-popup-error-offset)), calc(100% - var(--f-border-width-medium)) max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692));\n  border-image: conic-gradient(var(--fkds-color-feedback-background-negative) 0 0) fill 0/max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px) 0 max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em/0 10px 0 0;\n}\n.ipopupmenu {\n  background-color: var(--fkds-color-background-primary);\n}\n.ipopupmenu__list {\n  margin: 0;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-primary);\n  padding: 0.5rem;\n}\n.ipopupmenu__list__item {\n  cursor: pointer;\n  list-style-type: none;\n  white-space: nowrap;\n}\n.ipopupmenu__list__item a,\n.ipopupmenu__list__item a:visited,\n.ipopupmenu__list__item a:active {\n  color: var(--fkds-color-text-primary);\n}\n@media (forced-colors: active) {\n.ipopupmenu__list__item a,\n  .ipopupmenu__list__item a:visited,\n  .ipopupmenu__list__item a:active {\n    color: LinkText;\n}\n}\n@media (hover: hover) {\n.ipopupmenu__list__item a:hover {\n    color: var(--fkds-color-text-primary);\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.ipopupmenu__list__item a:hover {\n    color: LinkText;\n}\n}\n.ipopupmenu--vertical .ipopupmenu__list {\n  display: block;\n}\n.ipopupmenu--vertical .ipopupmenu__list__item {\n  padding: 0.75rem;\n  display: block;\n}\n@media (hover: hover) {\n.ipopupmenu--vertical .ipopupmenu__list__item:hover:not(.ipopupmenu__list__item--highlight) {\n    background-color: var(--fkds-color-navigation-background-hover);\n}\n}\n@media (hover: hover) and (forced-colors: active) {\n.ipopupmenu--vertical .ipopupmenu__list__item:hover:not(.ipopupmenu__list__item--highlight) {\n    outline: 2px solid highlight;\n}\n}\n.ipopupmenu--vertical .ipopupmenu__list__item--highlight {\n  background-color: var(--fkds-color-navigation-background-selected);\n  font-weight: var(--f-font-weight-medium);\n}\n@media (forced-colors: active) {\n.ipopupmenu--vertical .ipopupmenu__list__item--highlight {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.ipopupmenu--vertical .ipopupmenu__list__item--highlight a {\n  color: var(--fkds-color-text-inverted);\n}\n@media (forced-colors: active) {\n.ipopupmenu--vertical .ipopupmenu__list__item--highlight a {\n    color: HighlightText;\n}\n}\n.popup--overlay {\n  position: absolute;\n  top: 0;\n}\n.popup--overlay .popup__wrapper {\n  left: -10000px;\n  max-width: fit-content;\n  border-radius: var(--f-border-radius-small);\n  position: absolute;\n  z-index: 9996;\n  box-shadow: var(--f-box-modal-shadow);\n}\n.popup--inline {\n  position: static;\n}\n.popup--inline .popup__wrapper {\n  box-sizing: border-box;\n  margin-top: 0.5rem;\n  margin-bottom: 0.5rem;\n  position: static;\n}\n.iskiplink {\n  position: absolute;\n  top: -200px;\n}\n.iskiplink:focus {\n  color: var(--fkds-color-action-text-primary-default);\n  background-color: var(--fkds-color-background-primary);\n  left: 20px;\n  top: 20px;\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  text-decoration: underline;\n  text-underline-offset: 0.25em;\n  padding: 0.25rem 0.5rem;\n}\n:host {\n  display: contents;\n}\n:host([hidden]) {\n  display: none;\n}\n:host ::slotted([slot=icon]) {\n  display: contents;\n}\n::slotted([slot=header]) {\n  font-weight: var(--f-font-weight-medium) !important;\n  font-size: 1.25rem !important;\n  line-height: 1 !important;\n  margin: 0 !important;\n}\n.panel__wrapper {\n  flex-grow: 1;\n  display: flex;\n}\n.panel {\n  background: var(--f-page-layout-background);\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  padding: 0.5rem;\n  gap: 0.5rem;\n}\n.panel__header {\n  flex: 0 0 auto;\n  display: flex;\n  gap: 0.25rem;\n  align-items: baseline;\n  justify-content: center;\n}\n.attach-left .panel__header {\n  flex-direction: row;\n}\n.attach-right .panel__header {\n  flex-direction: row-reverse;\n}\n.panel__button {\n  flex: 0 0 auto;\n  appearance: none;\n  line-height: 1;\n  background: transparent;\n  border: 0;\n  cursor: pointer;\n  padding: 1rem;\n  width: max-content;\n}\n@media (hover: hover) {\n.panel__button:hover {\n    background-color: var(--fkds-color-action-background-secondary-hover);\n}\n}\n.panel__button:active {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n}\n.panel__button:focus-visible {\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.panel__title {\n  flex: 1 1 auto;\n}\n.panel__content {\n  flex: 1 0 auto;\n}\n.panel__footer {\n  flex: 0 0 auto;\n}\n.expanded.attach-left .panel__button {\n  transform: scaleX(1);\n}\n.collapsed.attach-left .panel__button {\n  transform: scaleX(-1);\n}\n.expanded.attach-right .panel__button {\n  transform: scaleX(-1);\n}\n.collapsed.attach-right .panel__button {\n  transform: scaleX(1);\n}"]]]);
-var _hoisted_1$11 = [
-	"model-value",
-	"context",
-	"close-prefix",
-	"open-prefix"
-];
-var _hoisted_2$8 = { slot: "icon" };
-var ceTag = "ce-minimizable-panel";
-var header = "header";
-var content = "content";
-var footer = "footer";
-var FMinimizablePanel_default = /* @__PURE__ */ defineComponent({
-	__name: "FMinimizablePanel",
-	props: {
-		context: { default: () => void 0 },
-		initial: { default: "expanded" }
-	},
-	setup(__props) {
-		if (!customElements.get(ceTag)) customElements.define(ceTag, /* @__PURE__ */ defineCustomElement(FMinimizablePanel_ce_default));
-		const $t = useTranslate();
-		const closePrefix = $t("fkui.minimizable-panel.close", "Minimera");
-		const openPrefix = $t("fkui.minimizable-panel.open", "Återställ");
-		const defaultContext = $t("fkui.minimizable-panel.context", "panel");
-		const isOpen = /* @__PURE__ */ ref(__props.initial === "expanded");
-		const overlay = /* @__PURE__ */ ref(false);
-		const offset = /* @__PURE__ */ ref(void 0);
-		useResize({
-			enabled: computed(() => {
-				return isOpen.value;
-			}),
-			overlay: computed(() => {
-				return overlay.value;
-			}),
-			offset: computed(() => {
-				return Number(offset.value);
-			})
-		});
-		const ceContext = computed(() => {
-			var _props$context;
-			return (_props$context = __props.context) !== null && _props$context !== void 0 ? _props$context : defaultContext;
-		});
-		function onToggle(e) {
-			isOpen.value = e.detail[0];
-			overlay.value = e.detail[1];
-			offset.value = e.detail[2];
-		}
-		function onUpdateModel(e) {
-			isOpen.value = e.detail[0];
-		}
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("ce-minimizable-panel", {
-				"model-value": isOpen.value,
-				context: ceContext.value,
-				"close-prefix": unref(closePrefix),
-				"open-prefix": unref(openPrefix),
-				"onUpdate:modelValue": onUpdateModel,
-				onToggle
-			}, [
-				renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
-					isOpen: isOpen.value,
-					header,
-					footer,
-					content
-				}))),
-				_cache[0] || (_cache[0] = createTextVNode()),
-				createBaseVNode("div", _hoisted_2$8, [renderSlot(_ctx.$slots, "icon", normalizeProps(guardReactiveProps({ isOpen: isOpen.value })), () => [createVNode(unref(FIcon_default), { name: "chevrons-left" })])])
-			], 40, _hoisted_1$11);
-		};
-	}
-});
-/**
-* Find the first element to overflow including the element
-* that will overlap the item that opens the popup menu.
-*
-* @internal
-* @returns Element index or -1 if no element overflows.
-*/
-function findOverflowIndex(totalWidth, elements) {
-	let sum = 0;
-	const index = elements.findIndex((element) => {
-		sum += element.offsetWidth;
-		return sum > totalWidth;
-	});
-	return index < 1 ? index : index - 1;
-}
-function getNewItemIndexFromMenuAction(action, index, maxIndex) {
-	const minIndex = 0;
-	const nextIndex = index + 1;
-	const prevIndex = index - 1;
-	let newIndex;
-	switch (action) {
-		case MenuAction.MOVE_NEXT:
-			newIndex = nextIndex > maxIndex ? minIndex : nextIndex;
-			break;
-		case MenuAction.MOVE_PREV:
-			newIndex = prevIndex < minIndex ? maxIndex : prevIndex;
-			break;
-		case MenuAction.MOVE_FIRST:
-			newIndex = minIndex;
-			break;
-		case MenuAction.MOVE_LAST:
-			newIndex = maxIndex;
-			break;
-		default: newIndex = index;
-	}
-	return newIndex;
-}
-async function doMenuAction(action, target, currentIndex, maxIndex) {
-	const itemIndex = getNewItemIndexFromMenuAction(action, currentIndex, maxIndex);
-	switch (action) {
-		case MenuAction.MOVE_NEXT:
-		case MenuAction.MOVE_PREV:
-		case MenuAction.MOVE_FIRST:
-		case MenuAction.MOVE_LAST:
-			await target.setFocusOnItem(itemIndex);
-			break;
-		case MenuAction.ACTIVATE: await target.activateItem(itemIndex);
-	}
-}
+({ .../* @__PURE__ */ defineComponent({ computed: { ariaLabel() {
+	const content = renderSlotText(this.$slots.default);
+	if (!content) throw new Error("`f-logo` requires text content.");
+	return content;
+} } }) });
 var upKeys = /* @__PURE__ */ new Set(["Up", "ArrowUp"]);
 var downKeys = ["Down", "ArrowDown"];
-var verticalKeys = [...upKeys, ...downKeys];
-var preventKeys = /* @__PURE__ */ new Set([
-	"Tab",
-	"Left",
-	"Right",
-	"ArrowLeft",
-	"ArrowRight",
-	"Home",
-	"End",
-	" ",
-	"Spacebar",
-	"Enter",
-	...verticalKeys
-]);
-var FNavigationMenu_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
-	name: "FNavigationMenu",
-	components: {
-		FIcon: FIcon_default,
-		IPopupMenu: IPopupMenu_default
-	},
-	mixins: [TranslationMixin],
-	props: {
-		/**
-		* Current route.
-		*/
-		route: {
-			type: String,
-			required: false,
-			default: ""
-		},
-		/**
-		* The route items to be diplayed in the menu
-		*/
-		routes: {
-			type: Array,
-			required: true
-		},
-		/**
-		* If true, show the menu vertically
-		*/
-		vertical: {
-			type: Boolean,
-			required: false
-		},
-		/**
-		* Screen reader text for selected item
-		*/
-		selectedMenuItemScreenReaderText: {
-			type: String,
-			required: false,
-			default: ""
-		},
-		/**
-		* Screen reader text for the more menu item
-		*/
-		menuMoreScreenReaderText: {
-			type: String,
-			required: false,
-			default: ""
-		},
-		/**
-		* Screen reader text for the more menu with selected items
-		*/
-		menuMoreWithSelectedItemsScreenReaderText: {
-			type: String,
-			required: false,
-			default: ""
-		},
-		/**
-		* Unique accessible name for navigation landmark in menu.
-		*/
-		menuAriaLabel: {
-			type: String,
-			required: false,
-			default: "Navigeringsmeny"
-		},
-		/**
-		* Unique accessible name for navigation landmark in popup.
-		*/
-		popupAriaLabel: {
-			type: String,
-			required: false,
-			default: "Popupmeny"
-		}
-	},
-	emits: ["selectedRoute", "update:route"],
-	setup() {
-		return { isMounted: /* @__PURE__ */ ref(false) };
-	},
-	data() {
-		return {
-			selectedItem: "",
-			focusedPopupMenuItem: "",
-			overflowIndex: -1,
-			popupOpen: false,
-			popupAnchor: void 0,
-			resizeObserver: void 0
-		};
-	},
-	computed: {
-		items() {
-			if (!this.routes || !Array.isArray(this.routes)) return [];
-			return this.routes.map((i) => ({
-				label: i.label,
-				key: i.route,
-				href: i.href,
-				target: i.target
-			}));
-		},
-		overflowItems() {
-			return this.hasOverflow ? this.items.slice(this.overflowIndex) : [];
-		},
-		hasOverflow() {
-			return this.overflowIndex > -1 && !this.vertical;
-		},
-		overflowItemSelected() {
-			return this.overflowItems.some((item) => item.key === this.selectedItem);
-		},
-		menuClasses() {
-			return ["imenu", ...this.vertical ? ["imenu--vertical"] : ["imenu--horizontal"]];
-		},
-		popupItemClasses() {
-			return [
-				"imenu__popup-item__wrapper",
-				"imenu__list__item",
-				...this.overflowItemSelected ? ["imenu__list__item--highlight"] : []
-			];
-		},
-		selectedItemSrText() {
-			if (this.selectedMenuItemScreenReaderText === "") return this.$t("fkui.navigation-menu.current-page", "Aktuell sida");
-			return this.selectedMenuItemScreenReaderText;
-		},
-		popupLabel() {
-			return this.$t("fkui.navigation-menu.more-text", "Mer");
-		},
-		popupMenuSrText() {
-			return this.overflowItemSelected ? this.popupMenuSelectedSrText : this.menuMoreScreenReaderText;
-		},
-		popupMenuSelectedSrText() {
-			if (this.menuMoreWithSelectedItemsScreenReaderText === "") return this.$t("fkui.navigation-menu.more-selection", "underliggande vald nu");
-			return this.menuMoreWithSelectedItemsScreenReaderText;
-		}
-	},
-	watch: {
-		route: {
-			handler(value) {
-				this.selectedItem = value;
-			},
-			immediate: true
-		},
-		routes: {
-			deep: true,
-			async handler() {
-				await this.$nextTick();
-				this.onResize();
-			}
-		}
-	},
-	mounted() {
-		this.isMounted = true;
-		this.resizeObserver = new ResizeObserver(debounce(this.onResize, 100));
-		this.resizeObserver.observe(this.$el);
-		this.onResize();
-	},
-	unmounted() {
-		this.isMounted = false;
-		if (this.resizeObserver) this.resizeObserver.disconnect();
-	},
-	methods: {
-		itemClasses(item, index) {
-			const hidden = this.hasOverflow && index >= this.overflowIndex ? ["imenu__list__item--hidden"] : [];
-			return [
-				"imenu__list__item",
-				...item.key === this.selectedItem ? ["imenu__list__item--highlight"] : [],
-				...hidden
-			];
-		},
-		showItemSrText(index) {
-			const isSelected = this.items[index].key === this.selectedItem;
-			const isVisible = index < this.overflowIndex;
-			return isSelected && isVisible;
-		},
-		getVisibleAnchors() {
-			const itemAnchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
-			const sliceEnd = this.hasOverflow ? this.overflowIndex : void 0;
-			const visibleItemAnchors = itemAnchors.slice(0, sliceEnd);
-			const popupItemAnchor = this.hasOverflow ? [getHTMLElementFromVueRef(this.$refs["popup-anchor"])] : [];
-			return [...visibleItemAnchors, ...popupItemAnchor];
-		},
-		getAnchor(index) {
-			return this.getVisibleAnchors()[index];
-		},
-		findItemByKey(key) {
-			return this.items.find((it) => it.key === key);
-		},
-		indexOfItemByKey(key) {
-			const item = this.findItemByKey(key);
-			if (!item) return -1;
-			return this.items.indexOf(item);
-		},
-		selectItem(key) {
-			if (key !== this.selectedItem) this.selectedItem = key;
-			if (key === this.route) return;
-			this.$emit("update:route", key);
-			this.$emit("selectedRoute", key);
-		},
-		async activateItem(index) {
-			if (this.hasOverflow && index === this.overflowIndex) {
-				this.togglePopup(!this.popupOpen);
-				return;
-			}
-			const item = this.items[index];
-			this.selectItem(item.key);
-			this.clickItemAnchor(item);
-		},
-		onClickItem(event, item) {
-			this.selectItem(item.key);
-			const target = event.target;
-			if (!(target instanceof HTMLElement && target.tagName === "A")) this.clickItemAnchor(item);
-		},
-		clickItemAnchor(item) {
-			if (!item.href) return;
-			const index = this.items.indexOf(item);
-			this.getAnchor(index)?.click();
-		},
-		onPopupMenuItemSelected(key) {
-			this.selectItem(key);
-			if (key !== this.selectedItem) this.togglePopup(false);
-		},
-		togglePopup(open) {
-			if (open) this.popupAnchor = getHTMLElementFromVueRef(this.$refs["popup-item"]);
-			this.popupOpen = open;
-		},
-		async setFocusOnItem(index) {
-			if (this.popupOpen) {
-				this.togglePopup(false);
-				await this.$nextTick();
-			}
-			focus(this.getAnchor(index), { preventScroll: true });
-		},
-		async onResize() {
-			if (!this.isMounted || this.vertical) return;
-			const menu = getHTMLElementFromVueRef(this.$refs.menu);
-			const itemElements = getSortedHTMLElementsFromVueRef(this.$refs.items);
-			const menuWidth = menu.offsetWidth;
-			const foundOverflowIndex = findOverflowIndex(menuWidth, itemElements);
-			if (this.overflowIndex === foundOverflowIndex) return;
-			this.overflowIndex = foundOverflowIndex;
-			if (!this.hasOverflow) {
-				this.popupOpen = false;
-				return;
-			}
-			const popupWasOpen = this.popupOpen;
-			this.popupOpen = false;
-			await this.$nextTick();
-			const wrapper = getHTMLElementFromVueRef(this.$refs["popup-item"]);
-			wrapper.style.left = "0";
-			const firstHiddenItem = itemElements[this.overflowIndex];
-			const firstHiddenItemRect = getAbsolutePosition(firstHiddenItem);
-			const offset = getAbsolutePosition(wrapper).x - firstHiddenItemRect.x;
-			wrapper.style.left = `-${String(offset)}px`;
-			this.popupOpen = popupWasOpen;
-		},
-		onKeyUp(event) {
-			if (preventKeys.has(event.key)) event.preventDefault();
-		},
-		async onKeyDown(event) {
-			if (event.key === "Escape") {
-				this.togglePopup(false);
-				return;
-			}
-			if (!preventKeys.has(event.key)) return;
-			const anchors = this.getVisibleAnchors();
-			const focusedIndex = anchors.indexOf(event.target);
-			const lastItemIndex = anchors.length - 1;
-			const firstItemFocused = focusedIndex === 0;
-			const lastItemFocused = focusedIndex === lastItemIndex;
-			const tabPrev = event.key === "Tab" && event.shiftKey;
-			const tabNext = event.key === "Tab" && !event.shiftKey;
-			const shouldCheckPopupKeys = this.hasOverflow && lastItemFocused && this.popupOpen;
-			const popupKeyPressed = verticalKeys.includes(event.key) || tabNext;
-			if (shouldCheckPopupKeys && popupKeyPressed) {
-				event.preventDefault();
-				const index = upKeys.has(event.key) ? this.overflowItems.length - 1 : 0;
-				this.focusedPopupMenuItem = this.overflowItems[index].key;
-				return;
-			}
-			if (tabPrev && firstItemFocused || tabNext && lastItemFocused) return;
-			const action = actionFromKeyboardEvent(event);
-			if (action === null) return;
-			event.preventDefault();
-			await doMenuAction(action, this, focusedIndex, lastItemIndex);
-		}
-	}
-});
-var _hoisted_1$10 = ["aria-label"];
-var _hoisted_2$7 = ["data-ref-index", "onClick"];
-var _hoisted_3$5 = { class: "imenu__list__anchor-container" };
-var _hoisted_4$4 = [
-	"data-ref-index",
-	"href",
-	"target"
-];
-var _hoisted_5$4 = {
-	key: 0,
-	class: "sr-only"
-};
-var _hoisted_6$3 = {
-	key: 0,
-	class: "imenu__popup-item",
-	role: "none"
-};
-var _hoisted_7$2 = { class: "imenu__list__anchor-container" };
-var _hoisted_8$1 = ["aria-expanded"];
-var _hoisted_9$1 = { class: "sr-only" };
-function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
-	const _component_f_icon = resolveComponent("f-icon");
-	const _component_i_popup_menu = resolveComponent("i-popup-menu");
-	return openBlock(), createElementBlock("nav", {
-		ref: "menu",
-		"aria-label": _ctx.menuAriaLabel,
-		class: normalizeClass(_ctx.menuClasses)
-	}, [
-		createBaseVNode("ul", {
-			class: "imenu__list",
-			role: "menubar",
-			onKeyup: _cache[1] || (_cache[1] = (...args) => _ctx.onKeyUp && _ctx.onKeyUp(...args)),
-			onKeydown: _cache[2] || (_cache[2] = (...args) => _ctx.onKeyDown && _ctx.onKeyDown(...args))
-		}, [
-			(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.items, (item, index) => {
-				return openBlock(), createElementBlock("li", {
-					key: item.key,
-					ref_for: true,
-					ref: "items",
-					"data-ref-index": index,
-					class: normalizeClass(_ctx.itemClasses(item, index)),
-					role: "none",
-					onClick: (event) => _ctx.onClickItem(event, item)
-				}, [createBaseVNode("div", _hoisted_3$5, [createBaseVNode("a", {
-					ref_for: true,
-					ref: "anchors",
-					"data-ref-index": index,
-					tabindex: "0",
-					href: item.href,
-					target: item.target,
-					class: "imenu__list__anchor",
-					role: "menuitem"
-				}, [_ctx.showItemSrText(index) ? (openBlock(), createElementBlock("span", _hoisted_5$4, [createBaseVNode("span", null, toDisplayString(_ctx.selectedItemSrText) + "\xA0", 1)])) : createCommentVNode("v-if", true), createTextVNode(" " + toDisplayString(item.label), 1)], 8, _hoisted_4$4)])], 10, _hoisted_2$7);
-			}), 128)),
-			_cache[6] || (_cache[6] = createTextVNode()),
-			_ctx.hasOverflow ? (openBlock(), createElementBlock("li", _hoisted_6$3, [createBaseVNode("div", {
-				ref: "popup-item",
-				class: normalizeClass(_ctx.popupItemClasses),
-				onClick: _cache[0] || (_cache[0] = ($event) => _ctx.togglePopup(true))
-			}, [createBaseVNode("div", _hoisted_7$2, [createBaseVNode("a", {
-				ref: "popup-anchor",
-				tabindex: "0",
-				class: "imenu__list__anchor",
-				role: "menuitem",
-				"aria-haspopup": "menu",
-				"aria-expanded": _ctx.popupOpen ? "true" : "false"
-			}, [
-				createBaseVNode("span", _hoisted_9$1, [createBaseVNode("span", null, toDisplayString(_ctx.popupMenuSrText) + "\xA0", 1)]),
-				createTextVNode(" " + toDisplayString(_ctx.popupLabel) + " ", 1),
-				createVNode(_component_f_icon, {
-					name: "arrow-down",
-					class: "imenu__list__anchor-icon-right"
-				})
-			], 8, _hoisted_8$1)])], 2)])) : createCommentVNode("v-if", true)
-		], 32),
-		_cache[7] || (_cache[7] = createTextVNode()),
-		createVNode(_component_i_popup_menu, {
-			ref: "popup-menu",
-			modelValue: _ctx.selectedItem,
-			"onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.selectedItem = $event),
-			"focused-item": _ctx.focusedPopupMenuItem,
-			"onUpdate:focusedItem": _cache[4] || (_cache[4] = ($event) => _ctx.focusedPopupMenuItem = $event),
-			items: _ctx.overflowItems,
-			"is-open": _ctx.popupOpen,
-			anchor: _ctx.popupAnchor,
-			"selected-menu-item-screen-reader-text": _ctx.selectedItemSrText,
-			"aria-label": _ctx.popupAriaLabel,
-			"enable-keyboard-navigation": "",
-			onSelect: _ctx.onPopupMenuItemSelected,
-			onClose: _cache[5] || (_cache[5] = ($event) => _ctx.togglePopup(false))
-		}, null, 8, [
-			"modelValue",
-			"focused-item",
-			"items",
-			"is-open",
-			"anchor",
-			"selected-menu-item-screen-reader-text",
-			"aria-label",
-			"onSelect"
-		])
-	], 10, _hoisted_1$10);
-}
-var FNavigationMenu_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FNavigationMenu_vue_vue_type_script_lang_default, [["render", _sfc_render$7]]);
-var FPageHeader_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
-	name: "FPageHeader",
-	components: { ISkipLink: ISkipLink_default },
-	inheritAttrs: true,
-	props: {
-		/**
-		* Render skiplink.
-		*
-		* When set to a non-empty string the skiplink feature is enabled.
-		* The string is the id of the element to move focus to.
-		*
-		* When set to empty string (default) the skiplink feature is disabled.
-		*/
-		skipLink: {
-			type: String,
-			required: false,
-			default: ""
-		},
-		/**
-		* HTML element type for header.
-		*/
-		headerTag: {
-			default: "span",
-			required: false,
-			validator(value) {
-				return ["span", "h1"].includes(value);
-			}
-		}
-	},
-	computed: {
-		skipLinkAnchor() {
-			const { skipLink } = this;
-			if (skipLink === "") return null;
-			return `#${skipLink}`;
-		},
-		hasLogo() {
-			return Boolean(this.$slots.logo);
-		}
-	}
-});
-var _hoisted_1$7 = { class: "page-header__root" };
-var _hoisted_2$4 = { key: 0 };
-var _hoisted_3$3 = {
-	ref: "header",
-	class: "page-header"
-};
-var _hoisted_4$2 = {
-	key: 0,
-	class: "page-header__logo"
-};
-var _hoisted_5$2 = { class: "page-header__right" };
-var _hoisted_6$2 = { class: "page-header__right-slot" };
-function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
-	const _component_i_skip_link = resolveComponent("i-skip-link");
-	return openBlock(), createElementBlock("div", _hoisted_1$7, [
-		_ctx.skipLinkAnchor ? (openBlock(), createElementBlock("nav", _hoisted_2$4, [createVNode(_component_i_skip_link, { href: _ctx.skipLinkAnchor }, {
-			default: withCtx(() => [renderSlot(_ctx.$slots, "skip-link-text")]),
-			_: 3
-		}, 8, ["href"])])) : createCommentVNode("v-if", true),
-		_cache[2] || (_cache[2] = createTextVNode()),
-		createBaseVNode("div", _hoisted_3$3, [
-			_ctx.hasLogo ? (openBlock(), createElementBlock("div", _hoisted_4$2, [renderSlot(_ctx.$slots, "logo")])) : createCommentVNode("v-if", true),
-			_cache[0] || (_cache[0] = createTextVNode()),
-			(openBlock(), createBlock(resolveDynamicComponent(_ctx.headerTag), { class: "page-header__app-name" }, {
-				default: withCtx(() => [renderSlot(_ctx.$slots, "default")]),
-				_: 3
-			})),
-			_cache[1] || (_cache[1] = createTextVNode()),
-			createBaseVNode("div", _hoisted_5$2, [createBaseVNode("div", _hoisted_6$2, [renderSlot(_ctx.$slots, "right")])])
-		], 512)
-	]);
-}
-var FPageHeader_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FPageHeader_vue_vue_type_script_lang_default, [["render", _sfc_render$4]]);
+[...[...upKeys, ...downKeys]];
 // \0plugin-vue:export-helper
 var _plugin_vue_export_helper_default = (sfc, props) => {
 	const target = sfc.__vccOpts || sfc;
 	for (const [key, val] of props) target[key] = val;
 	return target;
 };
-// src/components/XContextBar.vue
-var _sfc_main$2 = {};
-var _hoisted_1$5 = { class: "contextbar" };
-function _sfc_render$2(_ctx, _cache) {
-	return openBlock(), createElementBlock("div", _hoisted_1$5, [..._cache[0] || (_cache[0] = [
-		createBaseVNode("div", { class: "contextbar__forman" }, "KAT_ANS", -1),
-		createBaseVNode("div", { clas: "contextbar__pnr" }, "19120211-9151", -1),
-		createBaseVNode("div", { clas: "contextbar__name" }, "Test Testorsson", -1)
-	])]);
+// src/App.vue
+var _sfc_main = {};
+function _sfc_render$1(_ctx, _cache) {
+	const _component_router_view = resolveComponent("router-view");
+	return openBlock(), createBlock(_component_router_view);
 }
-var XContextBar_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main$2, [["render", _sfc_render$2], ["__scopeId", "data-v-f3c4fc0f"]]);
-// src/components/XExpensePanel.vue?vue&type=script&setup=true&lang.ts
-var _hoisted_1$4 = ["slot"];
-// src/components/XExpensePanel.vue
-var XExpensePanel_default = /* @__PURE__ */ defineComponent({
-	__name: "XExpensePanel",
-	props: {
-		name: {},
-		exclusive: {}
-	},
-	setup(__props) {
-		const XExpensePanel = FDetailsPanel_default;
-		return (_ctx, _cache) => {
-			return openBlock(), createBlock(unref(XExpensePanel), {
-				name: __props.name,
-				exclusive: __props.exclusive
-			}, {
-				default: withCtx(({ item, content }) => [createBaseVNode("div", { slot: content }, [createBaseVNode("dl", null, [
-					_cache[0] || (_cache[0] = createBaseVNode("dt", null, "ID", -1)),
-					createBaseVNode("dd", null, toDisplayString(item.id), 1),
-					_cache[1] || (_cache[1] = createBaseVNode("dt", null, "Beskrivning", -1)),
-					createBaseVNode("dd", null, toDisplayString(item.description), 1),
-					_cache[2] || (_cache[2] = createBaseVNode("dt", null, "Belopp", -1)),
-					createBaseVNode("dd", null, toDisplayString(item.amount) + " kr", 1)
-				])], 8, _hoisted_1$4)]),
-				_: 1
-			}, 8, ["name", "exclusive"]);
-		};
-	}
-});
-// src/components/XLeftPanel.vue?vue&type=script&setup=true&lang.ts
-var _hoisted_1$3 = ["slot"];
-var _hoisted_2$2 = ["slot"];
-var _hoisted_3 = ["slot"];
-var sourceUrl = "https://github.com/Forsakringskassan/designsystem/blob/main/examples/page-layout/src/App.vue";
-// src/components/XLeftPanel.vue
-var XLeftPanel_default = /* @__PURE__ */ defineComponent({
-	__name: "XLeftPanel",
-	setup(__props) {
-		return (_ctx, _cache) => {
-			return openBlock(), createBlock(unref(FMinimizablePanel_default), null, {
-				default: withCtx(({ isOpen, header, footer, content }) => [isOpen ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-					createBaseVNode("h1", { slot: header }, "Rubrik", 8, _hoisted_1$3),
-					createBaseVNode("p", { slot: content }, "Innehåll", 8, _hoisted_2$2),
-					createBaseVNode("div", { slot: footer }, [createBaseVNode("a", {
-						class: "anchor",
-						href: sourceUrl,
-						target: "_blank"
-					}, "Visa källkod")], 8, _hoisted_3)
-				], 64)) : createCommentVNode("", true)]),
-				_: 1
-			});
-		};
-	}
-});
-// src/components/XPersonPanel.vue?vue&type=script&setup=true&lang.ts
-var _hoisted_1$2 = ["slot"];
-var _hoisted_2$1 = ["slot"];
-// src/components/XPersonPanel.vue
-var XPersonPanel_default = /* @__PURE__ */ defineComponent({
-	__name: "XPersonPanel",
-	props: {
-		name: {},
-		exclusive: {}
-	},
-	setup(__props) {
-		const XPersonPanel = FDetailsPanel_default;
-		return (_ctx, _cache) => {
-			return openBlock(), createBlock(unref(XPersonPanel), {
-				name: __props.name,
-				exclusive: __props.exclusive
-			}, {
-				default: withCtx(({ item, header, content }) => [createBaseVNode("h2", { slot: header }, "Detaljer om person", 8, _hoisted_1$2), createBaseVNode("div", { slot: content }, [createBaseVNode("dl", null, [
-					_cache[0] || (_cache[0] = createBaseVNode("dt", null, "Namn", -1)),
-					createBaseVNode("dd", null, toDisplayString(item.name), 1),
-					_cache[1] || (_cache[1] = createBaseVNode("dt", null, "Address", -1)),
-					createBaseVNode("dd", null, toDisplayString(item.adress ?? "-"), 1),
-					_cache[2] || (_cache[2] = createBaseVNode("dt", null, "Stad", -1)),
-					createBaseVNode("dd", null, toDisplayString(item.city ?? "-"), 1),
-					_cache[3] || (_cache[3] = createBaseVNode("dt", null, "Bil", -1)),
-					createBaseVNode("dd", null, toDisplayString(item.car ?? "-"), 1)
-				])], 8, _hoisted_2$1)]),
-				_: 1
-			}, 8, ["name", "exclusive"]);
-		};
-	}
-});
+var App_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main, [["render", _sfc_render$1]]);
 // ../../node_modules/vue-router/dist/useApi-SF8tY_yo.js
 /*!
 * vue-router v5.5.1
@@ -23256,13 +17445,6 @@ var routerViewLocationKey = Symbol("");
 * @internal
 */
 var routerViewOnRouteRenderedKey = Symbol("");
-/**
-* Returns the router instance. Equivalent to using `$router` inside
-* templates.
-*/
-function useRouter() {
-	return inject(routerKey);
-}
 // ../../node_modules/vue-router/dist/devtools-RytpElE1.js
 /*!
 * vue-router v5.5.1
@@ -25108,254 +19290,58 @@ function createRouter(options) {
 	}
 	return router;
 }
-// src/components/XToolbar.vue?vue&type=script&setup=true&lang.ts
-var _hoisted_1$1 = { class: "toolbar" };
-// src/components/XToolbar.vue
-var XToolbar_default = /* @__PURE__ */ defineComponent({
-	__name: "XToolbar",
-	setup(__props) {
-		const router = useRouter();
-		const bar1 = [
-			{
-				label: "Översikt",
-				route: "overview"
-			},
-			{
-				label: "Journal",
-				route: "journal"
-			},
-			{
-				label: "Dokument",
-				route: "documents"
-			}
-		];
-		const bar2 = [
-			{
-				label: "Kundinformation",
-				route: "ROUTE_1"
-			},
-			{
-				label: "Kundens ärenden",
-				route: "ROUTE_2"
-			},
-			{
-				label: "Serviceåtgärder",
-				route: "ROUTE_3"
-			}
-		];
-		function onSelectRoute(route) {
-			router.push({ name: route });
-		}
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1$1, [createVNode(unref(FNavigationMenu_default), {
-				"aria-label": "Primary toolbar",
-				routes: bar1,
-				onSelectedRoute: onSelectRoute
-			}), createVNode(unref(FNavigationMenu_default), {
-				"aria-label": "Secondary toolbar",
-				routes: bar2
-			})]);
-		};
+// src/views/DefaultView.vue?vue&type=script&lang.ts
+var DefaultView_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+	components: { FTextField: FTextField_default },
+	data() {
+		return { awesomeModel: "" };
 	}
 });
-// src/App.vue?vue&type=script&setup=true&lang.ts
-var _hoisted_1 = ["slot"];
-var _hoisted_2 = ["slot"];
-// src/App.vue
-var App_default = /*#__PURE__*/ _plugin_vue_export_helper_default(/* @__PURE__ */ defineComponent({
-	__name: "App",
-	setup(__props) {
-		registerLayout({
-			name: "awesome-layout",
-			areas: {
-				header: {
-					attachPanel: "none",
-					direction: "column"
-				},
-				left: {
-					attachPanel: "left",
-					direction: "column"
-				},
-				contextbar: {
-					attachPanel: "none",
-					direction: "row"
-				},
-				toolbar: {
-					attachPanel: "none",
-					direction: "row"
-				},
-				content: {
-					attachPanel: "none",
-					direction: "column",
-					scroll: true
-				},
-				right: {
-					attachPanel: "right",
-					direction: "column"
-				},
-				footer: {
-					attachPanel: "none",
-					direction: "column"
-				}
-			}
-		});
-		return (_ctx, _cache) => {
-			const _component_router_view = resolveComponent("router-view");
-			return openBlock(), createBlock(unref(FPageLayout_default), { layout: "awesome-layout" }, {
-				default: withCtx(({ header, contextbar, toolbar, content, left, right }) => [
-					createBaseVNode("header", { slot: header }, [createVNode(unref(FPageHeader_default), null, {
-						logo: withCtx(() => [createVNode(unref(FLogo_default), { size: "small" }, {
-							default: withCtx(() => [..._cache[0] || (_cache[0] = [createTextVNode("Logo", -1)])]),
-							_: 1
-						})]),
-						right: withCtx(() => [..._cache[1] || (_cache[1] = [createTextVNode(" Namn Namnsson ", -1)])]),
-						default: withCtx(() => [_cache[2] || (_cache[2] = createTextVNode(" Application layout components ", -1))]),
-						_: 1
-					})], 8, _hoisted_1),
-					createVNode(unref(XContextBar_default), { slot: contextbar }, null, 8, ["slot"]),
-					createVNode(unref(XToolbar_default), { slot: toolbar }, null, 8, ["slot"]),
-					createVNode(unref(FResizePane_default), {
-						slot: left,
-						min: "200px 10%",
-						max: "40%",
-						initial: "600px"
-					}, {
-						default: withCtx(() => [createVNode(unref(XLeftPanel_default))]),
-						_: 1
-					}, 8, ["slot"]),
-					createBaseVNode("main", { slot: content }, [createVNode(_component_router_view)], 8, _hoisted_2),
-					createVNode(unref(FResizePane_default), {
-						slot: right,
-						min: "200px 10%",
-						max: "40%",
-						initial: "200px"
-					}, {
-						default: withCtx(() => [createVNode(unref(XPersonPanel_default), {
-							name: "person-panel",
-							exclusive: "right"
-						}), createVNode(unref(XExpensePanel_default), {
-							name: "expense-panel",
-							exclusive: "right"
-						})]),
-						_: 1
-					}, 8, ["slot"])
-				]),
-				_: 1
-			});
-		};
-	}
-}), [["__scopeId", "data-v-7fd1e637"]]);
-// src/views/XDocumentView.vue
-var _sfc_main$1 = {};
-function _sfc_render$1(_ctx, _cache) {
-	return openBlock(), createElementBlock(Fragment, null, [_cache[0] || (_cache[0] = createBaseVNode("h1", null, "Dokument", -1)), _cache[1] || (_cache[1] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1))], 64);
-}
-var XDocumentView_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main$1, [["render", _sfc_render$1]]);
-// src/views/XJournalView.vue
-var _sfc_main = {};
-function _sfc_render(_ctx, _cache) {
-	return openBlock(), createElementBlock(Fragment, null, [_cache[0] || (_cache[0] = createBaseVNode("h1", null, "Journal", -1)), _cache[1] || (_cache[1] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1))], 64);
-}
-var XJournalView_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main, [["render", _sfc_render]]);
-// src/views/XOverviewView.vue
-var XOverviewView_default = /* @__PURE__ */ defineComponent({
-	__name: "XOverviewView",
-	setup(__props) {
-		const personPanel = useDetailsPanel("person-panel");
-		const expensePanel = useDetailsPanel("expense-panel");
-		const rows = useDatasetRef([
-			{
-				name: "Kalle Anka",
-				adress: "Paradisäppelvägen 111",
-				city: "Ankeborg",
-				car: "Skruttomobil"
-			},
-			{
-				name: "Kajsa Anka",
-				adress: null,
-				city: "Ankeborg",
-				car: null
-			},
-			{
-				name: "Magica De Hex",
-				adress: "Vulkanen",
-				city: "Vesuvius",
-				car: null
-			},
-			{
-				name: "Bolivar",
-				adress: "Paradisäppelvägen 111",
-				city: "Ankeborg",
-				car: null
-			}
-		]);
-		function showPerson(item) {
-			personPanel.open(item);
-		}
-		function openThing() {
-			expensePanel.open({
-				id: 1,
-				description: "Hallonsoda",
-				amount: 25
-			});
-		}
-		const columns = defineTableColumns([{
-			type: "button",
-			header: "Namn",
-			key: "name",
-			screenreaderText: (row) => row.name,
-			onClick: showPerson
+// src/views/DefaultView.vue
+var _hoisted_1 = { class: "sandbox-root" };
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	const _component_f_text_field = resolveComponent("f-text-field");
+	const _directive_validation = resolveDirective("validation");
+	return openBlock(), createElementBlock("div", _hoisted_1, [
+		_cache[2] || (_cache[2] = createBaseVNode("h1", null, "FKUI Sandbox", -1)),
+		_cache[3] || (_cache[3] = createBaseVNode("p", null, " Ett internt paket som innehåller en avskalad Vue-applikation. Applikationen är konsument av övriga FKUI-paket och innehåller enbart ett tomt exempel. ", -1)),
+		_cache[4] || (_cache[4] = createBaseVNode("p", null, [createBaseVNode("strong", null, "Ändra och labba gärna här men glöm inte återställa innan merge!")], -1)),
+		_cache[5] || (_cache[5] = createBaseVNode("hr", null, null, -1)),
+		withDirectives((openBlock(), createBlock(_component_f_text_field, {
+			id: "awesome-field",
+			modelValue: _ctx.awesomeModel,
+			"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.awesomeModel = $event)
 		}, {
-			type: "text",
-			header: "Adress",
-			key: "adress"
-		}]);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock(Fragment, null, [
-				_cache[2] || (_cache[2] = createBaseVNode("h1", null, "Översikt", -1)),
-				_cache[3] || (_cache[3] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1)),
-				createVNode(unref(FButton_default), {
-					size: "medium",
-					variant: "secondary",
-					onClick: openThing
-				}, {
-					default: withCtx(() => [..._cache[0] || (_cache[0] = [createTextVNode(" Öppna en helt annan detaljpanel ", -1)])]),
-					_: 1
-				}),
-				createVNode(unref(FTable_default), {
-					rows: unref(rows),
-					columns: unref(columns),
-					"aria-labelledby": "ankeborgare"
-				}, {
-					caption: withCtx(() => [..._cache[1] || (_cache[1] = [createTextVNode("Ankeborgare", -1)])]),
-					_: 1
-				}, 8, ["rows", "columns"])
-			], 64);
-		};
-	}
-});
+			default: withCtx(() => [..._cache[1] || (_cache[1] = [createTextVNode(" Inmatningsfält. ", -1)])]),
+			description: withCtx(({ descriptionClass }) => [createBaseVNode("span", { class: normalizeClass(descriptionClass) }, " Lorem ipsum dolor sit amet. ", 2)]),
+			_: 1
+		}, 8, ["modelValue"])), [[
+			_directive_validation,
+			{ maxLength: { length: 10 } },
+			void 0,
+			{
+				required: true,
+				maxLength: true
+			}
+		]])
+	]);
+}
+var DefaultView_default = /*#__PURE__*/ _plugin_vue_export_helper_default(DefaultView_vue_vue_type_script_lang_default, [["render", _sfc_render]]);
 // src/router.ts
 var router = createRouter({
 	history: createWebHashHistory(),
-	routes: [
-		{
-			path: "/",
-			name: "overview",
-			component: XOverviewView_default
-		},
-		{
-			path: "/journal",
-			name: "journal",
-			component: XJournalView_default
-		},
-		{
-			path: "/documents",
-			name: "documents",
-			component: XDocumentView_default
-		}
-	]
+	routes: [{
+		path: "/",
+		name: "",
+		component: DefaultView_default
+	}]
 });
 // src/main.ts
+config.production = false;
+config.popupContainer = "#app";
 var app = createApp(App_default);
 app.use(router);
+app.use(ValidationPlugin);
+app.use(TestPlugin);
 app.mount("#app");
+setRunningContext(app);

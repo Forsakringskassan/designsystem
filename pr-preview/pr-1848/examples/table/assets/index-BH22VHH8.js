@@ -18126,7 +18126,7 @@ var _plugin_vue_export_helper_default$1 = (sfc, props) => {
 	for (const [key, val] of props) target[key] = val;
 	return target;
 };
-var _hoisted_1$80 = ["aria-hidden"];
+var _hoisted_1$81 = ["aria-hidden"];
 var _hoisted_2$58 = ["href"];
 function _sfc_render$50(_ctx, _cache, $props, $setup, $data, $options) {
 	return openBlock(), createElementBlock("svg", mergeProps(_ctx.$attrs, {
@@ -18137,7 +18137,7 @@ function _sfc_render$50(_ctx, _cache, $props, $setup, $data, $options) {
 		renderSlot(_ctx.$slots, "default"),
 		_cache[0] || (_cache[0] = createTextVNode()),
 		createBaseVNode("use", { href: _ctx.spriteId }, null, 8, _hoisted_2$58)
-	], 16, _hoisted_1$80);
+	], 16, _hoisted_1$81);
 }
 var FIcon_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FIcon_vue_vue_type_script_lang_default, [["render", _sfc_render$50]]);
 /**
@@ -18165,7 +18165,7 @@ function useInflight(fn, disabled) {
 		fn: wrapper
 	};
 }
-var _hoisted_1$79 = ["type", "aria-disabled"];
+var _hoisted_1$80 = ["type", "aria-disabled"];
 var _hoisted_2$57 = {
 	key: 1,
 	class: "spinner--before"
@@ -18361,7 +18361,7 @@ var FButton_default = /* @__PURE__ */ defineComponent({
 				}, null, 8, ["name", "library"])) : createCommentVNode("v-if", true)], 64)) : createCommentVNode("v-if", true),
 				_cache[3] || (_cache[3] = createTextVNode()),
 				!hasIcon.value ? (openBlock(), createElementBlock("span", _hoisted_3$43)) : createCommentVNode("v-if", true)
-			], 16, _hoisted_1$79);
+			], 16, _hoisted_1$80);
 		};
 	}
 });
@@ -21148,32 +21148,6 @@ var config = {
 		return production;
 	}
 };
-var ICloseButton_default = /* @__PURE__ */ defineComponent({
-	__name: "ICloseButton",
-	props: {
-		compact: { type: Boolean },
-		iconOnly: { type: Boolean }
-	},
-	setup(__props) {
-		const $t = useTranslate();
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("button", {
-				type: "button",
-				class: normalizeClass(["i-close-button", {
-					"i-close-button--compact": __props.compact,
-					"i-close-button--icon-only": __props.iconOnly
-				}])
-			}, [
-				createBaseVNode("span", { class: normalizeClass({ "sr-only": __props.iconOnly }) }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(unref($t)("fkui.close-button.text", "Stäng")), 1)])], 2),
-				_cache[0] || (_cache[0] = createTextVNode()),
-				createVNode(unref(FIcon_default), {
-					name: "close",
-					class: "i-close-button__icon"
-				})
-			], 2);
-		};
-	}
-});
 (/* @__PURE__ */ __commonJSMin((() => {
 	var $ = require_export();
 	var call = require_function_call();
@@ -21238,7 +21212,7 @@ function sizeClass(size) {
 */
 var FModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FModal",
-	components: { ICloseButton: ICloseButton_default },
+	components: { FIcon: FIcon_default },
 	mixins: [TranslationMixin],
 	inheritAttrs: true,
 	props: {
@@ -21403,7 +21377,7 @@ var FModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 		}
 	}
 });
-var _hoisted_1$78 = ["id"];
+var _hoisted_1$79 = ["id"];
 var _hoisted_2$56 = { class: "modal__backdrop" };
 var _hoisted_3$42 = { class: "modal__inner-container" };
 var _hoisted_4$33 = { class: "modal__dialog" };
@@ -21421,8 +21395,10 @@ var _hoisted_8$10 = {
 	tabindex: "-1"
 };
 var _hoisted_9$8 = { class: "modal__footer" };
+var _hoisted_10$6 = { class: "modal__shelf" };
+var _hoisted_11$5 = ["aria-label"];
 function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
-	const _component_i_close_button = resolveComponent("i-close-button");
+	const _component_f_icon = resolveComponent("f-icon");
 	return _ctx.isOpen ? (openBlock(), createElementBlock("div", {
 		key: 0,
 		id: _ctx.id,
@@ -21432,7 +21408,7 @@ function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
 		tabindex: "-1",
 		role: "dialog",
 		"aria-modal": "true",
-		onKeyup: _cache[2] || (_cache[2] = withKeys((...args) => _ctx.onClose && _ctx.onClose(...args), ["esc"]))
+		onKeyup: _cache[3] || (_cache[3] = withKeys((...args) => _ctx.onClose && _ctx.onClose(...args), ["esc"]))
 	}, [createBaseVNode("div", _hoisted_3$42, [createBaseVNode("div", {
 		ref: "modalDialogContainer",
 		class: normalizeClass(["modal__dialog-container", _ctx.containerClasses])
@@ -21443,36 +21419,33 @@ function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
 					tabindex: "0",
 					onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
 				}, null, 32),
-				_cache[3] || (_cache[3] = createTextVNode()),
+				_cache[4] || (_cache[4] = createTextVNode()),
 				_ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$14, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("v-if", true)
 			]),
-			_cache[4] || (_cache[4] = createTextVNode()),
-			createBaseVNode("div", _hoisted_8$10, [renderSlot(_ctx.$slots, "content")], 512),
 			_cache[5] || (_cache[5] = createTextVNode()),
+			createBaseVNode("div", _hoisted_8$10, [renderSlot(_ctx.$slots, "content")], 512),
+			_cache[6] || (_cache[6] = createTextVNode()),
 			createBaseVNode("div", _hoisted_9$8, [renderSlot(_ctx.$slots, "footer")])
 		]),
-		_cache[7] || (_cache[7] = createTextVNode()),
-		createBaseVNode("div", { class: normalizeClass(_ctx.type ? "modal__shelf" : "modal__close") }, [
-			createVNode(_component_i_close_button, {
-				class: "modal__close-button",
-				compact: _ctx.type !== "",
+		_cache[9] || (_cache[9] = createTextVNode()),
+		createBaseVNode("div", _hoisted_10$6, [
+			createBaseVNode("button", {
+				type: "button",
+				class: "close-button",
 				"aria-label": _ctx.ariaCloseText,
-				onClick: _ctx.onClose
-			}, {
-				default: withCtx(() => [createTextVNode(toDisplayString(_ctx.$t("fkui.modal.close", "Stäng")), 1)]),
-				_: 1
-			}, 8, [
-				"compact",
-				"aria-label",
-				"onClick"
-			]),
-			_cache[6] || (_cache[6] = createTextVNode()),
+				onClick: _cache[1] || (_cache[1] = (...args) => _ctx.onClose && _ctx.onClose(...args))
+			}, [
+				createBaseVNode("span", null, toDisplayString(_ctx.$t("fkui.modal.close", "Stäng")), 1),
+				_cache[7] || (_cache[7] = createTextVNode()),
+				createVNode(_component_f_icon, { name: "close" })
+			], 8, _hoisted_11$5),
+			_cache[8] || (_cache[8] = createTextVNode()),
 			createBaseVNode("div", {
 				tabindex: "0",
-				onFocus: _cache[1] || (_cache[1] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
+				onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
 			}, null, 32)
-		], 2)
-	])], 2)])], 32)])], 10, _hoisted_1$78)) : createCommentVNode("v-if", true);
+		])
+	])], 2)])], 32)])], 10, _hoisted_1$79)) : createCommentVNode("v-if", true);
 }
 var FModal_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FModal_vue_vue_type_script_lang_default, [["render", _sfc_render$49]]);
 (/* @__PURE__ */ __commonJSMin((() => {
@@ -21624,7 +21597,7 @@ var FConfirmModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineCompone
 		}
 	}
 });
-var _hoisted_1$77 = { class: "button-group" };
+var _hoisted_1$78 = { class: "button-group" };
 var _hoisted_2$55 = ["onClick"];
 var _hoisted_3$41 = {
 	key: 0,
@@ -21643,7 +21616,7 @@ function _sfc_render$48(_ctx, _cache, $props, $setup, $data, $options) {
 	}, {
 		header: withCtx(() => [renderSlot(_ctx.$slots, "heading", {}, () => [createTextVNode(toDisplayString(_ctx.heading), 1)])]),
 		content: withCtx(() => [renderSlot(_ctx.$slots, "content", {}, () => [createTextVNode(toDisplayString(_ctx.content), 1)])]),
-		footer: withCtx(() => [createBaseVNode("div", _hoisted_1$77, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.preparedButtons, (button) => {
+		footer: withCtx(() => [createBaseVNode("div", _hoisted_1$78, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.preparedButtons, (button) => {
 			return openBlock(), createElementBlock("button", {
 				key: button.label,
 				type: "button",
@@ -21833,7 +21806,7 @@ var FErrorList_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent(
 		focusError(item, this.$el.getRootNode());
 	} }
 });
-var _hoisted_1$76 = { class: "error-list" };
+var _hoisted_1$77 = { class: "error-list" };
 var _hoisted_2$54 = { key: 0 };
 var _hoisted_3$40 = { class: "error-list__list error-list--list-style-none" };
 var _hoisted_4$32 = ["onClick"];
@@ -21842,7 +21815,7 @@ function _sfc_render$45(_ctx, _cache, $props, $setup, $data, $options) {
 	const _component_f_icon = resolveComponent("f-icon");
 	const _component_i_flex_item = resolveComponent("i-flex-item");
 	const _component_i_flex = resolveComponent("i-flex");
-	return openBlock(), createElementBlock("div", _hoisted_1$76, [createVNode(_component_i_flex, null, {
+	return openBlock(), createElementBlock("div", _hoisted_1$77, [createVNode(_component_i_flex, null, {
 		default: withCtx(() => [
 			_ctx.hasTitleSlot ? (openBlock(), createBlock(_component_i_flex_item, {
 				key: 0,
@@ -22228,7 +22201,7 @@ var FValidationForm_vue_vue_type_script_lang_default = /*@__PURE__*/ defineCompo
 		}
 	}
 });
-var _hoisted_1$75 = ["id"];
+var _hoisted_1$76 = ["id"];
 var _hoisted_2$53 = {
 	key: 0,
 	ref: "errors",
@@ -22258,7 +22231,7 @@ function _sfc_render$43(_ctx, _cache, $props, $setup, $data, $options) {
 			}, 8, ["items", "before-navigate"])], 512)) : createCommentVNode("v-if", true),
 			_cache[2] || (_cache[2] = createTextVNode()),
 			renderSlot(_ctx.$slots, "default")
-		], 16, _hoisted_1$75)]),
+		], 16, _hoisted_1$76)]),
 		_: 3
 	}, 8, ["modelValue"]);
 }
@@ -22427,7 +22400,7 @@ var FFormModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent(
 		}
 	}
 });
-var _hoisted_1$74 = { class: "button-group" };
+var _hoisted_1$75 = { class: "button-group" };
 var _hoisted_2$52 = [
 	"type",
 	"form",
@@ -22472,7 +22445,7 @@ function _sfc_render$42(_ctx, _cache, $props, $setup, $data, $options) {
 				"onCancel"
 			])
 		]),
-		footer: withCtx(() => [createBaseVNode("div", _hoisted_1$74, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.preparedButtons, (button) => {
+		footer: withCtx(() => [createBaseVNode("div", _hoisted_1$75, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.preparedButtons, (button) => {
 			return openBlock(), createElementBlock("button", {
 				key: button.label,
 				type: button.buttonType,
@@ -25634,7 +25607,7 @@ function computeArrowOffset(placement, inputIconRect, wrapperRect) {
 		};
 	}
 }
-var _hoisted_1$66 = {
+var _hoisted_1$67 = {
 	ref: "wrapper",
 	class: "popup-error__wrapper"
 };
@@ -25744,7 +25717,7 @@ var IPopupError_default = /* @__PURE__ */ defineComponent({
 			}, [createBaseVNode("div", {
 				class: normalizeClass(popupClasses.value),
 				"aria-hidden": "true"
-			}, [createBaseVNode("div", _hoisted_1$66, [createBaseVNode("div", {
+			}, [createBaseVNode("div", _hoisted_1$67, [createBaseVNode("div", {
 				class: normalizeClass(arrowClass.value),
 				style: normalizeStyle(errorStyle.value)
 			}, [
@@ -25831,7 +25804,7 @@ function computeListboxRect(anchor, options, root = document.documentElement, { 
 	const above = tryAbove(itemHeight, numOfItems, anchorRect, viewportRect, verticalSpacing);
 	if (above) return above;
 }
-var _hoisted_1$65 = ["onKeyup"];
+var _hoisted_1$66 = ["onKeyup"];
 var _hoisted_2$46 = { ref: "content" };
 var teleportDisabled = false;
 var IPopupListbox_default = /* @__PURE__ */ defineComponent({
@@ -25962,7 +25935,7 @@ var IPopupListbox_default = /* @__PURE__ */ defineComponent({
 				tabindex: "0",
 				onKeyup: withKeys(withModifiers(onKeyEsc, ["stop"]), ["esc"]),
 				onClick: _cache[0] || (_cache[0] = withModifiers(() => {}, ["stop"]))
-			}), [createBaseVNode("div", _hoisted_2$46, [renderSlot(_ctx.$slots, "default")], 512)], 16, _hoisted_1$65)], 512)], 8, ["to"])) : createCommentVNode("v-if", true);
+			}), [createBaseVNode("div", _hoisted_2$46, [renderSlot(_ctx.$slots, "default")], 512)], 16, _hoisted_1$66)], 512)], 8, ["to"])) : createCommentVNode("v-if", true);
 		};
 	}
 });
@@ -26148,7 +26121,7 @@ function useCombobox(inputRef, options, onOptionSelected) {
 		else if (!hasOptions.value) close();
 	}
 }
-var _hoisted_1$61 = { class: "combobox" };
+var _hoisted_1$62 = { class: "combobox" };
 var _hoisted_2$44 = ["id"];
 var _hoisted_3$33 = [
 	"id",
@@ -26186,7 +26159,7 @@ var IComboboxDropdown_default = /* @__PURE__ */ defineComponent({
 			activeElement.value = activeOptionNode !== null && activeOptionNode !== void 0 ? activeOptionNode : void 0;
 		});
 		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1$61, [createVNode(unref(IPopupListbox_default), {
+			return openBlock(), createElementBlock("div", _hoisted_1$62, [createVNode(unref(IPopupListbox_default), {
 				"is-open": __props.isOpen,
 				anchor: __props.inputNode,
 				"num-of-items": __props.options.length,
@@ -26221,7 +26194,7 @@ var IComboboxDropdown_default = /* @__PURE__ */ defineComponent({
 		};
 	}
 });
-var _hoisted_1$60 = ["aria-label"];
+var _hoisted_1$61 = ["aria-label"];
 var IComboboxToggleButton_default = /* @__PURE__ */ defineComponent({
 	__name: "IComboboxToggleButton",
 	props: { isOpen: { type: Boolean } },
@@ -26240,7 +26213,7 @@ var IComboboxToggleButton_default = /* @__PURE__ */ defineComponent({
 				name: "arrow-down",
 				rotate: __props.isOpen ? "180" : void 0,
 				class: "text-field__icon"
-			}, null, 8, ["rotate"])], 8, _hoisted_1$60);
+			}, null, 8, ["rotate"])], 8, _hoisted_1$61);
 		};
 	}
 });
@@ -26494,7 +26467,7 @@ var FFieldset_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 		}
 	}
 });
-var _hoisted_1$58 = ["id"];
+var _hoisted_1$59 = ["id"];
 var _hoisted_2$42 = {
 	key: 0,
 	class: "sr-only"
@@ -26566,7 +26539,7 @@ function _sfc_render$28(_ctx, _cache, $props, $setup, $data, $options) {
 		], 64)) : createCommentVNode("v-if", true),
 		_cache[8] || (_cache[8] = createTextVNode()),
 		createBaseVNode("div", { class: normalizeClass(_ctx.groupContentClass) }, [renderSlot(_ctx.$slots, "default")], 2)
-	], 42, _hoisted_1$58);
+	], 42, _hoisted_1$59);
 }
 var FFieldset_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FFieldset_vue_vue_type_script_lang_default, [["render", _sfc_render$28]]);
 var anyType$1 = [
@@ -26731,7 +26704,7 @@ var FCheckboxField_vue_vue_type_script_lang_default = /*@__PURE__*/ defineCompon
 		}
 	}
 });
-var _hoisted_1$57 = ["id", "disabled"];
+var _hoisted_1$58 = ["id", "disabled"];
 var _hoisted_2$41 = ["for"];
 var _hoisted_3$30 = {
 	key: 0,
@@ -26753,7 +26726,7 @@ function _sfc_render$27(_ctx, _cache, $props, $setup, $data, $options) {
 			disabled: _ctx.disabled,
 			onKeydown: _cache[0] || (_cache[0] = withKeys((...args) => _ctx.onKeydown && _ctx.onKeydown(...args), ["space"])),
 			onChange: _cache[1] || (_cache[1] = ($event) => _ctx.updateExpandedFlag())
-		}), null, 16, _hoisted_1$57),
+		}), null, 16, _hoisted_1$58),
 		_cache[5] || (_cache[5] = createTextVNode()),
 		createBaseVNode("label", {
 			class: normalizeClass(_ctx.$slots.details ? "checkbox__label checkbox__width" : "checkbox__label"),
@@ -26836,7 +26809,7 @@ function isContextMenuTextItem(value) {
 function isContextMenuSeparatorItem(value) {
 	return typeof value.separator === "boolean" && value.separator;
 }
-var _hoisted_1$56 = ["aria-label"];
+var _hoisted_1$57 = ["aria-label"];
 var _hoisted_2$40 = {
 	ref: "contextmenu",
 	role: "menu",
@@ -27017,7 +26990,7 @@ var FContextMenu_default = /* @__PURE__ */ defineComponent({
 						_cache[2] || (_cache[2] = createTextVNode()),
 						hasSeparatorAfterItemAt(index) ? (openBlock(), createElementBlock("hr", _hoisted_5$18)) : createCommentVNode("v-if", true)
 					], 8, _hoisted_3$29);
-				}), 128))], 512)], 40, _hoisted_1$56)]),
+				}), 128))], 512)], 40, _hoisted_1$57)]),
 				_: 1
 			}, 8, ["is-open", "anchor"]);
 		};
@@ -27051,7 +27024,7 @@ var Operation = /* @__PURE__ */ function(Operation) {
 	Operation[Operation["NONE"] = 3] = "NONE";
 	return Operation;
 }({});
-var _hoisted_1$55 = { class: "crud-dataset" };
+var _hoisted_1$56 = { class: "crud-dataset" };
 var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 	__name: "FCrudDataset",
 	props: {
@@ -27284,7 +27257,7 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 			nestedKey.value = key;
 		}
 		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1$55, [
+			return openBlock(), createElementBlock("div", _hoisted_1$56, [
 				props.buttonPosition === "top" && hasAddSlot.value ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
 					createBaseVNode("button", {
 						"data-test": "f-crud-dataset-add-button",
@@ -27427,7 +27400,7 @@ for: {
 		}
 	}
 });
-var _hoisted_1$54 = { key: 0 };
+var _hoisted_1$55 = { key: 0 };
 var _hoisted_2$39 = {
 	key: 0,
 	ref: "tooltipAttachTo"
@@ -27445,7 +27418,7 @@ var _hoisted_7$11 = {
 };
 function _sfc_render$26(_ctx, _cache, $props, $setup, $data, $options) {
 	const _component_f_icon = resolveComponent("f-icon");
-	return _ctx.$slots.tooltip ? (openBlock(), createElementBlock("div", _hoisted_1$54, [
+	return _ctx.$slots.tooltip ? (openBlock(), createElementBlock("div", _hoisted_1$55, [
 		_ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", _hoisted_2$39, [createBaseVNode("label", {
 			class: "label",
 			for: _ctx.forProperty
@@ -27625,7 +27598,7 @@ var FSelectField_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponen
 		});
 	} }
 });
-var _hoisted_1$53 = ["id"];
+var _hoisted_1$54 = ["id"];
 function _sfc_render$25(_ctx, _cache, $props, $setup, $data, $options) {
 	const _component_f_label = resolveComponent("f-label");
 	const _component_f_icon = resolveComponent("f-icon");
@@ -27658,7 +27631,7 @@ function _sfc_render$25(_ctx, _cache, $props, $setup, $data, $options) {
 				id: _ctx.id,
 				"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.vModel = $event),
 				class: "select-field__select"
-			}, _ctx.attrs), [renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$53), [[vModelSelect, _ctx.vModel]]),
+			}, _ctx.attrs), [renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$54), [[vModelSelect, _ctx.vModel]]),
 			_cache[5] || (_cache[5] = createTextVNode()),
 			_ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_f_icon, {
 				key: 0,
@@ -27675,7 +27648,7 @@ function _sfc_render$25(_ctx, _cache, $props, $setup, $data, $options) {
 	], 34);
 }
 var FSelectField_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FSelectField_vue_vue_type_script_lang_default, [["render", _sfc_render$25]]);
-var _hoisted_1$52 = {
+var _hoisted_1$53 = {
 	key: 0,
 	class: "table-ng__cell table-ng__cell--expand"
 };
@@ -27706,7 +27679,7 @@ var ITableExpandButton_default = /* @__PURE__ */ defineComponent({
 		}
 		__expose({ tabstopEl: expandableRef });
 		return (_ctx, _cache) => {
-			return __props.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_1$52, [createBaseVNode("button", {
+			return __props.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_1$53, [createBaseVNode("button", {
 				ref: "expandable",
 				tabindex: "-1",
 				"aria-label": expandLabel.value,
@@ -27720,7 +27693,7 @@ var ITableExpandButton_default = /* @__PURE__ */ defineComponent({
 		};
 	}
 });
-var _hoisted_1$51 = ["colspan"];
+var _hoisted_1$52 = ["colspan"];
 var ITableExpandable_default = /* @__PURE__ */ defineComponent({
 	__name: "ITableExpandable",
 	props: { colspan: {} },
@@ -27730,7 +27703,7 @@ var ITableExpandable_default = /* @__PURE__ */ defineComponent({
 				class: "table-ng__cell--custom",
 				colspan: __props.colspan,
 				tabindex: "-1"
-			}, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_1$51);
+			}, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_1$52);
 		};
 	}
 });
@@ -28012,7 +27985,7 @@ var inputFieldConfig = {
 		}
 	}
 };
-var _hoisted_1$50 = ["aria-sort", "onKeydown"];
+var _hoisted_1$51 = ["aria-sort", "onKeydown"];
 var ITableHeader_default = /* @__PURE__ */ defineComponent({
 	__name: "ITableHeader",
 	props: {
@@ -28123,11 +28096,11 @@ var ITableHeader_default = /* @__PURE__ */ defineComponent({
 					})]),
 					_: 1
 				}, 8, ["float"])) : createCommentVNode("v-if", true)
-			], 46, _hoisted_1$50);
+			], 46, _hoisted_1$51);
 		};
 	}
 });
-var _hoisted_1$49 = {
+var _hoisted_1$50 = {
 	scope: "col",
 	class: "table-ng__column table-ng__column--selectable table-ng__column--shrink"
 };
@@ -28159,7 +28132,7 @@ var ITableHeaderSelectable_default = /* @__PURE__ */ defineComponent({
 		if (__props.selectable === "multi") expose.tabstopEl = useTemplateRef("input");
 		__expose(expose);
 		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("th", _hoisted_1$49, [__props.selectable === "multi" ? (openBlock(), createElementBlock("input", {
+			return openBlock(), createElementBlock("th", _hoisted_1$50, [__props.selectable === "multi" ? (openBlock(), createElementBlock("input", {
 				key: 0,
 				ref: "input",
 				checked: checked.value,
@@ -28178,7 +28151,7 @@ var ITableHeaderSelectable_default = /* @__PURE__ */ defineComponent({
 function isVisible$1(visible, row) {
 	return visible(row);
 }
-var _hoisted_1$48 = { class: "table-ng__cell table-ng__cell--checkbox" };
+var _hoisted_1$49 = { class: "table-ng__cell table-ng__cell--checkbox" };
 var _hoisted_2$36 = ["checked", "aria-label"];
 var ITableCheckbox_default = /* @__PURE__ */ defineComponent({
 	__name: "ITableCheckbox",
@@ -28199,7 +28172,7 @@ var ITableCheckbox_default = /* @__PURE__ */ defineComponent({
 		}
 		__expose({ tabstopEl: targetElement });
 		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("td", _hoisted_1$48, [visible.value ? (openBlock(), createElementBlock("input", {
+			return openBlock(), createElementBlock("td", _hoisted_1$49, [visible.value ? (openBlock(), createElementBlock("input", {
 				key: 0,
 				ref: "target",
 				checked: Boolean(__props.column.checked(__props.row)),
@@ -28211,7 +28184,7 @@ var ITableCheckbox_default = /* @__PURE__ */ defineComponent({
 		};
 	}
 });
-var _hoisted_1$47 = { class: "table-ng__cell table-ng__cell--radio" };
+var _hoisted_1$48 = { class: "table-ng__cell table-ng__cell--radio" };
 var _hoisted_2$35 = ["checked", "aria-label"];
 var ITableRadio_default = /* @__PURE__ */ defineComponent({
 	__name: "ITableRadio",
@@ -28232,7 +28205,7 @@ var ITableRadio_default = /* @__PURE__ */ defineComponent({
 		}
 		__expose({ tabstopEl: inputElement });
 		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("td", _hoisted_1$47, [visible.value ? (openBlock(), createElementBlock("input", {
+			return openBlock(), createElementBlock("td", _hoisted_1$48, [visible.value ? (openBlock(), createElementBlock("input", {
 				key: 0,
 				ref: "input",
 				type: "radio",
@@ -28244,7 +28217,7 @@ var ITableRadio_default = /* @__PURE__ */ defineComponent({
 		};
 	}
 });
-var _hoisted_1$46 = {
+var _hoisted_1$47 = {
 	key: 0,
 	tabindex: "-1",
 	class: "table-ng__cell"
@@ -28313,7 +28286,7 @@ var ITableSelectable_default = /* @__PURE__ */ defineComponent({
 			visible: () => true
 		};
 		return (_ctx, _cache) => {
-			return __props.level > 1 ? (openBlock(), createElementBlock("td", _hoisted_1$46)) : __props.selectable === "multi" ? (openBlock(), createBlock(ITableCheckbox_default, {
+			return __props.level > 1 ? (openBlock(), createElementBlock("td", _hoisted_1$47)) : __props.selectable === "multi" ? (openBlock(), createBlock(ITableCheckbox_default, {
 				key: 1,
 				ref: "child",
 				row: __props.row,
@@ -28674,7 +28647,7 @@ var stopEditKey = Symbol();
 function useStartStopEdit() {
 	return { stopEdit: inject(stopEditKey, () => Promise.resolve()) };
 }
-var _hoisted_1$45 = ["href"];
+var _hoisted_1$46 = ["href"];
 var _hoisted_2$34 = {
 	key: 1,
 	ref: "target",
@@ -28703,11 +28676,11 @@ var ITableAnchor_default = /* @__PURE__ */ defineComponent({
 				target: "_blank",
 				href: __props.column.href(__props.row),
 				tabindex: "-1"
-			}, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_1$45)) : createCommentVNode("v-if", true)], 32)) : (openBlock(), createElementBlock("td", _hoisted_2$34, null, 512));
+			}, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_1$46)) : createCommentVNode("v-if", true)], 32)) : (openBlock(), createElementBlock("td", _hoisted_2$34, null, 512));
 		};
 	}
 });
-var _hoisted_1$44 = { class: "table-ng__cell table-ng__cell--button" };
+var _hoisted_1$45 = { class: "table-ng__cell table-ng__cell--button" };
 var _hoisted_2$33 = { class: "sr-only" };
 var ITableButton_default = /* @__PURE__ */ defineComponent({
 	__name: "ITableButton",
@@ -28727,7 +28700,7 @@ var ITableButton_default = /* @__PURE__ */ defineComponent({
 		}
 		__expose({ tabstopEl: buttonElement });
 		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("td", _hoisted_1$44, [visible.value ? (openBlock(), createElementBlock("button", {
+			return openBlock(), createElementBlock("td", _hoisted_1$45, [visible.value ? (openBlock(), createElementBlock("button", {
 				key: 0,
 				ref: "button",
 				class: "icon-button",
@@ -28746,7 +28719,7 @@ var ITableButton_default = /* @__PURE__ */ defineComponent({
 		};
 	}
 });
-var _hoisted_1$43 = { class: "sr-only" };
+var _hoisted_1$44 = { class: "sr-only" };
 var ITableMenu_default = /* @__PURE__ */ defineComponent({
 	__name: "ITableMenu",
 	props: {
@@ -28814,7 +28787,7 @@ var ITableMenu_default = /* @__PURE__ */ defineComponent({
 						name: __props.column.icon
 					}, null, 8, ["library", "name"]),
 					_cache[0] || (_cache[0] = createTextVNode()),
-					createBaseVNode("span", _hoisted_1$43, toDisplayString(__props.column.screenreaderText(__props.row)), 1)
+					createBaseVNode("span", _hoisted_1$44, toDisplayString(__props.column.screenreaderText(__props.row)), 1)
 				], 512),
 				_cache[1] || (_cache[1] = createTextVNode()),
 				createVNode(unref(FContextMenu_default), {
@@ -28833,7 +28806,7 @@ var ITableMenu_default = /* @__PURE__ */ defineComponent({
 		};
 	}
 });
-var _hoisted_1$42 = {
+var _hoisted_1$43 = {
 	ref: "th",
 	class: "table-ng__cell table-ng__cell--rowheader",
 	scope: "row"
@@ -28847,11 +28820,11 @@ var ITableRowheader_default = /* @__PURE__ */ defineComponent({
 	setup(__props) {
 		const visible = computed(() => isVisible$1(__props.column.visible, __props.row));
 		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("th", _hoisted_1$42, [visible.value ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [createTextVNode(toDisplayString(__props.column.text(__props.row)), 1)], 64)) : createCommentVNode("v-if", true)], 512);
+			return openBlock(), createElementBlock("th", _hoisted_1$43, [visible.value ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [createTextVNode(toDisplayString(__props.column.text(__props.row)), 1)], 64)) : createCommentVNode("v-if", true)], 512);
 		};
 	}
 });
-var _hoisted_1$41 = ["id", "aria-invalid"];
+var _hoisted_1$42 = ["id", "aria-invalid"];
 var _hoisted_2$32 = ["id"];
 var _hoisted_3$26 = ["value"];
 var _hoisted_4$21 = { class: "table-ng__editable" };
@@ -29174,7 +29147,7 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
 					"error-message",
 					"arrow-anchor"
 				])
-			], 64)) : createCommentVNode("v-if", true)], 42, _hoisted_1$41)) : (openBlock(), createElementBlock("td", _hoisted_10$3, [visible.value ? (openBlock(), createElementBlock("div", _hoisted_11$3, toDisplayString(__props.column.selected(__props.row)), 1)) : createCommentVNode("v-if", true)]));
+			], 64)) : createCommentVNode("v-if", true)], 42, _hoisted_1$42)) : (openBlock(), createElementBlock("td", _hoisted_10$3, [visible.value ? (openBlock(), createElementBlock("div", _hoisted_11$3, toDisplayString(__props.column.selected(__props.row)), 1)) : createCommentVNode("v-if", true)]));
 		};
 	}
 });
@@ -29244,7 +29217,7 @@ function addInputValidators(inputElement, type) {
 function isAlphanumeric(e) {
 	return e.key.length === 1 && !e.ctrlKey && !e.metaKey;
 }
-var _hoisted_1$40 = ["id", "aria-invalid"];
+var _hoisted_1$41 = ["id", "aria-invalid"];
 var _hoisted_2$31 = {
 	key: 0,
 	class: "sr-only"
@@ -29607,7 +29580,7 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
 					"error-message",
 					"arrow-anchor"
 				])
-			], 64)) : createCommentVNode("v-if", true)], 42, _hoisted_1$40)) : (openBlock(), createElementBlock("td", {
+			], 64)) : createCommentVNode("v-if", true)], 42, _hoisted_1$41)) : (openBlock(), createElementBlock("td", {
 				key: 1,
 				ref: "td",
 				tabindex: "-1",
@@ -30119,7 +30092,7 @@ function useTabstop(tableRef, metaRows) {
 		}
 	};
 }
-var _hoisted_1$39 = ["role", "aria-rowcount"];
+var _hoisted_1$40 = ["role", "aria-rowcount"];
 var _hoisted_2$30 = {
 	key: 0,
 	"data-test": "caption"
@@ -30454,7 +30427,7 @@ var FTable_default = /* @__PURE__ */ defineComponent({
 					class: "table-ng__cell--custom",
 					onKeydown: _cache[1] || (_cache[1] = withKeys(withModifiers(() => {}, ["prevent"]), ["space"]))
 				}, [renderSlot(_ctx.$slots, "footer")], 40, _hoisted_12$2)], 8, _hoisted_11$2)])) : createCommentVNode("v-if", true)
-			], 42, _hoisted_1$39);
+			], 42, _hoisted_1$40);
 		};
 	}
 });
@@ -30855,7 +30828,7 @@ var FTextField_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent(
 		}
 	}
 });
-var _hoisted_1$38 = { key: 0 };
+var _hoisted_1$39 = { key: 0 };
 var _hoisted_2$29 = {
 	key: 0,
 	class: "sr-only"
@@ -30889,7 +30862,7 @@ function _sfc_render$24(_ctx, _cache, $props, $setup, $data, $options) {
 			for: _ctx.id,
 			class: normalizeClass(_ctx.labelClass)
 		}, createSlots({
-			default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [_ctx.defaultText !== "" ? (openBlock(), createElementBlock("span", _hoisted_1$38, toDisplayString(_ctx.defaultText), 1)) : createCommentVNode("v-if", true)])]),
+			default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [_ctx.defaultText !== "" ? (openBlock(), createElementBlock("span", _hoisted_1$39, toDisplayString(_ctx.defaultText), 1)) : createCommentVNode("v-if", true)])]),
 			description: withCtx(({ descriptionClass, formatDescriptionClass }) => [renderSlot(_ctx.$slots, "description", {
 				descriptionClass,
 				formatDescriptionClass
@@ -31068,7 +31041,7 @@ var FSearchTextField_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComp
 		}
 	}
 });
-var _hoisted_1$36 = { class: "sr-only" };
+var _hoisted_1$37 = { class: "sr-only" };
 function _sfc_render$21(_ctx, _cache, $props, $setup, $data, $options) {
 	const _component_f_icon = resolveComponent("f-icon");
 	const _component_f_text_field = resolveComponent("f-text-field");
@@ -31120,7 +31093,7 @@ function _sfc_render$21(_ctx, _cache, $props, $setup, $data, $options) {
 				class: "clear-button__icon"
 			}),
 			_cache[1] || (_cache[1] = createTextVNode()),
-			createBaseVNode("span", _hoisted_1$36, toDisplayString(_ctx.clearableScreenReaderText), 1)
+			createBaseVNode("span", _hoisted_1$37, toDisplayString(_ctx.clearableScreenReaderText), 1)
 		])]),
 		key: "1"
 	} : void 0]), 1040, [
@@ -31405,7 +31378,7 @@ function useSortFilterDataset(data, sortableAttributes, filterAttributes, defaul
 		refresh
 	};
 }
-var _hoisted_1$35 = { class: "sort-filter-dataset" };
+var _hoisted_1$36 = { class: "sort-filter-dataset" };
 var _hoisted_2$28 = { class: "sort-filter-dataset__search" };
 var _hoisted_3$22 = ["value"];
 var _hoisted_4$17 = ["value"];
@@ -31509,7 +31482,7 @@ var FSortFilterDataset_default = /* @__PURE__ */ defineComponent({
 			emit("datasetSorted", sortFilterResult.value);
 		}, { immediate: true });
 		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1$35, [
+			return openBlock(), createElementBlock("div", _hoisted_1$36, [
 				createVNode(unref(IFlex_default), {
 					collapse: "",
 					gap: "3x",

@@ -4765,12 +4765,6 @@ input[type=search]:focus-visible,
   border-top-right-radius: var(--f-border-radius-medium);
   margin-bottom: 1rem;
 }
-.modal__close {
-  align-items: flex-start;
-  display: flex;
-  justify-content: flex-end;
-  min-block-size: 4rem;
-}
 .modal__header {
   display: flex;
   margin-bottom: 0.5rem;
@@ -4870,19 +4864,19 @@ input[type=search]:focus-visible,
 .modal--information .modal__shelf {
   background-color: var(--fkds-color-feedback-background-info-strong);
 }
-.modal--information .modal__shelf .modal__close-button {
+.modal--information .modal__shelf .close-button {
   color: var(--fkds-color-action-text-inverted-default);
 }
 .modal--warning .modal__shelf {
   background-color: var(--fkds-color-feedback-background-warning-strong);
 }
-.modal--warning .modal__shelf .modal__close-button {
+.modal--warning .modal__shelf .close-button {
   color: var(--fkds-color-feedback-text-on-warning);
 }
 .modal--error .modal__shelf {
   background-color: var(--fkds-color-feedback-background-negative-strong);
 }
-.modal--error .modal__shelf .modal__close-button {
+.modal--error .modal__shelf .close-button {
   color: var(--fkds-color-action-text-inverted-default);
 }
 
@@ -6476,6 +6470,9 @@ input[type=search]:focus-visible,
   line-height: var(--f-line-height-medium);
   padding: 0 1rem;
   margin-bottom: 0.5rem;
+}
+.tooltip .close-button {
+  margin: var(--f-tooltip-close-button-margin);
 }
 .tooltip__footer {
   display: flex;

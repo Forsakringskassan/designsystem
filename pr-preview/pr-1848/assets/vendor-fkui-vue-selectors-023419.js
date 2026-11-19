@@ -1133,7 +1133,7 @@ function FModalSelectors(selector = ":scope") {
      * @returns A selector for the close button element.
      */
     closeButton() {
-      return `${dialog} > .modal__dialog > :is(.modal__shelf, .modal__close) > .modal__close-button`;
+      return `${dialog} .modal__shelf > .close-button`;
     }
   });
 }
@@ -2043,7 +2043,7 @@ function FTooltipSelectors(selector = ".tooltip") {
      * @returns A selector for the close button element.
      */
     closeButton() {
-      return `${selector} .tooltip__close-button`;
+      return `${selector} .close-button`;
     }
   });
 }

@@ -1758,14 +1758,164 @@ import { createApp as createApp2 } from "vue";
 import { defineComponent as defineComponent4 } from "vue";
 import { ElementIdService, findTabbableElements, focus as focus2, popFocus, pushFocus } from "@fkui/logic";
 
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/ICloseButton/ICloseButton.vue?type=script
-import { defineComponent as _defineComponent } from "vue";
+// packages/vue/src/plugins/translation/translate.ts
+import { TranslationService } from "@fkui/logic";
+function translate(key, defaultValueOrArgs, args) {
+  const { provider } = TranslationService;
+  return provider.translate(key, defaultValueOrArgs, args);
+}
+
+// packages/vue/src/plugins/translation/translation-plugin.ts
+var TranslationMixin = {
+  methods: {
+    $t: translate
+  }
+};
+
+// packages/vue/src/plugins/validation/validation-plugin.ts
+var import_isEqual = __toESM(require_isEqual());
+import {
+  ValidationService,
+  availableValidators,
+  isValidatableHTMLElement
+} from "@fkui/logic";
+
+// packages/vue/src/types/error-view-data.ts
+var ErrorViewData = class {
+  hasError;
+  payload;
+  constructor(hasError = false, payload) {
+    this.hasError = hasError;
+    this.payload = payload;
+  }
+};
+
+// packages/vue/src/plugins/error/error-plugin.ts
+var UNHANDLED_ERROR_EVENT = "unhandled-error";
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=script
+import { defineComponent as defineComponent2 } from "vue";
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorPage.vue?type=script
+import { defineComponent } from "vue";
+var FErrorPage_default = defineComponent({
+  name: "FErrorPage",
+  props: {
+    /* eslint-disable-next-line vue/no-unused-properties -- simplifies extending this component, the consumer might display the error */
+    payload: {
+      type: Object,
+      required: false,
+      default: null
+    }
+  }
+});
+
+// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorPage.vue?type=template
+import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
+var _hoisted_1 = { "data-test": "f-error-page" };
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock(), _createElementBlock("div", _hoisted_1, [..._cache[0] || (_cache[0] = [
+    _createElementVNode(
+      "h1",
+      null,
+      "Fel",
+      -1
+      /* CACHED */
+    ),
+    _createElementVNode(
+      "p",
+      null,
+      "Ett fel har uppst\xE5tt.",
+      -1
+      /* CACHED */
+    ),
+    _createElementVNode(
+      "a",
+      {
+        class: "anchor",
+        href: "/"
+      },
+      "G\xE5 till startsidan",
+      -1
+      /* CACHED */
+    )
+  ])]);
+}
+
+// packages/vue/src/plugins/error/FErrorPage.vue
+FErrorPage_default.render = render;
+FErrorPage_default.__file = "packages/vue/src/plugins/error/FErrorPage.vue";
+var FErrorPage_default2 = FErrorPage_default;
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=script
+var FErrorHandlingApp_default = defineComponent2({
+  name: "FErrorHandlingApp",
+  props: {
+    defaultComponent: {
+      type: [Function, Object],
+      required: false,
+      default: void 0
+    },
+    errorComponent: {
+      type: [Function, Object],
+      required: false,
+      default: FErrorPage_default2
+    }
+  },
+  data() {
+    return new ErrorViewData();
+  },
+  watch: {
+    $route() {
+      this.hasError = false;
+    }
+  },
+  created() {
+    EventBus.$on(UNHANDLED_ERROR_EVENT, (payload) => {
+      this.hasError = true;
+      this.payload = payload;
+    });
+  }
+});
+
+// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=template
+import { resolveDynamicComponent as _resolveDynamicComponent, openBlock as _openBlock2, createBlock as _createBlock, renderSlot as _renderSlot, createElementBlock as _createElementBlock2 } from "vue";
+function render2(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock2(), _createElementBlock2("div", null, [
+    _ctx.hasError ? (_openBlock2(), _createBlock(_resolveDynamicComponent(_ctx.errorComponent), {
+      key: 0,
+      payload: _ctx.payload
+    }, null, 8, ["payload"])) : _ctx.defaultComponent ? (_openBlock2(), _createBlock(_resolveDynamicComponent(_ctx.defaultComponent), { key: 1 })) : _renderSlot(_ctx.$slots, "default", {}, void 0, void 0, 2)
+  ]);
+}
+
+// packages/vue/src/plugins/error/FErrorHandlingApp.vue
+FErrorHandlingApp_default.render = render2;
+FErrorHandlingApp_default.__file = "packages/vue/src/plugins/error/FErrorHandlingApp.vue";
+
+// packages/vue/src/plugins/format/formatters.ts
+import { DateFormat as DateFormat2, FDate as FDate3 } from "@fkui/date";
+import {
+  formatNumber as numberFormater,
+  parseBankgiro,
+  parseDate,
+  parseOrganisationsnummer,
+  parsePersonnummer,
+  parsePlusgiro,
+  parsePostalCode
+} from "@fkui/logic";
+
+// packages/vue/src/plugins/format/date-range-to-string.ts
+import { DateFormat, FDate } from "@fkui/date";
+
+// packages/vue/src/plugins/format/is-date-range.ts
+import { FDate as FDate2 } from "@fkui/date";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=script
-import { defineComponent } from "vue";
+import { defineComponent as defineComponent3 } from "vue";
 var Flip = /* @__PURE__ */ new Set(["horizontal", "vertical"]);
 var Rotate = /* @__PURE__ */ new Set(["90", "180", "270"]);
-var FIcon_default = defineComponent({
+var FIcon_default = defineComponent3({
   name: "FIcon",
   inheritAttrs: false,
   props: {
@@ -1848,23 +1998,23 @@ var FIcon_default = defineComponent({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=template
-import { createCommentVNode as _createCommentVNode, renderSlot as _renderSlot, createElementVNode as _createElementVNode, mergeProps as _mergeProps, openBlock as _openBlock, createElementBlock as _createElementBlock, Fragment as _Fragment } from "vue";
-var _hoisted_1 = ["aria-hidden"];
+import { createCommentVNode as _createCommentVNode2, renderSlot as _renderSlot2, createElementVNode as _createElementVNode2, mergeProps as _mergeProps, openBlock as _openBlock3, createElementBlock as _createElementBlock3, Fragment as _Fragment } from "vue";
+var _hoisted_12 = ["aria-hidden"];
 var _hoisted_2 = ["href"];
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createElementBlock(
+function render3(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock3(), _createElementBlock3(
     _Fragment,
     null,
     [
-      _createCommentVNode(" [html-validate-disable-block fkui/prefer-ficon -- this is the FIcon component]"),
-      (_openBlock(), _createElementBlock("svg", _mergeProps(_ctx.$attrs, {
+      _createCommentVNode2(" [html-validate-disable-block fkui/prefer-ficon -- this is the FIcon component]"),
+      (_openBlock3(), _createElementBlock3("svg", _mergeProps(_ctx.$attrs, {
         focusable: "false",
         class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]],
         "aria-hidden": _ctx.ariaHidden
       }), [
-        _renderSlot(_ctx.$slots, "default"),
-        _createElementVNode("use", { href: _ctx.spriteId }, null, 8, _hoisted_2)
-      ], 16, _hoisted_1))
+        _renderSlot2(_ctx.$slots, "default"),
+        _createElementVNode2("use", { href: _ctx.spriteId }, null, 8, _hoisted_2)
+      ], 16, _hoisted_12))
     ],
     2112
     /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
@@ -1872,228 +2022,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/components/FIcon/FIcon.vue
-FIcon_default.render = render;
+FIcon_default.render = render3;
 FIcon_default.__file = "packages/vue/src/components/FIcon/FIcon.vue";
 var FIcon_default2 = FIcon_default;
-
-// packages/vue/src/plugins/translation/translate.ts
-import { TranslationService } from "@fkui/logic";
-function translate(key, defaultValueOrArgs, args) {
-  const { provider } = TranslationService;
-  return provider.translate(key, defaultValueOrArgs, args);
-}
-
-// packages/vue/src/plugins/translation/translation-plugin.ts
-var TranslationMixin = {
-  methods: {
-    $t: translate
-  }
-};
-
-// packages/vue/src/plugins/translation/use-translate.ts
-function useTranslate() {
-  return translate;
-}
-
-// packages/vue/src/plugins/validation/validation-plugin.ts
-var import_isEqual = __toESM(require_isEqual());
-import {
-  ValidationService,
-  availableValidators,
-  isValidatableHTMLElement
-} from "@fkui/logic";
-
-// packages/vue/src/types/error-view-data.ts
-var ErrorViewData = class {
-  hasError;
-  payload;
-  constructor(hasError = false, payload) {
-    this.hasError = hasError;
-    this.payload = payload;
-  }
-};
-
-// packages/vue/src/plugins/error/error-plugin.ts
-var UNHANDLED_ERROR_EVENT = "unhandled-error";
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=script
-import { defineComponent as defineComponent3 } from "vue";
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorPage.vue?type=script
-import { defineComponent as defineComponent2 } from "vue";
-var FErrorPage_default = defineComponent2({
-  name: "FErrorPage",
-  props: {
-    /* eslint-disable-next-line vue/no-unused-properties -- simplifies extending this component, the consumer might display the error */
-    payload: {
-      type: Object,
-      required: false,
-      default: null
-    }
-  }
-});
-
-// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorPage.vue?type=template
-import { createElementVNode as _createElementVNode2, openBlock as _openBlock2, createElementBlock as _createElementBlock2 } from "vue";
-var _hoisted_12 = { "data-test": "f-error-page" };
-function render2(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock2(), _createElementBlock2("div", _hoisted_12, [..._cache[0] || (_cache[0] = [
-    _createElementVNode2(
-      "h1",
-      null,
-      "Fel",
-      -1
-      /* CACHED */
-    ),
-    _createElementVNode2(
-      "p",
-      null,
-      "Ett fel har uppst\xE5tt.",
-      -1
-      /* CACHED */
-    ),
-    _createElementVNode2(
-      "a",
-      {
-        class: "anchor",
-        href: "/"
-      },
-      "G\xE5 till startsidan",
-      -1
-      /* CACHED */
-    )
-  ])]);
-}
-
-// packages/vue/src/plugins/error/FErrorPage.vue
-FErrorPage_default.render = render2;
-FErrorPage_default.__file = "packages/vue/src/plugins/error/FErrorPage.vue";
-var FErrorPage_default2 = FErrorPage_default;
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=script
-var FErrorHandlingApp_default = defineComponent3({
-  name: "FErrorHandlingApp",
-  props: {
-    defaultComponent: {
-      type: [Function, Object],
-      required: false,
-      default: void 0
-    },
-    errorComponent: {
-      type: [Function, Object],
-      required: false,
-      default: FErrorPage_default2
-    }
-  },
-  data() {
-    return new ErrorViewData();
-  },
-  watch: {
-    $route() {
-      this.hasError = false;
-    }
-  },
-  created() {
-    EventBus.$on(UNHANDLED_ERROR_EVENT, (payload) => {
-      this.hasError = true;
-      this.payload = payload;
-    });
-  }
-});
-
-// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=template
-import { resolveDynamicComponent as _resolveDynamicComponent, openBlock as _openBlock3, createBlock as _createBlock, renderSlot as _renderSlot2, createElementBlock as _createElementBlock3 } from "vue";
-function render3(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock3(), _createElementBlock3("div", null, [
-    _ctx.hasError ? (_openBlock3(), _createBlock(_resolveDynamicComponent(_ctx.errorComponent), {
-      key: 0,
-      payload: _ctx.payload
-    }, null, 8, ["payload"])) : _ctx.defaultComponent ? (_openBlock3(), _createBlock(_resolveDynamicComponent(_ctx.defaultComponent), { key: 1 })) : _renderSlot2(_ctx.$slots, "default", {}, void 0, void 0, 2)
-  ]);
-}
-
-// packages/vue/src/plugins/error/FErrorHandlingApp.vue
-FErrorHandlingApp_default.render = render3;
-FErrorHandlingApp_default.__file = "packages/vue/src/plugins/error/FErrorHandlingApp.vue";
-
-// packages/vue/src/plugins/format/formatters.ts
-import { DateFormat as DateFormat2, FDate as FDate3 } from "@fkui/date";
-import {
-  formatNumber as numberFormater,
-  parseBankgiro,
-  parseDate,
-  parseOrganisationsnummer,
-  parsePersonnummer,
-  parsePlusgiro,
-  parsePostalCode
-} from "@fkui/logic";
-
-// packages/vue/src/plugins/format/date-range-to-string.ts
-import { DateFormat, FDate } from "@fkui/date";
-
-// packages/vue/src/plugins/format/is-date-range.ts
-import { FDate as FDate2 } from "@fkui/date";
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/ICloseButton/ICloseButton.vue?type=script
-var ICloseButton_default = /* @__PURE__ */ _defineComponent({
-  __name: "ICloseButton",
-  props: {
-    compact: { type: Boolean, required: false },
-    iconOnly: { type: Boolean, required: false }
-  },
-  setup(__props, { expose: __expose }) {
-    __expose();
-    const $t = useTranslate();
-    const __returned__ = { $t, get FIcon() {
-      return FIcon_default2;
-    } };
-    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
-    return __returned__;
-  }
-});
-
-// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/ICloseButton/ICloseButton.vue?type=template
-import { createCommentVNode as _createCommentVNode3, renderSlot as _renderSlot3, toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, normalizeClass as _normalizeClass, createElementVNode as _createElementVNode3, createVNode as _createVNode, openBlock as _openBlock4, createElementBlock as _createElementBlock4 } from "vue";
-function render4(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock4(), _createElementBlock4(
-    "button",
-    {
-      type: "button",
-      class: _normalizeClass(["i-close-button", { "i-close-button--compact": $props.compact, "i-close-button--icon-only": $props.iconOnly }])
-    },
-    [
-      _createElementVNode3(
-        "span",
-        {
-          class: _normalizeClass({ "sr-only": $props.iconOnly })
-        },
-        [
-          _createCommentVNode3(" @slot Slot for text to display in the close button. "),
-          _renderSlot3(_ctx.$slots, "default", {}, () => [
-            _createTextVNode(
-              _toDisplayString($setup.$t("fkui.close-button.text", "St\xE4ng")),
-              1
-              /* TEXT */
-            )
-          ])
-        ],
-        2
-        /* CLASS */
-      ),
-      _createVNode($setup["FIcon"], {
-        name: "close",
-        class: "i-close-button__icon"
-      })
-    ],
-    2
-    /* CLASS */
-  );
-}
-
-// packages/vue/src/internal-components/ICloseButton/ICloseButton.vue
-ICloseButton_default.render = render4;
-ICloseButton_default.__file = "packages/vue/src/internal-components/ICloseButton/ICloseButton.vue";
-var ICloseButton_default2 = ICloseButton_default;
 
 // packages/vue/src/components/FModal/focus-element.ts
 import { focus } from "@fkui/logic";
@@ -2138,7 +2069,7 @@ function sizeClass(size) {
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FModal.vue?type=script
 var FModal_default = defineComponent4({
   name: "FModal",
-  components: { ICloseButton: ICloseButton_default2 },
+  components: { FIcon: FIcon_default2 },
   /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
   mixins: [TranslationMixin],
   inheritAttrs: true,
@@ -2317,7 +2248,7 @@ var FModal_default = defineComponent4({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FModal.vue?type=template
-import { createElementVNode as _createElementVNode4, createCommentVNode as _createCommentVNode4, renderSlot as _renderSlot4, openBlock as _openBlock5, createElementBlock as _createElementBlock5, toDisplayString as _toDisplayString2, createTextVNode as _createTextVNode2, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode2, normalizeClass as _normalizeClass2, withKeys as _withKeys } from "vue";
+import { createElementVNode as _createElementVNode3, createCommentVNode as _createCommentVNode3, renderSlot as _renderSlot3, openBlock as _openBlock4, createElementBlock as _createElementBlock4, toDisplayString as _toDisplayString, resolveComponent as _resolveComponent, createVNode as _createVNode, normalizeClass as _normalizeClass, withKeys as _withKeys } from "vue";
 var _hoisted_13 = ["id"];
 var _hoisted_22 = { class: "modal__backdrop" };
 var _hoisted_3 = { class: "modal__inner-container" };
@@ -2336,36 +2267,38 @@ var _hoisted_8 = {
   tabindex: "-1"
 };
 var _hoisted_9 = { class: "modal__footer" };
-function render5(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_i_close_button = _resolveComponent("i-close-button");
-  return _ctx.isOpen ? (_openBlock5(), _createElementBlock5("div", {
+var _hoisted_10 = { class: "modal__shelf" };
+var _hoisted_11 = ["aria-label"];
+function render4(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_f_icon = _resolveComponent("f-icon");
+  return _ctx.isOpen ? (_openBlock4(), _createElementBlock4("div", {
     key: 0,
     id: _ctx.id,
-    class: _normalizeClass2(["modal", _ctx.modalClass])
+    class: _normalizeClass(["modal", _ctx.modalClass])
   }, [
-    _createElementVNode4("div", _hoisted_22, [
-      _createElementVNode4(
+    _createElementVNode3("div", _hoisted_22, [
+      _createElementVNode3(
         "div",
         {
           class: "modal__outer-container scroll-target",
           tabindex: "-1",
           role: "dialog",
           "aria-modal": "true",
-          onKeyup: _cache[2] || (_cache[2] = _withKeys((...args) => _ctx.onClose && _ctx.onClose(...args), ["esc"]))
+          onKeyup: _cache[3] || (_cache[3] = _withKeys((...args) => _ctx.onClose && _ctx.onClose(...args), ["esc"]))
         },
         [
-          _createElementVNode4("div", _hoisted_3, [
-            _createElementVNode4(
+          _createElementVNode3("div", _hoisted_3, [
+            _createElementVNode3(
               "div",
               {
                 ref: "modalDialogContainer",
-                class: _normalizeClass2(["modal__dialog-container", _ctx.containerClasses])
+                class: _normalizeClass(["modal__dialog-container", _ctx.containerClasses])
               },
               [
-                _createElementVNode4("div", _hoisted_4, [
-                  _createElementVNode4("div", _hoisted_5, [
-                    _createElementVNode4("div", _hoisted_6, [
-                      _createElementVNode4(
+                _createElementVNode3("div", _hoisted_4, [
+                  _createElementVNode3("div", _hoisted_5, [
+                    _createElementVNode3("div", _hoisted_6, [
+                      _createElementVNode3(
                         "div",
                         {
                           tabindex: "0",
@@ -2375,68 +2308,59 @@ function render5(_ctx, _cache, $props, $setup, $data, $options) {
                         32
                         /* NEED_HYDRATION */
                       ),
-                      _ctx.hasHeaderSlot ? (_openBlock5(), _createElementBlock5(
+                      _ctx.hasHeaderSlot ? (_openBlock4(), _createElementBlock4(
                         "h1",
                         _hoisted_7,
                         [
-                          _createCommentVNode4("@slot Slot for the header. "),
-                          _renderSlot4(_ctx.$slots, "header")
+                          _createCommentVNode3("@slot Slot for the header. "),
+                          _renderSlot3(_ctx.$slots, "header")
                         ],
                         512
                         /* NEED_PATCH */
-                      )) : _createCommentVNode4("v-if", true)
+                      )) : _createCommentVNode3("v-if", true)
                     ]),
-                    _createElementVNode4(
+                    _createElementVNode3(
                       "div",
                       _hoisted_8,
                       [
-                        _createCommentVNode4("@slot Slot for the main content, e.g. paragraphs, input fields, etc. "),
-                        _renderSlot4(_ctx.$slots, "content")
+                        _createCommentVNode3("@slot Slot for the main content, e.g. paragraphs, input fields, etc. "),
+                        _renderSlot3(_ctx.$slots, "content")
                       ],
                       512
                       /* NEED_PATCH */
                     ),
-                    _createElementVNode4("div", _hoisted_9, [
-                      _createCommentVNode4("@slot Slot the footer content, i.e. buttons. "),
-                      _renderSlot4(_ctx.$slots, "footer")
+                    _createElementVNode3("div", _hoisted_9, [
+                      _createCommentVNode3("@slot Slot the footer content, i.e. buttons. "),
+                      _renderSlot3(_ctx.$slots, "footer")
                     ])
                   ]),
-                  _createElementVNode4(
-                    "div",
-                    {
-                      class: _normalizeClass2(_ctx.type ? "modal__shelf" : "modal__close")
-                    },
-                    [
-                      _createVNode2(_component_i_close_button, {
-                        class: "modal__close-button",
-                        compact: _ctx.type !== "",
-                        "aria-label": _ctx.ariaCloseText,
-                        onClick: _ctx.onClose
-                      }, {
-                        default: _withCtx(() => [
-                          _createTextVNode2(
-                            _toDisplayString2(_ctx.$t("fkui.modal.close", "St\xE4ng")),
-                            1
-                            /* TEXT */
-                          )
-                        ]),
-                        _: 1
-                        /* STABLE */
-                      }, 8, ["compact", "aria-label", "onClick"]),
-                      _createElementVNode4(
-                        "div",
-                        {
-                          tabindex: "0",
-                          onFocus: _cache[1] || (_cache[1] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
-                        },
+                  _createElementVNode3("div", _hoisted_10, [
+                    _createElementVNode3("button", {
+                      type: "button",
+                      class: "close-button",
+                      "aria-label": _ctx.ariaCloseText,
+                      onClick: _cache[1] || (_cache[1] = (...args) => _ctx.onClose && _ctx.onClose(...args))
+                    }, [
+                      _createElementVNode3(
+                        "span",
                         null,
-                        32
-                        /* NEED_HYDRATION */
-                      )
-                    ],
-                    2
-                    /* CLASS */
-                  )
+                        _toDisplayString(_ctx.$t("fkui.modal.close", "St\xE4ng")),
+                        1
+                        /* TEXT */
+                      ),
+                      _createVNode(_component_f_icon, { name: "close" })
+                    ], 8, _hoisted_11),
+                    _createElementVNode3(
+                      "div",
+                      {
+                        tabindex: "0",
+                        onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
+                      },
+                      null,
+                      32
+                      /* NEED_HYDRATION */
+                    )
+                  ])
                 ])
               ],
               2
@@ -2448,11 +2372,11 @@ function render5(_ctx, _cache, $props, $setup, $data, $options) {
         /* NEED_HYDRATION */
       )
     ])
-  ], 10, _hoisted_13)) : _createCommentVNode4("v-if", true);
+  ], 10, _hoisted_13)) : _createCommentVNode3("v-if", true);
 }
 
 // packages/vue/src/components/FModal/FModal.vue
-FModal_default.render = render5;
+FModal_default.render = render4;
 FModal_default.__file = "packages/vue/src/components/FModal/FModal.vue";
 var FModal_default2 = FModal_default;
 
@@ -2580,16 +2504,16 @@ var FConfirmModal_default = defineComponent5({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue?type=template
-import { createCommentVNode as _createCommentVNode5, renderSlot as _renderSlot5, toDisplayString as _toDisplayString3, createTextVNode as _createTextVNode3, renderList as _renderList, Fragment as _Fragment2, openBlock as _openBlock6, createElementBlock as _createElementBlock6, createElementVNode as _createElementVNode5, normalizeClass as _normalizeClass3, resolveComponent as _resolveComponent2, withCtx as _withCtx2, createBlock as _createBlock2 } from "vue";
+import { createCommentVNode as _createCommentVNode4, renderSlot as _renderSlot4, toDisplayString as _toDisplayString2, createTextVNode as _createTextVNode, renderList as _renderList, Fragment as _Fragment2, openBlock as _openBlock5, createElementBlock as _createElementBlock5, createElementVNode as _createElementVNode4, normalizeClass as _normalizeClass2, resolveComponent as _resolveComponent2, withCtx as _withCtx, createBlock as _createBlock2 } from "vue";
 var _hoisted_14 = { class: "button-group" };
 var _hoisted_23 = ["onClick"];
 var _hoisted_32 = {
   key: 0,
   class: "sr-only"
 };
-function render6(_ctx, _cache, $props, $setup, $data, $options) {
+function render5(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_modal = _resolveComponent2("f-modal");
-  return _openBlock6(), _createBlock2(_component_f_modal, {
+  return _openBlock5(), _createBlock2(_component_f_modal, {
     fullscreen: _ctx.fullscreen,
     "is-open": _ctx.isOpen,
     "aria-close-text": _ctx.ariaCloseText,
@@ -2598,52 +2522,52 @@ function render6(_ctx, _cache, $props, $setup, $data, $options) {
     focus: _ctx.focus,
     onClose: _ctx.onClose
   }, {
-    header: _withCtx2(() => [
-      _createCommentVNode5("@slot Slot for advanced header. "),
-      _renderSlot5(_ctx.$slots, "heading", {}, () => [
-        _createTextVNode3(
-          _toDisplayString3(_ctx.heading),
+    header: _withCtx(() => [
+      _createCommentVNode4("@slot Slot for advanced header. "),
+      _renderSlot4(_ctx.$slots, "heading", {}, () => [
+        _createTextVNode(
+          _toDisplayString2(_ctx.heading),
           1
           /* TEXT */
         )
       ])
     ]),
-    content: _withCtx2(() => [
-      _createCommentVNode5("@slot Slot for advanced content. "),
-      _renderSlot5(_ctx.$slots, "content", {}, () => [
-        _createTextVNode3(
-          _toDisplayString3(_ctx.content),
+    content: _withCtx(() => [
+      _createCommentVNode4("@slot Slot for advanced content. "),
+      _renderSlot4(_ctx.$slots, "content", {}, () => [
+        _createTextVNode(
+          _toDisplayString2(_ctx.content),
           1
           /* TEXT */
         )
       ])
     ]),
-    footer: _withCtx2(() => [
-      _createElementVNode5("div", _hoisted_14, [
-        (_openBlock6(true), _createElementBlock6(
+    footer: _withCtx(() => [
+      _createElementVNode4("div", _hoisted_14, [
+        (_openBlock5(true), _createElementBlock5(
           _Fragment2,
           null,
           _renderList(_ctx.preparedButtons, (button) => {
-            return _openBlock6(), _createElementBlock6("button", {
+            return _openBlock5(), _createElementBlock5("button", {
               key: button.label,
               type: "button",
-              class: _normalizeClass3([button.classlist, "button-group__item"]),
+              class: _normalizeClass2([button.classlist, "button-group__item"]),
               onClick: ($event) => _ctx.onClick(button)
             }, [
-              _createElementVNode5(
+              _createElementVNode4(
                 "span",
                 null,
-                _toDisplayString3(button.label),
+                _toDisplayString2(button.label),
                 1
                 /* TEXT */
               ),
-              button.screenreader ? (_openBlock6(), _createElementBlock6(
+              button.screenreader ? (_openBlock5(), _createElementBlock5(
                 "span",
                 _hoisted_32,
-                "\xA0" + _toDisplayString3(button.screenreader),
+                "\xA0" + _toDisplayString2(button.screenreader),
                 1
                 /* TEXT */
-              )) : _createCommentVNode5("v-if", true)
+              )) : _createCommentVNode4("v-if", true)
             ], 10, _hoisted_23);
           }),
           128
@@ -2657,7 +2581,7 @@ function render6(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue
-FConfirmModal_default.render = render6;
+FConfirmModal_default.render = render5;
 FConfirmModal_default.__file = "packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FFormModal/FFormModal.vue?type=script
@@ -2669,7 +2593,7 @@ import { computed as computed2, defineComponent as defineComponent10 } from "vue
 import { ElementIdService as ElementIdService2, ValidationService as ValidationService2, focus as focus4 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FButton/FButton.vue?type=script
-import { defineComponent as _defineComponent2 } from "vue";
+import { defineComponent as _defineComponent } from "vue";
 import { computed, inject, useAttrs } from "vue";
 
 // packages/vue/src/components/FButton/button-inflight-injection-key.ts
@@ -2698,7 +2622,7 @@ function useInflight(fn2, disabled) {
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FButton/FButton.vue?type=script
-var FButton_default = /* @__PURE__ */ _defineComponent2({
+var FButton_default = /* @__PURE__ */ _defineComponent({
   ...{
     inheritAttrs: false
   },
@@ -2853,7 +2777,7 @@ var FButton_default = /* @__PURE__ */ _defineComponent2({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FButton/FButton.vue?type=template
-import { openBlock as _openBlock7, createBlock as _createBlock3, createCommentVNode as _createCommentVNode6, Fragment as _Fragment3, createElementBlock as _createElementBlock7, renderSlot as _renderSlot6, createElementVNode as _createElementVNode6, mergeProps as _mergeProps2 } from "vue";
+import { openBlock as _openBlock6, createBlock as _createBlock3, createCommentVNode as _createCommentVNode5, Fragment as _Fragment3, createElementBlock as _createElementBlock6, renderSlot as _renderSlot5, createElementVNode as _createElementVNode5, mergeProps as _mergeProps2 } from "vue";
 var _hoisted_15 = ["type", "aria-disabled"];
 var _hoisted_24 = {
   key: 1,
@@ -2863,65 +2787,65 @@ var _hoisted_33 = {
   key: 3,
   class: "spinner--after"
 };
-function render7(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock7(), _createElementBlock7("button", _mergeProps2({
+function render6(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock6(), _createElementBlock6("button", _mergeProps2({
     type: $props.type,
     class: $setup.buttonClass,
     "aria-disabled": $setup.disabled
   }, $setup.attrs), [
-    $setup.hasIconLeft ? (_openBlock7(), _createElementBlock7(
+    $setup.hasIconLeft ? (_openBlock6(), _createElementBlock6(
       _Fragment3,
       { key: 0 },
       [
-        $setup.hasIconInflight ? (_openBlock7(), _createBlock3($setup["FIcon"], {
+        $setup.hasIconInflight ? (_openBlock6(), _createBlock3($setup["FIcon"], {
           key: 0,
           name: "circle-notch-solid",
           class: "button__icon button__spinner"
-        })) : $setup.props.iconLeft ? (_openBlock7(), _createBlock3($setup["FIcon"], {
+        })) : $setup.props.iconLeft ? (_openBlock6(), _createBlock3($setup["FIcon"], {
           key: 1,
           class: "button__icon",
           name: $setup.props.iconLeft,
           library: $setup.props.iconLibrary
-        }, null, 8, ["name", "library"])) : _createCommentVNode6("v-if", true)
+        }, null, 8, ["name", "library"])) : _createCommentVNode5("v-if", true)
       ],
       64
       /* STABLE_FRAGMENT */
-    )) : _createCommentVNode6("v-if", true),
-    !$setup.hasIcon ? (_openBlock7(), _createElementBlock7("span", _hoisted_24, [
-      $setup.hasIconInflight ? (_openBlock7(), _createBlock3($setup["FIcon"], {
+    )) : _createCommentVNode5("v-if", true),
+    !$setup.hasIcon ? (_openBlock6(), _createElementBlock6("span", _hoisted_24, [
+      $setup.hasIconInflight ? (_openBlock6(), _createBlock3($setup["FIcon"], {
         key: 0,
         name: "circle-notch-solid",
         class: "button__icon button__spinner"
-      })) : _createCommentVNode6("v-if", true)
-    ])) : _createCommentVNode6("v-if", true),
-    _createCommentVNode6("\n        @slot Slot for text to display in the button.\n        "),
-    _createElementVNode6("span", null, [
-      _renderSlot6(_ctx.$slots, "default")
+      })) : _createCommentVNode5("v-if", true)
+    ])) : _createCommentVNode5("v-if", true),
+    _createCommentVNode5("\n        @slot Slot for text to display in the button.\n        "),
+    _createElementVNode5("span", null, [
+      _renderSlot5(_ctx.$slots, "default")
     ]),
-    $setup.hasIconRight ? (_openBlock7(), _createElementBlock7(
+    $setup.hasIconRight ? (_openBlock6(), _createElementBlock6(
       _Fragment3,
       { key: 2 },
       [
-        $setup.hasIconInflight ? (_openBlock7(), _createBlock3($setup["FIcon"], {
+        $setup.hasIconInflight ? (_openBlock6(), _createBlock3($setup["FIcon"], {
           key: 0,
           name: "circle-notch-solid",
           class: "button__icon button__spinner"
-        })) : $setup.props.iconRight ? (_openBlock7(), _createBlock3($setup["FIcon"], {
+        })) : $setup.props.iconRight ? (_openBlock6(), _createBlock3($setup["FIcon"], {
           key: 1,
           class: "button__icon",
           name: $setup.props.iconRight,
           library: $setup.props.iconLibrary
-        }, null, 8, ["name", "library"])) : _createCommentVNode6("v-if", true)
+        }, null, 8, ["name", "library"])) : _createCommentVNode5("v-if", true)
       ],
       64
       /* STABLE_FRAGMENT */
-    )) : _createCommentVNode6("v-if", true),
-    !$setup.hasIcon ? (_openBlock7(), _createElementBlock7("span", _hoisted_33)) : _createCommentVNode6("v-if", true)
+    )) : _createCommentVNode5("v-if", true),
+    !$setup.hasIcon ? (_openBlock6(), _createElementBlock6("span", _hoisted_33)) : _createCommentVNode5("v-if", true)
   ], 16, _hoisted_15);
 }
 
 // packages/vue/src/components/FButton/FButton.vue
-FButton_default.render = render7;
+FButton_default.render = render6;
 FButton_default.__file = "packages/vue/src/components/FButton/FButton.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
@@ -3011,16 +2935,16 @@ var IFlex_default = defineComponent6({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IFlex/IFlex.vue?type=template
-import { createCommentVNode as _createCommentVNode7, renderSlot as _renderSlot7, normalizeClass as _normalizeClass4, openBlock as _openBlock8, createElementBlock as _createElementBlock8 } from "vue";
-function render8(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock8(), _createElementBlock8(
+import { createCommentVNode as _createCommentVNode6, renderSlot as _renderSlot6, normalizeClass as _normalizeClass3, openBlock as _openBlock7, createElementBlock as _createElementBlock7 } from "vue";
+function render7(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock7(), _createElementBlock7(
     "div",
     {
-      class: _normalizeClass4(["iflex", _ctx.classList])
+      class: _normalizeClass3(["iflex", _ctx.classList])
     },
     [
-      _createCommentVNode7(" @slot Slot for IFlexItem's "),
-      _renderSlot7(_ctx.$slots, "default")
+      _createCommentVNode6(" @slot Slot for IFlexItem's "),
+      _renderSlot6(_ctx.$slots, "default")
     ],
     2
     /* CLASS */
@@ -3028,7 +2952,7 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/internal-components/IFlex/IFlex.vue
-IFlex_default.render = render8;
+IFlex_default.render = render7;
 IFlex_default.__file = "packages/vue/src/internal-components/IFlex/IFlex.vue";
 var IFlex_default2 = IFlex_default;
 
@@ -3081,16 +3005,16 @@ var IFlexItem_default = defineComponent7({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IFlex/IFlexItem.vue?type=template
-import { createCommentVNode as _createCommentVNode8, renderSlot as _renderSlot8, normalizeClass as _normalizeClass5, openBlock as _openBlock9, createElementBlock as _createElementBlock9 } from "vue";
-function render9(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock9(), _createElementBlock9(
+import { createCommentVNode as _createCommentVNode7, renderSlot as _renderSlot7, normalizeClass as _normalizeClass4, openBlock as _openBlock8, createElementBlock as _createElementBlock8 } from "vue";
+function render8(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock8(), _createElementBlock8(
     "div",
     {
-      class: _normalizeClass5(["iflex__item", _ctx.classList])
+      class: _normalizeClass4(["iflex__item", _ctx.classList])
     },
     [
-      _createCommentVNode8(" @slot Content "),
-      _renderSlot8(_ctx.$slots, "default")
+      _createCommentVNode7(" @slot Content "),
+      _renderSlot7(_ctx.$slots, "default")
     ],
     2
     /* CLASS */
@@ -3098,7 +3022,7 @@ function render9(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/internal-components/IFlex/IFlexItem.vue
-IFlexItem_default.render = render9;
+IFlexItem_default.render = render8;
 IFlexItem_default.__file = "packages/vue/src/internal-components/IFlex/IFlexItem.vue";
 var IFlexItem_default2 = IFlexItem_default;
 
@@ -3155,39 +3079,39 @@ var FErrorList_default = defineComponent8({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=template
-import { resolveComponent as _resolveComponent3, createVNode as _createVNode3, withCtx as _withCtx3, openBlock as _openBlock10, createBlock as _createBlock4, createCommentVNode as _createCommentVNode9, createTextVNode as _createTextVNode4, renderSlot as _renderSlot9, createElementBlock as _createElementBlock10, renderList as _renderList2, Fragment as _Fragment4, createElementVNode as _createElementVNode7, toDisplayString as _toDisplayString4, withModifiers as _withModifiers } from "vue";
+import { resolveComponent as _resolveComponent3, createVNode as _createVNode2, withCtx as _withCtx2, openBlock as _openBlock9, createBlock as _createBlock4, createCommentVNode as _createCommentVNode8, createTextVNode as _createTextVNode2, renderSlot as _renderSlot8, createElementBlock as _createElementBlock9, renderList as _renderList2, Fragment as _Fragment4, createElementVNode as _createElementVNode6, toDisplayString as _toDisplayString3, withModifiers as _withModifiers } from "vue";
 var _hoisted_16 = { class: "error-list" };
 var _hoisted_25 = { key: 0 };
 var _hoisted_34 = { class: "error-list__list error-list--list-style-none" };
 var _hoisted_42 = ["onClick"];
 var _hoisted_52 = { class: "error-list__link" };
-function render10(_ctx, _cache, $props, $setup, $data, $options) {
+function render9(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = _resolveComponent3("f-icon");
   const _component_i_flex_item = _resolveComponent3("i-flex-item");
   const _component_i_flex = _resolveComponent3("i-flex");
-  return _openBlock10(), _createElementBlock10("div", _hoisted_16, [
-    _createVNode3(_component_i_flex, null, {
-      default: _withCtx3(() => [
-        _ctx.hasTitleSlot ? (_openBlock10(), _createBlock4(_component_i_flex_item, {
+  return _openBlock9(), _createElementBlock9("div", _hoisted_16, [
+    _createVNode2(_component_i_flex, null, {
+      default: _withCtx2(() => [
+        _ctx.hasTitleSlot ? (_openBlock9(), _createBlock4(_component_i_flex_item, {
           key: 0,
           shrink: ""
         }, {
-          default: _withCtx3(() => [
-            _createVNode3(_component_f_icon, {
+          default: _withCtx2(() => [
+            _createVNode2(_component_f_icon, {
               class: "error-list__icon",
               name: "error"
             })
           ]),
           _: 1
           /* STABLE */
-        })) : _createCommentVNode9("v-if", true),
-        _createCommentVNode9(" use a space as separator to get same width FLabel which uses an actual space "),
-        _ctx.hasTitleSlot ? (_openBlock10(), _createBlock4(_component_i_flex_item, {
+        })) : _createCommentVNode8("v-if", true),
+        _createCommentVNode8(" use a space as separator to get same width FLabel which uses an actual space "),
+        _ctx.hasTitleSlot ? (_openBlock9(), _createBlock4(_component_i_flex_item, {
           key: 1,
           shrink: ""
         }, {
-          default: _withCtx3(() => [..._cache[0] || (_cache[0] = [
-            _createTextVNode4(
+          default: _withCtx2(() => [..._cache[0] || (_cache[0] = [
+            _createTextVNode2(
               "\xA0",
               -1
               /* CACHED */
@@ -3195,27 +3119,27 @@ function render10(_ctx, _cache, $props, $setup, $data, $options) {
           ])]),
           _: 1
           /* STABLE */
-        })) : _createCommentVNode9("v-if", true),
-        _createVNode3(_component_i_flex_item, { grow: "" }, {
-          default: _withCtx3(() => [
-            _ctx.hasTitleSlot ? (_openBlock10(), _createElementBlock10("div", _hoisted_25, [
-              _createCommentVNode9(" @slot Optional title shown above the errorlist. No icon is shown if no title is set "),
-              _renderSlot9(_ctx.$slots, "title")
-            ])) : _createCommentVNode9("v-if", true),
-            _createElementVNode7("ul", _hoisted_34, [
-              (_openBlock10(true), _createElementBlock10(
+        })) : _createCommentVNode8("v-if", true),
+        _createVNode2(_component_i_flex_item, { grow: "" }, {
+          default: _withCtx2(() => [
+            _ctx.hasTitleSlot ? (_openBlock9(), _createElementBlock9("div", _hoisted_25, [
+              _createCommentVNode8(" @slot Optional title shown above the errorlist. No icon is shown if no title is set "),
+              _renderSlot8(_ctx.$slots, "title")
+            ])) : _createCommentVNode8("v-if", true),
+            _createElementVNode6("ul", _hoisted_34, [
+              (_openBlock9(true), _createElementBlock9(
                 _Fragment4,
                 null,
                 _renderList2(_ctx.items, (item) => {
-                  return _openBlock10(), _createElementBlock10("li", {
+                  return _openBlock9(), _createElementBlock9("li", {
                     key: item.id
                   }, [
-                    item.id ? (_openBlock10(), _createElementBlock10("a", {
+                    item.id ? (_openBlock9(), _createElementBlock9("a", {
                       key: 0,
                       href: "javascript:",
                       onClick: _withModifiers(($event) => _ctx.onClickItem(item), ["prevent"])
                     }, [
-                      _cache[1] || (_cache[1] = _createElementVNode7(
+                      _cache[1] || (_cache[1] = _createElementVNode6(
                         "span",
                         {
                           class: "error-list__bullet",
@@ -3225,18 +3149,18 @@ function render10(_ctx, _cache, $props, $setup, $data, $options) {
                         -1
                         /* CACHED */
                       )),
-                      _createElementVNode7(
+                      _createElementVNode6(
                         "span",
                         _hoisted_52,
-                        _toDisplayString4(item.title),
+                        _toDisplayString3(item.title),
                         1
                         /* TEXT */
                       )
-                    ], 8, _hoisted_42)) : (_openBlock10(), _createElementBlock10(
+                    ], 8, _hoisted_42)) : (_openBlock9(), _createElementBlock9(
                       _Fragment4,
                       { key: 1 },
                       [
-                        _cache[2] || (_cache[2] = _createElementVNode7(
+                        _cache[2] || (_cache[2] = _createElementVNode6(
                           "span",
                           {
                             class: "error-list__bullet",
@@ -3246,10 +3170,10 @@ function render10(_ctx, _cache, $props, $setup, $data, $options) {
                           -1
                           /* CACHED */
                         )),
-                        _createElementVNode7(
+                        _createElementVNode6(
                           "span",
                           null,
-                          _toDisplayString4(item.title),
+                          _toDisplayString3(item.title),
                           1
                           /* TEXT */
                         )
@@ -3275,7 +3199,7 @@ function render10(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/components/FErrorList/FErrorList.vue
-FErrorList_default.render = render10;
+FErrorList_default.render = render9;
 FErrorList_default.__file = "packages/vue/src/components/FErrorList/FErrorList.vue";
 var FErrorList_default2 = FErrorList_default;
 
@@ -3370,16 +3294,16 @@ var FValidationGroup_default = defineComponent9({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationGroup/FValidationGroup.vue?type=template
-import { renderSlot as _renderSlot10, openBlock as _openBlock11, createElementBlock as _createElementBlock11 } from "vue";
-function render11(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock11(), _createElementBlock11(
+import { renderSlot as _renderSlot9, openBlock as _openBlock10, createElementBlock as _createElementBlock10 } from "vue";
+function render10(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock10(), _createElementBlock10(
     "div",
     {
       onComponentValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onComponentValidity && _ctx.onComponentValidity(...args)),
       onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args))
     },
     [
-      _renderSlot10(_ctx.$slots, "default")
+      _renderSlot9(_ctx.$slots, "default")
     ],
     32
     /* NEED_HYDRATION */
@@ -3387,7 +3311,7 @@ function render11(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/components/FValidationGroup/FValidationGroup.vue
-FValidationGroup_default.render = render11;
+FValidationGroup_default.render = render10;
 FValidationGroup_default.__file = "packages/vue/src/components/FValidationGroup/FValidationGroup.vue";
 var FValidationGroup_default2 = FValidationGroup_default;
 
@@ -3562,7 +3486,7 @@ var FValidationForm_default = defineComponent10({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=template
-import { createCommentVNode as _createCommentVNode10, renderSlot as _renderSlot11, resolveComponent as _resolveComponent4, withCtx as _withCtx4, createVNode as _createVNode4, openBlock as _openBlock12, createElementBlock as _createElementBlock12, withModifiers as _withModifiers2, mergeProps as _mergeProps3, createElementVNode as _createElementVNode8, createBlock as _createBlock5 } from "vue";
+import { createCommentVNode as _createCommentVNode9, renderSlot as _renderSlot10, resolveComponent as _resolveComponent4, withCtx as _withCtx3, createVNode as _createVNode3, openBlock as _openBlock11, createElementBlock as _createElementBlock11, withModifiers as _withModifiers2, mergeProps as _mergeProps3, createElementVNode as _createElementVNode7, createBlock as _createBlock5 } from "vue";
 var _hoisted_17 = ["id"];
 var _hoisted_26 = {
   key: 0,
@@ -3570,33 +3494,33 @@ var _hoisted_26 = {
   tabindex: "-1",
   role: "group"
 };
-function render12(_ctx, _cache, $props, $setup, $data, $options) {
+function render11(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_error_list = _resolveComponent4("f-error-list");
   const _component_f_validation_group = _resolveComponent4("f-validation-group");
-  return _openBlock12(), _createBlock5(_component_f_validation_group, {
+  return _openBlock11(), _createBlock5(_component_f_validation_group, {
     key: _ctx.groupKey,
     modelValue: _ctx.validity,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.validity = $event),
     "stop-propagation": true
   }, {
-    default: _withCtx4(() => [
-      _createCommentVNode10(" [html-validate-disable-next wcag/h32 -- submit button is slotted] "),
-      _createElementVNode8("form", _mergeProps3({ id: _ctx.id }, _ctx.$attrs, {
+    default: _withCtx3(() => [
+      _createCommentVNode9(" [html-validate-disable-next wcag/h32 -- submit button is slotted] "),
+      _createElementVNode7("form", _mergeProps3({ id: _ctx.id }, _ctx.$attrs, {
         novalidate: "",
         autocomplete: "off",
         onSubmit: _cache[0] || (_cache[0] = _withModifiers2((...args) => _ctx.submit && _ctx.submit(...args), ["prevent"]))
       }), [
-        _ctx.displayErrors ? (_openBlock12(), _createElementBlock12(
+        _ctx.displayErrors ? (_openBlock11(), _createElementBlock11(
           "nav",
           _hoisted_26,
           [
-            _createVNode4(_component_f_error_list, {
+            _createVNode3(_component_f_error_list, {
               items: _ctx.errors,
               "before-navigate": _ctx.errorListBeforeNavigate
             }, {
-              title: _withCtx4(() => [
-                _createCommentVNode10("\n                            @slot **optional** Slot for displaying error description.\n\n                            After this slot a list of invalid elements is listed.\n                            When an item is clicked it will scroll to and focus that invalid element.\n                        "),
-                _renderSlot11(_ctx.$slots, "error-message")
+              title: _withCtx3(() => [
+                _createCommentVNode9("\n                            @slot **optional** Slot for displaying error description.\n\n                            After this slot a list of invalid elements is listed.\n                            When an item is clicked it will scroll to and focus that invalid element.\n                        "),
+                _renderSlot10(_ctx.$slots, "error-message")
               ]),
               _: 3
               /* FORWARDED */
@@ -3604,9 +3528,9 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
           ],
           512
           /* NEED_PATCH */
-        )) : _createCommentVNode10("v-if", true),
-        _createCommentVNode10(" @slot Slot for content, i.e. input elements. "),
-        _renderSlot11(_ctx.$slots, "default")
+        )) : _createCommentVNode9("v-if", true),
+        _createCommentVNode9(" @slot Slot for content, i.e. input elements. "),
+        _renderSlot10(_ctx.$slots, "default")
       ], 16, _hoisted_17)
     ]),
     _: 3
@@ -3615,7 +3539,7 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/components/FValidationForm/FValidationForm.vue
-FValidationForm_default.render = render12;
+FValidationForm_default.render = render11;
 FValidationForm_default.__file = "packages/vue/src/components/FValidationForm/FValidationForm.vue";
 var FValidationForm_default2 = FValidationForm_default;
 
@@ -3793,17 +3717,17 @@ var FFormModal_default = defineComponent11({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FFormModal/FFormModal.vue?type=template
-import { createCommentVNode as _createCommentVNode11, renderSlot as _renderSlot12, createElementVNode as _createElementVNode9, resolveComponent as _resolveComponent5, withCtx as _withCtx5, createVNode as _createVNode5, renderList as _renderList3, Fragment as _Fragment5, openBlock as _openBlock13, createElementBlock as _createElementBlock13, toDisplayString as _toDisplayString5, normalizeClass as _normalizeClass6, createBlock as _createBlock6 } from "vue";
+import { createCommentVNode as _createCommentVNode10, renderSlot as _renderSlot11, createElementVNode as _createElementVNode8, resolveComponent as _resolveComponent5, withCtx as _withCtx4, createVNode as _createVNode4, renderList as _renderList3, Fragment as _Fragment5, openBlock as _openBlock12, createElementBlock as _createElementBlock12, toDisplayString as _toDisplayString4, normalizeClass as _normalizeClass5, createBlock as _createBlock6 } from "vue";
 var _hoisted_18 = { class: "button-group" };
 var _hoisted_27 = ["type", "form", "onClick"];
 var _hoisted_35 = {
   key: 0,
   class: "sr-only"
 };
-function render13(_ctx, _cache, $props, $setup, $data, $options) {
+function render12(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_validation_form = _resolveComponent5("f-validation-form");
   const _component_f_modal = _resolveComponent5("f-modal");
-  return _openBlock13(), _createBlock6(_component_f_modal, {
+  return _openBlock12(), _createBlock6(_component_f_modal, {
     "data-test": _ctx.dataTest,
     fullscreen: _ctx.fullscreen,
     "is-open": _ctx.isOpen,
@@ -3811,17 +3735,17 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-close-text": _ctx.ariaCloseText,
     onClose: _ctx.onClose
   }, {
-    header: _withCtx5(() => [
-      _createCommentVNode11(" @slot Slot for the header. "),
-      _renderSlot12(_ctx.$slots, "header")
+    header: _withCtx4(() => [
+      _createCommentVNode10(" @slot Slot for the header. "),
+      _renderSlot11(_ctx.$slots, "header")
     ]),
-    content: _withCtx5(() => [
-      _createElementVNode9("div", null, [
-        _createCommentVNode11(" @slot Slot for main content above text fields and buttons. "),
-        _renderSlot12(_ctx.$slots, "default")
+    content: _withCtx4(() => [
+      _createElementVNode8("div", null, [
+        _createCommentVNode10(" @slot Slot for main content above text fields and buttons. "),
+        _renderSlot11(_ctx.$slots, "default")
       ]),
-      _createCommentVNode11(" [html-validate-disable-next wcag/h32 -- Submit button with `formId` present in footer ] "),
-      _createVNode5(_component_f_validation_form, {
+      _createCommentVNode10(" [html-validate-disable-next wcag/h32 -- Submit button with `formId` present in footer ] "),
+      _createVNode4(_component_f_validation_form, {
         id: _ctx.formId,
         "before-submit": _ctx.beforeSubmit,
         "before-validation": _ctx.beforeValidation,
@@ -3829,44 +3753,44 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
         onSubmit: _ctx.onSubmit,
         onCancel: _ctx.onCancel
       }, {
-        "error-message": _withCtx5(() => [
-          _createCommentVNode11(" @slot Slot for error message "),
-          _renderSlot12(_ctx.$slots, "error-message")
+        "error-message": _withCtx4(() => [
+          _createCommentVNode10(" @slot Slot for error message "),
+          _renderSlot11(_ctx.$slots, "error-message")
         ]),
-        default: _withCtx5(() => [
-          _renderSlot12(_ctx.$slots, "input-text-fields")
+        default: _withCtx4(() => [
+          _renderSlot11(_ctx.$slots, "input-text-fields")
         ]),
         _: 3
         /* FORWARDED */
       }, 8, ["id", "before-submit", "before-validation", "use-error-list", "onSubmit", "onCancel"])
     ]),
-    footer: _withCtx5(() => [
-      _createElementVNode9("div", _hoisted_18, [
-        (_openBlock13(true), _createElementBlock13(
+    footer: _withCtx4(() => [
+      _createElementVNode8("div", _hoisted_18, [
+        (_openBlock12(true), _createElementBlock12(
           _Fragment5,
           null,
           _renderList3(_ctx.preparedButtons, (button) => {
-            return _openBlock13(), _createElementBlock13("button", {
+            return _openBlock12(), _createElementBlock12("button", {
               key: button.label,
               type: button.buttonType,
-              class: _normalizeClass6([button.classlist, "button-group__item"]),
+              class: _normalizeClass5([button.classlist, "button-group__item"]),
               form: button.buttonType === "submit" ? _ctx.formId : void 0,
               onClick: ($event) => button.buttonType === "button" ? _ctx.onCancel() : false
             }, [
-              _createElementVNode9(
+              _createElementVNode8(
                 "span",
                 null,
-                _toDisplayString5(button.label),
+                _toDisplayString4(button.label),
                 1
                 /* TEXT */
               ),
-              button.screenreader ? (_openBlock13(), _createElementBlock13(
+              button.screenreader ? (_openBlock12(), _createElementBlock12(
                 "span",
                 _hoisted_35,
-                "\xA0" + _toDisplayString5(button.screenreader),
+                "\xA0" + _toDisplayString4(button.screenreader),
                 1
                 /* TEXT */
-              )) : _createCommentVNode11("v-if", true)
+              )) : _createCommentVNode10("v-if", true)
             ], 10, _hoisted_27);
           }),
           128
@@ -3880,7 +3804,7 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/components/FModal/FFormModal/FFormModal.vue
-FFormModal_default.render = render13;
+FFormModal_default.render = render12;
 FFormModal_default.__file = "packages/vue/src/components/FModal/FFormModal/FFormModal.vue";
 
 // packages/vue/src/utils/focus.ts
@@ -3943,11 +3867,11 @@ function getTextContent(children, options) {
     }
   }).join("");
 }
-function renderSlotText(render15, props = {}, options) {
-  if (!render15) {
+function renderSlotText(render14, props = {}, options) {
+  if (!render14) {
     return void 0;
   }
-  const nodes = render15(props);
+  const nodes = render14(props);
   if (nodes.length === 0) {
     return void 0;
   }
@@ -4189,7 +4113,7 @@ function getFallbackPosition(anchor, target, clippedArea, spacing) {
 }
 
 // virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-5ed623.js
-import { createElementVNode as _createElementVNode10, vModelSelect as _vModelSelect, withDirectives as _withDirectives, createTextVNode as _createTextVNode5, openBlock as _openBlock14, createElementBlock as _createElementBlock14 } from "vue";
+import { createElementVNode as _createElementVNode9, vModelSelect as _vModelSelect, withDirectives as _withDirectives, createTextVNode as _createTextVNode3, openBlock as _openBlock13, createElementBlock as _createElementBlock13 } from "vue";
 var SPACING = 10;
 var exampleComponent = defineComponent12({
   name: "IPopupPositioning",
@@ -4322,16 +4246,16 @@ var _hoisted_36 = {
   ref: "target",
   class: "pos-target"
 };
-function render14(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock14(), _createElementBlock14("div", _hoisted_19, [
-    _cache[4] || (_cache[4] = _createElementVNode10(
+function render13(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock13(), _createElementBlock13("div", _hoisted_19, [
+    _cache[4] || (_cache[4] = _createElementVNode9(
       "label",
       { for: "constraint" },
       " Begr\xE4nsa till: ",
       -1
       /* CACHED */
     )),
-    _withDirectives(_createElementVNode10(
+    _withDirectives(_createElementVNode9(
       "select",
       {
         id: "constraint",
@@ -4339,21 +4263,21 @@ function render14(_ctx, _cache, $props, $setup, $data, $options) {
         onChange: _cache[1] || (_cache[1] = (...args) => _ctx.onChangeConstraint && _ctx.onChangeConstraint(...args))
       },
       [..._cache[3] || (_cache[3] = [
-        _createElementVNode10(
+        _createElementVNode9(
           "option",
           { value: "viewport" },
           "Viewport",
           -1
           /* CACHED */
         ),
-        _createElementVNode10(
+        _createElementVNode9(
           "option",
           { value: "container" },
           "Container",
           -1
           /* CACHED */
         ),
-        _createElementVNode10(
+        _createElementVNode9(
           "option",
           { value: "combo" },
           "Viewport + container",
@@ -4366,22 +4290,22 @@ function render14(_ctx, _cache, $props, $setup, $data, $options) {
     ), [
       [_vModelSelect, _ctx.constraint]
     ]),
-    _cache[5] || (_cache[5] = _createElementVNode10(
+    _cache[5] || (_cache[5] = _createElementVNode9(
       "p",
       null,
       [
-        _createTextVNode5("Dra "),
-        _createElementVNode10("i", null, "ankaret"),
-        _createTextVNode5(" med hj\xE4lp av musen.")
+        _createTextVNode3("Dra "),
+        _createElementVNode9("i", null, "ankaret"),
+        _createTextVNode3(" med hj\xE4lp av musen.")
       ],
       -1
       /* CACHED */
     )),
-    _createElementVNode10(
+    _createElementVNode9(
       "div",
       _hoisted_28,
       [
-        _createElementVNode10(
+        _createElementVNode9(
           "div",
           {
             ref: "anchor",
@@ -4392,7 +4316,7 @@ function render14(_ctx, _cache, $props, $setup, $data, $options) {
           544
           /* NEED_HYDRATION, NEED_PATCH */
         ),
-        _createElementVNode10(
+        _createElementVNode9(
           "div",
           _hoisted_36,
           "Popup",
@@ -4405,11 +4329,11 @@ function render14(_ctx, _cache, $props, $setup, $data, $options) {
     )
   ]);
 }
-exampleComponent.render = render14;
+exampleComponent.render = render13;
 setup({
   rootComponent: exampleComponent,
   selector: "#example-5ed623"
 });
 export {
-  render14 as render
+  render13 as render
 };
