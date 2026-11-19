@@ -63,8 +63,6 @@ export default defineComponent({
         useErrorList: {
             type: Boolean,
             required: false,
-            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-            default: true,
         },
         /**
          * The id for the form id attribute.
