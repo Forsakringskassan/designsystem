@@ -15,7 +15,7 @@ const modelValue = ref();
 </script>
 
 <template>
-    <f-validation-form id="screenshot" :use-error-list="false">
+    <f-validation-form id="screenshot">
         <template #default>
             <f-fieldset
                 id="checkbox-tooltip"

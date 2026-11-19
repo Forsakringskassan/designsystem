@@ -10,7 +10,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-validation-form v-test="'form-validation-prefix'">
+    <f-validation-form v-test="'form-validation-prefix'" use-error-list>
         <template #error-message> Fel i följande fält... </template>
 
         <div v-validation-prefix="'PREFIX '">

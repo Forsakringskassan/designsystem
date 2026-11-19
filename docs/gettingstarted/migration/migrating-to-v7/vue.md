@@ -114,6 +114,38 @@ Rename `text` to `screenreaderText` on matching column objects.
 Run TypeScript type-checking (`tsc`) to verify no remaining type errors exist.
 :::
 
+## `FValidationForm`
+
+Propen `useErrorList` är inte längre aktiv som standard.
+
+Om du vill behålla fellistan, lägg till propen explicit:
+
+```diff
+-<f-validation-form>
++<f-validation-form use-error-list>
+```
+
+Om du redan använder `:use-error-list="false"` kan du ta bort det:
+
+```diff
+-<f-validation-form :use-error-list="false">
++<f-validation-form>
+```
+
+Om du sätter värdet dynamiskt behöver du inte ändra något.
+
+::: details 🤖 Prompt för AI Agenter
+
+Sök igenom applikationens användningar av `FValidationForm` och `<f-validation-form>`, inklusive renderfunktioner och JSX.
+För varje användning där `useErrorList`/`use-error-list` saknas, lägg till `use-error-list` för att behålla det tidigare standardbeteendet där fellistan visas.
+Ta bort statiska `:use-error-list="false"` eftersom det nu är standardbeteendet.
+Behåll dynamiska värden och ändra inte komponentimplementationen.
+
+Verifiera resultatet genom att bygga projektet och köra relevanta tester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.
+
+:::
+
 ## `FFormModal`
 
 Propen `useErrorList` är inte längre aktiv som standard.
