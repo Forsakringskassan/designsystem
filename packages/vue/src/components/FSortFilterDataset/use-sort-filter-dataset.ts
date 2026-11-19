@@ -7,8 +7,6 @@ import {
     watch,
 } from "vue";
 import { useTranslate } from "../../plugins";
-import { type Dataset, toDataset } from "../../utils";
-import { isDataset } from "../../utils/dataset";
 import { filter } from "./f-sort-filter-filter";
 import { sort } from "./f-sort-filter-sorter";
 import { type SortOrder } from "./sort-order";
@@ -86,17 +84,17 @@ function normalizeFilterAttributes(
 }
 
 function sortFilterData<T extends object>(
-    data: Dataset<T> | T[],
+    data: T[],
     filterAttributes: PropertyKey[],
     searchString: string,
     sortAttribute: SortableAttribute,
-): Dataset<T> | T[] {
+): T[] {
     const filteredData = filter(data, filterAttributes, searchString);
     const sortedData = sort(filteredData, {
         attribute: sortAttribute.attribute as keyof T | "",
         ascending: sortAttribute.ascending,
     });
-    return isDataset(data) ? toDataset(sortedData, data) : sortedData;
+    return sortedData;
 }
 
 function noop(): void {
@@ -106,7 +104,7 @@ function noop(): void {
 export interface SortFilterDatasetState<T extends object> {
     searchString: Ref<string>;
     sortAttribute: Ref<SortOrder>;
-    sortFilterResult: Ref<Dataset<T> | T[]>;
+    sortFilterResult: Ref<T[]>;
     showClearButton: Ref<boolean>;
     defaultSortValue: SortOrder;
     sortableKeys: Ref<Array<string | symbol>>;
@@ -128,7 +126,7 @@ export interface SortFilterDatasetCallbacks {
 
 // eslint-disable-next-line @typescript-eslint/max-params -- placing in object may give effects
 export function useSortFilterDataset<T extends object>(
-    data: MaybeRefOrGetter<Dataset<T> | T[]>,
+    data: MaybeRefOrGetter<T[]>,
     sortableAttributes: MaybeRefOrGetter<
         Record<PropertyKey, string | Readonly<Ref<string>>>
     >,
@@ -139,9 +137,7 @@ export function useSortFilterDataset<T extends object>(
 ): SortFilterDatasetState<T> {
     const searchString = ref("");
     const sortAttribute = ref<SortOrder>({ ...defaultSortValue });
-    const sortFilterResult = ref(
-        isDataset(toValue(data)) ? toDataset<T>([]) : [],
-    ) as Ref<Dataset<T> | T[]>;
+    const sortFilterResult = ref([]) as Ref<T[]>;
     const useDefaultSortOrder = ref(true);
 
     const {

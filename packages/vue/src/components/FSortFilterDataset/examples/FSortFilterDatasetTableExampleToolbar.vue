@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { type FruitData, fruits } from "../../FCrudDataset/examples/fruit-data";
-import { FButton, FSortFilterDataset, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { FButton, FSortFilterDataset, FTable, defineTableColumns } from "@fkui/vue";
 
-const rows = useDatasetRef([...fruits]);
+const rows = [...fruits];
 const selectedRows = ref<FruitData[]>([]);
 const columns = defineTableColumns<FruitData>([
     { type: "text", header: "Namn", key: "name", size: "shrink" },

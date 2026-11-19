@@ -1,15 +1,9 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { type FruitData, fruits } from "./fruit-data";
-import {
-    FCrudDataset,
-    FTable,
-    FTextField,
-    FTextareaField,
-    defineTableColumns,
-    useDatasetRef,
-} from "@fkui/vue";
+import { FCrudDataset, FTable, FTextField, FTextareaField, defineTableColumns } from "@fkui/vue";
 
-const rows = useDatasetRef(fruits);
+const rows = ref(fruits);
 const columns = defineTableColumns<FruitData>([
     { type: "text", header: "Namn", key: "name", size: "shrink" },
     { type: "text", header: "Land", key: "origin", size: "shrink" },
