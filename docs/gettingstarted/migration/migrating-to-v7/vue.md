@@ -114,6 +114,38 @@ Rename `text` to `screenreaderText` on matching column objects.
 Run TypeScript type-checking (`tsc`) to verify no remaining type errors exist.
 :::
 
+## `FFormModal`
+
+Propen `useErrorList` är inte längre aktiv som standard.
+
+Om du vill behålla fellistan, lägg till propen explicit:
+
+```diff
+-<f-form-modal>
++<f-form-modal use-error-list>
+```
+
+Om du redan använder `:use-error-list="false"` kan du ta bort det:
+
+```diff
+-<f-form-modal :use-error-list="false">
++<f-form-modal>
+```
+
+Om du sätter värdet dynamiskt behöver du inte ändra något.
+
+::: details 🤖 Prompt för AI Agenter
+
+Sök igenom applikationen efter användningar av `FFormModal` och `<f-form-modal>`.
+För varje användning där `useErrorList`/`use-error-list` saknas, lägg till `use-error-list` för att behålla det tidigare standardbeteendet där fellistan visas.
+Ta bort statiska `:use-error-list="false"` eftersom det nu är standardbeteendet.
+Behåll dynamiska värden.
+
+Verifiera resultatet genom att bygga projektet och köra relevanta tester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.
+
+:::
+
 ## `FModal`
 
 Propen `size` stödjer inte längre aliaset `fullscreen` och är ersatt med `fullwidth`.

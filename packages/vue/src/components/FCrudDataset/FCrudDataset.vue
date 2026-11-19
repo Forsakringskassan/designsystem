@@ -415,7 +415,6 @@ function setNestedKey(key: keyof T | null | undefined): void {
             :aria-close-text="$t('fkui.crud-dataset.modal.close', 'Stäng')"
             :buttons="formModalButtons"
             :size="formModalSize"
-            :use-error-list="false"
             :before-submit
             :before-validation
             :on-cancel

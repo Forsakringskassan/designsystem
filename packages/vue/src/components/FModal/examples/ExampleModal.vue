@@ -71,7 +71,6 @@ export default defineComponent({
     <f-form-modal
         :size
         :data-test="testId"
-        :use-error-list="false"
         :is-open
         :value
         :before-submit
