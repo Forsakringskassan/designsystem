@@ -9,12 +9,14 @@ export { FExpandableParagraphSelectors } from "./FExpandableParagraph.selectors"
 export { FLabelSelectors } from "./FLabel.selectors";
 export { FListSelectors } from "./FList.selectors";
 export { FLoaderSelectors } from "./FLoader.selectors";
+export { FMessageBoxSelectors } from "./FMessageBox.selectors";
 export { FMinimizablePanelSelectors } from "./FMinimizablePanel.selectors";
 export { FModalSelectors } from "./FModal.selectors";
 export { FPaginatorSelectors } from "./FPaginator.selectors";
 export { FProgressbarSelectors } from "./FProgressbar.selectors";
 export { FRadioFieldSelectors } from "./FRadioField.selectors";
 export { FSelectFieldSelectors } from "./FSelectField.selectors";
+export { FStaticFieldSelectors } from "./FStaticField.selectors";
 export { FTextareaFieldSelectors } from "./FTextareaField.selectors";
 export { FTextFieldSelectors } from "./FTextField.selectors";
 export { FTooltipSelectors } from "./FTooltip.selectors";

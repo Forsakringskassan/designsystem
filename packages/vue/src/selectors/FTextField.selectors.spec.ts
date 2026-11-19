@@ -72,7 +72,6 @@ it("label() should return the label element", () => {
 
 it("description() should exist if description slot is used", () => {
     expect.assertions(1);
-
     const wrapper = shallowMount(FTextField, {
         slots: {
             default: "Label",
@@ -86,14 +85,12 @@ it("description() should exist if description slot is used", () => {
             stubs: { FLabel: false },
         },
     });
-
     const { description } = FTextFieldSelectors();
-    expect(wrapper.find(description()).exists()).toBeTruthy();
+    expect(wrapper.get(description()).text()).toBe("Description");
 });
 
 it("formatDescription() should be able to exist if description slot is used", () => {
     expect.assertions(1);
-
     const wrapper = shallowMount(FTextField, {
         slots: {
             default: "Label",
@@ -107,9 +104,8 @@ it("formatDescription() should be able to exist if description slot is used", ()
             stubs: { FLabel: false },
         },
     });
-
-    const { description } = FTextFieldSelectors();
-    expect(wrapper.find(description()).exists()).toBeTruthy();
+    const { formatDescription } = FTextFieldSelectors();
+    expect(wrapper.get(formatDescription()).text()).toBe("Format");
 });
 
 it("errorMessage() should exist when error is visible", () => {

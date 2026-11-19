@@ -1,3 +1,4 @@
+import { FStaticFieldSelectors } from "../selectors";
 import { FLabelPageObject } from "./FLabel.pageobject";
 import { FTooltipPageObject } from "./FTooltip.pageobject";
 import { type BasePageObject, type DefaultCypressChainable } from "./common";
@@ -6,8 +7,8 @@ import { type BasePageObject, type DefaultCypressChainable } from "./common";
  * @public
  */
 export class FStaticFieldPageObject implements BasePageObject {
-    public selector: string;
-    public el: () => DefaultCypressChainable;
+    private _selectors: ReturnType<typeof FStaticFieldSelectors>;
+
     public label: FLabelPageObject;
     public tooltip: FTooltipPageObject;
 
@@ -15,13 +16,20 @@ export class FStaticFieldPageObject implements BasePageObject {
      * @param selector - the root of the static field, usually `<div class="output-field">...</div>`.
      */
     public constructor(selector: string) {
-        this.selector = selector;
-        this.el = () => cy.get(this.selector);
-        this.label = new FLabelPageObject(`${this.selector} .label`);
+        this._selectors = FStaticFieldSelectors(selector);
+        this.label = new FLabelPageObject(this._selectors.label());
         this.tooltip = new FTooltipPageObject(`${this.selector} .tooltip`);
     }
 
+    public get selector(): string {
+        return this._selectors.selector;
+    }
+
+    public el(): DefaultCypressChainable {
+        return cy.get(this._selectors.selector);
+    }
+
     public body(): DefaultCypressChainable {
-        return cy.get(`${this.selector} p`);
+        return cy.get(this._selectors.body());
     }
 }
