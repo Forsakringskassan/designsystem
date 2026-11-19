@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-023419.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-61d844.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-614d9e.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-9c6a4b.js",
     "@fkui/vue-labs": "../../../assets/vendor-fkui-vue-labs-a2a6fb.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js"
   },
@@ -35,7 +35,7 @@
     "../../../assets/vendor-fkui-vue-selectors-023419.js": "sha384-VLenLmQc8v93fneTx0efSTJd7J5Ns4fB7DTS3tM7kJz9URQIILL3gC5W3VAEksP3",
     "../../../assets/vendor-fkui-logic-61d844.js": "sha384-u+VrrunW0wzEofwwfTCUkVW/5R3NtIzcgQ1Z60e7ov5tXLYfjrUjbvH57Zgv2vnB",
     "../../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../../assets/vendor-fkui-vue-614d9e.js": "sha384-n4rn1Jece+FFtpbry4o2PTI+mD8jHECdH7O2YNjEOJMzWgj27XqlNcGHrBVc5dUS",
+    "../../../assets/vendor-fkui-vue-9c6a4b.js": "sha384-+hYXyYErF4tH/A30wzaSDJyGIXhop5MVo6xmATDixkv+UOuprtOfh9ZY+Y58tfSN",
     "../../../assets/vendor-fkui-vue-labs-a2a6fb.js": "sha384-h40XX4ozhvBgz6AWNQ0/PORIMa6s3scmYMA6oJTujg2racMU/GypyFfqTvLaa6oJ",
     "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js": "sha384-PDEuCCbROg9gW6fFneYpzXKS04rV0oMFHgqArEkyaM8h1d/H3HBtCKiyFWYKWVcy"
   }
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../search-data-114cc4.json"
+    href="../../../search-data-0b5e48.json"
     as="fetch"
     crossorigin
-    integrity="sha384-VtlCMJLfpeSrqiggaO7llVbIoVX15tJfQqYvBwh7LlLfYDBTKQ9ZExPVzYjAw3xC"
+    integrity="sha384-v9bsxz8XvR/ke1lCYEAL6+assnoLSe25jgMVIAFaYItCqP/i2JUZZSx9rLEt3dNw"
     id="search-data"
 />
 <script>
@@ -557,8 +557,6 @@
                     
                 
                     
-                
-                    
                         
                     
                 
@@ -573,19 +571,6 @@
 
             
 <ul class="docs-mobile-nav__list">
-
-<li class="link ">
-        <a
-            href="../migrating-crud-button.html"
-            
-            
-            
-            data-path="gettingstarted/migration/migrating-crud-button.html"
-            
-        >
-            FCrudButton
-        </a>
-    </li>
 
 <li class="link ">
         <a
@@ -6132,17 +6117,6 @@
             
 <ul><li class="link ">
         <a
-            href="../migrating-crud-button.html"
-            
-            
-            
-            data-path="gettingstarted/migration/migrating-crud-button.html"
-            
-        >
-            FCrudButton
-        </a>
-    </li><li class="link ">
-        <a
             href="../migrating-to-fieldset.html"
             
             
@@ -6345,72 +6319,14 @@
                     </div>
                     
 
-                    <div id="docs-content"><h2 id="temavarden_i_forkompilerad_css" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#temavarden_i_forkompilerad_css">Temavärden i förkompilerad CSS</a></h2><p class="docs-paragraph">I version 7 innehåller den förkompilerade CSS-filen från <code>@fkui/design</code> inte längre reservvärden för FKUI:s CSS-variabler.
-Tidigare kunde CSS-filen använda dessa värden när ett tema inte hade laddats.
-Nu behöver temat finnas på sidan för att komponenternas utseende ska bli korrekt.</p>
-<p class="docs-paragraph">Ändringen görs eftersom reservvärdena bara utgick från det ljusa temat.
-I mörkt läge kunde därför ljusa reservvärden användas och ge felaktiga färger.
-Genom att ta bort reservvärdena används i stället värdena från det tema som applikationen har laddat.</p>
-<h3 id="migrering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#migrering">Migrering</a></h3><p class="docs-paragraph">Om du använder Sass, importera temat före design-systemet som tidigare:</p>
-
-                <div
-                    id="example-f5b3ae"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-addition">+ @use &quot;@fkui/theme-default&quot;;</span>
-@use &quot;@fkui/design&quot;;
-</code></pre>
-                </div>
-            <p class="docs-paragraph">Om du använder den förkompilerade CSS-filen från <code>@fkui/design</code>, lägg även till standardtemats CSS på sidan:</p>
-
-            <div
-                id="example-21d597"
-                class="code-preview code-preview--default"
-                
-                
-                
-                data-language="html"
-            >
-                
-                <div class="code-preview__preview user-background">
-                    <link
-    rel="stylesheet"
-    href="node_modules/@fkui/theme-default/dist/theme-light.css"
-/>
-<link rel="stylesheet" href="node_modules/@fkui/design/lib/fkui.min.css" />
-
-                </div>
-                <div>
-            <button
-                type="button"
-                class="code-preview__button code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <svg focusable="false" class="docs-icon" aria-hidden="true">
-                    <use href="#docs-icon-code"></use>
-                </svg>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">link</span>
-    <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span>
-    <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;node_modules/@fkui/theme-default/dist/theme-light.css&quot;</span>
-/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;node_modules/@fkui/design/lib/fkui.min.css&quot;</span> /&gt;</span>
-</code></pre>
-                </div>
-            </div>
-        <p class="docs-paragraph">Om applikationen använder ett eget tema ska det i stället tillhandahålla de CSS-variabler som FKUI-komponenterna använder.</p>
+                    <div id="docs-content"><h2 id="temavarden_i_forkompilerad_css" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#temavarden_i_forkompilerad_css">Temavärden i förkompilerad CSS</a></h2><p class="docs-paragraph">Ändringen gäller dig som använder FKUI:s förkompilerade CSS-fil (<code>@fkui/design/lib/fkui.min.css</code>).
+Om du använder Sass och importerar temat före <code>@fkui/design</code> påverkas du inte av ändringen.</p>
+<p class="docs-paragraph">I version 7 innehåller den förkompilerade CSS-filen från <code>@fkui/design</code> inte längre något standardtema.
+Tidigare räckte det att ladda in den filen för att använda FKUI:s komponenter.
+Nu behöver du även ladda in ett tema för att komponenterna ska få rätt utseende.</p>
+<p class="docs-paragraph">Ändringen görs eftersom den förkompilerade CSS-filen tidigare bara utgick från det ljusa temat, vilket kunde ge felaktiga färger i mörkt läge.</p>
+<p class="docs-paragraph">Nu används i stället det tema som applikationen har laddat.</p>
+<h3 id="migrering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#migrering">Migrering</a></h3><p class="docs-paragraph">Instruktioner för hur du laddar in FKUI:s CSS och tema finns på sidan <a href="../../use-design-system/getting-started-application.html">Ta fram applikation</a>.</p>
 
 
                     </div>
@@ -6479,9 +6395,9 @@ Genom att ta bort reservvärdena används i stället värdena från det tema som
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">drop-designfallback</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/e16c64c8d113df948c39471700cc0a629bb160de">e16c64c</a>)<br />
+<div class="version"><span class="version-text-block">drop-designfallback</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/79060c8749064a9be1c5ccf164670b89ef8f1cae">79060c8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1854">PR 1854</a><br />
-       <span class="version-text-block">2026-11-19 06:54</span>
+       <span class="version-text-block">2026-11-19 09:46</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
