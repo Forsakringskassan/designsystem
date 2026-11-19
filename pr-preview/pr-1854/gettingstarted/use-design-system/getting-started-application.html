@@ -6424,36 +6424,25 @@ I exemplet nedan importeras styling för enbart inmatningsfält och flerradigt i
                 </div>
             <p class="docs-paragraph">Notera: variabeln <code>$global</code> måste sättas till <code>false</code> annars sätts samtliga variabler på <code>:root</code> selector.</p>
 <h3 id="css" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#css">CSS</a></h3><p class="docs-paragraph">Om din applikation inte använder Sass ska du istället placera <code>@fkui/design/lib/fkui.min.css</code> i en assets-katalog.
-Placera även <code>@fkui/theme-default/dist/theme-light.css</code> och <code>@fkui/theme-default/dist/theme-dark.css</code> i assets-katalogen.
-Om temat ska följa användarens systeminställning kan du ange båda temana med varsitt <code>media</code>-villkor.
-Ladda design-systemets CSS efter temafilerna:</p>
+Placera även <code>@fkui/theme-default/dist/theme-auto.css</code> i assets-katalogen. Den filen väljer automatiskt ljust eller mörkt tema utifrån användarens systeminställning.
+Ladda design-systemets CSS efter temafilen:</p>
 
                 <div
-                    id="example-7911d5"
+                    id="example-2b0085"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
                     data-language="html"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">link</span>
-    <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span>
-    <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;assets/theme-light.css&quot;</span>
-    <span class="hljs-attr">media</span>=<span class="hljs-string">&quot;(prefers-color-scheme: light)&quot;</span>
-/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span>
-    <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span>
-    <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;assets/theme-dark.css&quot;</span>
-    <span class="hljs-attr">media</span>=<span class="hljs-string">&quot;(prefers-color-scheme: dark)&quot;</span>
-/&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;assets/theme-auto.css&quot;</span> /&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;assets/fkui.min.css&quot;</span> /&gt;</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Om applikationen har en egen inställning för ljust eller mörkt tema ska den i stället aktivera motsvarande temafil.</p>
-<p class="docs-paragraph">Om du behöver importera styling till javascript:</p>
+            <p class="docs-paragraph">Om du behöver importera styling till javascript:</p>
 
                 <div
-                    id="example-230f88"
+                    id="example-d55956"
                     class="code-preview code-preview--default"
                     
                     
@@ -6471,7 +6460,7 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
 <p class="docs-paragraph">Importera ikonbiblioteket genom att lägga nedan i applikationens index.ts eller motsvarande:</p>
 
                 <div
-                    id="example-ff951b"
+                    id="example-d17b70"
                     class="code-preview code-preview--default"
                     
                     
@@ -6487,7 +6476,7 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
 Importera den genom:</p>
 
                 <div
-                    id="example-051aa8"
+                    id="example-2bff76"
                     class="code-preview code-preview--default"
                     
                     
@@ -6570,9 +6559,9 @@ Du bygger då ett nytt ikonbibliotek.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">drop-designfallback</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/26ae637cf043e8fe1723b1bd28ce6a577ea52700">26ae637</a>)<br />
+<div class="version"><span class="version-text-block">drop-designfallback</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/e16c64c8d113df948c39471700cc0a629bb160de">e16c64c</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1854">PR 1854</a><br />
-       <span class="version-text-block">2026-11-19 06:37</span>
+       <span class="version-text-block">2026-11-19 06:54</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
