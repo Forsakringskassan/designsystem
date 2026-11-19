@@ -1,17 +1,21 @@
 <script setup lang="ts">
 import { useTemplateRef } from "vue";
+import FruitFormModal from "./FruitFormModal.vue";
 import { type FruitData, fruits } from "./fruit-data";
 import {
+    type FCrudDatasetCommitAdd,
+    type FCrudDatasetCommitEdit,
+    type FCrudDatasetCommitRemove,
     FCrudDataset,
     FTable,
-    FTextField,
-    FTextareaField,
     defineTableColumns,
     useDatasetRef,
+    useModal,
 } from "@fkui/vue";
 
 const rows = useDatasetRef(fruits, "variant");
 const crud = useTemplateRef("crud");
+const { formModal, confirmModal } = useModal();
 const columns = defineTableColumns([
     { type: "text", header: "Namn", key: "name", size: "shrink" },
     { type: "text", header: "Land", key: "origin", size: "shrink" },
@@ -39,74 +43,56 @@ const columns = defineTableColumns([
     },
 ]);
 
-function saveModel(row: FruitData): void {
-    console.log("Post model to backend", row);
+async function onAdd(commit: FCrudDatasetCommitAdd<FruitData>): Promise<void> {
+    try {
+        const fruit = await formModal<FruitData>(FruitFormModal, {
+            props: {
+                heading: "Lägg till frukt",
+                confirmText: "Lägg till",
+                fruit: { id: String(rows.value.length + 1), name: "", origin: "", description: "" },
+            },
+        });
+        console.log("Post model to backend", fruit);
+        commit(fruit, `Frukten ${fruit.name} har lagts till`);
+    } catch {
+        /* user cancelled */
+    }
+}
+
+async function onEdit(fruit: FruitData, commit: FCrudDatasetCommitEdit<FruitData>): Promise<void> {
+    try {
+        const modified = await formModal<FruitData>(FruitFormModal, {
+            props: { heading: "Ändra frukt", confirmText: "Spara", fruit },
+        });
+        console.log("Post model to backend", modified);
+        commit(modified, `Frukten ${modified.name} har ändrats`);
+    } catch {
+        /* user cancelled */
+    }
+}
+
+async function onRemove(fruit: FruitData, commit: FCrudDatasetCommitRemove): Promise<void> {
+    const confirmed = await confirmModal({
+        heading: "Ta bort frukt",
+        content: `Vill du verkligen radera frukten "${fruit.name}" med ID ${fruit.id}?`,
+        confirm: "Ja, ta bort",
+        dismiss: "Nej, avbryt",
+    });
+    if (!confirmed) {
+        return;
+    }
+
+    console.log("Delete model from backend", fruit);
+    commit(`Frukten ${fruit.name} har tagits bort`);
 }
 </script>
 
 <template>
-    <f-crud-dataset
-        ref="crud"
-        v-model="rows"
-        @created="saveModel"
-        @updated="saveModel"
-        @deleted="saveModel"
-    >
+    <f-crud-dataset ref="crud" v-model="rows" :on-add :on-edit :on-remove>
         <template #default>
             <f-table :rows :columns striped>
                 <template #caption> <b>Frukter</b> </template>
             </f-table>
-        </template>
-        <template #modify="{ item }">
-            <f-text-field
-                v-model="item.name"
-                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
-                type="text"
-            >
-                Namn
-            </f-text-field>
-            <f-text-field
-                v-model="item.origin"
-                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
-                type="text"
-            >
-                Land
-            </f-text-field>
-            <f-textarea-field v-model="item.description" v-validation.required>
-                Beskrivning
-            </f-textarea-field>
-            ID {{ item.id }}
-        </template>
-
-        <template #add="{ item }">
-            <f-text-field
-                v-model="item.id"
-                v-validation.required.maxLength="{ maxLength: { length: 4 } }"
-                type="text"
-            >
-                ID
-            </f-text-field>
-            <f-text-field
-                v-model="item.name"
-                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
-                type="text"
-            >
-                Namn
-            </f-text-field>
-            <f-text-field
-                v-model="item.origin"
-                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
-                type="text"
-            >
-                Land
-            </f-text-field>
-            <f-textarea-field v-model="item.description" v-validation.required>
-                Beskrivning
-            </f-textarea-field>
-        </template>
-
-        <template #delete="{ item }">
-            Vill du verkligen radera frukten "{{ item.name }}" med ID {{ item.id }}
         </template>
     </f-crud-dataset>
 </template>

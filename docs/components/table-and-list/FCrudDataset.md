@@ -17,6 +17,18 @@ Datamändgredigeraren används för att erbjuda användare funktionerna "lägg t
 Komponenten ansvarar inte för hur datamängden och åtgärderna "lägg till", "ändra" och "ta bort" presenteras.
 Vanligtvis används lista eller tabell för presentation men kan även vara egenutvecklad.
 
+Komponenten öppnar inga modaler själv.
+Istället anropas `onAdd`, `onEdit` och `onRemove` när användaren vill lägga till, ändra eller ta bort en rad.
+Det är applikationens ansvar att exempelvis öppna en modal med {@link useModal `formModal()` eller `confirmModal()`} och sedan anropa callbacken `commit` när åtgärden ska genomföras.
+Om `commit` inte anropas (till exempel om användaren avbryter) lämnas datamängden oförändrad.
+
+- `onAdd(commit)`: anropa `commit(item)` med det nya objektet för att lägga till det.
+- `onEdit(item, commit)`: anropa `commit(modified)` med det ändrade objektet.
+- `onRemove(item, commit)`: anropa `commit()` för att ta bort objektet.
+
+Knappen "Lägg till ny" visas endast när `onAdd` är satt.
+Minst en av `onAdd`, `onEdit` och `onRemove` måste anges.
+
 Om knappens visuella text för "ändra" och "ta bort" inte tydligt identifierar raden från andra rader,
 behöver knappen kompletteras med en text för skärmläsare.
 Beroende på sammanhang kan även knappen för "lägg till ny" behöva kompletteras med en skärmläsartext,
@@ -36,31 +48,39 @@ FCrudDatasetTableExample.vue
 
 ## Förpopulera objekt
 
-Använd propen `beforeCreate` med en callback som returnerar ett objekt för att förpopulera data som ska läggas till.
-Callback anropas innan modalen visas.
+Eftersom applikationen själv skapar objektet i `onAdd` kan det förpopuleras innan modalen öppnas, till exempel med ett id:
 
-```html static
-<f-crud-dataset :before-create="onBeforeCreate">
-    <template #default> ... </template>
-</f-crud-dataset>
-```
+```ts static
+import { useModal } from "@fkui/vue";
+import { type FCrudDatasetCommitAdd } from "@fkui/vue";
 
-```ts
-/* eslint-disable-next-line @typescript-eslint/no-empty-object-type */
-interface MyInterface {}
+interface MyItem {
+    id: string;
+    name: string;
+}
+
+const MyModal = { template: "<div></div>" };
+
+const { formModal } = useModal();
 
 /* --- cut above --- */
 
-function onBeforeCreate(): MyInterface {
-    return {/* ... */};
+async function onAdd(commit: FCrudDatasetCommitAdd<MyItem>): Promise<void> {
+    try {
+        const item = await formModal<MyItem>(MyModal, {
+            props: { item: { id: crypto.randomUUID(), name: "" } },
+        });
+        commit(item);
+    } catch {
+        /* användaren avbröt */
+    }
 }
 ```
 
 ## Knappordning
 
-Standardinställningen för knappordningen i modalerna för "Lägg till" och "Ändra" är att primärknappen ligger först följt av sekundärknappen.
-Standardinställningen för modalen "Ta bort" är att sekundärknappen ligger först följt av primärknappen.
-Du kan ändra knappordningen för bekräftelsemodalen och därmed ändra knappordningen för modalen "Ta bort" genom inställning av {@link config#referens buttonOrder} i konfigurationen.
+Knappordningen i modalerna styrs av modalerna som applikationen öppnar.
+Se {@link FModal} och {@link config#referens buttonOrder} i konfigurationen.
 
 ## Knapposition
 
@@ -73,7 +93,7 @@ Använd slotten `#buttons` för att lägga till egna anpassade lägg-till knappa
 Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.
 
 ```html compare=base
-<f-crud-dataset>
+<f-crud-dataset :on-add>
     <template #default> ... </template>
     <template #buttons="{ buttonClasses }">
         <button type="button" :class="buttonClasses" @click="onClick">
@@ -93,7 +113,7 @@ FCrudDatasetAdditionalButtons.vue
 FCrudDatasetTableCreateExample.vue
 ```
 
-## Tabell med knapp
+## Tabell med redigera-knapp
 
 ```import
 FCrudDatasetTableUpdateExample.vue
@@ -113,45 +133,55 @@ FCrudDatasetSortListExample.vue
 
 ## Anpassade texter
 
-Rubriker i modaler kan anpassas antingen med textnycklar (standardtexter för alla datamängdredigerare) eller med propar (för en specifik datamängdredigerare):
+### Modaler
 
-- Lägg till: textnyckel `fkui.crud-dataset.modal.header.add` eller prop `addNewModalHeader`.
-- Ändra: textnyckel `fkui.crud-dataset.modal.header.modify` eller prop `modifyModalHeader`.
-- Ta bort: textnyckel `fkui.crud-dataset.modal.header.delete` eller prop `deleteModalHeader`.
+Rubriker, innehåll och knapptexter i modalerna styrs helt av applikationen.
+Det finns inga standardtexter för modalernas knappar, ange alltid texter som beskriver åtgärden, till exempel "Lägg till" och "Spara" i formulärmodalen eller "Ja, ta bort" och "Nej, avbryt" i bekräftelsemodalen.
 
-Knapptexter i modaler kan anpassas med textnycklar.
+### Knappar
 
-- Lägg till: textnycklar `fkui.crud-dataset.modal.confirm.add` och `fkui.crud-dataset.modal.cancel.add`.
-- Ändra: textnycklar `fkui.crud-dataset.modal.confirm.modify` och `fkui.crud-dataset.modal.cancel.modify`.
-- Ta bort: textnycklar `fkui.crud-dataset.modal.confirm.delete` och `fkui.crud-dataset.modal.cancel.delete`.
+Knapptexten för "Lägg till ny" kan anpassas med textnyckel `fkui.crud-dataset.button.add` eller slotten `add-button`.
 
-Knappentexten för "Lägg till" kan anpassas med textnyckel `fkui.crud-dataset.button.add` eller slotten `add-button`.
+Knappar för "ändra" och "ta bort" anges av applikationen själv.
+Om den synliga texten inte räcker kompletteras den med en text för skärmläsare.
+På samma sätt kan "Lägg till ny" behöva kompletteras med vad som läggs till, till exempel "Lägg till ny frukt".
+
+Använd klassen `sr-only` för text som endast ska läsas upp av skärmläsare:
+
+```html static
+<f-crud-dataset :on-add :on-edit>
+    <template #default="{ updateItem }">
+        <f-button
+            type="button"
+            variant="tertiary"
+            size="small"
+            @click="updateItem(item)"
+        >
+            Ändra <span class="sr-only">{{ item.name }}</span>
+        </f-button>
+    </template>
+    <template #add-button>
+        Lägg till ny <span class="sr-only">frukt</span>
+    </template>
+</f-crud-dataset>
+```
+
+I en tabell anges skärmläsartexten med `screenreaderText` på kolumner av typen `button` eller `menu`, till exempel `` screenreaderText: (row) => `Ändra ${row.name}` ``.
+
+### Uppläsning för skärmläsare
+
+När `commit` anropas läses ett meddelande upp för skärmläsare.
+Meddelandet kan ändras på två sätt:
+
+- Generellt för alla datamängdredigerare med textnycklar, se {@link FCrudDataset#textnycklar textnycklar}.
+- Specifikt för ett enskilt anrop med argumentet `alert` till `commit`.
+
+Standardtexterna är generella, till exempel "Raden har tagits bort".
+Skicka helst med ett meddelande som är specifikt för innehållet, så att användaren vet vilken rad som påverkades.
 
 ```import
 FCrudDatasetCustomTextExample.vue
 ```
-
-## Modalstorlek
-
-Storleken på modalerna för "Lägg till" och "Ändra" kan anpassas med propen `formModalSize`.
-
-Giltiga värden är:
-
-- `""` (tom sträng, standard)
-- `"small"`
-- `"medium"`
-- `"large"`
-- `"fullwidth"`
-
-```html static
-<f-crud-dataset form-modal-size="large">
-    <template #default> ... </template>
-    <template #add> ... </template>
-    <template #modify> ... </template>
-</f-crud-dataset>
-```
-
-Se {@link FFormModal} för mer information om modalstorlekar.
 
 ## Textnycklar
 

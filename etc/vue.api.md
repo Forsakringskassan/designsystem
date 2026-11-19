@@ -26,7 +26,6 @@ import { formatPersonnummer } from '@fkui/logic';
 import { formatPostalCode } from '@fkui/logic';
 import { FYear } from '@fkui/date';
 import { HTMLAttributes } from 'vue';
-import { IfAny } from '@vue/shared';
 import { InjectionKey } from 'vue';
 import { MaybeRef } from 'vue';
 import { MaybeRefOrGetter } from 'vue';
@@ -53,7 +52,6 @@ import { Slot } from 'vue';
 import { Slots } from 'vue';
 import { StackHandle } from '@fkui/logic';
 import { TranslateFunction } from '@fkui/logic';
-import { UnwrapRef } from 'vue';
 import { ValidatableHTMLElement } from '@fkui/logic';
 import { ValidationConfigUpdateDetail } from '@fkui/logic';
 import { ValidatorConfigs } from '@fkui/logic';
@@ -319,6 +317,24 @@ export const FContextMenu: typeof __VLS_export_7;
 //
 // @public (undocumented)
 export const FCrudDataset: typeof __VLS_export_8;
+
+// @public
+export type FCrudDatasetAddCallback<T> = (commit: FCrudDatasetCommitAdd<T>) => void;
+
+// @public
+export type FCrudDatasetCommitAdd<T> = (item: T, alert?: string) => void;
+
+// @public
+export type FCrudDatasetCommitEdit<T> = (item?: T, alert?: string) => void;
+
+// @public
+export type FCrudDatasetCommitRemove = (alert?: string) => void;
+
+// @public
+export type FCrudDatasetEditCallback<T> = (item: T, commit: FCrudDatasetCommitEdit<T>) => void;
+
+// @public
+export type FCrudDatasetRemoveCallback<T> = (item: T, commit: FCrudDatasetCommitRemove) => void;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_55" needs to be exported by the entry point index.d.ts
 //

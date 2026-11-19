@@ -1,9 +1,10 @@
 import FTableCrudDatasetExample from "./FTableCrudDatasetExample.vue";
-import { FCrudDatasetPageObject } from "@fkui/vue/cypress";
+import { FCrudDatasetPageObject, FModalPageObject } from "@fkui/vue/cypress";
 import { FTablePageObject } from "@fkui/vue/cypress";
 
 const crudDataset = new FCrudDatasetPageObject();
 const table = new FTablePageObject();
+const modal = new FModalPageObject(".modal");
 
 describe("FTableCrudDatasetExample", () => {
     beforeEach(() => {
@@ -36,7 +37,7 @@ describe("FTableCrudDatasetExample", () => {
         cy.get(".modal input").eq(1).clear();
         cy.get(".modal input").eq(1).type("Beskrivning för ärende D");
 
-        crudDataset.confirmButton().click();
+        modal.primaryButton().click();
 
         table.cell({ row: 4, col: 1 }).should("contain.text", "Ärende D");
         table
@@ -56,7 +57,7 @@ describe("FTableCrudDatasetExample", () => {
         cy.get(".modal input").eq(1).clear();
         cy.get(".modal input").eq(1).type("Uppdaterad beskrivning");
 
-        crudDataset.confirmButton().click();
+        modal.primaryButton().click();
 
         table
             .cell({ row: 1, col: 1 })
@@ -72,7 +73,7 @@ describe("FTableCrudDatasetExample", () => {
 
         table.contextmenuItems().eq(1).click();
 
-        crudDataset.confirmButton().click();
+        modal.primaryButton().click();
 
         cy.contains(".table-ng tbody tr", "Ärende B").should("not.exist");
         cy.contains(".table-ng tbody tr", "Beskrivning för ärende B").should(
@@ -89,7 +90,7 @@ describe("FTableCrudDatasetExample", () => {
 
         table.contextmenuItems().eq(0).click();
 
-        crudDataset.cancelButton().click();
+        modal.secondaryButton().click();
 
         table.cell({ row: 1, col: 3 }).find("button").should("have.focus");
     });

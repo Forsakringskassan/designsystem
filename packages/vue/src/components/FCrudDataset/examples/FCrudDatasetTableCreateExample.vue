@@ -1,58 +1,46 @@
 <script setup lang="ts">
+import FruitFormModal from "./FruitFormModal.vue";
 import { type FruitData, fruits } from "./fruit-data";
 import {
+    type FCrudDatasetCommitAdd,
     FCrudDataset,
     FTable,
-    FTextField,
-    FTextareaField,
     defineTableColumns,
     useDatasetRef,
+    useModal,
 } from "@fkui/vue";
 
 const rows = useDatasetRef(fruits);
+const { formModal } = useModal();
 const columns = defineTableColumns<FruitData>([
     { type: "text", header: "Namn", key: "name", size: "shrink" },
     { type: "text", header: "Land", key: "origin", size: "shrink" },
     { type: "text", header: "Beskrivning", key: "description" },
 ]);
 
-function saveModel(row: FruitData): void {
-    console.log("Post model to backend", row);
+async function onAdd(commit: FCrudDatasetCommitAdd<FruitData>): Promise<void> {
+    try {
+        const fruit = await formModal<FruitData>(FruitFormModal, {
+            props: {
+                heading: "Lägg till frukt",
+                confirmText: "Lägg till",
+                fruit: { id: String(rows.value.length + 1), name: "", origin: "", description: "" },
+            },
+        });
+        console.log("Post model to backend", fruit);
+        commit(fruit, `Frukten ${fruit.name} har lagts till`);
+    } catch {
+        /* user cancelled */
+    }
 }
 </script>
 
 <template>
-    <f-crud-dataset v-model="rows" @created="saveModel" @updated="saveModel" @deleted="saveModel">
+    <f-crud-dataset v-model="rows" :on-add>
         <template #default>
             <f-table :rows :columns>
-                <template #caption> <b>Rättigheter</b> </template>
+                <template #caption> <b>Frukter</b> </template>
             </f-table>
-        </template>
-        <template #add="{ item }">
-            <f-text-field
-                v-model="item.id"
-                v-validation.required.maxLength="{ maxLength: { length: 4 } }"
-                type="text"
-            >
-                ID
-            </f-text-field>
-            <f-text-field
-                v-model="item.name"
-                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
-                type="text"
-            >
-                Namn
-            </f-text-field>
-            <f-text-field
-                v-model="item.origin"
-                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
-                type="text"
-            >
-                Land
-            </f-text-field>
-            <f-textarea-field v-model="item.description" v-validation.required>
-                Beskrivning
-            </f-textarea-field>
         </template>
     </f-crud-dataset>
 </template>
