@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { type FruitData, fruits } from "../../FCrudDataset/examples/fruit-data";
-import { FSortFilterDataset, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { FSortFilterDataset, FTable, defineTableColumns } from "@fkui/vue";
 
-const rows = useDatasetRef([...fruits]);
+const rows = [...fruits];
 const columns = defineTableColumns<FruitData>([
     { type: "text", header: "Namn", key: "name", size: "shrink" },
     { type: "text", header: "Land", key: "origin", size: "shrink" },

@@ -1,6 +1,5 @@
-<script setup lang="ts" generic="T extends object, TArray extends Dataset<T> | T[] = Dataset<T> | T[]">
-import { type Ref, computed, onMounted, provide, ref, watch } from "vue";
-import { type Dataset, isDataset, toDataset } from "../../utils/dataset";
+<script setup lang="ts" generic="T extends object">
+import { computed, onMounted, provide, ref, shallowRef, watch } from "vue";
 import { type FPaginateDatasetPageEventDetail } from "../FPaginator";
 import { useSortFilterDatasetEvents } from "../FSortFilterDataset";
 import { provideSelectableRowSource, useSelectableRowSource } from "../FTable";
@@ -26,7 +25,7 @@ const {
     /**
      * The items to be used. The items will be used in the given array order.
      */
-    items?: TInfered;
+    items?: T[];
 
     /**
      * The number of items per page (at most).
@@ -46,17 +45,15 @@ const {
      * @param firstItemIndex - The index of the first item on the page.
      * @param lastItemIndex - The index of the last item on the page.
      */
-    fetchData?(firstItemIndex: number, lastItemIndex: number): TInfered | Promise<TInfered>;
+    fetchData?(firstItemIndex: number, lastItemIndex: number): T[] | Promise<T[]>;
 }>();
 
 defineEmits<{
     "update:modelValue": [page: number];
 }>();
 
-type TInfered = TArray extends Dataset<infer U> ? Dataset<U> : TArray;
-
 // References fetched data
-const fetchedData = ref(null as TInfered | null) as Ref<TInfered | null>;
+const fetchedData = shallowRef<T[] | null>(null);
 
 // References status of ongoing data fetching
 const dataFetchingInProgress = ref(false);
@@ -66,20 +63,14 @@ const firstItemIndex = computed(() => Math.max(0, itemsPerPage * (currentPage.va
 const lastItemIndex = computed(() => Math.min(itemsPerPage * currentPage.value, numberOfItems.value));
 
 // Computes array of items on current page
-const currentPageItems = computed<TInfered>((): TInfered => {
+const currentPageItems = computed<T[]>((): T[] => {
     if (fetchedData.value) {
         return fetchedData.value;
     }
 
     const pageItems = items.slice(firstItemIndex.value, lastItemIndex.value);
 
-    if (isDataset<T>(items)) {
-        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- false positive */
-        return toDataset(pageItems, items) as TInfered;
-    }
-
-    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- false positive */
-    return pageItems as TInfered;
+    return pageItems;
 });
 
 // Computes number of items on current page

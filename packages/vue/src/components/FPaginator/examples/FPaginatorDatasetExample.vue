@@ -5,8 +5,6 @@ import {
     FList,
     FPaginateDataset,
     FPaginator,
-    getDatasetMetadata,
-    useDatasetRef,
 } from "@fkui/vue";
 
 interface Row {
@@ -14,7 +12,7 @@ interface Row {
     children?: Row[];
 }
 
-const items = useDatasetRef<Row>(
+const items: Row[] =
     /* page 1 */
     [
         {
@@ -45,16 +43,10 @@ const items = useDatasetRef<Row>(
         {
             name: "Farmor Anka",
         },
-    ],
-    "children",
-);
+    ];
 
 function itemDefinitions(row: Row): FDefinitionListItem[] {
-    const meta = getDatasetMetadata(row);
-    return [
-        { term: "Namn", definition: row.name },
-        { term: "Radindex", definition: String(meta.ariaRowIndex) },
-    ];
+    return [{ term: "Namn", definition: row.name }];
 }
 </script>
 

@@ -31,10 +31,6 @@ Ange den nästlade egenskapens namn med `expandable-attribute`:
 <f-table :rows :columns expandable-attribute="nested"></f-table>
 ```
 
-::: info
-Tidigare angavs den nästlade egenskapens namn via {@link useDatasetRef `useDatasetRef()`} (numera deprekerad).
-:::
-
 ## Följa existerande kolumner
 
 Tabellen presenterar rader med nästlad data som expanderade rader.

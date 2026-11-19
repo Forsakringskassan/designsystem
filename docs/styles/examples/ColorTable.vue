@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { h } from "vue";
 import { type SassVariable } from "@fkui/theme-default/dist/palette.json";
-import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
 
-const props = defineProps<{ colors: SassVariable[] }>();
+const { colors: rows } = defineProps<{ colors: SassVariable[] }>();
 
 const columns = defineTableColumns<SassVariable>([
     { type: "text", header: "Namn", key: "name", size: "shrink" },
@@ -23,8 +23,6 @@ const columns = defineTableColumns<SassVariable>([
         },
     },
 ]);
-
-const rows = useDatasetRef(props.colors);
 </script>
 
 <template>
