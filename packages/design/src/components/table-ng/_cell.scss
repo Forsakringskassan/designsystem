@@ -30,8 +30,7 @@ $cell-border-width: 1px;
 
     input,
     button,
-    a,
-    [role="combobox"] {
+    a {
         &:focus-visible {
             box-shadow: none;
         }
@@ -323,7 +322,7 @@ $cell-border-width: 1px;
     }
 }
 
-.table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) {
+.table-ng__cell--select:has([aria-expanded="true"]) {
     background: transparent;
 
     .table-ng__editable,
@@ -400,22 +399,13 @@ $cell-border-width: 1px;
         border-radius: 0;
     }
 
-    .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable,
-    .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable:hover,
-    .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable:hover:not(:focus-within),
-    .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable:focus,
-    .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable:focus-within {
-        box-shadow: none;
-        border-radius: 0;
-    }
-
     .table-ng [tabindex="0"]:focus-visible {
         outline: $table-ng-selection-outline solid CanvasText;
         outline-offset: -$table-ng-selection-outline;
         background: transparent;
     }
 
-    .table-ng__cell :is(button, a, input, select, [role="combobox"]):focus-visible {
+    .table-ng__cell :is(button, a, input, select, [tabindex="0"]):focus-visible {
         outline: none;
     }
 }
