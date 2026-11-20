@@ -4,17 +4,21 @@
 
 ```ts
 
+import { AllowedComponentProps } from 'vue';
 import { App } from 'vue';
 import { AppContext } from 'vue';
 import { BankAccountNumberString } from '@fkui/logic';
 import { BankgiroString } from '@fkui/logic';
 import { ClearingnumberString } from '@fkui/logic';
 import { Component } from 'vue';
+import { ComponentCustomProps } from 'vue';
 import { ComponentOptions } from 'vue';
+import { ComponentOptionsBase } from 'vue';
 import { ComponentOptionsMixin } from 'vue';
 import { ComponentProvideOptions } from 'vue';
 import { ComponentPublicInstance } from 'vue';
 import { ComputedRef } from 'vue';
+import { CreateComponentPublicInstanceWithMixins } from 'vue';
 import { DefineComponent } from 'vue';
 import { Directive } from 'vue';
 import { ExtractPropTypes } from 'vue';
@@ -25,6 +29,8 @@ import { formatNumber } from '@fkui/logic';
 import { formatPersonnummer } from '@fkui/logic';
 import { formatPostalCode } from '@fkui/logic';
 import { FYear } from '@fkui/date';
+import { GlobalComponents } from 'vue';
+import { GlobalDirectives } from 'vue';
 import { HTMLAttributes } from 'vue';
 import { IfAny } from '@vue/shared';
 import { InjectionKey } from 'vue';
@@ -59,6 +65,7 @@ import { ValidationConfigUpdateDetail } from '@fkui/logic';
 import { ValidatorConfigs } from '@fkui/logic';
 import { ValidityEvent } from '@fkui/logic';
 import { VNode } from 'vue';
+import { VNodeProps } from 'vue';
 import { WeekdayNaming } from '@fkui/date';
 
 // @internal (undocumented)
@@ -406,10 +413,10 @@ export interface FDialogueTreeUserProgress {
 // @public (undocumented)
 export const FEmailTextField: typeof __VLS_export_56;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_export_85" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_export_86" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FErrorHandlingApp: typeof __VLS_export_85;
+export const FErrorHandlingApp: typeof __VLS_export_86;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_14" needs to be exported by the entry point index.d.ts
 //
@@ -1102,6 +1109,11 @@ export const ICalendarMonthGrid: typeof __VLS_export_81;
 //
 // @public (undocumented)
 export const ICalendarNavbar: typeof __VLS_export_82;
+
+// Warning: (ae-forgotten-export) The symbol "__VLS_export_85" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const ICloseButton: typeof __VLS_export_85;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_83" needs to be exported by the entry point index.d.ts
 //
