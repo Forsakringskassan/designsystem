@@ -372,6 +372,33 @@ describe("ITableText", () => {
         expect(row.text).toBe("Mjauu");
     });
 
+    it("should update the input when the column value changes programmatically", async () => {
+        expect.assertions(2);
+        const row = reactive({ text: "Foo" });
+        const column = normalizeTableColumn<typeof row, keyof typeof row>({
+            type: "text",
+            header: "Text",
+            key: "text",
+            editable: true,
+        });
+        const wrapper = mount(ITableText, {
+            attachTo: document.body,
+            props: { row, column } as never,
+            global: { stubs: { IPopupError: true } },
+        });
+        await flushPromises();
+
+        row.text = "Bar";
+        await flushPromises();
+        expect(wrapper.get<HTMLInputElement>("input").element.value).toBe(
+            "Bar",
+        );
+
+        row.text = "";
+        await flushPromises();
+        expect(wrapper.get<HTMLInputElement>("input").element.value).toBe("");
+    });
+
     it("should remove event listeners from the input when it is removed", async () => {
         expect.assertions(2);
         const row = reactive({ unlocked: true, text: "" });
