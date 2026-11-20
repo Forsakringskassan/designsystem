@@ -19576,10 +19576,17 @@ var _hoisted_2$1 = { class: "scenario__status" };
 var _hoisted_3$1 = { class: "scenario__info" };
 var _hoisted_4$1 = { class: "scenario__code" };
 var _hoisted_5$1 = { class: "scenario__demo" };
-var _hoisted_6$1 = { class: "scenario__log" };
-var _hoisted_7$1 = { class: "scenario__log-header" };
-var _hoisted_8 = { key: 0 };
-var _hoisted_9 = { key: 1 };
+var _hoisted_6$1 = { class: "scenario__rows" };
+var _hoisted_7$1 = { key: 0 };
+var _hoisted_8 = { key: 1 };
+var _hoisted_9 = {
+	key: 2,
+	class: "scenario__code"
+};
+var _hoisted_10 = { class: "scenario__log" };
+var _hoisted_11 = { class: "scenario__log-header" };
+var _hoisted_12 = { key: 0 };
+var _hoisted_13 = { key: 1 };
 // src/views/ScenarioPanel.vue
 var ScenarioPanel_default = /* @__PURE__ */ defineComponent({
 	__name: "ScenarioPanel",
@@ -19587,10 +19594,15 @@ var ScenarioPanel_default = /* @__PURE__ */ defineComponent({
 		title: {},
 		usage: {},
 		instruction: {},
-		state: {}
+		state: {},
+		rows: { default: () => void 0 },
+		rowsNote: { default: () => void 0 }
 	},
 	emits: ["reset"],
 	setup(__props) {
+		function formatRows(items) {
+			return items.map((it) => JSON.stringify(it)).join("\n");
+		}
 		const status = computed(() => {
 			if (__props.state.ops === 0) return {
 				kind: "idle",
@@ -19615,15 +19627,21 @@ var ScenarioPanel_default = /* @__PURE__ */ defineComponent({
 					createBaseVNode("dd", null, toDisplayString(__props.instruction), 1)
 				]),
 				createBaseVNode("div", _hoisted_5$1, [renderSlot(_ctx.$slots, "default")]),
-				createBaseVNode("div", _hoisted_6$1, [
-					createBaseVNode("div", _hoisted_7$1, [_cache[3] || (_cache[3] = createBaseVNode("strong", null, "Händelselogg", -1)), createBaseVNode("button", {
+				createBaseVNode("div", _hoisted_6$1, [createBaseVNode("strong", null, [
+					_cache[3] || (_cache[3] = createTextVNode(" Aktuell data i föräldern (", -1)),
+					_cache[4] || (_cache[4] = createBaseVNode("code", null, "rows", -1)),
+					_cache[5] || (_cache[5] = createTextVNode(")", -1)),
+					__props.rows ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [createTextVNode(" – " + toDisplayString(__props.rows.length) + " rader", 1)], 64)) : createCommentVNode("", true)
+				]), !__props.rows ? (openBlock(), createElementBlock("p", _hoisted_7$1, toDisplayString(__props.rowsNote ?? "(ingen data)"), 1)) : __props.rows.length === 0 ? (openBlock(), createElementBlock("p", _hoisted_8, "(tom)")) : (openBlock(), createElementBlock("pre", _hoisted_9, toDisplayString(formatRows(__props.rows)), 1))]),
+				createBaseVNode("div", _hoisted_10, [
+					createBaseVNode("div", _hoisted_11, [_cache[6] || (_cache[6] = createBaseVNode("strong", null, "Händelselogg", -1)), createBaseVNode("button", {
 						type: "button",
 						onClick: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("reset"))
 					}, "Rensa")]),
-					__props.state.log.length > 0 ? (openBlock(), createElementBlock("ol", _hoisted_8, [(openBlock(true), createElementBlock(Fragment, null, renderList(__props.state.log, (entry, index) => {
+					__props.state.log.length > 0 ? (openBlock(), createElementBlock("ol", _hoisted_12, [(openBlock(true), createElementBlock(Fragment, null, renderList(__props.state.log, (entry, index) => {
 						return openBlock(), createElementBlock("li", { key: index }, toDisplayString(entry), 1);
-					}), 128))])) : (openBlock(), createElementBlock("p", _hoisted_9, "(tom)")),
-					_cache[4] || (_cache[4] = createBaseVNode("p", { class: "scenario__legend" }, "▶ = commit() anropades \xA0 ⚡ = update:modelValue emittades", -1))
+					}), 128))])) : (openBlock(), createElementBlock("p", _hoisted_13, "(tom)")),
+					_cache[7] || (_cache[7] = createBaseVNode("p", { class: "scenario__legend" }, "▶ = commit() anropades \xA0 ⚡ = update:modelValue emittades", -1))
 				])
 			], 2);
 		};
@@ -19773,6 +19791,7 @@ var DefaultView_default = /* @__PURE__ */ defineComponent({
 					usage: usage1,
 					instruction: "Klicka på Lägg till ny, Ändra och Ta bort. Listan uppdateras alltid, men loggen saknar ⚡ för lägg till och ändra.",
 					state: unref(scenario1).state,
+					rows: deepRef.value,
 					onReset: _cache[2] || (_cache[2] = ($event) => unref(scenario1).reset())
 				}, {
 					default: withCtx(() => [createVNode(unref(FCrudDataset_default), {
@@ -19804,12 +19823,13 @@ var DefaultView_default = /* @__PURE__ */ defineComponent({
 						"onUpdate:modelValue"
 					])]),
 					_: 1
-				}, 8, ["state"]),
+				}, 8, ["state", "rows"]),
 				createVNode(ScenarioPanel_default, {
 					title: "2. :model-value + @update:model-value",
 					usage: usage2,
 					instruction: "Klicka på Lägg till ny och Ändra: listan ändras inte och ingen ⚡ loggas. Klicka sedan på Ta bort: ⚡ loggas och listan uppdateras (och visar plötsligt även tidigare tillägg).",
 					state: unref(scenario2).state,
+					rows: controlled.value,
 					onReset: _cache[3] || (_cache[3] = ($event) => unref(scenario2).reset())
 				}, {
 					default: withCtx(() => [createVNode(unref(FCrudDataset_default), {
@@ -19840,12 +19860,13 @@ var DefaultView_default = /* @__PURE__ */ defineComponent({
 						"on-remove"
 					])]),
 					_: 1
-				}, 8, ["state"]),
+				}, 8, ["state", "rows"]),
 				createVNode(ScenarioPanel_default, {
 					title: "3. shallowRef + v-model",
 					usage: usage3,
 					instruction: "Klicka på Lägg till ny och Ändra: arrayen muteras men ingen reaktivitet triggas, så listan ändras inte. Ta bort fungerar.",
 					state: unref(scenario3).state,
+					rows: shallow.value,
 					onReset: _cache[5] || (_cache[5] = ($event) => unref(scenario3).reset())
 				}, {
 					default: withCtx(() => [createVNode(unref(FCrudDataset_default), {
@@ -19877,12 +19898,13 @@ var DefaultView_default = /* @__PURE__ */ defineComponent({
 						"onUpdate:modelValue"
 					])]),
 					_: 1
-				}, 8, ["state"]),
+				}, 8, ["state", "rows"]),
 				createVNode(ScenarioPanel_default, {
 					title: "4. Utan v-model",
 					usage: usage4,
 					instruction: "Klicka på Lägg till ny. Ingen ⚡ loggas, så konsumenten får aldrig veta att något lades till. Före PR:en emittades update:modelValue här.",
 					state: unref(scenario4).state,
+					"rows-note": "(finns inte: ingen modelValue skickas in, så föräldern har ingen data att visa)",
 					onReset: _cache[6] || (_cache[6] = ($event) => unref(scenario4).reset())
 				}, {
 					default: withCtx(() => [createVNode(unref(FCrudDataset_default), {

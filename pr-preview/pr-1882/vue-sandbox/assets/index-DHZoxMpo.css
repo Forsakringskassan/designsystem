@@ -7261,6 +7261,10 @@ body {
     font-size: 0.9em;
 }
 
+.scenario__rows {
+    margin-block: 1rem;
+}
+
 .sandbox-root {
     width: min(100% - 2rem, 80ch);
     margin: auto;
