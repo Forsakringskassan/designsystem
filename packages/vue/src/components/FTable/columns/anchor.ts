@@ -18,6 +18,12 @@ export interface TableColumnAnchor<
     key?: K;
     /** Link text */
     text(this: void, row: T): string | null;
+    /** Name of an icon to display on the left side of the anchor text. **/
+    iconLeft?: string;
+    /** Name of an icon to display on the right side of the anchor text. **/
+    iconRight?: string;
+    /** Target attribute on link, default is `"_blank"`**/
+    target?: "_blank" | "_self" | "_parent" | "_top";
     /** Link destination */
     href: string | ((this: void, row: T) => string);
 }
@@ -35,6 +41,9 @@ export interface NormalizedTableColumnAnchor<
         column: NormalizedTableColumnAnchor<T, K>;
     }>;
     text(this: void, row: T): string | null;
+    iconRight?: string;
+    iconLeft?: string;
+    target: "_blank" | "_self" | "_parent" | "_top";
     href(this: void, row: T): string;
 }
 
@@ -47,6 +56,9 @@ export function normalizeAnchorColumn<T, K extends keyof T>(
     return {
         type: "anchor",
         text: getValueFn(column.text, column.key, String, ""),
+        iconLeft: column.iconLeft,
+        iconRight: column.iconRight,
+        target: column.target ?? "_blank",
         href:
             typeof column.href === "function"
                 ? column.href
