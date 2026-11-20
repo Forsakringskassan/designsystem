@@ -160,6 +160,26 @@ describe("events", () => {
         // then
         expect(li.classes()).toContain("imenu__list__item--highlight");
     });
+
+    it("should set aria-current on selected item", async () => {
+        expect.assertions(2);
+        const wrapper = mount(FNavigationMenu, {
+            props: {
+                route: "",
+                routes: testItems,
+            },
+        });
+        await expect
+            .poll(() => wrapper.findAll(".imenu__list__item"))
+            .toHaveLength(4);
+        const a = wrapper.findAll(".imenu__list__item a")[1];
+
+        await a.trigger("click");
+
+        await expect
+            .poll(() => a.element.getAttribute("aria-current"))
+            .toBe("page");
+    });
 });
 
 describe("html-validate", () => {

@@ -418,6 +418,7 @@ export default defineComponent({
                         :target="item.target"
                         class="imenu__list__anchor"
                         role="menuitem"
+                        :aria-current="item.key === selectedItem ? 'page' : undefined"
                     >
                         <span v-if="showItemSrText(index)" class="sr-only">
                             <span>{{ selectedItemSrText }}&nbsp;</span>
