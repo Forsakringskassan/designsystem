@@ -301642,6 +301642,56 @@ function cloneScripts(element3, href) {
     script2.replaceWith(copy4);
   }
 }
+function setActive(navigation2, link3) {
+  const listItem = link3.closest("li");
+  if (!listItem) {
+    return;
+  }
+  listItem.classList.add("active");
+  const groups = navigation2.querySelectorAll("li.expandable");
+  for (const group2 of groups) {
+    if (!group2.contains(link3)) {
+      continue;
+    }
+    group2.classList.add("active");
+    const details = group2.querySelector(":scope > details");
+    if (details) {
+      details.open = true;
+    }
+  }
+}
+function updateSidenav(newPage) {
+  const navigation2 = document.querySelector("#docs-sidenav nav");
+  if (!navigation2) {
+    return;
+  }
+  for (const element3 of navigation2.querySelectorAll(".active")) {
+    element3.classList.remove("active");
+  }
+  const links3 = navigation2.querySelectorAll(
+    "li.link a[data-path]"
+  );
+  for (const link3 of links3) {
+    const { path: path4 } = link3.dataset;
+    if (!path4) {
+      continue;
+    }
+    const newPageLink = newPage.querySelector(
+      `#docs-sidenav a[data-path="${CSS.escape(path4)}"]`
+    );
+    if (!newPageLink) {
+      continue;
+    }
+    const href = newPageLink.getAttribute("href");
+    if (href) {
+      link3.setAttribute("href", href);
+    }
+    const isActiveOnNewPage = newPageLink.closest("li.link.active") !== null;
+    if (isActiveOnNewPage) {
+      setActive(navigation2, link3);
+    }
+  }
+}
 async function replaceContent(href) {
   const response = await fetch(href);
   const body = await response.text();
@@ -301663,21 +301713,7 @@ async function replaceContent(href) {
     headerTarget.replaceWith(importedHeader);
     footerTarget.replaceWith(footer2);
   }
-  const anchorSelector = "#docs-sidenav li.link a";
-  const anchorLinks = document.querySelectorAll(anchorSelector);
-  for (const link3 of anchorLinks) {
-    const { path: path4 } = link3.dataset;
-    if (!path4) {
-      continue;
-    }
-    const element4 = doc.querySelector(
-      `#docs-sidenav a[data-path="${CSS.escape(path4)}"]`
-    );
-    const href2 = element4?.getAttribute("href");
-    if (href2) {
-      link3.setAttribute("href", href2);
-    }
-  }
+  updateSidenav(doc);
   document.documentElement.dataset.rootUrl = rootUrl;
   document.title = doc.title;
   target.replaceWith(element3);
@@ -301689,16 +301725,10 @@ async function replaceContent(href) {
   }
   window.dispatchEvent(new Event("docs:navigation"));
 }
-function getParentElement(el, depth) {
-  if (depth === 0) {
-    return null;
-  }
-  return el.parentElement?.closest("li.link, li.expandable") ?? null;
-}
 function hasModifierkey(event3) {
   return event3.ctrlKey || event3.altKey || event3.metaKey || event3.shiftKey;
 }
-function replaceContentOnClick(toggle2, navigation2, link3) {
+function replaceContentOnClick(toggle2, link3) {
   const { href } = link3;
   link3.addEventListener("click", async (event3) => {
     if (hasModifierkey(event3)) {
@@ -301709,13 +301739,6 @@ function replaceContentOnClick(toggle2, navigation2, link3) {
     history.pushState("", "", href);
     previousPath = location.pathname;
     window.scrollTo({ top: 0, behavior: "smooth" });
-    const current = navigation2.querySelectorAll(".active");
-    for (const element3 of current) {
-      element3.classList.remove("active");
-    }
-    for (let parent4 = link3.parentElement, maxDepth = 5; parent4; parent4 = getParentElement(parent4, maxDepth--)) {
-      parent4.classList.add("active");
-    }
     const heading = document.querySelector("main h1");
     if (heading) {
       heading.setAttribute("tabindex", "-1");
@@ -301773,7 +301796,7 @@ if (toggle && navigation) {
     if (rel2 === "external") {
       continue;
     }
-    replaceContentOnClick(toggle, navigation, link3);
+    replaceContentOnClick(toggle, link3);
   }
   window.addEventListener("popstate", () => {
     if (previousPath !== location.pathname) {
