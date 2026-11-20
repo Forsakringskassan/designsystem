@@ -19,12 +19,10 @@ const {
     data,
     sortableAttributes,
     defaultSortAttribute = "",
-    /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-    showSort = true,
-    /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-    showFilter = true,
+    showSort,
+    showFilter,
     filterLabel = undefined,
-    /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
+    /* eslint-disable-next-line vue/no-boolean-default -- reasonable default */
     defaultSortAscending = true,
     filterAttributes = undefined,
 } = defineProps<{

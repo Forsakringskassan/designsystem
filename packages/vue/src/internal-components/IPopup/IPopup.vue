@@ -82,25 +82,18 @@ export default defineComponent({
         keyboardTrap: {
             type: Boolean,
             required: false,
-            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-            default: true,
         },
         /**
-         * Function that returns the element that will receive focus
+         * Automatically move focus when popup is opened.
+         *
+         * - When set to `true` it focuses on the first tabbable element.
+         * - When set to `false` focus is disabled.
+         * - When set to a function it focuses on the returned element (or disabled focus if `null` is returned).
          */
-        focusElement: {
-            type: Function as PropType<() => HTMLElement | null>,
+        focus: {
+            type: [Function as PropType<() => HTMLElement | null>, PropType<boolean>],
             required: false,
             default: null,
-        },
-        /**
-         * Set focus on first tabbable element (or element in the `focusElement` prop if provided) when opened.
-         */
-        setFocus: {
-            type: Boolean,
-            required: false,
-            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-            default: true,
         },
     },
     emits: [
