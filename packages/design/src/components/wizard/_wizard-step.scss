@@ -32,7 +32,6 @@ $icon-size: 30px;
         "wizard-step__icon-container wizard-step__header" min-content
         "wizard-step__content wizard-step__content" min-content
         / min-content 1fr;
-    gap: 0 0.5rem;
 
     &:first-of-type {
         #{$line-up-selector} {
@@ -81,6 +80,10 @@ $icon-size: 30px;
             opacity 400ms ease-out;
     }
 
+    #{$form-body-selector} {
+        margin-left: 0.5rem;
+    }
+
     #{$form-border-container} {
         @include core.breakpoint-down(sm) {
             display: none;
@@ -97,12 +100,14 @@ $icon-size: 30px;
 
     #{$header-selector} {
         grid-area: wizard-step__header;
+        margin-left: 0.5rem;
     }
 
     #{$step-of-selector} {
         color: $wizardstep-color-stepofselector-text;
         font-weight: normal;
         font-size: 1rem;
+        margin-left: 0.5rem;
     }
 
     #{$line-down-selector},
