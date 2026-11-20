@@ -1,67 +1,47 @@
 import { defineComponent } from "vue";
-import {
-    FConfirmModal,
-    FFormModal,
-    FInteractiveTable,
-    FModal,
-    FTableButton,
-    FTableColumn,
-    FTextField,
-} from "..";
+import { FInteractiveTable, FTableButton, FTableColumn } from "..";
 import { FInteractiveTablePageObject } from "../../cypress";
-import { type ListItem } from "../../types";
 import FCrudDataset from "./FCrudDataset.vue";
 import ListExample from "./examples/FCrudDatasetListExample.vue";
 
-const ADD_TEMPLATE = /* HTML */ `
-    <template #add="{ item }">
-        <span> add </span>
-        <input id="id-input" type="number" v-model.number="item.id" />
-        <input id="name-input" type="text" v-model="item.name" />
-    </template>
-`;
+interface Item {
+    id: number;
+    name: string;
+}
 
-const MODIFY_TEMPLATE = /* HTML */ `
-    <template #modify="{ item }">
-        <span> modify </span>
-        <input id="name-input" type="text" v-model="item.name" />
-        <input id="child-name-input" type="text" v-model="item.child.name" />
-    </template>
-`;
-
-const DELETE_TEMPLATE = /* HTML */ `
-    <template #delete="{ item }">
-        <span> delete </span>
-        {{ item.name }}?
-    </template>
-`;
-
-function mountComponent(templates = new Array<string>()): void {
-    // Because we generate the template we intentionally do not use the end tag </f-crud-dataset>
-    // in the following const string:
-    const templateStart = `
-        <div>
-            <f-crud-dataset
-                v-model="items"
-                @created="onCreatedEvent"
-                @updated="onUpdatedEvent"
-                @deleted="onDeletedEvent"
-            >
+function mountComponent(): void {
+    const TestComponent = defineComponent({
+        components: { FCrudDataset, FTableButton },
+        data() {
+            return {
+                items: [
+                    { id: 1, name: "a" },
+                    { id: 2, name: "b" },
+                    { id: 3, name: "c" },
+                ] as Item[],
+            };
+        },
+        methods: {
+            onAdd(commit: (item: Item) => void): void {
+                commit({ id: 4, name: "d" });
+            },
+            onEdit(item: Item, commit: (item: Item) => void): void {
+                commit({ ...item, name: `${item.name}-modified` });
+            },
+            onRemove(_item: Item, commit: () => void): void {
+                commit();
+            },
+        },
+        template: /* HTML */ `
+            <f-crud-dataset v-model="items" :on-add :on-edit :on-remove>
                 <template #default="{ updateItem, deleteItem }">
                     <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">id</th>
-                                <th scope="col">name</th>
-                            </tr>
-                        </thead>
                         <tbody>
                             <tr v-for="item in items" :key="item.id">
-                                <td :id="'item'+item.id">{{ item.id }}</td>
-                                <td>{{ item.name }}</td>
+                                <td :id="'item' + item.id">{{ item.name }}</td>
                                 <td>
                                     <f-table-button
-                                        :id="'modifyButton'+item.id"
+                                        :id="'modifyButton' + item.id"
                                         icon="pen"
                                         label
                                         @click="updateItem(item)"
@@ -71,7 +51,7 @@ function mountComponent(templates = new Array<string>()): void {
                                 </td>
                                 <td>
                                     <f-table-button
-                                        :id="'deleteButton'+item.id"
+                                        :id="'deleteButton' + item.id"
                                         icon="trashcan"
                                         label
                                         @click="deleteItem(item)"
@@ -83,136 +63,31 @@ function mountComponent(templates = new Array<string>()): void {
                         </tbody>
                     </table>
                 </template>
-    `;
-    // the end tag of the root component f-crud-dataset
-    const templateEnd = "</f-crud-dataset>";
-
-    const testDataTemplate =
-        "<pre id='deletedEventData'> {{ getDeletedEventData() }} </pre></div>";
-
-    // generate the template middle part
-    let templateMiddle = "";
-    for (const t of templates) {
-        templateMiddle += t;
-    }
-
-    // generate the complete template
-    const testComponentTemplate = templateStart
-        .concat(templateMiddle)
-        .concat(templateEnd);
-
-    const TestComponent = defineComponent({
-        template: testComponentTemplate + testDataTemplate,
-        components: {
-            FConfirmModal,
-            FCrudDataset,
-            FFormModal,
-            FModal,
-            FTableButton,
-        },
-        data() {
-            return {
-                items: [
-                    { id: 1, name: "a", child: { name: "a1" } },
-                    { id: 2, name: "b", child: { name: "b1" } },
-                    { id: 3, name: "c", child: { name: "c1" } },
-                ],
-                createdEventData: null as null | ListItem,
-                updatedEventData: null as null | ListItem,
-                deletedEventData: null as null | ListItem,
-            };
-        },
-        methods: {
-            onCreatedEvent(item: ListItem): void {
-                this.createdEventData = item;
-            },
-            onUpdatedEvent(item: ListItem): void {
-                this.updatedEventData = item;
-            },
-            onDeletedEvent(item: ListItem): void {
-                this.deletedEventData = item;
-            },
-            getDeletedEventData(): string {
-                return JSON.stringify(this.deletedEventData);
-            },
-        },
+            </f-crud-dataset>
+        `,
     });
 
-    cy.mount(TestComponent, {});
+    cy.mount(TestComponent);
 }
 
-describe("Editing items", () => {
-    it("should modify item values and persist the changes", () => {
-        const rows = [{ name: "Adam" }, { name: "Carl" }];
-
-        const TestComponent = defineComponent({
-            components: {
-                FCrudDataset,
-                FInteractiveTable,
-                FTableButton,
-                FTableColumn,
-                FTextField,
-            },
-            data() {
-                return {
-                    name: rows,
-                };
-            },
-            template: /* HTML */ `
-                <f-crud-dataset v-model="name">
-                    <template #default="{ updateItem }">
-                        <f-interactive-table :rows="name">
-                            <template #caption> <b>Namn</b> </template>
-                            <template #default="{ row }">
-                                <f-table-column title="Namn" type="text" shrink>
-                                    {{ row.name }}
-                                </f-table-column>
-                                <f-table-column
-                                    title="Åtgärd"
-                                    type="action"
-                                    shrink
-                                >
-                                    <f-table-button
-                                        icon="pen"
-                                        @click="updateItem(row)"
-                                    >
-                                        Ändra {{ row.name }}
-                                    </f-table-button>
-                                </f-table-column>
-                            </template>
-                        </f-interactive-table>
-                    </template>
-                    <template #modify="{ item }">
-                        <f-text-field
-                            id="name"
-                            v-model="item.name"
-                            v-validation.required.maxLength="{ maxLength: { length: 32 } }"
-                            type="text"
-                        >
-                            Namn
-                        </f-text-field>
-                    </template>
-                </f-crud-dataset>
-            `,
-        });
-        cy.mount(TestComponent);
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
-        const table = new FInteractiveTablePageObject();
-
-        table.row(1).find(".button").click();
-        cy.get("#name").type("-Kalle");
-        cy.get(".modal .button--primary").click();
+describe("FCrudDataset", () => {
+    it("should add item when onAdd commits", () => {
+        mountComponent();
+        cy.get("#item4").should("not.exist");
+        cy.get('[data-test="f-crud-dataset-add-button"]').click();
+        cy.get("#item4").should("have.trimmedText", "d");
     });
-});
 
-describe("item delete", () => {
-    it("should delete item after click on delete and click on confirmation", () => {
-        mountComponent([ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE]);
-        // Check that item with id item1 exists
+    it("should modify item when onEdit commits", () => {
+        mountComponent();
+        cy.get("#modifyButton1").click();
+        cy.get("#item1").should("have.trimmedText", "a-modified");
+    });
+
+    it("should remove item when onRemove commits", () => {
+        mountComponent();
         cy.get("#item1").should("exist");
         cy.get("#deleteButton1").click();
-        cy.get(".modal .button--primary").click();
-        // Check that row 1 and item with id item1 do not exist after delete
         cy.get("#item1").should("not.exist");
     });
 
@@ -236,8 +111,13 @@ describe("item delete", () => {
                     rows,
                 };
             },
+            methods: {
+                onRemove(_item: unknown, commit: () => void): void {
+                    commit();
+                },
+            },
             template: /* HTML */ `
-                <f-crud-dataset v-model="rows">
+                <f-crud-dataset v-model="rows" :on-remove>
                     <template #default="{ deleteItem }">
                         <f-interactive-table
                             :rows
@@ -268,10 +148,6 @@ describe("item delete", () => {
                             </template>
                         </f-interactive-table>
                     </template>
-                    <template #delete="{ item }">
-                        <span> Delete </span>
-                        {{ item.name }}?
-                    </template>
                 </f-crud-dataset>
             `,
         });
@@ -289,7 +165,6 @@ describe("item delete", () => {
         table.row(4).should("not.exist");
 
         table.row(1).find(".button").click();
-        cy.get(".modal .button--primary").click();
 
         table.bodyRow().should("have.length", 3);
         table.cell({ row: 1, col: 1 }).should("have.trimmedText", "a");
@@ -297,20 +172,24 @@ describe("item delete", () => {
         table.cell({ row: 3, col: 1 }).should("have.trimmedText", "b");
         table.row(3).should("not.exist");
     });
+});
 
-    it("should emit deleted event when items are deleted", () => {
-        mountComponent([ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE]);
-        // Check that item with id item1 exists
-        cy.get("#item1").should("exist");
-        cy.get("#deletedEventData").should("trimmedText", "null");
-        cy.get("#deleteButton1").click();
+describe("example with modals", () => {
+    it("should edit item using form modal", () => {
+        cy.mount(ListExample);
+        cy.get("#example_item_1 .button").eq(0).click();
+        cy.get(".modal input").eq(0).clear();
+        cy.get(".modal input").eq(0).type("Päron");
         cy.get(".modal .button--primary").click();
-        const item1 = JSON.stringify({
-            id: 1,
-            name: "a",
-            child: { name: "a1" },
-        });
-        cy.get("#deletedEventData").contains(item1);
+        cy.get("#example_item_1 h3").should("have.trimmedText", "Päron");
+    });
+
+    it("should remove item using confirm modal", () => {
+        cy.mount(ListExample);
+        cy.get(".list__item").should("have.length", 4);
+        cy.get("#example_item_1 .button").eq(1).click();
+        cy.get(".modal .button--primary").click();
+        cy.get(".list__item").should("have.length", 3);
     });
 });
 

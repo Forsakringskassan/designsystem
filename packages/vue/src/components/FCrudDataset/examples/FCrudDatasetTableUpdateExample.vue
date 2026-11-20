@@ -1,10 +1,19 @@
 <script setup lang="ts">
 import { useTemplateRef } from "vue";
+import FruitFormModal from "./FruitFormModal.vue";
 import { type FruitData, fruits } from "./fruit-data";
-import { FCrudDataset, FTable, FTextField, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import {
+    type FCrudDatasetCommitEdit,
+    FCrudDataset,
+    FTable,
+    defineTableColumns,
+    useDatasetRef,
+    useModal,
+} from "@fkui/vue";
 
 const rows = useDatasetRef(fruits);
 const crud = useTemplateRef("crud");
+const { formModal } = useModal();
 const columns = defineTableColumns([
     { type: "text", header: "Namn", key: "name", size: "shrink" },
     { type: "text", header: "Land", key: "origin", size: "shrink" },
@@ -20,32 +29,25 @@ const columns = defineTableColumns([
     },
 ]);
 
-function saveModel(row: FruitData): void {
-    console.log("Post model to backend", row);
+async function onEdit(fruit: FruitData, commit: FCrudDatasetCommitEdit<FruitData>): Promise<void> {
+    try {
+        const modified = await formModal<FruitData>(FruitFormModal, {
+            props: { heading: "Ändra frukt", confirmText: "Spara", fruit },
+        });
+        console.log("Post model to backend", modified);
+        commit(modified, `Frukten ${modified.name} har ändrats`);
+    } catch {
+        /* user cancelled */
+    }
 }
 </script>
 
 <template>
-    <f-crud-dataset
-        ref="crud"
-        v-model="rows"
-        @created="saveModel"
-        @updated="saveModel"
-        @deleted="saveModel"
-    >
+    <f-crud-dataset ref="crud" v-model="rows" :on-edit>
         <template #default>
             <f-table :rows :columns>
                 <template #caption> <b>Frukter</b> </template>
             </f-table>
-        </template>
-        <template #modify="{ item }">
-            <f-text-field
-                v-model="item.name"
-                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
-                type="text"
-            >
-                Namn
-            </f-text-field>
         </template>
     </f-crud-dataset>
 </template>

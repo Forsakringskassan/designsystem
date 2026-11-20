@@ -1,57 +1,15 @@
-<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
-<script lang="ts">
-import { defineComponent } from "vue";
-import { type FruitData, fruits } from "./fruit-data";
-import { FButton, FCrudDataset, FList, FStaticField, FTextField, FTextareaField } from "@fkui/vue";
+<script setup lang="ts">
+import { ref } from "vue";
+import { type FruitData, fruits as initialFruits } from "./fruit-data";
+import { useFruitCrud } from "./use-fruit-crud";
+import { FButton, FCrudDataset, FList } from "@fkui/vue";
 
-export default defineComponent({
-    name: "ExampleApp",
-    components: {
-        FButton,
-        FCrudDataset,
-        FList,
-        FStaticField,
-        FTextField,
-        FTextareaField,
-    },
-    data() {
-        return {
-            fruits,
-        };
-    },
-    methods: {
-        // Förpopulera ett objekt med värden
-        beforeCreate(): FruitData {
-            return {
-                id: String(this.getMaxId() + 1),
-                name: "",
-                origin: "",
-                description: "",
-            };
-        },
-        getMaxId() {
-            return this.fruits.reduce((max, item) => {
-                return Math.max(max, Math.trunc(Number(item.id)));
-            }, 0);
-        },
-        saveModel(row: FruitData) {
-            console.log("Post model to backend", row);
-        },
-    },
-});
+const fruits = ref<FruitData[]>(initialFruits);
+const { onAdd, onEdit, onRemove } = useFruitCrud(fruits);
 </script>
 
 <template>
-    <f-crud-dataset
-        v-model="fruits"
-        :before-create
-        add-new-modal-header="Lägg till ny frukt"
-        modify-modal-header="Ändra land"
-        delete-modal-header="Vill du ta bort frukten?"
-        @created="saveModel"
-        @updated="saveModel"
-        @deleted="saveModel"
-    >
+    <f-crud-dataset v-model="fruits" :on-add :on-edit :on-remove>
         <template #default="{ updateItem, deleteItem }">
             <f-list :items="fruits" element-id="example" key-attribute="id">
                 <template #default="{ item }">
@@ -99,42 +57,5 @@ export default defineComponent({
             </f-list>
         </template>
         <template #add-button> Lägg till ny <span class="sr-only"> frukt </span> </template>
-        <template #add="{ item }">
-            <f-text-field
-                v-model="item.name"
-                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
-                type="text"
-            >
-                Namn
-            </f-text-field>
-            <f-text-field
-                v-model="item.origin"
-                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
-                type="text"
-            >
-                Land
-            </f-text-field>
-            <f-textarea-field v-model="item.description" v-validation.required>
-                Beskrivning
-            </f-textarea-field>
-        </template>
-
-        <template #modify="{ item }">
-            <f-static-field v-model="item.name" type="text">
-                <template #label> Namn </template>
-                <template #default> {{ item.name }}</template>
-            </f-static-field>
-            <f-textarea-field
-                v-model="item.origin"
-                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
-                type="text"
-            >
-                Land
-            </f-textarea-field>
-        </template>
-
-        <template #delete="{ item }">
-            Vill du verkligen ta bort frukten "{{ item.name }}" med ID {{ item.id }}
-        </template>
     </f-crud-dataset>
 </template>

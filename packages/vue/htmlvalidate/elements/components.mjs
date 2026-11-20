@@ -1091,17 +1091,44 @@ export default defineMetadata({
     "f-crud-dataset": {
         flow: true,
         interactive: true,
-        slots: ["default", "add", "delete", "modify", "add-button", "buttons"],
+        slots: ["default", "add-button", "buttons"],
         requiredSlots: ["default"],
         attributes: {
-            value: ["/.*/"],
-            beforeCreate: ["/.*/"],
-            "form-modal-size": {
-                enum: ["small", "medium", "large", "fullwidth"],
-            },
-            "add-button-position": {
+            "button-position": {
                 required: false,
                 enum: ["bottom", "top"],
+            },
+            "before-create": {
+                deprecated:
+                    "prop has been removed, open modals from `onAdd`, `onEdit` or `onRemove` instead",
+            },
+            "before-submit": {
+                deprecated:
+                    "prop has been removed, open modals from `onAdd`, `onEdit` or `onRemove` instead",
+            },
+            "before-validation": {
+                deprecated:
+                    "prop has been removed, open modals from `onAdd`, `onEdit` or `onRemove` instead",
+            },
+            "on-cancel": {
+                deprecated:
+                    "prop has been removed, open modals from `onAdd`, `onEdit` or `onRemove` instead",
+            },
+            "add-new-modal-header": {
+                deprecated:
+                    "prop has been removed, open modals from `onAdd`, `onEdit` or `onRemove` instead",
+            },
+            "modify-modal-header": {
+                deprecated:
+                    "prop has been removed, open modals from `onAdd`, `onEdit` or `onRemove` instead",
+            },
+            "delete-modal-header": {
+                deprecated:
+                    "prop has been removed, open modals from `onAdd`, `onEdit` or `onRemove` instead",
+            },
+            "form-modal-size": {
+                deprecated:
+                    "prop has been removed, open modals from `onAdd`, `onEdit` or `onRemove` instead",
             },
         },
     },

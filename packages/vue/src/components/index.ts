@@ -14,6 +14,12 @@ export {
 export {
     type ActivateItemCallback,
     type ActivateItemInterface,
+    type FCrudDatasetAddCallback,
+    type FCrudDatasetCommitAdd,
+    type FCrudDatasetCommitEdit,
+    type FCrudDatasetCommitRemove,
+    type FCrudDatasetEditCallback,
+    type FCrudDatasetRemoveCallback,
     ActivateItemInjected,
     FCrudDataset,
     Operation,

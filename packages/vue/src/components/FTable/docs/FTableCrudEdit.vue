@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from "vue";
+import FTableCrudEditModal from "./FTableCrudEditModal.vue";
 import {
+    type FCrudDatasetCommitEdit,
+    type FCrudDatasetCommitRemove,
     type TableColumn,
     FCrudDataset,
-    FCurrencyTextField,
-    FSelectField,
     FTable,
     defineTableColumns,
+    useModal,
 } from "@fkui/vue";
 
 interface Row {
@@ -15,20 +17,8 @@ interface Row {
     pris?: number;
 }
 
-const lander = [
-    "",
-    "Colombia",
-    "Costa Rica",
-    "Dominikanska republiken",
-    "Ecuador",
-    "Frankrike",
-    "Italien",
-    "Spanien",
-    "Sverige",
-    "Sydafrika",
-];
-
 const crud = useTemplateRef("crud");
+const { formModal, confirmModal } = useModal();
 
 const columns: Array<TableColumn<Row>> = defineTableColumns<Row>([
     {
@@ -88,25 +78,34 @@ const rows = ref<Row[]>([
         pris: 22,
     },
 ]);
+
+async function onEdit(row: Row, commit: FCrudDatasetCommitEdit<Row>): Promise<void> {
+    try {
+        commit(await formModal<Row>(FTableCrudEditModal, { props: { row } }));
+    } catch {
+        /* user cancelled */
+    }
+}
+
+async function onRemove(row: Row, commit: FCrudDatasetCommitRemove): Promise<void> {
+    const confirmed = await confirmModal({
+        heading: "Ta bort frukt",
+        content: `Vill du verkligen ta bort "${row.namn}"?`,
+        confirm: "Ja, ta bort",
+        dismiss: "Nej, avbryt",
+    });
+    if (confirmed) {
+        commit();
+    }
+}
 </script>
 
 <template>
-    <f-crud-dataset ref="crud" v-model="rows">
+    <f-crud-dataset ref="crud" v-model="rows" :on-edit :on-remove>
         <template #default>
             <f-table ref="table" :rows :columns striped>
                 <template #caption><span class="sr-only">Redigera innehåll-exempel</span></template>
             </f-table>
         </template>
-
-        <template #modify="{ item }">
-            <f-select-field v-model="item.land">
-                <template #label>Land</template>
-                <option disabled hidden value="">Välj..</option>
-                <option v-for="land in lander" :key="land">{{ land }}</option>
-            </f-select-field>
-            <f-currency-text-field v-model="item.pris"> Pris </f-currency-text-field>
-        </template>
-
-        <template #delete="{ item }"> Vill du verkligen ta bort "{{ item.namn }}"? </template>
     </f-crud-dataset>
 </template>
