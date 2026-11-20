@@ -6409,17 +6409,20 @@ Applikationen ansvarar för att öppna modaler, till exempel med <a href="../../
 <p class="docs-paragraph">Följande har tagits bort:</p>
 <ul>
 <li>Slottarna <code>#add</code>, <code>#modify</code> och <code>#delete</code>.</li>
-<li>Propparna <code>beforeCreate</code>, <code>beforeSubmit</code>, <code>beforeValidation</code>, <code>onCancel</code>, <code>addNewModalHeader</code>, <code>modifyModalHeader</code>, <code>deleteModalHeader</code> och <code>formModalSize</code>. Motsvarande värden skickas istället direkt till modalerna.</li>
-<li>Eventen <code>created</code>, <code>updated</code> och <code>deleted</code>. Applikationen vet själv när den anropar <code>commit</code>.</li>
+<li>Propparna <code>beforeCreate</code>, <code>beforeSubmit</code>, <code>beforeValidation</code>, <code>onCancel</code>, <code>addNewModalHeader</code>, <code>modifyModalHeader</code>, <code>deleteModalHeader</code> och <code>formModalSize</code>.
+Motsvarande värden skickas istället direkt till modalerna.</li>
+<li>Eventen <code>created</code>, <code>updated</code> och <code>deleted</code>.
+Applikationen vet själv när den anropar <code>commit</code>.</li>
 <li>Textnycklarna för modalernas rubriker och knappar (<code>fkui.crud-dataset.modal.*</code>).
 Det finns inga standardtexter längre, så applikationen behöver själv ange knapptexterna.
 För samma beteende som tidigare: &quot;Lägg till&quot; och &quot;Avbryt&quot; när en rad läggs till, &quot;Spara&quot; och &quot;Avbryt&quot; när en rad ändras samt &quot;Ja, ta bort&quot; och &quot;Nej, avbryt&quot; när en rad tas bort.</li>
-<li>Metoderna <code>cancelButton()</code>, <code>confirmButton()</code> och egenskapen <code>form</code> från <code>FCrudDatasetPageObject</code> samt <code>cancelButton()</code> och <code>confirmButton()</code> från <code>FCrudDatasetSelectors</code>. Använd <code>FModalPageObject</code> eller <code>FModalSelectors</code> istället.</li>
+<li>Metoderna <code>cancelButton()</code>, <code>confirmButton()</code> och egenskapen <code>form</code> från <code>FCrudDatasetPageObject</code> samt <code>cancelButton()</code> och <code>confirmButton()</code> från <code>FCrudDatasetSelectors</code>.
+Använd <code>FModalPageObject</code> eller <code>FModalSelectors</code> istället.</li>
 </ul>
 <p class="docs-paragraph">Knappen &quot;Lägg till ny&quot; visas när <code>onAdd</code> är satt (tidigare när slotten <code>#add</code> fanns).</p>
 
                 <div
-                    id="example-29e46a"
+                    id="example-c57e7d"
                     class="code-preview code-preview--default"
                     
                     
@@ -6440,7 +6443,7 @@ För samma beteende som tidigare: &quot;Lägg till&quot; och &quot;Avbryt&quot; 
                 </div>
             
                 <div
-                    id="example-92c843"
+                    id="example-8311c3"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -6488,10 +6491,13 @@ För samma beteende som tidigare: &quot;Lägg till&quot; och &quot;Avbryt&quot; 
                 </summary>
                 <p class="docs-paragraph">För varje användning av <code>FCrudDataset</code>:</p>
 <ol>
-<li>Flytta innehållet i slottarna <code>#add</code> och <code>#modify</code> till en ny komponent som använder <code>FFormModal</code> med propparna <code>isOpen</code>, <code>value</code> och vidarebefordrar <code>close</code>-eventet. Komponenten ska redigera en kopia av objektet.</li>
-<li>Lägg till <code>onAdd(commit)</code> som öppnar modalen med <code>formModal()</code> från <code>useModal()</code>, med objektet som tidigare returnerades av <code>beforeCreate</code>, och anropar <code>commit(item)</code> med resultatet. Fånga avbrott (<code>formModal()</code> avvisar promise när användaren avbryter).</li>
+<li>Flytta innehållet i slottarna <code>#add</code> och <code>#modify</code> till en ny komponent som använder <code>FFormModal</code> med propparna <code>isOpen</code>, <code>value</code> och vidarebefordrar <code>close</code>-eventet.
+Komponenten ska redigera en kopia av objektet.</li>
+<li>Lägg till <code>onAdd(commit)</code> som öppnar modalen med <code>formModal()</code> från <code>useModal()</code>, med objektet som tidigare returnerades av <code>beforeCreate</code>, och anropar <code>commit(item)</code> med resultatet.
+Fånga avbrott (<code>formModal()</code> avvisar promise när användaren avbryter).</li>
 <li>Lägg till <code>onEdit(item, commit)</code> på motsvarande sätt och anropa <code>commit(modified)</code>.</li>
-<li>Ersätt slotten <code>#delete</code> med <code>onRemove(item, commit)</code> som öppnar <code>confirmModal()</code> och anropar <code>commit()</code> om användaren bekräftar. Använd tidigare <code>deleteModalHeader</code> som rubrik.</li>
+<li>Ersätt slotten <code>#delete</code> med <code>onRemove(item, commit)</code> som öppnar <code>confirmModal()</code> och anropar <code>commit()</code> om användaren bekräftar.
+Använd tidigare <code>deleteModalHeader</code> som rubrik.</li>
 <li>Flytta logik från eventen <code>created</code>, <code>updated</code> och <code>deleted</code> till respektive callback innan <code>commit</code> anropas.</li>
 <li>Flytta <code>beforeSubmit</code>, <code>beforeValidation</code>, <code>formModalSize</code> och modalrubriker till modalkomponenten.</li>
 <li>Ange knapptexter explicit i modalerna, de har inga standardtexter längre.
@@ -6507,7 +6513,7 @@ Använd ett namn eller annan egenskap som identifierar raden för användaren.</
         <h2 id="fmodal" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fmodal"><code>FModal</code></a></h2><p class="docs-paragraph">Propen <code>size</code> stödjer inte längre aliaset <code>fullscreen</code> och är ersatt med <code>fullwidth</code>.</p>
 
                 <div
-                    id="example-594084"
+                    id="example-3769ce"
                     class="code-preview code-preview--default"
                     
                     
@@ -6538,7 +6544,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="fsortfilterdataset" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fsortfilterdataset"><code>FSortFilterDataset</code></a></h2><p class="docs-paragraph">Propen <code>placeholderFilter</code> är borttagen och ersatt med <code>filterLabel</code>.</p>
 
                 <div
-                    id="example-a66965"
+                    id="example-6f334d"
                     class="code-preview code-preview--default"
                     
                     
@@ -6565,7 +6571,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="getlegacyinternalkey" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#getlegacyinternalkey"><code>getLegacyInternalKey()</code></a></h2><p class="docs-paragraph">Använd <code>findItemIdentifier()</code> om objektet kan sakna en identifierare, eller <code>getItemIdentifier()</code> om identifieraren är garanterad att finnas, istället för att hämta ut nyckeln.</p>
 
                 <div
-                    id="example-bdd769"
+                    id="example-0021fe"
                     class="code-preview code-preview--default"
                     
                     
@@ -6591,7 +6597,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="tablescroll" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tablescroll"><code>TableScroll</code></a></h2><p class="docs-paragraph"><code>FDataTable</code> och <code>FInteractiveTable</code> stödjer inte längre <code>TableScroll.VERTICAL</code> och <code>TableScroll.BOTH</code>.</p>
 
                 <div
-                    id="example-d65a6f"
+                    id="example-7aa951"
                     class="code-preview code-preview--default"
                     
                     
@@ -6627,7 +6633,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
 <p class="docs-paragraph">Om du vill att det första steget ska få fokus när guiden öppnas, lägg till <code>focus-initial-step</code>:</p>
 
                 <div
-                    id="example-b60d2b"
+                    id="example-865908"
                     class="code-preview code-preview--default"
                     
                     
@@ -6646,7 +6652,7 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
 <p class="docs-paragraph">Om du vill visa fellistan, lägg till <code>use-error-list</code> på <code>f-wizard-step</code>:</p>
 
                 <div
-                    id="example-cbf98e"
+                    id="example-53524c"
                     class="code-preview code-preview--default"
                     
                     
@@ -6728,9 +6734,9 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/1d91e113779cbb3494efd093b0c92bf4f1f4264f">1d91e11</a>)<br />
+<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/7635a60a5fa6dcb65fb0be3d46e03dfe8f9f9b54">7635a60</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1872">PR 1872</a><br />
-       <span class="version-text-block">2026-11-20 10:20</span>
+       <span class="version-text-block">2026-11-20 10:39</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
