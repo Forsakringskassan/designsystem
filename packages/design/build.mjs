@@ -1,30 +1,19 @@
 import fs from "node:fs/promises";
 import path from "node:path/posix";
 import { styleText } from "node:util";
-import fkuiTheme from "@fkui/theme-default/dist/theme-light.js";
 import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
 import postcss, { CssSyntaxError } from "postcss";
 
-/* postcss plugins */
-import varFuncFallback from "postcss-var-func-fallback";
 import * as sass from "sass";
 
-const themes = {
-    fkui: fkuiTheme,
-};
-
-async function postprocess(css, from, to, { theme, minify, sourceMap }) {
+async function postprocess(css, from, to, { minify, sourceMap }) {
     /** @type {import("cssnano").Options} */
     const cssnanoOptions = {
         preset: ["default", { discardComments: { removeAll: true } }],
     };
-    const fallbackOptions = {
-        variables: themes[theme],
-    };
     const plugins = [
         autoprefixer,
-        theme ? varFuncFallback(fallbackOptions) : false,
         minify ? cssnano(cssnanoOptions) : false,
     ].filter(Boolean);
     return await postcss(plugins).process(css, {
@@ -53,7 +42,7 @@ function prettySize(size) {
     return `${rounded} mB`;
 }
 
-async function compileSass(src, dst, { theme } = {}) {
+async function compileSass(src, dst) {
     const data = /* SCSS */ `
         @use "src/core/config-variables" with (
             $asset-path: "assets",
@@ -74,12 +63,10 @@ async function compileSass(src, dst, { theme } = {}) {
     });
 
     const development = await postprocess(result.css, src, dst, {
-        theme,
         minify: false,
         sourceMap: result.sourceMap,
     });
     const production = await postprocess(result.css, src, dst, {
-        theme,
         minify: true,
         sourceMap: result.sourceMap,
     });
@@ -105,9 +92,7 @@ await fs.mkdir("lib", { recursive: true });
 
 console.group();
 try {
-    await compileSass("src/fkui.scss", "lib/fkui.css", {
-        theme: "fkui",
-    });
+    await compileSass("src/fkui.scss", "lib/fkui.css");
     await compileSass("src/fonts.scss", "lib/fonts.css");
 } catch (err) {
     console.log();
