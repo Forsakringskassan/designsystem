@@ -365,6 +365,96 @@ describe("onRemove", () => {
     });
 });
 
+describe("v-model", () => {
+    function getEmitted(wrapper: VueWrapper): Item[][] {
+        const crud = wrapper.findComponent(FCrudDataset);
+        return (crud.emitted("update:modelValue") ?? []) as Item[][];
+    }
+
+    it("should emit update:modelValue when item is added", async () => {
+        expect.assertions(4);
+        const wrapper = createWrapper({
+            onAdd: (commit: (item: Item) => void) => {
+                commit({ id: 3, name: "c" });
+            },
+        });
+        const original = getItems(wrapper);
+        await wrapper.get(".crud-dataset__add-button").trigger("click");
+        const emitted = getEmitted(wrapper);
+        expect(emitted).toHaveLength(1);
+        expect(emitted[0][0]).toEqual([
+            { id: 1, name: "a" },
+            { id: 2, name: "b" },
+            { id: 3, name: "c" },
+        ]);
+        expect(getItems(wrapper)).toEqual(emitted[0][0]);
+        expect(original).toHaveLength(2);
+    });
+
+    it("should emit update:modelValue when item is edited", async () => {
+        expect.assertions(3);
+        const wrapper = createWrapper({
+            onEdit: (item: Item, commit: (item: Item) => void) => {
+                commit({ ...item, name: "modified" });
+            },
+        });
+        await wrapper.get("#modify-1").trigger("click");
+        const emitted = getEmitted(wrapper);
+        expect(emitted).toHaveLength(1);
+        expect(emitted[0][0]).toEqual([
+            { id: 1, name: "modified" },
+            { id: 2, name: "b" },
+        ]);
+        expect(getItems(wrapper)).toEqual(emitted[0][0]);
+    });
+
+    it("should emit update:modelValue when item is edited in place", async () => {
+        expect.assertions(2);
+        const wrapper = createWrapper({
+            onEdit: (item: Item, commit: () => void) => {
+                item.name = "modified";
+                commit();
+            },
+        });
+        await wrapper.get("#modify-1").trigger("click");
+        const emitted = getEmitted(wrapper);
+        expect(emitted).toHaveLength(1);
+        expect(emitted[0][0]).toEqual([
+            { id: 1, name: "modified" },
+            { id: 2, name: "b" },
+        ]);
+    });
+
+    it("should emit update:modelValue when item is removed", async () => {
+        expect.assertions(4);
+        const wrapper = createWrapper({
+            onRemove: (_item: Item, commit: () => void) => {
+                commit();
+            },
+        });
+        const original = getItems(wrapper);
+        await wrapper.get("#delete-1").trigger("click");
+        const emitted = getEmitted(wrapper);
+        expect(emitted).toHaveLength(1);
+        expect(emitted[0][0]).toEqual([{ id: 2, name: "b" }]);
+        expect(getItems(wrapper)).toEqual(emitted[0][0]);
+        expect(original).toHaveLength(2);
+    });
+
+    it("should not emit update:modelValue until commit is called", async () => {
+        expect.assertions(1);
+        const wrapper = createWrapper({
+            onAdd: vi.fn(),
+            onEdit: vi.fn(),
+            onRemove: vi.fn(),
+        });
+        await wrapper.get(".crud-dataset__add-button").trigger("click");
+        await wrapper.get("#modify-1").trigger("click");
+        await wrapper.get("#delete-1").trigger("click");
+        expect(getEmitted(wrapper)).toHaveLength(0);
+    });
+});
+
 describe("html-validate", () => {
     it("should require default slot", async () => {
         expect.assertions(1);

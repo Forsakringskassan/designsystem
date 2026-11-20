@@ -1328,18 +1328,6 @@ export interface OpenModalModaloptions {
 }
 
 // @public (undocumented)
-export enum Operation {
-    // (undocumented)
-    ADD = 0,
-    // (undocumented)
-    DELETE = 1,
-    // (undocumented)
-    MODIFY = 2,
-    // (undocumented)
-    NONE = 3
-}
-
-// @public (undocumented)
 export interface PanelLayoutComposable {
     // (undocumented)
     gridClasses(): Record<string, boolean>;

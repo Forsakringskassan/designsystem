@@ -12,4 +12,3 @@ export {
     type FCrudDatasetEditCallback,
     type FCrudDatasetRemoveCallback,
 } from "./crud-dataset-callbacks";
-export { Operation } from "./operation";

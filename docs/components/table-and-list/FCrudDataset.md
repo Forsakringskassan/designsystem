@@ -51,8 +51,7 @@ FCrudDatasetTableExample.vue
 Eftersom applikationen själv skapar objektet i `onAdd` kan det förpopuleras innan modalen öppnas, till exempel med ett id:
 
 ```ts static
-import { useModal } from "@fkui/vue";
-import { type FCrudDatasetCommitAdd } from "@fkui/vue";
+import { type FCrudDatasetCommitAdd, useModal } from "@fkui/vue";
 
 interface MyItem {
     id: string;
