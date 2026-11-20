@@ -8480,6 +8480,7 @@ main #docs-aside dd {
 
 .user-background {
   color-scheme: light dark;
+  color: CanvasText;
 }
 
 @media (prefers-color-scheme: light) {
@@ -8494,7 +8495,6 @@ main #docs-aside dd {
 }
 .code-preview[data-background=solid] .user-background {
   background: Canvas;
-  color: CanvasText;
 }
 
 .code-preview main,
@@ -9759,6 +9759,10 @@ body:has(#mobile-toggle:checked) {
   --docs-navigation-highlight-color: var(--fkds-color-select-background-secondary-default);
   --docs-tab-hover-border-color: var(--fkds-color-navigation-border-hover);
   --docs-tab-active-border-color: var(--fkds-color-navigation-border-selected);
+}
+
+.user-background {
+  color: var(--fkds-color-text-primary);
 }
 
 :root {
