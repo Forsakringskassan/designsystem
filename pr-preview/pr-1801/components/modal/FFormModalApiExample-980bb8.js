@@ -28,8 +28,9 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FFormModalApiExample.vue:FFormModalApiExample-d2c2e7.js
-import { defineComponent as defineComponent2 } from "vue";
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FFormModalApiExample.vue:FFormModalApiExample-980bb8.js
+import { defineComponent as _defineComponent } from "vue";
+import { ref } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/examples/ExampleModal.vue?type=script
 import { defineComponent } from "vue";
@@ -196,77 +197,81 @@ ExampleModal_default.render = render;
 ExampleModal_default.__file = "packages/vue/src/components/FModal/examples/ExampleModal.vue";
 var ExampleModal_default2 = ExampleModal_default;
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FFormModalApiExample.vue:FFormModalApiExample-d2c2e7.js
-import { FButton, formModal } from "@fkui/vue";
-import { createTextVNode as _createTextVNode2, resolveComponent as _resolveComponent2, withCtx as _withCtx2, createVNode as _createVNode, createElementVNode as _createElementVNode2, toDisplayString as _toDisplayString, openBlock as _openBlock2, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode } from "vue";
-var exampleComponent = defineComponent2({
-  name: "FFormModalApiExample",
-  components: { FButton },
-  data() {
-    return {
-      result: ""
-    };
-  },
-  methods: {
-    async onClick() {
-      this.result = "";
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FFormModalApiExample.vue:FFormModalApiExample-980bb8.js
+import { FButton, useModal } from "@fkui/vue";
+import { createTextVNode as _createTextVNode2, withCtx as _withCtx2, createVNode as _createVNode, createElementVNode as _createElementVNode2, toDisplayString as _toDisplayString, openBlock as _openBlock2, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode, Fragment as _Fragment } from "vue";
+var exampleComponent = /* @__PURE__ */ _defineComponent({
+  __name: "FFormModalApiExample",
+  setup(__props, { expose: __expose }) {
+    __expose();
+    const { formModal } = useModal();
+    const result = ref("");
+    async function onClick() {
+      result.value = "";
       try {
-        this.result = await formModal(this, ExampleModal_default2, {
+        result.value = await formModal(ExampleModal_default2, {
           props: {
-            dataTest: "form-modal-api-example",
-            firstName: "Anton"
+            frukt: "\xC4pple"
           }
         });
       } catch {
         console.log("anv\xE4ndaren avbr\xF6t");
       }
     }
+    const __returned__ = { formModal, result, onClick, get FButton() {
+      return FButton;
+    } };
+    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+    return __returned__;
   }
 });
-var _hoisted_1 = { class: "f-form-modal-example" };
-var _hoisted_2 = { key: 0 };
-var _hoisted_3 = { id: "api-result" };
+var _hoisted_1 = { key: 0 };
+var _hoisted_2 = { id: "api-result" };
 function render2(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_button = _resolveComponent2("f-button");
-  return _openBlock2(), _createElementBlock("div", _hoisted_1, [
-    _createVNode(_component_f_button, {
-      "data-test": "form-modal-api-example-button",
-      size: "medium",
-      variant: "secondary",
-      onClick: _ctx.onClick
-    }, {
-      default: _withCtx2(() => [..._cache[0] || (_cache[0] = [
-        _createTextVNode2(
-          " \xD6ppna Modal ",
+  return _openBlock2(), _createElementBlock(
+    _Fragment,
+    null,
+    [
+      _createVNode($setup["FButton"], {
+        size: "medium",
+        variant: "secondary",
+        onClick: $setup.onClick
+      }, {
+        default: _withCtx2(() => [..._cache[0] || (_cache[0] = [
+          _createTextVNode2(
+            " \xD6ppna Modal ",
+            -1
+            /* CACHED */
+          )
+        ])]),
+        _: 1
+        /* STABLE */
+      }),
+      $setup.result ? (_openBlock2(), _createElementBlock("div", _hoisted_1, [
+        _cache[1] || (_cache[1] = _createElementVNode2(
+          "pre",
+          null,
+          "Modalen st\xE4ngdes med resultatet:",
           -1
           /* CACHED */
+        )),
+        _createElementVNode2(
+          "pre",
+          _hoisted_2,
+          _toDisplayString($setup.result),
+          1
+          /* TEXT */
         )
-      ])]),
-      _: 1
-      /* STABLE */
-    }, 8, ["onClick"]),
-    _ctx.result ? (_openBlock2(), _createElementBlock("div", _hoisted_2, [
-      _cache[1] || (_cache[1] = _createElementVNode2(
-        "pre",
-        null,
-        "Modalen st\xE4ngdes med resultatet:",
-        -1
-        /* CACHED */
-      )),
-      _createElementVNode2(
-        "pre",
-        _hoisted_3,
-        _toDisplayString(_ctx.result),
-        1
-        /* TEXT */
-      )
-    ])) : _createCommentVNode("v-if", true)
-  ]);
+      ])) : _createCommentVNode("v-if", true)
+    ],
+    64
+    /* STABLE_FRAGMENT */
+  );
 }
 exampleComponent.render = render2;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-d2c2e7"
+  selector: "#example-980bb8"
 });
 export {
   render2 as render

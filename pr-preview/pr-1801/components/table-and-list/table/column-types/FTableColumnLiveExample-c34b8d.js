@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableColumnLiveExample.vue:FTableColumnLiveExample-8d117c.js
+// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableColumnLiveExample.vue:FTableColumnLiveExample-c34b8d.js
 import { defineComponent, ref } from "vue";
 import { FDate } from "@fkui/date";
 import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
@@ -117,7 +117,7 @@ function stringifyObject(obj) {
   return `{ ${props.join(", ")} }`;
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableColumnLiveExample.vue:FTableColumnLiveExample-8d117c.js
+// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableColumnLiveExample.vue:FTableColumnLiveExample-c34b8d.js
 import {
   FCheckboxField,
   FFieldset,
@@ -250,6 +250,8 @@ var columnData = {
   anchor: {
     type: "anchor",
     header: "L\xE4nk kolumnrubrik",
+    iconRight: "arrow-right",
+    target: "_blank",
     text: (row) => String(row.value),
     href: (row) => String(row.id)
   },
@@ -823,7 +825,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-8d117c"
+  selector: "#example-c34b8d"
 });
 export {
   render
