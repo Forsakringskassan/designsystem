@@ -1874,6 +1874,12 @@ input[type=search]:focus-visible,
   margin-left: -0.5rem;
   min-width: 0;
 }
+@media (forced-colors: none) {
+  .button--tertiary:focus-visible, .calendar-navbar__year-selector-button:focus-visible {
+    outline: 2px solid var(--fkds-focus-indicator-color-background);
+    outline-offset: -0.1px;
+  }
+}
 @media (max-width: 639.98px) {
   .button--tertiary.button--full-width, .button--full-width.calendar-navbar__year-selector-button {
     min-width: var(--f-width-full);
