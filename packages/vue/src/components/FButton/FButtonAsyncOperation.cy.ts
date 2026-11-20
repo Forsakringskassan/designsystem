@@ -154,9 +154,9 @@ describe("Primary with spinner", () => {
     it("no icon", () => {
         const { ButtonComponent, resolve } = createComponent();
         cy.mount(ButtonComponent);
-        cy.get("#button1").click();
-        cy.get("#button2").click();
-        cy.get("#button3").click();
+        cy.get("#button1").realClick();
+        cy.get("#button2").realClick();
+        cy.get("#button3").realClick();
         cy.get("#background").toMatchScreenshot();
         cy.get("#button1 .button__spinner")
             .should("be.visible")
@@ -170,9 +170,9 @@ describe("Primary with spinner", () => {
             iconLeft: "bell",
         });
         cy.mount(ButtonComponent);
-        cy.get("#button1").click();
-        cy.get("#button2").click();
-        cy.get("#button3").click();
+        cy.get("#button1").realClick();
+        cy.get("#button2").realClick();
+        cy.get("#button3").realClick();
         cy.get("#background").toMatchScreenshot();
         cy.get("#button1 .button__spinner")
             .should("be.visible")
@@ -186,9 +186,9 @@ describe("Primary with spinner", () => {
             iconRight: "bell",
         });
         cy.mount(ButtonComponent);
-        cy.get("#button1").click();
-        cy.get("#button2").click();
-        cy.get("#button3").click();
+        cy.get("#button1").realClick();
+        cy.get("#button2").realClick();
+        cy.get("#button3").realClick();
         cy.get("#background").toMatchScreenshot();
         cy.get("#button1 .button__spinner")
             .should("be.visible")
@@ -203,9 +203,9 @@ describe("Primary with spinner", () => {
             mobileFullWidth: true,
         });
         cy.mount(ButtonComponent);
-        cy.get("#button1").click();
-        cy.get("#button2").click();
-        cy.get("#button3").click();
+        cy.get("#button1").realClick();
+        cy.get("#button2").realClick();
+        cy.get("#button3").realClick();
         cy.get("#background").toMatchScreenshot();
         cy.get("#button1 .button__spinner")
             .should("be.visible")
@@ -225,9 +225,9 @@ describe("Secondary with spinner", () => {
             variant: "secondary",
         });
         cy.mount(ButtonComponent);
-        cy.get("#button1").click();
-        cy.get("#button2").click();
-        cy.get("#button3").click();
+        cy.get("#button1").realClick();
+        cy.get("#button2").realClick();
+        cy.get("#button3").realClick();
         cy.get("#background").toMatchScreenshot();
         cy.get("#button1 .button__spinner")
             .should("be.visible")
@@ -242,9 +242,9 @@ describe("Secondary with spinner", () => {
             iconLeft: "bell",
         });
         cy.mount(ButtonComponent);
-        cy.get("#button1").click();
-        cy.get("#button2").click();
-        cy.get("#button3").click();
+        cy.get("#button1").realClick();
+        cy.get("#button2").realClick();
+        cy.get("#button3").realClick();
         cy.get("#background").toMatchScreenshot();
         cy.get("#button1 .button__spinner")
             .should("be.visible")
@@ -259,9 +259,9 @@ describe("Secondary with spinner", () => {
             iconRight: "bell",
         });
         cy.mount(ButtonComponent);
-        cy.get("#button1").click();
-        cy.get("#button2").click();
-        cy.get("#button3").click();
+        cy.get("#button1").realClick();
+        cy.get("#button2").realClick();
+        cy.get("#button3").realClick();
         cy.get("#background").toMatchScreenshot();
         cy.get("#button1 .button__spinner")
             .should("be.visible")
@@ -277,9 +277,9 @@ describe("Secondary with spinner", () => {
             mobileFullWidth: true,
         });
         cy.mount(ButtonComponent);
-        cy.get("#button1").click();
-        cy.get("#button2").click();
-        cy.get("#button3").click();
+        cy.get("#button1").realClick();
+        cy.get("#button2").realClick();
+        cy.get("#button3").realClick();
         cy.get("#background").toMatchScreenshot();
         cy.get("#button1 .button__spinner")
             .should("be.visible")
@@ -299,9 +299,9 @@ describe("Tertiary with spinner", () => {
             variant: "tertiary",
         });
         cy.mount(ButtonComponent);
-        cy.get("#button1").click();
-        cy.get("#button2").click();
-        cy.get("#button3").click();
+        cy.get("#button1").realClick();
+        cy.get("#button2").realClick();
+        cy.get("#button3").realClick();
         cy.get("#background").toMatchScreenshot();
         cy.get("#button1 .button__spinner")
             .should("be.visible")
@@ -316,9 +316,9 @@ describe("Tertiary with spinner", () => {
             iconLeft: "bell",
         });
         cy.mount(ButtonComponent);
-        cy.get("#button1").click();
-        cy.get("#button2").click();
-        cy.get("#button3").click();
+        cy.get("#button1").realClick();
+        cy.get("#button2").realClick();
+        cy.get("#button3").realClick();
         cy.get("#background").toMatchScreenshot();
         cy.get("#button1 .button__spinner")
             .should("be.visible")
@@ -333,9 +333,9 @@ describe("Tertiary with spinner", () => {
             iconRight: "bell",
         });
         cy.mount(ButtonComponent);
-        cy.get("#button1").click();
-        cy.get("#button2").click();
-        cy.get("#button3").click();
+        cy.get("#button1").realClick();
+        cy.get("#button2").realClick();
+        cy.get("#button3").realClick();
         cy.get("#background").toMatchScreenshot();
         cy.get("#button1 .button__spinner")
             .should("be.visible")
@@ -351,9 +351,9 @@ describe("Tertiary with spinner", () => {
             mobileFullWidth: true,
         });
         cy.mount(ButtonComponent);
-        cy.get("#button1").click();
-        cy.get("#button2").click();
-        cy.get("#button3").click();
+        cy.get("#button1").realClick();
+        cy.get("#button2").realClick();
+        cy.get("#button3").realClick();
         cy.get("#background").toMatchScreenshot();
         cy.get("#button1 .button__spinner")
             .should("be.visible")
@@ -368,9 +368,9 @@ describe("Tertiary with spinner", () => {
             tertiaryStyle: "black",
         });
         cy.mount(ButtonComponent);
-        cy.get("#button1").click();
-        cy.get("#button2").click();
-        cy.get("#button3").click();
+        cy.get("#button1").realClick();
+        cy.get("#button2").realClick();
+        cy.get("#button3").realClick();
         cy.get("#background").toMatchScreenshot();
         cy.get("#button1 .button__spinner")
             .should("be.visible")
@@ -385,9 +385,9 @@ describe("Tertiary with spinner", () => {
             tertiaryStyle: "inverted",
         });
         cy.mount(ButtonComponent);
-        cy.get("#button1").click();
-        cy.get("#button2").click();
-        cy.get("#button3").click();
+        cy.get("#button1").realClick();
+        cy.get("#button2").realClick();
+        cy.get("#button3").realClick();
         cy.get("#background").toMatchScreenshot();
         cy.get("#button1 .button__spinner")
             .should("be.visible")
@@ -403,7 +403,7 @@ describe("Promises", () => {
         cy.mount(ButtonComponent);
 
         cy.get("#button1 .button__spinner").should("not.exist");
-        cy.get("#button1").click();
+        cy.get("#button1").realClick();
         cy.get("#button1 .button__spinner")
             .should("be.visible")
             .then(() => {
@@ -419,7 +419,7 @@ describe("Promises", () => {
         cy.mount(ButtonComponent);
 
         cy.get("#button1 .button__spinner").should("not.exist");
-        cy.get("#button1").click();
+        cy.get("#button1").realClick();
         cy.get("#button1 .button__spinner")
             .should("be.visible")
             .then(() => {
@@ -433,7 +433,7 @@ describe("Promises", () => {
         cy.mount(ButtonComponent);
 
         cy.get("#sync-operation .button__spinner").should("not.exist");
-        cy.get("#sync-operation").click();
+        cy.get("#sync-operation").realClick();
         cy.get("#sync-operation .button__spinner").should("not.exist");
         cy.get("#sync-operation").should("contain.text", "OK");
     });
