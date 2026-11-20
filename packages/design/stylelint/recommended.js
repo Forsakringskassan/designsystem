@@ -1,5 +1,5 @@
 module.exports = {
-    plugins: [__dirname],
+    plugins: [require.resolve("./index.js")],
     rules: {
         "fkui/deprecated-variable": true,
     },
