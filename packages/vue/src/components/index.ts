@@ -22,7 +22,6 @@ export {
     type FCrudDatasetRemoveCallback,
     ActivateItemInjected,
     FCrudDataset,
-    Operation,
 } from "./FCrudDataset";
 export { FDataTable } from "./FDataTable";
 export { FDatepickerField } from "./FDatepickerField";
