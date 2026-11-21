@@ -258,10 +258,22 @@ function onClick(e: MouseEvent): void {
 function onTableFocusin(e: FocusEvent): void {
     assertRef(tableRef);
 
-    for (const it of tableRef.value.querySelectorAll(`[tabindex="0"]`)) {
-        if (it !== e.target) {
+    const target = e.target;
+
+    if (!(target instanceof HTMLElement)) {
+        return;
+    }
+
+    for (const it of tableRef.value.querySelectorAll<HTMLElement>(`[tabindex="0"]`)) {
+        if (it !== target) {
             it.setAttribute("tabindex", "-1");
         }
+    }
+
+    // Native select needs to become the active tabstop
+    // when reached through table navigation.
+    if (target instanceof HTMLSelectElement) {
+        target.tabIndex = 0;
     }
 }
 

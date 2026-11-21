@@ -1246,21 +1246,15 @@ describe("select cell", () => {
             },
         });
 
-        const cellView = wrapper.findAll(
-            "tbody td .table-ng__editable[role='combobox']",
-        );
-        expect(cellView[0].text()).toBe("Foo");
-        expect(cellView[1].text()).toBe("Bar");
+        const selects = wrapper.findAll<HTMLSelectElement>("tbody td select");
 
-        await wrapper.get("tbody tr:first-child td").trigger("click");
-        await nextTick();
+        expect(selects[0].element.value).toBe("Foo");
+        expect(selects[1].element.value).toBe("Bar");
 
-        const thirdOption = wrapper.get(
-            ".combobox__listbox li.combobox__listbox__option:nth-child(3)",
-        );
-        await thirdOption.trigger("click");
-        expect(cellView[0].text()).toBe("Baz");
-        expect(cellView[1].text()).toBe("Bar");
+        await selects[0].setValue("Baz");
+
+        expect(selects[0].element.value).toBe("Baz");
+        expect(selects[1].element.value).toBe("Bar");
     });
 
     it("should call update on selecting option with click", async () => {
@@ -1287,15 +1281,12 @@ describe("select cell", () => {
             },
         });
 
-        const cell = wrapper.get("tbody td:nth-child(1)");
-        await cell.trigger("click");
-        const options = wrapper.findAll(".combobox__listbox li");
-        await options[1].trigger("click");
+        await wrapper.get<HTMLSelectElement>("tbody td select").setValue("Baz");
         expect(listener).toHaveBeenCalled();
     });
 
-    it("should set correct aria-expanded", async () => {
-        expect.assertions(4);
+    it("should activate native select on space", async () => {
+        expect.assertions(3);
         const rows = [{ option: "Foo" }, { option: "Bar" }];
         const columns = defineTableColumns<(typeof rows)[number]>([
             {
@@ -1307,56 +1298,25 @@ describe("select cell", () => {
             },
         ]);
         const wrapper = mount(FTable<(typeof rows)[number]>, {
+            attachTo: document.body,
             props: {
                 columns,
                 rows: ref(rows).value,
             },
-            global: {
-                stubs: ["teleport"],
-            },
         });
 
-        const cellEditable = wrapper.findAll(
-            "tbody td .table-ng__editable[aria-expanded]",
+        const cell = wrapper.get<HTMLTableCellElement>(
+            "tbody tr:first-child td",
         );
-        expect(cellEditable[0].attributes("aria-expanded")).toBe("false");
-        expect(cellEditable[1].attributes("aria-expanded")).toBe("false");
+        const select = cell.get<HTMLSelectElement>("select");
 
-        const cell = wrapper.get("tbody tr:nth-child(1) td");
-        await cell.trigger("click");
-        expect(cellEditable[0].attributes("aria-expanded")).toBe("true");
-        expect(cellEditable[1].attributes("aria-expanded")).toBe("false");
-    });
+        cell.element.focus();
 
-    it("should open dropdown on space", async () => {
-        expect.assertions(1);
-        const rows = [{ option: "Foo" }, { option: "Bar" }];
-        const columns = defineTableColumns<(typeof rows)[number]>([
-            {
-                type: "select",
-                header: "A",
-                options: ["Foo", "Bar", "Baz"],
-                key: "option",
-                label: () => "Label",
-            },
-        ]);
-        const wrapper = mount(FTable<(typeof rows)[number]>, {
-            props: {
-                columns,
-                rows: ref(rows).value,
-            },
-            global: {
-                stubs: ["teleport"],
-            },
-        });
+        await cell.trigger("keydown", { key: " ", code: "Space" });
 
-        const cell = wrapper.get("tbody tr:nth-child(1) td");
-        await cell.trigger("keydown", { code: "Space" });
-
-        const cellEditable = wrapper.findAll(
-            ".table-ng__editable[aria-expanded]",
-        );
-        expect(cellEditable[0].attributes("aria-expanded")).toBe("true");
+        expect(cell.element.tabIndex).toBe(0);
+        expect(select.element.tabIndex).toBe(0);
+        expect(document.activeElement).toBe(cell.element);
     });
 });
 

@@ -31,9 +31,64 @@ const columns = defineTableColumns<Row>([
 ]);
 ```
 
+## Alternativ i dropplistan
+
+`options` kan innehålla strängar eller objekt med `value` och `label`.
+Använd objekt när värdet som sparas i raden ska skilja sig från texten som visas för användaren.
+
+```ts
+import { defineTableColumns } from "@fkui/vue";
+
+interface Row {
+    season: string;
+}
+
+const columns = defineTableColumns<Row>([
+    {
+        type: "select",
+        header: "Säsong",
+        key: "season",
+        options: [
+            { value: "spring", label: "Vår" },
+            { value: "summer", label: "Sommar" },
+            { value: "autumn", label: "Höst" },
+            { value: "winter", label: "Vinter" },
+        ],
+    },
+]);
+```
+
+Det är också möjligt att blanda strängar och objekt i samma lista.
+För strängar används samma text som både värde och etikett.
+
+Alternativen kan även anges med en funktion som returnerar en lista baserat på den aktuella raden.
+
+```ts
+import { defineTableColumns } from "@fkui/vue";
+
+interface Row {
+    season: string;
+    availableSeasons: string[];
+}
+
+const columns = defineTableColumns<Row>([
+    {
+        type: "select",
+        header: "Säsong",
+        key: "season",
+        options(row) {
+            return row.availableSeasons;
+        },
+    },
+]);
+```
+
+Funktionen kan returnera både strängar och objekt med `value` och `label`.
+
 ## Bra att veta
 
 - `options` är obligatorisk.
+- `value` är värdet som sparas i raden, medan `label` är texten som visas i dropplistan.
 - `selected(row)` kan användas om du inte vill läsa från `key`.
 - `update(row, newValue, oldValue)` används när du behöver egen uppdateringslogik.
 

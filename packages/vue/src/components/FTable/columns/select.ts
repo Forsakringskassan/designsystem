@@ -23,8 +23,13 @@ export interface TableColumnSelect<
     label?(this: void, row: T): string;
     selected?(this: void, row: T): string;
     update?(this: void, row: T, newValue: string, oldValue: string): void;
-    /** List of options or a callback function */
-    options: string[] | ((this: void, row: T) => string[]);
+    /** List of options (strings or value/label objects) or a callback function */
+    options:
+        | Array<string | { value: string; label: string }>
+        | ((
+              this: void,
+              row: T,
+          ) => Array<string | { value: string; label: string }>);
     /** When enabled, the cells are editable. Default: `true` */
     editable?: boolean | ((this: void, row: T) => boolean);
 }
@@ -37,7 +42,10 @@ export interface NormalizedTableColumnSelect<
     K,
 > extends NormalizedTableColumnBase<T, K> {
     readonly type: "select";
-    readonly options: (this: void, row: T) => string[];
+    readonly options: (
+        this: void,
+        row: T,
+    ) => Array<{ value: string; label: string }>;
     readonly component: Component<{
         row: T;
         column: NormalizedTableColumnSelect<T, K>;
@@ -61,10 +69,18 @@ export function normalizeSelectColumn<T, K extends keyof T>(
         label: getLabelFn(column.label),
         selected: getValueFn(column.selected, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
-        options: (row) =>
-            typeof column.options === "function"
-                ? column.options(row)
-                : column.options,
+        options: (row) => {
+            const options =
+                typeof column.options === "function"
+                    ? column.options(row)
+                    : column.options;
+
+            return options.map((option) =>
+                typeof option === "string"
+                    ? { value: option, label: option }
+                    : option,
+            );
+        },
         editable:
             typeof column.editable === "function"
                 ? column.editable
