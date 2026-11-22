@@ -1,0 +1,65 @@
+{
+    "name": "FMinimizablePanel",
+    "slug": "fminimizablepanel",
+    "models": [],
+    "props": [
+        {
+            "name": "context",
+            "description": "Screenreader context for toggle button.\n\nDefault value of `fkui.minimizable-panel.context`.",
+            "type": "string",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "initial",
+            "description": "Start in initial state.\n\nDefault is `expanded`.",
+            "type": "\"minimized\" | \"expanded\"",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Content",
+            "bindings": [
+                {
+                    "name": "isOpen",
+                    "type": "boolean",
+                    "description": "panel state"
+                },
+                {
+                    "name": "header",
+                    "type": "string",
+                    "description": "native slot name"
+                },
+                {
+                    "name": "footer",
+                    "type": "string",
+                    "description": "native slot name"
+                },
+                {
+                    "name": "content",
+                    "type": "string",
+                    "description": "native slot name"
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "icon",
+            "description": "Icon",
+            "bindings": [
+                {
+                    "name": "isOpen",
+                    "type": "boolean",
+                    "description": "panel state"
+                }
+            ],
+            "deprecated": null
+        }
+    ]
+}

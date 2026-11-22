@@ -1,0 +1,58 @@
+{
+    "name": "FMessageBox",
+    "slug": "fmessagebox",
+    "models": [],
+    "props": [
+        {
+            "name": "type",
+            "description": "Type of message-box. 'success', 'error', 'warning' and 'info' is valid.",
+            "type": "\"success\" | \"warning\" | \"error\" | \"info\"",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "banner",
+            "description": "If message-box should be a banner.\nIf prop is not used message-box will have default styling.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "provideScreenReaderContext",
+            "description": "It is important to provide a context for a screenreader, similar to a modal that initially outputs it is a dialog.\nType-specific screenreader context is output by default in this component.\nBy setting this property to false no context will be output.\nNote that by doing this, it is the applications responsiblity to provide a clear context.",
+            "type": "boolean",
+            "required": false,
+            "default": {
+                "value": "true"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "layout",
+            "description": "Select standard or short layout.\n\n- 'normal' - Use normal layout when need for heading and/or longer text/multiple sentences\n- 'short' - Use short layout when only need for shorter text",
+            "type": "\"standard\" | \"short\"",
+            "required": false,
+            "default": {
+                "value": "\"standard\""
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for displaying content. Slot styling is available through `v-slot=\"{ <propertyName> }\"`, e.g. `v-slot=\"{ headingSlotClass }\"`.",
+            "bindings": [
+                {
+                    "name": "headingSlotClass",
+                    "type": "string[]",
+                    "description": "CSS class to use for the heading element. Only set for normal layout (avoid heading otherwise). Use with `:class=\"headingSlotClass\"`."
+                }
+            ],
+            "deprecated": null
+        }
+    ]
+}
