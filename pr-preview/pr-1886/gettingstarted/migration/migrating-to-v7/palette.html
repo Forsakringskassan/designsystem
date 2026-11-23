@@ -6374,10 +6374,9 @@
                     <div id="docs-content"><h2 id="fargpaletten_ar_css_variabler" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fargpaletten_ar_css_variabler">Färgpaletten är CSS-variabler</a></h2><p class="docs-paragraph">Detta påverkar dig som använder Sass-variabler från <code>@fkui/theme-default</code>-paletten.
 I version 7 är färgpaletten i <code>@fkui/theme-default</code> CSS-variabler istället för Sass-variabler.
 Paletten följer namnstandarden <code>--fkds-palette-color-&lt;namn&gt;</code>, till exempel <code>--fkds-palette-color-neutral-900</code>.</p>
-<p class="docs-paragraph">Paletten ingår i temana (<code>theme-light</code>, <code>theme-dark</code> och <code>theme-auto</code>) och de semantiska färgvariablerna refererar till paletten med <code>var()</code>:</p>
 
                 <div
-                    id="example-4e1e23"
+                    id="example-ff48d5"
                     class="code-preview code-preview--default"
                     
                     
@@ -6390,14 +6389,12 @@ Paletten följer namnstandarden <code>--fkds-palette-color-&lt;namn&gt;</code>, 
 }
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Sass-variablerna <code>$palette-color-&lt;namn&gt;</code> i <code>@fkui/theme-default/src/palette-variables</code> finns inte längre.
-Palettens metadata finns i <code>palette</code> i <code>@fkui/theme-default/dist/metadata.mjs</code> istället för i <code>palette.json</code>.
-Listan innehåller objekt med <code>name</code>, <code>value</code> och <code>group</code>; namnet innehåller hela CSS-variabelnamnet, inklusive prefixet <code>--fkds-palette-color-</code>.</p>
+            <p class="docs-paragraph">Sass-variablerna <code>$palette-color-&lt;namn&gt;</code> i <code>@fkui/theme-default/src/palette-variables</code> finns inte längre.</p>
 <h3 id="migrering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#migrering">Migrering</a></h3><p class="docs-paragraph">Ersätt Sass-variabler med motsvarande CSS-variabel.
 Använd om möjligt de semantiska färgvariablerna istället för paletten direkt.</p>
 
                 <div
-                    id="example-b817b0"
+                    id="example-5526cd"
                     class="code-preview code-preview--default"
                     
                     
@@ -6416,7 +6413,7 @@ Använd om möjligt de semantiska färgvariablerna istället för paletten direk
 De semantiska färgvariablerna som refererar till färgen uppdateras automatiskt.</p>
 
                 <div
-                    id="example-80fc6b"
+                    id="example-7a6873"
                     class="code-preview code-preview--default"
                     
                     
@@ -6428,9 +6425,7 @@ De semantiska färgvariablerna som refererar till färgen uppdateras automatiskt
 }
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Om du inkluderar temat med mixins (<code>@include theme.light</code>, <code>@include theme.dark</code> eller <code>@include theme.auto</code>) ingår paletten i det som genereras.
-Eftersom paletten sätts på samma element som temat behöver anpassningar av paletten ligga på samma element och komma efter temat.</p>
-
+            
 
                     </div>
                 </main>
@@ -6498,9 +6493,9 @@ Eftersom paletten sätts på samma element som temat behöver anpassningar av pa
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">v7-palette-css</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/cd6af80febf476e76c39d4a23b52a528ca1f08ec">cd6af80</a>)<br />
+<div class="version"><span class="version-text-block">v7-palette-css</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/5fb8647ce300885d51e2ba8d9453729d1f43f8e2">5fb8647</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1886">PR 1886</a><br />
-       <span class="version-text-block">2026-11-23 14:05</span>
+       <span class="version-text-block">2026-11-23 14:10</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
