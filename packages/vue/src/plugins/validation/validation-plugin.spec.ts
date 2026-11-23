@@ -80,7 +80,7 @@ it("should pass input element, validators and configurations to ValidationServic
     });
 });
 
-it("should throw exeception when applying a non supported validator", async () => {
+it("should throw exeception when applying a non supported validator", () => {
     expect.assertions(1);
     const markup = /* HTML */ `
         <f-text-field
@@ -94,16 +94,6 @@ it("should throw exeception when applying a non supported validator", async () =
     expect(() => createWrapper(markup)).toThrowErrorMatchingInlineSnapshot(
         `[Error: Validator 'notSupportedValidatorName' does not exist or is not registered, see ValidatorService.registerValidator.]`,
     );
-    /* technical debt: this is a hack to workaround the watchdog timer that
-     * kicks in if validation occurs when no validators are present. This is
-     * mostly to prevent regressions as the watchdog shouldn't fire no matter
-     * what in this case. Optimally this flow should be rewritten so we could
-     * properly and reliably await for stuff to happen but in the meantime this
-     * could use `vi.useFakeTimers()` if it weren't for the fact that the
-     * current implementation heaviliy uses timers defer execution so the tests
-     * would need to be sprinkled with various timer advancements. */
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    await flushPromises();
 });
 
 it("should throw exeception when applying configuration that do not match validators", () => {

@@ -347,6 +347,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
         return isValidSync(src);
     }
 
+    /* eslint-disable-next-line @typescript-eslint/require-await -- validation is sync but the API is async, keeping `async` makes thrown errors reject the promise */
     public async validateElement(
         src: Element | string | null,
     ): Promise<ValidationResult> {
@@ -393,48 +394,41 @@ class ValidationServiceImpl implements ValidationServiceInterface {
             };
         }
 
-        return new Promise<ValidationResult>((resolve, reject) => {
-            /* Add a temporary listener, as long as IE11 is supported we cannot
-             * use "once" so instead we save the listener and remove it manually
-             * later. */
-            const once = (event: CustomEvent<ValidityEvent>): void => {
-                element.removeEventListener("validity", once);
-                clearTimeout(watchdog);
-                const {
-                    touched: isTouched = false,
-                    submitted: isSubmitted = false,
-                } = this.getState(element.id);
-                const { isValid, validationMessage } = event.detail;
-                resolve({
-                    isValid,
-                    isTouched,
-                    isSubmitted,
-                    error: isValid ? null : validationMessage,
-                });
+        /* Dispatch request to validate, this is picked up by the event listener
+         * installed while adding validators which synchronously validates and
+         * responds with a "validity" event, i.e. the result is available as
+         * soon as `dispatchEvent()` returns. */
+        let result: ValidationResult | undefined;
+        const onValidity = (event: CustomEvent<ValidityEvent>): void => {
+            const {
+                touched: isTouched = false,
+                submitted: isSubmitted = false,
+            } = this.getState(element.id);
+            const { isValid, validationMessage } = event.detail;
+            result = {
+                isValid,
+                isTouched,
+                isSubmitted,
+                error: isValid ? null : validationMessage,
             };
-            element.addEventListener("validity", once);
+        };
+        element.addEventListener("validity", onValidity, { once: true });
+        element.dispatchEvent(
+            new CustomEvent<ValidateEvent>("validate", { bubbles: false }),
+        );
+        element.removeEventListener("validity", onValidity);
 
-            /* Add a watchdog timer in case the listener isn't actually there or
-             * if the event is blocked with {@link stopPropagation} or similar. */
-            const watchdog = setTimeout(() => {
-                const tagName = element.tagName.toLowerCase();
-                const ref = `${tagName}#${element.id}`;
-                element.removeEventListener("validity", once);
-                /* eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors -- technical debt */
-                reject(
-                    `Element "${ref}" did not respond with validity event after 500ms`,
-                );
-            }, 500);
+        /* the listener is missing or the event was blocked, e.g. with
+         * `stopImmediatePropagation()` */
+        if (!result) {
+            const tagName = element.tagName.toLowerCase();
+            const ref = `${tagName}#${element.id}`;
+            throw new Error(
+                `Element "${ref}" did not respond with validity event`,
+            );
+        }
 
-            /* Dispatch request to validate, this is supposed to be picked up by
-             * the the eventlistener installed while adding validators and in a
-             * happy-case this is 1:1 mapped to receiving the "validity"
-             * event. */
-            const event = new CustomEvent<ValidateEvent>("validate", {
-                bubbles: false,
-            });
-            element.dispatchEvent(event);
-        });
+        return result;
     }
 
     public async validateAllElements(root: Element | string): Promise<void> {
