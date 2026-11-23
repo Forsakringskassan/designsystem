@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-ec4ba3.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-61d844.js",
     "@fkui/date": "../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-f79163.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-851dcc.js",
     "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-37a3e4.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js"
   },
@@ -35,7 +35,7 @@
     "../../assets/vendor-fkui-vue-selectors-ec4ba3.js": "sha384-X7kHsr5wRshwqJOF+A4AJXePaFk73er8pcimXF6uz0kIIbToz2NyvzKWe+slXu7W",
     "../../assets/vendor-fkui-logic-61d844.js": "sha384-u+VrrunW0wzEofwwfTCUkVW/5R3NtIzcgQ1Z60e7ov5tXLYfjrUjbvH57Zgv2vnB",
     "../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../assets/vendor-fkui-vue-f79163.js": "sha384-6GsvWvQk5BE0RvbT9vxl8Fii9UH19WIIRm+VIONUML1G5Nm7BdXKhUs7m1tCm77Q",
+    "../../assets/vendor-fkui-vue-851dcc.js": "sha384-3i+1lKFVLNXmEBqdwd20sylC8NkBSgCnWCT/DtqR09vcDuWQ0w7nB9FozoVMu9ka",
     "../../assets/vendor-fkui-vue-labs-37a3e4.js": "sha384-N/HfKkajpXjdrrHo9mjCSJYlF7njhDq86owwuIac3sUncnfL0s0jYFVrZdohsxm3",
     "../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js": "sha384-PDEuCCbROg9gW6fFneYpzXKS04rV0oMFHgqArEkyaM8h1d/H3HBtCKiyFWYKWVcy"
   }
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-5504b1.json"
+    href="../../search-data-0b5e48.json"
     as="fetch"
     crossorigin
-    integrity="sha384-I9r4uQWQK9ODxbo7Ww8CoaJ+GCkMoABIKk4UuzIkFbchSprmlZKXUXD09CiLl3S2"
+    integrity="sha384-v9bsxz8XvR/ke1lCYEAL6+assnoLSe25jgMVIAFaYItCqP/i2JUZZSx9rLEt3dNw"
     id="search-data"
 />
 <script>
@@ -737,6 +737,8 @@
                 
                     
                 
+                    
+                
 
                 
                 
@@ -807,6 +809,19 @@
             
         >
             Modal API only
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../gettingstarted/migration/migrating-to-v7/theme-css-fallback.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/theme-css-fallback.html"
+            
+        >
+            Temavärden i CSS
         </a>
     </li></ul>
 
@@ -7218,7 +7233,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/7635a60a5fa6dcb65fb0be3d46e03dfe8f9f9b54/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/58685123b511cfbbe1d89e726c1b50ddac283cfd/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
                 FCrudDataset
             </a>
             
@@ -7286,9 +7301,14 @@ Det är applikationens ansvar att exempelvis öppna en modal med <a href="../../
 Om <code>commit</code> inte anropas (till exempel om användaren avbryter) lämnas datamängden oförändrad.</p>
 <ul>
 <li><code>onAdd(commit)</code>: anropa <code>commit(item)</code> med det nya objektet för att lägga till det.</li>
-<li><code>onEdit(item, commit)</code>: anropa <code>commit(modified)</code> med det ändrade objektet.</li>
+<li><code>onEdit(item, commit)</code>: <code>item</code> är en kopia av raden som kan ändras fritt, originalet påverkas inte förrän <code>commit(modified)</code> anropas med det ändrade objektet.</li>
 <li><code>onRemove(item, commit)</code>: anropa <code>commit()</code> för att ta bort objektet.</li>
 </ul>
+<p class="docs-paragraph">Callbackarna kan vara asynkrona.
+Om en callback returnerar ett promise som avvisas rapporteras felet till Vues felhantering (<code>app.config.errorHandler</code>).
+Det gäller även när <code>updateItem</code> och <code>deleteItem</code> från slotten anropas direkt från en eventbindning, till exempel <code>@click=&quot;updateItem(row)&quot;</code>.
+Om anropet görs i en funktion, till exempel <code>@click=&quot;() =&gt; { updateItem(row) }&quot;</code>, måste det returnerade promiset returneras vidare för att felet ska nå Vues felhantering.
+Metoderna <code>createItem()</code>, <code>updateItem()</code> och <code>deleteItem()</code> returnerar det som callbacken returnerar, så den som anropar dem via en template ref kan använda <code>await</code> eller <code>.catch()</code>.</p>
 <p class="docs-paragraph">Knappen &quot;Lägg till ny&quot; visas endast när <code>onAdd</code> är satt.
 Minst en av <code>onAdd</code>, <code>onEdit</code> och <code>onRemove</code> måste anges.</p>
 <p class="docs-paragraph">Om knappens visuella text för &quot;ändra&quot; och &quot;ta bort&quot; inte tydligt identifierar raden från andra rader,
@@ -7297,7 +7317,7 @@ Beroende på sammanhang kan även knappen för &quot;lägg till ny&quot; behöva
 som tydligör vad som läggs till.</p>
 <h2 id="tabell_med_redigering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabell_med_redigering">Tabell med redigering</a></h2>
             <div
-                id="example-4e4bc2"
+                id="example-145ccb"
                 class="code-preview code-preview--default"
                 
                 
@@ -7438,7 +7458,7 @@ som tydligör vad som läggs till.</p>
         <h2 id="forpopulera_objekt" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#forpopulera_objekt">Förpopulera objekt</a></h2><p class="docs-paragraph">Eftersom applikationen själv skapar objektet i <code>onAdd</code> kan det förpopuleras innan modalen öppnas, till exempel med ett id:</p>
 
                 <div
-                    id="example-9bd3be"
+                    id="example-9b0444"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -7465,7 +7485,7 @@ Med propen <code>buttonPosition</code> kan knapparna istället positioneras ovan
 Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
 
                 <div
-                    id="example-7d3f0e"
+                    id="example-6544e2"
                     class="code-preview code-preview--default"
                     
                     
@@ -7485,7 +7505,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 </div>
             
                 <div
-                    id="example-daeb4d"
+                    id="example-fe9595"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -7507,7 +7527,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 </div>
             <h2 id="tabell_med_lagg_till_knapp" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabell_med_lagg_till_knapp">Tabell med lägg till-knapp</a></h2>
             <div
-                id="example-a56d1e"
+                id="example-242d82"
                 class="code-preview code-preview--default"
                 
                 
@@ -7595,7 +7615,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="tabell_med_redigera_knapp" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabell_med_redigera_knapp">Tabell med redigera-knapp</a></h2>
             <div
-                id="example-680450"
+                id="example-4abb68"
                 class="code-preview code-preview--default"
                 
                 
@@ -7690,7 +7710,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="lista_med_redigering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#lista_med_redigering">Lista med redigering</a></h2>
             <div
-                id="example-c253d8"
+                id="example-18bd65"
                 class="code-preview code-preview--default"
                 
                 
@@ -7798,7 +7818,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="sorterbar_lista" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#sorterbar_lista">Sorterbar lista</a></h2>
             <div
-                id="example-50d1e7"
+                id="example-e0428a"
                 class="code-preview code-preview--default"
                 
                 
@@ -7908,7 +7928,7 @@ På samma sätt kan &quot;Lägg till ny&quot; behöva kompletteras med vad som l
 <p class="docs-paragraph">Använd klassen <code>sr-only</code> för text som endast ska läsas upp av skärmläsare:</p>
 
                 <div
-                    id="example-d0d29e"
+                    id="example-f562b3"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -7943,7 +7963,7 @@ Meddelandet kan ändras på två sätt:</p>
 Skicka helst med ett meddelande som är specifikt för innehållet, så att användaren vet vilken rad som påverkades.</p>
 
             <div
-                id="example-dacf49"
+                id="example-74149e"
                 class="code-preview code-preview--default"
                 
                 
@@ -8119,6 +8139,32 @@ Skicka helst med ett meddelande som är specifikt för innehållet, så att anv�
                     
         </dl>
     <h2 id="api" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 class="docs-heading docs-heading--h3" id="fcruddataset-models">
+            <a class="header-anchor" href="#fcruddataset-models">Models</a>
+        </h3>
+        <dl class="docs-api docs-api--models">
+            
+                        <dt>
+                            <code id="fcruddataset-model-v-model"
+                                ><a class="docs-api__anchor" href="#fcruddataset-model-v-model"
+                                    ><span class="docs-api__name"
+                                        >v-model</span
+                                    >: T[]</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The list of items that should be removed, modified or added to.
+If the prop is not set an empty array will be used.</p>
+
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
         <h3 class="docs-heading docs-heading--h3" id="fcruddataset-props">
             <a class="header-anchor" href="#fcruddataset-props">Props</a>
         </h3>
@@ -8158,8 +8204,13 @@ opening a modal) and must call <code>commit(item)</code> to add it to the datase
                         </dt>
                         <dd>
                             <p>Called when the user wants to modify an item.</p>
+<p>The callback receives a copy of the item which can be modified freely,
+the original item is left untouched until <code>commit(item)</code> is called.</p>
 <p>The consumer is responsible for modifying the item (typically by
-opening a modal) and must call <code>commit(item?)</code> to update the dataset.</p>
+opening a modal) and must call <code>commit(item)</code> with the modified item to
+update the dataset.</p>
+<p>Only object items can be modified. Calling <code>commit</code> for a primitive
+item (string, number, etc) throws an error.</p>
 
                             
                             
@@ -8263,7 +8314,7 @@ item from the dataset.</p>
                             <p>Slot for displaying the data.</p>
 
                             <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>updateItem: (item: T) =&gt; void</code> <span role="none">&mdash;</span> Callback to trigger <code>onEdit</code></li><li><code>deleteItem: (item: T) =&gt; void</code> <span role="none">&mdash;</span> Callback to trigger <code>onRemove</code></li>
+                            <li><code>updateItem: (item: T) =&gt; void | Promise&lt;void&gt;</code> <span role="none">&mdash;</span> Callback to trigger <code>onEdit</code></li><li><code>deleteItem: (item: T) =&gt; void | Promise&lt;void&gt;</code> <span role="none">&mdash;</span> Callback to trigger <code>onRemove</code></li>
                             </ul>
                             
                         </dd>
@@ -8338,9 +8389,9 @@ item from the dataset.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/7635a60a5fa6dcb65fb0be3d46e03dfe8f9f9b54">7635a60</a>)<br />
+<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/58685123b511cfbbe1d89e726c1b50ddac283cfd">5868512</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1872">PR 1872</a><br />
-       <span class="version-text-block">2026-11-20 10:39</span>
+       <span class="version-text-block">2026-11-23 12:50</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-ec4ba3.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-61d844.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-f79163.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-851dcc.js",
     "@fkui/vue-labs": "../../../assets/vendor-fkui-vue-labs-37a3e4.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js"
   },
@@ -35,7 +35,7 @@
     "../../../assets/vendor-fkui-vue-selectors-ec4ba3.js": "sha384-X7kHsr5wRshwqJOF+A4AJXePaFk73er8pcimXF6uz0kIIbToz2NyvzKWe+slXu7W",
     "../../../assets/vendor-fkui-logic-61d844.js": "sha384-u+VrrunW0wzEofwwfTCUkVW/5R3NtIzcgQ1Z60e7ov5tXLYfjrUjbvH57Zgv2vnB",
     "../../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../../assets/vendor-fkui-vue-f79163.js": "sha384-6GsvWvQk5BE0RvbT9vxl8Fii9UH19WIIRm+VIONUML1G5Nm7BdXKhUs7m1tCm77Q",
+    "../../../assets/vendor-fkui-vue-851dcc.js": "sha384-3i+1lKFVLNXmEBqdwd20sylC8NkBSgCnWCT/DtqR09vcDuWQ0w7nB9FozoVMu9ka",
     "../../../assets/vendor-fkui-vue-labs-37a3e4.js": "sha384-N/HfKkajpXjdrrHo9mjCSJYlF7njhDq86owwuIac3sUncnfL0s0jYFVrZdohsxm3",
     "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js": "sha384-PDEuCCbROg9gW6fFneYpzXKS04rV0oMFHgqArEkyaM8h1d/H3HBtCKiyFWYKWVcy"
   }
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../search-data-5504b1.json"
+    href="../../../search-data-0b5e48.json"
     as="fetch"
     crossorigin
-    integrity="sha384-I9r4uQWQK9ODxbo7Ww8CoaJ+GCkMoABIKk4UuzIkFbchSprmlZKXUXD09CiLl3S2"
+    integrity="sha384-v9bsxz8XvR/ke1lCYEAL6+assnoLSe25jgMVIAFaYItCqP/i2JUZZSx9rLEt3dNw"
     id="search-data"
 />
 <script>
@@ -737,6 +737,8 @@
                 
                     
                 
+                    
+                
 
                 
                 
@@ -807,6 +809,19 @@
             
         >
             Modal API only
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="./theme-css-fallback.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/theme-css-fallback.html"
+            
+        >
+            Temavärden i CSS
         </a>
     </li></ul>
 
@@ -6257,6 +6272,17 @@
         >
             Modal API only
         </a>
+    </li><li class="link ">
+        <a
+            href="./theme-css-fallback.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/theme-css-fallback.html"
+            
+        >
+            Temavärden i CSS
+        </a>
     </li></ul>
 
             
@@ -6289,6 +6315,10 @@
                                 
                                 <li><a href="#ftable">FTable</a></li>
                                 
+                                <li><a href="#fvalidationform">FValidationForm</a></li>
+                                
+                                <li><a href="#fformmodal">FFormModal</a></li>
+                                
                                 <li><a href="#fcruddataset">FCrudDataset</a></li>
                                 
                                 <li><a href="#fmodal">FModal</a></li>
@@ -6300,6 +6330,8 @@
                                 <li><a href="#tablescroll">TableScroll</a></li>
                                 
                                 <li><a href="#fwizard">FWizard</a></li>
+                                
+                                <li><a href="#fwizardstep">FWizardStep</a></li>
                                 
                             </ul>
                         </details>
@@ -6403,7 +6435,91 @@ Rename <code>text</code> to <code>screenreaderText</code> on matching column obj
 Run TypeScript type-checking (<code>tsc</code>) to verify no remaining type errors exist.</p>
 
             </details>
-        <h2 id="fcruddataset" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fcruddataset"><code>FCrudDataset</code></a></h2><p class="docs-paragraph"><code>FCrudDataset</code> öppnar inte längre några modaler själv.
+        <h2 id="fvalidationform" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fvalidationform"><code>FValidationForm</code></a></h2><p class="docs-paragraph">Propen <code>useErrorList</code> är inte längre aktiv som standard.</p>
+<p class="docs-paragraph">Om du vill behålla fellistan, lägg till propen explicit:</p>
+
+                <div
+                    id="example-1a77b8"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-validation-form&gt;</span>
+<span class="hljs-addition">+&lt;f-validation-form use-error-list&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om du redan använder <code>:use-error-list=&quot;false&quot;</code> kan du ta bort det:</p>
+
+                <div
+                    id="example-83cf77"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-validation-form :use-error-list=&quot;false&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-validation-form&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om du sätter värdet dynamiskt behöver du inte ändra något.</p>
+
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">Sök igenom applikationens användningar av <code>FValidationForm</code> och <code>&lt;f-validation-form&gt;</code>, inklusive renderfunktioner och JSX.
+För varje användning där <code>useErrorList</code>/<code>use-error-list</code> saknas, lägg till <code>use-error-list</code> för att behålla det tidigare standardbeteendet där fellistan visas.
+Ta bort statiska <code>:use-error-list=&quot;false&quot;</code> eftersom det nu är standardbeteendet.
+Behåll dynamiska värden och ändra inte komponentimplementationen.</p>
+<p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra relevanta tester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
+
+            </details>
+        <h2 id="fformmodal" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fformmodal"><code>FFormModal</code></a></h2><p class="docs-paragraph">Propen <code>useErrorList</code> är inte längre aktiv som standard.</p>
+<p class="docs-paragraph">Om du vill behålla fellistan, lägg till propen explicit:</p>
+
+                <div
+                    id="example-ce3024"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-form-modal&gt;</span>
+<span class="hljs-addition">+&lt;f-form-modal use-error-list&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om du redan använder <code>:use-error-list=&quot;false&quot;</code> kan du ta bort det:</p>
+
+                <div
+                    id="example-434226"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-form-modal :use-error-list=&quot;false&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-form-modal&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om du sätter värdet dynamiskt behöver du inte ändra något.</p>
+
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">Sök igenom applikationen efter användningar av <code>FFormModal</code> och <code>&lt;f-form-modal&gt;</code>.
+För varje användning där <code>useErrorList</code>/<code>use-error-list</code> saknas, lägg till <code>use-error-list</code> för att behålla det tidigare standardbeteendet där fellistan visas.
+Ta bort statiska <code>:use-error-list=&quot;false&quot;</code> eftersom det nu är standardbeteendet.
+Behåll dynamiska värden.</p>
+<p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra relevanta tester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
+<h2 id="fcruddataset" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fcruddataset"><code>FCrudDataset</code></a></h2><p class="docs-paragraph"><code>FCrudDataset</code> öppnar inte längre några modaler själv.
 Istället anropas <code>onAdd</code>, <code>onEdit</code> och <code>onRemove</code> med en callback <code>commit</code> som applikationen anropar när åtgärden ska genomföras.
 Applikationen ansvarar för att öppna modaler, till exempel med <a href="../../../functions/functions/use-modal.html"><code>formModal()</code> och <code>confirmModal()</code></a>.</p>
 <p class="docs-paragraph">Följande har tagits bort:</p>
@@ -6413,6 +6529,8 @@ Applikationen ansvarar för att öppna modaler, till exempel med <a href="../../
 Motsvarande värden skickas istället direkt till modalerna.</li>
 <li>Eventen <code>created</code>, <code>updated</code> och <code>deleted</code>.
 Applikationen vet själv när den anropar <code>commit</code>.</li>
+<li>Enumen <code>Operation</code> (<code>ADD</code>, <code>DELETE</code>, <code>MODIFY</code>, <code>NONE</code>).
+Använd istället de åtgärdsspecifika callbackarna <code>onAdd</code>, <code>onEdit</code> och <code>onRemove</code>, eftersom varje callback redan motsvarar en åtgärd.</li>
 <li>Textnycklarna för modalernas rubriker och knappar (<code>fkui.crud-dataset.modal.*</code>).
 Det finns inga standardtexter längre, så applikationen behöver själv ange knapptexterna.
 För samma beteende som tidigare: &quot;Lägg till&quot; och &quot;Avbryt&quot; när en rad läggs till, &quot;Spara&quot; och &quot;Avbryt&quot; när en rad ändras samt &quot;Ja, ta bort&quot; och &quot;Nej, avbryt&quot; när en rad tas bort.</li>
@@ -6420,9 +6538,11 @@ För samma beteende som tidigare: &quot;Lägg till&quot; och &quot;Avbryt&quot; 
 Använd <code>FModalPageObject</code> eller <code>FModalSelectors</code> istället.</li>
 </ul>
 <p class="docs-paragraph">Knappen &quot;Lägg till ny&quot; visas när <code>onAdd</code> är satt (tidigare när slotten <code>#add</code> fanns).</p>
+<p class="docs-paragraph"><code>onAdd</code>, <code>onEdit</code> och <code>onRemove</code> kan vara asynkrona.
+Om en callback returnerar ett promise som avvisas rapporteras felet till <code>app.config.errorHandler</code>.</p>
 
                 <div
-                    id="example-c57e7d"
+                    id="example-cef7ca"
                     class="code-preview code-preview--default"
                     
                     
@@ -6443,7 +6563,7 @@ Använd <code>FModalPageObject</code> eller <code>FModalSelectors</code> iställ
                 </div>
             
                 <div
-                    id="example-8311c3"
+                    id="example-e398ef"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -6483,7 +6603,8 @@ Använd <code>FModalPageObject</code> eller <code>FModalSelectors</code> iställ
 </code></pre>
                 </div>
             <p class="docs-paragraph">Innehållet från slottarna <code>#add</code> och <code>#modify</code> flyttas till en egen modalkomponent baserad på <code>FFormModal</code> (se <a href="./modal-api-only.html">Modal API only</a>).
-Ändringsmodalen bör redigera en kopia av objektet så att originalet lämnas orört om användaren avbryter, och sedan skicka det ändrade objektet till <code>commit()</code>.</p>
+<code>onEdit</code> får en kopia av objektet, så originalet lämnas orört om användaren avbryter.
+Skicka det ändrade objektet till <code>commit()</code>.</p>
 
             <details class="docs-messagebox docs-messagebox--details">
                 <summary class="docs-messagebox__title">
@@ -6491,11 +6612,11 @@ Använd <code>FModalPageObject</code> eller <code>FModalSelectors</code> iställ
                 </summary>
                 <p class="docs-paragraph">För varje användning av <code>FCrudDataset</code>:</p>
 <ol>
-<li>Flytta innehållet i slottarna <code>#add</code> och <code>#modify</code> till en ny komponent som använder <code>FFormModal</code> med propparna <code>isOpen</code>, <code>value</code> och vidarebefordrar <code>close</code>-eventet.
-Komponenten ska redigera en kopia av objektet.</li>
+<li>Flytta innehållet i slottarna <code>#add</code> och <code>#modify</code> till en ny komponent som använder <code>FFormModal</code> med propparna <code>isOpen</code>, <code>value</code> och vidarebefordrar <code>close</code>-eventet.</li>
 <li>Lägg till <code>onAdd(commit)</code> som öppnar modalen med <code>formModal()</code> från <code>useModal()</code>, med objektet som tidigare returnerades av <code>beforeCreate</code>, och anropar <code>commit(item)</code> med resultatet.
 Fånga avbrott (<code>formModal()</code> avvisar promise när användaren avbryter).</li>
-<li>Lägg till <code>onEdit(item, commit)</code> på motsvarande sätt och anropa <code>commit(modified)</code>.</li>
+<li>Lägg till <code>onEdit(item, commit)</code> på motsvarande sätt och anropa <code>commit(modified)</code>.
+<code>item</code> är redan en kopia, så den behöver inte klonas.</li>
 <li>Ersätt slotten <code>#delete</code> med <code>onRemove(item, commit)</code> som öppnar <code>confirmModal()</code> och anropar <code>commit()</code> om användaren bekräftar.
 Använd tidigare <code>deleteModalHeader</code> som rubrik.</li>
 <li>Flytta logik från eventen <code>created</code>, <code>updated</code> och <code>deleted</code> till respektive callback innan <code>commit</code> anropas.</li>
@@ -6506,14 +6627,19 @@ Sök efter översättningar av textnycklarna <code>fkui.crud-dataset.modal.*</co
 <li>Skicka med ett meddelande för skärmläsare som är specifikt för raden som argumentet <code>alert</code> till <code>commit</code>, till exempel <code>commit(item, `${item.name} har lagts till`)</code>, <code>commit(modified, `${modified.name} har ändrats`)</code> och <code>commit(`${item.name} har tagits bort`)</code>.
 Använd ett namn eller annan egenskap som identifierar raden för användaren.</li>
 <li>Ersätt <code>FCrudDatasetPageObject.confirmButton()</code>/<code>cancelButton()</code> i tester med <code>new FModalPageObject(&quot;.modal&quot;).primaryButton()</code>/<code>secondaryButton()</code>.</li>
+<li>Ta bort importer av <code>Operation</code> från <code>@fkui/vue</code>.
+Flytta kod som grenar på <code>Operation.ADD</code>, <code>Operation.MODIFY</code> eller <code>Operation.DELETE</code> till <code>onAdd</code>, <code>onEdit</code> respektive <code>onRemove</code>.
+Ta bort kod som använder <code>Operation.NONE</code>.</li>
 </ol>
 <p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra enhetstester.</p>
 
             </details>
+        
+            </details>
         <h2 id="fmodal" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fmodal"><code>FModal</code></a></h2><p class="docs-paragraph">Propen <code>size</code> stödjer inte längre aliaset <code>fullscreen</code> och är ersatt med <code>fullwidth</code>.</p>
 
                 <div
-                    id="example-3769ce"
+                    id="example-3cc78b"
                     class="code-preview code-preview--default"
                     
                     
@@ -6544,7 +6670,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="fsortfilterdataset" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fsortfilterdataset"><code>FSortFilterDataset</code></a></h2><p class="docs-paragraph">Propen <code>placeholderFilter</code> är borttagen och ersatt med <code>filterLabel</code>.</p>
 
                 <div
-                    id="example-6f334d"
+                    id="example-8a81be"
                     class="code-preview code-preview--default"
                     
                     
@@ -6571,7 +6697,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="getlegacyinternalkey" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#getlegacyinternalkey"><code>getLegacyInternalKey()</code></a></h2><p class="docs-paragraph">Använd <code>findItemIdentifier()</code> om objektet kan sakna en identifierare, eller <code>getItemIdentifier()</code> om identifieraren är garanterad att finnas, istället för att hämta ut nyckeln.</p>
 
                 <div
-                    id="example-0021fe"
+                    id="example-1092d9"
                     class="code-preview code-preview--default"
                     
                     
@@ -6597,7 +6723,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="tablescroll" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tablescroll"><code>TableScroll</code></a></h2><p class="docs-paragraph"><code>FDataTable</code> och <code>FInteractiveTable</code> stödjer inte längre <code>TableScroll.VERTICAL</code> och <code>TableScroll.BOTH</code>.</p>
 
                 <div
-                    id="example-7aa951"
+                    id="example-af8b2d"
                     class="code-preview code-preview--default"
                     
                     
@@ -6629,11 +6755,11 @@ Gör inga ändringar förrän användaren bekräftat vilka åtgärder som ska g�
 Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
 
             </details>
-        <h2 id="fwizard" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fwizard">FWizard</a></h2><h3 id="fokushantering_for_steg_for_steg_guide_fwizard" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#fokushantering_for_steg_for_steg_guide_fwizard">Fokushantering för steg för steg-guide (<code>FWizard</code>)</a></h3><p class="docs-paragraph">I version 7 är initialt fokus på det första steget avstängt som standard.</p>
+        <h2 id="fwizard" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fwizard">FWizard</a></h2><p class="docs-paragraph">I version 7 är initialt fokus på det första steget avstängt som standard.</p>
 <p class="docs-paragraph">Om du vill att det första steget ska få fokus när guiden öppnas, lägg till <code>focus-initial-step</code>:</p>
 
                 <div
-                    id="example-865908"
+                    id="example-82f781"
                     class="code-preview code-preview--default"
                     
                     
@@ -6648,11 +6774,11 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
                 </div>
             <p class="docs-paragraph">Om du inte vill att det första steget ska få fokus när guiden öppnas behöver du inte längre lägga till någon fokusprop.
 Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, den finns inte längre i version 7.</p>
-<h3 id="fellista_for_steg_for_steg_guide_fwizardstep" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#fellista_for_steg_for_steg_guide_fwizardstep">Fellista för steg för steg-guide (<code>FWizardStep</code>)</a></h3><p class="docs-paragraph">I version 7 visas fellistan inte längre som standard i ett guidesteg.</p>
-<p class="docs-paragraph">Om du vill visa fellistan, lägg till <code>use-error-list</code> på <code>f-wizard-step</code>:</p>
+<h2 id="fwizardstep" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fwizardstep"><code>FWizardStep</code></a></h2><p class="docs-paragraph">Propen <code>useErrorList</code> är inte längre aktiv som standard.</p>
+<p class="docs-paragraph">Om du vill behålla fellistan, lägg till propen explicit:</p>
 
                 <div
-                    id="example-53524c"
+                    id="example-dc57b4"
                     class="code-preview code-preview--default"
                     
                     
@@ -6665,8 +6791,37 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
 &lt;/f-wizard-step&gt;
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Om du redan använder <code>:use-error-list=&quot;false&quot;</code> kan du ta bort propen eftersom det nu är standardbeteendet.</p>
+            <p class="docs-paragraph">Om du redan använder <code>:use-error-list=&quot;false&quot;</code> kan du ta bort det:</p>
 
+                <div
+                    id="example-0dc3ac"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-wizard-step key=&quot;step1&quot; title=&quot;Steg 1&quot; :use-error-list=&quot;false&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-wizard-step key=&quot;step1&quot; title=&quot;Steg 1&quot;&gt;</span>
+    &lt;!-- innehåll --&gt;
+&lt;/f-wizard-step&gt;
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om du sätter värdet dynamiskt behöver du inte ändra något.</p>
+
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">Sök igenom applikationen efter användningar av <code>FWizardStep</code> och <code>&lt;f-wizard-step&gt;</code>.
+För varje användning där <code>useErrorList</code>/<code>use-error-list</code> saknas, lägg till <code>use-error-list</code> för att behålla det tidigare standardbeteendet där fellistan visas.
+Ta bort statiska <code>:use-error-list=&quot;false&quot;</code> eftersom det nu är standardbeteendet.
+Behåll dynamiska värden.</p>
+<p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra relevanta tester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
+
+            </details>
+        
 
                     </div>
                 </main>
@@ -6734,9 +6889,9 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/7635a60a5fa6dcb65fb0be3d46e03dfe8f9f9b54">7635a60</a>)<br />
+<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/58685123b511cfbbe1d89e726c1b50ddac283cfd">5868512</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1872">PR 1872</a><br />
-       <span class="version-text-block">2026-11-20 10:39</span>
+       <span class="version-text-block">2026-11-23 12:50</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

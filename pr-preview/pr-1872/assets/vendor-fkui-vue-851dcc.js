@@ -1,6 +1,6 @@
 // packages/vue/dist/esm/index.esm.js
 import { Comment, Fragment, Teleport, Transition, capitalize, computed, createApp, createBlock, createCommentVNode, createElementBlock, createElementVNode, createSlots, createTextVNode, createVNode, defineComponent, defineCustomElement, effectScope, getCurrentInstance, getCurrentScope, guardReactiveProps, hasInjectionContext, inject, isRef, isVNode, mergeModels, mergeProps, nextTick, normalizeClass, normalizeProps, normalizeStyle, onBeforeUnmount, onMounted, onScopeDispose, onUnmounted, onUpdated, openBlock, provide, readonly, ref, renderList, renderSlot, resolveComponent, resolveDynamicComponent, shallowRef, toDisplayString, toHandlers, toRaw, toRef, toRefs, toValue, unref, useAttrs, useModel, useSlots, useTemplateRef, vModelDynamic, vModelSelect, vModelText, vShow, watch, watchEffect, withCtx, withDirectives, withKeys, withModifiers } from "vue";
-import { DomUtils, ElementIdService, TranslationService, ValidationService, addFocusListener, alertScreenReader, assertRef, assertSet, availableValidators, configLogic, debounce, documentOrderComparator, findTabbableElements, focus as focus$1, focusFirst, formatNumber, formatPercent, formatPersonnummer, formatPostalCode, handleTab, isEmpty, isInvalidDatesConfig, isInvalidWeekdaysConfig, isSet, isValidatableHTMLElement, isVisible, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parseDate, parseNumber, parseOrganisationsnummer, parsePercent, parsePersonnummer, parsePlusgiro, parsePostalCode, popFocus, pushFocus, removeFocusListener, restoreFocus, saveFocus, scrollTo, waitForScreenReader } from "@fkui/logic";
+import { DomUtils, ElementIdService, TranslationService, ValidationService, addFocusListener, alertScreenReader, assertRef, assertSet, availableValidators, configLogic, debounce, deepClone, documentOrderComparator, findTabbableElements, focus as focus$1, focusFirst, formatNumber, formatPercent, formatPersonnummer, formatPostalCode, handleTab, isEmpty, isInvalidDatesConfig, isInvalidWeekdaysConfig, isSet, isValidatableHTMLElement, isVisible, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parseDate, parseNumber, parseOrganisationsnummer, parsePercent, parsePersonnummer, parsePlusgiro, parsePostalCode, popFocus, pushFocus, removeFocusListener, restoreFocus, saveFocus, scrollTo, waitForScreenReader } from "@fkui/logic";
 import { DateFormat, FDate, FYear, clamp, getWeekdayNamings, groupByWeek, range } from "@fkui/date";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -4899,8 +4899,7 @@ var FValidationForm_vue_vue_type_script_lang_default = /* @__PURE__ */ defineCom
     */
     useErrorList: {
       type: Boolean,
-      required: false,
-      default: true
+      required: false
     },
     /**
     *Optional callback function to the error list component for performing actions before navigation.
@@ -5073,8 +5072,7 @@ var FFormModal_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponen
     */
     useErrorList: {
       type: Boolean,
-      required: false,
-      default: true
+      required: false
     },
     /**
     * The id for the form id attribute.
@@ -11941,7 +11939,7 @@ function filterItem(items, target, nested) {
   const newItems = [...items];
   for (let i = 0; i < newItems.length; i++) {
     const item = newItems[i];
-    if (item === target) {
+    if (toRaw(item) === toRaw(target)) {
       newItems.splice(i, 1);
       return newItems;
     }
@@ -11955,10 +11953,18 @@ function filterItem(items, target, nested) {
   }
   return newItems;
 }
+function replaceItem(target, source) {
+  if (target === source) return;
+  const dst = target;
+  const keep = new Set(Object.keys(source));
+  Object.assign(dst, source);
+  for (const key of Object.keys(dst)) if (!keep.has(key)) Reflect.deleteProperty(dst, key);
+}
 var _hoisted_1$56 = { class: "crud-dataset" };
 var FCrudDataset_default = /* @__PURE__ */ defineComponent({
   __name: "FCrudDataset",
-  props: /* @__PURE__ */ mergeModels({
+  props: {
+    modelValue: { default: () => void 0 },
     onAdd: {
       type: Function,
       default: void 0
@@ -11972,14 +11978,12 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
       default: void 0
     },
     buttonPosition: { default: "bottom" }
-  }, {
-    "modelValue": { default: () => [] },
-    "modelModifiers": {}
-  }),
+  },
   emits: ["update:modelValue"],
-  setup(__props, { expose: __expose }) {
-    const modelValue = useModel(__props, "modelValue");
+  setup(__props, { expose: __expose, emit: __emit }) {
+    const emit = __emit;
     const $t2 = useTranslate();
+    const items = ref([]);
     const nestedKey = ref(null);
     const callbackAfterItemAdd = ref(() => ({}));
     const callbackBeforeItemDelete = ref(() => ({}));
@@ -11996,25 +12000,34 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
     });
     __expose({
       /**
-      * Triggers `onAdd`.
+      * Triggers `onAdd`. Returns the value returned by `onAdd`, so a
+      * rejected promise can be awaited or caught by the caller.
       */
       createItem,
       /**
-      * Triggers `onEdit` for the given item.
+      * Triggers `onEdit` for the given item. Returns the value returned by
+      * `onEdit`, so a rejected promise can be awaited or caught by the caller.
       */
       updateItem,
       /**
-      * Triggers `onRemove` for the given item.
+      * Triggers `onRemove` for the given item. Returns the value returned by
+      * `onRemove`, so a rejected promise can be awaited or caught by the caller.
       */
       deleteItem
+    });
+    watch(() => __props.modelValue, (value) => {
+      items.value = [...value !== null && value !== void 0 ? value : []];
+    }, {
+      immediate: true,
+      deep: true
     });
     onMounted(() => {
       if (!__props.onAdd && !__props.onEdit && !__props.onRemove) throw new Error("At least one of the following props must be set: onAdd, onEdit or onRemove");
     });
     function createItem() {
       if (!__props.onAdd) throw new Error("No onAdd callback is defined");
-      __props.onAdd((item, alert) => {
-        modelValue.value.push(item);
+      return __props.onAdd((item, alert) => {
+        setItems([...items.value, item]);
         callbackAfterItemAdd.value(item);
         const message = alert !== null && alert !== void 0 ? alert : $t2("fkui.crud-dataset.aria-live.add", "En rad har lagts till");
         alertScreenReader(message, { assertive: true });
@@ -12022,20 +12035,29 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
     }
     function updateItem(current) {
       if (!__props.onEdit) throw new Error("No onEdit callback is defined");
-      __props.onEdit(current, (modified, alert) => {
-        if (modified && modified !== current) Object.assign(current, modified);
+      return __props.onEdit(deepClone(current), (modified, alert) => {
+        if (!isObject2(current) || !isObject2(modified)) throw new Error("FCrudDataset can only modify object items");
+        replaceItem(current, modified);
+        setItems([...items.value]);
         const message = alert !== null && alert !== void 0 ? alert : $t2("fkui.crud-dataset.aria-live.modify", "Raden har \xE4ndrats");
         alertScreenReader(message, { assertive: true });
       });
     }
     function deleteItem(current) {
       if (!__props.onRemove) throw new Error("No onRemove callback is defined");
-      __props.onRemove(current, (alert) => {
+      return __props.onRemove(current, (alert) => {
         callbackBeforeItemDelete.value(current);
-        modelValue.value = filterItem(modelValue.value, current, nestedKey.value);
+        setItems(filterItem(items.value, current, nestedKey.value));
         const message = alert !== null && alert !== void 0 ? alert : $t2("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort");
         alertScreenReader(message, { assertive: true });
       });
+    }
+    function isObject2(value) {
+      return typeof value === "object" && value !== null;
+    }
+    function setItems(value) {
+      items.value = value;
+      emit("update:modelValue", value);
     }
     function setNestedKey(key) {
       nestedKey.value = key;
@@ -12101,13 +12123,6 @@ function ActivateItemInjected() {
     setNestedKey: inject("setNestedKey", () => void 0)
   };
 }
-var Operation = /* @__PURE__ */ (function(Operation2) {
-  Operation2[Operation2["ADD"] = 0] = "ADD";
-  Operation2[Operation2["DELETE"] = 1] = "DELETE";
-  Operation2[Operation2["MODIFY"] = 2] = "MODIFY";
-  Operation2[Operation2["NONE"] = 3] = "NONE";
-  return Operation2;
-})({});
 function FSortFilterDatasetInjected() {
   return {
     sort: inject("sort", () => void 0),
@@ -23014,7 +23029,6 @@ export {
   FValidationForm_default as IValidationForm,
   MenuAction,
   ModalReason,
-  Operation,
   Placement,
   TableScroll,
   TestDirective,

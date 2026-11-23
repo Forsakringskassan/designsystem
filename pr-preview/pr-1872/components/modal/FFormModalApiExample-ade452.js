@@ -102,7 +102,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock(_component_f_form_modal, {
     size: _ctx.size,
     "data-test": _ctx.testId,
-    "use-error-list": false,
     "is-open": _ctx.isOpen,
     value: _ctx.value,
     "before-submit": _ctx.beforeSubmit,

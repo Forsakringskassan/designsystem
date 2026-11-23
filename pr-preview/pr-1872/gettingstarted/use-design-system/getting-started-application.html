@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-ec4ba3.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-61d844.js",
     "@fkui/date": "../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-f79163.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-851dcc.js",
     "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-37a3e4.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js"
   },
@@ -35,7 +35,7 @@
     "../../assets/vendor-fkui-vue-selectors-ec4ba3.js": "sha384-X7kHsr5wRshwqJOF+A4AJXePaFk73er8pcimXF6uz0kIIbToz2NyvzKWe+slXu7W",
     "../../assets/vendor-fkui-logic-61d844.js": "sha384-u+VrrunW0wzEofwwfTCUkVW/5R3NtIzcgQ1Z60e7ov5tXLYfjrUjbvH57Zgv2vnB",
     "../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../assets/vendor-fkui-vue-f79163.js": "sha384-6GsvWvQk5BE0RvbT9vxl8Fii9UH19WIIRm+VIONUML1G5Nm7BdXKhUs7m1tCm77Q",
+    "../../assets/vendor-fkui-vue-851dcc.js": "sha384-3i+1lKFVLNXmEBqdwd20sylC8NkBSgCnWCT/DtqR09vcDuWQ0w7nB9FozoVMu9ka",
     "../../assets/vendor-fkui-vue-labs-37a3e4.js": "sha384-N/HfKkajpXjdrrHo9mjCSJYlF7njhDq86owwuIac3sUncnfL0s0jYFVrZdohsxm3",
     "../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js": "sha384-PDEuCCbROg9gW6fFneYpzXKS04rV0oMFHgqArEkyaM8h1d/H3HBtCKiyFWYKWVcy"
   }
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-5504b1.json"
+    href="../../search-data-0b5e48.json"
     as="fetch"
     crossorigin
-    integrity="sha384-I9r4uQWQK9ODxbo7Ww8CoaJ+GCkMoABIKk4UuzIkFbchSprmlZKXUXD09CiLl3S2"
+    integrity="sha384-v9bsxz8XvR/ke1lCYEAL6+assnoLSe25jgMVIAFaYItCqP/i2JUZZSx9rLEt3dNw"
     id="search-data"
 />
 <script>
@@ -737,6 +737,8 @@
                 
                     
                 
+                    
+                
 
                 
                 
@@ -807,6 +809,19 @@
             
         >
             Modal API only
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../migration/migrating-to-v7/theme-css-fallback.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/theme-css-fallback.html"
+            
+        >
+            Temavärden i CSS
         </a>
     </li></ul>
 
@@ -6257,6 +6272,17 @@
         >
             Modal API only
         </a>
+    </li><li class="link ">
+        <a
+            href="../migration/migrating-to-v7/theme-css-fallback.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/theme-css-fallback.html"
+            
+        >
+            Temavärden i CSS
+        </a>
     </li></ul>
 
             
@@ -6372,23 +6398,26 @@ I exemplet nedan importeras styling för enbart inmatningsfält och flerradigt i
                 </div>
             <p class="docs-paragraph">Notera: variabeln <code>$global</code> måste sättas till <code>false</code> annars sätts samtliga variabler på <code>:root</code> selector.</p>
 <h3 id="css" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#css">CSS</a></h3><p class="docs-paragraph">Om din applikation inte använder Sass ska du istället placera <code>@fkui/design/lib/fkui.min.css</code> i en assets-katalog.
-Du behöver sedan referera till filen i assets-katalogen för varje sida.</p>
+Placera även <code>@fkui/theme-default/dist/theme-auto.css</code> i assets-katalogen.
+Den filen väljer automatiskt ljust eller mörkt tema utifrån användarens systeminställning.
+Ladda design-systemets CSS efter temafilen:</p>
 
                 <div
-                    id="example-535788"
+                    id="example-237ad1"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
                     data-language="html"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;assets/fkui.min.css&quot;</span> /&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;assets/theme-auto.css&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;assets/fkui.min.css&quot;</span> /&gt;</span>
 </code></pre>
                 </div>
             <p class="docs-paragraph">Om du behöver importera styling till javascript:</p>
 
                 <div
-                    id="example-d8fa29"
+                    id="example-8e0b5b"
                     class="code-preview code-preview--default"
                     
                     
@@ -6406,7 +6435,7 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
 <p class="docs-paragraph">Importera ikonbiblioteket genom att lägga nedan i applikationens index.ts eller motsvarande:</p>
 
                 <div
-                    id="example-8dc60a"
+                    id="example-b1abe5"
                     class="code-preview code-preview--default"
                     
                     
@@ -6422,7 +6451,7 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
 Importera den genom:</p>
 
                 <div
-                    id="example-7e49ef"
+                    id="example-c39a66"
                     class="code-preview code-preview--default"
                     
                     
@@ -6505,9 +6534,9 @@ Du bygger då ett nytt ikonbibliotek.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/7635a60a5fa6dcb65fb0be3d46e03dfe8f9f9b54">7635a60</a>)<br />
+<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/58685123b511cfbbe1d89e726c1b50ddac283cfd">5868512</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1872">PR 1872</a><br />
-       <span class="version-text-block">2026-11-20 10:39</span>
+       <span class="version-text-block">2026-11-23 12:50</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

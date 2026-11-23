@@ -11819,6 +11819,9 @@ function debounce(func, delay, immediate = false) {
 	};
 }
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
+function getDefaultExportFromCjs$1(x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
+}
 var lodash_clonedeep = { exports: {} };
 /**
 * lodash (Custom Build) <https://lodash.com/>
@@ -13230,7 +13233,34 @@ function requireLodash_clonedeep() {
 	})(lodash_clonedeep, lodash_clonedeep.exports);
 	return lodash_clonedeep.exports;
 }
-requireLodash_clonedeep();
+var cloneDeep = /*@__PURE__*/ getDefaultExportFromCjs$1(requireLodash_clonedeep());
+/**
+* Perform a deep clone of the given value.
+*
+* This function supports cloning:
+*
+* - Primitive types such as booleans, numbers and strings
+* - Arrays and objects
+* - Classes
+* - `Date`,
+* - `Map`,
+* - `RegExp`
+* - `Set`
+* - `Symbol`
+*
+* The following values are NOT cloned:
+*
+* - `Error` (and subclasses) - Cloned value will reference the same Error instance.
+* - DOM `Node` (and subclasses) - Cloned value will return the same DOM reference.
+* - `Function` (and arrow functions) - Cloned value will be an empty object `{}`
+*
+* @public
+* @param value - The value to recursively clone.
+* @returns Returns the deep cloned value.
+*/
+function deepClone(value) {
+	return cloneDeep(value);
+}
 /**
 * Takes a date string in any of the supported formats and normalizes it for
 * usage with `FDate` (ISO-8601).
@@ -22194,8 +22224,7 @@ var FValidationForm_vue_vue_type_script_lang_default = /*@__PURE__*/ defineCompo
 		*/
 		useErrorList: {
 			type: Boolean,
-			required: false,
-			default: true
+			required: false
 		},
 		/**
 		*Optional callback function to the error list component for performing actions before navigation.
@@ -22366,8 +22395,7 @@ var FFormModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent(
 		*/
 		useErrorList: {
 			type: Boolean,
-			required: false,
-			default: true
+			required: false
 		},
 		/**
 		* The id for the form id attribute.
@@ -27121,7 +27149,7 @@ function filterItem(items, target, nested) {
 	const newItems = [...items];
 	for (let i = 0; i < newItems.length; i++) {
 		const item = newItems[i];
-		if (item === target) {
+		if (/* @__PURE__ */ toRaw(item) === /* @__PURE__ */ toRaw(target)) {
 			newItems.splice(i, 1);
 			return newItems;
 		}
@@ -27135,10 +27163,25 @@ function filterItem(items, target, nested) {
 	}
 	return newItems;
 }
+/**
+* Replace all properties of `target` with the properties of `source` while
+* keeping the object identity of `target`. Properties missing in `source` are
+* removed from `target`.
+*
+* @internal
+*/
+function replaceItem(target, source) {
+	if (target === source) return;
+	const dst = target;
+	const keep = new Set(Object.keys(source));
+	Object.assign(dst, source);
+	for (const key of Object.keys(dst)) if (!keep.has(key)) Reflect.deleteProperty(dst, key);
+}
 var _hoisted_1$56 = { class: "crud-dataset" };
 var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 	__name: "FCrudDataset",
-	props: /*@__PURE__*/ mergeModels({
+	props: {
+		modelValue: { default: () => void 0 },
 		onAdd: {
 			type: Function,
 			default: void 0
@@ -27152,14 +27195,17 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 			default: void 0
 		},
 		buttonPosition: { default: "bottom" }
-	}, {
-		"modelValue": { default: () => [] },
-		"modelModifiers": {}
-	}),
+	},
 	emits: ["update:modelValue"],
-	setup(__props, { expose: __expose }) {
-		const modelValue = useModel(__props, "modelValue");
+	setup(__props, { expose: __expose, emit: __emit }) {
+		const emit = __emit;
 		const $t = useTranslate();
+		/**
+		* Local copy of the model.
+		* All modifications are made on this copy (never on the `modelValue` prop) and a new array is emitted with `update:modelValue`.
+		* Keeping a local copy ensures multiple commits within the same tick build upon each other before the parent has re-rendered.
+		*/
+		const items = /* @__PURE__ */ ref([]);
 		const nestedKey = /* @__PURE__ */ ref(null);
 		const callbackAfterItemAdd = /* @__PURE__ */ ref(() => ({}));
 		const callbackBeforeItemDelete = /* @__PURE__ */ ref(() => ({}));
@@ -27177,43 +27223,61 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 		});
 		__expose({
 			/**
-			* Triggers `onAdd`.
+			* Triggers `onAdd`. Returns the value returned by `onAdd`, so a
+			* rejected promise can be awaited or caught by the caller.
 			*/
 			createItem,
 			/**
-			* Triggers `onEdit` for the given item.
+			* Triggers `onEdit` for the given item. Returns the value returned by
+			* `onEdit`, so a rejected promise can be awaited or caught by the caller.
 			*/
 			updateItem,
 			/**
-			* Triggers `onRemove` for the given item.
+			* Triggers `onRemove` for the given item. Returns the value returned by
+			* `onRemove`, so a rejected promise can be awaited or caught by the caller.
 			*/
 			deleteItem
+		});
+		watch(() => __props.modelValue, (value) => {
+			items.value = [...value !== null && value !== void 0 ? value : []];
+		}, {
+			immediate: true,
+			deep: true
 		});
 		onMounted(() => {
 			if (!__props.onAdd && !__props.onEdit && !__props.onRemove) throw new Error("At least one of the following props must be set: onAdd, onEdit or onRemove");
 		});
 		function createItem() {
 			if (!__props.onAdd) throw new Error("No onAdd callback is defined");
-			__props.onAdd((item, alert) => {
-				modelValue.value.push(item);
+			return __props.onAdd((item, alert) => {
+				setItems([...items.value, item]);
 				callbackAfterItemAdd.value(item);
 				alertScreenReader(alert !== null && alert !== void 0 ? alert : $t("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), { assertive: true });
 			});
 		}
 		function updateItem(current) {
 			if (!__props.onEdit) throw new Error("No onEdit callback is defined");
-			__props.onEdit(current, (modified, alert) => {
-				if (modified && modified !== current) Object.assign(current, modified);
+			return __props.onEdit(deepClone(current), (modified, alert) => {
+				if (!isObject(current) || !isObject(modified)) throw new Error("FCrudDataset can only modify object items");
+				replaceItem(current, modified);
+				setItems([...items.value]);
 				alertScreenReader(alert !== null && alert !== void 0 ? alert : $t("fkui.crud-dataset.aria-live.modify", "Raden har ändrats"), { assertive: true });
 			});
 		}
 		function deleteItem(current) {
 			if (!__props.onRemove) throw new Error("No onRemove callback is defined");
-			__props.onRemove(current, (alert) => {
+			return __props.onRemove(current, (alert) => {
 				callbackBeforeItemDelete.value(current);
-				modelValue.value = filterItem(modelValue.value, current, nestedKey.value);
+				setItems(filterItem(items.value, current, nestedKey.value));
 				alertScreenReader(alert !== null && alert !== void 0 ? alert : $t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), { assertive: true });
 			});
+		}
+		function isObject(value) {
+			return typeof value === "object" && value !== null;
+		}
+		function setItems(value) {
+			items.value = value;
+			emit("update:modelValue", value);
 		}
 		function setNestedKey(key) {
 			nestedKey.value = key;
