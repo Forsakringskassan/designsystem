@@ -70,6 +70,7 @@ it("should call beforeNext with data including key, totalSteps and stepNumber", 
         },
         attachTo: createPlaceholderInDocument(),
     });
+    await flushPromises(); /* wait for the wizard to open the step */
     await wrapper.find("[type='submit']").trigger("click");
     await wrapper.vm.$nextTick();
     await flushPromises();
@@ -107,6 +108,7 @@ it("should call beforeValidation with data including key, totalSteps and stepNum
         },
         attachTo: createPlaceholderInDocument(),
     });
+    await flushPromises(); /* wait for the wizard to open the step */
     await wrapper.find("[type='submit']").trigger("click");
     await wrapper.vm.$nextTick();
     await flushPromises();
