@@ -14364,6 +14364,9 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
       }
       nextTick().then(() => validationFacade.validateElement(el));
     }, { flush: "post" });
+    watch(() => __props.column.value(__props.row), () => {
+      if (!inEdit.value) viewValue.value = fromColumnValue();
+    });
     watchEffect(() => {
       if (hasError.value) {
         var _tdElement$value, _arrowAnchorElement$v;
