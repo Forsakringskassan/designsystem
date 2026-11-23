@@ -26,6 +26,10 @@ describe("validation", () => {
         ${"åtest.andersson@example"}             | ${true}  | ${"email address with å,ä,ö in localpart should be valid"}
         ${"ötest.ätest@example"}                 | ${true}  | ${"email address with å,ä,ö with . inbetween should be valid"}
         ${"test.testorsson@exämple"}             | ${false} | ${"email address with å,ä,ö in domain should be invalid"}
+        ${"was@xn--4cab6c"}                      | ${false} | ${"email address with punycode domain should be invalid"}
+        ${"was@example.XN--tda"}                 | ${false} | ${"email address with punycode label in any position and case should be invalid"}
+        ${"xn--was@example.net"}                 | ${true}  | ${"email address with xn-- in localpart should be valid"}
+        ${"was@axn--b.example"}                  | ${true}  | ${"email address with xn-- inside a label should be valid"}
         ${"localpart@example"}                   | ${true}  | ${"email address without top-level domain should be valid"}
         ${"test.testorsson@"}                    | ${false} | ${"email address without domain should be invalid"}
         ${"test.testorsson@example@example.net"} | ${false} | ${"email with two domains should be invalid"}

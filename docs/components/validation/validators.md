@@ -925,8 +925,11 @@ Skriv så här i kod när användaren ska fylla i mejladress:
 ```diff
  <f-text-field
 +    v-validation.email
++    type="email"
  ></f-text-field>
 ```
+
+Använd `type="email"` så att användaren får ett tangentbord anpassat för mejladresser på mobil.
 
 Felmeddelandet till användaren när valideringen inte är godkänd är:  
 Mejladressen är inte rätt ifylld.

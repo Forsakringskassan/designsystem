@@ -13,5 +13,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-text-field v-model="model" v-validation.email> Fyll i en mejladress </f-text-field>
+    <f-text-field v-model="model" v-validation.email type="email">
+        Fyll i en mejladress
+    </f-text-field>
 </template>
