@@ -1,63 +1,65 @@
-// New palette colors
-// Palette colors should follow the following palette-color-<name> convention.
+// Palette colors are exposed as CSS custom properties and should follow the
+// --fkds-palette-color-<name> convention.
 
-/// @group Neutral
-$palette-color-neutral-900: #1b1e23 !default;
-$palette-color-neutral-800: #292d34 !default;
-$palette-color-neutral-700: #494f5b !default;
-$palette-color-neutral-600: #606876 !default;
-$palette-color-neutral-500: #777f8d !default;
-$palette-color-neutral-400: #8e949f !default;
-$palette-color-neutral-300: #afb3bb !default;
-$palette-color-neutral-200: #d6d8dc !default;
-$palette-color-neutral-100: #ecedef !default;
-$palette-color-neutral-50: #f7f7f8 !default;
-$palette-color-neutral-0: #ffffff !default;
+@mixin variables {
+    /// @group Neutral
+    --fkds-palette-color-neutral-900: #1b1e23;
+    --fkds-palette-color-neutral-800: #292d34;
+    --fkds-palette-color-neutral-700: #494f5b;
+    --fkds-palette-color-neutral-600: #606876;
+    --fkds-palette-color-neutral-500: #777f8d;
+    --fkds-palette-color-neutral-400: #8e949f;
+    --fkds-palette-color-neutral-300: #afb3bb;
+    --fkds-palette-color-neutral-200: #d6d8dc;
+    --fkds-palette-color-neutral-100: #ecedef;
+    --fkds-palette-color-neutral-50: #f7f7f8;
+    --fkds-palette-color-neutral-0: #ffffff;
 
-/// @group Blue
-$palette-color-blue-900: #0e1623 !default;
-$palette-color-blue-800: #162f5d !default;
-$palette-color-blue-700: #1b478d !default;
-$palette-color-blue-600: #2358af !default;
-$palette-color-blue-500: #3472d5 !default;
-$palette-color-blue-400: #578edb !default;
-$palette-color-blue-300: #76a6e0 !default;
-$palette-color-blue-200: #a2bfe3 !default;
-$palette-color-blue-100: #dee9f7 !default;
-$palette-color-blue-50: #f3f7fc !default;
+    /// @group Blue
+    --fkds-palette-color-blue-900: #0e1623;
+    --fkds-palette-color-blue-800: #162f5d;
+    --fkds-palette-color-blue-700: #1b478d;
+    --fkds-palette-color-blue-600: #2358af;
+    --fkds-palette-color-blue-500: #3472d5;
+    --fkds-palette-color-blue-400: #578edb;
+    --fkds-palette-color-blue-300: #76a6e0;
+    --fkds-palette-color-blue-200: #a2bfe3;
+    --fkds-palette-color-blue-100: #dee9f7;
+    --fkds-palette-color-blue-50: #f3f7fc;
 
-/// @group Green
-$palette-color-green-900: #0f1f19 !default;
-$palette-color-green-800: #14432a !default;
-$palette-color-green-700: #116a3e !default;
-$palette-color-green-600: #1b7e4d !default;
-$palette-color-green-500: #248f59 !default;
-$palette-color-green-400: #41aa75 !default;
-$palette-color-green-300: #77bb98 !default;
-$palette-color-green-200: #aad8c0 !default;
-$palette-color-green-100: #d9ede3 !default;
-$palette-color-green-50: #f5faf7 !default;
+    /// @group Green
+    --fkds-palette-color-green-900: #0f1f19;
+    --fkds-palette-color-green-800: #14432a;
+    --fkds-palette-color-green-700: #116a3e;
+    --fkds-palette-color-green-600: #1b7e4d;
+    --fkds-palette-color-green-500: #248f59;
+    --fkds-palette-color-green-400: #41aa75;
+    --fkds-palette-color-green-300: #77bb98;
+    --fkds-palette-color-green-200: #aad8c0;
+    --fkds-palette-color-green-100: #d9ede3;
+    --fkds-palette-color-green-50: #f5faf7;
 
-/// @group Yellow
-$palette-color-yellow-900: #201d10 !default;
-$palette-color-yellow-800: #625019 !default;
-$palette-color-yellow-700: #b18502 !default;
-$palette-color-yellow-600: #d6a103 !default;
-$palette-color-yellow-500: #f1b604 !default;
-$palette-color-yellow-400: #f2cc4d !default;
-$palette-color-yellow-300: #f6db80 !default;
-$palette-color-yellow-200: #f9e49f !default;
-$palette-color-yellow-100: #fef4cd !default;
-$palette-color-yellow-50: #fffbf0 !default;
+    /// @group Yellow
+    --fkds-palette-color-yellow-900: #201d10;
+    --fkds-palette-color-yellow-800: #625019;
+    --fkds-palette-color-yellow-700: #b18502;
+    --fkds-palette-color-yellow-600: #d6a103;
+    --fkds-palette-color-yellow-500: #f1b604;
+    --fkds-palette-color-yellow-400: #f2cc4d;
+    --fkds-palette-color-yellow-300: #f6db80;
+    --fkds-palette-color-yellow-200: #f9e49f;
+    --fkds-palette-color-yellow-100: #fef4cd;
+    --fkds-palette-color-yellow-50: #fffbf0;
 
-/// @group Red
-$palette-color-red-900: #211011 !default;
-$palette-color-red-800: #5e1b1b !default;
-$palette-color-red-700: #9f2024 !default;
-$palette-color-red-600: #bf272b !default;
-$palette-color-red-500: #df3035 !default;
-$palette-color-red-400: #e85b60 !default;
-$palette-color-red-300: #ef8a8e !default;
-$palette-color-red-200: #f4afb2 !default;
-$palette-color-red-100: #f9dcdc !default;
-$palette-color-red-50: #fdf3f3 !default;
+    /// @group Red
+    --fkds-palette-color-red-900: #211011;
+    --fkds-palette-color-red-800: #5e1b1b;
+    --fkds-palette-color-red-700: #9f2024;
+    --fkds-palette-color-red-600: #bf272b;
+    --fkds-palette-color-red-500: #df3035;
+    --fkds-palette-color-red-400: #e85b60;
+    --fkds-palette-color-red-300: #ef8a8e;
+    --fkds-palette-color-red-200: #f4afb2;
+    --fkds-palette-color-red-100: #f9dcdc;
+    --fkds-palette-color-red-50: #fdf3f3;
+}

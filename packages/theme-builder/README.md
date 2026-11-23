@@ -29,4 +29,10 @@ Any CSS-variable starting with this prefix is considered a semantic token.
 
 With `--prefix fkds` the `--fkds-foobar` would be a semantic token.
 
+### Palette metadata
+
+The generated `metadata.mjs` contains a `palette` array of `{ name, value, group }` objects alongside the themes and semantic tokens.
+Palette names include the `--fkds-palette-color-` prefix (or the corresponding configured prefix).
+The group comes from the `@group` annotation in the palette source.
+
 ## File structure
