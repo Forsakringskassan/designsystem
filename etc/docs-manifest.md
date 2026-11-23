@@ -268,6 +268,8 @@ gettingstarted/migration/migrating-to-v7/design.html
 gettingstarted/migration/migrating-to-v7/modal-api-only.html
 gettingstarted/migration/migrating-to-v7/overview.html
 gettingstarted/migration/migrating-to-v7/pageobjects.html
+gettingstarted/migration/migrating-to-v7/palette.html
+gettingstarted/migration/migrating-to-v7/theme-builder.html
 gettingstarted/migration/migrating-to-v7/theme-css-fallback.html
 gettingstarted/migration/migrating-to-v7/vue.html
 gettingstarted/use-design-system/getting-started-application.html
