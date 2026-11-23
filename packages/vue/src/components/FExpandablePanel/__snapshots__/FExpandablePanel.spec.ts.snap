@@ -230,7 +230,6 @@ exports[`snapshots > should match snapshot with notification 1`] = `
          
         <span
           class="expandable-panel__notification"
-          title="2 notifieringar"
         >
           <span
             class="sr-only"
