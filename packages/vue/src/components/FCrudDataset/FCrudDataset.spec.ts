@@ -204,18 +204,7 @@ function createWrapper(
 
 async function submitForm(wrapper: VueWrapper): Promise<void> {
     await wrapper.find(".modal form").trigger("submit");
-
-    // hasFormErrors in FValidationForm
-    await flushPromises(); // ValidationService.validateAllElements
-    await wrapper.vm.$nextTick(); // FValidationForm.hasFormErrors.$nextTick
-    vi.runAllTimers(); // FValidationForm.hasFormErrors.setTimeout
-
-    // hasFormErrors is called twice
     await flushPromises();
-    await wrapper.vm.$nextTick();
-    vi.runAllTimers();
-
-    await wrapper.vm.$nextTick(); // Remove modal from DOM
 }
 
 describe("snapshot", () => {
