@@ -1,6 +1,6 @@
 import { defineComponent } from "vue";
 import { type VueWrapper, mount } from "@vue/test-utils";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import { type FormErrorList } from "../../types";
 import { cleanUpElements } from "./form-utils";
 
@@ -8,14 +8,6 @@ type ComponentReference = Record<string, FormErrorList>;
 
 const components = { myId: {} } as unknown as ComponentReference;
 const componentsNotInDOM = { anotherId: {} } as unknown as ComponentReference;
-
-beforeEach(() => {
-    vi.useFakeTimers();
-});
-
-afterEach(() => {
-    vi.useRealTimers();
-});
 
 function createWrapper(
     components: ComponentReference,
@@ -37,12 +29,7 @@ describe("cleanUp", () => {
         expect.assertions(1);
         const wrapper = createWrapper(components);
 
-        void cleanUpElements(wrapper.vm);
-
-        // Execute all setTimeout functions
-        vi.runAllTimers();
-        // Let vue update everything
-        await wrapper.vm.$nextTick();
+        await cleanUpElements(wrapper.vm);
 
         expect(wrapper.vm.$data.components).toMatchInlineSnapshot(`
             {
@@ -55,12 +42,7 @@ describe("cleanUp", () => {
         expect.assertions(1);
         const wrapper = createWrapper(componentsNotInDOM);
 
-        void cleanUpElements(wrapper.vm);
-
-        // Execute all setTimeout functions
-        vi.runAllTimers();
-        // Let vue update everything
-        await wrapper.vm.$nextTick();
+        await cleanUpElements(wrapper.vm);
 
         expect(wrapper.vm.$data.components).toMatchInlineSnapshot(`{}`);
     });
