@@ -1,3 +1,4 @@
+@use "../palette-variables" as palette;
 @use "../light/theme" as light;
 @use "../dark/theme" as dark;
 @use "../version" as *;
@@ -5,12 +6,14 @@
 @mixin theme {
     color-scheme: light dark;
 
+    @include palette.variables;
+
     @media (prefers-color-scheme: light) {
-        @include light.theme;
+        @include light.tokens;
     }
 
     @media (prefers-color-scheme: dark) {
-        @include dark.theme;
+        @include dark.tokens;
     }
 
     --fkui-theme-default-version: "#{$version}";

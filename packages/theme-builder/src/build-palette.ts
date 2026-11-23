@@ -1,46 +1,27 @@
 import path from "node:path/posix";
-import {
-    type VariableGroup,
-    extractSassVariables,
-} from "./extract-sass-variables.ts";
+import { extractCssVariables } from "./extract-css-variables.ts";
+import { extractSassVariables } from "./extract-sass-variables.ts";
 import { type NormalizedOptions } from "./options.ts";
 
-export async function buildPalette(
-    filePath: string,
-    basename: string,
-    options: NormalizedOptions,
-): Promise<VariableGroup[]> {
-    const { cwd, logger, outdir, fs } = options;
-    const src = path.join(cwd, filePath);
-    const dst = path.join(outdir, basename);
-
-    logger.log();
-    logger.group("Extracting Sass variables from:");
-    logger.log(src, "->", dst);
-
-    const dtsContent = `
-export interface SassVariable {
+export interface PaletteColor {
     name: string;
     value: string;
     group: string;
-    comment: string;
 }
 
-export interface VariableGroup {
-    name: string
-    variables: SassVariable[];
-}
+export async function extractPalette(
+    filePath: string,
+    options: NormalizedOptions,
+): Promise<PaletteColor[]> {
+    const { cwd, logger } = options;
+    const src = path.join(cwd, filePath);
 
-declare const value: VariableGroup[];
-export default value;
-`;
-
-    const dts = `${dst}.d.ts`;
-    const variables = await extractSassVariables(src, options);
-    await fs.writeFile(dst, JSON.stringify(variables, null, 2), "utf8");
-    await fs.writeFile(dts, dtsContent, "utf8");
-
+    logger.log();
+    logger.group("Extracting Sass and CSS variables from:");
+    const sassVariables = await extractSassVariables(src, options);
+    const cssVariables = await extractCssVariables(src, options);
     logger.groupEnd();
-
-    return variables;
+    return [...sassVariables, ...cssVariables]
+        .flatMap((group) => group.variables)
+        .map(({ name, value, group }) => ({ name, value, group }));
 }

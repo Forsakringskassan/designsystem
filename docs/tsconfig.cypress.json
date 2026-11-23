@@ -5,7 +5,8 @@
         "rootDir": ".",
         "noEmit": true,
         "strict": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "lib": ["es2024", "dom", "dom.iterable"]
     },
     "include": [
         "**/*.cy.ts",

@@ -4,26 +4,29 @@ import yargs from "yargs";
 import { buildCss } from "./build-css.ts";
 import { buildJs } from "./build-js.ts";
 import { buildMetadata } from "./build-metadata.ts";
-import { buildPalette } from "./build-palette.ts";
+import { extractPalette } from "./build-palette.ts";
 import { clean } from "./clean.ts";
 import { generateVersion } from "./generate-version.ts";
 import { type NormalizedOptions, type Options } from "./options.ts";
 
 const nodeConsole = console;
+const paletteVariablesFile = "src/palette-variables.scss";
 
 async function run(options: NormalizedOptions): Promise<void> {
     const { cwd, fs, logger, outdir } = options;
     await clean(options);
     await generateVersion("src/_version.scss", options);
-    const files = await buildCss("src/*.scss", options);
-    await buildJs(files, options);
-    const paletteVariables = await buildPalette(
-        "src/palette-variables.scss",
-        "palette.json",
+    const files = await buildCss(
+        "src/*.scss",
+        ["src/_*.scss", paletteVariablesFile],
         options,
     );
-
+    await buildJs(files, options);
     if (files.length > 0) {
+        const paletteVariables = await extractPalette(
+            paletteVariablesFile,
+            options,
+        );
         await buildMetadata(files, "metadata", paletteVariables, options);
     }
 
@@ -57,7 +60,7 @@ export async function cli(argv: string[], options: Options): Promise<void> {
         })
         .option("prefix", {
             alias: "p",
-            describe: "Token prefix",
+            describe: "Token and palette prefix",
             type: "string",
             default: options.prefix ?? "fkds",
             requiresArg: true,

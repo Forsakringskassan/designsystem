@@ -1,10 +1,16 @@
+@use "../palette-variables" as palette;
 @use "../shared" as shared;
 @use "variables" as light;
 @use "../version" as *;
 
-@mixin theme {
+@mixin tokens {
     @include shared.variables;
     @include light.variables;
 
     --fkui-theme-default-version: "#{$version}";
+}
+
+@mixin theme {
+    @include palette.variables;
+    @include tokens;
 }
