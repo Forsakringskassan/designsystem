@@ -35,6 +35,15 @@ $textarea-auto-resize-fallback-height: max(var(--i-textarea-field-min-height), #
         min-height: core.densify(var(--f-height-large));
         padding: $textarea-padding-y size.$padding-075;
         width: var(--f-width-full);
+
+        &::placeholder {
+            color: var(--fkds-color-text-secondary);
+            opacity: 1;
+        }
+
+        &:disabled::placeholder {
+            color: $textareafield-color-text-disabled;
+        }
     }
 
     &__textarea[rows] {
