@@ -1674,23 +1674,23 @@ function refIsElement(value) {
 function refIsVue(value) {
   return value?.$el !== void 0;
 }
-function findElementFromVueRef(ref3) {
-  if (refIsElement(ref3)) {
-    return ref3;
+function findElementFromVueRef(ref2) {
+  if (refIsElement(ref2)) {
+    return ref2;
   }
-  if (refIsVue(ref3)) {
-    return ref3.$el;
+  if (refIsVue(ref2)) {
+    return ref2.$el;
   }
 }
-function getHTMLElementFromVueRef(ref3) {
-  const element = findElementFromVueRef(ref3);
+function getHTMLElementFromVueRef(ref2) {
+  const element = findElementFromVueRef(ref2);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${String(ref3)}.`);
+    throw new Error(`Unable to find element from ${String(ref2)}.`);
   }
   if (element instanceof HTMLElement) {
     return element;
   }
-  throw new Error(`Not instance of HTMLELement ${String(ref3)}.`);
+  throw new Error(`Not instance of HTMLELement ${String(ref2)}.`);
 }
 
 // packages/vue/src/utils/event-bus.ts
@@ -3555,7 +3555,7 @@ var FFormModal_default = defineComponent11({
     fullscreen: {
       type: Boolean,
       required: false,
-      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
+      /* eslint-disable-next-line vue/no-boolean-default -- only in edge-cases should this be diabled */
       default: true
     },
     /**
@@ -3911,9 +3911,6 @@ function getAbsolutePosition(src) {
     height: Math.floor(rect.height)
   };
 }
-
-// packages/vue/src/utils/dataset/use-dataset-ref.ts
-import { ref as ref2, toRaw, watch } from "vue";
 
 // packages/vue/src/internal-components/IPopup/i-popup-utils.ts
 function clamp(value, min, max) {
