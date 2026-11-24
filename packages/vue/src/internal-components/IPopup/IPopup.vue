@@ -426,7 +426,7 @@ export default defineComponent({
         <div ref="popup" v-bind="$attrs" :class="popupClasses">
             <div
                 ref="wrapper"
-                role="presentation"
+                role="none"
                 class="popup__wrapper"
                 @click="onPopupClickHandler"
                 @keyup.esc.stop="onKeyEsc"
