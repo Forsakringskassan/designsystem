@@ -132,7 +132,7 @@ export default defineComponent({
                     :colspan="getDayStartOffset(week.days)"
                 ></td>
 
-                <td v-for="day in week.days" :key="day.toString()" class="calendar-month__cell" role="presentation">
+                <td v-for="day in week.days" :key="day.toString()" class="calendar-month__cell" role="none">
                     <!--
                     @slot Slot for rendering of day content. Slot scope is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ date, focused }"`.
                     @binding {FDate} date Date of day.
