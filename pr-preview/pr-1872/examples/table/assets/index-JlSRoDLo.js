@@ -27244,12 +27244,17 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 			immediate: true,
 			deep: true
 		});
+		let isUnmounted = false;
 		onMounted(() => {
 			if (!__props.onAdd && !__props.onEdit && !__props.onRemove) throw new Error("At least one of the following props must be set: onAdd, onEdit or onRemove");
+		});
+		onUnmounted(() => {
+			isUnmounted = true;
 		});
 		function createItem() {
 			if (!__props.onAdd) throw new Error("No onAdd callback is defined");
 			return __props.onAdd((item, alert) => {
+				if (isUnmounted) return;
 				setItems([...items.value, item]);
 				callbackAfterItemAdd.value(item);
 				alertScreenReader(alert !== null && alert !== void 0 ? alert : $t("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), { assertive: true });
@@ -27258,6 +27263,7 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 		function updateItem(current) {
 			if (!__props.onEdit) throw new Error("No onEdit callback is defined");
 			return __props.onEdit(deepClone(current), (modified, alert) => {
+				if (isUnmounted) return;
 				if (!isObject(current) || !isObject(modified)) throw new Error("FCrudDataset can only modify object items");
 				replaceItem(current, modified);
 				setItems([...items.value]);
@@ -27267,6 +27273,7 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 		function deleteItem(current) {
 			if (!__props.onRemove) throw new Error("No onRemove callback is defined");
 			return __props.onRemove(current, (alert) => {
+				if (isUnmounted) return;
 				callbackBeforeItemDelete.value(current);
 				setItems(filterItem(items.value, current, nestedKey.value));
 				alertScreenReader(alert !== null && alert !== void 0 ? alert : $t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), { assertive: true });
