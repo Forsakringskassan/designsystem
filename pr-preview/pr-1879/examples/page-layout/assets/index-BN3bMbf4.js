@@ -30,7 +30,7 @@
 })();
 // ../../node_modules/@vue/shared/dist/shared.esm-bundler.js
 /**
-* @vue/shared v3.5.45
+* @vue/shared v3.5.46
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -72,10 +72,18 @@ var toRawType = (value) => {
 var isPlainObject = (val) => toTypeString(val) === "[object Object]";
 var isIntegerKey = (key) => isString(key) && key !== "NaN" && key[0] !== "-" && "" + parseInt(key, 10) === key;
 var isReservedProp = /* @__PURE__ */ makeMap(",key,ref,ref_for,ref_key,onVnodeBeforeMount,onVnodeMounted,onVnodeBeforeUpdate,onVnodeUpdated,onVnodeBeforeUnmount,onVnodeUnmounted");
+var STRING_CACHE_MAX_SIZE = 1e4;
 var cacheStringFunction = (fn) => {
-	const cache = /* @__PURE__ */ Object.create(null);
+	let cache = /* @__PURE__ */ Object.create(null);
+	let size = 0;
 	return ((str) => {
-		return cache[str] || (cache[str] = fn(str));
+		const hit = cache[str];
+		if (hit !== void 0) return hit;
+		if (++size > STRING_CACHE_MAX_SIZE) {
+			cache = /* @__PURE__ */ Object.create(null);
+			size = 1;
+		}
+		return cache[str] = fn(str);
 	});
 };
 var camelizeRE = /-\w/g;
@@ -191,11 +199,11 @@ function looseCompareObjects(a, b, seen) {
 	if (aValidType || bValidType) return aValidType && bValidType ? looseCompareCollections(a, b, seen) : false;
 	if (Object.keys(a).length !== Object.keys(b).length) return false;
 	for (const key in a) {
-		const aHasKey = a.hasOwnProperty(key);
-		const bHasKey = b.hasOwnProperty(key);
+		const aHasKey = hasOwn(a, key);
+		const bHasKey = hasOwn(b, key);
 		if (aHasKey && !bHasKey || !aHasKey && bHasKey || !looseEqual(a[key], b[key], seen)) return false;
 	}
-	return String(a) === String(b);
+	return toComparableString(a) === toComparableString(b);
 }
 function looseCompareNested(a, b, seen, compare) {
 	if (!seen) seen = [/* @__PURE__ */ new Map(), /* @__PURE__ */ new Map()];
@@ -230,6 +238,9 @@ function looseEqual(a, b, seen) {
 function looseIndexOf(arr, val) {
 	return arr.findIndex((item) => looseEqual(item, val));
 }
+function toComparableString(value) {
+	return Object.getPrototypeOf(value) === null && value[Symbol.toPrimitive] == null && typeof value.toString !== "function" && typeof value.valueOf !== "function" ? toTypeString(value) : String(value);
+}
 var isRef$1 = (val) => {
 	return !!(val && val["__v_isRef"] === true);
 };
@@ -253,7 +264,7 @@ var stringifySymbol = (v, i = "") => {
 };
 // ../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
 /**
-* @vue/reactivity v3.5.45
+* @vue/reactivity v3.5.46
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -1660,7 +1671,7 @@ function traverse(value, depth = Infinity, seen) {
 }
 // ../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
 /**
-* @vue/runtime-core v3.5.45
+* @vue/runtime-core v3.5.46
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -2200,8 +2211,8 @@ function hydrateTeleport(node, vnode, parentComponent, parentSuspense, slotScope
 		const targetNode = target._lpa || target.firstChild;
 		if (vnode.shapeFlag & 16) {
 			if (disabled) {
-				hydrateDisabledTeleport(node, vnode);
 				hydrateAnchor(target, targetNode);
+				hydrateDisabledTeleport(node, vnode);
 				if (!vnode.targetAnchor) prepareAnchor(target, vnode, createText, insert, parentNode(node) === target ? node : null);
 			} else {
 				vnode.anchor = nextSibling(node);
@@ -2224,19 +2235,8 @@ var Teleport = TeleportImpl;
 function updateCssVars(vnode, isDisabled) {
 	const ctx = vnode.ctx;
 	if (ctx && ctx.ut) {
-		let node, anchor;
-		if (isDisabled) {
-			node = vnode.el;
-			anchor = vnode.anchor;
-		} else {
-			node = vnode.targetStart;
-			anchor = vnode.targetAnchor;
-		}
-		while (node && node !== anchor) {
-			if (node.nodeType === 1) node.setAttribute("data-v-owner", ctx.uid);
-			node = node.nextSibling;
-		}
-		ctx.ut();
+		if (isDisabled) ctx.ut(vnode.el, vnode.anchor);
+		else ctx.ut(vnode.targetStart, vnode.targetAnchor);
 	}
 }
 function prepareAnchor(target, vnode, createText, insert, anchor = null) {
@@ -4657,10 +4657,10 @@ function h(type, propsOrChildren, children) {
 		setBlockTracking(1);
 	}
 }
-var version = "3.5.45";
+var version = "3.5.46";
 // ../../node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
 /**
-* @vue/runtime-dom v3.5.45
+* @vue/runtime-dom v3.5.46
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -20311,6 +20311,9 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
 			}
 			nextTick().then(() => validationFacade.validateElement(el));
 		}, { flush: "post" });
+		watch(() => __props.column.value(__props.row), () => {
+			if (!inEdit.value) viewValue.value = fromColumnValue();
+		});
 		watchEffect(() => {
 			if (hasError.value) {
 				var _tdElement$value, _arrowAnchorElement$v;
