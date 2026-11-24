@@ -6365,6 +6365,8 @@
                                 
                                 <li><a href="#fargpaletten_ar_css_variabler">Färgpaletten är CSS-variabler</a></li>
                                 
+                                <li><a href="#anvand_semantiska_variabler_i_applikationer">Använd semantiska variabler i applikationer</a></li>
+                                
                             </ul>
                         </details>
                         
@@ -6374,27 +6376,12 @@
                     <div id="docs-content"><h2 id="fargpaletten_ar_css_variabler" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fargpaletten_ar_css_variabler">Färgpaletten är CSS-variabler</a></h2><p class="docs-paragraph">Detta påverkar dig som använder Sass-variabler från <code>@fkui/theme-default</code>-paletten.
 I version 7 är färgpaletten i <code>@fkui/theme-default</code> CSS-variabler istället för Sass-variabler.
 Paletten följer namnstandarden <code>--fkds-palette-color-&lt;namn&gt;</code>, till exempel <code>--fkds-palette-color-neutral-900</code>.</p>
-
-                <div
-                    id="example-ff48d5"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="css"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-css" tabindex="0"><span class="hljs-selector-pseudo">:root</span> {
-    <span class="hljs-attr">--fkds-palette-color-neutral-900</span>: <span class="hljs-number">#1b1e23</span>;
-    <span class="hljs-attr">--fkds-color-text-primary</span>: <span class="hljs-built_in">var</span>(--fkds-palette-color-neutral-<span class="hljs-number">900</span>);
-}
-</code></pre>
-                </div>
-            <p class="docs-paragraph">Sass-variablerna <code>$palette-color-&lt;namn&gt;</code> i <code>@fkui/theme-default/src/palette-variables</code> finns inte längre.</p>
+<p class="docs-paragraph">Sass-variablerna <code>$palette-color-&lt;namn&gt;</code> i <code>@fkui/theme-default/src/palette-variables</code> finns inte längre.</p>
 <h3 id="migrering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#migrering">Migrering</a></h3><p class="docs-paragraph">Ersätt Sass-variabler med motsvarande CSS-variabel.
 Använd om möjligt de semantiska färgvariablerna istället för paletten direkt.</p>
 
                 <div
-                    id="example-5526cd"
+                    id="example-016a86"
                     class="code-preview code-preview--default"
                     
                     
@@ -6405,27 +6392,16 @@ Använd om möjligt de semantiska färgvariablerna istället för paletten direk
 <span class="hljs-deletion">-</span>
  .my-component {
 <span class="hljs-deletion">-    color: $palette-color-neutral-900;</span>
-<span class="hljs-addition">+    color: var(--fkds-color-text-primary);</span>
+<span class="hljs-addition">+    color: var(-fkds-palette-color-neutral-900);</span>
  }
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Om du tidigare anpassade paletten med <code>@use ... with (...)</code> sätter du istället CSS-variabeln efter att temat har laddats.
-De semantiska färgvariablerna som refererar till färgen uppdateras automatiskt.</p>
+            <h2 id="anvand_semantiska_variabler_i_applikationer" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anvand_semantiska_variabler_i_applikationer">Använd semantiska variabler i applikationer</a></h2><p class="docs-paragraph">Applikationer bör inte ha beroenden till färgpaletten.
+Använd i stället de semantiska CSS-variabler som beskriver färgens avsedda
+användning.
+Paletten är en intern källa till färger för temana och kan ändras utan att
+applikationens färgval ska behöva uppdateras.</p>
 
-                <div
-                    id="example-7a6873"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="css"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-css" tabindex="0"><span class="hljs-selector-pseudo">:root</span> {
-    <span class="hljs-attr">--fkds-palette-color-blue-600</span>: <span class="hljs-number">#0050c8</span>;
-}
-</code></pre>
-                </div>
-            
 
                     </div>
                 </main>
@@ -6493,9 +6469,9 @@ De semantiska färgvariablerna som refererar till färgen uppdateras automatiskt
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">v7-palette-css</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/5fb8647ce300885d51e2ba8d9453729d1f43f8e2">5fb8647</a>)<br />
+<div class="version"><span class="version-text-block">v7-palette-css</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/985c92d8966ebf4cae8f19ededbfe0e32c29a311">985c92d</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1886">PR 1886</a><br />
-       <span class="version-text-block">2026-11-23 14:10</span>
+       <span class="version-text-block">2026-11-24 08:26</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
