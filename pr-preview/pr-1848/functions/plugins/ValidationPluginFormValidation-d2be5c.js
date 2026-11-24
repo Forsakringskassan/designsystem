@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/plugins/validation/examples/ValidationPluginFormValidation.vue:ValidationPluginFormValidation-e6905b.js
+// virtual-entry:virtual:packages/vue/src/plugins/validation/examples/ValidationPluginFormValidation.vue:ValidationPluginFormValidation-d2be5c.js
 import { defineComponent } from "vue";
 import { FButton, FTextField, FValidationForm } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, createElementBlock as _createElementBlock, createVNode as _createVNode } from "vue";
@@ -43,7 +43,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_validation_prefix = _resolveDirective("validation-prefix");
   const _directive_validation = _resolveDirective("validation");
   const _directive_test = _resolveDirective("test");
-  return _withDirectives((_openBlock(), _createBlock(_component_f_validation_form, null, {
+  return _withDirectives((_openBlock(), _createBlock(_component_f_validation_form, { "use-error-list": "" }, {
     "error-message": _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createTextVNode(
         " Fel i f\xF6ljande f\xE4lt... ",
@@ -153,7 +153,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e6905b"
+  selector: "#example-d2be5c"
 });
 export {
   render

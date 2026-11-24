@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FValidationForm/docs/WithErrorListAndCbFunction.vue:WithErrorListAndCbFunction-6a4b4e.js
+// virtual-entry:virtual:packages/vue/src/components/FValidationForm/docs/WithErrorListAndCbFunction.vue:WithErrorListAndCbFunction-2ee3df.js
 import { defineComponent } from "vue";
 import { FButton, FExpandablePanel, FTextField, FValidationForm } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, createVNode as _createVNode } from "vue";
@@ -66,6 +66,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_test = _resolveDirective("test");
   const _directive_validation = _resolveDirective("validation");
   return _openBlock(), _createBlock(_component_f_validation_form, {
+    "use-error-list": "",
     "error-list-before-navigate": _ctx.expandPanel,
     onSubmit: _ctx.onSubmit
   }, {
@@ -192,7 +193,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-6a4b4e"
+  selector: "#example-2ee3df"
 });
 export {
   render

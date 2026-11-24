@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/internal-components/IPopupError/examples/IPopupErrorExample.vue:IPopupErrorExample-81fac3.js
+// virtual-entry:virtual:packages/vue/src/internal-components/IPopupError/examples/IPopupErrorExample.vue:IPopupErrorExample-8eeb14.js
 import { defineComponent as _defineComponent } from "vue";
 import { FButton, FTable, FValidationForm, defineTableColumns, useDatasetRef } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -71,7 +71,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
   }
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createBlock($setup["FValidationForm"], { "use-error-list": false }, {
+  return _openBlock(), _createBlock($setup["FValidationForm"], null, {
     default: _withCtx(() => [
       _createVNode($setup["FTable"], {
         rows: $setup.rows,
@@ -110,7 +110,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-81fac3"
+  selector: "#example-8eeb14"
 });
 export {
   render

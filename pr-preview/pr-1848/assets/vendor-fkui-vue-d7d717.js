@@ -4899,8 +4899,7 @@ var FValidationForm_vue_vue_type_script_lang_default = /* @__PURE__ */ defineCom
     */
     useErrorList: {
       type: Boolean,
-      required: false,
-      default: true
+      required: false
     },
     /**
     *Optional callback function to the error list component for performing actions before navigation.
@@ -5073,8 +5072,7 @@ var FFormModal_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponen
     */
     useErrorList: {
       type: Boolean,
-      required: false,
-      default: true
+      required: false
     },
     /**
     * The id for the form id attribute.
@@ -12288,7 +12286,6 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
           "aria-close-text": unref($t2)("fkui.crud-dataset.modal.close", "St\xE4ng"),
           buttons: formModalButtons.value,
           size: __props.formModalSize,
-          "use-error-list": false,
           "before-submit": __props.beforeSubmit,
           "before-validation": __props.beforeValidation,
           "on-cancel": __props.onCancel,

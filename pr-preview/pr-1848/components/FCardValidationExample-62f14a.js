@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCard/examples/FCardValidationExample.vue:FCardValidationExample-0ebe1c.js
+// virtual-entry:virtual:packages/vue/src/components/FCard/examples/FCardValidationExample.vue:FCardValidationExample-62f14a.js
 import { defineComponent as _defineComponent } from "vue";
 import { useTemplateRef } from "vue";
 import { ValidationService } from "@fkui/logic";
@@ -70,7 +70,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _Fragment,
     null,
     [
-      _createVNode($setup["FValidationForm"], { "use-error-list": false }, {
+      _createVNode($setup["FValidationForm"], null, {
         default: _withCtx(() => [
           _withDirectives((_openBlock(), _createBlock($setup["FCard"], {
             ref: "card",
@@ -236,7 +236,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-0ebe1c"
+  selector: "#example-62f14a"
 });
 export {
   render
