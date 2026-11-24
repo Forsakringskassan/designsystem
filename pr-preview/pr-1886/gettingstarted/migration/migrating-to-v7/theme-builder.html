@@ -6371,45 +6371,63 @@
                     </div>
                     
 
-                    <div id="docs-content"><h2 id="andringar_i_fkui_theme_builder" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#andringar_i_fkui_theme_builder">Ändringar i <code>@fkui/theme-builder</code></a></h2><p class="docs-paragraph">Den här sektionen riktar sig enbart till dig som bygger egna teman.</p>
-<p class="docs-paragraph"><code>@fkui/theme-builder</code> läser nu både Sass-variabler och CSS-variabler från palettkällan.</p>
-<p class="docs-paragraph">Palettens metadata flyttas samtidigt från en egen JSON-fil till den genererade temametadatan.</p>
-<h3 id="palette_json_genereras_inte_langre" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#palette_json_genereras_inte_langre"><code>palette.json</code> genereras inte längre</a></h3><p class="docs-paragraph">Filerna <code>palette.json</code> och <code>palette.json.d.ts</code> byggs inte längre.
-Paletten finns i stället i <code>palette</code> i <code>metadata.mjs</code>.</p>
-<p class="docs-paragraph">Paletten är en platt lista med objekten <code>{ name, value, group }</code>.
-Det tidigare formatet med grupper där varje grupp innehöll en <code>variables</code>-lista och kommentarer på variabelnivå finns inte kvar.
-Kommentarer används fortfarande som indata för att läsa grupptillhörighet från <code>@group</code>, men <code>comment</code> ingår inte i metadatan.</p>
-<h3 id="css_variabler_kan_lasas_ut" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#css_variabler_kan_lasas_ut">CSS-variabler kan läsas ut</a></h3><p class="docs-paragraph">Det är nytt i version 7 att theme-builder läser ut CSS-variabler från paletten.
-CSS-variabler identifieras av palettprefixet <code>--&lt;prefix&gt;-palette-color-</code>.
-Med standardprefixet <code>fkds</code> har till exempel <code>--fkds-palette-color-neutral-900</code> rätt prefix.
-En CSS-variabel i palettkällan som inte börjar med detta prefix avbryter bygget med ett fel.</p>
-<p class="docs-paragraph">CSS-variabler kan finnas på rotnivå eller inuti en Sass-mixin eller annan container och extraheras med hela namnet.</p>
-<h3 id="sass_variabler_stods_fortfarande" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#sass_variabler_stods_fortfarande">Sass-variabler stöds fortfarande</a></h3><p class="docs-paragraph">Sass-variabler läses fortfarande ut från rotnivå i palettkällan.
-De behåller sitt fullständiga namn, till exempel <code>$palette-color-neutral-900</code>.
-Namnet omvandlas inte längre internt till en CSS-variabel.</p>
-<p class="docs-paragraph">Det gemensamma extraheringsflödet grupperar både Sass- och CSS-variabler med <code>@group</code>.
-Om ingen grupp har angivits används <code>Uncategorised</code>.</p>
-<h3 id="palettkopplingar_i_tokens" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#palettkopplingar_i_tokens">Palettkopplingar i tokens</a></h3><p class="docs-paragraph">Semantiska tokens kan kopplas till en palettfärg på två sätt:</p>
-<ul>
-<li>genom en direkt referens, till exempel <code>var(--fkds-palette-color-neutral-900)</code></li>
-<li>genom att tokenvärdet har samma färgvärde som en palettfärg</li>
-</ul>
-<p class="docs-paragraph">För en token som refererar direkt till palettvariabeln skrivs variabelnamnet till fältet <code>palette</code> och det upplösta färgvärdet till fältet <code>value</code>.
-Palettvariablerna själva tas inte med i listan med semantiska tokens.</p>
-<h3 id="hantering_av_prefix" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#hantering_av_prefix">Hantering av prefix</a></h3><p class="docs-paragraph"><code>getPalettePrefix</code> byggt av det konfigurerade CLI-prefixet används för att:</p>
-<ul>
-<li>identifiera vilka CSS-variabler som tillhör paletten</li>
-<li>undanta palettvariabler från den vanliga listan med tema-tokens</li>
-</ul>
-<p class="docs-paragraph">Standardvärdet är <code>fkds</code>, vilket ger <code>--fkds-palette-color-</code>.
-Funktionen används inte för att ta bort och återställa prefix i extraherade namn.</p>
-<h3 id="temaexporterna_ar_es_moduler" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#temaexporterna_ar_es_moduler">Temaexporterna är ES-moduler</a></h3><p class="docs-paragraph">De genererade JavaScript-filerna för varje tema är ES-moduler i stället för CommonJS-moduler.
-Filen för temat <code>theme-light</code> heter nu <code>theme-light.mjs</code> i stället för <code>theme-light.js</code>.
-Samma namnändring gäller övriga temafiler, till exempel <code>theme-dark</code> och <code>theme-auto</code>.</p>
+                    <div id="docs-content"><h2 id="andringar_i_fkui_theme_builder" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#andringar_i_fkui_theme_builder">Ändringar i <code>@fkui/theme-builder</code></a></h2><p class="docs-paragraph">Den här sektionen gäller enbart dig som bygger egna teman.</p>
+<h3 id="palette_json_genereras_inte_langre" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#palette_json_genereras_inte_langre"><code>palette.json</code> genereras inte längre</a></h3><p class="docs-paragraph"><code>palette.json</code> genereras inte längre.
+Palette-information finns i stället i <code>metadata.mjs</code> under <code>palette</code>.</p>
+<p class="docs-paragraph">Exempel <code>dist/metadata.mjs</code>:</p>
+
+                <div
+                    id="example-1f5ef0"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="javascript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+    <span class="hljs-attr">themes</span>: [<span class="hljs-string">&quot;light&quot;</span>, <span class="hljs-string">&quot;dark&quot;</span>],
+    <span class="hljs-attr">palette</span>: [
+        {
+            <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;--fkds-palette-color-neutral-900&quot;</span>,
+            <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;#1b1e23&quot;</span>,
+            <span class="hljs-attr">group</span>: <span class="hljs-string">&quot;Neutral&quot;</span>,
+        },
+    ],
+    <span class="hljs-attr">tokens</span>: [
+        {
+            <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;--fkds-color-action-background-secondary-focus&quot;</span>,
+            <span class="hljs-attr">comment</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">values</span>: {
+                <span class="hljs-attr">light</span>: {
+                    <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;#ffffff&quot;</span>,
+                    <span class="hljs-attr">palette</span>: <span class="hljs-string">&quot;--fkds-palette-color-neutral-0&quot;</span>,
+                },
+                <span class="hljs-attr">dark</span>: {
+                    <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;#1b1e23&quot;</span>,
+                    <span class="hljs-attr">palette</span>: <span class="hljs-string">&quot;--fkds-palette-color-neutral-900&quot;</span>,
+                },
+            },
+        },
+    ],
+};
+</code></pre>
+                </div>
+            <h3 id="css_variabler_kan_lasas_ut" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#css_variabler_kan_lasas_ut">CSS-variabler kan läsas ut</a></h3><p class="docs-paragraph">Theme-builder läser nu CSS-variabler med palettprefixet
+<code>--&lt;prefix&gt;-palette-color-</code>.
+Med standardprefixet är ett giltigt namn exempelvis
+<code>--fkds-palette-color-neutral-900</code>.
+Andra CSS-variabler i palettkällan stoppar bygget.</p>
+<p class="docs-paragraph">CSS-variabler kan finnas på rotnivå eller i en Sass-container och extraheras
+med hela namnet.</p>
+<h3 id="sass_variabler_stods_fortfarande" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#sass_variabler_stods_fortfarande">Sass-variabler stöds fortfarande</a></h3><p class="docs-paragraph">Sass-variabler läses fortfarande från palettkällans rotnivå med sitt
+fullständiga namn, till exempel <code>$palette-color-neutral-900</code>.</p>
+<p class="docs-paragraph">Sass- och CSS-variabler grupperas med <code>@group</code>, precis som tidigare.</p>
+<h3 id="temaexporterna_ar_es_moduler" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#temaexporterna_ar_es_moduler">Temaexporterna är ES-moduler</a></h3><p class="docs-paragraph">Temaexporterna är ES-moduler i stället för CommonJS-moduler.
+Filerna använder nu tillägget <code>.mjs</code>, exempelvis <code>theme-light.mjs</code>.</p>
 <p class="docs-paragraph">Importera temavariablerna med ESM och dess default-export:</p>
 
                 <div
-                    id="example-9f3051"
+                    id="example-5dde27"
                     class="code-preview code-preview--default"
                     
                     
@@ -6420,8 +6438,7 @@ Samma namnändring gäller övriga temafiler, till exempel <code>theme-dark</cod
 <span class="hljs-addition">+import variables from &quot;@fkui/theme-default/dist/theme-light.mjs&quot;;</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Den genererade modulen exporterar fortfarande en lista med CSS-variabler och deras värden.</p>
-
+            
 
                     </div>
                 </main>
@@ -6489,9 +6506,9 @@ Samma namnändring gäller övriga temafiler, till exempel <code>theme-dark</cod
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">v7-palette-css</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/985c92d8966ebf4cae8f19ededbfe0e32c29a311">985c92d</a>)<br />
+<div class="version"><span class="version-text-block">v7-palette-css</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/dadb7ac1479181fca96aef245c2be02ef949ad0f">dadb7ac</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1886">PR 1886</a><br />
-       <span class="version-text-block">2026-11-24 08:26</span>
+       <span class="version-text-block">2026-11-24 08:34</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
