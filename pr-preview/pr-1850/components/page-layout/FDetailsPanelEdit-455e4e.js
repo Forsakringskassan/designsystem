@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FDetailsPanel/examples/FDetailsPanelEdit.vue:FDetailsPanelEdit-f5edf6.js
+// virtual-entry:virtual:packages/vue/src/components/FDetailsPanel/examples/FDetailsPanelEdit.vue:FDetailsPanelEdit-455e4e.js
 import { defineComponent as _defineComponent } from "vue";
 import { reactive } from "vue";
 import {
@@ -39,7 +39,6 @@ import {
   FTable,
   FTextField,
   defineTableColumns,
-  useDatasetRef,
   useDetailsPanel
 } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, createVNode as _createVNode, createElementVNode as _createElementVNode, createElementBlock as _createElementBlock } from "vue";
@@ -50,19 +49,17 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
     __expose();
     const panel = useDetailsPanel(name);
     const ExamplePanel = FDetailsPanel;
-    const rows = useDatasetRef(
-      reactive([
-        { id: 1, column1: "Text11", column2: "Text12", column3: "Text13", column4: "Text14" },
-        { id: 2, column1: "Text21", column2: "Text22", column3: "Text23", column4: "Text24" },
-        { id: 3, column1: "Text31", column2: "Text33", column3: "Text33", column4: "Text34" },
-        { id: 4, column1: "Text41", column2: "Text44", column3: "Text43", column4: "Text44" },
-        { id: 5, column1: "Text51", column2: "Text52", column3: "Text53", column4: "Text54" },
-        { id: 6, column1: "Text61", column2: "Text62", column3: "Text63", column4: "Text64" },
-        { id: 7, column1: "Text71", column2: "Text72", column3: "Text73", column4: "Text74" },
-        { id: 8, column1: "Text81", column2: "Text82", column3: "Text83", column4: "Text84" },
-        { id: 9, column1: "Text91", column2: "Text92", column3: "Text93", column4: "Text94" }
-      ])
-    );
+    const rows = reactive([
+      { id: 1, column1: "Text11", column2: "Text12", column3: "Text13", column4: "Text14" },
+      { id: 2, column1: "Text21", column2: "Text22", column3: "Text23", column4: "Text24" },
+      { id: 3, column1: "Text31", column2: "Text33", column3: "Text33", column4: "Text34" },
+      { id: 4, column1: "Text41", column2: "Text44", column3: "Text43", column4: "Text44" },
+      { id: 5, column1: "Text51", column2: "Text52", column3: "Text53", column4: "Text54" },
+      { id: 6, column1: "Text61", column2: "Text62", column3: "Text63", column4: "Text64" },
+      { id: 7, column1: "Text71", column2: "Text72", column3: "Text73", column4: "Text74" },
+      { id: 8, column1: "Text81", column2: "Text82", column3: "Text83", column4: "Text84" },
+      { id: 9, column1: "Text91", column2: "Text92", column3: "Text93", column4: "Text94" }
+    ]);
     function openPanel(row) {
       const copy = { ...row };
       panel.open(copy, {
@@ -285,10 +282,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ]);
 }
 exampleComponent.render = render;
-exampleComponent.__scopeId = "data-v-f5edf6";
+exampleComponent.__scopeId = "data-v-455e4e";
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-f5edf6"
+  selector: "#example-455e4e"
 });
 export {
   render

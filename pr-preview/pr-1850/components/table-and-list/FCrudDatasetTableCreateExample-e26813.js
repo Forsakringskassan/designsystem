@@ -28,8 +28,9 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableCreateExample.vue:FCrudDatasetTableCreateExample-539555.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableCreateExample.vue:FCrudDatasetTableCreateExample-e26813.js
 import { defineComponent as _defineComponent } from "vue";
+import { ref } from "vue";
 
 // packages/vue/src/components/FCrudDataset/examples/fruit-data.ts
 var fruits = [
@@ -73,21 +74,14 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableCreateExample.vue:FCrudDatasetTableCreateExample-539555.js
-import {
-  FCrudDataset,
-  FTable,
-  FTextField,
-  FTextareaField,
-  defineTableColumns,
-  useDatasetRef
-} from "@fkui/vue";
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableCreateExample.vue:FCrudDatasetTableCreateExample-e26813.js
+import { FCrudDataset, FTable, FTextField, FTextareaField, defineTableColumns } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "FCrudDatasetTableCreateExample",
   setup(__props, { expose: __expose }) {
     __expose();
-    const rows = useDatasetRef(fruits);
+    const rows = ref(fruits);
     const columns = defineTableColumns([
       { type: "text", header: "Namn", key: "name", size: "shrink" },
       { type: "text", header: "Land", key: "origin", size: "shrink" },
@@ -241,7 +235,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-539555"
+  selector: "#example-e26813"
 });
 export {
   render

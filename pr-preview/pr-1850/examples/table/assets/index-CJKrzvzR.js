@@ -22761,233 +22761,6 @@ function ensureUniqueKey(attribute, value, index, seenValues) {
 	if (seenValues.has(value)) throw new Error(`Expected each item to have identifier [${keyString}] with unique value but encountered duplicate of "${String(value)}" in item index ${String(index)}.`);
 	seenValues.add(value);
 }
-var datasetSymbol = Symbol("dataset");
-/**
-* @internal
-*/
-function getArrayMetadata(dataset) {
-	return Object.getOwnPropertyDescriptor(dataset, datasetSymbol)?.value;
-}
-/**
-* @internal
-*/
-function getElementMetadata(dataset) {
-	return Object.getOwnPropertyDescriptor(dataset, datasetSymbol)?.value;
-}
-function getDatasetMetadata(item) {
-	if (Array.isArray(item)) {
-		const metadata = getArrayMetadata(item);
-		return Object.freeze({ ...metadata });
-	}
-	const metadata = getElementMetadata(item);
-	if (!metadata) throw new Error("Element not found in dataset");
-	return Object.freeze({ ...metadata });
-}
-/**
-* Check if a dataset is a dataset.
-*
-* @deprecated Dataset metadata is no longer required; use regular arrays instead (v6.63.0).
-* @internal
-* @since v6.39.0
-*/
-function isDataset(dataset) {
-	if (!Array.isArray(dataset)) return false;
-	return Boolean(Object.getOwnPropertyDescriptor(dataset, datasetSymbol));
-}
-/**
-* @internal
-*/
-function setArrayMetadata(array, value) {
-	return Object.defineProperty(array, datasetSymbol, {
-		value,
-		enumerable: false,
-		configurable: true,
-		writable: true
-	});
-}
-/**
-* @internal
-*/
-function setElementMetadata(item, value) {
-	Object.defineProperty(item, datasetSymbol, {
-		value,
-		enumerable: false,
-		configurable: true,
-		writable: true
-	});
-}
-function assignElementMetadata(options) {
-	const { element, index, ariaRowIndex, totalSize, ariaLevel } = options;
-	setElementMetadata(element, {
-		rowIndex: index,
-		ariaRowIndex,
-		ariaLevel,
-		ariaSetSize: totalSize,
-		ariaPosInSet: index + 1
-	});
-}
-function applyElementMetadata(array, nestedAttribute, options) {
-	const { depth, rowCounter } = options;
-	for (let i = 0; i < array.length; i++) {
-		const element = array[i];
-		if (!getElementMetadata(element)) {
-			rowCounter.value++;
-			assignElementMetadata({
-				element,
-				index: i,
-				ariaRowIndex: rowCounter.value,
-				totalSize: array.length,
-				ariaLevel: depth
-			});
-		}
-		if (!nestedAttribute) continue;
-		const nested = element[nestedAttribute];
-		if (Array.isArray(nested) && nested.length > 0) applyElementMetadata(nested, nestedAttribute, {
-			depth: depth + 1,
-			rowCounter
-		});
-	}
-}
-/**
-* Applies metadata to new elements only. All elements with existing metadata is
-* preserved.
-*
-* @internal
-*/
-function preserveDataset(dataset) {
-	const { size, nestedAttribute } = getArrayMetadata(dataset);
-	applyElementMetadata(dataset, nestedAttribute, {
-		depth: 1,
-		rowCounter: { value: size }
-	});
-}
-var require_function_apply = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	var NATIVE_BIND = require_function_bind_native();
-	var FunctionPrototype = Function.prototype;
-	var apply = FunctionPrototype.apply;
-	var call = FunctionPrototype.call;
-	module.exports = typeof Reflect == "object" && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function() {
-		return call.apply(apply, arguments);
-	});
-}));
-(/* @__PURE__ */ __commonJSMin((() => {
-	var $ = require_export();
-	var iterate = require_iterate();
-	var aCallable = require_a_callable();
-	var anObject = require_an_object();
-	var getIteratorDirect = require_get_iterator_direct();
-	var iteratorClose = require_iterator_close();
-	var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
-	var apply = require_function_apply();
-	var fails = require_fails();
-	var $TypeError = TypeError;
-	var FAILS_ON_INITIAL_UNDEFINED = fails(function() {
-		[].keys().reduce(function() {}, void 0);
-	});
-	var reduceWithoutClosingOnEarlyError = !FAILS_ON_INITIAL_UNDEFINED && iteratorHelperWithoutClosingOnEarlyError("reduce", $TypeError);
-	$({
-		target: "Iterator",
-		proto: true,
-		real: true,
-		forced: FAILS_ON_INITIAL_UNDEFINED || reduceWithoutClosingOnEarlyError
-	}, { reduce: function reduce(reducer) {
-		anObject(this);
-		try {
-			aCallable(reducer);
-		} catch (error) {
-			iteratorClose(this, "throw", error);
-		}
-		var noInitial = arguments.length < 2;
-		var accumulator = noInitial ? void 0 : arguments[1];
-		if (reduceWithoutClosingOnEarlyError) return apply(reduceWithoutClosingOnEarlyError, this, noInitial ? [reducer] : [reducer, accumulator]);
-		var record = getIteratorDirect(this);
-		var counter = 0;
-		iterate(record, function(value) {
-			if (noInitial) {
-				noInitial = false;
-				accumulator = value;
-			} else accumulator = reducer(accumulator, value, counter);
-			counter++;
-		}, { IS_RECORD: true });
-		if (noInitial) throw new $TypeError("Reduce of empty iterator with no initial value");
-		return accumulator;
-	} });
-})))();
-/**
-* @internal
-*/
-function getSize(array, nestedAttribute) {
-	if (!Array.isArray(array)) return 0;
-	if (nestedAttribute === void 0) return array.length;
-	return array.reduce((sum, item) => {
-		const nested = item[nestedAttribute];
-		return sum + getSize(nested, nestedAttribute);
-	}, array.length);
-}
-function reindex$1(array, nestedAttribute, options) {
-	const { depth, rowCounter } = options;
-	for (let i = 0; i < array.length; i++) {
-		const element = array[i];
-		setElementMetadata(element, {
-			rowIndex: rowCounter.value,
-			ariaRowIndex: rowCounter.value + 1,
-			ariaLevel: depth + 1,
-			ariaSetSize: array.length,
-			ariaPosInSet: i + 1
-		});
-		rowCounter.value++;
-		if (!nestedAttribute) continue;
-		const nested = element[nestedAttribute];
-		if (Array.isArray(nested)) reindex$1(nested, nestedAttribute, {
-			depth: depth + 1,
-			rowCounter
-		});
-	}
-}
-/**
-* @internal
-*/
-function reindexDataset(dataset, nestedAttribute) {
-	setArrayMetadata(dataset, {
-		size: getSize(dataset, nestedAttribute),
-		nestedAttribute
-	});
-	reindex$1(dataset, nestedAttribute, {
-		depth: 0,
-		rowCounter: { value: 0 }
-	});
-}
-function createDataset(array, nestedAttribute) {
-	setArrayMetadata(array, {
-		size: 0,
-		nestedAttribute
-	});
-	const dataset = array;
-	reindexDataset(dataset, nestedAttribute);
-	return dataset;
-}
-function inheritDataset(array, originalDataset) {
-	const metadata = getDatasetMetadata(originalDataset);
-	const result = setArrayMetadata(array, {
-		get size() {
-			return metadata.size;
-		},
-		get nestedAttribute() {
-			return metadata.nestedAttribute;
-		}
-	});
-	preserveDataset(result);
-	return result;
-}
-function toDataset(array, ...args) {
-	if (isDataset(array)) return array;
-	const [arg] = args;
-	if (Array.isArray(arg)) {
-		if (isDataset(arg)) return inheritDataset(array, arg);
-		return createDataset(array, void 0);
-	}
-	return createDataset(array, arg);
-}
 function getValidatableElement(element) {
 	if (isValidatableHTMLElement(element)) return element;
 	const validatableInsideElement = element.querySelector("input, textarea, select");
@@ -23109,6 +22882,58 @@ var require_es_iterator_flat_map = /* @__PURE__ */ __commonJSMin((() => {
 			mapper,
 			inner: null
 		});
+	} });
+}));
+var require_function_apply = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	var NATIVE_BIND = require_function_bind_native();
+	var FunctionPrototype = Function.prototype;
+	var apply = FunctionPrototype.apply;
+	var call = FunctionPrototype.call;
+	module.exports = typeof Reflect == "object" && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function() {
+		return call.apply(apply, arguments);
+	});
+}));
+var require_es_iterator_reduce = /* @__PURE__ */ __commonJSMin((() => {
+	var $ = require_export();
+	var iterate = require_iterate();
+	var aCallable = require_a_callable();
+	var anObject = require_an_object();
+	var getIteratorDirect = require_get_iterator_direct();
+	var iteratorClose = require_iterator_close();
+	var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
+	var apply = require_function_apply();
+	var fails = require_fails();
+	var $TypeError = TypeError;
+	var FAILS_ON_INITIAL_UNDEFINED = fails(function() {
+		[].keys().reduce(function() {}, void 0);
+	});
+	var reduceWithoutClosingOnEarlyError = !FAILS_ON_INITIAL_UNDEFINED && iteratorHelperWithoutClosingOnEarlyError("reduce", $TypeError);
+	$({
+		target: "Iterator",
+		proto: true,
+		real: true,
+		forced: FAILS_ON_INITIAL_UNDEFINED || reduceWithoutClosingOnEarlyError
+	}, { reduce: function reduce(reducer) {
+		anObject(this);
+		try {
+			aCallable(reducer);
+		} catch (error) {
+			iteratorClose(this, "throw", error);
+		}
+		var noInitial = arguments.length < 2;
+		var accumulator = noInitial ? void 0 : arguments[1];
+		if (reduceWithoutClosingOnEarlyError) return apply(reduceWithoutClosingOnEarlyError, this, noInitial ? [reducer] : [reducer, accumulator]);
+		var record = getIteratorDirect(this);
+		var counter = 0;
+		iterate(record, function(value) {
+			if (noInitial) {
+				noInitial = false;
+				accumulator = value;
+			} else accumulator = reducer(accumulator, value, counter);
+			counter++;
+		}, { IS_RECORD: true });
+		if (noInitial) throw new $TypeError("Reduce of empty iterator with no initial value");
+		return accumulator;
 	} });
 }));
 var require_to_string_tag_support = /* @__PURE__ */ __commonJSMin(((exports, module) => {
@@ -24700,6 +24525,7 @@ require_web_dom_exception_stack();
 require_web_url_search_params_delete();
 require_web_url_search_params_has();
 require_web_url_search_params_size();
+require_es_iterator_reduce();
 require_es_weak_map_get_or_insert();
 require_es_weak_map_get_or_insert_computed();
 /**
@@ -30228,7 +30054,7 @@ var FTable_default = /* @__PURE__ */ defineComponent({
 		const { hasSlot } = useSlotUtils();
 		const tableRef = useTemplateRef("table");
 		const expandedKeys = /* @__PURE__ */ ref(/* @__PURE__ */ new Set());
-		const expandableAttributeName = isDataset(__props.rows) ? computed(() => getDatasetMetadata(__props.rows).nestedAttribute) : computed(() => __props.expandableAttribute);
+		const expandableAttributeName = computed(() => __props.expandableAttribute);
 		const keyedRows = computed(() => setItemIdentifiers(__props.rows, __props.keyAttribute, expandableAttributeName.value));
 		const { rows: selectableSourceRows, isProvided: isSelectableSourceProvided } = useSelectableRowSource();
 		const selectableRows = computed(() => {
@@ -30528,14 +30354,14 @@ function removeTableRows(rows, rowsToRemove, expandableAttribute) {
 	const rowsToRemoveValue = toValue(rowsToRemove);
 	const expandableAttributeValue = toValue(expandableAttribute);
 	const normalizedRows = Array.isArray(rowsToRemoveValue) ? [...rowsToRemoveValue] : [rowsToRemoveValue];
-	for (const row of normalizedRows) removeRow$1(rowsValue, row, expandableAttributeValue);
+	for (const row of normalizedRows) removeRow(rowsValue, row, expandableAttributeValue);
 }
-function removeRow$1(rows, row, expandableAttribute) {
+function removeRow(rows, row, expandableAttribute) {
 	const rowIndex = rows.indexOf(row);
 	if (rowIndex !== -1) rows.splice(rowIndex, 1);
-	else if (expandableAttribute) removeNestedRows$1(rows, row, expandableAttribute);
+	else if (expandableAttribute) removeNestedRows(rows, row, expandableAttribute);
 }
-function removeNestedRows$1(rows, row, expandableAttribute) {
+function removeNestedRows(rows, row, expandableAttribute) {
 	for (const currentRow of rows) {
 		const nestedRows = getNestedRows(currentRow, expandableAttribute);
 		if (!nestedRows) continue;
@@ -30544,7 +30370,7 @@ function removeNestedRows$1(rows, row, expandableAttribute) {
 			nestedRows.splice(index, 1);
 			return true;
 		}
-		if (removeNestedRows$1(nestedRows, row, expandableAttribute)) return true;
+		if (removeNestedRows(nestedRows, row, expandableAttribute)) return true;
 	}
 	return false;
 }
@@ -31338,17 +31164,16 @@ function normalizeFilterAttributes(data, filterAttributes) {
 	return filterAttributes;
 }
 function sortFilterData(data, filterAttributes, searchString, sortAttribute) {
-	const sortedData = sort(filter(data, filterAttributes, searchString), {
+	return sort(filter(data, filterAttributes, searchString), {
 		attribute: sortAttribute.attribute,
 		ascending: sortAttribute.ascending
 	});
-	return isDataset(data) ? toDataset(sortedData, data) : sortedData;
 }
 function noop$1() {}
 function useSortFilterDataset(data, sortableAttributes, filterAttributes, defaultSortAttribute, defaultSortAscending, callbacks = {}) {
 	const searchString = /* @__PURE__ */ ref("");
 	const sortAttribute = /* @__PURE__ */ ref({ ...defaultSortValue });
-	const sortFilterResult = /* @__PURE__ */ ref(isDataset(toValue(data)) ? toDataset([]) : []);
+	const sortFilterResult = /* @__PURE__ */ ref([]);
 	const useDefaultSortOrder = /* @__PURE__ */ ref(true);
 	const { onSort = noop$1, onFilter = noop$1, onLazyRowsAdded = noop$1 } = callbacks;
 	/**
@@ -31998,15 +31823,13 @@ var FPaginateDataset_default = /* @__PURE__ */ defineComponent({
 	emits: /*@__PURE__*/ mergeModels(["update:modelValue"], ["update:modelValue"]),
 	setup(__props) {
 		const currentPage = useModel(__props, "modelValue");
-		const fetchedData = /* @__PURE__ */ ref(null);
+		const fetchedData = /* @__PURE__ */ shallowRef(null);
 		const dataFetchingInProgress = /* @__PURE__ */ ref(false);
 		const firstItemIndex = computed(() => Math.max(0, __props.itemsPerPage * (currentPage.value - 1)));
 		const lastItemIndex = computed(() => Math.min(__props.itemsPerPage * currentPage.value, numberOfItems.value));
 		const currentPageItems = computed(() => {
 			if (fetchedData.value) return fetchedData.value;
-			const pageItems = __props.items.slice(firstItemIndex.value, lastItemIndex.value);
-			if (isDataset(__props.items)) return toDataset(pageItems, __props.items);
-			return pageItems;
+			return __props.items.slice(firstItemIndex.value, lastItemIndex.value);
 		});
 		const currentPageItemLength = computed(() => currentPageItems.value.length);
 		const numberOfPages = computed(() => Math.max(1, Math.ceil(numberOfItems.value / __props.itemsPerPage)));

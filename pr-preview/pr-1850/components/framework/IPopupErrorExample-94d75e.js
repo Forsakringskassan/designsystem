@@ -28,19 +28,19 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/internal-components/IPopupError/examples/IPopupErrorExample.vue:IPopupErrorExample-efb752.js
+// virtual-entry:virtual:packages/vue/src/internal-components/IPopupError/examples/IPopupErrorExample.vue:IPopupErrorExample-94d75e.js
 import { defineComponent as _defineComponent } from "vue";
-import { FButton, FTable, FValidationForm, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { FButton, FTable, FValidationForm, defineTableColumns } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "IPopupErrorExample",
   setup(__props, { expose: __expose }) {
     __expose();
-    const rows = useDatasetRef([
+    const rows = [
       { id: "1", email: "", postnr: "" },
       { id: "2", email: "", postnr: "" },
       { id: "3", email: "", postnr: "" }
-    ]);
+    ];
     const columns = defineTableColumns([
       {
         type: "text:email",
@@ -86,7 +86,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ])]),
         _: 1
         /* STABLE */
-      }, 8, ["rows", "columns"]),
+      }, 8, ["columns"]),
       _createVNode($setup["FButton"], {
         size: "large",
         variant: "primary",
@@ -110,7 +110,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-efb752"
+  selector: "#example-94d75e"
 });
 export {
   render

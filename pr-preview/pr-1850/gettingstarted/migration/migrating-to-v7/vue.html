@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-023419.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-61d844.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-8738f6.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-d16753.js",
     "@fkui/vue-labs": "../../../assets/vendor-fkui-vue-labs-37a3e4.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js"
   },
@@ -35,7 +35,7 @@
     "../../../assets/vendor-fkui-vue-selectors-023419.js": "sha384-VLenLmQc8v93fneTx0efSTJd7J5Ns4fB7DTS3tM7kJz9URQIILL3gC5W3VAEksP3",
     "../../../assets/vendor-fkui-logic-61d844.js": "sha384-u+VrrunW0wzEofwwfTCUkVW/5R3NtIzcgQ1Z60e7ov5tXLYfjrUjbvH57Zgv2vnB",
     "../../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../../assets/vendor-fkui-vue-8738f6.js": "sha384-N/mPC/vR+KIz6P81h57JjDEX2S9kvEGlyVn/rXYqVHny7ODgtXsI22zqqOSIsiGE",
+    "../../../assets/vendor-fkui-vue-d16753.js": "sha384-YXFh3qsuIHUlZFTMee1Bj8gPQE4zEWlYh1WBzAwuD8VmHjdbIW6ZPxj+gwpi+tm9",
     "../../../assets/vendor-fkui-vue-labs-37a3e4.js": "sha384-N/HfKkajpXjdrrHo9mjCSJYlF7njhDq86owwuIac3sUncnfL0s0jYFVrZdohsxm3",
     "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js": "sha384-PDEuCCbROg9gW6fFneYpzXKS04rV0oMFHgqArEkyaM8h1d/H3HBtCKiyFWYKWVcy"
   }
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../search-data-0b5e48.json"
+    href="../../../search-data-2b5911.json"
     as="fetch"
     crossorigin
-    integrity="sha384-v9bsxz8XvR/ke1lCYEAL6+assnoLSe25jgMVIAFaYItCqP/i2JUZZSx9rLEt3dNw"
+    integrity="sha384-BIDHnfAur+DtI/4UbpbruimpTJPyVY+Gct+o5eDE7oa5Nj2Jq45f8b7nZ78x4YB9"
     id="search-data"
 />
 <script>
@@ -4333,8 +4333,6 @@
                     
                 
                     
-                
-                    
                         
                     
                 
@@ -4347,11 +4345,7 @@
                     
                 
                     
-                
-                    
                         
-                    
-                
                     
                 
                     
@@ -4407,19 +4401,6 @@
             
         >
             assertSet()
-        </a>
-    </li>
-
-<li class="link ">
-        <a
-            href="../../../functions/functions/dataset-iterator.html"
-            
-            
-            
-            data-path="functions/functions/dataset-iterator.html"
-            
-        >
-            datasetIterator()
         </a>
     </li>
 
@@ -4720,19 +4701,6 @@
 
 <li class="link ">
         <a
-            href="../../../functions/functions/get-dataset-metadata.html"
-            
-            
-            
-            data-path="functions/functions/get-dataset-metadata.html"
-            
-        >
-            getDatasetMetadata()
-        </a>
-    </li>
-
-<li class="link ">
-        <a
             href="../../../functions/functions/handle-keyboard-focus-navigation.html"
             
             
@@ -4930,19 +4898,6 @@
             
         >
             useAreaData()
-        </a>
-    </li>
-
-<li class="link ">
-        <a
-            href="../../../functions/functions/use-dataset-ref.html"
-            
-            
-            
-            data-path="functions/functions/use-dataset-ref.html"
-            
-        >
-            useDatasetRef()
         </a>
     </li>
 
@@ -6433,11 +6388,84 @@ Rename <code>text</code> to <code>screenreaderText</code> on matching column obj
 Run TypeScript type-checking (<code>tsc</code>) to verify no remaining type errors exist.</p>
 
             </details>
+        <h3 id="datamangder_usedatasetref" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#datamangder_usedatasetref">Datamängder <code>useDatasetRef</code></a></h3><p class="docs-paragraph">Det metadata-baserade datamängds-API:et är borttaget.
+Det omfattar typen <code>Dataset&lt;T&gt;</code>, typerna <code>DatasetArrayMetadata</code> och <code>DatasetElementMetadata</code> samt funktionerna <code>useDatasetRef()</code>, <code>datasetIterator()</code> och <code>getDatasetMetadata()</code>.</p>
+<p class="docs-paragraph">Använd vanliga arrayer eller Vue-refar i stället för <code>useDatasetRef()</code>.</p>
+
+                <div
+                    id="example-bc456e"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-const rows = useDatasetRef&lt;Row&gt;(initialRows);</span>
+<span class="hljs-addition">+const rows = ref&lt;Row[]&gt;(initialRows);</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">För nästlade tabellrader anger du egenskapen med <code>expandable-attribute</code>:</p>
+
+                <div
+                    id="example-966119"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-const rows = useDatasetRef&lt;Row&gt;(initialRows, &quot;children&quot;);</span>
+<span class="hljs-addition">+const rows = ref&lt;Row[]&gt;(initialRows);</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-47993a"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table :rows :columns&gt;&lt;/f-table&gt;</span>
+<span class="hljs-addition">+&lt;f-table :rows :columns expandable-attribute=&quot;children&quot;&gt;&lt;/f-table&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Den relaterade funktionen <code>removeDatasetRows()</code> är också borttagen.
+Ersätt den med <a href="../../../functions/functions/remove-table-rows.html"><code>removeTableRows()</code></a>.
+Ange <code>expandableAttribute</code> när rader ska kunna tas bort från nästlade arrayer:</p>
+
+                <div
+                    id="example-e16608"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-removeDatasetRows(rows, row);</span>
+<span class="hljs-addition">+removeTableRows(rows, row, &quot;children&quot;);</span>
+</code></pre>
+                </div>
+            
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">Sök igenom applikationen efter <code>Dataset&lt;T&gt;</code>, <code>DatasetArrayMetadata</code>, <code>DatasetElementMetadata</code>, <code>useDatasetRef()</code>, <code>datasetIterator()</code>, <code>getDatasetMetadata()</code> och <code>removeDatasetRows()</code>.</p>
+<p class="docs-paragraph">Migrera till vanliga arrayer eller Vue-refar.
+Använd <code>ref&lt;T[]&gt;(...)</code> när raderna behöver vara reaktiva och en vanlig array när de inte ändras.
+Ta bort beroenden av datasetmetadata och uppdatera importer och typannoteringar.
+För nästlade rader i <code>FTable</code>, ange egenskapen med <code>expandable-attribute</code>.
+Ersätt <code>removeDatasetRows()</code> med <code>removeTableRows()</code> och ange egenskapen för nästlade rader när det behövs.
+Om befintlig funktionalitet använder metadata för att visa positioner, beräkna positionen utifrån applikationens data och bevara den avsedda presentationen.</p>
+
+            </details>
         <h2 id="fvalidationform" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fvalidationform"><code>FValidationForm</code></a></h2><p class="docs-paragraph">Propen <code>useErrorList</code> är inte längre aktiv som standard.</p>
 <p class="docs-paragraph">Om du vill behålla fellistan, lägg till propen explicit:</p>
 
                 <div
-                    id="example-1a77b8"
+                    id="example-247782"
                     class="code-preview code-preview--default"
                     
                     
@@ -6451,7 +6479,7 @@ Run TypeScript type-checking (<code>tsc</code>) to verify no remaining type erro
             <p class="docs-paragraph">Om du redan använder <code>:use-error-list=&quot;false&quot;</code> kan du ta bort det:</p>
 
                 <div
-                    id="example-83cf77"
+                    id="example-4d2213"
                     class="code-preview code-preview--default"
                     
                     
@@ -6480,7 +6508,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
 <p class="docs-paragraph">Om du vill behålla fellistan, lägg till propen explicit:</p>
 
                 <div
-                    id="example-ce3024"
+                    id="example-5c4a4e"
                     class="code-preview code-preview--default"
                     
                     
@@ -6494,7 +6522,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
             <p class="docs-paragraph">Om du redan använder <code>:use-error-list=&quot;false&quot;</code> kan du ta bort det:</p>
 
                 <div
-                    id="example-434226"
+                    id="example-b06bbc"
                     class="code-preview code-preview--default"
                     
                     
@@ -6522,7 +6550,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="fmodal" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fmodal"><code>FModal</code></a></h2><p class="docs-paragraph">Propen <code>size</code> stödjer inte längre aliaset <code>fullscreen</code> och är ersatt med <code>fullwidth</code>.</p>
 
                 <div
-                    id="example-a24545"
+                    id="example-1490f2"
                     class="code-preview code-preview--default"
                     
                     
@@ -6553,7 +6581,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="fsortfilterdataset" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fsortfilterdataset"><code>FSortFilterDataset</code></a></h2><p class="docs-paragraph">Propen <code>placeholderFilter</code> är borttagen och ersatt med <code>filterLabel</code>.</p>
 
                 <div
-                    id="example-19413a"
+                    id="example-bdfad8"
                     class="code-preview code-preview--default"
                     
                     
@@ -6580,7 +6608,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="getlegacyinternalkey" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#getlegacyinternalkey"><code>getLegacyInternalKey()</code></a></h2><p class="docs-paragraph">Använd <code>findItemIdentifier()</code> om objektet kan sakna en identifierare, eller <code>getItemIdentifier()</code> om identifieraren är garanterad att finnas, istället för att hämta ut nyckeln.</p>
 
                 <div
-                    id="example-9400b6"
+                    id="example-9d706e"
                     class="code-preview code-preview--default"
                     
                     
@@ -6606,7 +6634,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="tablescroll" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tablescroll"><code>TableScroll</code></a></h2><p class="docs-paragraph"><code>FDataTable</code> och <code>FInteractiveTable</code> stödjer inte längre <code>TableScroll.VERTICAL</code> och <code>TableScroll.BOTH</code>.</p>
 
                 <div
-                    id="example-30707d"
+                    id="example-dfa368"
                     class="code-preview code-preview--default"
                     
                     
@@ -6642,7 +6670,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
 <p class="docs-paragraph">Om du vill att det första steget ska få fokus när guiden öppnas, lägg till <code>focus-initial-step</code>:</p>
 
                 <div
-                    id="example-bbb0fa"
+                    id="example-edd1bc"
                     class="code-preview code-preview--default"
                     
                     
@@ -6661,7 +6689,7 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
 <p class="docs-paragraph">Om du vill behålla fellistan, lägg till propen explicit:</p>
 
                 <div
-                    id="example-916f22"
+                    id="example-7f6c1d"
                     class="code-preview code-preview--default"
                     
                     
@@ -6677,7 +6705,7 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
             <p class="docs-paragraph">Om du redan använder <code>:use-error-list=&quot;false&quot;</code> kan du ta bort det:</p>
 
                 <div
-                    id="example-58f716"
+                    id="example-df9c01"
                     class="code-preview code-preview--default"
                     
                     
@@ -6772,9 +6800,9 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/16e649a14fd9b3f4768da70a5721005816e7929f">16e649a</a>)<br />
+<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/20fb4de13e5dc15a69364653db66b57e5cd1806b">20fb4de</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1850">PR 1850</a><br />
-       <span class="version-text-block">2026-11-24 18:10</span>
+       <span class="version-text-block">2026-11-24 20:02</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

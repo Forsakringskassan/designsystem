@@ -241,10 +241,10 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FIcon/examples/FIconAll.vue:FIconAll-e46bfc.js
+// virtual-entry:virtual:packages/vue/src/components/FIcon/examples/FIconAll.vue:FIconAll-c7b8cc.js
 import { defineComponent as _defineComponent } from "vue";
-import { h as h2, onMounted } from "vue";
-import { FIcon, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { h as h2, onMounted, ref } from "vue";
+import { FIcon, FTable, defineTableColumns } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "FIconAll",
@@ -260,7 +260,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
       return value.replaceAll(/([A-Z])/g, (_, ch) => `-${ch.toLowerCase()}`);
     }
     const iconsPromise = importIcons();
-    const rows = useDatasetRef([]);
+    const rows = ref([]);
     const columns = defineTableColumns([
       {
         header: "Ikon",
@@ -313,7 +313,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e46bfc"
+  selector: "#example-c7b8cc"
 });
 export {
   render

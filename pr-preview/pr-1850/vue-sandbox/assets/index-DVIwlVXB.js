@@ -13832,58 +13832,6 @@ function getAbsolutePosition(src) {
 		height: Math.floor(rect.height)
 	};
 }
-var require_function_apply = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	var NATIVE_BIND = require_function_bind_native();
-	var FunctionPrototype = Function.prototype;
-	var apply = FunctionPrototype.apply;
-	var call = FunctionPrototype.call;
-	module.exports = typeof Reflect == "object" && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function() {
-		return call.apply(apply, arguments);
-	});
-}));
-(/* @__PURE__ */ __commonJSMin((() => {
-	var $ = require_export();
-	var iterate = require_iterate();
-	var aCallable = require_a_callable();
-	var anObject = require_an_object();
-	var getIteratorDirect = require_get_iterator_direct();
-	var iteratorClose = require_iterator_close();
-	var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
-	var apply = require_function_apply();
-	var fails = require_fails();
-	var $TypeError = TypeError;
-	var FAILS_ON_INITIAL_UNDEFINED = fails(function() {
-		[].keys().reduce(function() {}, void 0);
-	});
-	var reduceWithoutClosingOnEarlyError = !FAILS_ON_INITIAL_UNDEFINED && iteratorHelperWithoutClosingOnEarlyError("reduce", $TypeError);
-	$({
-		target: "Iterator",
-		proto: true,
-		real: true,
-		forced: FAILS_ON_INITIAL_UNDEFINED || reduceWithoutClosingOnEarlyError
-	}, { reduce: function reduce(reducer) {
-		anObject(this);
-		try {
-			aCallable(reducer);
-		} catch (error) {
-			iteratorClose(this, "throw", error);
-		}
-		var noInitial = arguments.length < 2;
-		var accumulator = noInitial ? void 0 : arguments[1];
-		if (reduceWithoutClosingOnEarlyError) return apply(reduceWithoutClosingOnEarlyError, this, noInitial ? [reducer] : [reducer, accumulator]);
-		var record = getIteratorDirect(this);
-		var counter = 0;
-		iterate(record, function(value) {
-			if (noInitial) {
-				noInitial = false;
-				accumulator = value;
-			} else accumulator = reducer(accumulator, value, counter);
-			counter++;
-		}, { IS_RECORD: true });
-		if (noInitial) throw new $TypeError("Reduce of empty iterator with no initial value");
-		return accumulator;
-	} });
-})))();
 function getValidatableElement(element) {
 	if (isValidatableHTMLElement(element)) return element;
 	const validatableInsideElement = element.querySelector("input, textarea, select");
@@ -14005,6 +13953,58 @@ var require_es_iterator_flat_map = /* @__PURE__ */ __commonJSMin((() => {
 			mapper,
 			inner: null
 		});
+	} });
+}));
+var require_function_apply = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	var NATIVE_BIND = require_function_bind_native();
+	var FunctionPrototype = Function.prototype;
+	var apply = FunctionPrototype.apply;
+	var call = FunctionPrototype.call;
+	module.exports = typeof Reflect == "object" && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function() {
+		return call.apply(apply, arguments);
+	});
+}));
+var require_es_iterator_reduce = /* @__PURE__ */ __commonJSMin((() => {
+	var $ = require_export();
+	var iterate = require_iterate();
+	var aCallable = require_a_callable();
+	var anObject = require_an_object();
+	var getIteratorDirect = require_get_iterator_direct();
+	var iteratorClose = require_iterator_close();
+	var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
+	var apply = require_function_apply();
+	var fails = require_fails();
+	var $TypeError = TypeError;
+	var FAILS_ON_INITIAL_UNDEFINED = fails(function() {
+		[].keys().reduce(function() {}, void 0);
+	});
+	var reduceWithoutClosingOnEarlyError = !FAILS_ON_INITIAL_UNDEFINED && iteratorHelperWithoutClosingOnEarlyError("reduce", $TypeError);
+	$({
+		target: "Iterator",
+		proto: true,
+		real: true,
+		forced: FAILS_ON_INITIAL_UNDEFINED || reduceWithoutClosingOnEarlyError
+	}, { reduce: function reduce(reducer) {
+		anObject(this);
+		try {
+			aCallable(reducer);
+		} catch (error) {
+			iteratorClose(this, "throw", error);
+		}
+		var noInitial = arguments.length < 2;
+		var accumulator = noInitial ? void 0 : arguments[1];
+		if (reduceWithoutClosingOnEarlyError) return apply(reduceWithoutClosingOnEarlyError, this, noInitial ? [reducer] : [reducer, accumulator]);
+		var record = getIteratorDirect(this);
+		var counter = 0;
+		iterate(record, function(value) {
+			if (noInitial) {
+				noInitial = false;
+				accumulator = value;
+			} else accumulator = reducer(accumulator, value, counter);
+			counter++;
+		}, { IS_RECORD: true });
+		if (noInitial) throw new $TypeError("Reduce of empty iterator with no initial value");
+		return accumulator;
 	} });
 }));
 var require_to_string_tag_support = /* @__PURE__ */ __commonJSMin(((exports, module) => {
@@ -15596,6 +15596,7 @@ require_web_dom_exception_stack();
 require_web_url_search_params_delete();
 require_web_url_search_params_has();
 require_web_url_search_params_size();
+require_es_iterator_reduce();
 require_es_weak_map_get_or_insert();
 require_es_weak_map_get_or_insert_computed();
 var isClient = typeof window !== "undefined" && typeof document !== "undefined";

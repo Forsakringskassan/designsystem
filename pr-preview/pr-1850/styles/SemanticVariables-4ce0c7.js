@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/styles/examples/SemanticVariables.vue:SemanticVariables-0daf87.js
+// virtual-entry:virtual:docs/styles/examples/SemanticVariables.vue:SemanticVariables-4ce0c7.js
 import { defineComponent as _defineComponent } from "vue";
 import { h as h2 } from "vue";
 
@@ -1148,14 +1148,14 @@ var metadata_default = {
   ]
 };
 
-// virtual-entry:virtual:docs/styles/examples/SemanticVariables.vue:SemanticVariables-0daf87.js
-import { FSortFilterDataset, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+// virtual-entry:virtual:docs/styles/examples/SemanticVariables.vue:SemanticVariables-4ce0c7.js
+import { FSortFilterDataset, FTable, defineTableColumns } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "SemanticVariables",
   setup(__props, { expose: __expose }) {
     __expose();
-    const rows = useDatasetRef(metadata_default.tokens);
+    const rows = metadata_default.tokens;
     const themes = metadata_default.themes;
     const columns = defineTableColumns([
       { type: "text", header: "Semantisk variabel", key: "name", size: "shrink" },
@@ -1222,10 +1222,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8, ["data"]);
 }
 exampleComponent.render = render;
-exampleComponent.__scopeId = "data-v-0daf87";
+exampleComponent.__scopeId = "data-v-4ce0c7";
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-0daf87"
+  selector: "#example-4ce0c7"
 });
 export {
   render

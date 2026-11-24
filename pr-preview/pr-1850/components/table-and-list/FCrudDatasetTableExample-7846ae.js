@@ -28,9 +28,9 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-abfc43.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-7846ae.js
 import { defineComponent as _defineComponent } from "vue";
-import { useTemplateRef } from "vue";
+import { ref, useTemplateRef } from "vue";
 
 // packages/vue/src/components/FCrudDataset/examples/fruit-data.ts
 var fruits = [
@@ -74,21 +74,14 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-abfc43.js
-import {
-  FCrudDataset,
-  FTable,
-  FTextField,
-  FTextareaField,
-  defineTableColumns,
-  useDatasetRef
-} from "@fkui/vue";
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-7846ae.js
+import { FCrudDataset, FTable, FTextField, FTextareaField, defineTableColumns } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, toDisplayString as _toDisplayString } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "FCrudDatasetTableExample",
   setup(__props, { expose: __expose }) {
     __expose();
-    const rows = useDatasetRef(fruits, "variant");
+    const rows = ref(fruits);
     const crud = useTemplateRef("crud");
     const columns = defineTableColumns([
       { type: "text", header: "Namn", key: "name", size: "shrink" },
@@ -146,6 +139,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createVNode($setup["FTable"], {
         rows: $setup.rows,
         columns: $setup.columns,
+        "expandable-attribute": "variant",
         striped: ""
       }, {
         caption: _withCtx(() => [..._cache[1] || (_cache[1] = [
@@ -351,7 +345,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-abfc43"
+  selector: "#example-7846ae"
 });
 export {
   render

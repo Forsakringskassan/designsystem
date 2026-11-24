@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/styles/examples/CompareDensity.vue:CompareDensity-bd5881.js
+// virtual-entry:virtual:docs/styles/examples/CompareDensity.vue:CompareDensity-a6db81.js
 import { defineComponent as _defineComponent } from "vue";
 import { computed, ref } from "vue";
 import {
@@ -49,15 +49,14 @@ import {
   FTextField,
   FTextareaField,
   FTooltip,
-  defineTableColumns,
-  useDatasetRef
+  defineTableColumns
 } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, resolveDirective as _resolveDirective, createBlock as _createBlock, withDirectives as _withDirectives, normalizeClass as _normalizeClass } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "CompareDensity",
   setup(__props, { expose: __expose }) {
     __expose();
-    const rows = useDatasetRef(["1", "2", "3"].map((id) => ({ id })));
+    const rows = ["1", "2", "3"].map((id) => ({ id }));
     const columns = defineTableColumns([
       { type: "text", header: "Kolumnrubrik", value: () => "Text" },
       { type: "text", header: "Kolumnrubrik", value: () => "Text" },
@@ -870,7 +869,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-bd5881"
+  selector: "#example-a6db81"
 });
 export {
   render

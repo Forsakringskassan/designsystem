@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetTableExample.vue:FSortFilterDatasetTableExample-921b09.js
+// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetTableExample.vue:FSortFilterDatasetTableExample-6113f0.js
 import { defineComponent as _defineComponent } from "vue";
 
 // packages/vue/src/components/FCrudDataset/examples/fruit-data.ts
@@ -73,14 +73,14 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetTableExample.vue:FSortFilterDatasetTableExample-921b09.js
-import { FSortFilterDataset, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetTableExample.vue:FSortFilterDatasetTableExample-6113f0.js
+import { FSortFilterDataset, FTable, defineTableColumns } from "@fkui/vue";
 import { normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "FSortFilterDatasetTableExample",
   setup(__props, { expose: __expose }) {
     __expose();
-    const rows = useDatasetRef([...fruits]);
+    const rows = [...fruits];
     const columns = defineTableColumns([
       { type: "text", header: "Namn", key: "name", size: "shrink" },
       { type: "text", header: "Land", key: "origin", size: "shrink" },
@@ -135,12 +135,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     _: 1
     /* STABLE */
-  }, 8, ["data"]);
+  });
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-921b09"
+  selector: "#example-6113f0"
 });
 export {
   render

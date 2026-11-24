@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetTableExampleToolbar.vue:FSortFilterDatasetTableExampleToolbar-ebc0e1.js
+// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetTableExampleToolbar.vue:FSortFilterDatasetTableExampleToolbar-77cc62.js
 import { defineComponent as _defineComponent } from "vue";
 import { ref } from "vue";
 
@@ -74,14 +74,14 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetTableExampleToolbar.vue:FSortFilterDatasetTableExampleToolbar-ebc0e1.js
-import { FButton, FSortFilterDataset, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetTableExampleToolbar.vue:FSortFilterDatasetTableExampleToolbar-77cc62.js
+import { FButton, FSortFilterDataset, FTable, defineTableColumns } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "FSortFilterDatasetTableExampleToolbar",
   setup(__props, { expose: __expose }) {
     __expose();
-    const rows = useDatasetRef([...fruits]);
+    const rows = [...fruits];
     const selectedRows = ref([]);
     const columns = defineTableColumns([
       { type: "text", header: "Namn", key: "name", size: "shrink" },
@@ -183,7 +183,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ]),
         _: 1
         /* STABLE */
-      }, 8, ["data"])
+      })
     ],
     64
     /* STABLE_FRAGMENT */
@@ -192,7 +192,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-ebc0e1"
+  selector: "#example-77cc62"
 });
 export {
   render

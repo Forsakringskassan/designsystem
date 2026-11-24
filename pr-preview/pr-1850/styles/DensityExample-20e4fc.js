@@ -28,19 +28,19 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/styles/examples/DensityExample.vue:DensityExample-d885d0.js
+// virtual-entry:virtual:docs/styles/examples/DensityExample.vue:DensityExample-20e4fc.js
 import { defineComponent as _defineComponent } from "vue";
-import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "DensityExample",
   setup(__props, { expose: __expose }) {
     __expose();
-    const rows = useDatasetRef([
+    const rows = [
       { id: "1", date: "2022-02-01", amount: "2 300" },
       { id: "2", date: "2024-04-20", amount: "5 250" },
       { id: "3", date: "2024-05-01", amount: "2 100" }
-    ]);
+    ];
     const columns = defineTableColumns([
       { type: "text:date", header: "Datum", key: "date" },
       { type: "text:number", header: "Belopp", key: "amount" }
@@ -71,7 +71,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ])]),
         _: 1
         /* STABLE */
-      }, 8, ["rows", "columns"])
+      }, 8, ["columns"])
     ]),
     _createElementVNode("div", _hoisted_3, [
       _createVNode($setup["FTable"], {
@@ -87,14 +87,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ])]),
         _: 1
         /* STABLE */
-      }, 8, ["rows", "columns"])
+      }, 8, ["columns"])
     ])
   ]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-d885d0"
+  selector: "#example-20e4fc"
 });
 export {
   render
