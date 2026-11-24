@@ -3389,9 +3389,7 @@ var FValidationForm_default = defineComponent10({
      */
     useErrorList: {
       type: Boolean,
-      required: false,
-      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-      default: true
+      required: false
     },
     /**
      *Optional callback function to the error list component for performing actions before navigation.
@@ -3557,7 +3555,7 @@ var FFormModal_default = defineComponent11({
     fullscreen: {
       type: Boolean,
       required: false,
-      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
+      /* eslint-disable-next-line vue/no-boolean-default -- only in edge-cases should this be diabled */
       default: true
     },
     /**
@@ -3597,9 +3595,7 @@ var FFormModal_default = defineComponent11({
      */
     useErrorList: {
       type: Boolean,
-      required: false,
-      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-      default: true
+      required: false
     },
     /**
      * The id for the form id attribute.
