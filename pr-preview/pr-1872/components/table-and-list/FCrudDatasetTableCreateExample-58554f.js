@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableCreateExample.vue:FCrudDatasetTableCreateExample-85f203.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableCreateExample.vue:FCrudDatasetTableCreateExample-58554f.js
 import { defineComponent as _defineComponent2 } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FCrudDataset/examples/FruitFormModal.vue?type=script
@@ -209,7 +209,7 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableCreateExample.vue:FCrudDatasetTableCreateExample-85f203.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableCreateExample.vue:FCrudDatasetTableCreateExample-58554f.js
 import {
   FCrudDataset,
   FTable,
@@ -283,7 +283,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render2;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-85f203"
+  selector: "#example-58554f"
 });
 export {
   render2 as render

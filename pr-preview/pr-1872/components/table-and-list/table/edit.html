@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-ec4ba3.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-61d844.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-f1b70b.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-8d5a12.js",
     "@fkui/vue-labs": "../../../assets/vendor-fkui-vue-labs-37a3e4.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js"
   },
@@ -35,7 +35,7 @@
     "../../../assets/vendor-fkui-vue-selectors-ec4ba3.js": "sha384-X7kHsr5wRshwqJOF+A4AJXePaFk73er8pcimXF6uz0kIIbToz2NyvzKWe+slXu7W",
     "../../../assets/vendor-fkui-logic-61d844.js": "sha384-u+VrrunW0wzEofwwfTCUkVW/5R3NtIzcgQ1Z60e7ov5tXLYfjrUjbvH57Zgv2vnB",
     "../../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../../assets/vendor-fkui-vue-f1b70b.js": "sha384-fO2Ay31OK6Ncx8Xokerd3JXWXZMN5DBzDuX0uXNhGOvVryzS8bO9c1d0sLlvYZDX",
+    "../../../assets/vendor-fkui-vue-8d5a12.js": "sha384-ojIZEHDXTLDK0Ko8TWgCeohWB9f0x44R4uOE96vFND8bXGuBxzgTTg36uZziqZAq",
     "../../../assets/vendor-fkui-vue-labs-37a3e4.js": "sha384-N/HfKkajpXjdrrHo9mjCSJYlF7njhDq86owwuIac3sUncnfL0s0jYFVrZdohsxm3",
     "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js": "sha384-PDEuCCbROg9gW6fFneYpzXKS04rV0oMFHgqArEkyaM8h1d/H3HBtCKiyFWYKWVcy"
   }
@@ -7420,13 +7420,13 @@ interface <span class="hljs-title class_">Row</span> {
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-120c2c"></div>
+        <div id="example-ec2021"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableCrudEdit-120c2c.js"></script>
+        <script type="module" src="./FTableCrudEdit-ec2021.js"></script>
     
                 </div>
                 <div>
@@ -7551,11 +7551,9 @@ interface <span class="hljs-title class_">Row</span> {
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;crud&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:on-edit</span> <span class="hljs-attr">:on-remove</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;table&quot;</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">striped</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>Redigera innehåll-exempel<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;table&quot;</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">striped</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>Redigera innehåll-exempel<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
@@ -7635,9 +7633,9 @@ Samma sak gäller även för redigerbar tabell och användare med skärmläsarve
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/999f56130264ac7fbf0bdf9fac7d4ba742169bd9">999f561</a>)<br />
+<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/72bec674a7607f370541c9bb963cc4cf56fb70bd">72bec67</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1872">PR 1872</a><br />
-       <span class="version-text-block">2026-11-24 07:01</span>
+       <span class="version-text-block">2026-11-24 10:37</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

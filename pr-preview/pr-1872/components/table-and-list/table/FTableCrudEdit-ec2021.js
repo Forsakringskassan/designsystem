@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableCrudEdit.vue:FTableCrudEdit-a0397c.js
+// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableCrudEdit.vue:FTableCrudEdit-ec2021.js
 import { defineComponent as _defineComponent2 } from "vue";
 import { ref as ref2, useTemplateRef } from "vue";
 
@@ -156,7 +156,7 @@ FTableCrudEditModal_default.render = render;
 FTableCrudEditModal_default.__file = "packages/vue/src/components/FTable/docs/FTableCrudEditModal.vue";
 var FTableCrudEditModal_default2 = FTableCrudEditModal_default;
 
-// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableCrudEdit.vue:FTableCrudEdit-a0397c.js
+// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableCrudEdit.vue:FTableCrudEdit-ec2021.js
 import {
   FCrudDataset,
   FTable,
@@ -288,7 +288,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render2;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a0397c"
+  selector: "#example-ec2021"
 });
 export {
   render2 as render

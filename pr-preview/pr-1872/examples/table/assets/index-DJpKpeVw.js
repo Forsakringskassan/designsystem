@@ -27145,22 +27145,64 @@ var FContextMenu_default = /* @__PURE__ */ defineComponent({
 		};
 	}
 });
-function filterItem(items, target, nested) {
-	const newItems = [...items];
-	for (let i = 0; i < newItems.length; i++) {
-		const item = newItems[i];
-		if (/* @__PURE__ */ toRaw(item) === /* @__PURE__ */ toRaw(target)) {
-			newItems.splice(i, 1);
-			return newItems;
-		}
-		if (!(nested && Array.isArray(item[nested]))) continue;
-		const nestedItems = item[nested];
-		const nestedIndex = nestedItems.indexOf(target);
-		if (nestedIndex !== -1) {
-			nestedItems.splice(nestedIndex, 1);
-			return newItems;
-		}
+/**
+* Provided by `FCrudDataset`. Registers a presenter and returns a function
+* unregistering it.
+*
+* @internal
+*/
+var crudDatasetPresenterKey = Symbol("FCrudDataset:presenter");
+/**
+* Registers the calling component as presenter of the closest
+* `FCrudDataset`. Does nothing when not used inside a `FCrudDataset`.
+*
+* The presenter is unregistered when the component is unmounted.
+*
+* @public
+*/
+function useCrudDatasetPresenter(presenter) {
+	const register = inject(crudDatasetPresenterKey, void 0);
+	if (!register) return;
+	onBeforeUnmount(register(presenter));
+}
+/**
+* Removes `target` from `items`, or when `nestedKey` is given, from nested
+* arrays at any depth. The array holding the item is mutated, parent items
+* keep their identity.
+*
+* Items are compared as raw objects, so a reactive proxy matches its raw
+* object and vice versa.
+*
+* @internal
+* @returns `true` if the item was found and removed.
+*/
+function removeNestedItem(items, target, nestedKey) {
+	return removeRaw(items, /* @__PURE__ */ toRaw(target), nestedKey);
+}
+function removeRaw(items, rawTarget, nestedKey) {
+	const index = items.findIndex((item) => /* @__PURE__ */ toRaw(item) === rawTarget);
+	if (index !== -1) {
+		items.splice(index, 1);
+		return true;
 	}
+	if (!nestedKey) return false;
+	for (const item of items) {
+		const nestedItems = item[nestedKey];
+		if (Array.isArray(nestedItems) && removeRaw(nestedItems, rawTarget, nestedKey)) return true;
+	}
+	return false;
+}
+/**
+* Returns a new array with `target` removed.
+*
+* When `nested` is given, nested items are searched recursively (at any
+* depth). A nested item is removed from its parent's array in place, the
+* parent item itself keeps its identity so consumers tracking it (e.g.
+* expanded state in a table) are unaffected.
+*/
+function removeItem(items, target, nested) {
+	const newItems = [...items];
+	removeNestedItem(newItems, target, nested);
 	return newItems;
 }
 /**
@@ -27206,20 +27248,18 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 		* Keeping a local copy ensures multiple commits within the same tick build upon each other before the parent has re-rendered.
 		*/
 		const items = /* @__PURE__ */ ref([]);
-		const nestedKey = /* @__PURE__ */ ref(null);
-		const callbackAfterItemAdd = /* @__PURE__ */ ref(() => ({}));
-		const callbackBeforeItemDelete = /* @__PURE__ */ ref(() => ({}));
+		/**
+		* The list or table presenting the items, registered with `useCrudDatasetPresenter()`.
+		*/
+		let presenter = {};
 		/** Text for the "add new" button */
 		const addButtonText = $t("fkui.crud-dataset.button.add", "Lägg till ny");
 		const hasAdd = computed(() => Boolean(__props.onAdd));
-		provide("delete", deleteItem);
-		provide("modify", updateItem);
-		provide("setNestedKey", setNestedKey);
-		provide("registerCallbackAfterItemAdd", (callback) => {
-			callbackAfterItemAdd.value = callback;
-		});
-		provide("registerCallbackBeforeItemDelete", (callback) => {
-			callbackBeforeItemDelete.value = callback;
+		provide(crudDatasetPresenterKey, (registered) => {
+			presenter = registered;
+			return () => {
+				if (presenter === registered) presenter = {};
+			};
 		});
 		__expose({
 			/**
@@ -27256,7 +27296,7 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 			return __props.onAdd((item, alert) => {
 				if (isUnmounted) return;
 				setItems([...items.value, item]);
-				callbackAfterItemAdd.value(item);
+				presenter.afterAdd?.(item);
 				alertScreenReader(alert !== null && alert !== void 0 ? alert : $t("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), { assertive: true });
 			});
 		}
@@ -27274,8 +27314,11 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 			if (!__props.onRemove) throw new Error("No onRemove callback is defined");
 			return __props.onRemove(current, (alert) => {
 				if (isUnmounted) return;
-				callbackBeforeItemDelete.value(current);
-				setItems(filterItem(items.value, current, nestedKey.value));
+				const commit = () => {
+					setItems(removeItem(items.value, current, toValue(presenter.nestedKey)));
+				};
+				if (presenter.handleRemove) presenter.handleRemove(current, commit);
+				else commit();
 				alertScreenReader(alert !== null && alert !== void 0 ? alert : $t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), { assertive: true });
 			});
 		}
@@ -27285,9 +27328,6 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 		function setItems(value) {
 			items.value = value;
 			emit("update:modelValue", value);
-		}
-		function setNestedKey(key) {
-			nestedKey.value = key;
 		}
 		return (_ctx, _cache) => {
 			return openBlock(), createElementBlock("div", _hoisted_1$56, [
@@ -30275,7 +30315,14 @@ var FTable_default = /* @__PURE__ */ defineComponent({
 			selectedRows,
 			rows: selectableRows
 		});
-		__expose(useTabstop(tableRef, metaRows));
+		const tableApi = useTabstop(tableRef, metaRows);
+		__expose(tableApi);
+		useCrudDatasetPresenter({
+			nestedKey: expandableAttributeName,
+			handleRemove(_row, commit) {
+				tableApi.withTabstopBehaviour("row-removal", commit);
+			}
+		});
 		onMounted(() => {
 			assertRef(tableRef);
 			registerCallbackOnMount(callbackSortableColumns);
@@ -30438,25 +30485,7 @@ function removeTableRows(rows, rowsToRemove, expandableAttribute) {
 	const rowsToRemoveValue = toValue(rowsToRemove);
 	const expandableAttributeValue = toValue(expandableAttribute);
 	const normalizedRows = Array.isArray(rowsToRemoveValue) ? [...rowsToRemoveValue] : [rowsToRemoveValue];
-	for (const row of normalizedRows) removeRow$1(rowsValue, row, expandableAttributeValue);
-}
-function removeRow$1(rows, row, expandableAttribute) {
-	const rowIndex = rows.indexOf(row);
-	if (rowIndex !== -1) rows.splice(rowIndex, 1);
-	else if (expandableAttribute) removeNestedRows$1(rows, row, expandableAttribute);
-}
-function removeNestedRows$1(rows, row, expandableAttribute) {
-	for (const currentRow of rows) {
-		const nestedRows = getNestedRows(currentRow, expandableAttribute);
-		if (!nestedRows) continue;
-		const index = nestedRows.indexOf(row);
-		if (index !== -1) {
-			nestedRows.splice(index, 1);
-			return true;
-		}
-		if (removeNestedRows$1(nestedRows, row, expandableAttribute)) return true;
-	}
-	return false;
+	for (const row of normalizedRows) removeNestedItem(rowsValue, row, expandableAttributeValue);
 }
 function resolveWidthClass(words, inline) {
 	return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");

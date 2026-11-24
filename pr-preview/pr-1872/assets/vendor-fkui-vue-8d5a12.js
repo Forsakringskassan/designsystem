@@ -11935,22 +11935,32 @@ var FContextMenu_default = /* @__PURE__ */ defineComponent({
     };
   }
 });
-function filterItem(items, target, nested) {
-  const newItems = [...items];
-  for (let i = 0; i < newItems.length; i++) {
-    const item = newItems[i];
-    if (toRaw(item) === toRaw(target)) {
-      newItems.splice(i, 1);
-      return newItems;
-    }
-    if (!(nested && Array.isArray(item[nested]))) continue;
-    const nestedItems = item[nested];
-    const nestedIndex = nestedItems.indexOf(target);
-    if (nestedIndex !== -1) {
-      nestedItems.splice(nestedIndex, 1);
-      return newItems;
-    }
+var crudDatasetPresenterKey = /* @__PURE__ */ Symbol("FCrudDataset:presenter");
+function useCrudDatasetPresenter(presenter) {
+  const register = inject(crudDatasetPresenterKey, void 0);
+  if (!register) return;
+  const unregister = register(presenter);
+  onBeforeUnmount(unregister);
+}
+function removeNestedItem(items, target, nestedKey) {
+  return removeRaw(items, toRaw(target), nestedKey);
+}
+function removeRaw(items, rawTarget, nestedKey) {
+  const index = items.findIndex((item) => toRaw(item) === rawTarget);
+  if (index !== -1) {
+    items.splice(index, 1);
+    return true;
   }
+  if (!nestedKey) return false;
+  for (const item of items) {
+    const nestedItems = item[nestedKey];
+    if (Array.isArray(nestedItems) && removeRaw(nestedItems, rawTarget, nestedKey)) return true;
+  }
+  return false;
+}
+function removeItem(items, target, nested) {
+  const newItems = [...items];
+  removeNestedItem(newItems, target, nested);
   return newItems;
 }
 function replaceItem(target, source) {
@@ -11984,19 +11994,14 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
     const emit = __emit;
     const $t2 = useTranslate();
     const items = ref([]);
-    const nestedKey = ref(null);
-    const callbackAfterItemAdd = ref(() => ({}));
-    const callbackBeforeItemDelete = ref(() => ({}));
+    let presenter = {};
     const addButtonText = $t2("fkui.crud-dataset.button.add", "L\xE4gg till ny");
     const hasAdd = computed(() => Boolean(__props.onAdd));
-    provide("delete", deleteItem);
-    provide("modify", updateItem);
-    provide("setNestedKey", setNestedKey);
-    provide("registerCallbackAfterItemAdd", (callback) => {
-      callbackAfterItemAdd.value = callback;
-    });
-    provide("registerCallbackBeforeItemDelete", (callback) => {
-      callbackBeforeItemDelete.value = callback;
+    provide(crudDatasetPresenterKey, (registered) => {
+      presenter = registered;
+      return () => {
+        if (presenter === registered) presenter = {};
+      };
     });
     __expose({
       /**
@@ -12033,7 +12038,7 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
       return __props.onAdd((item, alert) => {
         if (isUnmounted) return;
         setItems([...items.value, item]);
-        callbackAfterItemAdd.value(item);
+        presenter.afterAdd?.(item);
         const message = alert !== null && alert !== void 0 ? alert : $t2("fkui.crud-dataset.aria-live.add", "En rad har lagts till");
         alertScreenReader(message, { assertive: true });
       });
@@ -12053,8 +12058,11 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
       if (!__props.onRemove) throw new Error("No onRemove callback is defined");
       return __props.onRemove(current, (alert) => {
         if (isUnmounted) return;
-        callbackBeforeItemDelete.value(current);
-        setItems(filterItem(items.value, current, nestedKey.value));
+        const commit = () => {
+          setItems(removeItem(items.value, current, toValue(presenter.nestedKey)));
+        };
+        if (presenter.handleRemove) presenter.handleRemove(current, commit);
+        else commit();
         const message = alert !== null && alert !== void 0 ? alert : $t2("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort");
         alertScreenReader(message, { assertive: true });
       });
@@ -12065,9 +12073,6 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
     function setItems(value) {
       items.value = value;
       emit("update:modelValue", value);
-    }
-    function setNestedKey(key) {
-      nestedKey.value = key;
     }
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", _hoisted_1$56, [
@@ -12123,13 +12128,6 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
     };
   }
 });
-function ActivateItemInjected() {
-  return {
-    registerCallbackAfterItemAdd: inject("registerCallbackAfterItemAdd", () => void 0),
-    registerCallbackBeforeItemDelete: inject("registerCallbackBeforeItemDelete", () => void 0),
-    setNestedKey: inject("setNestedKey", () => void 0)
-  };
-}
 function FSortFilterDatasetInjected() {
   return {
     sort: inject("sort", () => void 0),
@@ -14915,7 +14913,14 @@ var FTable_default = /* @__PURE__ */ defineComponent({
       selectedRows,
       rows: selectableRows
     });
-    __expose(useTabstop(tableRef, metaRows));
+    const tableApi = useTabstop(tableRef, metaRows);
+    __expose(tableApi);
+    useCrudDatasetPresenter({
+      nestedKey: expandableAttributeName,
+      handleRemove(_row, commit) {
+        tableApi.withTabstopBehaviour("row-removal", commit);
+      }
+    });
     onMounted(() => {
       assertRef(tableRef);
       registerCallbackOnMount(callbackSortableColumns);
@@ -15079,25 +15084,7 @@ function removeTableRows(rows, rowsToRemove, expandableAttribute) {
   const rowsToRemoveValue = toValue(rowsToRemove);
   const expandableAttributeValue = toValue(expandableAttribute);
   const normalizedRows = Array.isArray(rowsToRemoveValue) ? [...rowsToRemoveValue] : [rowsToRemoveValue];
-  for (const row of normalizedRows) removeRow$1(rowsValue, row, expandableAttributeValue);
-}
-function removeRow$1(rows, row, expandableAttribute) {
-  const rowIndex = rows.indexOf(row);
-  if (rowIndex !== -1) rows.splice(rowIndex, 1);
-  else if (expandableAttribute) removeNestedRows$1(rows, row, expandableAttribute);
-}
-function removeNestedRows$1(rows, row, expandableAttribute) {
-  for (const currentRow of rows) {
-    const nestedRows = getNestedRows(currentRow, expandableAttribute);
-    if (!nestedRows) continue;
-    const index = nestedRows.indexOf(row);
-    if (index !== -1) {
-      nestedRows.splice(index, 1);
-      return true;
-    }
-    if (removeNestedRows$1(nestedRows, row, expandableAttribute)) return true;
-  }
-  return false;
+  for (const row of normalizedRows) removeNestedItem(rowsValue, row, expandableAttributeValue);
 }
 function removeDatasetRows(dataset, rows) {
   const datasetValue = toValue(dataset);
@@ -19475,8 +19462,15 @@ var FInteractiveTable_default = /* @__PURE__ */ defineComponent({
     const { hasSlot: hasSlot2 } = useSlotUtils();
     const { sort: sort2, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
     const { onFilter } = useSortFilterDatasetEvents();
-    const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete, setNestedKey } = ActivateItemInjected();
     const internalKey = getLegacyInternalKey();
+    useCrudDatasetPresenter({
+      nestedKey: () => __props.expandableAttribute,
+      afterAdd: callbackAfterItemAdd,
+      handleRemove(item, commit) {
+        callbackBeforeItemDelete(item);
+        commit();
+      }
+    });
     const activeRow = ref(void 0);
     const columns = ref([]);
     const selectedRows = ref([]);
@@ -19562,12 +19556,9 @@ var FInteractiveTable_default = /* @__PURE__ */ defineComponent({
     });
     onMounted(() => {
       if (tbody.value) updateTr(tbody.value);
-      if (isExpandableTable) setNestedKey(__props.expandableAttribute);
       registerCallbackOnSort(callbackOnSort);
       registerCallbackOnMount(callbackSortableColumns);
       onFilter(callbackOnFilter);
-      registerCallbackAfterItemAdd(callbackAfterItemAdd);
-      registerCallbackBeforeItemDelete(callbackBeforeItemDelete);
     });
     function isActive(row) {
       if (!__props.showActive) return false;
@@ -20449,8 +20440,14 @@ var FList_default = /* @__PURE__ */ defineComponent({
     const emit = __emit;
     const $t2 = useTranslate();
     const slots = useSlots();
-    const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete } = ActivateItemInjected();
     const internalKey = getLegacyInternalKey();
+    if (props.selectable && props.checkbox) useCrudDatasetPresenter({
+      afterAdd: callbackAfterItemAdd,
+      handleRemove(item, commit) {
+        callbackBeforeItemDelete(item);
+        commit();
+      }
+    });
     const selectedItems = ref([]);
     const activeItem = ref(void 0);
     const ulElement = useTemplateRef("ulElement");
@@ -20482,8 +20479,6 @@ var FList_default = /* @__PURE__ */ defineComponent({
     onMounted(() => {
       if (!(props.selectable && props.checkbox)) return;
       if (!slots.screenreader) throw new Error('Slot "screenreader" is required when having "selectable" & "checkbox" option.');
-      registerCallbackAfterItemAdd(callbackAfterItemAdd);
-      registerCallbackBeforeItemDelete(callbackBeforeItemDelete);
     });
     function getLiElements() {
       const element = getElementFromVueRef(ulElement.value);
@@ -22932,7 +22927,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var FWizardStep_default = /* @__PURE__ */ _plugin_vue_export_helper_default(FWizardStep_vue_vue_type_script_lang_default, [["render", _sfc_render]]);
 export {
-  ActivateItemInjected,
   ErrorData,
   ErrorPlugin,
   ErrorViewData,
@@ -23104,6 +23098,7 @@ export {
   tooltipAttachTo,
   useAreaData,
   useCombobox,
+  useCrudDatasetPresenter,
   useDatasetRef,
   useDetailsPanel,
   useModal,

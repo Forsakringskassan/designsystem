@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-ec4ba3.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-61d844.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-f1b70b.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-8d5a12.js",
     "@fkui/vue-labs": "../../../assets/vendor-fkui-vue-labs-37a3e4.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js"
   },
@@ -35,7 +35,7 @@
     "../../../assets/vendor-fkui-vue-selectors-ec4ba3.js": "sha384-X7kHsr5wRshwqJOF+A4AJXePaFk73er8pcimXF6uz0kIIbToz2NyvzKWe+slXu7W",
     "../../../assets/vendor-fkui-logic-61d844.js": "sha384-u+VrrunW0wzEofwwfTCUkVW/5R3NtIzcgQ1Z60e7ov5tXLYfjrUjbvH57Zgv2vnB",
     "../../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../../assets/vendor-fkui-vue-f1b70b.js": "sha384-fO2Ay31OK6Ncx8Xokerd3JXWXZMN5DBzDuX0uXNhGOvVryzS8bO9c1d0sLlvYZDX",
+    "../../../assets/vendor-fkui-vue-8d5a12.js": "sha384-ojIZEHDXTLDK0Ko8TWgCeohWB9f0x44R4uOE96vFND8bXGuBxzgTTg36uZziqZAq",
     "../../../assets/vendor-fkui-vue-labs-37a3e4.js": "sha384-N/HfKkajpXjdrrHo9mjCSJYlF7njhDq86owwuIac3sUncnfL0s0jYFVrZdohsxm3",
     "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js": "sha384-PDEuCCbROg9gW6fFneYpzXKS04rV0oMFHgqArEkyaM8h1d/H3HBtCKiyFWYKWVcy"
   }
@@ -6536,13 +6536,17 @@ Det finns inga standardtexter längre, så applikationen behöver själv ange kn
 För samma beteende som tidigare: &quot;Lägg till&quot; och &quot;Avbryt&quot; när en rad läggs till, &quot;Spara&quot; och &quot;Avbryt&quot; när en rad ändras samt &quot;Ja, ta bort&quot; och &quot;Nej, avbryt&quot; när en rad tas bort.</li>
 <li>Metoderna <code>cancelButton()</code>, <code>confirmButton()</code> och egenskapen <code>form</code> från <code>FCrudDatasetPageObject</code> samt <code>cancelButton()</code> och <code>confirmButton()</code> från <code>FCrudDatasetSelectors</code>.
 Använd <code>FModalPageObject</code> eller <code>FModalSelectors</code> istället.</li>
+<li><code>ActivateItemInjected()</code> och typerna <code>ActivateItemInterface</code> och <code>ActivateItemCallback</code>.
+En egen komponent som presenterar raderna använder istället <code>useCrudDatasetPresenter()</code> med <code>afterAdd</code>, <code>handleRemove</code> och <code>nestedKey</code>.
+<code>handleRemove(item, commit)</code> ersätter <code>registerCallbackBeforeItemDelete</code> och måste anropa <code>commit()</code> synkront.</li>
 </ul>
 <p class="docs-paragraph">Knappen &quot;Lägg till ny&quot; visas när <code>onAdd</code> är satt (tidigare när slotten <code>#add</code> fanns).</p>
+<p class="docs-paragraph">Innehållet kan läggas direkt i <code>FCrudDataset</code>, <code>&lt;template #default&gt;</code> behövs inte längre.</p>
 <p class="docs-paragraph"><code>onAdd</code>, <code>onEdit</code> och <code>onRemove</code> kan vara asynkrona.
 Om en callback returnerar ett promise som avvisas rapporteras felet till <code>app.config.errorHandler</code>.</p>
 
                 <div
-                    id="example-cef7ca"
+                    id="example-a36253"
                     class="code-preview code-preview--default"
                     
                     
@@ -6557,13 +6561,13 @@ Om en callback returnerar ett promise som avvisas rapporteras felet till <code>a
 <span class="hljs-deletion">-    &lt;template #delete=&quot;{ item }&quot;&gt; Vill du ta bort {{ item.name }}? &lt;/template&gt;</span>
 <span class="hljs-deletion">-&lt;/f-crud-dataset&gt;</span>
 <span class="hljs-addition">+&lt;f-crud-dataset v-model=&quot;rows&quot; :on-add :on-remove&gt;</span>
-<span class="hljs-addition">+    &lt;template #default&gt; ... &lt;/template&gt;</span>
+<span class="hljs-addition">+    ...</span>
 <span class="hljs-addition">+&lt;/f-crud-dataset&gt;</span>
 </code></pre>
                 </div>
             
                 <div
-                    id="example-e398ef"
+                    id="example-bdacfd"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -6639,7 +6643,7 @@ Ta bort kod som använder <code>Operation.NONE</code>.</li>
         <h2 id="fmodal" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fmodal"><code>FModal</code></a></h2><p class="docs-paragraph">Propen <code>size</code> stödjer inte längre aliaset <code>fullscreen</code> och är ersatt med <code>fullwidth</code>.</p>
 
                 <div
-                    id="example-3cc78b"
+                    id="example-ef3771"
                     class="code-preview code-preview--default"
                     
                     
@@ -6670,7 +6674,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="fsortfilterdataset" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fsortfilterdataset"><code>FSortFilterDataset</code></a></h2><p class="docs-paragraph">Propen <code>placeholderFilter</code> är borttagen och ersatt med <code>filterLabel</code>.</p>
 
                 <div
-                    id="example-8a81be"
+                    id="example-dc1091"
                     class="code-preview code-preview--default"
                     
                     
@@ -6697,7 +6701,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="getlegacyinternalkey" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#getlegacyinternalkey"><code>getLegacyInternalKey()</code></a></h2><p class="docs-paragraph">Använd <code>findItemIdentifier()</code> om objektet kan sakna en identifierare, eller <code>getItemIdentifier()</code> om identifieraren är garanterad att finnas, istället för att hämta ut nyckeln.</p>
 
                 <div
-                    id="example-1092d9"
+                    id="example-50e61c"
                     class="code-preview code-preview--default"
                     
                     
@@ -6723,7 +6727,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="tablescroll" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tablescroll"><code>TableScroll</code></a></h2><p class="docs-paragraph"><code>FDataTable</code> och <code>FInteractiveTable</code> stödjer inte längre <code>TableScroll.VERTICAL</code> och <code>TableScroll.BOTH</code>.</p>
 
                 <div
-                    id="example-af8b2d"
+                    id="example-3096fe"
                     class="code-preview code-preview--default"
                     
                     
@@ -6759,7 +6763,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
 <p class="docs-paragraph">Om du vill att det första steget ska få fokus när guiden öppnas, lägg till <code>focus-initial-step</code>:</p>
 
                 <div
-                    id="example-82f781"
+                    id="example-bf1d28"
                     class="code-preview code-preview--default"
                     
                     
@@ -6778,7 +6782,7 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
 <p class="docs-paragraph">Om du vill behålla fellistan, lägg till propen explicit:</p>
 
                 <div
-                    id="example-dc57b4"
+                    id="example-946cfc"
                     class="code-preview code-preview--default"
                     
                     
@@ -6794,7 +6798,7 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
             <p class="docs-paragraph">Om du redan använder <code>:use-error-list=&quot;false&quot;</code> kan du ta bort det:</p>
 
                 <div
-                    id="example-0dc3ac"
+                    id="example-689337"
                     class="code-preview code-preview--default"
                     
                     
@@ -6889,9 +6893,9 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/999f56130264ac7fbf0bdf9fac7d4ba742169bd9">999f561</a>)<br />
+<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/72bec674a7607f370541c9bb963cc4cf56fb70bd">72bec67</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1872">PR 1872</a><br />
-       <span class="version-text-block">2026-11-24 07:01</span>
+       <span class="version-text-block">2026-11-24 10:37</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

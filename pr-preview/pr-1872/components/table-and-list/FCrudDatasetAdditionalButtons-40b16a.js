@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/components/table-and-list/examples/FCrudDatasetAdditionalButtons.vue:FCrudDatasetAdditionalButtons-117bcf.js
+// virtual-entry:virtual:docs/components/table-and-list/examples/FCrudDatasetAdditionalButtons.vue:FCrudDatasetAdditionalButtons-40b16a.js
 import { defineComponent as _defineComponent } from "vue";
 import { FCrudDataset } from "@fkui/vue";
 import { normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -51,7 +51,6 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FCrudDataset"], { "on-add": $setup.onAdd }, {
-    default: _withCtx(() => [..._cache[0] || (_cache[0] = [])]),
     buttons: _withCtx(({ buttonClasses }) => [
       _createElementVNode(
         "button",
@@ -72,7 +71,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-117bcf"
+  selector: "#example-40b16a"
 });
 export {
   render

@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableUpdateExample.vue:FCrudDatasetTableUpdateExample-882e28.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableUpdateExample.vue:FCrudDatasetTableUpdateExample-f3a951.js
 import { defineComponent as _defineComponent2 } from "vue";
 import { useTemplateRef } from "vue";
 
@@ -210,7 +210,7 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableUpdateExample.vue:FCrudDatasetTableUpdateExample-882e28.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableUpdateExample.vue:FCrudDatasetTableUpdateExample-f3a951.js
 import {
   FCrudDataset,
   FTable,
@@ -291,7 +291,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render2;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-882e28"
+  selector: "#example-f3a951"
 });
 export {
   render2 as render

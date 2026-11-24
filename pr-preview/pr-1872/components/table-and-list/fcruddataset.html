@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-ec4ba3.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-61d844.js",
     "@fkui/date": "../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-f1b70b.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-8d5a12.js",
     "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-37a3e4.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js"
   },
@@ -35,7 +35,7 @@
     "../../assets/vendor-fkui-vue-selectors-ec4ba3.js": "sha384-X7kHsr5wRshwqJOF+A4AJXePaFk73er8pcimXF6uz0kIIbToz2NyvzKWe+slXu7W",
     "../../assets/vendor-fkui-logic-61d844.js": "sha384-u+VrrunW0wzEofwwfTCUkVW/5R3NtIzcgQ1Z60e7ov5tXLYfjrUjbvH57Zgv2vnB",
     "../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../assets/vendor-fkui-vue-f1b70b.js": "sha384-fO2Ay31OK6Ncx8Xokerd3JXWXZMN5DBzDuX0uXNhGOvVryzS8bO9c1d0sLlvYZDX",
+    "../../assets/vendor-fkui-vue-8d5a12.js": "sha384-ojIZEHDXTLDK0Ko8TWgCeohWB9f0x44R4uOE96vFND8bXGuBxzgTTg36uZziqZAq",
     "../../assets/vendor-fkui-vue-labs-37a3e4.js": "sha384-N/HfKkajpXjdrrHo9mjCSJYlF7njhDq86owwuIac3sUncnfL0s0jYFVrZdohsxm3",
     "../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js": "sha384-PDEuCCbROg9gW6fFneYpzXKS04rV0oMFHgqArEkyaM8h1d/H3HBtCKiyFWYKWVcy"
   }
@@ -7233,7 +7233,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/999f56130264ac7fbf0bdf9fac7d4ba742169bd9/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/72bec674a7607f370541c9bb963cc4cf56fb70bd/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
                 FCrudDataset
             </a>
             
@@ -7318,7 +7318,7 @@ Beroende på sammanhang kan även knappen för &quot;lägg till ny&quot; behöva
 som tydligör vad som läggs till.</p>
 <h2 id="tabell_med_redigering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabell_med_redigering">Tabell med redigering</a></h2>
             <div
-                id="example-871931"
+                id="example-76dc8f"
                 class="code-preview code-preview--default"
                 
                 
@@ -7328,13 +7328,13 @@ som tydligör vad som läggs till.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-bc75f5"></div>
+        <div id="example-96be57"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableExample-bc75f5.js"></script>
+        <script type="module" src="./FCrudDatasetTableExample-96be57.js"></script>
     
                 </div>
                 <div>
@@ -7446,11 +7446,9 @@ som tydligör vad som läggs till.</p>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;crud&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:on-add</span> <span class="hljs-attr">:on-edit</span> <span class="hljs-attr">:on-remove</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">striped</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Frukter<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">striped</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Frukter<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
@@ -7459,7 +7457,7 @@ som tydligör vad som läggs till.</p>
         <h2 id="forpopulera_objekt" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#forpopulera_objekt">Förpopulera objekt</a></h2><p class="docs-paragraph">Eftersom applikationen själv skapar objektet i <code>onAdd</code> kan det förpopuleras innan modalen öppnas, till exempel med ett id:</p>
 
                 <div
-                    id="example-651465"
+                    id="example-f667ca"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -7486,27 +7484,27 @@ Med propen <code>buttonPosition</code> kan knapparna istället positioneras ovan
 Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
 
                 <div
-                    id="example-475f84"
+                    id="example-b3db76"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-crud-dataset&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-crud-dataset&gt; ... &lt;/f-crud-dataset&gt;</span>
 <span class="hljs-addition">+&lt;f-crud-dataset :on-add&gt;</span>
-     &lt;template #default&gt; ... &lt;/template&gt;
+<span class="hljs-addition">+    ...</span>
 <span class="hljs-addition">+    &lt;template #buttons=&quot;{ buttonClasses }&quot;&gt;</span>
 <span class="hljs-addition">+        &lt;button type=&quot;button&quot; :class=&quot;buttonClasses&quot; @click=&quot;onClick&quot;&gt;</span>
 <span class="hljs-addition">+            My button</span>
 <span class="hljs-addition">+        &lt;/button&gt;</span>
 <span class="hljs-addition">+    &lt;/template&gt;</span>
- &lt;/f-crud-dataset&gt;
+<span class="hljs-addition">+&lt;/f-crud-dataset&gt;</span>
 </code></pre>
                 </div>
             
                 <div
-                    id="example-34f757"
+                    id="example-88bbf4"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -7516,19 +7514,19 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-117bcf"></div>
+        <div id="example-40b16a"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetAdditionalButtons-117bcf.js"></script>
+        <script type="module" src="./FCrudDatasetAdditionalButtons-40b16a.js"></script>
     
                     </div>
                 </div>
             <h2 id="tabell_med_lagg_till_knapp" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabell_med_lagg_till_knapp">Tabell med lägg till-knapp</a></h2>
             <div
-                id="example-932c16"
+                id="example-157e5d"
                 class="code-preview code-preview--default"
                 
                 
@@ -7538,13 +7536,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-85f203"></div>
+        <div id="example-58554f"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableCreateExample-85f203.js"></script>
+        <script type="module" src="./FCrudDatasetTableCreateExample-58554f.js"></script>
     
                 </div>
                 <div>
@@ -7604,11 +7602,9 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:on-add</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Frukter<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Frukter<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
@@ -7616,7 +7612,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="tabell_med_redigera_knapp" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabell_med_redigera_knapp">Tabell med redigera-knapp</a></h2>
             <div
-                id="example-76e959"
+                id="example-fb4755"
                 class="code-preview code-preview--default"
                 
                 
@@ -7626,13 +7622,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-882e28"></div>
+        <div id="example-f3a951"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableUpdateExample-882e28.js"></script>
+        <script type="module" src="./FCrudDatasetTableUpdateExample-f3a951.js"></script>
     
                 </div>
                 <div>
@@ -7699,11 +7695,9 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;crud&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:on-edit</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Frukter<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Frukter<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
@@ -7711,7 +7705,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="lista_med_redigering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#lista_med_redigering">Lista med redigering</a></h2>
             <div
-                id="example-31d4ba"
+                id="example-2f8437"
                 class="code-preview code-preview--default"
                 
                 
@@ -7819,7 +7813,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="sorterbar_lista" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#sorterbar_lista">Sorterbar lista</a></h2>
             <div
-                id="example-511987"
+                id="example-bc3356"
                 class="code-preview code-preview--default"
                 
                 
@@ -7929,7 +7923,7 @@ På samma sätt kan &quot;Lägg till ny&quot; behöva kompletteras med vad som l
 <p class="docs-paragraph">Använd klassen <code>sr-only</code> för text som endast ska läsas upp av skärmläsare:</p>
 
                 <div
-                    id="example-9d7b78"
+                    id="example-0760e4"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -7964,7 +7958,7 @@ Meddelandet kan ändras på två sätt:</p>
 Skicka helst med ett meddelande som är specifikt för innehållet, så att användaren vet vilken rad som påverkades.</p>
 
             <div
-                id="example-a306d0"
+                id="example-805e93"
                 class="code-preview code-preview--default"
                 
                 
@@ -8396,9 +8390,9 @@ is ignored.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/999f56130264ac7fbf0bdf9fac7d4ba742169bd9">999f561</a>)<br />
+<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/72bec674a7607f370541c9bb963cc4cf56fb70bd">72bec67</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1872">PR 1872</a><br />
-       <span class="version-text-block">2026-11-24 07:01</span>
+       <span class="version-text-block">2026-11-24 10:37</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

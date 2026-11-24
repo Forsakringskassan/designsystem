@@ -18563,6 +18563,26 @@ var FContextMenu_default = /* @__PURE__ */ defineComponent({
 	}
 });
 /**
+* Provided by `FCrudDataset`. Registers a presenter and returns a function
+* unregistering it.
+*
+* @internal
+*/
+var crudDatasetPresenterKey = Symbol("FCrudDataset:presenter");
+/**
+* Registers the calling component as presenter of the closest
+* `FCrudDataset`. Does nothing when not used inside a `FCrudDataset`.
+*
+* The presenter is unregistered when the component is unmounted.
+*
+* @public
+*/
+function useCrudDatasetPresenter(presenter) {
+	const register = inject(crudDatasetPresenterKey, void 0);
+	if (!register) return;
+	onBeforeUnmount(register(presenter));
+}
+/**
 * Empty dummy methods to be used when no FSortFilterDataset is used
 *
 * @public
@@ -21198,7 +21218,14 @@ var FTable_default = /* @__PURE__ */ defineComponent({
 			selectedRows,
 			rows: selectableRows
 		});
-		__expose(useTabstop(tableRef, metaRows));
+		const tableApi = useTabstop(tableRef, metaRows);
+		__expose(tableApi);
+		useCrudDatasetPresenter({
+			nestedKey: expandableAttributeName,
+			handleRemove(_row, commit) {
+				tableApi.withTabstopBehaviour("row-removal", commit);
+			}
+		});
 		onMounted(() => {
 			assertRef(tableRef);
 			registerCallbackOnMount(callbackSortableColumns);
