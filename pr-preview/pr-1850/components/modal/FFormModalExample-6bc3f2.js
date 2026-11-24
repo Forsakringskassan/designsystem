@@ -28,23 +28,28 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/components/modal/FFormModal.md:FFormModal-ac636c.js
-import { defineComponent } from "vue";
+// virtual-entry:virtual:docs/components/modal/FFormModalExample.vue:FFormModalExample-6bc3f2.js
+import { defineComponent as _defineComponent } from "vue";
 import { FFormModal, FTextField } from "@fkui/vue";
-import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
-var exampleComponent = defineComponent({
-  components: { FFormModal, FTextField },
+import { createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+var exampleComponent = /* @__PURE__ */ _defineComponent({
+  __name: "FFormModalExample",
   props: {
-    value: {
-      type: Object,
-      required: true
-    }
+    value: { type: Object, required: true }
+  },
+  setup(__props, { expose: __expose }) {
+    __expose();
+    const __returned__ = { get FFormModal() {
+      return FFormModal;
+    }, get FTextField() {
+      return FTextField;
+    } };
+    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+    return __returned__;
   }
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_text_field = _resolveComponent("f-text-field");
-  const _component_f_form_modal = _resolveComponent("f-form-modal", true);
-  return _openBlock(), _createBlock(_component_f_form_modal, { value: _ctx.value }, {
+  return _openBlock(), _createBlock($setup["FFormModal"], { value: $props.value }, {
     header: _withCtx(() => [..._cache[2] || (_cache[2] = [
       _createTextVNode(
         " Awesome Modal ",
@@ -53,9 +58,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       )
     ])]),
     "input-text-fields": _withCtx(() => [
-      _createVNode(_component_f_text_field, {
-        modelValue: _ctx.value.name,
-        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.value.name = $event)
+      _createVNode($setup["FTextField"], {
+        modelValue: $props.value.name,
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $props.value.name = $event)
       }, {
         default: _withCtx(() => [..._cache[3] || (_cache[3] = [
           _createTextVNode(
@@ -67,9 +72,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
-      _createVNode(_component_f_text_field, {
-        modelValue: _ctx.value.age,
-        "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.value.age = $event)
+      _createVNode($setup["FTextField"], {
+        modelValue: $props.value.age,
+        "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $props.value.age = $event)
       }, {
         default: _withCtx(() => [..._cache[4] || (_cache[4] = [
           _createTextVNode(
@@ -89,7 +94,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-ac636c"
+  selector: "#example-6bc3f2"
 });
 export {
   render

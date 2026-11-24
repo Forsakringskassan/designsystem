@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/components/validation/examples/RequiredExample.vue:RequiredExample-8f380f.js
+// virtual-entry:virtual:docs/components/validation/examples/RequiredExample.vue:RequiredExample-d08b76.js
 import { defineComponent } from "vue";
 import { FButton, FTextField, FValidationForm } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, createVNode as _createVNode, createElementVNode as _createElementVNode } from "vue";
@@ -53,10 +53,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_button = _resolveComponent("f-button");
   const _component_f_validation_form = _resolveComponent("f-validation-form");
   const _directive_validation = _resolveDirective("validation");
-  return _openBlock(), _createBlock(_component_f_validation_form, {
-    "use-error-list": false,
-    onSubmit: _ctx.onSubmit
-  }, {
+  return _openBlock(), _createBlock(_component_f_validation_form, { onSubmit: _ctx.onSubmit }, {
     default: _withCtx(() => [
       _withDirectives((_openBlock(), _createBlock(_component_f_text_field, {
         modelValue: _ctx.model,
@@ -122,7 +119,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-8f380f"
+  selector: "#example-d08b76"
 });
 export {
   render

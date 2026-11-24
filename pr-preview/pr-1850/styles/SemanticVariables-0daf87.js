@@ -972,8 +972,8 @@ var metadata_default = {
           "palette": "blue-100"
         },
         "dark": {
-          "value": "#494f5b",
-          "palette": "neutral-700"
+          "value": "#292d34",
+          "palette": "neutral-800"
         }
       }
     },
@@ -1028,6 +1028,20 @@ var metadata_default = {
           "palette": "green-100"
         },
         "dark": {
+          "value": "#292d34",
+          "palette": "neutral-800"
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-select-background-tertiary-hover",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#dee9f7",
+          "palette": "blue-100"
+        },
+        "dark": {
           "value": "#494f5b",
           "palette": "neutral-700"
         }
@@ -1058,6 +1072,20 @@ var metadata_default = {
         "dark": {
           "value": "#1b1e23",
           "palette": "neutral-900"
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-text-on-dark-primary",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#ecedef",
+          "palette": "neutral-100"
+        },
+        "dark": {
+          "value": "#ecedef",
+          "palette": "neutral-100"
         }
       }
     },

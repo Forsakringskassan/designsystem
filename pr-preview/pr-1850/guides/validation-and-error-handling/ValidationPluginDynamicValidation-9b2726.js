@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/plugins/validation/examples/ValidationPluginDynamicValidation.vue:ValidationPluginDynamicValidation-8ef31e.js
+// virtual-entry:virtual:packages/vue/src/plugins/validation/examples/ValidationPluginDynamicValidation.vue:ValidationPluginDynamicValidation-9b2726.js
 import { defineComponent } from "vue";
 import { ValidationService } from "@fkui/logic";
 import { FButton, FTextField, FValidationForm } from "@fkui/vue";
@@ -68,7 +68,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_button = _resolveComponent("f-button");
   const _component_f_validation_form = _resolveComponent("f-validation-form");
   const _directive_validation = _resolveDirective("validation");
-  return _openBlock(), _createBlock(_component_f_validation_form, { "use-error-list": false }, {
+  return _openBlock(), _createBlock(_component_f_validation_form, null, {
     "error-message": _withCtx(() => [..._cache[2] || (_cache[2] = [
       _createTextVNode(
         " Alla fr\xE5gor \xE4r inte korrekt ifyllda. Titta i: ",
@@ -168,7 +168,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-8ef31e"
+  selector: "#example-9b2726"
 });
 export {
   render

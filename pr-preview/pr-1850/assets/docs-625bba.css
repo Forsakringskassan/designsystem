@@ -109,6 +109,7 @@
   --fkds-color-text-primary: #1b1e23;
   --fkds-color-text-secondary: #606876;
   --fkds-color-text-inverted: #ffffff;
+  --fkds-color-text-on-dark-primary: #ecedef;
   --fkds-color-text-disabled: #606876;
   --fkds-color-background-primary: #ffffff;
   --fkds-color-background-secondary: #f7f7f8;
@@ -169,6 +170,7 @@
   --fkds-color-select-background-secondary-hover: #d9ede3;
   --fkds-color-select-background-secondary-active: #d9ede3;
   --fkds-color-select-background-secondary-focus: #d9ede3;
+  --fkds-color-select-background-tertiary-hover: #dee9f7;
   --fkds-color-interactive-surface-background-primary-default: #f7f7f8;
   --fkds-color-interactive-surface-background-primary-hover: #ecedef;
   --fkds-color-interactive-surface-background-primary-active: #ecedef;
@@ -1428,7 +1430,7 @@ input[type=search]:focus-visible,
 .button:focus-visible, .calendar-navbar__year-selector-button:focus-visible, .docs-example-button:focus-visible {
   background-color: var(--fkds-color-action-background-secondary-focus);
   border-color: var(--fkds-color-action-border-primary-default);
-  color: var(--fkds-color-action-text-primary-focus);
+  color: var(--fkds-color-action-text-primary-default);
 }
 @media (hover: hover) {
   .button:hover, .calendar-navbar__year-selector-button:hover, .docs-example-button:hover {
@@ -1478,21 +1480,21 @@ input[type=search]:focus-visible,
 .button--primary:focus-visible {
   background-color: var(--fkds-color-action-background-primary-focus);
   border-color: transparent;
-  color: var(--fkds-color-action-text-inverted-focus);
+  color: var(--fkds-color-action-text-inverted-default);
 }
 @media (hover: hover) {
   .button--primary:hover {
     background-color: var(--fkds-color-action-background-primary-hover);
     border-color: transparent;
     box-shadow: var(--f-button-shadow-hover);
-    color: var(--fkds-color-action-text-inverted-hover);
+    color: var(--fkds-color-action-text-inverted-default);
   }
 }
 .button--primary:active {
   background-color: var(--fkds-color-action-background-primary-active);
   border-color: transparent;
   box-shadow: var(--f-button-shadow-active);
-  color: var(--fkds-color-action-text-inverted-active);
+  color: var(--fkds-color-action-text-inverted-default);
   transform: translateY(1px);
 }
 .button--primary:focus-visible {
@@ -1528,7 +1530,7 @@ input[type=search]:focus-visible,
 .button--secondary:focus-visible {
   background-color: var(--fkds-color-action-background-secondary-focus);
   border-color: var(--fkds-color-action-border-primary-default);
-  color: var(--fkds-color-action-text-primary-focus);
+  color: var(--fkds-color-action-text-primary-default);
 }
 @media (hover: hover) {
   .button--secondary:hover {
@@ -1648,7 +1650,7 @@ input[type=search]:focus-visible,
 .button--tertiary:focus-visible, .calendar-navbar__year-selector-button:focus-visible {
   background-color: transparent;
   border-color: transparent;
-  color: var(--fkds-color-action-text-primary-focus);
+  color: var(--fkds-color-action-text-primary-default);
 }
 @media (hover: hover) {
   .button--tertiary:hover, .calendar-navbar__year-selector-button:hover {
@@ -1707,17 +1709,17 @@ input[type=search]:focus-visible,
   color: var(--fkds-color-action-text-inverted-default);
 }
 .button--tertiary--inverted:focus-visible {
-  color: var(--fkds-color-action-text-inverted-focus);
+  color: var(--fkds-color-action-text-inverted-default);
   background-color: transparent;
 }
 @media (hover: hover) {
   .button--tertiary--inverted:hover {
-    color: var(--fkds-color-action-text-inverted-focus);
+    color: var(--fkds-color-action-text-inverted-default);
     background-color: transparent;
   }
 }
 .button--tertiary--inverted:active {
-  color: var(--fkds-color-action-text-inverted-focus);
+  color: var(--fkds-color-action-text-inverted-default);
   background-color: transparent;
 }
 .button--tertiary--inverted:disabled, .button--tertiary--inverted[aria-disabled=true] {
@@ -1737,6 +1739,12 @@ input[type=search]:focus-visible,
   padding-right: 0.5rem;
   margin-left: -0.5rem;
   min-width: 0;
+}
+@media (forced-colors: none) {
+  .button--tertiary:focus-visible, .calendar-navbar__year-selector-button:focus-visible {
+    outline: 2px solid var(--fkds-focus-indicator-color-background);
+    outline-offset: -0.1px;
+  }
 }
 @media (max-width: 639.98px) {
   .button--tertiary.button--full-width, .button--full-width.calendar-navbar__year-selector-button {
@@ -2007,7 +2015,7 @@ input[type=search]:focus-visible,
 }
 @media (hover: hover) {
   .calendar-day:hover:not(.calendar-day--disabled, .calendar-day--selected), .calendar-day--hover:not(.calendar-day--disabled, .calendar-day--selected) {
-    background-color: var(--fkds-color-select-background-primary-hover);
+    background-color: var(--fkds-color-select-background-tertiary-hover);
     color: var(--fkds-color-text-primary);
   }
 }
@@ -2138,7 +2146,7 @@ input[type=search]:focus-visible,
     cursor: pointer;
   }
   .list--hover .list__item:hover:not(.disabled) {
-    background: var(--fkds-color-select-background-primary-hover);
+    background: var(--fkds-color-select-background-tertiary-hover);
   }
   .list--hover .list__item:hover.list__item--active {
     background: var(--fkds-color-select-background-primary-active);
@@ -2811,21 +2819,21 @@ input[type=search]:focus-visible,
 .entrypoint:focus-visible {
   background-color: var(--fkds-color-action-background-primary-focus);
   border-color: transparent;
-  color: var(--fkds-color-action-text-inverted-focus);
+  color: var(--fkds-color-action-text-inverted-default);
 }
 @media (hover: hover) {
   .entrypoint:hover {
     background-color: var(--fkds-color-action-background-primary-hover);
     border-color: transparent;
     box-shadow: var(--f-button-shadow-hover);
-    color: var(--fkds-color-action-text-inverted-hover);
+    color: var(--fkds-color-action-text-inverted-default);
   }
 }
 .entrypoint:active {
   background-color: var(--fkds-color-action-background-primary-active);
   border-color: transparent;
   box-shadow: var(--f-button-shadow-active);
-  color: var(--fkds-color-action-text-inverted-active);
+  color: var(--fkds-color-action-text-inverted-default);
   transform: translateY(1px);
 }
 .entrypoint:focus-visible {
@@ -3176,6 +3184,7 @@ input[type=search]:focus-visible,
   cursor: pointer;
 }
 .file-item__change-info {
+  color: var(--fkds-color-text-primary);
   margin-top: -1.25rem;
 }
 .file-item__file-name {
@@ -3259,8 +3268,8 @@ input[type=search]:focus-visible,
 }
 .icon-stack--tooltip .f-icon-circle,
 .icon--stack--tooltip .f-icon-circle {
-  fill: var(--fkds-color-action-background-primary-default);
-  color: var(--fkds-color-action-border-primary-default);
+  color: var(--fkds-color-action-background-primary-default);
+  fill: var(--fkds-color-action-border-primary-default);
 }
 .icon-stack--tooltip .f-icon-i,
 .icon--stack--tooltip .f-icon-i {
@@ -4325,6 +4334,7 @@ input[type=search]:focus-visible,
 }
 .loader__wait-text {
   align-items: center;
+  color: var(--fkds-color-text-primary);
   display: flex;
   justify-content: center;
   white-space: pre-wrap;
@@ -4343,10 +4353,10 @@ input[type=search]:focus-visible,
   z-index: 9999;
 }
 .loader--overlay .loader__wait-text {
-  color: var(--fkds-color-text-inverted);
+  color: var(--fkds-color-text-on-dark-primary);
 }
 .loader--overlay .loader__circle {
-  background-color: var(--fkds-color-text-inverted);
+  background-color: var(--fkds-color-text-on-dark-primary);
 }
 @media (forced-colors: active) {
   .loader--overlay .loader__circle {
@@ -4994,6 +5004,7 @@ input[type=search]:focus-visible,
   margin-bottom: 0;
 }
 .offline {
+  color: var(--fkds-color-text-primary);
   padding: 1.5rem;
 }
 .offline__wrapper {
@@ -5149,7 +5160,7 @@ input[type=search]:focus-visible,
   height: var(--f-height-small);
   margin-bottom: 1.5rem;
   padding: 0;
-  border: var(--f-border-width-medium) solid var(--fkds-color-feedback-border-positive);
+  border: var(--f-border-width-medium) solid var(--fkds-color-feedback-background-positive-strong);
 }
 @media (forced-colors: active) {
   .progress {
@@ -5434,7 +5445,7 @@ input[type=search]:focus-visible,
 }
 
 .table tbody .table__row--hover {
-  background: var(--fkds-color-select-background-primary-hover);
+  background: var(--fkds-color-select-background-tertiary-hover);
   color: var(--fkds-color-text-primary);
   outline: 1px solid var(--fkds-color-border-primary);
 }
@@ -5452,7 +5463,7 @@ input[type=search]:focus-visible,
 }
 
 .table--striped tbody .table__row:nth-child(even).table__row--active, .table tbody .table__row--active, .table tbody .table__row:focus-visible.table__row--active, .table tbody .table__row--focus.table__row--active, .table tbody .table__row:has(:focus-visible).table__row--active, .table tbody .table__row--focus-within.table__row--active {
-  background: var(--fkds-color-select-background-primary-hover);
+  background: var(--fkds-color-select-background-primary-active);
   color: var(--fkds-color-text-primary);
 }
 
@@ -5581,12 +5592,12 @@ input[type=search]:focus-visible,
 }
 @media (hover: hover) {
   .table--hover tbody .table__row:hover {
-    background: var(--fkds-color-select-background-primary-hover);
+    background: var(--fkds-color-select-background-tertiary-hover);
     color: var(--fkds-color-text-primary);
     outline: 1px solid var(--fkds-color-border-primary);
   }
   .table--hover tbody .table__row:hover.table__row--active {
-    background: var(--fkds-color-select-background-primary-hover);
+    background: var(--fkds-color-select-background-primary-active);
     color: var(--fkds-color-text-primary);
   }
 }
@@ -5673,7 +5684,7 @@ input[type=search]:focus-visible,
 .table__button:focus-visible {
   background-color: transparent;
   border-color: transparent;
-  color: var(--fkds-color-action-text-primary-focus);
+  color: var(--fkds-color-action-text-primary-default);
 }
 @media (hover: hover) {
   .table__button:hover {
@@ -6181,6 +6192,7 @@ input[type=search]:focus-visible,
   width: var(--f-width-full);
 }
 .text-field__icon-wrapper {
+  color: var(--fkds-color-text-primary);
   flex: 1 1 auto;
   position: relative;
 }
@@ -7172,12 +7184,8 @@ input[type=search]:focus-visible,
   vertical-align: text-top;
 }
 
-.file-item__separator {
+.x-file-dragdrop__selected-file > .file-item > .file-item__separator {
   visibility: hidden;
-}
-
-.show_separator {
-  visibility: visible;
 }
 
 #fillista:hover {
@@ -8387,6 +8395,7 @@ main #docs-aside dd {
 
 .user-background {
   color-scheme: light dark;
+  color: CanvasText;
 }
 
 @media (prefers-color-scheme: light) {
@@ -8401,7 +8410,6 @@ main #docs-aside dd {
 }
 .code-preview[data-background=solid] .user-background {
   background: Canvas;
-  color: CanvasText;
 }
 
 .code-preview main,
@@ -9666,6 +9674,10 @@ body:has(#mobile-toggle:checked) {
   --docs-navigation-highlight-color: var(--fkds-color-select-background-secondary-default);
   --docs-tab-hover-border-color: var(--fkds-color-navigation-border-hover);
   --docs-tab-active-border-color: var(--fkds-color-navigation-border-selected);
+}
+
+.user-background {
+  color: var(--fkds-color-text-primary);
 }
 
 :root {
