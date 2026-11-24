@@ -7233,7 +7233,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/61052640681d663bced88d8666d0f81edff9a2a6/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/664a733edd475c86f551a54c9f482dfff9818124/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
                 FCrudDataset
             </a>
             
@@ -7304,6 +7304,15 @@ Om <code>commit</code> inte anropas (till exempel om användaren avbryter) lämn
 <li><code>onEdit(item, commit)</code>: <code>item</code> är en kopia av raden som kan ändras fritt, originalet påverkas inte förrän <code>commit(modified)</code> anropas med det ändrade objektet.</li>
 <li><code>onRemove(item, commit)</code>: anropa <code>commit()</code> för att ta bort objektet.</li>
 </ul>
+<p class="docs-paragraph">När <code>commit(modified)</code> anropas i <code>onEdit</code> skapas inget nytt objekt för raden.
+Istället kopieras ändringarna in i det ursprungliga objektet, så att raden fortfarande är samma objekt som innan.
+Därefter emitteras <code>update:modelValue</code> med en ny array som innehåller samma objekt som tidigare.</p>
+<p class="docs-paragraph">Med <code>v-model</code> behöver du inte tänka på detta, ändringen syns direkt.
+Om du själv bevakar datamängden med <code>watch</code> gäller följande:</p>
+<ul>
+<li>En <code>watch</code> på hela arrayen märker ändringen, eftersom arrayen är ny.</li>
+<li>En <code>watch</code> på en enskild rad märker inte ändringen utan <code>deep: true</code>, eftersom raden är samma objekt.</li>
+</ul>
 <p class="docs-paragraph">Callbackarna kan vara asynkrona.
 Om komponenten har avmonterats när <code>commit</code> anropas ignoreras anropet och datamängden lämnas oförändrad.
 Om en callback returnerar ett promise som avvisas rapporteras felet till Vues felhantering (<code>app.config.errorHandler</code>).
@@ -7318,7 +7327,7 @@ Beroende på sammanhang kan även knappen för &quot;lägg till ny&quot; behöva
 som tydligör vad som läggs till.</p>
 <h2 id="tabell_med_redigering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabell_med_redigering">Tabell med redigering</a></h2>
             <div
-                id="example-76dc8f"
+                id="example-6a62f5"
                 class="code-preview code-preview--default"
                 
                 
@@ -7457,7 +7466,7 @@ som tydligör vad som läggs till.</p>
         <h2 id="forpopulera_objekt" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#forpopulera_objekt">Förpopulera objekt</a></h2><p class="docs-paragraph">Eftersom applikationen själv skapar objektet i <code>onAdd</code> kan det förpopuleras innan modalen öppnas, till exempel med ett id:</p>
 
                 <div
-                    id="example-f667ca"
+                    id="example-f560e7"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -7484,7 +7493,7 @@ Med propen <code>buttonPosition</code> kan knapparna istället positioneras ovan
 Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
 
                 <div
-                    id="example-b3db76"
+                    id="example-d526d7"
                     class="code-preview code-preview--default"
                     
                     
@@ -7504,7 +7513,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 </div>
             
                 <div
-                    id="example-88bbf4"
+                    id="example-098c4d"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -7526,7 +7535,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 </div>
             <h2 id="tabell_med_lagg_till_knapp" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabell_med_lagg_till_knapp">Tabell med lägg till-knapp</a></h2>
             <div
-                id="example-157e5d"
+                id="example-b25133"
                 class="code-preview code-preview--default"
                 
                 
@@ -7612,7 +7621,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="tabell_med_redigera_knapp" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabell_med_redigera_knapp">Tabell med redigera-knapp</a></h2>
             <div
-                id="example-fb4755"
+                id="example-02ff67"
                 class="code-preview code-preview--default"
                 
                 
@@ -7705,7 +7714,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="lista_med_redigering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#lista_med_redigering">Lista med redigering</a></h2>
             <div
-                id="example-2f8437"
+                id="example-fe9e94"
                 class="code-preview code-preview--default"
                 
                 
@@ -7813,7 +7822,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="sorterbar_lista" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#sorterbar_lista">Sorterbar lista</a></h2>
             <div
-                id="example-bc3356"
+                id="example-61a6bd"
                 class="code-preview code-preview--default"
                 
                 
@@ -7923,7 +7932,7 @@ På samma sätt kan &quot;Lägg till ny&quot; behöva kompletteras med vad som l
 <p class="docs-paragraph">Använd klassen <code>sr-only</code> för text som endast ska läsas upp av skärmläsare:</p>
 
                 <div
-                    id="example-0760e4"
+                    id="example-6aaea9"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -7958,7 +7967,7 @@ Meddelandet kan ändras på två sätt:</p>
 Skicka helst med ett meddelande som är specifikt för innehållet, så att användaren vet vilken rad som påverkades.</p>
 
             <div
-                id="example-805e93"
+                id="example-508f3c"
                 class="code-preview code-preview--default"
                 
                 
@@ -8206,6 +8215,10 @@ the original item is left untouched until <code>commit(item)</code> is called.</
 <p>The consumer is responsible for modifying the item (typically by
 opening a modal) and must call <code>commit(item)</code> with the modified item to
 update the dataset.</p>
+<p>When committed the original item is updated in place (its object
+identity is preserved) and a new array containing the same item
+references is emitted. A non-deep watcher comparing item identity will
+not detect the change.</p>
 <p>Only object items can be modified. Calling <code>commit</code> for a primitive
 item (string, number, etc) throws an error.</p>
 <p>If the component has been unmounted when <code>commit</code> is called, the call
@@ -8390,9 +8403,9 @@ is ignored.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/61052640681d663bced88d8666d0f81edff9a2a6">6105264</a>)<br />
+<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/664a733edd475c86f551a54c9f482dfff9818124">664a733</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1872">PR 1872</a><br />
-       <span class="version-text-block">2026-11-24 10:45</span>
+       <span class="version-text-block">2026-11-24 13:00</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
