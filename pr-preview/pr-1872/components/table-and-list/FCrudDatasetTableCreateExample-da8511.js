@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableCreateExample.vue:FCrudDatasetTableCreateExample-fe6137.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableCreateExample.vue:FCrudDatasetTableCreateExample-da8511.js
 import { defineComponent as _defineComponent2 } from "vue";
 import { ref as ref2 } from "vue";
 
@@ -209,9 +209,14 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableCreateExample.vue:FCrudDatasetTableCreateExample-fe6137.js
-import { FTable, defineTableColumns, useModal } from "@fkui/vue";
-import { createElementVNode as _createElementVNode, withCtx as _withCtx2, createVNode as _createVNode, resolveComponent as _resolveComponent, openBlock as _openBlock2, createBlock as _createBlock2 } from "vue";
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableCreateExample.vue:FCrudDatasetTableCreateExample-da8511.js
+import {
+  FCrudDataset,
+  FTable,
+  defineTableColumns,
+  useModal
+} from "@fkui/vue";
+import { createElementVNode as _createElementVNode, withCtx as _withCtx2, createVNode as _createVNode, openBlock as _openBlock2, createBlock as _createBlock2 } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent2({
   __name: "FCrudDatasetTableCreateExample",
   setup(__props, { expose: __expose }) {
@@ -237,7 +242,9 @@ var exampleComponent = /* @__PURE__ */ _defineComponent2({
       } catch {
       }
     }
-    const __returned__ = { rows, formModal, columns, onCreate, get FTable() {
+    const __returned__ = { rows, formModal, columns, onCreate, get FCrudDataset() {
+      return FCrudDataset;
+    }, get FTable() {
       return FTable;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -245,8 +252,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent2({
   }
 });
 function render2(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_crud_dataset = _resolveComponent("f-crud-dataset");
-  return _openBlock2(), _createBlock2(_component_f_crud_dataset, {
+  return _openBlock2(), _createBlock2($setup["FCrudDataset"], {
     modelValue: $setup.rows,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.rows = $event),
     "on-create": $setup.onCreate
@@ -276,7 +282,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render2;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-fe6137"
+  selector: "#example-da8511"
 });
 export {
   render2 as render

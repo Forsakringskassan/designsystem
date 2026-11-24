@@ -7188,7 +7188,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/adbc5cbf013b1d71244c9d1f721e113503ee8641/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/332a3b6dde9331fefa3c24871b83da15a1a0961f/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
                 FCrudDataset
             </a>
             
@@ -7452,13 +7452,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-fe6137"></div>
+        <div id="example-da8511"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableCreateExample-fe6137.js"></script>
+        <script type="module" src="./FCrudDatasetTableCreateExample-da8511.js"></script>
     
                 </div>
                 <div>
@@ -7483,7 +7483,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
 <span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-title class_">FruitFormModal</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./FruitFormModal.vue&quot;</span>;
 <span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FCrudDatasetCommitCreate</span>, <span class="hljs-title class_">FTable</span>, defineTableColumns, useModal } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    type <span class="hljs-title class_">FCrudDatasetCommitCreate</span>,
+    <span class="hljs-title class_">FCrudDataset</span>,
+    <span class="hljs-title class_">FTable</span>,
+    defineTableColumns,
+    useModal,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">const</span> rows = <span class="hljs-title function_">ref</span>(fruits);
 <span class="hljs-keyword">const</span> { formModal } = <span class="hljs-title function_">useModal</span>();
@@ -8392,9 +8398,9 @@ is ignored.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/adbc5cbf013b1d71244c9d1f721e113503ee8641">adbc5cb</a>)<br />
+<div class="version"><span class="version-text-block">f-crud-dataset-without-modals</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/332a3b6dde9331fefa3c24871b83da15a1a0961f">332a3b6</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1872">PR 1872</a><br />
-       <span class="version-text-block">2026-11-24 22:29</span>
+       <span class="version-text-block">2026-11-24 22:48</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
