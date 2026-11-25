@@ -1,5 +1,30 @@
 # CHANGELOG
 
+## 6.66.0 (2026-11-25)
+
+### Features
+
+* **@fkui/docs, @fkui/vue:** add icon and target support to table anchor (refs SB-4982) 0cd72b9
+* **deps:** update dependency i18next to v27 ed10aa7
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** cut off focus border when scroll on FList (refs SFKUI-6758) f84d19a
+* **@fkui/design, @fkui/vue:** edge pixels on tertiary button when focused (refs SFKUI-8292) f1d84d6
+* **@fkui/design:** add missing color for empty table (fixes SFKUI-8432) ed8cebc
+* **@fkui/logic:** reuse screen reader wrapper across instances (refs SB-4982) 2b6d8b4
+* **@fkui/vue:** aria-current for FNavigationMenu (refs SFKUI-8411) ([#1857](undefined/Forsakringskassan/designsystem/issues/1857)) 2df1716
+* **@fkui/vue:** sync table input values after row updates (fixes SFKUI-8391) 3ccbd87
+* **deps:** support stylelint 18 (refs SFKUI-6500) ae60292
+* **deps:** update dependency i18next to v27.1.5 cd5b95a
+* **deps:** update dependency i18next to v27.2.1 a6bbc92
+* **deps:** update dependency i18next to v27.2.2 6c8aaf1
+* **deps:** update dependency i18next to v27.2.3 f647c0f
+* **deps:** update dependency sass to v1.108.2 7acc07b
+* **deps:** update dependency vue-router to v5.5.0 9e81be0
+* **deps:** update dependency vue-router to v5.5.1 ee317ca
+* **deps:** update vue monorepo to v3.5.46 ([#1889](undefined/Forsakringskassan/designsystem/issues/1889)) b081a86
+
 ## 6.65.1 (2026-11-13)
 
 ### Bug Fixes

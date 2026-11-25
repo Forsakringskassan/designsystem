@@ -5,7 +5,7 @@
  * with the `modal` class).
  *
  * @public
- * @since %version%
+ * @since v6.66.0
  * @param selector - The selector for the modal.
  * @returns An object with selector methods for the modal.
  */
@@ -23,7 +23,7 @@ export function FModalSelectors(selector: string = ":scope") {
          * the modal is visible.
          *
          * @public
-         * @since %version%
+         * @since v6.66.0
          * @returns The root selector for the modal.
          */
         get selector(): string {
@@ -50,7 +50,7 @@ export function FModalSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.66.0
          * @returns A selector for the dialog element.
          */
         dialog(this: void): string {
@@ -78,7 +78,7 @@ export function FModalSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.66.0
          * @returns A selector for the header element.
          */
         header(this: void): string {
@@ -107,7 +107,7 @@ export function FModalSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.66.0
          * @returns A selector for the content element.
          */
         content(this: void): string {
@@ -145,7 +145,7 @@ export function FModalSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.66.0
          * @returns A selector for the footer element.
          */
         footer(this: void): string {
@@ -170,7 +170,7 @@ export function FModalSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.66.0
          * @returns A selector for the close button element.
          */
         closeButton(this: void): string {
