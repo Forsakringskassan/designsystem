@@ -33,7 +33,7 @@ export default defineComponent({
          * @ignore
          */
         onSubmit: {
-            type: Function as PropType<FValidationFormCallback>,
+            type: Function as PropType<(event: SubmitEvent) => void | Promise<void>>,
             required: false,
             default() {
                 return noop;
