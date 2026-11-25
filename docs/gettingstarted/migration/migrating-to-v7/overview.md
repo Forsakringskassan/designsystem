@@ -1,6 +1,6 @@
 ---
 title: "Version 7 migreringsguide"
-short-title: "sammanfattning"
+short-title: "Sammanfattning"
 name: migrating-to-v7
 sortorder: 1
 layout: article
@@ -10,22 +10,35 @@ layout: article
 
 ### Esm Only
 
-[Läs mer hur du migrerar](#esm_only)
+FKUI-paketen stöder nu bara ESM, inte CommonJS (CJS).
+
+[Läs mer hur du migrerar.](#esm_only--1)
 
 ### `@fkui/theme-desktop` avvecklas
 
-[Läs mer hur du migrerar](#fkuitheme_desktop_avvecklas)
+[Läs mer hur du migrerar.](#fkui_theme_desktop_avvecklas--2)
+
+### Färgpaletten omskriven till CSS-variabler
+
+[Läs mer hur du migrerar.](#fargpaletten_ar_css_variabler--3)
+
+### Standardtemat ingår inte längre i byggd CSS
+
+Den kompilerade versionen utav `@fkui/design` innehåller inte längre det ljusa temat.
+
+{@link migrating-to-v7-@fkui/design#borttag_utav_tema_i_forkompilerad_css Läs mer hur du migrerar.}
 
 ### Övriga ändringar
 
-| Komponent                                             | Ändring                                                  |
-| :---------------------------------------------------- | :------------------------------------------------------- |
-| {@link migrating-to-v7-pageobjects cypress}           | Namnändringar, borttagna metoder                         |
-| {@link migrating-to-v7-vue#fcrudbutton (FCrudButton)} | Komponenten har tagits bort                              |
-| {@link migrating-to-v7-@fkui/design Knapp}            | Vissa klasser på `button` ersätts                        |
-| {@link migrating-to-v7-vue#FModal (Fmodal)}           | Tagit bort template Api:et                               |
-| {@link migrating-to-v7-vue#FWizard (FWizard)}         | Focushantering är opt in istället för opt out            |
-| {@link migrating-to-v7-vue#ftable Tabell (FTable)}    | Egenskapen `text` har bytt namn till `screenreaderText`. |
+| Komponent                                                                                  | Ändring                                                  |
+| :----------------------------------------------------------------------------------------- | :------------------------------------------------------- |
+| {@link migrating-to-v7-pageobjects Cypress}                                                | Namnändringar och borttagna metoder i våra Pageobjects.  |
+| {@link migrating-to-v7-vue#fcrudbutton FCrudButton (FCrudButton)}                          | Komponenten har tagits bort.                             |
+| {@link migrating-to-v7-@fkui/design#ersattning_av_klasser_pa_knappar Knapp (@fkui/design)} | Vissa klasser på `button` ersätts.                       |
+| {@link migrating-to-v7-vue#FModal Modal (Fmodal)}                                          | Tagit bort template Api:et.                              |
+| {@link migrating-to-v7-vue#FWizard Steg för steg (FWizard)}                                | Focushantering är opt in istället för opt out            |
+| {@link migrating-to-v7-vue#ftable Tabell (FTable)}                                         | Egenskapen `text` har bytt namn till `screenreaderText`. |
+| {@link migrating-to-v7-theme-builder @fkui/theme-builder}                                  | Flera uppdateringar för dig som bygger dina egna teman.  |
 
 ## ESM Only
 
@@ -79,3 +92,35 @@ Gör ändringen i den Sass-fil där temat importeras, till exempel `src/main.scs
 
 Importen läser in det ljusa färgschemat som standard.
 Information om hur du konfigurerar ljust och mörkt läge finns i dokumentationen för [`@fkui-community/theme-int`](https://www.npmjs.com/package/@fkui-community/theme-int).
+
+## Färgpaletten är CSS-variabler
+
+Detta påverkar dig som använder Sass-variabler från `@fkui/theme-default`.
+
+I version 7 är färgpaletten i `@fkui/theme-default` CSS-variabler istället för Sass-variabler.
+Paletten följer namnstandarden `--fkds-palette-color-<namn>`, till exempel `--fkds-palette-color-neutral-900`.
+
+Sass-variablerna `$palette-color-<namn>` i `@fkui/theme-default/src/palette-variables` finns inte längre.
+
+### Migrering
+
+Ersätt Sass-variabler med motsvarande CSS-variabel.
+Använd om möjligt de semantiska färgvariablerna istället för paletten direkt.
+
+```diff
+-@use "@fkui/theme-default/src/palette-variables" as *;
+-
+ .my-component {
+-    color: $palette-color-neutral-900;
++    color: var(--fkds-palette-color-neutral-900);
+ }
+```
+
+### Använd semantiska variabler i applikationer
+
+Applikationer bör inte ha beroenden till färgpaletten.
+
+Använd i stället de semantiska CSS-variabler som beskriver färgens avsedda
+användning.
+Paletten är en intern källa till färger för temana och kan ändras utan att
+applikationens färgval ska behöva uppdateras.
