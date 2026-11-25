@@ -25451,7 +25451,7 @@ function _sfc_render$34(_ctx, _cache, $props, $setup, $data, $options) {
 		disabled: _ctx.teleportDisabled
 	}, [createBaseVNode("div", mergeProps({ ref: "popup" }, _ctx.$attrs, { class: _ctx.popupClasses }), [createBaseVNode("div", {
 		ref: "wrapper",
-		role: "presentation",
+		role: "none",
 		class: "popup__wrapper",
 		onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onPopupClickHandler && _ctx.onPopupClickHandler(...args)),
 		onKeyup: _cache[1] || (_cache[1] = withKeys(withModifiers((...args) => _ctx.onKeyEsc && _ctx.onKeyEsc(...args), ["stop"]), ["esc"])),
