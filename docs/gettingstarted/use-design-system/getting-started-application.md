@@ -48,8 +48,12 @@ För maximal webbläsar-kompatibilitet rekommenderar vi att du kör [autoprefixe
 Gå in i din main.scss-fil eller motsvarande och lägg in följande rader:
 
 ```scss name=sass-base
-@use "@fkui/theme-default";
+@use "@fkui/theme-default" as theme;
 @use "@fkui/design";
+
+:root {
+    @include theme.light;
+}
 ```
 
 Uppdatera exemplet ovan med de filer som din applikation ska använda.
@@ -58,9 +62,13 @@ Om du inte vill använda styling på alla komponenter utan bara specifika, skriv
 I exemplet nedan importeras styling för enbart inmatningsfält och flerradigt inmatningsfält.
 
 ```scss compare=sass-base
-@use "@fkui/theme-default";
+@use "@fkui/theme-default" as theme;
 @use "@fkui/design/src/components/text-field/text-field";
 @use "@fkui/design/src/components/textarea-field/textarea-field";
+
+:root {
+    @include theme.light;
+}
 ```
 
 Om du behöver applicera tema på en egen selector (exempelvis kanske du har flera uppsättningar av FKUI i olika versioner på samma webbsida) så rekommenderar vi att selectorn läggs till med en PostCSS plugin likt [postcss-prefix-selector][postcss-prefix-selector].
@@ -70,9 +78,7 @@ Om du behöver applicera tema på en egen selector (exempelvis kanske du har fle
 Det finns begränsat stöd för att importera CSS-variabler från temat på en egen selector:
 
 ```scss compare=sass-base
-@use "@fkui/theme-default" as theme with (
-    $global: false
-);
+@use "@fkui/theme-default" as theme;
 @use "@fkui/design";
 
 .my-scope {
@@ -80,12 +86,10 @@ Det finns begränsat stöd för att importera CSS-variabler från temat på en e
 }
 ```
 
-Notera: variabeln `$global` måste sättas till `false` annars sätts samtliga variabler på `:root` selector.
-
 ### CSS
 
 Om din applikation inte använder Sass ska du istället placera `@fkui/design/lib/fkui.min.css` i en assets-katalog.
-Placera även `@fkui/theme-default/dist/theme-auto.css` i assets-katalogen.
+Kopiera även filen `dist/theme-auto.css` från det installerade paketet `@fkui/theme-default` till assets-katalogen.
 Den filen väljer automatiskt ljust eller mörkt tema utifrån användarens systeminställning.
 Ladda design-systemets CSS efter temafilen:
 
@@ -97,6 +101,7 @@ Ladda design-systemets CSS efter temafilen:
 Om du behöver importera styling till javascript:
 
 ```js
+import "@fkui/theme-default/theme-auto";
 import "@fkui/design";
 ```
 

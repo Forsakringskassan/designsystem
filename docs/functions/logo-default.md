@@ -22,7 +22,7 @@ Samtliga logotyper har transparent bakgrund men visas här med vit samt svart ba
 Du använder `FLogo`-komponenten från `@fkui/vue` genom att importera `@fkui/default-logo` efter tema (exempelvis `@fkui/theme-default`):
 
 ```diff
- @use "@fkui/theme-default";
+ @use "@fkui/theme-default/theme-light";
 +@use "@fkui/logo-default";
 ```
 

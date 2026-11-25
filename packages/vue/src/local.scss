@@ -1,6 +1,4 @@
-@use "@fkui/theme-default" as theme with (
-    $global: false
-);
+@use "@fkui/theme-default" as theme;
 @use "@fkui/font-default" as font with (
     $global: false
 );

@@ -13,7 +13,7 @@ Innehåller den standardfont och konfiguration som Försäkringskassan använder
 För att använda standardfonten importera `@fkui/default-font` efter tema (exempelvis `@fkui/theme-default`):
 
 ```diff
- @use "@fkui/theme-default";
+ @use "@fkui/theme-default/theme-light";
 +@use "@fkui/font-default";
 ```
 

@@ -28,6 +28,10 @@ Den kompilerade versionen utav `@fkui/design` innehåller inte längre det ljusa
 
 {@link migrating-to-v7-@fkui/design#borttag_utav_tema_i_forkompilerad_css Läs mer hur du migrerar.}
 
+### Användning av `@fkui/theme-default` förändras
+
+[Läs mer hur du migrerar](#anvandning_av_fkui_theme_default_forandras--4)
+
 ### Övriga ändringar
 
 | Komponent                                                                                  | Ändring                                                  |
@@ -125,3 +129,32 @@ Använd i stället de semantiska CSS-variabler som beskriver färgens avsedda
 användning.
 Paletten är en intern källa till färger för temana och kan ändras utan att
 applikationens färgval ska behöva uppdateras.
+
+## Användning av `@fkui/theme-default` förändras
+
+Tidigare räckte det att använda `@use "@fkui/theme-default"` i Sass för att indirekt lägga det ljusa temats CSS-variabler globalt i din applikation.
+
+Det sker inte längre automatiskt.
+
+För att använda det ljusa temat på hela sidan med Sass, använd mixinen `theme.light`:
+
+```scss
+@use "@fkui/theme-default" as theme;
+
+:root {
+    @include theme.light;
+}
+
+/* Begränsa temats CSS-variabler till den här delen av sidan */
+.my-scope {
+    @include theme.light;
+}
+```
+
+Du kan också importera CSS-filen från applikationens JavaScript:
+
+```js
+import "@fkui/theme-default/theme-light";
+```
+
+Läs mer om hur du använder standardtemat i [dokumentationen för `@fkui/theme-default`](https://github.com/Forsakringskassan/designsystem/tree/main/packages/theme-default).

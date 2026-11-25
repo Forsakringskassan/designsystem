@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { h } from "vue";
-import { type PaletteColor } from "@fkui/theme-default/dist/metadata.mjs";
+import { type PaletteColor } from "@fkui/theme-default/metadata";
 import { FTable, defineTableColumns } from "@fkui/vue";
 
 const { colors: rows } = defineProps<{ colors: PaletteColor[] }>();

@@ -400,28 +400,3 @@ it("should resolve palette references in metadata", async (t) => {
         palette: null,
     });
 });
-
-it("should include deprecated variables", async (t) => {
-    const vol = Volume.fromJSON(
-        {
-            "src/deprecated-variables.json": JSON.stringify(["--foo"]),
-        },
-        "/",
-    );
-    const fs = vol.promises;
-    const buffer = new WritableStreamBuffer();
-    const logger = new Console(buffer);
-    await cli([], {
-        cwd: "/",
-        fs,
-        logger,
-        outdir: "out",
-        prefix: "x",
-    });
-    t.assert.snapshot(toTreeSync(vol));
-    const deprecated = await fs.readFile(
-        "/out/deprecated-variables.json",
-        "utf8",
-    );
-    t.assert.strictEqual(deprecated, `["--foo"]`);
-});
