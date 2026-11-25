@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
-import { focus } from "@fkui/logic";
+import { type StackHandle, focus, popFocus, pushFocus } from "@fkui/logic";
 import { type MenuItem } from "../../components";
 import { actionFromKeyboardEvent, getSortedHTMLElementsFromVueRef } from "../../utils";
 import { IPopup } from "../IPopup";
@@ -103,6 +103,7 @@ export default defineComponent({
         return {
             currentFocusedItemIndex: 0,
             lastSelectedItem: "",
+            focusHandle: null as StackHandle | null,
         };
     },
     watch: {
@@ -113,6 +114,10 @@ export default defineComponent({
                     return;
                 }
 
+                if (this.focusHandle) {
+                    popFocus(this.focusHandle);
+                    this.focusHandle = null;
+                }
                 this.currentFocusedItemIndex = 0;
                 this.lastSelectedItem = "";
                 this.$emit("update:focusedItem", "");
@@ -146,12 +151,22 @@ export default defineComponent({
             },
         },
     },
+    unmounted() {
+        if (!this.focusHandle) {
+            return;
+        }
+        popFocus(this.focusHandle, { restoreFocus: false });
+        this.focusHandle = null;
+    },
     methods: {
+        onPopupOpen(): void {
+            if (!this.isOpen || this.focusHandle) {
+                return;
+            }
+            this.focusHandle = pushFocus();
+        },
         isSelected(index: number): boolean {
             return this.items[index].key === this.modelValue;
-        },
-        focusElement(): HTMLElement | null {
-            return null;
         },
         findItemByKey(key: string): MenuItem | undefined {
             return this.items.find((it) => it.key === key);
@@ -277,7 +292,7 @@ export default defineComponent({
         :is-open
         :keyboard-trap="false"
         :anchor
-        :focus-element
+        @open="onPopupOpen"
         @close="$emit('close')"
         @keyup="onKeyUp"
         @keydown="onKeyDown"

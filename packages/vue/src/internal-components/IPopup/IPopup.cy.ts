@@ -25,6 +25,7 @@ function createComponent(
                     type="button"
                     id="open-popup"
                     ref="anchor"
+                    :data-popup-ready="popupReady"
                     @click="isOpen=!isOpen"
                 >
                     Toggle popup
@@ -38,11 +39,15 @@ function createComponent(
         data() {
             return {
                 isOpen: false,
+                popupReady: false,
             };
         },
         methods: {
             myFocusElementCallback() {
                 return document.querySelector("#focus-callback-target");
+            },
+            noFocusElementCallback() {
+                return null;
             },
         },
     });
@@ -139,7 +144,6 @@ function createAnchorOverlapScrollComponent(): DefineComponent {
                         :container="$refs.container"
                         :viewport="$refs.container"
                         anchor-overlap="never"
-                        :set-focus="false"
                         v-slot="{ placement }"
                     >
                         <div
@@ -254,18 +258,85 @@ describe("open popup", () => {
             setViewport(VIEWPORT.DESKTOP);
         });
 
-        it("should focus on first tabbable element by default", () => {
+        it("should not set or restore focus by default", () => {
             const template = /* HTML */ `
-                <i-popup :isOpen="isOpen" :anchor="$refs.anchor">
+                <i-popup
+                    :isOpen="isOpen"
+                    :anchor="$refs.anchor"
+                    @open="popupReady = true"
+                >
                     <span> POPUP CONTENT </span>
-                    <!-- The button that will receive focus -->
-                    <button type="button" id="b1">Focus me!</button>
+                    <button type="button" id="b1">Button 1</button>
                 </i-popup>
             `;
             const component = createComponent(template);
             cy.mount(component);
             cy.get(popupButtonId).click();
+            cy.get(popupButtonId).should(
+                "have.attr",
+                "data-popup-ready",
+                "true",
+            );
+            cy.get(popupButtonId).should("have.focus");
+            cy.get("#b1").focus();
+            cy.get(popupButtonId).then(($button) => {
+                $button[0].click();
+            });
+            cy.get(popupButtonId).should("not.have.focus");
+        });
+
+        it("should focus on first tabbable element when focus is present", () => {
+            const template = /* HTML */ `
+                <i-popup :isOpen="isOpen" :anchor="$refs.anchor" focus>
+                    <button type="button" id="b1">Button 1</button>
+                </i-popup>
+            `;
+            cy.mount(createComponent(template));
+            cy.get(popupButtonId).click();
             cy.get("#b1").should("have.focus");
+        });
+
+        it("should focus on first tabbable element when focus is true", () => {
+            const template = /* HTML */ `
+                <i-popup :isOpen="isOpen" :anchor="$refs.anchor" :focus="true">
+                    <button type="button" id="b1">Button 1</button>
+                </i-popup>
+            `;
+            cy.mount(createComponent(template));
+            cy.get(popupButtonId).click();
+            cy.get("#b1").should("have.focus");
+            cy.get(popupButtonId).then(($button) => {
+                $button[0].click();
+            });
+            cy.get(popupButtonId).should("have.focus");
+        });
+
+        it("should not restore focus when there is no tabbable element", () => {
+            const template = /* HTML */ `
+                <i-popup
+                    :isOpen="isOpen"
+                    :anchor="$refs.anchor"
+                    :focus="true"
+                    @open="popupReady = true"
+                >
+                    <button type="button" id="b1" tabindex="-1">
+                        Button 1
+                    </button>
+                </i-popup>
+            `;
+            cy.mount(createComponent(template));
+            cy.get(popupButtonId).click();
+            cy.get(popupButtonId).should(
+                "have.attr",
+                "data-popup-ready",
+                "true",
+            );
+            cy.get(popupButtonId).should("have.focus");
+            cy.get("#b1").focus();
+            cy.get(popupButtonId).then(($button) => {
+                $button[0].click();
+            });
+            cy.get(popupButtonId).should("not.have.focus");
         });
 
         it("should focus on specific tabbable element when callback is used", () => {
@@ -273,7 +344,7 @@ describe("open popup", () => {
                 <i-popup
                     :isOpen="isOpen"
                     :anchor="$refs.anchor"
-                    :focusElement="myFocusElementCallback"
+                    :focus="myFocusElementCallback"
                 >
                     <span> POPUP CONTENT </span>
                     <button type="button" id="b1">Button 1</button>
@@ -287,14 +358,45 @@ describe("open popup", () => {
             cy.mount(component);
             cy.get(popupButtonId).click();
             cy.get("#focus-callback-target").should("have.focus");
+            cy.get(popupButtonId).then(($button) => {
+                $button[0].click();
+            });
+            cy.get(popupButtonId).should("have.focus");
         });
 
-        it("should skip setting focus if `setFocus` is false", () => {
+        it("should not move or restore focus when the callback returns null", () => {
             const template = /* HTML */ `
                 <i-popup
                     :isOpen="isOpen"
                     :anchor="$refs.anchor"
-                    :setFocus="false"
+                    :focus="noFocusElementCallback"
+                    @open="popupReady = true"
+                >
+                    <button type="button" id="b1">Button 1</button>
+                </i-popup>
+            `;
+            cy.mount(createComponent(template));
+            cy.get(popupButtonId).click();
+            cy.get(popupButtonId).should(
+                "have.attr",
+                "data-popup-ready",
+                "true",
+            );
+            cy.get(popupButtonId).should("have.focus");
+            cy.get("#b1").focus();
+            cy.get(popupButtonId).then(($button) => {
+                $button[0].click();
+            });
+            cy.get(popupButtonId).should("not.have.focus");
+        });
+
+        it("should skip setting and restoring focus if focus is false", () => {
+            const template = /* HTML */ `
+                <i-popup
+                    :isOpen="isOpen"
+                    :anchor="$refs.anchor"
+                    :focus="false"
+                    @open="popupReady = true"
                 >
                     <span> POPUP CONTENT </span>
                     <button type="button" id="b1">Button 1</button>
@@ -303,7 +405,17 @@ describe("open popup", () => {
             const component = createComponent(template);
             cy.mount(component);
             cy.get(popupButtonId).click();
+            cy.get(popupButtonId).should(
+                "have.attr",
+                "data-popup-ready",
+                "true",
+            );
             cy.get(popupButtonId).should("have.focus");
+            cy.get("#b1").focus();
+            cy.get(popupButtonId).then(($button) => {
+                $button[0].click();
+            });
+            cy.get(popupButtonId).should("not.have.focus");
         });
     });
 });

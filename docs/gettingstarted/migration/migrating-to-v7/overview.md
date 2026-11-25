@@ -36,6 +36,7 @@ Den kompilerade versionen utav `@fkui/design` innehåller inte längre det ljusa
 | {@link migrating-to-v7-vue#fcrudbutton FCrudButton (FCrudButton)}                          | Komponenten har tagits bort.                             |
 | {@link migrating-to-v7-@fkui/design#ersattning_av_klasser_pa_knappar Knapp (@fkui/design)} | Vissa klasser på `button` ersätts.                       |
 | {@link migrating-to-v7-vue#FModal Modal (Fmodal)}                                          | Tagit bort template Api:et.                              |
+| {@link migrating-to-v7-vue#ipopup Popup (IPopup)}                                          | Fokushantering är opt in istället för opt out.           |
 | {@link migrating-to-v7-vue#FWizard Steg för steg (FWizard)}                                | Focushantering är opt in istället för opt out            |
 | {@link migrating-to-v7-vue#ftable Tabell (FTable)}                                         | Egenskapen `text` har bytt namn till `screenreaderText`. |
 | {@link migrating-to-v7-theme-builder @fkui/theme-builder}                                  | Flera uppdateringar för dig som bygger dina egna teman.  |

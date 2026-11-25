@@ -193,6 +193,12 @@ export default defineMetadata({
                 required: false,
             },
             "focus-element": {
+                deprecated: "Use the focus prop instead",
+            },
+            "set-focus": {
+                deprecated: "Use the focus prop instead",
+            },
+            focus: {
                 required: false,
             },
         },

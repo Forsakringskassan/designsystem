@@ -7,5 +7,5 @@ import { type Placement } from "./i-popup-utils";
 export interface IPopupData {
     teleportDisabled: boolean;
     placement: Placement;
-    focus: StackHandle | null;
+    focusHandle: StackHandle | null;
 }

@@ -1,5 +1,6 @@
 import "html-validate/vitest";
 import { defineComponent } from "vue";
+import { popFocus, pushFocus } from "@fkui/logic";
 import { type VueWrapper, config, mount } from "@vue/test-utils";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import IPopupMenu from "./IPopupMenu.vue";
@@ -75,6 +76,47 @@ describe("props", () => {
 });
 
 describe("events", () => {
+    const popupStub = defineComponent({
+        name: "IPopup",
+        emits: ["open"],
+        template: "<div></div>",
+    });
+
+    it("should release saved focus when unmounted while open", () => {
+        expect.assertions(1);
+        const previousFocus = pushFocus();
+        const wrapper = mount(IPopupMenu, {
+            props: { isOpen: true, items: testItems },
+            global: {
+                stubs: {
+                    IPopup: popupStub,
+                },
+            },
+        });
+        wrapper.getComponent(popupStub).vm.$emit("open");
+        wrapper.unmount();
+
+        expect(() => {
+            popFocus(previousFocus, { restoreFocus: false });
+        }).not.toThrow();
+    });
+
+    it("should not save focus if the popup opens after the menu closes", async () => {
+        expect.assertions(1);
+        const previousFocus = pushFocus();
+        const wrapper = mount(IPopupMenu, {
+            props: { isOpen: true, items: testItems },
+            global: { stubs: { IPopup: popupStub } },
+        });
+        await wrapper.setProps({ isOpen: false });
+        wrapper.getComponent(popupStub).vm.$emit("open");
+
+        expect(() => {
+            popFocus(previousFocus, { restoreFocus: false });
+        }).not.toThrow();
+        wrapper.unmount();
+    });
+
     it("should set gotCloseEvent to true on click item", async () => {
         expect.assertions(1);
         vi.spyOn(window, "scrollTo").mockReturnValue();
