@@ -6882,7 +6882,37 @@ Exemplet utgår från att <code>shouldSetFocus</code> är en Vue-ref:</p>
 Se då till att det beräknade värdets beroenden är reaktiva.</p>
 <p class="docs-paragraph">Om funktionen returnerar <code>null</code> flyttas inte fokus och det återställs inte heller när popup stängs.
 Om funktionen returnerar ett element flyttas fokus dit och återställs när popup stängs.</p>
+<p class="docs-paragraph"><code>keyboard-trap</code>-propen är inte aktiv som standard längre.
+Om du tidigare använde standardvärdet, lägg till <code>keyboard-trap</code> för att fortsätta hålla tabbfokus inom popupen.
+Detta gäller även om du hade stängt av fokushanteringen med <code>:set-focus=&quot;false&quot;</code>.
+Behåll dynamiska värden för <code>keyboard-trap</code> och låt den vara avstängd där den tidigare var <code>false</code>.</p>
 
+                <div
+                    id="example-6004ed"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;i-popup :is-open :anchor&gt;</span>
+<span class="hljs-addition">+&lt;i-popup :is-open :anchor keyboard-trap&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-af7661"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;i-popup :is-open :anchor :keyboard-trap=&quot;false&quot;&gt;</span>
+<span class="hljs-addition">+&lt;i-popup :is-open :anchor&gt;</span>
+</code></pre>
+                </div>
+            
             <details class="docs-messagebox docs-messagebox--details">
                 <summary class="docs-messagebox__title">
                     🤖 Prompt för AI Agenter
@@ -6894,7 +6924,9 @@ Ta bort statiska <code>:set-focus=&quot;false&quot;</code>-bindningar och eventu
 Ersätt ett aktivt <code>set-focus</code> utan <code>focus-element</code> med <code>focus</code> och överför dynamiska booleska värden till <code>focus</code>.
 Ersätt <code>focus-element</code> med <code>focus</code> när fokushantering är aktiv.
 Om <code>set-focus</code> är dynamisk och <code>focus-element</code> används, använd en funktion som returnerar fokusmålet när fokus ska hanteras och annars <code>null</code>, eller ett reaktivt beräknat värde som funktionen returnerar.
-Kontrollera även om en dynamisk <code>focus-element</code> kan saknas och bevara i så fall tidigare fallback till det första tabbningsbara elementet när fokushantering är aktiv.</p>
+Kontrollera även om en dynamisk <code>focus-element</code> kan saknas och bevara i så fall tidigare fallback till det första tabbningsbara elementet när fokushantering är aktiv.
+Lägg till <code>keyboard-trap</code> där den tidigare var utelämnad, även när <code>set-focus</code> var <code>false</code>.
+Behåll dynamiska värden och låt <code>keyboard-trap</code> vara avstängd där den tidigare var <code>false</code>.</p>
 <p class="docs-paragraph">Kontrollera särskilt funktioner som kan returnera <code>null</code> eller popup-fönster utan tabbningsbara element.
 I version 7 återställs inte fokus i dessa fall; uppmärksamma användaren på beteendeförändringen och undersök om applikationen behöver egen fokushantering.
 Verifiera resultatet genom att bygga projektet och köra relevanta tester, inklusive tester för fokus när popup öppnas och stängs.
@@ -6905,7 +6937,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
 <p class="docs-paragraph">Om du vill att det första steget ska få fokus när guiden öppnas, lägg till <code>focus-initial-step</code>:</p>
 
                 <div
-                    id="example-c7cec2"
+                    id="example-655f39"
                     class="code-preview code-preview--default"
                     
                     
@@ -6924,7 +6956,7 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
 <p class="docs-paragraph">Om du vill behålla fellistan, lägg till propen explicit:</p>
 
                 <div
-                    id="example-eb0970"
+                    id="example-a77d19"
                     class="code-preview code-preview--default"
                     
                     
@@ -6940,7 +6972,7 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
             <p class="docs-paragraph">Om du redan använder <code>:use-error-list=&quot;false&quot;</code> kan du ta bort det:</p>
 
                 <div
-                    id="example-df2cf4"
+                    id="example-cf0dc7"
                     class="code-preview code-preview--default"
                     
                     
@@ -7035,9 +7067,9 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">refactor/ipopup-focus-single-prop</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/14dcdc0e7aa2def4ad6caed6fabe28ca9d604e62">14dcdc0</a>)<br />
+<div class="version"><span class="version-text-block">refactor/ipopup-focus-single-prop</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/e649b7f8cbf86ef233b97269655bf5b9f4c17d93">e649b7f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1884">PR 1884</a><br />
-       <span class="version-text-block">2026-11-25 15:10</span>
+       <span class="version-text-block">2026-11-25 15:57</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
