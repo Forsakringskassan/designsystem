@@ -17,12 +17,8 @@ Cypress.Commands.add("mount", (component, options = {}) => {
     /* handle warnings as errors */
     options.global.plugins.push({
         install(app) {
-            app.config.warnHandler = (msg) => {
-                const mochaRunner = Cypress.mocha.getRunner();
-                const body = mochaRunner.test?.body ?? "";
-                if (!body.includes("<expectedException")) {
-                    cy.wrap(`Vue warning: ${msg}`).should("be.empty");
-                }
+            app.config.warnHandler = (err, _vm, info) => {
+                assert.fail([err, info].join("\n"));
             };
         },
     });
@@ -34,24 +30,8 @@ injectSpritesheet();
 
 const uncaughtErrors: string[] = [];
 
-Cypress.on("uncaught:exception", (err) => {
-    const mochaRunner = Cypress.mocha.getRunner();
-    const currentTest = mochaRunner.test;
-
-    const body = currentTest?.body ?? "";
-    const match = body.match(
-        /<expectedException>([\s\S]*?)<\/expectedException>|<expectedException\s*\/>/i,
-    );
-    const message = match ? match[1].trim() : null;
-    if (message?.length === 0 || (message && err.message.includes(message))) {
-        return false;
-    }
-
-    const testName =
-        currentTest?.fullTitle() ?? currentTest?.title ?? "<unknown>";
-
-    uncaughtErrors.push(testName);
-
+Cypress.on("uncaught:exception", (err, runnable) => {
+    uncaughtErrors.push(runnable.fullTitle());
     return true;
 });
 
