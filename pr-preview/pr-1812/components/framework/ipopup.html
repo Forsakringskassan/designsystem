@@ -7127,7 +7127,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/09e56adafb16f2ea86b489150f82a0f5224276c9/packages/vue/src/internal-components/IPopup/IPopup.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/c772ed094737daa210b31457000fb514e18092e8/packages/vue/src/internal-components/IPopup/IPopup.vue">
                 IPopup
             </a>
             
@@ -7298,7 +7298,7 @@
 <p class="docs-paragraph">För att ändra styling beroende på om popup är overlay eller inline så kan du använda klass selector <code>.popup--overlay</code> och <code>.popup--inline</code>.</p>
 
                 <div
-                    id="example-94a865"
+                    id="example-b89ac0"
                     class="code-preview code-preview--default"
                     
                     
@@ -7320,16 +7320,17 @@ samt att fokus återställs när popup stängs.</p>
 använda <code>focus-element</code> som tar en funktion som returnerar det element du vill ska få fokus.</p>
 
                 <div
-                    id="example-f68bb4"
+                    id="example-154049"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;i-popup
-<span class="hljs-addition">+    :focus-element=&quot;() =&gt; myFocusElement&quot;</span>
- &gt;
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;i-popup :is-open :anchor&gt;</span>
+<span class="hljs-addition">+&lt;i-popup :is-open :anchor :focus-element=&quot;() =&gt; myFocusElement&quot;&gt;</span>
+     &lt;!-- popup content --&gt;
+ &lt;/i-popup&gt;
 </code></pre>
                 </div>
             <p class="docs-paragraph">Du kan stänga av den automatiska fokushanteringen genom att sätta <code>set-focus</code> till <code>false</code>.
@@ -7337,17 +7338,17 @@ För att själv sätta fokus i detta fallet kan du lyssna på <code>&quot;open&q
 som sänds när popup är synlig och beräkning av position är klar.</p>
 
                 <div
-                    id="example-050ae3"
+                    id="example-337bfa"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;i-popup
-<span class="hljs-addition">+    :set-focus=&quot;false&quot;</span>
-<span class="hljs-addition">+    @open=&quot;onOpenSetFocus&quot;</span>
- &gt;
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;i-popup :is-open :anchor&gt;</span>
+<span class="hljs-addition">+&lt;i-popup :is-open :anchor :set-focus=&quot;false&quot;&gt;</span>
+     &lt;!-- popup content --&gt;
+ &lt;/i-popup&gt;
 </code></pre>
                 </div>
             <h2 id="teleport" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#teleport">Teleport</a></h2><p class="docs-paragraph">Komponenten teleporteras till body-elementet som standard när den visas som overlay.
@@ -7382,42 +7383,21 @@ Popupens position kommer inte hamna utanför containern (med undantag för om in
 Sätt <code>anchor-overlap=&quot;never&quot;</code> om ankaret alltid ska vara synligt.
 Då utesluts placeringar som överlappar ankaret, medan ordningen för övriga placeringar är oförändrad.</p>
 
-            <div
-                id="example-e52557"
-                class="code-preview code-preview--default"
-                
-                
-                
-                data-language="html"
-            >
-                
-                <div class="code-preview__preview user-background">
-                    <i-popup :anchor="anchor" :is-open="isOpen" anchor-overlap="never"></i-popup>
-
-                </div>
-                <div>
-            <button
-                type="button"
-                class="code-preview__button code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <svg focusable="false" class="docs-icon" aria-hidden="true">
-                    <use href="#docs-icon-code"></use>
-                </svg>
-                Visa kod
-            </button>
-         </div>
                 <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
+                    id="example-bda3da"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">i-popup</span> <span class="hljs-attr">:anchor</span>=<span class="hljs-string">&quot;anchor&quot;</span> <span class="hljs-attr">:is-open</span>=<span class="hljs-string">&quot;isOpen&quot;</span> <span class="hljs-attr">anchor-overlap</span>=<span class="hljs-string">&quot;never&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i-popup</span>&gt;</span>
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;i-popup :is-open :anchor&gt;</span>
+<span class="hljs-addition">+&lt;i-popup :is-open :anchor anchor-overlap=&quot;never&quot;&gt;</span>
+     &lt;!-- popup content --&gt;
+ &lt;/i-popup&gt;
 </code></pre>
                 </div>
-            </div>
-        <p class="docs-paragraph">Ifall ingen av ovanstående positioner fungerar kommer en fallback användas.</p>
+            <p class="docs-paragraph">Ifall ingen av ovanstående positioner fungerar kommer en fallback användas.</p>
 <ul>
 <li>Om <code>inline</code> är satt till <code>never</code> positioneras popup under ankare utan linjering.</li>
 <li>Om <code>inline</code> är satt till <code>auto</code> kommer popup visas inline under ankare.</li>
@@ -7430,7 +7410,7 @@ Då utesluts placeringar som överlappar ankaret, medan ordningen för övriga p
 </ul>
 
             <div
-                id="example-8928c8"
+                id="example-7a672c"
                 class="code-preview code-preview--default"
                 
                 
@@ -8042,9 +8022,9 @@ När popupen öppnas nästa gång väljs placeringen på nytt.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">renovate/jsdom-31.x</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/09e56adafb16f2ea86b489150f82a0f5224276c9">09e56ad</a>)<br />
+<div class="version"><span class="version-text-block">renovate/jsdom-31.x</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/c772ed094737daa210b31457000fb514e18092e8">c772ed0</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1812">PR 1812</a><br />
-       <span class="version-text-block">2026-11-25 11:54</span>
+       <span class="version-text-block">2026-11-25 14:59</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
