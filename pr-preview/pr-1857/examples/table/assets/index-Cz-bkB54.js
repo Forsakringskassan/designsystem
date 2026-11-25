@@ -41,7 +41,7 @@ var __exportAll = (all, no_symbols) => {
 })();
 // ../../node_modules/@vue/shared/dist/shared.esm-bundler.js
 /**
-* @vue/shared v3.5.45
+* @vue/shared v3.5.46
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -85,10 +85,18 @@ var isPlainObject = (val) => toTypeString(val) === "[object Object]";
 var isIntegerKey = (key) => isString$1(key) && key !== "NaN" && key[0] !== "-" && "" + parseInt(key, 10) === key;
 var isReservedProp = /* @__PURE__ */ makeMap(",key,ref,ref_for,ref_key,onVnodeBeforeMount,onVnodeMounted,onVnodeBeforeUpdate,onVnodeUpdated,onVnodeBeforeUnmount,onVnodeUnmounted");
 var isBuiltInDirective = /* @__PURE__ */ makeMap("bind,cloak,else-if,else,for,html,if,model,on,once,pre,show,slot,text,memo");
+var STRING_CACHE_MAX_SIZE = 1e4;
 var cacheStringFunction = (fn) => {
-	const cache = /* @__PURE__ */ Object.create(null);
+	let cache = /* @__PURE__ */ Object.create(null);
+	let size = 0;
 	return ((str) => {
-		return cache[str] || (cache[str] = fn(str));
+		const hit = cache[str];
+		if (hit !== void 0) return hit;
+		if (++size > STRING_CACHE_MAX_SIZE) {
+			cache = /* @__PURE__ */ Object.create(null);
+			size = 1;
+		}
+		return cache[str] = fn(str);
 	});
 };
 var camelizeRE = /-\w/g;
@@ -216,11 +224,11 @@ function looseCompareObjects(a, b, seen) {
 	if (aValidType || bValidType) return aValidType && bValidType ? looseCompareCollections(a, b, seen) : false;
 	if (Object.keys(a).length !== Object.keys(b).length) return false;
 	for (const key in a) {
-		const aHasKey = a.hasOwnProperty(key);
-		const bHasKey = b.hasOwnProperty(key);
+		const aHasKey = hasOwn(a, key);
+		const bHasKey = hasOwn(b, key);
 		if (aHasKey && !bHasKey || !aHasKey && bHasKey || !looseEqual(a[key], b[key], seen)) return false;
 	}
-	return String(a) === String(b);
+	return toComparableString(a) === toComparableString(b);
 }
 function looseCompareNested(a, b, seen, compare) {
 	if (!seen) seen = [/* @__PURE__ */ new Map(), /* @__PURE__ */ new Map()];
@@ -255,6 +263,9 @@ function looseEqual(a, b, seen) {
 function looseIndexOf(arr, val) {
 	return arr.findIndex((item) => looseEqual(item, val));
 }
+function toComparableString(value) {
+	return Object.getPrototypeOf(value) === null && value[Symbol.toPrimitive] == null && typeof value.toString !== "function" && typeof value.valueOf !== "function" ? toTypeString(value) : String(value);
+}
 var isRef$1 = (val) => {
 	return !!(val && val["__v_isRef"] === true);
 };
@@ -284,7 +295,7 @@ function normalizeCssVarValue(value) {
 }
 // ../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
 /**
-* @vue/reactivity v3.5.45
+* @vue/reactivity v3.5.46
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -1737,7 +1748,7 @@ function traverse(value, depth = Infinity, seen) {
 }
 // ../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
 /**
-* @vue/runtime-core v3.5.45
+* @vue/runtime-core v3.5.46
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -2379,8 +2390,8 @@ function hydrateTeleport(node, vnode, parentComponent, parentSuspense, slotScope
 		const targetNode = target._lpa || target.firstChild;
 		if (vnode.shapeFlag & 16) {
 			if (disabled) {
-				hydrateDisabledTeleport(node, vnode);
 				hydrateAnchor(target, targetNode);
+				hydrateDisabledTeleport(node, vnode);
 				if (!vnode.targetAnchor) prepareAnchor(target, vnode, createText, insert, parentNode(node) === target ? node : null);
 			} else {
 				vnode.anchor = nextSibling(node);
@@ -2403,19 +2414,8 @@ var Teleport = TeleportImpl;
 function updateCssVars(vnode, isDisabled) {
 	const ctx = vnode.ctx;
 	if (ctx && ctx.ut) {
-		let node, anchor;
-		if (isDisabled) {
-			node = vnode.el;
-			anchor = vnode.anchor;
-		} else {
-			node = vnode.targetStart;
-			anchor = vnode.targetAnchor;
-		}
-		while (node && node !== anchor) {
-			if (node.nodeType === 1) node.setAttribute("data-v-owner", ctx.uid);
-			node = node.nextSibling;
-		}
-		ctx.ut();
+		if (isDisabled) ctx.ut(vnode.el, vnode.anchor);
+		else ctx.ut(vnode.targetStart, vnode.targetAnchor);
 	}
 }
 function prepareAnchor(target, vnode, createText, insert, anchor = null) {
@@ -2578,7 +2578,10 @@ function resolveTransitionHooks(vnode, props, state, instance) {
 			callHook(hook, [el]);
 		},
 		enter(el) {
-			if (leavingVNodesCache[key] === vnode) return;
+			if (el[leaveCbKey]) {
+				if (hooks.delayedLeave) hooks.delayedLeave();
+				return;
+			}
 			let hook = onEnter;
 			let afterHook = onAfterEnter;
 			let cancelHook = onEnterCancelled;
@@ -5515,6 +5518,8 @@ function createSuspenseBoundary(vnode, parentSuspense, parentComponent, containe
 		effects: [],
 		resolve(resume = false, sync = false) {
 			const { vnode: vnode2, activeBranch, pendingBranch, pendingId, effects, parentComponent: parentComponent2, container: container2, isInFallback } = suspense;
+			let pendingAncestor = suspense.parent;
+			while (pendingAncestor && !pendingAncestor.pendingBranch) pendingAncestor = pendingAncestor.parent;
 			let delayEnter = false;
 			if (suspense.isHydrating) suspense.isHydrating = false;
 			else if (!resume) {
@@ -5524,7 +5529,14 @@ function createSuspenseBoundary(vnode, parentSuspense, parentComponent, containe
 					if (pendingId === suspense.pendingId && !suspense.isUnmounted) {
 						enterDeferred(pendingBranch);
 						move(pendingBranch, container2, anchor === initialAnchor && !hasUpdatedAnchor ? next(activeBranch) : anchor, 0);
-						queuePostFlushCb(effects);
+						let hidden = false;
+						if (pendingAncestor) {
+							let top = container2;
+							let parent;
+							while (parent = parentNode(top)) top = parent;
+							hidden = top === pendingAncestor.hiddenContainer;
+						}
+						if (!hidden) queuePostFlushCb(effects);
 						if (isInFallback && vnode2.ssFallback) vnode2.ssFallback.el = null;
 					}
 				};
@@ -5554,17 +5566,8 @@ function createSuspenseBoundary(vnode, parentSuspense, parentComponent, containe
 				else effects[kept++] = effect;
 			}
 			effects.length = kept;
-			let parent = suspense.parent;
-			let hasUnresolvedAncestor = false;
-			while (parent) {
-				if (parent.pendingBranch) {
-					for (let i = 0; i < effects.length; i++) parent.effects.push(effects[i]);
-					hasUnresolvedAncestor = true;
-					break;
-				}
-				parent = parent.parent;
-			}
-			if (!hasUnresolvedAncestor && !delayEnter) queuePostFlushCb(effects);
+			if (pendingAncestor) for (let i = 0; i < effects.length; i++) pendingAncestor.effects.push(effects[i]);
+			else if (!delayEnter) queuePostFlushCb(effects);
 			suspense.effects = [];
 			if (isSuspensible) {
 				if (parentSuspense && parentSuspense.pendingBranch && parentSuspenseId === parentSuspense.pendingId) {
@@ -5621,7 +5624,7 @@ function createSuspenseBoundary(vnode, parentSuspense, parentComponent, containe
 				updateHOCHostEl(instance, vnode2.el);
 			};
 			instance.asyncDep.catch((err) => {
-				handleError(err, instance, 0, false, true);
+				if (instance.scope.active) handleError(err, instance, 0, false, true);
 				return () => null;
 			}).then((asyncSetupResult) => {
 				if (instance.isUnmounted || suspense.isUnmounted) return;
@@ -6238,7 +6241,7 @@ function isMemoSame(cached, memo) {
 	if (isBlockTreeEnabled > 0 && currentBlock) currentBlock.push(cached);
 	return true;
 }
-var version = "3.5.45";
+var version = "3.5.46";
 var warn = NOOP;
 var ErrorTypeStrings = ErrorTypeStrings$1;
 var devtools = devtools$1;
@@ -6257,7 +6260,7 @@ var ssrUtils = {
 };
 // ../../node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
 /**
-* @vue/runtime-dom v3.5.45
+* @vue/runtime-dom v3.5.46
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -6538,12 +6541,14 @@ function resolveTransitionProps(rawProps) {
 	const leaveDuration = durations && durations[1];
 	const { onBeforeEnter, onEnter, onEnterCancelled, onLeave, onLeaveCancelled, onBeforeAppear = onBeforeEnter, onAppear = onEnter, onAppearCancelled = onEnterCancelled } = baseProps;
 	const finishEnter = (el, isAppear, done, isCancelled) => {
+		el._enterResolve = void 0;
 		el._enterCancelled = isCancelled;
 		removeTransitionClass(el, isAppear ? appearToClass : enterToClass);
 		removeTransitionClass(el, isAppear ? appearActiveClass : enterActiveClass);
 		done && done();
 	};
 	const finishLeave = (el, done) => {
+		el._leaveResolve = void 0;
 		el._isLeaving = false;
 		removeTransitionClass(el, leaveFromClass);
 		removeTransitionClass(el, leaveToClass);
@@ -6553,10 +6558,14 @@ function resolveTransitionProps(rawProps) {
 	const makeEnterHook = (isAppear) => {
 		return (el, done) => {
 			const hook = isAppear ? onAppear : onEnter;
-			const resolve = () => finishEnter(el, isAppear, done);
+			const resolve = () => {
+				if (el._enterResolve === resolve) finishEnter(el, isAppear, done);
+			};
+			el._enterResolve = resolve;
 			callHook(hook, [el, resolve]);
 			nextFrame(() => {
 				removeTransitionClass(el, isAppear ? appearFromClass : enterFromClass);
+				if (el._enterResolve !== resolve) return;
 				addTransitionClass(el, isAppear ? appearToClass : enterToClass);
 				if (!hasExplicitCallback(hook)) whenTransitionEnds(el, type, enterDuration, resolve);
 			});
@@ -6577,7 +6586,10 @@ function resolveTransitionProps(rawProps) {
 		onAppear: makeEnterHook(true),
 		onLeave(el, done) {
 			el._isLeaving = true;
-			const resolve = () => finishLeave(el, done);
+			const resolve = () => {
+				if (el._leaveResolve === resolve) finishLeave(el, done);
+			};
+			el._leaveResolve = resolve;
 			addTransitionClass(el, leaveFromClass);
 			if (!el._enterCancelled) {
 				forceReflow(el);
@@ -6587,7 +6599,7 @@ function resolveTransitionProps(rawProps) {
 				forceReflow(el);
 			}
 			nextFrame(() => {
-				if (!el._isLeaving) return;
+				if (el._leaveResolve !== resolve) return;
 				removeTransitionClass(el, leaveFromClass);
 				addTransitionClass(el, leaveToClass);
 				if (!hasExplicitCallback(onLeave)) whenTransitionEnds(el, type, leaveDuration, resolve);
@@ -6755,8 +6767,21 @@ var CSS_VAR_TEXT = /* @__PURE__ */ Symbol("");
 function useCssVars(getter) {
 	const instance = getCurrentInstance();
 	if (!instance) return;
-	const updateTeleports = instance.ut = (vars = getter(instance.proxy)) => {
+	const updateTeleports = (vars = getter(instance.proxy)) => {
 		Array.from(document.querySelectorAll(`[data-v-owner="${instance.uid}"]`)).forEach((node) => setVarsOnNode(node, vars));
+	};
+	const owner = {
+		uid: String(instance.uid),
+		update: updateTeleports
+	};
+	onScopeDispose(() => owner.update = void 0);
+	instance.ut = (start, end) => {
+		if (start) {
+			start[TELEPORT_KEY] = [end, owner];
+			observeTeleport(start);
+			markTeleport(start);
+		}
+		updateTeleports();
 	};
 	const setVars = () => {
 		const vars = getter(instance.proxy);
@@ -6773,6 +6798,48 @@ function useCssVars(getter) {
 		ob.observe(instance.subTree.el.parentNode, { childList: true });
 		onUnmounted(() => ob.disconnect());
 	});
+}
+var TELEPORT_KEY = /* @__PURE__ */ Symbol("");
+function markTeleport(start, added) {
+	const [end, owner] = start[TELEPORT_KEY];
+	let update;
+	if (owner.update) {
+		for (let node = start; node && node !== end; node = node.nextSibling) if (node.nodeType === 1 && (!added || (added === true || added.has(node)) && (node.getAttribute("data-v-owner") || owner.uid) === owner.uid)) {
+			node.setAttribute("data-v-owner", owner.uid);
+			update = owner.update;
+		}
+	}
+	return update;
+}
+function observeTeleport(start) {
+	const container = start.parentNode;
+	if (container) {
+		let starts = container[TELEPORT_KEY];
+		if (!starts) {
+			starts = container[TELEPORT_KEY] = /* @__PURE__ */ new Set();
+			new MutationObserver(onTeleportMutations).observe(container, { childList: true });
+		}
+		starts.add(start);
+	}
+}
+function onTeleportMutations(records, ob) {
+	const container = records[0].target;
+	const starts = container[TELEPORT_KEY];
+	const added = /* @__PURE__ */ new Set();
+	for (const { addedNodes } of records) addedNodes.forEach((node) => added.add(node));
+	const updates = /* @__PURE__ */ new Set();
+	starts.forEach((start) => {
+		if (start.parentNode !== container) {
+			starts.delete(start);
+			observeTeleport(start);
+			updates.add(markTeleport(start, true));
+		} else if (added.size) updates.add(markTeleport(start, added));
+	});
+	updates.forEach((update) => update && update());
+	if (!starts.size) {
+		ob.disconnect();
+		container[TELEPORT_KEY] = void 0;
+	}
 }
 function setVarsOnVNode(vnode, vars) {
 	if (vnode.shapeFlag & 128) {
@@ -7878,7 +7945,7 @@ var initDirectivesForSSR = () => {
 };
 // ../../node_modules/@vue/compiler-core/dist/compiler-core.esm-bundler.js
 /**
-* @vue/compiler-core v3.5.45
+* @vue/compiler-core v3.5.46
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -11360,7 +11427,7 @@ function baseCompile(source, options = {}) {
 var noopDirectiveTransform = () => ({ props: [] });
 // ../../node_modules/@vue/compiler-dom/dist/compiler-dom.esm-bundler.js
 /**
-* @vue/compiler-dom v3.5.45
+* @vue/compiler-dom v3.5.46
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -11612,7 +11679,7 @@ function compile(src, options = {}) {
 }
 // ../../node_modules/vue/dist/vue.esm-bundler.js
 /**
-* vue v3.5.45
+* vue v3.5.46
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -15647,7 +15714,7 @@ function waitForScreenReader(callback, delay = 100) {
 */
 var REMOVE_TEXT_DELAY = 2e3;
 var defaultOptions$2 = { assertive: false };
-var wrapper;
+var wrapperId = "fkui-alert-screen-reader";
 /**
 * Trigger screen reader to read the passed text.
 *
@@ -15656,12 +15723,11 @@ var wrapper;
 * @param options - options for wrapper element attributes.
 */
 function alertScreenReader(text, options) {
-	const mergedOptions = {
+	const wrapper = findWrapper() ?? createWrapper(defaultOptions$2);
+	updateProperties(wrapper, {
 		...defaultOptions$2,
 		...options
-	};
-	const wrapper = getWrapper();
-	updateProperties(mergedOptions);
+	});
 	const msg = document.createElement("p");
 	msg.textContent = text;
 	waitForScreenReader(() => {
@@ -15678,12 +15744,7 @@ function alertScreenReader(text, options) {
 * @param options - options for wrapper element attributes.
 */
 function createScreenReaderWrapper(options) {
-	if (getWrapper()) return;
-	wrapper = document.createElement("div");
-	wrapper.id = "fkui-alert-screen-reader";
-	wrapper.className = "sr-only";
-	updateProperties(options);
-	document.body.append(wrapper);
+	if (!findWrapper()) createWrapper(options);
 }
 /**
 * Update properties on wrapper element.
@@ -15691,17 +15752,30 @@ function createScreenReaderWrapper(options) {
 * @internal
 * @param options - options for wrapper element attributes.
 */
-function updateProperties(options) {
-	const wrapper = getWrapper();
+function updateProperties(wrapper, options) {
 	const ariaLive = options.assertive ? "assertive" : "polite";
 	wrapper.setAttribute("aria-live", ariaLive);
 }
 /**
-* Retrieve wrapper element.
+* Find the wrapper element in the DOM.
 *
 * @internal
 */
-function getWrapper() {
+function findWrapper() {
+	return document.querySelector(`#${wrapperId}`);
+}
+/**
+* Create the wrapper element for the screen reader.
+*
+* @internal
+* @returns The created wrapper element.
+*/
+function createWrapper(options) {
+	const wrapper = document.createElement("div");
+	wrapper.id = wrapperId;
+	wrapper.className = "sr-only";
+	updateProperties(wrapper, options);
+	document.body.append(wrapper);
 	return wrapper;
 }
 if (typeof document !== "undefined") createScreenReaderWrapper({ assertive: false });
@@ -25562,7 +25636,7 @@ function _sfc_render$34(_ctx, _cache, $props, $setup, $data, $options) {
 		disabled: _ctx.teleportDisabled
 	}, [createBaseVNode("div", mergeProps({ ref: "popup" }, _ctx.$attrs, { class: _ctx.popupClasses }), [createBaseVNode("div", {
 		ref: "wrapper",
-		role: "presentation",
+		role: "none",
 		class: "popup__wrapper",
 		onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onPopupClickHandler && _ctx.onPopupClickHandler(...args)),
 		onKeyup: _cache[1] || (_cache[1] = withKeys(withModifiers((...args) => _ctx.onKeyEsc && _ctx.onKeyEsc(...args), ["stop"]), ["esc"])),
@@ -28649,7 +28723,7 @@ var stopEditKey = Symbol();
 function useStartStopEdit() {
 	return { stopEdit: inject(stopEditKey, () => Promise.resolve()) };
 }
-var _hoisted_1$45 = ["href"];
+var _hoisted_1$45 = ["target", "href"];
 var _hoisted_2$34 = {
 	key: 1,
 	ref: "target",
@@ -28675,10 +28749,20 @@ var ITableAnchor_default = /* @__PURE__ */ defineComponent({
 				key: 0,
 				ref: "target",
 				class: "anchor anchor--block",
-				target: "_blank",
+				target: __props.column.target,
 				href: __props.column.href(__props.row),
 				tabindex: "-1"
-			}, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_1$45)) : createCommentVNode("v-if", true)], 32)) : (openBlock(), createElementBlock("td", _hoisted_2$34, null, 512));
+			}, [
+				__props.column.iconLeft ? (openBlock(), createBlock(unref(FIcon_default), {
+					key: 0,
+					name: __props.column.iconLeft
+				}, null, 8, ["name"])) : createCommentVNode("v-if", true),
+				createTextVNode(" " + toDisplayString(__props.column.text(__props.row)) + " ", 1),
+				__props.column.iconRight ? (openBlock(), createBlock(unref(FIcon_default), {
+					key: 1,
+					name: __props.column.iconRight
+				}, null, 8, ["name"])) : createCommentVNode("v-if", true)
+			], 8, _hoisted_1$45)) : createCommentVNode("v-if", true)], 32)) : (openBlock(), createElementBlock("td", _hoisted_2$34, null, 512));
 		};
 	}
 });
@@ -29380,6 +29464,9 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
 			}
 			nextTick().then(() => validationFacade.validateElement(el));
 		}, { flush: "post" });
+		watch(() => __props.column.value(__props.row), () => {
+			if (!inEdit.value) viewValue.value = fromColumnValue();
+		});
 		watchEffect(() => {
 			if (hasError.value) {
 				var _tdElement$value, _arrowAnchorElement$v;
@@ -29599,9 +29686,13 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
 * @internal
 */
 function normalizeAnchorColumn(column) {
+	var _column$target;
 	return {
 		type: "anchor",
 		text: getValueFn(column.text, column.key, String, ""),
+		iconLeft: column.iconLeft,
+		iconRight: column.iconRight,
+		target: (_column$target = column.target) !== null && _column$target !== void 0 ? _column$target : "_blank",
 		href: typeof column.href === "function" ? column.href : () => String(column.href)
 	};
 }
@@ -47629,6 +47720,8 @@ var columnData = {
 	anchor: {
 		type: "anchor",
 		header: "Länk kolumnrubrik",
+		iconRight: "arrow-right",
+		target: "_blank",
 		text: (row) => String(row.value),
 		href: (row) => String(row.id)
 	},
