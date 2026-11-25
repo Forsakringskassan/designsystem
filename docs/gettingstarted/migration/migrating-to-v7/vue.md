@@ -498,6 +498,21 @@ Se då till att det beräknade värdets beroenden är reaktiva.
 Om funktionen returnerar `null` flyttas inte fokus och det återställs inte heller när popup stängs.
 Om funktionen returnerar ett element flyttas fokus dit och återställs när popup stängs.
 
+`keyboard-trap`-propen är inte aktiv som standard längre.
+Om du tidigare använde standardvärdet, lägg till `keyboard-trap` för att fortsätta hålla tabbfokus inom popupen.
+Detta gäller även om du hade stängt av fokushanteringen med `:set-focus="false"`.
+Behåll dynamiska värden för `keyboard-trap` och låt den vara avstängd där den tidigare var `false`.
+
+```diff
+-<i-popup :is-open :anchor>
++<i-popup :is-open :anchor keyboard-trap>
+```
+
+```diff
+-<i-popup :is-open :anchor :keyboard-trap="false">
++<i-popup :is-open :anchor>
+```
+
 ::: details 🤖 Prompt för AI Agenter
 
 Sök igenom applikationens användningar av `IPopup` och `<i-popup>`, inklusive renderfunktioner och JSX.
@@ -509,6 +524,9 @@ Ersätt ett aktivt `set-focus` utan `focus-element` med `focus` och överför dy
 Ersätt `focus-element` med `focus` när fokushantering är aktiv.
 Om `set-focus` är dynamisk och `focus-element` används, använd en funktion som returnerar fokusmålet när fokus ska hanteras och annars `null`, eller ett reaktivt beräknat värde som funktionen returnerar.
 Kontrollera även om en dynamisk `focus-element` kan saknas och bevara i så fall tidigare fallback till det första tabbningsbara elementet när fokushantering är aktiv.
+Lägg till `keyboard-trap` där den tidigare var utelämnad, även när `set-focus` var `false`.
+Behåll dynamiska värden och låt `keyboard-trap` vara avstängd där den tidigare var `false`.
+
 Kontrollera särskilt funktioner som kan returnera `null` eller popup-fönster utan tabbningsbara element.
 I version 7 återställs inte fokus i dessa fall; uppmärksamma användaren på beteendeförändringen och undersök om applikationen behöver egen fokushantering.
 Verifiera resultatet genom att bygga projektet och köra relevanta tester, inklusive tester för fokus när popup öppnas och stängs.
