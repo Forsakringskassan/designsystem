@@ -1412,7 +1412,7 @@ var metadata_default = {
 // sfc-script:/home/runner/work/designsystem/designsystem/docs/styles/examples/ColorTable.vue?type=script
 import { defineComponent as _defineComponent } from "vue";
 import { h as h2 } from "vue";
-import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
 var ColorTable_default = /* @__PURE__ */ _defineComponent({
   __name: "ColorTable",
   props: {
@@ -1420,7 +1420,6 @@ var ColorTable_default = /* @__PURE__ */ _defineComponent({
   },
   setup(__props, { expose: __expose }) {
     __expose();
-    const props = __props;
     const columns = defineTableColumns([
       { type: "text", header: "Namn", key: "name", size: "shrink" },
       {
@@ -1439,8 +1438,7 @@ var ColorTable_default = /* @__PURE__ */ _defineComponent({
         }
       }
     ]);
-    const rows = useDatasetRef(props.colors);
-    const __returned__ = { props, columns, rows, get FTable() {
+    const __returned__ = { columns, get FTable() {
       return FTable;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -1452,7 +1450,7 @@ var ColorTable_default = /* @__PURE__ */ _defineComponent({
 import { createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FTable"], {
-    rows: $setup.rows,
+    rows: $props["colors"],
     columns: $setup.columns,
     class: "density-densest"
   }, {
