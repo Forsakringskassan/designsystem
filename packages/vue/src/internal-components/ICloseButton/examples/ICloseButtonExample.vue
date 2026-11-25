@@ -22,6 +22,7 @@ const popupAnchor = useTemplateRef("popupAnchor");
             :is-open
             :anchor="findHTMLElementFromVueRef(popupAnchor)"
             focus
+            keyboard-trap
             @close="isOpen = false"
         >
             <div class="popup-content">

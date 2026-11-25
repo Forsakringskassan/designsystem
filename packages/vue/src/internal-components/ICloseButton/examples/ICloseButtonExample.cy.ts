@@ -20,3 +20,23 @@ it("should close the popup and return focus to its opener", () => {
         .should("have.focus")
         .and("have.attr", "aria-expanded", "false");
 });
+
+it("should trap keyboard focus", () => {
+    cy.viewport(1024, 600);
+    cy.mount(ICloseButtonExample);
+    cy.contains("button", "Öppna popup").click();
+    cy.get(".popup button")
+        .should("have.focus")
+        .then(($button) => {
+            const event = new KeyboardEvent("keydown", {
+                key: "Tab",
+                bubbles: true,
+                cancelable: true,
+            });
+            $button[0].dispatchEvent(event);
+            expect(event.defaultPrevented).to.equal(true);
+        });
+    cy.get(".popup button").should("have.focus");
+    cy.get(".popup button").click();
+    cy.contains("button", "Öppna popup").should("have.focus");
+});

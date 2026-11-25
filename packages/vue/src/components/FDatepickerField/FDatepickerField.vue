@@ -399,6 +399,7 @@ export default defineComponent({
             :anchor="calendarInputs"
             anchor-overlap="never"
             :inline="alwaysInline ? 'always' : undefined"
+            keyboard-trap
             @open="onOpenPopup"
             @close="onClosePopup"
         >
