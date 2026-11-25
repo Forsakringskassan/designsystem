@@ -916,6 +916,18 @@ Valideringskriterier:
 
 Utgångsvärdet för max antal tecken för hela mejladressen är 254 tecken och för **localpart** är utgångsvärdet för max antal tecken 64.
 
+Validatorn godkänner inte andra tecken än a-z, 0-9, bindestreck och punkt i **domain**, till exempel å, ä, ö eller é.
+En domän med sådana tecken är giltig först när den är skriven som [punycode](https://en.wikipedia.org/wiki/Punycode), till exempel `a@xn--5ca.example` i stället för `a@å.example`.
+Vissa webbläsare, men inte alla, konverterar själva domänen till punycode, om det behövs, när användaren skriver in mejladressen i ett fält med `type="email"`.
+I övriga webbläsare får användaren ett valideringsfel om domänen innehåller sådana tecken.
+
+Vilket fält som har `type="email"` avgör alltså hur det blir:
+
+- `f-email-text-field` får `type="email"` utan att du behöver ange det.
+- `f-text-field` har `type="text"` om du inte anger något annat.
+  Webbläsaren konverterar då aldrig domänen och en domän med andra tecken än a-z, 0-9 och bindestreck ger alltid valideringsfel.
+- Med `type="email"` kan webbläsaren konvertera domänen, men inte alla webbläsare gör det.
+
 ```import nomarkup
 EmailExample.vue
 ```

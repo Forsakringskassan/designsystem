@@ -31,6 +31,7 @@ module.exports = {
                         "^https://docs.cypress.io/",
                         "^https://docs.npmjs.com",
                         "^https://designsystem.forsakringskassan.se/",
+                        "^https://en.wikipedia.org/",
                         "^https://foundation.zurb.com/",
                         "^https://getbem.com/",
                         "^https://getbootstrap.com/",
