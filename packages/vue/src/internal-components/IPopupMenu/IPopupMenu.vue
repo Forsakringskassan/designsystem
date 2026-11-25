@@ -288,7 +288,7 @@ export default defineComponent({
                     v-for="(item, index) in items"
                     ref="items"
                     :key="item.key"
-                    role="presentation"
+                    role="none"
                     :class="itemClasses(item)"
                     @click="(event) => onClickItem(event, item)"
                 >

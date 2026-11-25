@@ -27,7 +27,7 @@ exports[`snapshots > should match snapshot when open 1`] = `
     >
       <div
         class="popup__wrapper"
-        role="presentation"
+        role="none"
       >
         
         <span>
