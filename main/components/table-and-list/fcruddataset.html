@@ -7127,7 +7127,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/ed8cebce5c62bd7d4986cd7a0e6ebca0251dbc79/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/4bfdf0f4f798388dbf9dfb53fbb7063c78461d79/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
                 FCrudDataset
             </a>
             
@@ -7632,13 +7632,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-3d5931"></div>
+        <div id="example-a907ab"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetListExample-3d5931.js"></script>
+        <script type="module" src="./FCrudDatasetListExample-a907ab.js"></script>
     
                 </div>
                 <div>
@@ -7714,43 +7714,34 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-list</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">element-id</span>=<span class="hljs-string">&quot;example&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">selectable</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-7&quot;</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
-                                Land:
-                                <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.origin }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-                                Beskrivning:
-                                <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.description }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-                            <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-5&quot;</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-list&quot;</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
-                                        <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;pen&quot;</span>
-                                        <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span>
-                                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                                        <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span>
-                                        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;updateItem(item)&quot;</span>
-                                    &gt;</span>
-                                        Ändra <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
-                                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
-                                        <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;trashcan&quot;</span>
-                                        <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span>
-                                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                                        <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span>
-                                        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;deleteItem(item)&quot;</span>
-                                    &gt;</span>
-                                        Ta bort <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
-                                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-                            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+                        Land:
+                        <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.origin }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+                        Beskrivning:
+                        <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.description }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+                            <span class="hljs-attr">align-text</span>
+                            <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;pen&quot;</span>
+                            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;medium&quot;</span>
+                            <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span>
+                            @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;updateItem(item)&quot;</span>
+                        &gt;</span>
+                            Ändra <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+                            <span class="hljs-attr">align-text</span>
+                            <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;trashcan&quot;</span>
+                            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;medium&quot;</span>
+                            <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span>
+                            @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;deleteItem(item)&quot;</span>
+                        &gt;</span>
+                            Ta bort <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">screenreader</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span> Frukt ID {{ item.id }} <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -7811,13 +7802,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-7e0b83"></div>
+        <div id="example-2f0c7a"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetSortListExample-7e0b83.js"></script>
+        <script type="module" src="./FCrudDatasetSortListExample-2f0c7a.js"></script>
     
                 </div>
                 <div>
@@ -7900,35 +7891,34 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                     <span class="hljs-tag">&lt;<span class="hljs-name">f-list</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;sortFilterResult&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
                         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
                             <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--lg-10&quot;</span>&gt;</span>
-                                    Land:
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.origin }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-                                    Beskrivning:
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.description }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--sm-1&quot;</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
-                                        <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;pen&quot;</span>
-                                        <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span>
-                                        <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span>
-                                        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;updateItem(item)&quot;</span>
-                                    &gt;</span>
-                                        Ändra <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
-                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--sm-1&quot;</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
-                                        <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;trashcan&quot;</span>
-                                        <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span>
-                                        <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span>
-                                        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;deleteItem(item)&quot;</span>
-                                    &gt;</span>
-                                        Ta bort <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
-                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+                                Land:
+                                <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.origin }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+                                Beskrivning:
+                                <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.description }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+                                    <span class="hljs-attr">align-text</span>
+                                    <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;pen&quot;</span>
+                                    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;medium&quot;</span>
+                                    <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span>
+                                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span>
+                                    @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;updateItem(item)&quot;</span>
+                                &gt;</span>
+                                    Ändra <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+                                    <span class="hljs-attr">align-text</span>
+                                    <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;trashcan&quot;</span>
+                                    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;medium&quot;</span>
+                                    <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span>
+                                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span>
+                                    @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;deleteItem(item)&quot;</span>
+                                &gt;</span>
+                                    Ta bort <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
                             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">f-list</span>&gt;</span>
@@ -8008,13 +7998,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-d06872"></div>
+        <div id="example-97ed4d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetCustomTextExample-d06872.js"></script>
+        <script type="module" src="./FCrudDatasetCustomTextExample-97ed4d.js"></script>
     
                 </div>
                 <div>
@@ -8090,49 +8080,39 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
         @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>
     &gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ updateItem, deleteItem }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-list</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">element-id</span>=<span class="hljs-string">&quot;example&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-list</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--lg-7 col--md-6&quot;</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
-                                Land:
-                                <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.origin }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-                                Beskrivning:
-                                <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.description }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-                            <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--lg-5 col--md-6&quot;</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row row--align-end&quot;</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col&quot;</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
-                                        <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;pen&quot;</span>
-                                        <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span>
-                                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                                        <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span>
-                                        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;updateItem(item)&quot;</span>
-                                    &gt;</span>
-                                        Ändra <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
-                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col&quot;</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
-                                        <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;trashcan&quot;</span>
-                                        <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span>
-                                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                                        <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span>
-                                        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;deleteItem(item)&quot;</span>
-                                    &gt;</span>
-                                        Ta bort <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
-                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+                        Land:
+                        <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.origin }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+                        Beskrivning:
+                        <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.description }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+                            <span class="hljs-attr">align-text</span>
+                            <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;pen&quot;</span>
+                            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;medium&quot;</span>
+                            <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span>
+                            @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;updateItem(item)&quot;</span>
+                        &gt;</span>
+                            Ändra <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+                            <span class="hljs-attr">align-text</span>
+                            <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;trashcan&quot;</span>
+                            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;medium&quot;</span>
+                            <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span>
+                            @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;deleteItem(item)&quot;</span>
+                        &gt;</span>
+                            Ta bort <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">screenreader</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span> Frukt ID {{ item.id }} <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-list</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">add-button</span>&gt;</span> Lägg till ny <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span> frukt <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -8933,9 +8913,9 @@ Läs mer om att <a href="../../gettingstarted/migration/migrating-crud-button.ht
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/ed8cebce5c62bd7d4986cd7a0e6ebca0251dbc79">ed8cebc</a>)<br />
+<div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/4bfdf0f4f798388dbf9dfb53fbb7063c78461d79">4bfdf0f</a>)<br />
         
-       <span class="version-text-block">2026-11-25 08:06</span>
+       <span class="version-text-block">2026-11-25 08:59</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
