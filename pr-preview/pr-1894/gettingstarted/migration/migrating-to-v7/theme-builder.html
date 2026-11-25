@@ -6340,11 +6340,12 @@ med hela namnet.</p>
 <h3 id="sass_variabler_stods_fortfarande" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#sass_variabler_stods_fortfarande">Sass-variabler stöds fortfarande</a></h3><p class="docs-paragraph">Sass-variabler läses fortfarande från palettkällans rotnivå med sitt
 fullständiga namn, till exempel <code>$palette-color-neutral-900</code>.</p>
 <p class="docs-paragraph">Sass- och CSS-variabler grupperas med <code>@group</code>, precis som tidigare.</p>
-<h3 id="temavariabler_finns_i_metadata" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#temavariabler_finns_i_metadata">Temavariabler finns i metadata</a></h3><p class="docs-paragraph"><code>@fkui/theme-default</code> exporterar inte längre temavariabler som separata JavaScript-objekt.
-Använd metadata för att läsa värden för de semantiska variablerna:</p>
+<h3 id="temavariabler_har_flyttats_i_metadata" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#temavariabler_har_flyttats_i_metadata">Temavariabler har flyttats i metadata</a></h3><p class="docs-paragraph"><code>@fkui/theme-default</code> exporterar inte längre temavariabler som separata JavaScript-objekt.</p>
+<p class="docs-paragraph">Semantiska temavariabler finns fortfarande i metadata.
+Exemplet hämtar värdet för varje variabel i det ljusa temat:</p>
 
                 <div
-                    id="example-a217e7"
+                    id="example-ae4d74"
                     class="code-preview code-preview--default"
                     
                     
@@ -6359,7 +6360,8 @@ Använd metadata för att läsa värden för de semantiska variablerna:</p>
 }));
 </code></pre>
                 </div>
-            
+            <p class="docs-paragraph">Byt <code>light</code> mot <code>dark</code> för att hämta värden för det mörka temat.</p>
+
 
                     </div>
                 </main>
@@ -6427,9 +6429,9 @@ Använd metadata för att läsa värden för de semantiska variablerna:</p>
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">theme-default-exports</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/dbda47e5c9a24e164ec703002edcbbc2309beb1a">dbda47e</a>)<br />
+<div class="version"><span class="version-text-block">theme-default-exports</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/f34e708b9cc8ee2f4c4990d13aa318b4836e2c32">f34e708</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1894">PR 1894</a><br />
-       <span class="version-text-block">2026-11-25 14:13</span>
+       <span class="version-text-block">2026-11-25 17:51</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
