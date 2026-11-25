@@ -6,7 +6,30 @@ sortorder: 1
 layout: article
 ---
 
-## Sammanfattning
+## Migrera till version 7.0.0
+
+Den här guiden hjälper dig att migrera din applikation från v6 till v7.
+
+## Brytande ändringar
+
+### Generellt
+
+| Beskrivning                                       | Ändring                                                 |
+| :------------------------------------------------ | :------------------------------------------------------ |
+| {@link migrating-to-v7-general JavaScript-ingång} | FKUI-paketen stöder nu bara ESM, inte CommonJS (CJS).   |
+| {@link migrating-to-v7-pageobjects Cypress}       | Namnändringar och borttagna metoder i våra Pageobjects. |
+
+### @fkui/design
+
+| Komponent | Ändring |
+| :-------- | :------ |
+
+| {@link migrating-to-v7-vue#fcrudbutton FCrudButton (FCrudButton)} | Komponenten har tagits bort. |
+| {@link migrating-to-v7-@fkui/design#ersattning_av_klasser_pa_knappar Knapp (@fkui/design)} | Vissa klasser på `button` ersätts. |
+| {@link migrating-to-v7-vue#FModal Modal (Fmodal)} | Tagit bort template Api:et. |
+| {@link migrating-to-v7-vue#FWizard Steg för steg (FWizard)} | Focushantering är opt in istället för opt out |
+| {@link migrating-to-v7-vue#ftable Tabell (FTable)} | Egenskapen `text` har bytt namn till `screenreaderText`. |
+| {@link migrating-to-v7-theme-builder @fkui/theme-builder} | Flera uppdateringar för dig som bygger dina egna teman. |
 
 ### Esm Only
 
@@ -29,45 +52,6 @@ Den kompilerade versionen utav `@fkui/design` innehåller inte längre det ljusa
 {@link migrating-to-v7-@fkui/design#borttag_utav_tema_i_forkompilerad_css Läs mer hur du migrerar.}
 
 ### Övriga ändringar
-
-| Komponent                                                                                  | Ändring                                                  |
-| :----------------------------------------------------------------------------------------- | :------------------------------------------------------- |
-| {@link migrating-to-v7-pageobjects Cypress}                                                | Namnändringar och borttagna metoder i våra Pageobjects.  |
-| {@link migrating-to-v7-vue#fcrudbutton FCrudButton (FCrudButton)}                          | Komponenten har tagits bort.                             |
-| {@link migrating-to-v7-@fkui/design#ersattning_av_klasser_pa_knappar Knapp (@fkui/design)} | Vissa klasser på `button` ersätts.                       |
-| {@link migrating-to-v7-vue#FModal Modal (Fmodal)}                                          | Tagit bort template Api:et.                              |
-| {@link migrating-to-v7-vue#FWizard Steg för steg (FWizard)}                                | Focushantering är opt in istället för opt out            |
-| {@link migrating-to-v7-vue#ftable Tabell (FTable)}                                         | Egenskapen `text` har bytt namn till `screenreaderText`. |
-| {@link migrating-to-v7-theme-builder @fkui/theme-builder}                                  | Flera uppdateringar för dig som bygger dina egna teman.  |
-
-## ESM Only
-
-### Vad innebär ESM only?
-
-ESM (ECMAScript Modules) är JavaScripts standardformat för moduler och använder `import` och `export`.
-I version 7 exponerar FKUI-paketen sina JavaScript-ingångar som ESM.
-CommonJS-ingångar via `require()` stöds inte längre som ett publikt sätt att ladda paketen.
-
-Om du använder `require()` för att importera ett FKUI-paket behöver du ändra koden till ESM-import:
-
-```diff
--const date = require("@fkui/date");
-+import * as date from "@fkui/date";
-```
-
-### Vite-användare
-
-Om applikationen använder Vite behöver du normalt inte ändra någon Vite-konfiguration.
-Importera FKUI-paketen med `import` i applikationskoden, precis som tidigare.
-Vite hanterar ESM-importerna när applikationen körs och byggs.
-
-Om du däremot kör JavaScript direkt i Node.js behöver filen vara en ES-modul.
-Ange då `"type": "module"` i projektets `package.json`, eller använd filändelsen `.mjs`.
-
-#### Test och andra byggverktyg
-
-Kontrollera även test och byggverktyg samt konfigurationsfiler som laddar FKUI-paketen.
-De måste kunna hantera ESM, direkt eller genom ett byggsteg.
 
 ## `@fkui/theme-desktop` avvecklas
 
