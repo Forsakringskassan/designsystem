@@ -5861,6 +5861,7 @@ input[type=search]:focus-visible,
 .table-ng tfoot .table-ng__row--empty {
   background: var(--fkds-color-background-primary);
   text-align: center;
+  color: var(--fkds-color-text-primary);
 }
 .table-ng__column__description {
   background: transparent;
