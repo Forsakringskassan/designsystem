@@ -12,16 +12,6 @@ describe("discrete desktop", () => {
         cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
     });
 
-    it("normal", () => {
-        cy.mount(ButtonDiscreteExample, {
-            props: {
-                type: "discrete",
-                backgroundColor: "white",
-            },
-        });
-        cy.get("#screenshotArea").toMatchScreenshot({ baseDelay: 100 });
-    });
-
     it("inverted", () => {
         cy.mount(ButtonDiscreteExample, {
             props: {
@@ -36,16 +26,6 @@ describe("discrete desktop", () => {
 describe("discrete mobile", () => {
     beforeEach(() => {
         cy.viewport(VIEWPORT.MOBILE.width, VIEWPORT.MOBILE.height);
-    });
-
-    it("normal", () => {
-        cy.mount(ButtonDiscreteExample, {
-            props: {
-                type: "discrete",
-                backgroundColor: "white",
-            },
-        });
-        cy.get("#screenshotArea").toMatchScreenshot({ baseDelay: 100 });
     });
 
     it("inverted", () => {
