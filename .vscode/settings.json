@@ -5,5 +5,21 @@
     "eslint.enable": true,
     "prettier.requireConfig": true,
     "editor.renderWhitespace": "boundary",
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "chat.tools.terminal.autoApprove": {
+        /* allow building documentation */
+        "node generate-docs.mts": true,
+        /* allow "npm run run build" as well as any "build:*" command, with or without "--workspace" */
+        "/^npm run build(:\\S+)?$/": true,
+        "/^npm --workspace \\S+ run build(:\\S+)?$/": true,
+        /* allow running lint and testing tools */
+        "npm run lint": true,
+        "npx cypress": true,
+        "npx eslint": true,
+        "npx html-validate": true,
+        "npx markdownlint-cli2": true,
+        "npx prettier": true,
+        "npx stylelint": true,
+        "npx vitest": true
+    }
 }

@@ -26,13 +26,11 @@ export default defineComponent({
             required: false,
             default: undefined,
         },
-        /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
         formatter: {
             type: Function as PropType<FormatFunction<number>>,
             required: false,
             default: defaultFormatter,
         },
-        /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
         parser: {
             type: Function as PropType<ParseFunction<number>>,
             required: false,

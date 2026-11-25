@@ -27,7 +27,8 @@ async function installPlugins(
 }
 
 const disableVisualRegression = (() => {
-    return Boolean(process.env.CI);
+    const { env } = process;
+    return Boolean(env.CI || env.FKDS_DISABLE_VISUAL_REGRESSION);
 })();
 
 export default defineConfig(import.meta.dirname, {

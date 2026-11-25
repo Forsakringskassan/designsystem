@@ -17,9 +17,19 @@
   "license": "MIT",
   "author": "Försäkringskassan",
   "sideEffects": [
-    "./dist/**/*.css",
+    "./lib/**/*.css",
     "./src/**/*.scss"
   ],
+  "exports": {
+    ".": {
+      "types": "./type-stub.d.ts",
+      "sass": "./src/fkui.scss",
+      "default": "./lib/fkui.css"
+    },
+    "./lib/*": "./lib/*",
+    "./src/*": "./src/*",
+    "./stylelint/recommended": "./stylelint/recommended.js"
+  },
   "main": "./lib/fkui.css",
   "types": "type-stub.d.ts",
   "files": [
@@ -40,15 +50,15 @@
   "devDependencies": {
     "@fkui/icon-lib-default": "6.65.1",
     "@fkui/theme-default": "6.65.0",
-    "autoprefixer": "10.6.2",
+    "autoprefixer": "10.7.0",
     "cssnano": "9.9.0",
-    "postcss": "8.5.32",
+    "postcss": "8.5.33",
     "postcss-var-func-fallback": "3.0.1"
   },
   "peerDependencies": {
     "@fkui/theme-default": "^6.65.0",
     "sass": "^1.92.0",
-    "stylelint": ">= 14"
+    "stylelint": "^16.0.0 || ^17.0.0 || ^18.0.0"
   },
   "peerDependenciesMeta": {
     "sass": {
