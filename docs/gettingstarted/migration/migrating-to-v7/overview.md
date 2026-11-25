@@ -18,15 +18,14 @@ layout: article
 
 ### Övriga ändringar
 
-| Komponent                                                                   | Ändring                                                                    |
-| :-------------------------------------------------------------------------- | :------------------------------------------------------------------------- |
-| cypress                                                                     | Lorem ipsum                                                                |
-| {@link migrating-to-v7-vue#fcrudbutton FCrudButton}                         | Komponenten har tagits bort                                                |
-| Knapp (@fkui/design)                                                        | Lorem                                                                      |
-| {@link migrating-to-v7-vue#fcruddataset Datamängdredigerare (FCrudDataset)} | Modaler öppnas av applikationen via `onCreate`, `onUpdate` och `onDelete`. |
-| Modal (Fmodal)                                                              | Tagit bort template Api:et                                                 |
-| Steg för steg guide (FWizard)                                               | Focushantering är opt in istället för opt out                              |
-| {@link migrating-to-v7-vue#ftable Tabell (FTable)}                          | Egenskapen `text` har bytt namn till `screenreaderText`.                   |
+| Komponent                                             | Ändring                                                  |
+| :---------------------------------------------------- | :------------------------------------------------------- |
+| {@link migrating-to-v7-pageobjects cypress}           | Namnändringar, borttagna metoder                         |
+| {@link migrating-to-v7-vue#fcrudbutton (FCrudButton)} | Komponenten har tagits bort                              |
+| {@link migrating-to-v7-@fkui/design Knapp}            | Vissa klasser på `button` ersätts                        |
+| {@link migrating-to-v7-vue#FModal (Fmodal)}           | Tagit bort template Api:et                               |
+| {@link migrating-to-v7-vue#FWizard (FWizard)}         | Focushantering är opt in istället för opt out            |
+| {@link migrating-to-v7-vue#ftable Tabell (FTable)}    | Egenskapen `text` har bytt namn till `screenreaderText`. |
 
 ## ESM Only
 
