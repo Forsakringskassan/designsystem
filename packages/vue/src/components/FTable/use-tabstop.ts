@@ -208,12 +208,8 @@ function findClosestRemainingCell(
     rowIndex: number,
     oldCellIndex: number,
 ): HTMLElement {
-    let targetCellIndex = oldCellIndex;
-
     const targetCells = tableElement.rows[rowIndex].cells;
-    if (targetCells.length - 1 < oldCellIndex) {
-        targetCellIndex = targetCells.length - 1;
-    }
+    const targetCellIndex = Math.min(oldCellIndex, targetCells.length - 1);
 
     return getCellTarget(tableElement, rowIndex, targetCellIndex);
 }
