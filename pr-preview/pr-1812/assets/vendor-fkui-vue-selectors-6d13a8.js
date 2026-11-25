@@ -987,7 +987,7 @@ function FModalSelectors(selector = ":scope") {
      * the modal is visible.
      *
      * @public
-     * @since %version%
+     * @since v6.66.0
      * @returns The root selector for the modal.
      */
     get selector() {
@@ -1013,7 +1013,7 @@ function FModalSelectors(selector = ":scope") {
      * ```
      *
      * @public
-     * @since %version%
+     * @since v6.66.0
      * @returns A selector for the dialog element.
      */
     dialog() {
@@ -1040,7 +1040,7 @@ function FModalSelectors(selector = ":scope") {
      * ```
      *
      * @public
-     * @since %version%
+     * @since v6.66.0
      * @returns A selector for the header element.
      */
     header() {
@@ -1068,7 +1068,7 @@ function FModalSelectors(selector = ":scope") {
      * ```
      *
      * @public
-     * @since %version%
+     * @since v6.66.0
      * @returns A selector for the content element.
      */
     content() {
@@ -1105,7 +1105,7 @@ function FModalSelectors(selector = ":scope") {
      * ```
      *
      * @public
-     * @since %version%
+     * @since v6.66.0
      * @returns A selector for the footer element.
      */
     footer() {
@@ -1129,7 +1129,7 @@ function FModalSelectors(selector = ":scope") {
      * ```
      *
      * @public
-     * @since %version%
+     * @since v6.66.0
      * @returns A selector for the close button element.
      */
     closeButton() {
