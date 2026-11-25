@@ -18,7 +18,12 @@ const popupAnchor = useTemplateRef("popupAnchor");
             Öppna popup
         </f-button>
 
-        <i-popup :is-open :anchor="findHTMLElementFromVueRef(popupAnchor)" @close="isOpen = false">
+        <i-popup
+            :is-open
+            :anchor="findHTMLElementFromVueRef(popupAnchor)"
+            focus
+            @close="isOpen = false"
+        >
             <div class="popup-content">
                 <p>Innehåll i popupen.</p>
                 <div class="popup-actions">

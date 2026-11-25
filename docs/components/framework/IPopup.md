@@ -34,24 +34,31 @@ För att ändra styling beroende på om popup är overlay eller inline så kan d
 
 ## Fokushantering
 
-Som standard hanterar popup fokus själv genom att flytta fokus till första tabbningsbara element när den öppnas,
-samt att fokus återställs när popup stängs.
-
-Om du behöver sätta fokus på ett annat element när popup öppnas kan du
-använda `focus-element` som tar en funktion som returnerar det element du vill ska få fokus.
+Som standard hanterar popup inte fokus.
+Sätt `focus` till `true` för att flytta fokus till det första tabbningsbara elementet när popup öppnas.
+Fokus återställs då när popup stängs.
 
 ```html compare=ipopup-base
-<i-popup :is-open :anchor :focus-element="() => myFocusElement">
+<i-popup :is-open :anchor focus>
     <!-- popup content -->
 </i-popup>
 ```
 
-Du kan stänga av den automatiska fokushanteringen genom att sätta `set-focus` till `false`.
-För att själv sätta fokus i detta fallet kan du lyssna på `"open"` eventet
+Om du behöver sätta fokus på ett annat element när popup öppnas kan du
+använda `focus` med en funktion som returnerar det element du vill ska få fokus.
+Om funktionen returnerar `null` flyttas inte fokus och det återställs inte heller när popup stängs.
+
+```html compare=ipopup-base
+<i-popup :is-open :anchor :focus="() => myFocusElement">
+    <!-- popup content -->
+</i-popup>
+```
+
+För att själv sätta fokus kan du lyssna på `"open"` eventet
 som sänds när popup är synlig och beräkning av position är klar.
 
 ```html compare=ipopup-base
-<i-popup :is-open :anchor :set-focus="false">
+<i-popup :is-open :anchor @open="onOpenSetFocus">
     <!-- popup content -->
 </i-popup>
 ```

@@ -82,6 +82,16 @@ const arrayWithThreeTestItems = [
 ];
 
 describe("keyboard navigation", () => {
+    it("should restore focus to the opener when tabbing out", () => {
+        cy.viewport(1024, 600);
+        mountTestComponent(false, arrayWithThreeTestItems);
+        cy.get(toggleOpenPopupButtonId).click();
+        popupMenu.getItemLink(0).should("be.visible").focus();
+        cy.focused().trigger("keydown", { key: "Tab", shiftKey: true });
+        popupMenu.el().should("not.exist");
+        cy.get(toggleOpenPopupButtonId).should("have.focus");
+    });
+
     describe("when `enable-keyboard-navigation` is true", () => {
         beforeEach(() => {
             // Large enough to activate teleport.
