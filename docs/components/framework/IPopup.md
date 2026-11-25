@@ -10,6 +10,12 @@ Popup är en ramverkskomponent som används tillsammans med andra komponenter f�
 IPopupExample.vue
 ```
 
+```html name=ipopup-base hidden
+<i-popup :is-open :anchor>
+    <!-- popup content -->
+</i-popup>
+```
+
 ## Styling
 
 Som standard har popup enbart `box-shadow` när den är overlay och konsumenten ansvarar för all annan styling samt layout.
@@ -34,21 +40,20 @@ samt att fokus återställs när popup stängs.
 Om du behöver sätta fokus på ett annat element när popup öppnas kan du
 använda `focus-element` som tar en funktion som returnerar det element du vill ska få fokus.
 
-```diff
- <i-popup
-+    :focus-element="() => myFocusElement"
- >
+```html compare=ipopup-base
+<i-popup :is-open :anchor :focus-element="() => myFocusElement">
+    <!-- popup content -->
+</i-popup>
 ```
 
 Du kan stänga av den automatiska fokushanteringen genom att sätta `set-focus` till `false`.
 För att själv sätta fokus i detta fallet kan du lyssna på `"open"` eventet
 som sänds när popup är synlig och beräkning av position är klar.
 
-```diff
- <i-popup
-+    :set-focus="false"
-+    @open="onOpenSetFocus"
- >
+```html compare=ipopup-base
+<i-popup :is-open :anchor :set-focus="false">
+    <!-- popup content -->
+</i-popup>
 ```
 
 ## Teleport
@@ -92,8 +97,10 @@ Standardvärdet `anchor-overlap="allow"` tillåter att popupen använder en plac
 Sätt `anchor-overlap="never"` om ankaret alltid ska vara synligt.
 Då utesluts placeringar som överlappar ankaret, medan ordningen för övriga placeringar är oförändrad.
 
-```html
-<i-popup :anchor="anchor" :is-open="isOpen" anchor-overlap="never"></i-popup>
+```html compare=ipopup-base
+<i-popup :is-open :anchor anchor-overlap="never">
+    <!-- popup content -->
+</i-popup>
 ```
 
 Ifall ingen av ovanstående positioner fungerar kommer en fallback användas.
