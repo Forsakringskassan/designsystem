@@ -29460,9 +29460,9 @@ var toUnicode = function(input) {
 * Converts punycode labels (`xn--`) in the domain part of an email address to
 * unicode, e.g. `a@xn--5ca.example` becomes `a@å.example`.
 *
-* Browsers convert the domain of an `<input type="email">` to punycode but
-* the user expects to see what they typed. Labels which cannot be decoded
-* are left untouched.
+* Browsers differ in how they handle the domain of an `<input type="email">`.
+* Some (e.g. Chromium-based ones) convert it to punycode but the user expects
+* to see what they typed. Labels which cannot be decoded are left untouched.
 *
 * @internal
 */
