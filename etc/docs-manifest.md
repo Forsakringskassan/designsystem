@@ -266,9 +266,8 @@ gettingstarted/migration/migrating-to-v6/logic.html
 gettingstarted/migration/migrating-to-v6/overview.html
 gettingstarted/migration/migrating-to-v6/vue.html
 gettingstarted/migration/migrating-to-v7/design.html
-gettingstarted/migration/migrating-to-v7/modal-api-only.html
+gettingstarted/migration/migrating-to-v7/general.html
 gettingstarted/migration/migrating-to-v7/overview.html
-gettingstarted/migration/migrating-to-v7/pageobjects.html
 gettingstarted/migration/migrating-to-v7/theme-builder.html
 gettingstarted/migration/migrating-to-v7/vue.html
 gettingstarted/use-design-system/getting-started-application.html
