@@ -444,6 +444,78 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
 
 :::
 
+## `IPopup`
+
+Fokushantering är inte längre aktiv som standard i `IPopup`.
+Om popup tidigare använde standardbeteendet, lägg till `focus` för att fortsätta flytta fokus till det första tabbningsbara elementet när popup öppnas och återställa fokus när den stängs:
+
+```diff
+-<i-popup :is-open :anchor>
++<i-popup :is-open :anchor focus>
+```
+
+`set-focus`- och `focus-element`-proparna är borttagna och ersätts av en gemensam `focus`-prop.
+Ta bort `:set-focus="false"` eftersom avstängd fokushantering nu är standard, och ersätt `:set-focus="true"` med `focus`.
+Ett dynamiskt värde för `set-focus` kan istället skickas till `focus`:
+
+```diff
+-<i-popup :is-open :anchor :set-focus="shouldSetFocus">
++<i-popup :is-open :anchor :focus="shouldSetFocus">
+```
+
+Om du använder `focus-element`, skicka funktionen till `focus` istället:
+
+```diff
+-<i-popup :is-open :anchor :focus-element="getFocusElement">
++<i-popup :is-open :anchor :focus="getFocusElement">
+```
+
+Om båda propar används kan du flytta villkoret till en funktion som returnerar `null` när fokus inte ska flyttas.
+Exemplet utgår från att `shouldSetFocus` är en Vue-ref:
+
+```ts
+import { ref } from "vue";
+
+declare function getFocusElement(): HTMLElement;
+
+const shouldSetFocus = ref(false);
+
+/* --- cut above --- */
+
+function getPopupFocusElement(): HTMLElement | null {
+    return shouldSetFocus.value ? getFocusElement() : null;
+}
+```
+
+```diff
+-<i-popup :is-open :anchor :set-focus="shouldSetFocus" :focus-element="getFocusElement">
++<i-popup :is-open :anchor :focus="getPopupFocusElement">
+```
+
+Du kan också använda ett beräknat värde som returnerar elementet eller `null` och skicka en funktion som returnerar det värdet till `focus`.
+Se då till att det beräknade värdets beroenden är reaktiva.
+
+Om funktionen returnerar `null` flyttas inte fokus och det återställs inte heller när popup stängs.
+Om funktionen returnerar ett element flyttas fokus dit och återställs när popup stängs.
+
+::: details 🤖 Prompt för AI Agenter
+
+Sök igenom applikationens användningar av `IPopup` och `<i-popup>`, inklusive renderfunktioner och JSX.
+Migrera `setFocus`/`set-focus` och `focusElement`/`focus-element` till den nya propen `focus` utan att ändra komponentimplementationen.
+
+För användningar utan någon av de gamla fokuspropsen, lägg till `focus` för att behålla det tidigare standardbeteendet.
+Ta bort statiska `:set-focus="false"`-bindningar och eventuell `focus-element` på samma användning eftersom fokus då inte ska hanteras.
+Ersätt ett aktivt `set-focus` utan `focus-element` med `focus` och överför dynamiska booleska värden till `focus`.
+Ersätt `focus-element` med `focus` när fokushantering är aktiv.
+Om `set-focus` är dynamisk och `focus-element` används, använd en funktion som returnerar fokusmålet när fokus ska hanteras och annars `null`, eller ett reaktivt beräknat värde som funktionen returnerar.
+Kontrollera även om en dynamisk `focus-element` kan saknas och bevara i så fall tidigare fallback till det första tabbningsbara elementet när fokushantering är aktiv.
+Kontrollera särskilt funktioner som kan returnera `null` eller popup-fönster utan tabbningsbara element.
+I version 7 återställs inte fokus i dessa fall; uppmärksamma användaren på beteendeförändringen och undersök om applikationen behöver egen fokushantering.
+Verifiera resultatet genom att bygga projektet och köra relevanta tester, inklusive tester för fokus när popup öppnas och stängs.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.
+
+:::
+
 ## FWizard
 
 I version 7 är initialt fokus på det första steget avstängt som standard.

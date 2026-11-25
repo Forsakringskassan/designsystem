@@ -1125,7 +1125,7 @@ export const IPopup: typeof __VLS_export_74;
 // @public (undocumented)
 export interface IPopupData {
     // (undocumented)
-    focus: StackHandle | null;
+    focusHandle: StackHandle | null;
     // (undocumented)
     placement: Placement;
     // (undocumented)
