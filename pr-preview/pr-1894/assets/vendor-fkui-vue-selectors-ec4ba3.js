@@ -194,60 +194,6 @@ function FCrudDatasetSelectors(selector = ":scope") {
      */
     addButtonTop() {
       return `${selector} [data-test="f-crud-dataset-add-button-top"]`;
-    },
-    /**
-     * Get the cancel button element.
-     *
-     * The cancel button is present in the modal footer when the add or edit
-     * form is open.
-     *
-     * @example Cypress
-     *
-     * ```ts
-     * const { cancelButton } = FCrudDatasetSelectors();
-     * cy.get(cancelButton()).click();
-     * ```
-     *
-     * @example Playwright
-     *
-     * ```ts
-     * const { cancelButton } = FCrudDatasetSelectors();
-     * await page.locator(cancelButton()).click();
-     * ```
-     *
-     * @public
-     * @since v6.52.0
-     * @returns A selector for the cancel button element.
-     */
-    cancelButton() {
-      return `${selector} .modal__footer > .button-group > .button--secondary`;
-    },
-    /**
-     * Get the confirm button element.
-     *
-     * The confirm button is present in the modal footer when the add or edit
-     * form is open.
-     *
-     * @example Cypress
-     *
-     * ```ts
-     * const { confirmButton } = FCrudDatasetSelectors();
-     * cy.get(confirmButton()).click();
-     * ```
-     *
-     * @example Playwright
-     *
-     * ```ts
-     * const { confirmButton } = FCrudDatasetSelectors();
-     * await page.locator(confirmButton()).click();
-     * ```
-     *
-     * @public
-     * @since v6.52.0
-     * @returns A selector for the confirm button element.
-     */
-    confirmButton() {
-      return `${selector} .modal__footer > .button-group > .button--primary`;
     }
   });
 }

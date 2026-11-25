@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/components/table-and-list/examples/FCrudDatasetAdditionalButtons.vue:FCrudDatasetAdditionalButtons-932651.js
+// virtual-entry:virtual:docs/components/table-and-list/examples/FCrudDatasetAdditionalButtons.vue:FCrudDatasetAdditionalButtons-04c0a6.js
 import { defineComponent as _defineComponent } from "vue";
 import { FCrudDataset } from "@fkui/vue";
 import { normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -36,10 +36,13 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "FCrudDatasetAdditionalButtons",
   setup(__props, { expose: __expose }) {
     __expose();
+    function onCreate() {
+      alert("Add clicked");
+    }
     function onClick() {
       alert("My button clicked");
     }
-    const __returned__ = { onClick, get FCrudDataset() {
+    const __returned__ = { onCreate, onClick, get FCrudDataset() {
       return FCrudDataset;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -47,9 +50,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
   }
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createBlock($setup["FCrudDataset"], null, {
-    default: _withCtx(() => [..._cache[0] || (_cache[0] = [])]),
-    add: _withCtx(() => [..._cache[1] || (_cache[1] = [])]),
+  return _openBlock(), _createBlock($setup["FCrudDataset"], { "on-create": $setup.onCreate }, {
     buttons: _withCtx(({ buttonClasses }) => [
       _createElementVNode(
         "button",
@@ -70,7 +71,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-932651"
+  selector: "#example-04c0a6"
 });
 export {
   render
