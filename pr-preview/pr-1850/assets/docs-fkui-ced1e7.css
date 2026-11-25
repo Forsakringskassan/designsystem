@@ -38,7 +38,6 @@
     --fkds-palette-color-neutral-100: #ecedef;
     --fkds-palette-color-neutral-50: #f7f7f8;
     --fkds-palette-color-neutral-0: #ffffff;
-    --fkds-palette-color-neutral-1337: var(--fkds-palette-color-neutral-0);
     --fkds-palette-color-blue-900: #0e1623;
     --fkds-palette-color-blue-800: #162f5d;
     --fkds-palette-color-blue-700: #1b478d;
@@ -282,7 +281,6 @@
     --fkds-palette-color-neutral-100: #ecedef;
     --fkds-palette-color-neutral-50: #f7f7f8;
     --fkds-palette-color-neutral-0: #ffffff;
-    --fkds-palette-color-neutral-1337: var(--fkds-palette-color-neutral-0);
     --fkds-palette-color-blue-900: #0e1623;
     --fkds-palette-color-blue-800: #162f5d;
     --fkds-palette-color-blue-700: #1b478d;

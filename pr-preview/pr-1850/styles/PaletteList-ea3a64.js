@@ -94,11 +94,6 @@ var metadata_default = {
       "group": "Neutral"
     },
     {
-      "name": "--fkds-palette-color-neutral-1337",
-      "value": "var(--fkds-palette-color-neutral-0)",
-      "group": "Neutral"
-    },
-    {
       "name": "--fkds-palette-color-blue-900",
       "value": "#0e1623",
       "group": "Blue"
