@@ -7127,7 +7127,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/cb88871006b966456faf5a6f29a0214e1d80f216/packages/vue/src/internal-components/IPopup/IPopup.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/7653f9c7de0e7c6a727d7afdf15dcc98618c82b0/packages/vue/src/internal-components/IPopup/IPopup.vue">
                 IPopup
             </a>
             
@@ -7320,15 +7320,15 @@ samt att fokus återställs när popup stängs.</p>
 använda <code>focus-element</code> som tar en funktion som returnerar det element du vill ska få fokus.</p>
 
                 <div
-                    id="example-b24700"
+                    id="example-154049"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;i-popup :is-open&gt;</span>
-<span class="hljs-addition">+&lt;i-popup :is-open :focus-element=&quot;() =&gt; myFocusElement&quot;&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;i-popup :is-open :anchor&gt;</span>
+<span class="hljs-addition">+&lt;i-popup :is-open :anchor :focus-element=&quot;() =&gt; myFocusElement&quot;&gt;</span>
      &lt;!-- popup content --&gt;
  &lt;/i-popup&gt;
 </code></pre>
@@ -7338,15 +7338,15 @@ För att själv sätta fokus i detta fallet kan du lyssna på <code>&quot;open&q
 som sänds när popup är synlig och beräkning av position är klar.</p>
 
                 <div
-                    id="example-3ef7ef"
+                    id="example-337bfa"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;i-popup :is-open&gt;</span>
-<span class="hljs-addition">+&lt;i-popup :is-open :set-focus=&quot;false&quot;&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;i-popup :is-open :anchor&gt;</span>
+<span class="hljs-addition">+&lt;i-popup :is-open :anchor :set-focus=&quot;false&quot;&gt;</span>
      &lt;!-- popup content --&gt;
  &lt;/i-popup&gt;
 </code></pre>
@@ -7384,15 +7384,15 @@ Sätt <code>anchor-overlap=&quot;never&quot;</code> om ankaret alltid ska vara s
 Då utesluts placeringar som överlappar ankaret, medan ordningen för övriga placeringar är oförändrad.</p>
 
                 <div
-                    id="example-a02bcd"
+                    id="example-bda3da"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;i-popup :is-open&gt;</span>
-<span class="hljs-addition">+&lt;i-popup :is-open :anchor=&quot;anchor&quot; anchor-overlap=&quot;never&quot;&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;i-popup :is-open :anchor&gt;</span>
+<span class="hljs-addition">+&lt;i-popup :is-open :anchor anchor-overlap=&quot;never&quot;&gt;</span>
      &lt;!-- popup content --&gt;
  &lt;/i-popup&gt;
 </code></pre>
@@ -8022,9 +8022,9 @@ När popupen öppnas nästa gång väljs placeringen på nytt.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">docs/ipopup</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/cb88871006b966456faf5a6f29a0214e1d80f216">cb88871</a>)<br />
+<div class="version"><span class="version-text-block">docs/ipopup</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/7653f9c7de0e7c6a727d7afdf15dcc98618c82b0">7653f9c</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1903">PR 1903</a><br />
-       <span class="version-text-block">2026-11-25 14:02</span>
+       <span class="version-text-block">2026-11-25 14:14</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
