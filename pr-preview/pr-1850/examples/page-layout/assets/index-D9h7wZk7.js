@@ -22697,7 +22697,8 @@ var _hoisted_3$5 = { class: "imenu__list__anchor-container" };
 var _hoisted_4$4 = [
 	"data-ref-index",
 	"href",
-	"target"
+	"target",
+	"aria-current"
 ];
 var _hoisted_5$4 = {
 	key: 0,
@@ -22742,7 +22743,8 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
 					href: item.href,
 					target: item.target,
 					class: "imenu__list__anchor",
-					role: "menuitem"
+					role: "menuitem",
+					"aria-current": item.key === _ctx.selectedItem ? "page" : void 0
 				}, [_ctx.showItemSrText(index) ? (openBlock(), createElementBlock("span", _hoisted_5$4, [createBaseVNode("span", null, toDisplayString(_ctx.selectedItemSrText) + "\xA0", 1)])) : createCommentVNode("v-if", true), createTextVNode(" " + toDisplayString(item.label), 1)], 8, _hoisted_4$4)])], 10, _hoisted_2$7);
 			}), 128)),
 			_cache[6] || (_cache[6] = createTextVNode()),
