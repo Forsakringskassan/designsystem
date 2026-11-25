@@ -6340,20 +6340,23 @@ med hela namnet.</p>
 <h3 id="sass_variabler_stods_fortfarande" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#sass_variabler_stods_fortfarande">Sass-variabler stöds fortfarande</a></h3><p class="docs-paragraph">Sass-variabler läses fortfarande från palettkällans rotnivå med sitt
 fullständiga namn, till exempel <code>$palette-color-neutral-900</code>.</p>
 <p class="docs-paragraph">Sass- och CSS-variabler grupperas med <code>@group</code>, precis som tidigare.</p>
-<h3 id="temaexporterna_ar_es_moduler" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#temaexporterna_ar_es_moduler">Temaexporterna är ES-moduler</a></h3><p class="docs-paragraph">Temaexporterna är ES-moduler i stället för CommonJS-moduler.
-Filerna använder nu tillägget <code>.mjs</code>, exempelvis <code>theme-light.mjs</code>.</p>
-<p class="docs-paragraph">Importera temavariablerna med ESM och dess default-export:</p>
+<h3 id="temavariabler_finns_i_metadata" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#temavariabler_finns_i_metadata">Temavariabler finns i metadata</a></h3><p class="docs-paragraph"><code>@fkui/theme-default</code> exporterar inte längre temavariabler som separata JavaScript-objekt.
+Använd metadata för att läsa värden för de semantiska variablerna:</p>
 
                 <div
-                    id="example-5b2698"
+                    id="example-a217e7"
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="diff"
+                    data-language="javascript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-const variables = require(&quot;@fkui/theme-default/dist/theme-light.js&quot;);</span>
-<span class="hljs-addition">+import variables from &quot;@fkui/theme-default/theme-light&quot;;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> metadata <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/theme-default/metadata&quot;</span>;
+
+<span class="hljs-keyword">const</span> tokens = metadata.<span class="hljs-property">tokens</span>.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">token</span>) =&gt;</span> ({
+    <span class="hljs-attr">name</span>: token.<span class="hljs-property">name</span>,
+    <span class="hljs-attr">value</span>: token.<span class="hljs-property">values</span>.<span class="hljs-property">light</span>.<span class="hljs-property">value</span>,
+}));
 </code></pre>
                 </div>
             
@@ -6424,9 +6427,9 @@ Filerna använder nu tillägget <code>.mjs</code>, exempelvis <code>theme-light.
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">theme-default-exports</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/21e3e7994363596ed70e12e10edd553b24c00591">21e3e79</a>)<br />
+<div class="version"><span class="version-text-block">theme-default-exports</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/b76346ce4d59aae5dbc1dc8d459ca43fb5439ee4">b76346c</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1894">PR 1894</a><br />
-       <span class="version-text-block">2026-11-25 11:44</span>
+       <span class="version-text-block">2026-11-25 14:07</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
