@@ -5,6 +5,10 @@ name: migrating-to-v7-@fkui/design
 layout: article
 ---
 
+| Ändring i                                                                                  | Beskrivning                        |
+| :----------------------------------------------------------------------------------------- | :--------------------------------- |
+| {@link migrating-to-v7-@fkui/design#ersattning_av_klasser_pa_knappar Knapp (@fkui/design)} | Vissa klasser på `button` ersätts. |
+
 ## Ersättning av klasser på knappar
 
 Vissa klasser på `button` ersätts med andra.

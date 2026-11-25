@@ -1,6 +1,6 @@
 ---
 title: "Version 7 migreringsguide: Ändringar i theme-builder"
-short-title: Theme-builder
+short-title: "@fkui/theme-builder"
 name: migrating-to-v7-theme-builder
 layout: article
 ---

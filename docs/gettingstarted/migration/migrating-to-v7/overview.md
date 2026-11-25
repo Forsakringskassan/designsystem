@@ -6,155 +6,51 @@ sortorder: 1
 layout: article
 ---
 
-## Sammanfattning
+Den här guiden hjälper dig att migrera din applikation från v6 till v7.
 
-### Esm Only
+På den här sidan finns en sammanställning och över de brytande ändringar som du behöver hantera för din applikation.
+Här finns även en översikt över andra ändringar i releasen som inte är brytande.
 
-FKUI-paketen stöder nu bara ESM, inte CommonJS (CJS).
+## Brytande ändringar
 
-[Läs mer hur du migrerar.](#esm_only--1)
+### Generellt
 
-### `@fkui/theme-desktop` avvecklas
+| Ändring i                                         | Beskrivning                                             |
+| :------------------------------------------------ | :------------------------------------------------------ |
+| {@link migrating-to-v7-general JavaScript-ingång} | FKUI-paketen stöder nu bara ESM, inte CommonJS (CJS).   |
+| {@link migrating-to-v7-general Cypress}           | Namnändringar och borttagna metoder i våra Pageobjects. |
 
-[Läs mer hur du migrerar.](#fkui_theme_desktop_avvecklas--2)
+### @fkui/design
 
-### Färgpaletten omskriven till CSS-variabler
+| Ändring i                                                                                  | Beskrivning                        |
+| :----------------------------------------------------------------------------------------- | :--------------------------------- |
+| {@link migrating-to-v7-@fkui/design#ersattning_av_klasser_pa_knappar Knapp (@fkui/design)} | Vissa klasser på `button` ersätts. |
 
-[Läs mer hur du migrerar.](#fargpaletten_ar_css_variabler--3)
+### @fkui/vue
 
-### Standardtemat ingår inte längre i byggd CSS
-
-Den kompilerade versionen utav `@fkui/design` innehåller inte längre det ljusa temat.
-
-{@link migrating-to-v7-@fkui/design#borttag_utav_tema_i_forkompilerad_css Läs mer hur du migrerar.}
-
-### Användning av `@fkui/theme-default` förändras
-
-[Läs mer hur du migrerar](#anvandning_av_fkui_theme_default_forandras--4)
+| Ändring i                                           | Beskrivning                                              |
+| :-------------------------------------------------- | :------------------------------------------------------- |
+| {@link migrating-to-v7-vue#fmodal Modal (Fmodal)}   | Tagit bort template Api:et.                              |
+| {@link migrating-to-v7-vue#fwizard Guide (FWizard)} | Focushantering är opt in istället för opt out            |
+| {@link migrating-to-v7-vue#ftable Tabell (FTable)}  | Egenskapen `text` har bytt namn till `screenreaderText`. |
 
 ### Övriga ändringar
 
-| Komponent                                                                                  | Ändring                                                  |
-| :----------------------------------------------------------------------------------------- | :------------------------------------------------------- |
-| {@link migrating-to-v7-pageobjects Cypress}                                                | Namnändringar och borttagna metoder i våra Pageobjects.  |
-| {@link migrating-to-v7-vue#fcrudbutton FCrudButton (FCrudButton)}                          | Komponenten har tagits bort.                             |
-| {@link migrating-to-v7-@fkui/design#ersattning_av_klasser_pa_knappar Knapp (@fkui/design)} | Vissa klasser på `button` ersätts.                       |
-| {@link migrating-to-v7-vue#FModal Modal (Fmodal)}                                          | Tagit bort template Api:et.                              |
-| {@link migrating-to-v7-vue#ipopup Popup (IPopup)}                                          | Fokushantering och tangentbordsfälla är opt in.          |
-| {@link migrating-to-v7-vue#FWizard Steg för steg (FWizard)}                                | Focushantering är opt in istället för opt out            |
-| {@link migrating-to-v7-vue#ftable Tabell (FTable)}                                         | Egenskapen `text` har bytt namn till `screenreaderText`. |
-| {@link migrating-to-v7-theme-builder @fkui/theme-builder}                                  | Flera uppdateringar för dig som bygger dina egna teman.  |
+| Ändring i                                   | Beskrivning                                             |
+| :------------------------------------------ | :------------------------------------------------------ |
+| {@link migrating-to-v7-theme-builder Teman} | Flera uppdateringar för dig som bygger dina egna teman. |
 
-## ESM Only
+## Övriga ändringar
 
-### Vad innebär ESM only?
+Sammanfattning av övriga ändringar som inte är brytande.
 
-ESM (ECMAScript Modules) är JavaScripts standardformat för moduler och använder `import` och `export`.
-I version 7 exponerar FKUI-paketen sina JavaScript-ingångar som ESM.
-CommonJS-ingångar via `require()` stöds inte längre som ett publikt sätt att ladda paketen.
+| Ändring i                    | Beskrivning                                      |
+| :--------------------------- | :----------------------------------------------- |
+| Länk till info om färgpalett | Ny färgpalett i fkui.                            |
+| Länk till info om stängknapp | Ny stängknapp i datumväljare, modal och tooltip. |
 
-Om du använder `require()` för att importera ett FKUI-paket behöver du ändra koden till ESM-import:
+## Kontakta oss
 
-```diff
--const date = require("@fkui/date");
-+import * as date from "@fkui/date";
-```
+Har du frågor om migreringen till v7.0.0?
 
-### Vite-användare
-
-Om applikationen använder Vite behöver du normalt inte ändra någon Vite-konfiguration.
-Importera FKUI-paketen med `import` i applikationskoden, precis som tidigare.
-Vite hanterar ESM-importerna när applikationen körs och byggs.
-
-Om du däremot kör JavaScript direkt i Node.js behöver filen vara en ES-modul.
-Ange då `"type": "module"` i projektets `package.json`, eller använd filändelsen `.mjs`.
-
-#### Test och andra byggverktyg
-
-Kontrollera även test och byggverktyg samt konfigurationsfiler som laddar FKUI-paketen.
-De måste kunna hantera ESM, direkt eller genom ett byggsteg.
-
-## `@fkui/theme-desktop` avvecklas
-
-`@fkui/theme-desktop` kommer inte längre att underhållas eller få uppdateringar.
-Ersätt det med [`@fkui-community/theme-int`](https://www.npmjs.com/package/@fkui-community/theme-int).
-
-### Migrering
-
-Avinstallera `@fkui/theme-desktop` och installera sedan ersättaren:
-
-```bash
-npm uninstall @fkui/theme-desktop
-npm install @fkui-community/theme-int
-```
-
-Byt därefter ut importen av `@fkui/theme-desktop` mot importen av det nya temat.
-Gör ändringen i den Sass-fil där temat importeras, till exempel `src/main.scss`:
-
-```css
-@use "@fkui-community/theme-int";
-```
-
-Importen läser in det ljusa färgschemat som standard.
-Information om hur du konfigurerar ljust och mörkt läge finns i dokumentationen för [`@fkui-community/theme-int`](https://www.npmjs.com/package/@fkui-community/theme-int).
-
-## Färgpaletten är CSS-variabler
-
-Detta påverkar dig som använder Sass-variabler från `@fkui/theme-default`.
-
-I version 7 är färgpaletten i `@fkui/theme-default` CSS-variabler istället för Sass-variabler.
-Paletten följer namnstandarden `--fkds-palette-color-<namn>`, till exempel `--fkds-palette-color-neutral-900`.
-
-Sass-variablerna `$palette-color-<namn>` i `@fkui/theme-default/src/palette-variables` finns inte längre.
-
-### Migrering
-
-Ersätt Sass-variabler med motsvarande CSS-variabel.
-Använd om möjligt de semantiska färgvariablerna istället för paletten direkt.
-
-```diff
--@use "@fkui/theme-default/src/palette-variables" as *;
--
- .my-component {
--    color: $palette-color-neutral-900;
-+    color: var(--fkds-palette-color-neutral-900);
- }
-```
-
-### Använd semantiska variabler i applikationer
-
-Applikationer bör inte ha beroenden till färgpaletten.
-
-Använd i stället de semantiska CSS-variabler som beskriver färgens avsedda
-användning.
-Paletten är en intern källa till färger för temana och kan ändras utan att
-applikationens färgval ska behöva uppdateras.
-
-## Användning av `@fkui/theme-default` förändras
-
-Tidigare räckte det att använda `@use "@fkui/theme-default"` i Sass för att indirekt lägga det ljusa temats CSS-variabler globalt i din applikation.
-
-Det sker inte längre automatiskt.
-
-För att använda det ljusa temat på hela sidan med Sass, använd mixinen `theme.light`:
-
-```scss
-@use "@fkui/theme-default" as theme;
-
-:root {
-    @include theme.light;
-}
-
-/* Begränsa temats CSS-variabler till den här delen av sidan */
-.my-scope {
-    @include theme.light;
-}
-```
-
-Du kan också importera CSS-filen från applikationens JavaScript:
-
-```js
-import "@fkui/theme-default/theme-light";
-```
-
-Läs mer om hur du använder standardtemat i [dokumentationen för `@fkui/theme-default`](https://github.com/Forsakringskassan/designsystem/tree/main/packages/theme-default).
+Gå till {@link help-and-support Hjälp och support} för kontaktinformation.

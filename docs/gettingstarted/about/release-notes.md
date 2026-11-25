@@ -9,6 +9,19 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version %version%
+
+2026-12-02
+
+### Ny release med brytande ändringar
+
+Releasen innehåller bland annat följande uppdateringar:
+
+- ny färgpalett
+- fyll på
+
+{@link migrating-to-v7 Läs mer i migreringsguiden för version 7}
+
 ## Version v6.65.0
 
 2026-11-11

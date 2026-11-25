@@ -7,6 +7,16 @@ redirect_from:
     - gettingstarted/migration/migrating-crud-button.html
 ---
 
+| Ändring i                                                                         | Beskrivning                                              |
+| :-------------------------------------------------------------------------------- | :------------------------------------------------------- |
+| {@link migrating-to-v7-vue#fmodal Modal (Fmodal)}                                 | Tagit bort template Api:et.                              |
+| {@link migrating-to-v7-vue#fwizard Guide (FWizard)}                               | Focushantering är opt in istället för opt out            |
+| {@link migrating-to-v7-vue#ftable Tabell (FTable)}                                | Egenskapen `text` har bytt namn till `screenreaderText`. |
+| {@link migrating-to-v7-vue#fvalidationform Valideringsformulär (FValidationForm)} | Propen `useErrorList` är inte längre aktiv som standard. |
+| {@link migrating-to-v7-vue#fformmodal Formulärsmodal (FFormModal)}                | Propen `useErrorList` är inte längre aktiv som standard. |
+| {@link migrating-to-v7-vue#fcrudbutton FCrudButton}                               | FCrudDataset öppnar inte längre några modaler själv.     |
+| {@link migrating-to-v7-vue#fcruddataset FCrudDataset}                             | Komponent är ...                                         |
+
 ## FCrudButton
 
 Komponenten `FCrudButton` är borttagen.
@@ -225,6 +235,15 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
 
 :::
 
+## FCrudDataset
+
+{@link FCrudDataset `FCrudDataset`} öppnar nu också sina modaler programmatiskt.
+Innehållet i slottarna `#add`, `#modify` och `#delete` renderas därför i en separat Vue-applikation (på samma sätt som för `openModal()`), men modalen placeras fortfarande inuti `.crud-dataset`-elementet så selektorer och pageobjects fungerar som tidigare.
+
+Det kan påverka er applikation om:
+
+- komponenter i slottarna `#add`, `#modify` eller `#delete` använder `inject()` för att hämta värden som tillhandahålls (`provide()`) av en komponent ovanför `FCrudDataset`.
+
 ## `FCrudDataset`
 
 `FCrudDataset` öppnar inte längre några modaler själv.
@@ -317,7 +336,7 @@ async function onDelete(
 }
 ```
 
-Innehållet från slottarna `#add` och `#modify` flyttas till en egen modalkomponent baserad på `FFormModal` (se {@link migrating-to-v7-modal-api Modal API only}).
+Innehållet från slottarna `#add` och `#modify` flyttas till en egen modalkomponent baserad på `FFormModal` (se {@link migrating-to-v7-vue Modal API only}).
 `onUpdate` får en kopia av objektet, så originalet lämnas orört om användaren avbryter.
 Skicka det ändrade objektet till `commit()`.
 
@@ -349,6 +368,86 @@ Verifiera resultatet genom att bygga projektet och köra enhetstester.
 :::
 
 ## `FModal`
+
+Nu finns enbart stöd för att öppna modaler programmatiskt
+
+Tidigare kunde en applikation ha en modal inbäddad i sin template och styra den med `is-open`:
+
+```vue static
+<script setup lang="ts">
+import { ref } from "vue";
+import { FButton, FModal } from "@fkui/vue";
+
+const isOpen = ref(false);
+
+function onClick(): void {
+    isOpen.value = true;
+}
+
+function onClose(): void {
+    isOpen.value = false;
+}
+</script>
+
+<template>
+    <f-button size="medium" variant="secondary" @click="onClick">
+        Öppna modal
+    </f-button>
+
+    <f-modal :is-open @close="onClose">
+        <template #header> My awesome modal </template>
+        <template #content> My awesome content </template>
+        <template #footer>
+            <div class="button-group">
+                <f-button
+                    class="button-group__item"
+                    size="large"
+                    variant="primary"
+                    @click="onClose"
+                >
+                    Close
+                </f-button>
+            </div>
+        </template>
+    </f-modal>
+</template>
+```
+
+För att öppna modalen programmatiskt istället:
+
+1. Flytta modalen till en egen komponent, till exempel `MyAwesomeModal.vue`.
+   Vid stängning ska modalen skicka ett `close`-event:
+
+```import static
+MyAwesomeModal.vue
+```
+
+2. Öppna sedan modalen med `openModal()` från {@link useModal `useModal()`}:
+
+```import static
+FModalUsage.vue
+```
+
+### `is-open` har tagits bort
+
+Egenskapen `is-open` har tagits bort från `FModal`, `FConfirmModal` och `FFormModal`.
+En modal är alltid öppen när den renderas och stängs genom att den tas bort (vilket `openModal()` gör när `close`-eventet skickas).
+
+```diff
+-<f-modal :is-open></f-modal>
++<f-modal></f-modal>
+```
+
+::: details 🤖 Prompt för AI Agenter
+
+Leta efter `FModal`, `FConfirmModal` och `FFormModal` som har proppen `is-open` och ta bort den.
+
+Verifiera resultatet genom att bygga projektet och köra relevanta tester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.
+
+:::
+
+## FModal
 
 Propen `size` stödjer inte längre aliaset `fullscreen` och är ersatt med `fullwidth`.
 
