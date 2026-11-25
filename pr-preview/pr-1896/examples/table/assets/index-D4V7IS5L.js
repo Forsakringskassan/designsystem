@@ -21215,6 +21215,113 @@ var config = {
 		return production;
 	}
 };
+/**
+* @internal
+* @param callingInstance - Calling component
+*/
+function getRunningContext(callingInstance) {
+	if (!callingInstance.$fkui) throw new Error("Application running context is unset. Call `setRunningContext(app)` after `app = createApp(..)`.");
+	return callingInstance.$fkui;
+}
+function getTargetElement(target) {
+	if (!target) return document.body;
+	if (typeof target !== "string") return target;
+	const element = document.querySelector(target);
+	if (!element) throw new Error(`mountComponent(..) requires a target element (selector "${target}" returned no element)`);
+	return element;
+}
+function createContainer(options) {
+	const { attachTo, attachFirst } = options;
+	const parent = getTargetElement(attachTo);
+	const element = document.createElement("div");
+	if (attachFirst) parent.insertBefore(element, parent.firstChild);
+	else parent.append(element);
+	return element;
+}
+/**
+* Create an instance of a component and mount it to given element.
+*
+* @public
+* @param callingInstance - Calling component.
+* @param Component - Component to mount.
+* @param options - Mount options.
+* @returns - Function to unmount component.
+*
+* @throws Error
+* Throw if [[Component]] is `undefined` or the `attachTo` selector does not
+* exist.
+*/
+function mountComponent(callingInstance, Component, options = {}) {
+	if (!Component) throw new Error("mountComponent(..) called without a component");
+	const { attachTo, attachFirst = false, ...data } = options;
+	const el = createContainer({
+		attachTo,
+		attachFirst
+	});
+	const app = createApp(Component, data);
+	const fkuiContext = getRunningContext(callingInstance);
+	if (fkuiContext) Object.assign(app._context, fkuiContext.appContext);
+	app.mount(el);
+	const unmount = app.unmount;
+	app.unmount = () => {
+		unmount.call(app);
+		if (el.parentNode) el.remove();
+	};
+	return app;
+}
+function unpackPayload(event, src) {
+	const { reason = event, data: rawData } = src !== null && src !== void 0 ? src : {};
+	return {
+		reason,
+		data: rawData
+	};
+}
+function openModal(callingInstance, Component, options) {
+	if (typeof options === "string") options = { props: { content: options } };
+	const { attachTo, props } = {
+		attachTo: config.teleportTarget,
+		props: {},
+		...options
+	};
+	return new Promise((resolve, reject) => {
+		const terminate = (event, payload) => {
+			try {
+				const result = unpackPayload(event, payload);
+				app.unmount();
+				resolve(result);
+			} catch (err) /* istanbul ignore next */ {
+				console.error(err);
+				reject(err);
+			}
+		};
+		const app = mountComponent(callingInstance, Component, {
+			attachTo,
+			isOpen: true,
+			onClose(data) {
+				terminate("close", data);
+			},
+			...props
+		});
+	});
+}
+/**
+* Open a form modal and return the results from the input fields.
+*
+* @public
+* @param callingInstance - Calling component.
+* @param Component - Vue component to render.
+* @param options - Component options.
+* @returns A promise resolved with values from input fields or rejected if user cancels.
+*/
+async function formModal(callingInstance, Component, options) {
+	var _options$size;
+	const result = await openModal(callingInstance, Component, { props: {
+		size: (_options$size = options?.size) !== null && _options$size !== void 0 ? _options$size : "",
+		...options?.props
+	} });
+	if (result.reason === "submit") return result.data;
+	throw "cancel";
+}
 (/* @__PURE__ */ __commonJSMin((() => {
 	var $ = require_export();
 	var call = require_function_call();
@@ -22534,6 +22641,31 @@ function _sfc_render$42(_ctx, _cache, $props, $setup, $data, $options) {
 	]);
 }
 var FFormModal_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FFormModal_vue_vue_type_script_lang_default, [["render", _sfc_render$42]]);
+/**
+* Open a confirmation modal with given text.
+*
+* @public
+* @param texts - Texts to show in modal.
+* @returns A promise resolved with a `true` if modal was dismissed in a
+* positive manner ("Yes, I want to ...") or `false` if dismissed in a negative manner ("No, don't ...")
+*/
+async function confirmModal(callingInstance, texts) {
+	const buttons = [{
+		label: texts.confirm,
+		event: "confirm",
+		type: "primary"
+	}, {
+		label: texts.dismiss,
+		event: "dismiss",
+		type: "secondary"
+	}];
+	const { reason } = await openModal(callingInstance, FConfirmModal_default, { props: {
+		heading: texts.heading,
+		content: texts.content,
+		buttons
+	} });
+	return reason === "confirm";
+}
 var defaultOptions$1 = {
 	stripClasses: ["sr-only"],
 	componentPlaceholder: false
@@ -22623,6 +22755,25 @@ function hasSlot(vm, name, props = {}, options = {}) {
 		...options
 	};
 	return Boolean(renderSlotText(slot, props, effectiveOptions));
+}
+/**
+* @public
+*/
+function useModal() {
+	const instance = getCurrentInstance();
+	if (!instance) throw new Error(`useModal(..) used outside component scope`);
+	const context = { $fkui: instance };
+	return {
+		openModal(component, options) {
+			return openModal(context, component, options);
+		},
+		confirmModal(texts) {
+			return confirmModal(context, texts);
+		},
+		formModal(component, options) {
+			return formModal(context, component, options);
+		}
+	};
 }
 require_es_iterator_for_each();
 require_es_array_buffer_detached();
@@ -26887,269 +27038,193 @@ var FContextMenu_default = /* @__PURE__ */ defineComponent({
 		};
 	}
 });
-function filterItem(items, target, nested) {
-	const newItems = [...items];
-	for (let i = 0; i < newItems.length; i++) {
-		const item = newItems[i];
-		if (item === target) {
-			newItems.splice(i, 1);
-			return newItems;
-		}
-		if (!(nested && Array.isArray(item[nested]))) continue;
-		const nestedItems = item[nested];
-		const nestedIndex = nestedItems.indexOf(target);
-		if (nestedIndex !== -1) {
-			nestedItems.splice(nestedIndex, 1);
-			return newItems;
-		}
+/**
+* Provided by `FCrudDataset`. Registers a presenter and returns a function
+* unregistering it.
+*
+* @internal
+*/
+var crudDatasetPresenterKey = Symbol("FCrudDataset:presenter");
+/**
+* Registers the calling component as presenter of the closest
+* `FCrudDataset`. Does nothing when not used inside a `FCrudDataset`.
+*
+* The presenter is unregistered when the component is unmounted.
+*
+* @public
+*/
+function useCrudDatasetPresenter(presenter) {
+	const register = inject(crudDatasetPresenterKey, void 0);
+	if (!register) return;
+	onBeforeUnmount(register(presenter));
+}
+/**
+* Removes `target` from `items`, or when `nestedKey` is given, from nested
+* arrays at any depth. The array holding the item is mutated, parent items
+* keep their identity.
+*
+* Items are compared as raw objects, so a reactive proxy matches its raw
+* object and vice versa.
+*
+* @internal
+* @returns `true` if the item was found and removed.
+*/
+function removeNestedItem(items, target, nestedKey) {
+	return removeRaw(items, /* @__PURE__ */ toRaw(target), nestedKey);
+}
+function removeRaw(items, rawTarget, nestedKey) {
+	const index = items.findIndex((item) => /* @__PURE__ */ toRaw(item) === rawTarget);
+	if (index !== -1) {
+		items.splice(index, 1);
+		return true;
 	}
+	if (!nestedKey) return false;
+	for (const item of items) {
+		const nestedItems = item[nestedKey];
+		if (Array.isArray(nestedItems) && removeRaw(nestedItems, rawTarget, nestedKey)) return true;
+	}
+	return false;
+}
+/**
+* Returns a new array with `target` removed.
+*
+* When `nested` is given, nested items are searched recursively (at any
+* depth). A nested item is removed from its parent's array in place, the
+* parent item itself keeps its identity so consumers tracking it (e.g.
+* expanded state in a table) are unaffected.
+*/
+function removeItem(items, target, nested) {
+	const newItems = [...items];
+	removeNestedItem(newItems, target, nested);
 	return newItems;
 }
 /**
-* @public
+* Replace all properties of `target` with the properties of `source` while
+* keeping the object identity of `target`. Properties missing in `source` are
+* removed from `target`.
+*
+* @internal
 */
-var Operation = /* @__PURE__ */ function(Operation) {
-	Operation[Operation["ADD"] = 0] = "ADD";
-	Operation[Operation["DELETE"] = 1] = "DELETE";
-	Operation[Operation["MODIFY"] = 2] = "MODIFY";
-	Operation[Operation["NONE"] = 3] = "NONE";
-	return Operation;
-}({});
+function replaceItem(target, source) {
+	if (target === source) return;
+	const dst = target;
+	const keep = new Set(Object.keys(source));
+	Object.assign(dst, source);
+	for (const key of Object.keys(dst)) if (!keep.has(key)) Reflect.deleteProperty(dst, key);
+}
 var _hoisted_1$56 = { class: "crud-dataset" };
 var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 	__name: "FCrudDataset",
 	props: {
-		/**
-		* The list of items that should be deleted, modified or added to.
-		* If the prop is not set an empty array will be used.
-		*/
-		modelValue: {
-			type: Array,
-			required: false,
-			default: () => []
-		},
-		/**
-		* A function that returns an item to the #add template. Can be used to populate data that the user should not input themself e.g. an id.
-		* Or to give the user suggestions for inputs. If the prop is not used an empty item will be returned.
-		*/
-		beforeCreate: {
+		modelValue: { default: () => void 0 },
+		onCreate: {
 			type: Function,
-			required: false,
 			default: void 0
 		},
-		/**
-		* If given, this function is called before the [[submit]] event is emitted.
-		* See <f-validation-form> `beforeSubmit` props for more info.
-		*/
-		beforeSubmit: {
+		onUpdate: {
 			type: Function,
-			required: false,
-			default() {}
+			default: void 0
 		},
-		/**
-		* If given, this function is called before the form data is validated and the [[submit]] event is emitted.
-		* See <f-validation-form> `beforeValidation` props for more info.
-		*/
-		beforeValidation: {
+		onDelete: {
 			type: Function,
-			required: false,
-			default() {}
+			default: void 0
 		},
-		/**
-		* If given, this function is called after the modal has been closed.
-		*/
-		onCancel: {
-			type: Function,
-			required: false,
-			default() {}
-		},
-		/**
-		* Property for changing the "add new" modal heading
-		*/
-		addNewModalHeader: {
-			type: String,
-			required: false,
-			default: TranslationService.provider.translate("fkui.crud-dataset.modal.header.add", "Lägg till rad")
-		},
-		/**
-		* Property for changing the "modify" modal heading
-		*/
-		modifyModalHeader: {
-			type: String,
-			required: false,
-			default: TranslationService.provider.translate("fkui.crud-dataset.modal.header.modify", "Ändra rad")
-		},
-		/**
-		* Property for changing the "delete" modal heading
-		*/
-		deleteModalHeader: {
-			type: String,
-			required: false,
-			default: TranslationService.provider.translate("fkui.crud-dataset.modal.header.delete", "Är du säker på att du vill ta bort raden?")
-		},
-		/**
-		* Property for changing the "add" and "modify" modal size
-		*/
-		formModalSize: {
-			type: String,
-			required: false,
-			default: ""
-		},
-		/**
-		* Property for setting the position of the add button
-		*/
-		buttonPosition: {
-			type: String,
-			required: false,
-			default: "bottom"
-		}
+		buttonPosition: { default: "bottom" }
 	},
-	emits: [
-		"created",
-		"deleted",
-		"updated",
-		"update:modelValue"
-	],
+	emits: ["update:modelValue"],
 	setup(__props, { expose: __expose, emit: __emit }) {
-		const props = __props;
 		const emit = __emit;
 		const $t = useTranslate();
-		const slots = useSlots();
-		const result = /* @__PURE__ */ ref([]);
-		const operation = /* @__PURE__ */ ref(Operation.NONE);
-		const item = /* @__PURE__ */ ref(null);
-		const nestedKey = /* @__PURE__ */ ref(null);
-		const originalItemToUpdate = /* @__PURE__ */ ref(null);
-		const isFormModalOpen = /* @__PURE__ */ ref(false);
-		const isConfirmModalOpen = /* @__PURE__ */ ref(false);
-		const callbackAfterItemAdd = /* @__PURE__ */ ref(() => ({}));
-		const callbackBeforeItemDelete = /* @__PURE__ */ ref(() => ({}));
+		/**
+		* Local copy of the model.
+		* All modifications are made on this copy (never on the `modelValue` prop) and a new array is emitted with `update:modelValue`.
+		* Keeping a local copy ensures multiple commits within the same tick build upon each other before the parent has re-rendered.
+		*/
+		const items = /* @__PURE__ */ ref([]);
+		/**
+		* The list or table presenting the items, registered with `useCrudDatasetPresenter()`.
+		*/
+		let presenter = {};
+		/** Text for the "add new" button */
 		const addButtonText = $t("fkui.crud-dataset.button.add", "Lägg till ny");
-		const formModalButtons = computed(() => {
-			const confirmButtonText = operation.value === Operation.ADD ? $t("fkui.crud-dataset.modal.confirm.add", "Lägg till") : /** "Save" button in "modify" modal */ $t("fkui.crud-dataset.modal.confirm.modify", "Spara");
-			const cancelButtonText = operation.value === Operation.ADD ? $t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : /** "Cancel" button in "modify" modal */ $t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
-			return [{
-				label: confirmButtonText,
-				event: "confirm",
-				type: "primary",
-				submitButton: true
-			}, {
-				label: cancelButtonText,
-				event: "dismiss",
-				type: "secondary",
-				submitButton: false
-			}];
+		const hasAdd = computed(() => Boolean(__props.onCreate));
+		provide(crudDatasetPresenterKey, (registered) => {
+			presenter = registered;
+			return () => {
+				if (presenter === registered) presenter = {};
+			};
 		});
-		const confirmDeleteButtons = computed(() => {
-			return [{
-				/** "Confirm" button in "delete" modal */
-				label: $t("fkui.crud-dataset.modal.confirm.delete", "Ja, ta bort"),
-				type: "primary",
-				event: "confirm"
-			}, {
-				/** "Cancel" button in "delete" modal */
-				label: $t("fkui.crud-dataset.modal.cancel.delete", "Nej, avbryt"),
-				type: "secondary"
-			}];
-		});
-		const hasAddSlot = computed(() => {
-			return Boolean(slots.add);
-		});
-		const hasDeleteSlot = computed(() => {
-			return Boolean(slots.delete);
-		});
-		const hasModifySlot = computed(() => {
-			return Boolean(slots.modify);
-		});
-		const formModalHeader = computed(() => {
-			return operation.value === Operation.ADD ? props.addNewModalHeader : props.modifyModalHeader;
-		});
-		provide("delete", deleteItem);
-		provide("modify", updateItem);
-		provide("registerCallbackAfterItemAdd", (callback) => {
-			callbackAfterItemAdd.value = callback;
-		});
-		provide("registerCallbackBeforeItemDelete", (callback) => {
-			callbackBeforeItemDelete.value = callback;
-		});
-		provide("setNestedKey", setNestedKey);
 		__expose({
 			/**
-			* Opens the modification modal for the given item.
+			* Triggers `onCreate`. Returns the value returned by `onCreate`, so a
+			* rejected promise can be awaited or caught by the caller.
+			*/
+			createItem,
+			/**
+			* Triggers `onUpdate` for the given item. Returns the value returned by
+			* `onUpdate`, so a rejected promise can be awaited or caught by the caller.
 			*/
 			updateItem,
 			/**
-			* Opens the deletion modal for the given item.
+			* Triggers `onDelete` for the given item. Returns the value returned by
+			* `onDelete`, so a rejected promise can be awaited or caught by the caller.
 			*/
 			deleteItem
 		});
-		onMounted(() => {
-			if (!hasAddSlot.value && !hasDeleteSlot.value && !hasModifySlot.value) throw new Error("At least one template of the following must be defined. #add, #delete or #modify");
-		});
-		watch(() => props.modelValue, (data) => {
-			result.value = [...data];
+		watch(() => __props.modelValue, (value) => {
+			items.value = [...value !== null && value !== void 0 ? value : []];
 		}, {
 			immediate: true,
 			deep: true
 		});
+		let isUnmounted = false;
+		onMounted(() => {
+			if (!__props.onCreate && !__props.onUpdate && !__props.onDelete) throw new Error("At least one of the following props must be set: onCreate, onUpdate or onDelete");
+		});
+		onUnmounted(() => {
+			isUnmounted = true;
+		});
 		function createItem() {
-			if (!hasAddSlot.value) throw new Error("No template is defined for #add");
-			operation.value = Operation.ADD;
-			item.value = props.beforeCreate ? props.beforeCreate() : {};
-			isFormModalOpen.value = true;
-		}
-		function deleteItem(current) {
-			if (!hasDeleteSlot.value) throw new Error("No template is defined for #delete");
-			operation.value = Operation.DELETE;
-			item.value = current;
-			isConfirmModalOpen.value = true;
-		}
-		function onDeleteConfirm() {
-			if (!item.value) return;
-			callbackBeforeItemDelete.value(item.value);
-			result.value = filterItem(result.value, item.value, nestedKey.value);
-			emit("deleted", item.value);
-			emit("update:modelValue", result.value);
-			alertScreenReader($t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), { assertive: true });
-		}
-		function onDeleteClose(e) {
-			onModalClose();
-			if (e.reason === "close" && props.onCancel) props.onCancel();
-		}
-		function onModalClose() {
-			isFormModalOpen.value = false;
-			isConfirmModalOpen.value = false;
-		}
-		function onFormModalSubmit() {
-			if (!item.value) return;
-			if (operation.value === Operation.ADD) {
-				result.value.push(item.value);
-				emit("created", item.value);
-				emit("update:modelValue", result.value);
-				callbackAfterItemAdd.value(item.value);
-				alertScreenReader($t("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), { assertive: true });
-			} else if (operation.value === Operation.MODIFY) {
-				if (originalItemToUpdate.value) Object.assign(originalItemToUpdate.value, item.value);
-				else originalItemToUpdate.value = item.value;
-				emit("updated", originalItemToUpdate.value);
-				emit("update:modelValue", result.value);
-				alertScreenReader($t("fkui.crud-dataset.aria-live.modify", "Raden har ändrats"), { assertive: true });
-			}
-			isFormModalOpen.value = false;
+			if (!__props.onCreate) throw new Error("No onCreate callback is defined");
+			return __props.onCreate((item, alert) => {
+				if (isUnmounted) return;
+				setItems([...items.value, item]);
+				presenter.afterCreate?.(item);
+				alertScreenReader(alert !== null && alert !== void 0 ? alert : $t("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), { assertive: true });
+			});
 		}
 		function updateItem(current) {
-			if (!hasModifySlot.value) throw new Error("No template is defined for #modify");
-			operation.value = Operation.MODIFY;
-			originalItemToUpdate.value = current;
-			item.value = deepClone(current);
-			isFormModalOpen.value = true;
+			if (!__props.onUpdate) throw new Error("No onUpdate callback is defined");
+			return __props.onUpdate(deepClone(current), (modified, alert) => {
+				if (isUnmounted) return;
+				if (!isObject(current) || !isObject(modified)) throw new Error("FCrudDataset can only modify object items");
+				replaceItem(current, modified);
+				setItems([...items.value]);
+				alertScreenReader(alert !== null && alert !== void 0 ? alert : $t("fkui.crud-dataset.aria-live.modify", "Raden har ändrats"), { assertive: true });
+			});
 		}
-		function setNestedKey(key) {
-			nestedKey.value = key;
+		function deleteItem(current) {
+			if (!__props.onDelete) throw new Error("No onDelete callback is defined");
+			return __props.onDelete(current, (alert) => {
+				if (isUnmounted) return;
+				const commit = () => {
+					setItems(removeItem(items.value, current, toValue(presenter.nestedKey)));
+				};
+				if (presenter.handleDelete) presenter.handleDelete(current, commit);
+				else commit();
+				alertScreenReader(alert !== null && alert !== void 0 ? alert : $t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), { assertive: true });
+			});
+		}
+		function isObject(value) {
+			return typeof value === "object" && value !== null;
+		}
+		function setItems(value) {
+			items.value = value;
+			emit("update:modelValue", value);
 		}
 		return (_ctx, _cache) => {
 			return openBlock(), createElementBlock("div", _hoisted_1$56, [
-				props.buttonPosition === "top" && hasAddSlot.value ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+				__props.buttonPosition === "top" && hasAdd.value ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
 					createBaseVNode("button", {
 						"data-test": "f-crud-dataset-add-button",
 						type: "button",
@@ -27170,13 +27245,13 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 						"crud-dataset__add-button"
 					] })))
 				], 64)) : createCommentVNode("v-if", true),
-				_cache[9] || (_cache[9] = createTextVNode()),
+				_cache[6] || (_cache[6] = createTextVNode()),
 				renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
 					updateItem,
 					deleteItem
 				}))),
-				_cache[10] || (_cache[10] = createTextVNode()),
-				props.buttonPosition === "bottom" && hasAddSlot.value ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+				_cache[7] || (_cache[7] = createTextVNode()),
+				__props.buttonPosition === "bottom" && hasAdd.value ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
 					createBaseVNode("button", {
 						"data-test": "f-crud-dataset-add-button",
 						type: "button",
@@ -27196,48 +27271,7 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 						"button--tertiary",
 						"crud-dataset__add-button"
 					] })))
-				], 64)) : createCommentVNode("v-if", true),
-				_cache[11] || (_cache[11] = createTextVNode()),
-				createVNode(unref(FFormModal_default), {
-					"is-open": isFormModalOpen.value,
-					"aria-close-text": unref($t)("fkui.crud-dataset.modal.close", "Stäng"),
-					buttons: formModalButtons.value,
-					size: __props.formModalSize,
-					"before-submit": __props.beforeSubmit,
-					"before-validation": __props.beforeValidation,
-					"on-cancel": __props.onCancel,
-					onClose: onModalClose,
-					onCancel: __props.onCancel,
-					onSubmit: onFormModalSubmit
-				}, {
-					header: withCtx(() => [createTextVNode(toDisplayString(formModalHeader.value), 1)]),
-					"input-text-fields": withCtx(() => [
-						operation.value === unref(Operation).ADD ? renderSlot(_ctx.$slots, "add", normalizeProps(guardReactiveProps({ item: item.value })), void 0, void 0, 0) : createCommentVNode("v-if", true),
-						_cache[6] || (_cache[6] = createTextVNode()),
-						operation.value === unref(Operation).MODIFY ? renderSlot(_ctx.$slots, "modify", normalizeProps(guardReactiveProps({ item: item.value })), void 0, void 0, 1) : createCommentVNode("v-if", true)
-					]),
-					_: 3
-				}, 8, [
-					"is-open",
-					"aria-close-text",
-					"buttons",
-					"size",
-					"before-submit",
-					"before-validation",
-					"on-cancel",
-					"onCancel"
-				]),
-				_cache[12] || (_cache[12] = createTextVNode()),
-				createVNode(unref(FConfirmModal_default), {
-					"is-open": isConfirmModalOpen.value,
-					buttons: confirmDeleteButtons.value,
-					onConfirm: onDeleteConfirm,
-					onClose: onDeleteClose
-				}, {
-					heading: withCtx(() => [createTextVNode(toDisplayString(__props.deleteModalHeader), 1)]),
-					content: withCtx(() => [renderSlot(_ctx.$slots, "delete", normalizeProps(guardReactiveProps({ item: item.value })))]),
-					_: 3
-				}, 8, ["is-open", "buttons"])
+				], 64)) : createCommentVNode("v-if", true)
 			]);
 		};
 	}
@@ -30191,7 +30225,14 @@ var FTable_default = /* @__PURE__ */ defineComponent({
 			selectedRows,
 			rows: selectableRows
 		});
-		__expose(useTabstop(tableRef, metaRows));
+		const tableApi = useTabstop(tableRef, metaRows);
+		__expose(tableApi);
+		useCrudDatasetPresenter({
+			nestedKey: expandableAttributeName,
+			handleDelete(_row, commit) {
+				tableApi.withTabstopBehaviour("row-removal", commit);
+			}
+		});
 		onMounted(() => {
 			assertRef(tableRef);
 			registerCallbackOnMount(callbackSortableColumns);
@@ -30354,25 +30395,7 @@ function removeTableRows(rows, rowsToRemove, expandableAttribute) {
 	const rowsToRemoveValue = toValue(rowsToRemove);
 	const expandableAttributeValue = toValue(expandableAttribute);
 	const normalizedRows = Array.isArray(rowsToRemoveValue) ? [...rowsToRemoveValue] : [rowsToRemoveValue];
-	for (const row of normalizedRows) removeRow(rowsValue, row, expandableAttributeValue);
-}
-function removeRow(rows, row, expandableAttribute) {
-	const rowIndex = rows.indexOf(row);
-	if (rowIndex !== -1) rows.splice(rowIndex, 1);
-	else if (expandableAttribute) removeNestedRows(rows, row, expandableAttribute);
-}
-function removeNestedRows(rows, row, expandableAttribute) {
-	for (const currentRow of rows) {
-		const nestedRows = getNestedRows(currentRow, expandableAttribute);
-		if (!nestedRows) continue;
-		const index = nestedRows.indexOf(row);
-		if (index !== -1) {
-			nestedRows.splice(index, 1);
-			return true;
-		}
-		if (removeNestedRows(nestedRows, row, expandableAttribute)) return true;
-	}
-	return false;
+	for (const row of normalizedRows) removeNestedItem(rowsValue, row, expandableAttributeValue);
 }
 function resolveWidthClass(words, inline) {
 	return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
@@ -47878,11 +47901,63 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 	]);
 }
 var FTableColumnLiveExample_default = /*#__PURE__*/ _plugin_vue_export_helper_default(FTableColumnLiveExample_vue_vue_type_script_lang_default, [["render", _sfc_render]]);
+// ../../packages/vue/src/components/FTable/tests/FTableCrudDatasetModal.vue
+var FTableCrudDatasetModal_default = /* @__PURE__ */ defineComponent({
+	__name: "FTableCrudDatasetModal",
+	props: {
+		isOpen: { type: Boolean },
+		row: {}
+	},
+	emits: ["close"],
+	setup(__props, { emit: __emit }) {
+		const props = __props;
+		const emit = __emit;
+		const value = /* @__PURE__ */ ref({ ...props.row });
+		return (_ctx, _cache) => {
+			const _directive_validation = resolveDirective("validation");
+			return openBlock(), createBlock(unref(FFormModal_default), {
+				"is-open": __props.isOpen,
+				value: value.value,
+				"use-error-list": false,
+				onClose: _cache[2] || (_cache[2] = (event) => emit("close", event))
+			}, {
+				header: withCtx(() => [..._cache[3] || (_cache[3] = [createTextVNode(" Ärende ", -1)])]),
+				"input-text-fields": withCtx(() => [withDirectives((openBlock(), createBlock(unref(FTextField_default), {
+					modelValue: value.value.name,
+					"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => value.value.name = $event),
+					type: "text"
+				}, {
+					default: withCtx(() => [..._cache[4] || (_cache[4] = [createTextVNode(" Namn ", -1)])]),
+					_: 1
+				}, 8, ["modelValue"])), [[
+					_directive_validation,
+					{ maxLength: { length: 32 } },
+					void 0,
+					{ maxLength: true }
+				]]), withDirectives((openBlock(), createBlock(unref(FTextField_default), {
+					modelValue: value.value.description,
+					"onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => value.value.description = $event),
+					type: "text"
+				}, {
+					default: withCtx(() => [..._cache[5] || (_cache[5] = [createTextVNode(" Beskrivning ", -1)])]),
+					_: 1
+				}, 8, ["modelValue"])), [[
+					_directive_validation,
+					{ maxLength: { length: 100 } },
+					void 0,
+					{ maxLength: true }
+				]])]),
+				_: 1
+			}, 8, ["is-open", "value"]);
+		};
+	}
+});
 // ../../packages/vue/src/components/FTable/tests/FTableCrudDatasetExample.vue
 var FTableCrudDatasetExample_default = /* @__PURE__ */ defineComponent({
 	__name: "FTableCrudDatasetExample",
 	setup(__props) {
 		const crud = useTemplateRef("crud");
+		const { formModal, confirmModal } = useModal();
 		const rows = /* @__PURE__ */ ref([
 			{
 				id: "1",
@@ -47934,29 +48009,39 @@ var FTableCrudDatasetExample_default = /* @__PURE__ */ defineComponent({
 			}
 		]);
 		const nextId = /* @__PURE__ */ ref(4);
-		function beforeCreate() {
-			const id = String(nextId.value);
-			nextId.value += 1;
-			return {
-				id,
-				name: "",
-				description: ""
-			};
+		async function onCreate(commit) {
+			try {
+				const row = {
+					id: String(nextId.value),
+					name: "",
+					description: ""
+				};
+				commit(await formModal(FTableCrudDatasetModal_default, { props: { row } }));
+				nextId.value += 1;
+			} catch {}
 		}
-		function saveModel(row) {
-			console.log("Post model to backend", row);
+		async function onUpdate(row, commit) {
+			try {
+				commit(await formModal(FTableCrudDatasetModal_default, { props: { row } }));
+			} catch {}
+		}
+		async function onDelete(row, commit) {
+			if (await confirmModal({
+				heading: "Ta bort ärende",
+				content: `Vill du verkligen ta bort "${row.name}" med ID ${row.id}?`,
+				confirm: "Ja, ta bort",
+				dismiss: "Nej, avbryt"
+			})) commit();
 		}
 		return (_ctx, _cache) => {
-			const _directive_validation = resolveDirective("validation");
 			return openBlock(), createBlock(unref(FCrudDataset_default), {
 				ref_key: "crud",
 				ref: crud,
 				modelValue: rows.value,
 				"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => rows.value = $event),
-				"before-create": beforeCreate,
-				onCreated: saveModel,
-				onUpdated: saveModel,
-				onDeleted: saveModel
+				"on-create": onCreate,
+				"on-update": onUpdate,
+				"on-delete": onDelete
 			}, {
 				default: withCtx(() => [createVNode(unref(FTable_default), {
 					rows: rows.value,
@@ -47966,61 +48051,6 @@ var FTableCrudDatasetExample_default = /* @__PURE__ */ defineComponent({
 					caption: withCtx(() => [..._cache[1] || (_cache[1] = [createTextVNode(" Exempeldata ", -1)])]),
 					_: 1
 				}, 8, ["rows", "columns"])]),
-				modify: withCtx(({ item }) => [
-					withDirectives((openBlock(), createBlock(unref(FTextField_default), {
-						modelValue: item.name,
-						"onUpdate:modelValue": ($event) => item.name = $event,
-						type: "text"
-					}, {
-						default: withCtx(() => [..._cache[2] || (_cache[2] = [createTextVNode(" Namn ", -1)])]),
-						_: 1
-					}, 8, ["modelValue", "onUpdate:modelValue"])), [[
-						_directive_validation,
-						{ maxLength: { length: 32 } },
-						void 0,
-						{ maxLength: true }
-					]]),
-					withDirectives((openBlock(), createBlock(unref(FTextField_default), {
-						modelValue: item.description,
-						"onUpdate:modelValue": ($event) => item.description = $event,
-						type: "text"
-					}, {
-						default: withCtx(() => [..._cache[3] || (_cache[3] = [createTextVNode(" Beskrivning ", -1)])]),
-						_: 1
-					}, 8, ["modelValue", "onUpdate:modelValue"])), [[
-						_directive_validation,
-						{ maxLength: { length: 100 } },
-						void 0,
-						{ maxLength: true }
-					]]),
-					createTextVNode(" ID " + toDisplayString(item.id), 1)
-				]),
-				add: withCtx(({ item }) => [withDirectives((openBlock(), createBlock(unref(FTextField_default), {
-					modelValue: item.name,
-					"onUpdate:modelValue": ($event) => item.name = $event,
-					type: "text"
-				}, {
-					default: withCtx(() => [..._cache[4] || (_cache[4] = [createTextVNode(" Namn ", -1)])]),
-					_: 1
-				}, 8, ["modelValue", "onUpdate:modelValue"])), [[
-					_directive_validation,
-					{ maxLength: { length: 32 } },
-					void 0,
-					{ maxLength: true }
-				]]), withDirectives((openBlock(), createBlock(unref(FTextField_default), {
-					modelValue: item.description,
-					"onUpdate:modelValue": ($event) => item.description = $event,
-					type: "text"
-				}, {
-					default: withCtx(() => [..._cache[5] || (_cache[5] = [createTextVNode(" Beskrivning ", -1)])]),
-					_: 1
-				}, 8, ["modelValue", "onUpdate:modelValue"])), [[
-					_directive_validation,
-					{ maxLength: { length: 100 } },
-					void 0,
-					{ maxLength: true }
-				]])]),
-				delete: withCtx(({ item }) => [createTextVNode(" Vill du verkligen ta bort \"" + toDisplayString(item.name) + "\" med ID " + toDisplayString(item.id) + "? ", 1)]),
 				_: 1
 			}, 8, ["modelValue"]);
 		};

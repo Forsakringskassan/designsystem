@@ -16543,7 +16543,6 @@ var IComboboxToggleButton_default = /* @__PURE__ */ defineComponent({
 */
 var tooltipAttachTo = Symbol("tooltipAttachTo");
 TranslationService.provider.translate("fkui.tooltip.close", "Stäng");
-TranslationService.provider.translate("fkui.crud-dataset.modal.header.add", "Lägg till rad"), TranslationService.provider.translate("fkui.crud-dataset.modal.header.modify", "Ändra rad"), TranslationService.provider.translate("fkui.crud-dataset.modal.header.delete", "Är du säker på att du vill ta bort raden?");
 var FLabel_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FLabel",
 	components: { FIcon: FIcon_default },
