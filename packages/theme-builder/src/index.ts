@@ -13,7 +13,6 @@ const nodeConsole = console;
 const paletteVariablesFile = "src/palette-variables.scss";
 
 async function run(options: NormalizedOptions): Promise<void> {
-    const { cwd, fs, logger, outdir } = options;
     await clean(options);
     await generateVersion("src/_version.scss", options);
     const files = await buildCss(
@@ -22,22 +21,15 @@ async function run(options: NormalizedOptions): Promise<void> {
         options,
     );
     await buildJs(files, options);
-    if (files.length > 0) {
-        const paletteVariables = await extractPalette(
-            paletteVariablesFile,
-            options,
-        );
-        await buildMetadata(files, "metadata", paletteVariables, options);
+    if (files.length === 0) {
+        return;
     }
 
-    try {
-        const src = path.posix.join(cwd, "src/deprecated-variables.json");
-        const dst = path.posix.join(outdir, "deprecated-variables.json");
-        await fs.copyFile(src, dst);
-        logger.log(dst, "written");
-    } catch {
-        /* do nothing */
-    }
+    const paletteVariables = await extractPalette(
+        paletteVariablesFile,
+        options,
+    );
+    await buildMetadata(files, "metadata", paletteVariables, options);
 }
 
 export async function cli(argv: string[], options: Options): Promise<void> {

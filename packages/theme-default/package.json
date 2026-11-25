@@ -20,8 +20,31 @@
     "./dist/**/*.css",
     "./src/**/*.scss"
   ],
-  "main": "./dist/theme-light.css",
-  "types": "type-stub.d.ts",
+  "exports": {
+    ".": {
+      "sass": "./src/_default.scss"
+    },
+    "./metadata": {
+      "types": "./dist/metadata.d.mts",
+      "default": "./dist/metadata.mjs"
+    },
+    "./theme-light": {
+      "types": "./type-stub.d.ts",
+      "default": "./dist/theme-light.css"
+    },
+    "./theme-dark": {
+      "types": "./type-stub.d.ts",
+      "default": "./dist/theme-dark.css"
+    },
+    "./theme-auto": {
+      "types": "./type-stub.d.ts",
+      "default": "./dist/theme-auto.css"
+    },
+    "./deprecated-variables": {
+      "types": "./type-stub.d.ts",
+      "default": "./dist/deprecated-variables.css"
+    }
+  },
   "files": [
     "dist",
     "src",

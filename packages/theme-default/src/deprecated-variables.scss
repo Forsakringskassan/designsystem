@@ -1,5 +1,8 @@
 // stylelint-disable custom-property-empty-line-before -- technical debt, should just add a comment before each block
 
+// Keep this file in sync with:
+//   packages/design/stylelint/rules/deprecated-variables.json.
+
 @use "palette-variables-deprecated" as *;
 
 $global: true !default;
