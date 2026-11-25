@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../search-data-86339f.json"
+    href="../../../search-data-dc1503.json"
     as="fetch"
     crossorigin
-    integrity="sha384-JaSwRLKulDCX3N80PzULNBn6PbPpwNQs00JPRbVo3JLrXFypL/j0Aj8A04ogaaJO"
+    integrity="sha384-ShzelQVV+JLVVSY+g/vhxw281j3SVvJfQvJaoKqci8F6WC+1hDjMGwyJ5kerhc29"
     id="search-data"
 />
 <script>
@@ -739,10 +739,6 @@
                 
                     
                 
-                    
-                
-                    
-                
 
                 
                 
@@ -760,7 +756,7 @@
             data-path="gettingstarted/migration/migrating-to-v7/overview.html"
             
         >
-            sammanfattning
+            Sammanfattning
         </a>
     </li>
 
@@ -805,19 +801,6 @@
 
 <li class="link ">
         <a
-            href="./palette.html"
-            
-            
-            
-            data-path="gettingstarted/migration/migrating-to-v7/palette.html"
-            
-        >
-            Färgpalett
-        </a>
-    </li>
-
-<li class="link ">
-        <a
             href="./modal-api-only.html"
             
             
@@ -826,19 +809,6 @@
             
         >
             Modal API only
-        </a>
-    </li>
-
-<li class="link ">
-        <a
-            href="./theme-css-fallback.html"
-            
-            
-            
-            data-path="gettingstarted/migration/migrating-to-v7/theme-css-fallback.html"
-            
-        >
-            Temavärden i CSS
         </a>
     </li>
 
@@ -6226,7 +6196,7 @@
             data-path="gettingstarted/migration/migrating-to-v7/overview.html"
             
         >
-            sammanfattning
+            Sammanfattning
         </a>
     </li><li class="link ">
         <a
@@ -6263,17 +6233,6 @@
         </a>
     </li><li class="link ">
         <a
-            href="./palette.html"
-            
-            
-            
-            data-path="gettingstarted/migration/migrating-to-v7/palette.html"
-            
-        >
-            Färgpalett
-        </a>
-    </li><li class="link ">
-        <a
             href="./modal-api-only.html"
             
             
@@ -6282,17 +6241,6 @@
             
         >
             Modal API only
-        </a>
-    </li><li class="link ">
-        <a
-            href="./theme-css-fallback.html"
-            
-            
-            
-            data-path="gettingstarted/migration/migrating-to-v7/theme-css-fallback.html"
-            
-        >
-            Temavärden i CSS
         </a>
     </li><li class="link ">
         <a
@@ -6339,14 +6287,20 @@
                                 
                                 <li><a href="#fkui_theme_desktop_avvecklas">@fkui/theme-desktop avvecklas</a></li>
                                 
+                                <li><a href="#fargpaletten_ar_css_variabler">Färgpaletten är CSS-variabler</a></li>
+                                
                             </ul>
                         </details>
                         
                     </div>
                     
 
-                    <div id="docs-content"><h2 id="sammanfattning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#sammanfattning">Sammanfattning</a></h2><h3 id="esm_only" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#esm_only">Esm Only</a></h3><p class="docs-paragraph"><a href="#esm_only">Läs mer hur du migrerar</a></p>
-<h3 id="fkui_theme_desktop_avvecklas" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#fkui_theme_desktop_avvecklas"><code>@fkui/theme-desktop</code> avvecklas</a></h3><p class="docs-paragraph"><a href="#fkuitheme_desktop_avvecklas">Läs mer hur du migrerar</a></p>
+                    <div id="docs-content"><h2 id="sammanfattning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#sammanfattning">Sammanfattning</a></h2><h3 id="esm_only" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#esm_only">Esm Only</a></h3><p class="docs-paragraph">FKUI-paketen stöder nu bara ESM, inte CommonJS (CJS).</p>
+<p class="docs-paragraph"><a href="#esm_only--1">Läs mer hur du migrerar.</a></p>
+<h3 id="fkui_theme_desktop_avvecklas" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#fkui_theme_desktop_avvecklas"><code>@fkui/theme-desktop</code> avvecklas</a></h3><p class="docs-paragraph"><a href="#fkui_theme_desktop_avvecklas--2">Läs mer hur du migrerar.</a></p>
+<h3 id="fargpaletten_omskriven_till_css_variabler" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#fargpaletten_omskriven_till_css_variabler">Färgpaletten omskriven till CSS-variabler</a></h3><p class="docs-paragraph"><a href="#fargpaletten_ar_css_variabler--3">Läs mer hur du migrerar.</a></p>
+<h3 id="standardtemat_ingar_inte_langre_i_byggd_css" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#standardtemat_ingar_inte_langre_i_byggd_css">Standardtemat ingår inte längre i byggd CSS</a></h3><p class="docs-paragraph">Den kompilerade versionen utav <code>@fkui/design</code> innehåller inte längre det ljusa temat.</p>
+<p class="docs-paragraph"><a href="./design.html#borttag_utav_tema_i_forkompilerad_css">Läs mer hur du migrerar.</a></p>
 <h3 id="ovriga_andringar" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ovriga_andringar">Övriga ändringar</a></h3><table class="table">
 <thead>
 <tr class="table__row">
@@ -6356,28 +6310,32 @@
 </thead>
 <tbody>
 <tr class="table__row">
-<td class="table__column table__column--text"><a href="./pageobjects.html">cypress</a></td>
-<td class="table__column table__column--text">Namnändringar, borttagna metoder</td>
+<td class="table__column table__column--text"><a href="./pageobjects.html">Cypress</a></td>
+<td class="table__column table__column--text">Namnändringar och borttagna metoder i våra Pageobjects.</td>
 </tr>
 <tr class="table__row">
-<td class="table__column table__column--text"><a href="./vue.html#fcrudbutton">(FCrudButton)</a></td>
-<td class="table__column table__column--text">Komponenten har tagits bort</td>
+<td class="table__column table__column--text"><a href="./vue.html#fcrudbutton">FCrudButton (FCrudButton)</a></td>
+<td class="table__column table__column--text">Komponenten har tagits bort.</td>
 </tr>
 <tr class="table__row">
-<td class="table__column table__column--text"><a href="./design.html">Knapp</a></td>
-<td class="table__column table__column--text">Vissa klasser på <code>button</code> ersätts</td>
+<td class="table__column table__column--text"><a href="./design.html#ersattning_av_klasser_pa_knappar">Knapp (@fkui/design)</a></td>
+<td class="table__column table__column--text">Vissa klasser på <code>button</code> ersätts.</td>
 </tr>
 <tr class="table__row">
-<td class="table__column table__column--text"><a href="./vue.html#FModal">(Fmodal)</a></td>
-<td class="table__column table__column--text">Tagit bort template Api:et</td>
+<td class="table__column table__column--text"><a href="./vue.html#FModal">Modal (Fmodal)</a></td>
+<td class="table__column table__column--text">Tagit bort template Api:et.</td>
 </tr>
 <tr class="table__row">
-<td class="table__column table__column--text"><a href="./vue.html#FWizard">(FWizard)</a></td>
+<td class="table__column table__column--text"><a href="./vue.html#FWizard">Steg för steg (FWizard)</a></td>
 <td class="table__column table__column--text">Focushantering är opt in istället för opt out</td>
 </tr>
 <tr class="table__row">
 <td class="table__column table__column--text"><a href="./vue.html#ftable">Tabell (FTable)</a></td>
 <td class="table__column table__column--text">Egenskapen <code>text</code> har bytt namn till <code>screenreaderText</code>.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><a href="./theme-builder.html">@fkui/theme-builder</a></td>
+<td class="table__column table__column--text">Flera uppdateringar för dig som bygger dina egna teman.</td>
 </tr>
 </tbody>
 </table>
@@ -6387,7 +6345,7 @@ CommonJS-ingångar via <code>require()</code> stöds inte längre som ett publik
 <p class="docs-paragraph">Om du använder <code>require()</code> för att importera ett FKUI-paket behöver du ändra koden till ESM-import:</p>
 
                 <div
-                    id="example-595320"
+                    id="example-c64f73"
                     class="code-preview code-preview--default"
                     
                     
@@ -6410,7 +6368,7 @@ Ersätt det med <a href="https://www.npmjs.com/package/@fkui-community/theme-int
 <h3 id="migrering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#migrering">Migrering</a></h3><p class="docs-paragraph">Avinstallera <code>@fkui/theme-desktop</code> och installera sedan ersättaren:</p>
 
                 <div
-                    id="example-4ebdc9"
+                    id="example-8b0d62"
                     class="code-preview code-preview--default"
                     
                     
@@ -6425,7 +6383,7 @@ npm install @fkui-community/theme-int
 Gör ändringen i den Sass-fil där temat importeras, till exempel <code>src/main.scss</code>:</p>
 
                 <div
-                    id="example-29a638"
+                    id="example-cfff31"
                     class="code-preview code-preview--default"
                     
                     
@@ -6437,6 +6395,34 @@ Gör ändringen i den Sass-fil där temat importeras, till exempel <code>src/mai
                 </div>
             <p class="docs-paragraph">Importen läser in det ljusa färgschemat som standard.
 Information om hur du konfigurerar ljust och mörkt läge finns i dokumentationen för <a href="https://www.npmjs.com/package/@fkui-community/theme-int"><code>@fkui-community/theme-int</code></a>.</p>
+<h2 id="fargpaletten_ar_css_variabler" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fargpaletten_ar_css_variabler">Färgpaletten är CSS-variabler</a></h2><p class="docs-paragraph">Detta påverkar dig som använder Sass-variabler från <code>@fkui/theme-default</code>.</p>
+<p class="docs-paragraph">I version 7 är färgpaletten i <code>@fkui/theme-default</code> CSS-variabler istället för Sass-variabler.
+Paletten följer namnstandarden <code>--fkds-palette-color-&lt;namn&gt;</code>, till exempel <code>--fkds-palette-color-neutral-900</code>.</p>
+<p class="docs-paragraph">Sass-variablerna <code>$palette-color-&lt;namn&gt;</code> i <code>@fkui/theme-default/src/palette-variables</code> finns inte längre.</p>
+<h3 id="migrering--3" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#migrering--3">Migrering</a></h3><p class="docs-paragraph">Ersätt Sass-variabler med motsvarande CSS-variabel.
+Använd om möjligt de semantiska färgvariablerna istället för paletten direkt.</p>
+
+                <div
+                    id="example-5b0176"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-@use &quot;@fkui/theme-default/src/palette-variables&quot; as *;</span>
+<span class="hljs-deletion">-</span>
+ .my-component {
+<span class="hljs-deletion">-    color: $palette-color-neutral-900;</span>
+<span class="hljs-addition">+    color: var(--fkds-palette-color-neutral-900);</span>
+ }
+</code></pre>
+                </div>
+            <h3 id="anvand_semantiska_variabler_i_applikationer" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#anvand_semantiska_variabler_i_applikationer">Använd semantiska variabler i applikationer</a></h3><p class="docs-paragraph">Applikationer bör inte ha beroenden till färgpaletten.</p>
+<p class="docs-paragraph">Använd i stället de semantiska CSS-variabler som beskriver färgens avsedda
+användning.
+Paletten är en intern källa till färger för temana och kan ändras utan att
+applikationens färgval ska behöva uppdateras.</p>
 
 
                     </div>
@@ -6505,9 +6491,9 @@ Information om hur du konfigurerar ljust och mörkt läge finns i dokumentatione
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/ecdad249a8a61ea6a6414c4f8c3d07a64aa99991">ecdad24</a>)<br />
+<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/567668dc879fb6a13cbb22ac7a7190dc9d6bf405">567668d</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1850">PR 1850</a><br />
-       <span class="version-text-block">2026-11-25 10:55</span>
+       <span class="version-text-block">2026-11-25 11:35</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
