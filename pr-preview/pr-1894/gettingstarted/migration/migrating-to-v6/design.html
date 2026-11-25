@@ -6328,17 +6328,17 @@ Som konsument finns det fortfarande möjlighet att själv tillhandahålla specif
 <h2 id="deprekerade_css_variabler_borttagna" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#deprekerade_css_variabler_borttagna">Deprekerade CSS-variabler borttagna</a></h2><p class="docs-paragraph">Möjlighet finns att importera separat vid behov.</p>
 
                 <div
-                    id="example-b0c196"
+                    id="example-4bcee5"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="scss"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-scss" tabindex="0"><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;@fkui/theme-default&quot;</span> as theme;
+                    <pre class="code-preview__markup"><code class="hljs lang-scss" tabindex="0"><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;@fkui/theme-default/src/fkui-css-variables-deprecated&quot;</span> as *;
 
 <span class="hljs-selector-pseudo">:root</span> {
-    <span class="hljs-keyword">@include</span> theme.deprecated-variables;
+    <span class="hljs-keyword">@include</span> deprecated-variables;
 }
 </code></pre>
                 </div>
@@ -6510,9 +6510,9 @@ Besök respektive sida för ytterligare information om dessa komponenter och fö
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">theme-default-exports</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/b76346ce4d59aae5dbc1dc8d459ca43fb5439ee4">b76346c</a>)<br />
+<div class="version"><span class="version-text-block">theme-default-exports</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/dbda47e5c9a24e164ec703002edcbbc2309beb1a">dbda47e</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1894">PR 1894</a><br />
-       <span class="version-text-block">2026-11-25 14:07</span>
+       <span class="version-text-block">2026-11-25 14:13</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
