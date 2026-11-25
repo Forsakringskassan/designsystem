@@ -1,0 +1,7120 @@
+<!doctype html>
+<html lang="sv" class="layout--article loading" data-root-url="../../..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Version 7 migreringsguide: @fkui/vue - FK Designsystem</title><link
+            rel="stylesheet"
+            href="../../../assets/docs-c49ab6.css"
+            crossorigin
+            integrity="sha384-oOtaV5oYLm5G4cPhv6Ru4xDcQdC7c4VmLX/JC0GpxzkQRWUthzTmdx/5mgDshJwa"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../../../assets/docs-fkui-9e6496.css"
+            crossorigin
+            integrity="sha384-sp4/m43SG610LBvZ4d8sTDrAn2eMb95IarEitLmzkmDsQRRuCih8Vg8sjcxIBXnT"
+            
+        />
+
+        <script type="importmap">
+            {
+  "imports": {
+    "vue": "../../../assets/vendor-vue-97e993.js",
+    "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-ec4ba3.js",
+    "@fkui/logic": "../../../assets/vendor-fkui-logic-61d844.js",
+    "@fkui/date": "../../../assets/vendor-fkui-date-e69aa3.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-0fd9fb.js",
+    "@fkui/vue-labs": "../../../assets/vendor-fkui-vue-labs-37a3e4.js",
+    "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js"
+  },
+  "integrity": {
+    "../../../assets/vendor-vue-97e993.js": "sha384-0n86uBFQ6HOo5PI5ohkqFZs6RSSBO9pWTrs0kSzWPxBbAAWBltvCTNPdnk/ap8eT",
+    "../../../assets/vendor-fkui-vue-selectors-ec4ba3.js": "sha384-X7kHsr5wRshwqJOF+A4AJXePaFk73er8pcimXF6uz0kIIbToz2NyvzKWe+slXu7W",
+    "../../../assets/vendor-fkui-logic-61d844.js": "sha384-u+VrrunW0wzEofwwfTCUkVW/5R3NtIzcgQ1Z60e7ov5tXLYfjrUjbvH57Zgv2vnB",
+    "../../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
+    "../../../assets/vendor-fkui-vue-0fd9fb.js": "sha384-BySruU1/MHVgnC66ZyAMpQ/oHR1fS+lgluL+Szi4uffgE5W8mFuuEHqjd3t4Z5bV",
+    "../../../assets/vendor-fkui-vue-labs-37a3e4.js": "sha384-N/HfKkajpXjdrrHo9mjCSJYlF7njhDq86owwuIac3sUncnfL0s0jYFVrZdohsxm3",
+    "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js": "sha384-PDEuCCbROg9gW6fFneYpzXKS04rV0oMFHgqArEkyaM8h1d/H3HBtCKiyFWYKWVcy"
+  }
+}
+        </script><script
+            src="../../../assets/bootstrap-b9aefb.js"
+            
+            crossorigin
+            integrity="sha384-F/7dWMNnyjtxV9ZLu4kMSJ74pLIaxPZbcRbfScnz4R6GvgvC5pM7UbjffD/AoRWL"
+            
+        ></script><link
+    rel="preload"
+    href="../../../search-data-dc1503.json"
+    as="fetch"
+    crossorigin
+    integrity="sha384-ShzelQVV+JLVVSY+g/vhxw281j3SVvJfQvJaoKqci8F6WC+1hDjMGwyJ5kerhc29"
+    id="search-data"
+/>
+<script>
+    (() => {
+        withCookieConsent(() =>  {
+            const allowedHostnames = [
+  "designsystem.forsakringskassan.se",
+  "designsystem.fk.se",
+  "ds.fk.se",
+  "forsakringskassan.github.io"
+];
+            if (allowedHostnames.length === 0 || allowedHostnames.includes(location.hostname)) {
+                /* Matomo */
+                var _paq = (window._paq = window._paq || []);
+                
+                _paq.push(["trackPageView"]);
+                _paq.push(["enableLinkTracking"]);
+                (function () {
+                    var u = "https://webstats.forsakringskassan.se/matomo/";
+                    _paq.push(["setTrackerUrl", u + "matomo.php"]);
+                    _paq.push(["setSiteId", "19"]);
+                    var d = document,
+                        g = d.createElement("script"),
+                        s = d.getElementsByTagName("script")[0];
+                    g.async = true;
+                    g.src = u + "matomo.js";
+                    s.parentNode.insertBefore(g, s);
+                })();
+                /* End Matomo Code */
+            } else {
+                console.error(
+                    "Matomo analytics disabled as we are not running on one of the configured hostnames",
+                    allowedHostnames,
+                );
+            }
+        });
+    })();
+</script>
+
+    </head>
+    <body><template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="docs-icon-stack docs-icon-stack--info">
+            <svg class="docs-icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="docs-icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
+    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+    <h1>Kakor på webbplatsen</h1>
+    <p>Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />Vi använder också kakor för webbanalys för att göra webbplatsen bättre.</p>
+    <p>Godkänner du att vi också använder kakor för webbanalys?</p>
+
+    <div class="cookie-warning__button-group">
+        <button id="consent-all-button" class="cookie-warning__button cookie-warning__button--primary" type="button">
+            Ja, jag godkänner alla kakor
+        </button>
+        <button
+            id="consent-functional-button"
+            class="cookie-warning__button cookie-warning__button--secondary"
+            type="button"
+        >
+            Nej, jag godkänner bara nödvändiga kakor
+        </button>
+    </div>
+</div>
+
+
+        <div class="layout-wrapper">
+            <header><div class="docs-page-header__root">
+    <div class="docs-page-header">
+        <div class="docs-page-header__left"><a class="docs-page-header__logo" href="../../../index.html">
+    <span aria-label="FK Designsystem" role="img" class="docs-page-header__logo--pipe"> </span>
+</a>
+<a class="docs-page-header__app-name" href="../../../index.html"> FK Designsystem </a>
+
+        </div>
+        <div class="docs-page-header__right"><div class="docs-mobile-nav">
+    <input id="mobile-toggle" type="checkbox" class="sr-only" aria-label="Öppen/stängd meny" />
+    <label for="mobile-toggle" class="docs-mobile-nav-label">
+        <svg class="docs-icon"><use href="#docs-icon-menu"></use></svg>
+        <span>Meny</span>
+    </label>
+    <nav id="nav-container" class="docs-mobile-navigation" aria-label="Mobile primär">
+        <div class="docs-mobile-nav__header">
+            <label for="mobile-toggle" class="docs-mobile-nav__close">
+                <span class="docs-mobile-nav__close__text">Stäng</span>
+                <svg class="docs-icon" focusable="false" aria-hidden="true">
+                    <use href="#docs-icon-close"></use>
+                </svg>
+            </label>
+        </div><div id="mobile-sidenav">
+<div class="docs-mobile-nav-wrapper" >
+<ul class="docs-mobile-nav__list">
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details open>
+            <summary>Kom igång <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+                <ul class="docs-mobile-nav__list docs-mobile-nav__list--main-link-wrapper">
+                    <li class="link ">
+                        <a href="../../">
+                            Kom igång
+                        </a>
+                    </li>
+                </ul>
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Använda designsystemet <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../use-design-system/getting-started.html"
+            
+            
+            
+            data-path="gettingstarted/use-design-system/getting-started.html"
+            
+        >
+            Kom igång
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../use-design-system/getting-started-application.html"
+            
+            
+            
+            data-path="gettingstarted/use-design-system/getting-started-application.html"
+            
+        >
+            Ta fram applikation
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../use-design-system/translate-text.html"
+            
+            
+            
+            data-path="gettingstarted/use-design-system/translate-text.html"
+            
+        >
+            Anpassa och översätt text
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../use-design-system/icon-library.html"
+            
+            
+            
+            data-path="gettingstarted/use-design-system/icon-library.html"
+            
+        >
+            Skapa eget ikonbibliotek
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Bidra till designsystemet <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../contribute-to-fkds/"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/"
+            
+        >
+            Bidra till designsystemet
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../contribute-to-fkds/contributing-developers.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/contributing-developers.html"
+            
+        >
+            För utvecklare
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../contribute-to-fkds/release.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/release.html"
+            
+        >
+            Releaseprocess
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../contribute-to-fkds/testing.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/testing.html"
+            
+        >
+            Automatisk testning
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../contribute-to-fkds/checklist-publication.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/checklist-publication.html"
+            
+        >
+            Checklista vid publicering
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../contribute-to-fkds/commits.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/commits.html"
+            
+        >
+            Commits och commitmeddelanden
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../contribute-to-fkds/code-guidelines.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/code-guidelines.html"
+            
+        >
+            Riktlinjer för kod
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../contribute-to-fkds/testverktyg.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/testverktyg.html"
+            
+        >
+            Testverktyg
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Om designsystemet <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../about/"
+            
+            
+            
+            data-path="gettingstarted/about/"
+            
+        >
+            Designsystemet
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../about/roadmap.html"
+            
+            
+            
+            data-path="gettingstarted/about/roadmap.html"
+            
+        >
+            På gång
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../about/release-notes.html"
+            
+            
+            
+            data-path="gettingstarted/about/release-notes.html"
+            
+        >
+            Releaseanteckningar
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../about/releases.html"
+            
+            
+            
+            data-path="gettingstarted/about/releases.html"
+            
+        >
+            Releaser
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../help-and-support.html"
+            
+            
+            
+            data-path="gettingstarted/help-and-support.html"
+            
+        >
+            Hjälp och support
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details open>
+            <summary>Migreringsguider <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../migrating-to-fieldset.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-fieldset.html"
+            
+        >
+            Fieldset
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../migrating-to-ftable.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-ftable.html"
+            
+        >
+            FTable
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../migrating-to-v5.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v5.html"
+            
+        >
+            Version 5
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Version 6 <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../migrating-to-v6/overview.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/overview.html"
+            
+        >
+            Sammanfattning
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../migrating-to-v6/design.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/design.html"
+            
+        >
+            @fkui/design
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../migrating-to-v6/logic.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/logic.html"
+            
+        >
+            @fkui/logic
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../migrating-to-v6/vue.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/vue.html"
+            
+        >
+            @fkui/vue
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../migrating-to-v6/cypress-pageobjects.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/cypress-pageobjects.html"
+            
+        >
+            Cypress Pageobjects
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details open>
+            <summary>Version 7 <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="./overview.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/overview.html"
+            
+        >
+            Sammanfattning
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="./design.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/design.html"
+            
+        >
+            @fkui/design
+        </a>
+    </li>
+
+<li class="link highlight">
+        <a
+            href="./vue.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/vue.html"
+            
+        >
+            @fkui/vue
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="./pageobjects.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/pageobjects.html"
+            
+        >
+            Cypress Pageobjects
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="./modal-api-only.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/modal-api-only.html"
+            
+        >
+            Modal API only
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="./theme-builder.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/theme-builder.html"
+            
+        >
+            Theme-builder
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    </ul>
+
+            
+        </details>
+    </li>
+    </ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Komponenter <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+                <ul class="docs-mobile-nav__list docs-mobile-nav__list--main-link-wrapper">
+                    <li class="link ">
+                        <a href="../../../components/">
+                            Komponenter
+                        </a>
+                    </li>
+                </ul>
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../components/fbadge.html"
+            
+            
+            
+            data-path="components/fbadge.html"
+            
+        >
+            Bricka
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/chip.html"
+            
+            
+            
+            data-path="components/chip.html"
+            
+        >
+            Chip
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/fdefinitionlist.html"
+            
+            
+            
+            data-path="components/fdefinitionlist.html"
+            
+        >
+            Definitionslista
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/fdialoguetree.html"
+            
+            
+            
+            data-path="components/fdialoguetree.html"
+            
+        >
+            Dialogträd
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/flabel.html"
+            
+            
+            
+            data-path="components/flabel.html"
+            
+        >
+            Etikett
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Expanderbara ytor <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../components/expandable/fexpandablepanel.html"
+            
+            
+            
+            data-path="components/expandable/fexpandablepanel.html"
+            
+        >
+            Expanderbar panel
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/expandable/fexpand.html"
+            
+            
+            
+            data-path="components/expandable/fexpand.html"
+            
+        >
+            Expanderbart innehåll
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/expandable/fexpandableparagraph.html"
+            
+            
+            
+            data-path="components/expandable/fexpandableparagraph.html"
+            
+        >
+            Expanderbart stycke
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Filuppladdning <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../components/file-upload/ffileitem.html"
+            
+            
+            
+            data-path="components/file-upload/ffileitem.html"
+            
+        >
+            Filpresentatör
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/file-upload/ffileselector.html"
+            
+            
+            
+            data-path="components/file-upload/ffileselector.html"
+            
+        >
+            Filväljare
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Gruppera <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                        
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../components/group/ffieldset.html"
+            
+            
+            
+            data-path="components/group/ffieldset.html"
+            
+        >
+            Fältgruppering
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/group/"
+            
+            
+            
+            data-path="components/group/"
+            
+        >
+            Komponentgrupp
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../components/ficon.html"
+            
+            
+            
+            data-path="components/ficon.html"
+            
+        >
+            Ikon
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Inmatning <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../components/input/ftextfield.html"
+            
+            
+            
+            data-path="components/input/ftextfield.html"
+            
+        >
+            Inmatningsfält
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/input/fdatepickerfield.html"
+            
+            
+            
+            data-path="components/input/fdatepickerfield.html"
+            
+        >
+            Datumväljare
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/input/fselectfield.html"
+            
+            
+            
+            data-path="components/input/fselectfield.html"
+            
+        >
+            Dropplista
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/input/ftextareafield.html"
+            
+            
+            
+            data-path="components/input/ftextareafield.html"
+            
+        >
+            Flerradigt inmatningsfält
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/input/combobox.html"
+            
+            
+            
+            data-path="components/input/combobox.html"
+            
+        >
+            Kombobox
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/input/fcheckboxfield.html"
+            
+            
+            
+            data-path="components/input/fcheckboxfield.html"
+            
+        >
+            Kryssruta
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/input/fradiofield.html"
+            
+            
+            
+            data-path="components/input/fradiofield.html"
+            
+        >
+            Radioknapp
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/input/textfield-specialized.html"
+            
+            
+            
+            data-path="components/input/textfield-specialized.html"
+            
+        >
+            Specialiserade inmatningsfält
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../components/fcalendar.html"
+            
+            
+            
+            data-path="components/fcalendar.html"
+            
+        >
+            Kalender
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/button.html"
+            
+            
+            
+            data-path="components/button.html"
+            
+        >
+            Knapp
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/fcontextmenu.html"
+            
+            
+            
+            data-path="components/fcontextmenu.html"
+            
+        >
+            Kontextmeny
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/fcard.html"
+            
+            
+            
+            data-path="components/fcard.html"
+            
+        >
+            Kort
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Ladda innehåll <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../components/load/fprogressbar.html"
+            
+            
+            
+            data-path="components/load/fprogressbar.html"
+            
+        >
+            Förloppsindikator
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/load/floader.html"
+            
+            
+            
+            data-path="components/load/floader.html"
+            
+        >
+            Laddningsindikator
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../components/flogo.html"
+            
+            
+            
+            data-path="components/flogo.html"
+            
+        >
+            Logotyp
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Länkar <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../components/links/anchor.html"
+            
+            
+            
+            data-path="components/links/anchor.html"
+            
+        >
+            Länk
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/links/entrypoint.html"
+            
+            
+            
+            data-path="components/links/entrypoint.html"
+            
+        >
+            Startpunkt
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../components/fmessagebox.html"
+            
+            
+            
+            data-path="components/fmessagebox.html"
+            
+        >
+            Meddelanderuta
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Modal <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../components/modal/fmodal.html"
+            
+            
+            
+            data-path="components/modal/fmodal.html"
+            
+        >
+            Modal dialogruta
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/modal/fconfirmmodal.html"
+            
+            
+            
+            data-path="components/modal/fconfirmmodal.html"
+            
+        >
+            Bekräftelsemodal
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/modal/fformmodal.html"
+            
+            
+            
+            data-path="components/modal/fformmodal.html"
+            
+        >
+            Formulärsmodal
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../components/foffline.html"
+            
+            
+            
+            data-path="components/foffline.html"
+            
+        >
+            Offline
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/pagination.html"
+            
+            
+            
+            data-path="components/pagination.html"
+            
+        >
+            Paginering
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Presentationsfält <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../components/presentation/foutputfield.html"
+            
+            
+            
+            data-path="components/presentation/foutputfield.html"
+            
+        >
+            Presentationsfält - dynamiskt
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/presentation/fstaticfield.html"
+            
+            
+            
+            data-path="components/presentation/fstaticfield.html"
+            
+        >
+            Presentationsfält - statiskt
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Ramverkskomponenter <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../components/framework/about.html"
+            
+            
+            
+            data-path="components/framework/about.html"
+            
+        >
+            Om ramverkskomponenter
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/framework/ianimateexpand.html"
+            
+            
+            
+            data-path="components/framework/ianimateexpand.html"
+            
+        >
+            Animerad expandering
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/framework/iflexitem.html"
+            
+            
+            
+            data-path="components/framework/iflexitem.html"
+            
+        >
+            Flex Item
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/framework/iflex.html"
+            
+            
+            
+            data-path="components/framework/iflex.html"
+            
+        >
+            Flexibel positionering
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/framework/iskiplink.html"
+            
+            
+            
+            data-path="components/framework/iskiplink.html"
+            
+        >
+            Gå till innehåll
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/framework/icalendarmonth.html"
+            
+            
+            
+            data-path="components/framework/icalendarmonth.html"
+            
+        >
+            Kalendermånad
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/framework/icalendarnavbar.html"
+            
+            
+            
+            data-path="components/framework/icalendarnavbar.html"
+            
+        >
+            Kalendernavigering
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/framework/icalendarmonthgrid.html"
+            
+            
+            
+            data-path="components/framework/icalendarmonthgrid.html"
+            
+        >
+            Kalenderrutnät
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/framework/ipopup.html"
+            
+            
+            
+            data-path="components/framework/ipopup.html"
+            
+        >
+            Popup
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/framework/ipopupmenu.html"
+            
+            
+            
+            data-path="components/framework/ipopupmenu.html"
+            
+        >
+            Popup-meny
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/framework/ipopuperror.html"
+            
+            
+            
+            data-path="components/framework/ipopuperror.html"
+            
+        >
+            PopupError
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/framework/iclosebutton.html"
+            
+            
+            
+            data-path="components/framework/iclosebutton.html"
+            
+        >
+            Stängknapp
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Sidlayout <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../components/page-layout/application-layout.html"
+            
+            
+            
+            data-path="components/page-layout/application-layout.html"
+            
+        >
+            Applikationslayout
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/page-layout/fpagelayout.html"
+            
+            
+            
+            data-path="components/page-layout/fpagelayout.html"
+            
+        >
+            Applikationsmall
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/page-layout/fdetailspanel.html"
+            
+            
+            
+            data-path="components/page-layout/fdetailspanel.html"
+            
+        >
+            Detaljpanel
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/page-layout/ffixedpane.html"
+            
+            
+            
+            data-path="components/page-layout/ffixedpane.html"
+            
+        >
+            Fixerad yta
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/page-layout/fresizepane.html"
+            
+            
+            
+            data-path="components/page-layout/fresizepane.html"
+            
+        >
+            Justerbar yta
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/page-layout/fminimizablepanel.html"
+            
+            
+            
+            data-path="components/page-layout/fminimizablepanel.html"
+            
+        >
+            Minimerbar panel
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/page-layout/fnavigationmenu.html"
+            
+            
+            
+            data-path="components/page-layout/fnavigationmenu.html"
+            
+        >
+            Navigeringsmeny
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/page-layout/fpageheader.html"
+            
+            
+            
+            data-path="components/page-layout/fpageheader.html"
+            
+        >
+            Sidhuvud
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../components/fwizard.html"
+            
+            
+            
+            data-path="components/fwizard.html"
+            
+        >
+            Steg för steg-guide
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Tabell och lista <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Tabell <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/"
+            
+            
+            
+            data-path="components/table-and-list/table/"
+            
+        >
+            Om tabell
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/code.html"
+            
+            
+            
+            data-path="components/table-and-list/table/code.html"
+            
+        >
+            Tabell (kod)
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/expand-rows.html"
+            
+            
+            
+            data-path="components/table-and-list/table/expand-rows.html"
+            
+        >
+            Expandera rader
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/expand-rows-code.html"
+            
+            
+            
+            data-path="components/table-and-list/table/expand-rows-code.html"
+            
+        >
+            Expandera rader (kod)
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Kolumntyper <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/"
+            
+        >
+            Om kolumntyper
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Textfält <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/text/"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/text/"
+            
+        >
+            Om textfält
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/text/bankgiro.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/text/bankgiro.html"
+            
+        >
+            Bankgiro
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/text/clearing-number.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/text/clearing-number.html"
+            
+        >
+            Clearingnummer
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/text/date.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/text/date.html"
+            
+        >
+            Datum
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/text/bank-account-number.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/text/bank-account-number.html"
+            
+        >
+            Kontonnummer
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/text/email.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/text/email.html"
+            
+        >
+            Mejladress
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/text/number.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/text/number.html"
+            
+        >
+            Numeriskt
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/text/organisationsnummer.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/text/organisationsnummer.html"
+            
+        >
+            Organisationsnummer
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/text/personnummer.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/text/personnummer.html"
+            
+        >
+            Personnummer
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/text/plusgiro.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/text/plusgiro.html"
+            
+        >
+            Plusgiro
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/text/postal-code.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/text/postal-code.html"
+            
+        >
+            Postnummer
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/text/percent.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/text/percent.html"
+            
+        >
+            Procent
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/text/phone-number.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/text/phone-number.html"
+            
+        >
+            Telefonnummer
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/text/currency.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/text/currency.html"
+            
+        >
+            Valuta
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/select.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/select.html"
+            
+        >
+            Dropplista
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/button.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/button.html"
+            
+        >
+            Knapp
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/contextmenu.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/contextmenu.html"
+            
+        >
+            Kontextmeny
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/checkbox.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/checkbox.html"
+            
+        >
+            Kryssruta
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/anchor.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/anchor.html"
+            
+        >
+            Länk
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/rowheader.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/rowheader.html"
+            
+        >
+            Radrubrik
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/column-types/render.html"
+            
+            
+            
+            data-path="components/table-and-list/table/column-types/render.html"
+            
+        >
+            Anpassa egen kolumntyp
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/create-delete-rows.html"
+            
+            
+            
+            data-path="components/table-and-list/table/create-delete-rows.html"
+            
+        >
+            Lägga till och ta bort rader
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/create-delete-rows-code.html"
+            
+            
+            
+            data-path="components/table-and-list/table/create-delete-rows-code.html"
+            
+        >
+            Lägga till och ta bort rader (kod)
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/navigate.html"
+            
+            
+            
+            data-path="components/table-and-list/table/navigate.html"
+            
+        >
+            Navigera
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/paginate.html"
+            
+            
+            
+            data-path="components/table-and-list/table/paginate.html"
+            
+        >
+            Paginera
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/paginate-code.html"
+            
+            
+            
+            data-path="components/table-and-list/table/paginate-code.html"
+            
+        >
+            Paginera (kod)
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/edit.html"
+            
+            
+            
+            data-path="components/table-and-list/table/edit.html"
+            
+        >
+            Redigera innehåll
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/edit-code.html"
+            
+            
+            
+            data-path="components/table-and-list/table/edit-code.html"
+            
+        >
+            Redigera innehåll (kod)
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/sort-filter.html"
+            
+            
+            
+            data-path="components/table-and-list/table/sort-filter.html"
+            
+        >
+            Sortera och filtrera
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/sort-filter-code.html"
+            
+            
+            
+            data-path="components/table-and-list/table/sort-filter-code.html"
+            
+        >
+            Sortera och filtrera (kod)
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/width.html"
+            
+            
+            
+            data-path="components/table-and-list/table/width.html"
+            
+        >
+            Sätta kolumnbredd
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/width-code.html"
+            
+            
+            
+            data-path="components/table-and-list/table/width-code.html"
+            
+        >
+            Sätta kolumnbredd (kod)
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/select-rows.html"
+            
+            
+            
+            data-path="components/table-and-list/table/select-rows.html"
+            
+        >
+            Välja rader
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/select-rows-code.html"
+            
+            
+            
+            data-path="components/table-and-list/table/select-rows-code.html"
+            
+        >
+            Välja rader (kod)
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/table/action-button-link.html"
+            
+            
+            
+            data-path="components/table-and-list/table/action-button-link.html"
+            
+        >
+            Åtgärdsknappar och länkar
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/flist.html"
+            
+            
+            
+            data-path="components/table-and-list/flist.html"
+            
+        >
+            Lista
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/fcruddataset.html"
+            
+            
+            
+            data-path="components/table-and-list/fcruddataset.html"
+            
+        >
+            Datamängdredigerare
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/fsortfilterdataset.html"
+            
+            
+            
+            data-path="components/table-and-list/fsortfilterdataset.html"
+            
+        >
+            Datamängdsorterare
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/table-and-list/legacytable.html"
+            
+            
+            
+            data-path="components/table-and-list/legacytable.html"
+            
+        >
+            Datatabell och interaktiv tabell
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../components/ftooltip.html"
+            
+            
+            
+            data-path="components/ftooltip.html"
+            
+        >
+            Tooltip
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Validering <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../components/validation/ferrorlist.html"
+            
+            
+            
+            data-path="components/validation/ferrorlist.html"
+            
+        >
+            Fellista
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/validation/formatters-and-parsers.html"
+            
+            
+            
+            data-path="components/validation/formatters-and-parsers.html"
+            
+        >
+            Formaterare och parsers
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/validation/validators.html"
+            
+            
+            
+            data-path="components/validation/validators.html"
+            
+        >
+            Validatorer
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/validation/fvalidationgroup.html"
+            
+            
+            
+            data-path="components/validation/fvalidationgroup.html"
+            
+        >
+            Validering samlad
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../components/validation/fvalidationform.html"
+            
+            
+            
+            data-path="components/validation/fvalidationform.html"
+            
+        >
+            Valideringsformulär
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    </ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Guider <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+
+                
+                
+                <ul class="docs-mobile-nav__list docs-mobile-nav__list--main-link-wrapper">
+                    <li class="link ">
+                        <a href="../../../guides/">
+                            Guider
+                        </a>
+                    </li>
+                </ul>
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Formatering och parsning <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../guides/formatting-and-parsing/formatter-parser.html"
+            
+            
+            
+            data-path="guides/formatting-and-parsing/formatter-parser.html"
+            
+        >
+            Formatering och parsning
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../guides/formatting-and-parsing/custom-formatter-parser.html"
+            
+            
+            
+            data-path="guides/formatting-and-parsing/custom-formatter-parser.html"
+            
+        >
+            Formaterare och parser - anpassad
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Validering och felhantering <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../guides/validation-and-error-handling/validation.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/validation.html"
+            
+        >
+            Validering och felhantering
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../guides/validation-and-error-handling/custom-error-message.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/custom-error-message.html"
+            
+        >
+            Felmeddelande - anpassat
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../guides/validation-and-error-handling/cross-validation.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/cross-validation.html"
+            
+        >
+            Korsvalidering
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../guides/validation-and-error-handling/length-validation.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/length-validation.html"
+            
+        >
+            Längdvalidering
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../guides/validation-and-error-handling/custom-validator.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/custom-validator.html"
+            
+        >
+            Validator - anpassad
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    </ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Funktioner <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+                <ul class="docs-mobile-nav__list docs-mobile-nav__list--main-link-wrapper">
+                    <li class="link ">
+                        <a href="../../../functions/">
+                            Funktioner
+                        </a>
+                    </li>
+                </ul>
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Cypress <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                        
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Page Object <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>FBadge <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FBadgePageObject/"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FBadgePageObject/"
+            
+        >
+            FBadge
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FBadgePageObject/is-inverted.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FBadgePageObject/is-inverted.html"
+            
+        >
+            inverted()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FBadgePageObject/status.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FBadgePageObject/status.html"
+            
+        >
+            status()
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>FDetailsPanel <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FDetailsPanelPageObject/"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FDetailsPanelPageObject/"
+            
+        >
+            FDetailsPanel
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html"
+            
+        >
+            closeButton()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FDetailsPanelPageObject/content.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FDetailsPanelPageObject/content.html"
+            
+        >
+            content()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FDetailsPanelPageObject/el.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FDetailsPanelPageObject/el.html"
+            
+        >
+            el()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FDetailsPanelPageObject/footer.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FDetailsPanelPageObject/footer.html"
+            
+        >
+            footer()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FDetailsPanelPageObject/header.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FDetailsPanelPageObject/header.html"
+            
+        >
+            header()
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>FFileItem <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FFileItemPageObject/"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FFileItemPageObject/"
+            
+        >
+            FFileItem
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FFileItemPageObject/filename.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FFileItemPageObject/filename.html"
+            
+        >
+            fileName()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html"
+            
+        >
+            typeOfFile()
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>FProgressbar <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FProgressbarPageObject/"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FProgressbarPageObject/"
+            
+        >
+            FProgressbar
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FProgressbarPageObject/el.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FProgressbarPageObject/el.html"
+            
+        >
+            el()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html"
+            
+        >
+            progressStatus()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FProgressbarPageObject/value.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FProgressbarPageObject/value.html"
+            
+        >
+            value()
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/fdefinitionlistpageobject.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/fdefinitionlistpageobject.html"
+            
+        >
+            FDefinitionList
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/fexpandableparagraphpageobject.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/fexpandableparagraphpageobject.html"
+            
+        >
+            FExpandableParagraph
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>FInteractiveTablePageObject <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html"
+            
+        >
+            cell()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/header.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FInteractiveTablePageObject/header.html"
+            
+        >
+            header()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/selectable.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FInteractiveTablePageObject/selectable.html"
+            
+        >
+            selectable()
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>FLabel <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FLabelPageObject/"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FLabelPageObject/"
+            
+        >
+            FLabel
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FLabelPageObject/description.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FLabelPageObject/description.html"
+            
+        >
+            description()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FLabelPageObject/error-icon.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FLabelPageObject/error-icon.html"
+            
+        >
+            errorIcon()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FLabelPageObject/error-message.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FLabelPageObject/error-message.html"
+            
+        >
+            errorMessage()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FLabelPageObject/format-description.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FLabelPageObject/format-description.html"
+            
+        >
+            formatDescription()
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/flistpageobject.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/flistpageobject.html"
+            
+        >
+            FList
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>FMinimizablePanel <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html"
+            
+        >
+            FMinimizablePanel
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html"
+            
+        >
+            content()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-el.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-el.html"
+            
+        >
+            el()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-footer.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-footer.html"
+            
+        >
+            footer()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-header.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-header.html"
+            
+        >
+            header()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-toggle-button.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-toggle-button.html"
+            
+        >
+            toggleButton()
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/fpaginatorpageobject.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/fpaginatorpageobject.html"
+            
+        >
+            FPaginator
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/ftablepageobject.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/ftablepageobject.html"
+            
+        >
+            FTable
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    </ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Datum <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>FYear <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/date/f-year/"
+            
+            
+            
+            data-path="functions/date/f-year/"
+            
+        >
+            FYear
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/date/f-year/from-date.html"
+            
+            
+            
+            data-path="functions/date/f-year/from-date.html"
+            
+        >
+            fromDate()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/date/f-year/from-year.html"
+            
+            
+            
+            data-path="functions/date/f-year/from-year.html"
+            
+        >
+            fromYear()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/date/f-year/now.html"
+            
+            
+            
+            data-path="functions/date/f-year/now.html"
+            
+        >
+            now()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/date/f-year/add-years.html"
+            
+            
+            
+            data-path="functions/date/f-year/add-years.html"
+            
+        >
+            addYears()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/date/f-year/compare.html"
+            
+            
+            
+            data-path="functions/date/f-year/compare.html"
+            
+        >
+            compare()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/date/f-year/equals.html"
+            
+            
+            
+            data-path="functions/date/f-year/equals.html"
+            
+        >
+            equals()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/date/f-year/is-after.html"
+            
+            
+            
+            data-path="functions/date/f-year/is-after.html"
+            
+        >
+            isAfter()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/date/f-year/is-before.html"
+            
+            
+            
+            data-path="functions/date/f-year/is-before.html"
+            
+        >
+            isBefore()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/date/f-year/is-valid.html"
+            
+            
+            
+            data-path="functions/date/f-year/is-valid.html"
+            
+        >
+            isValid()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/date/f-year/f-date-next.html"
+            
+            
+            
+            data-path="functions/date/f-year/f-date-next.html"
+            
+        >
+            next()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/date/f-year/f-date-previous.html"
+            
+            
+            
+            data-path="functions/date/f-year/f-date-previous.html"
+            
+        >
+            previous()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/date/f-year/tojson.html"
+            
+            
+            
+            data-path="functions/date/f-year/tojson.html"
+            
+        >
+            toJSON()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/date/f-year/tostring.html"
+            
+            
+            
+            data-path="functions/date/f-year/tostring.html"
+            
+        >
+            toString()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/date/f-year/value.html"
+            
+            
+            
+            data-path="functions/date/f-year/value.html"
+            
+        >
+            value
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../functions/date/clamp.html"
+            
+            
+            
+            data-path="functions/date/clamp.html"
+            
+        >
+            clamp()
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../date/"
+            
+            target="_blank"
+            rel="external"
+            
+            
+            data-path="date/"
+            
+            
+        >
+            Datum-paket
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Funktioner <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/assert-ref.html"
+            
+            
+            
+            data-path="functions/functions/assert-ref.html"
+            
+        >
+            assertRef()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/assert-set.html"
+            
+            
+            
+            data-path="functions/functions/assert-set.html"
+            
+        >
+            assertSet()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dispatch-component-validity-event.html"
+            
+            
+            
+            data-path="functions/functions/dispatch-component-validity-event.html"
+            
+        >
+            dispatchComponentValidityEvent
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>DOM-funktioner <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dom-functions/find-element-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/find-element-from-vue-ref.html"
+            
+        >
+            findElementFromVueRef
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dom-functions/find-html-element-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/find-html-element-from-vue-ref.html"
+            
+        >
+            findHTMLElementFromVueRef
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dom-functions/find-parent-by-name.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/find-parent-by-name.html"
+            
+        >
+            findParentByName
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dom-functions/focus.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/focus.html"
+            
+        >
+            focus
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dom-functions/get-element-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-element-from-vue-ref.html"
+            
+        >
+            getElementFromVueRef
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dom-functions/get-elements-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-elements-from-vue-ref.html"
+            
+        >
+            getElementsFromVueRef
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dom-functions/get-html-element-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-html-element-from-vue-ref.html"
+            
+        >
+            getHTMLElementFromVueRef
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dom-functions/get-html-elements-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-html-elements-from-vue-ref.html"
+            
+        >
+            getHTMLElementsFromVueRef
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dom-functions/get-input-element.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-input-element.html"
+            
+        >
+            getInputElement
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dom-functions/get-parent-by-name.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-parent-by-name.html"
+            
+        >
+            getParentByName
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dom-functions/has-parent-by-name.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/has-parent-by-name.html"
+            
+        >
+            hasParentByName
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dom-functions/has-slot.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/has-slot.html"
+            
+        >
+            hasSlot()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dom-functions/ref-is-element.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-element.html"
+            
+        >
+            refIsElement
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dom-functions/ref-is-element-array.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-element-array.html"
+            
+        >
+            refIsElementArray
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dom-functions/ref-is-html-element-array.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-html-element-array.html"
+            
+        >
+            refIsHTMLElementArray
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dom-functions/ref-is-vue.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-vue.html"
+            
+        >
+            refIsVue
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/dom-functions/ref-is-vue-array.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-vue-array.html"
+            
+        >
+            refIsVueArray
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/handle-keyboard-focus-navigation.html"
+            
+            
+            
+            data-path="functions/functions/handle-keyboard-focus-navigation.html"
+            
+        >
+            handleKeyboardFocusNavigation
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/include-item.html"
+            
+            
+            
+            data-path="functions/functions/include-item.html"
+            
+        >
+            includeItem
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/item-equals.html"
+            
+            
+            
+            data-path="functions/functions/item-equals.html"
+            
+        >
+            itemEquals
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/maybe-component.html"
+            
+            
+            
+            data-path="functions/functions/maybe-component.html"
+            
+        >
+            MaybeComponent
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Modalfunktioner <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/modal-functions/confirm-modal.html"
+            
+            
+            
+            data-path="functions/functions/modal-functions/confirm-modal.html"
+            
+        >
+            confirmModal()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/modal-functions/form-modal.html"
+            
+            
+            
+            data-path="functions/functions/modal-functions/form-modal.html"
+            
+        >
+            formModal()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/modal-functions/open-modal.html"
+            
+            
+            
+            data-path="functions/functions/modal-functions/open-modal.html"
+            
+        >
+            openModal
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/mount-component.html"
+            
+            
+            
+            data-path="functions/functions/mount-component.html"
+            
+        >
+            mountComponent
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/remove-table-rows.html"
+            
+            
+            
+            data-path="functions/functions/remove-table-rows.html"
+            
+        >
+            removeTableRows()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/render-slot-text.html"
+            
+            
+            
+            data-path="functions/functions/render-slot-text.html"
+            
+        >
+            renderSlotText
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/table-scroll.html"
+            
+            
+            
+            data-path="functions/functions/table-scroll.html"
+            
+        >
+            TableScroll
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/table-scroll-classes.html"
+            
+            
+            
+            data-path="functions/functions/table-scroll-classes.html"
+            
+        >
+            tableScrollClasses
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/use-area-data.html"
+            
+            
+            
+            data-path="functions/functions/use-area-data.html"
+            
+        >
+            useAreaData()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/use-details-panel.html"
+            
+            
+            
+            data-path="functions/functions/use-details-panel.html"
+            
+        >
+            useDetailsPanel()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/use-modal.html"
+            
+            
+            
+            data-path="functions/functions/use-modal.html"
+            
+        >
+            useModal()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/use-resize.html"
+            
+            
+            
+            data-path="functions/functions/use-resize.html"
+            
+        >
+            useResize()
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>ValidationErrorMessageBuilder <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/ValidationErrorMessageBuilder/build.html"
+            
+            
+            
+            data-path="functions/functions/ValidationErrorMessageBuilder/build.html"
+            
+        >
+            build()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/ValidationErrorMessageBuilder/create.html"
+            
+            
+            
+            data-path="functions/functions/ValidationErrorMessageBuilder/create.html"
+            
+        >
+            create()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/ValidationErrorMessageBuilder/map.html"
+            
+            
+            
+            data-path="functions/functions/ValidationErrorMessageBuilder/map.html"
+            
+        >
+            map()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/functions/ValidationErrorMessageBuilder/map-combined.html"
+            
+            
+            
+            data-path="functions/functions/ValidationErrorMessageBuilder/map-combined.html"
+            
+        >
+            mapCombined()
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    </ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Helpers <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                        
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/helpers/"
+            
+            
+            
+            data-path="functions/helpers/"
+            
+        >
+            Hjälpklasser
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/helpers/accessibility.html"
+            
+            
+            
+            data-path="functions/helpers/accessibility.html"
+            
+        >
+            Skärmläsare
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>i18next <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/i18next-translate/i18next.html"
+            
+            
+            
+            data-path="functions/i18next-translate/i18next.html"
+            
+        >
+            i18next
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/i18next-translate/i18next-provider.html"
+            
+            
+            
+            data-path="functions/i18next-translate/i18next-provider.html"
+            
+        >
+            i18nextProvider
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/i18next-translate/i18next-provider-interface.html"
+            
+            
+            
+            data-path="functions/i18next-translate/i18next-provider-interface.html"
+            
+        >
+            I18nextProvider
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../functions/config.html"
+            
+            
+            
+            data-path="functions/config.html"
+            
+        >
+            Konfiguration
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Labs <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/labs/"
+            
+            
+            
+            data-path="functions/labs/"
+            
+        >
+            Om FKUI Vue Labs
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/labs/xtimetextfield.html"
+            
+            
+            
+            data-path="functions/labs/xtimetextfield.html"
+            
+        >
+            Tidsinmatning
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/labs/xfiledragdrop.html"
+            
+            
+            
+            data-path="functions/labs/xfiledragdrop.html"
+            
+        >
+            XFileDragdrop
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/labs/xrelativetime.html"
+            
+            
+            
+            data-path="functions/labs/xrelativetime.html"
+            
+        >
+            XRelativeTime
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/labs/xsortfilterdatasetng.html"
+            
+            
+            
+            data-path="functions/labs/xsortfilterdatasetng.html"
+            
+        >
+            XSortFilterDatasetNg
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../logic/"
+            
+            target="_blank"
+            rel="external"
+            
+            
+            data-path="logic/"
+            
+            
+        >
+            Logik-paket
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/logo-default.html"
+            
+            
+            
+            data-path="functions/logo-default.html"
+            
+        >
+            Logotyp-paket
+        </a>
+    </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Plugins <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/plugins/errorplugin.html"
+            
+            
+            
+            data-path="functions/plugins/errorplugin.html"
+            
+        >
+            Error Plugin
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/plugins/formatplugin.html"
+            
+            
+            
+            data-path="functions/plugins/formatplugin.html"
+            
+        >
+            Format Plugin
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/plugins/testplugin.html"
+            
+            
+            
+            data-path="functions/plugins/testplugin.html"
+            
+        >
+            Test Plugin
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/plugins/translationplugin.html"
+            
+            
+            
+            data-path="functions/plugins/translationplugin.html"
+            
+        >
+            Translation Plugin
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/plugins/validationplugin.html"
+            
+            
+            
+            data-path="functions/plugins/validationplugin.html"
+            
+        >
+            Validation Plugin
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Sass <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/sass/densify.html"
+            
+            
+            
+            data-path="functions/sass/densify.html"
+            
+        >
+            densify()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/sass/focus-indicator.html"
+            
+            
+            
+            data-path="functions/sass/focus-indicator.html"
+            
+        >
+            focus-indicator()
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Services <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/services/event-bus.html"
+            
+            
+            
+            data-path="functions/services/event-bus.html"
+            
+        >
+            EventBus
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Testverktyg <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../functions/test-utils/"
+            
+            
+            
+            data-path="functions/test-utils/"
+            
+        >
+            Om testverktyg
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/test-utils/lib.html"
+            
+            
+            
+            data-path="functions/test-utils/lib.html"
+            
+        >
+            Generella funktioner
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/test-utils/jest.html"
+            
+            
+            
+            data-path="functions/test-utils/jest.html"
+            
+        >
+            Jest
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/test-utils/vitest.html"
+            
+            
+            
+            data-path="functions/test-utils/vitest.html"
+            
+        >
+            Vitest
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/test-utils/vue.html"
+            
+            
+            
+            data-path="functions/test-utils/vue.html"
+            
+        >
+            Vue.js
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+<li class="link ">
+        <a
+            href="../../../functions/tsconfig.html"
+            
+            
+            
+            data-path="functions/tsconfig.html"
+            
+        >
+            TSConfig
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/font-default.html"
+            
+            
+            
+            data-path="functions/font-default.html"
+            
+        >
+            Typsnittspaket
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Visuellt <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+                <ul class="docs-mobile-nav__list docs-mobile-nav__list--main-link-wrapper">
+                    <li class="link ">
+                        <a href="../../../styles/">
+                            Visuellt
+                        </a>
+                    </li>
+                </ul>
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../../styles/theme.html"
+            
+            
+            
+            data-path="styles/theme.html"
+            
+        >
+            Tema
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../styles/density.html"
+            
+            
+            
+            data-path="styles/density.html"
+            
+        >
+            Densitet
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../styles/colors.html"
+            
+            
+            
+            data-path="styles/colors.html"
+            
+        >
+            Färger
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../styles/grid.html"
+            
+            
+            
+            data-path="styles/grid.html"
+            
+        >
+            Grid
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../styles/forcedcolors.html"
+            
+            
+            
+            data-path="styles/forcedcolors.html"
+            
+        >
+            Högkontrast
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../styles/icons.html"
+            
+            
+            
+            data-path="styles/icons.html"
+            
+        >
+            Ikoner
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../styles/typography.html"
+            
+            
+            
+            data-path="styles/typography.html"
+            
+        >
+            Typografi
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    </ul>
+</div>
+</div>
+        
+    </nav>
+</div>
+<nav id="docs-topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item highlight">
+            <a class="docs-topnav__anchor" href="../../"> Kom igång </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../../components/"> Komponenter </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../../guides/"> Guider </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../../functions/"> Funktioner </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../../styles/"> Visuellt </a>
+        </li>
+        </ul>
+</nav>
+
+            <div class="docs-page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="docs-search" role="search">
+        <button type="submit">
+            <svg focusable="false" class="search__icon">
+                <use xlink:href="#docs-icon-search"></use>
+            </svg>
+            Sök <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </header>
+
+            <div id="docs-primary"><div id="docs-sidenav">
+
+    <input id="nav-toggle" type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+    <label for="nav-toggle" class="sidenav__toggle-label">
+         <svg class="docs-icon icon-menu"><use href="#docs-icon-menu"></use></svg>
+         <svg class="docs-icon icon-back"><use href="#docs-icon-chevrons-left"></use></svg>
+    </label>
+<nav class="navigation" aria-label="Sekundär">
+<ul><li class="expandable ">
+        <details >
+            <summary>Använda designsystemet <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ul><li class="link ">
+        <a
+            href="../../use-design-system/getting-started.html"
+            
+            
+            
+            data-path="gettingstarted/use-design-system/getting-started.html"
+            
+        >
+            Kom igång
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../use-design-system/getting-started-application.html"
+            
+            
+            
+            data-path="gettingstarted/use-design-system/getting-started-application.html"
+            
+        >
+            Ta fram applikation
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../use-design-system/translate-text.html"
+            
+            
+            
+            data-path="gettingstarted/use-design-system/translate-text.html"
+            
+        >
+            Anpassa och översätt text
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../use-design-system/icon-library.html"
+            
+            
+            
+            data-path="gettingstarted/use-design-system/icon-library.html"
+            
+        >
+            Skapa eget ikonbibliotek
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>Bidra till designsystemet <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ul><li class="link ">
+        <a
+            href="../../contribute-to-fkds/"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/"
+            
+        >
+            Bidra till designsystemet
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../contribute-to-fkds/contributing-developers.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/contributing-developers.html"
+            
+        >
+            För utvecklare
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../contribute-to-fkds/release.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/release.html"
+            
+        >
+            Releaseprocess
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../contribute-to-fkds/testing.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/testing.html"
+            
+        >
+            Automatisk testning
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../contribute-to-fkds/checklist-publication.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/checklist-publication.html"
+            
+        >
+            Checklista vid publicering
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../contribute-to-fkds/commits.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/commits.html"
+            
+        >
+            Commits och commitmeddelanden
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../contribute-to-fkds/code-guidelines.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/code-guidelines.html"
+            
+        >
+            Riktlinjer för kod
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../contribute-to-fkds/testverktyg.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/testverktyg.html"
+            
+        >
+            Testverktyg
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>Om designsystemet <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ul><li class="link ">
+        <a
+            href="../../about/"
+            
+            
+            
+            data-path="gettingstarted/about/"
+            
+        >
+            Designsystemet
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../about/roadmap.html"
+            
+            
+            
+            data-path="gettingstarted/about/roadmap.html"
+            
+        >
+            På gång
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../about/release-notes.html"
+            
+            
+            
+            data-path="gettingstarted/about/release-notes.html"
+            
+        >
+            Releaseanteckningar
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../about/releases.html"
+            
+            
+            
+            data-path="gettingstarted/about/releases.html"
+            
+        >
+            Releaser
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../../help-and-support.html"
+            
+            
+            
+            data-path="gettingstarted/help-and-support.html"
+            
+        >
+            Hjälp och support
+        </a>
+    </li><li class="expandable active">
+        <details open>
+            <summary>Migreringsguider <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ul><li class="link ">
+        <a
+            href="../migrating-to-fieldset.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-fieldset.html"
+            
+        >
+            Fieldset
+        </a>
+    </li><li class="link ">
+        <a
+            href="../migrating-to-ftable.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-ftable.html"
+            
+        >
+            FTable
+        </a>
+    </li><li class="link ">
+        <a
+            href="../migrating-to-v5.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v5.html"
+            
+        >
+            Version 5
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Version 6 <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ul><li class="link ">
+        <a
+            href="../migrating-to-v6/overview.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/overview.html"
+            
+        >
+            Sammanfattning
+        </a>
+    </li><li class="link ">
+        <a
+            href="../migrating-to-v6/design.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/design.html"
+            
+        >
+            @fkui/design
+        </a>
+    </li><li class="link ">
+        <a
+            href="../migrating-to-v6/logic.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/logic.html"
+            
+        >
+            @fkui/logic
+        </a>
+    </li><li class="link ">
+        <a
+            href="../migrating-to-v6/vue.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/vue.html"
+            
+        >
+            @fkui/vue
+        </a>
+    </li><li class="link ">
+        <a
+            href="../migrating-to-v6/cypress-pageobjects.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/cypress-pageobjects.html"
+            
+        >
+            Cypress Pageobjects
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li><li class="expandable active">
+        <details open>
+            <summary>Version 7 <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ul><li class="link ">
+        <a
+            href="./overview.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/overview.html"
+            
+        >
+            Sammanfattning
+        </a>
+    </li><li class="link ">
+        <a
+            href="./design.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/design.html"
+            
+        >
+            @fkui/design
+        </a>
+    </li><li class="link active">
+        <a
+            href="./vue.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/vue.html"
+            
+        >
+            @fkui/vue
+        </a>
+    </li><li class="link ">
+        <a
+            href="./pageobjects.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/pageobjects.html"
+            
+        >
+            Cypress Pageobjects
+        </a>
+    </li><li class="link ">
+        <a
+            href="./modal-api-only.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/modal-api-only.html"
+            
+        >
+            Modal API only
+        </a>
+    </li><li class="link ">
+        <a
+            href="./theme-builder.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/theme-builder.html"
+            
+        >
+            Theme-builder
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li></ul>
+
+            
+        </details>
+    </li></ul>
+</nav>
+</div><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 class="docs-heading docs-heading--h1" id="docs-title">Version 7 migreringsguide: @fkui/vue</h1>
+
+                    
+                    <div id="docs-aside"><dl></dl>
+
+
+                        
+                        <details id="docs-outline">
+                            <summary class="outline__heading">
+                                Innehåll
+                                <svg focusable="false" class="docs-icon" aria-hidden="true">
+                                    <use href="#docs-icon-arrow-down"></use>
+                                </svg>
+                            </summary>
+                            <ul>
+                                
+                                <li><a href="#fcrudbutton">FCrudButton</a></li>
+                                
+                                <li><a href="#ftable">FTable</a></li>
+                                
+                                <li><a href="#fvalidationform">FValidationForm</a></li>
+                                
+                                <li><a href="#fformmodal">FFormModal</a></li>
+                                
+                                <li><a href="#fcruddataset">FCrudDataset</a></li>
+                                
+                                <li><a href="#fmodal">FModal</a></li>
+                                
+                                <li><a href="#fsortfilterdataset">FSortFilterDataset</a></li>
+                                
+                                <li><a href="#getlegacyinternalkey">getLegacyInternalKey()</a></li>
+                                
+                                <li><a href="#tablescroll">TableScroll</a></li>
+                                
+                                <li><a href="#fwizard">FWizard</a></li>
+                                
+                                <li><a href="#fwizardstep">FWizardStep</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
+                    
+
+                    <div id="docs-content"><h2 id="fcrudbutton" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fcrudbutton">FCrudButton</a></h2><p class="docs-paragraph">Komponenten <code>FCrudButton</code> är borttagen.</p>
+<p class="docs-paragraph">För enskilda knappar använder du <a href="../../../components/button.html">FButton</a>.
+När du placerar tabellen i <code>FCrudDataset</code> kopplar du menyåtgärdernas <code>onClick</code> till <code>updateItem(item)</code> och <code>deleteItem(item)</code>, som du når via en template ref på <code>FCrudDataset</code>.
+Utanför tabeller får du samma funktioner som slot-props i defaultslotten.</p>
+<p class="docs-paragraph">Så ersätter du propsen:</p>
+<ul>
+<li><code>action</code> ersätts med <code>updateItem(item)</code> eller <code>deleteItem(item)</code> i menyåtgärdens <code>onClick</code> eller knappens <code>@click</code>.</li>
+<li><code>icon</code> anges på en action i <code>menu</code>-kolumnen eller med <code>icon-left</code> på <code>FButton</code>.</li>
+<li><code>label</code> anges med actionens <code>label</code> eller som knappens text i <code>FButton</code>.</li>
+</ul>
+<h3 id="tabell" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#tabell">Tabell</a></h3><p class="docs-paragraph">Se <a href="../../../components/table-and-list/fcruddataset.html#tabell-med-redigering">Tabell med redigering</a> för ett exempel med <code>menu</code>-kolumn.</p>
+<h3 id="lista_och_ovrigt" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#lista_och_ovrigt">Lista och övrigt</a></h3>
+                <div
+                    id="example-645c53"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-crud-dataset&gt;
+<span class="hljs-deletion">-    &lt;template #default&gt;</span>
+<span class="hljs-addition">+    &lt;template #default=&quot;{ updateItem, deleteItem }&quot;&gt;</span>
+         &lt;f-list :items&gt;
+             &lt;template #default=&quot;{ item }&quot;&gt;
+<span class="hljs-deletion">-                &lt;f-crud-button action=&quot;modify&quot; :item icon&gt;</span>
+<span class="hljs-addition">+                &lt;f-button</span>
+<span class="hljs-addition">+                    icon-left=&quot;pen&quot;</span>
+<span class="hljs-addition">+                    size=&quot;small&quot;</span>
+<span class="hljs-addition">+                    variant=&quot;tertiary&quot;</span>
+<span class="hljs-addition">+                    @click=&quot;updateItem(item)&quot;</span>
+<span class="hljs-addition">+                &gt;</span>
+                     Ändra {{ item.name }}
+<span class="hljs-deletion">-                &lt;/f-crud-button&gt;</span>
+<span class="hljs-deletion">-                &lt;f-crud-button action=&quot;delete&quot; :item icon&gt;</span>
+<span class="hljs-addition">+                &lt;/f-button&gt;</span>
+<span class="hljs-addition">+                &lt;f-button</span>
+<span class="hljs-addition">+                    icon-left=&quot;trashcan&quot;</span>
+<span class="hljs-addition">+                    size=&quot;small&quot;</span>
+<span class="hljs-addition">+                    variant=&quot;tertiary&quot;</span>
+<span class="hljs-addition">+                    @click=&quot;deleteItem(item)&quot;</span>
+<span class="hljs-addition">+                &gt;</span>
+                     Ta bort {{ item.name }}
+<span class="hljs-deletion">-                &lt;/f-crud-button&gt;</span>
+<span class="hljs-addition">+                &lt;/f-button&gt;</span>
+             &lt;/template&gt;
+         &lt;/f-list&gt;
+     &lt;/template&gt;
+</code></pre>
+                </div>
+            <h2 id="ftable" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#ftable">FTable</a></h2><p class="docs-paragraph">I <strong>FKUI v7</strong> har egenskapen <code>text</code> bytt namn till <code>screenreaderText</code> för tabellkolumner av typen <code>&quot;button&quot;</code> och <code>&quot;menu&quot;</code> i <code>FTable</code>.
+Ändringen förtydligar att strängen som returneras endast används som tillgänglighetstext för skärmläsare och inte visas visuellt i cellen.</p>
+<h3 id="sammanfattning_av_andringar" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#sammanfattning_av_andringar">Sammanfattning av ändringar</a></h3><h3 id="migrering_av_kolumndefinitioner" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#migrering_av_kolumndefinitioner">Migrering av kolumndefinitioner</a></h3><p class="docs-paragraph">Uppdatera samtliga kolumner med <code>type: &quot;button&quot;</code> eller <code>type: &quot;menu&quot;</code> i <code>defineTableColumns</code> genom att byta ut <code>text</code> mot <code>screenreaderText</code>:</p>
+
+                <div
+                    id="example-bcd240"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> const columns = defineTableColumns&lt;Row&gt;([
+     {
+         type: &quot;button&quot;,
+         header: &quot;Button&quot;,
+         description: &quot;Column 4&quot;,
+         key: &quot;button&quot;,
+         icon: &quot;trashcan&quot;,
+<span class="hljs-deletion">-        text(row) {</span>
+<span class="hljs-addition">+        screenreaderText(row) {</span>
+             return row.button;
+         },
+     },
+     {
+         type: &quot;menu&quot;,
+         header: &quot;Actions&quot;,
+<span class="hljs-deletion">-        text() {</span>
+<span class="hljs-addition">+        screenreaderText() {</span>
+             return &quot;Actions&quot;;
+         },
+         actions: [{ label: &quot;foo&quot; }, { label: &quot;bar&quot; }],
+     },
+ ]);
+</code></pre>
+                </div>
+            
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">Search the codebase for <code>defineTableColumns</code> and column objects containing <code>type: &quot;button&quot;</code> or <code>type: &quot;menu&quot;</code>.
+Rename <code>text</code> to <code>screenreaderText</code> on matching column objects.
+Run TypeScript type-checking (<code>tsc</code>) to verify no remaining type errors exist.</p>
+
+            </details>
+        <h3 id="datamangder_usedatasetref" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#datamangder_usedatasetref">Datamängder <code>useDatasetRef</code></a></h3><p class="docs-paragraph">Det metadata-baserade datamängds-API:et är borttaget.
+Det omfattar typen <code>Dataset&lt;T&gt;</code>, typerna <code>DatasetArrayMetadata</code> och <code>DatasetElementMetadata</code> samt funktionerna <code>useDatasetRef()</code>, <code>datasetIterator()</code> och <code>getDatasetMetadata()</code>.</p>
+<p class="docs-paragraph">Använd vanliga arrayer eller Vue-refar i stället för <code>useDatasetRef()</code>.</p>
+
+                <div
+                    id="example-bc456e"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-const rows = useDatasetRef&lt;Row&gt;(initialRows);</span>
+<span class="hljs-addition">+const rows = ref&lt;Row[]&gt;(initialRows);</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">För nästlade tabellrader anger du egenskapen med <code>expandable-attribute</code>:</p>
+
+                <div
+                    id="example-966119"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-const rows = useDatasetRef&lt;Row&gt;(initialRows, &quot;children&quot;);</span>
+<span class="hljs-addition">+const rows = ref&lt;Row[]&gt;(initialRows);</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-47993a"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table :rows :columns&gt;&lt;/f-table&gt;</span>
+<span class="hljs-addition">+&lt;f-table :rows :columns expandable-attribute=&quot;children&quot;&gt;&lt;/f-table&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Den relaterade funktionen <code>removeDatasetRows()</code> är också borttagen.
+Ersätt den med <a href="../../../functions/functions/remove-table-rows.html"><code>removeTableRows()</code></a>.
+Ange <code>expandableAttribute</code> när rader ska kunna tas bort från nästlade arrayer:</p>
+
+                <div
+                    id="example-e16608"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-removeDatasetRows(rows, row);</span>
+<span class="hljs-addition">+removeTableRows(rows, row, &quot;children&quot;);</span>
+</code></pre>
+                </div>
+            
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">Sök igenom applikationen efter <code>Dataset&lt;T&gt;</code>, <code>DatasetArrayMetadata</code>, <code>DatasetElementMetadata</code>, <code>useDatasetRef()</code>, <code>datasetIterator()</code>, <code>getDatasetMetadata()</code> och <code>removeDatasetRows()</code>.</p>
+<p class="docs-paragraph">Migrera till vanliga arrayer eller Vue-refar.
+Använd <code>ref&lt;T[]&gt;(...)</code> när raderna behöver vara reaktiva och en vanlig array när de inte ändras.
+Ta bort beroenden av datasetmetadata och uppdatera importer och typannoteringar.
+För nästlade rader i <code>FTable</code>, ange egenskapen med <code>expandable-attribute</code>.
+Ersätt <code>removeDatasetRows()</code> med <code>removeTableRows()</code> och ange egenskapen för nästlade rader när det behövs.
+Om befintlig funktionalitet använder metadata för att visa positioner, beräkna positionen utifrån applikationens data och bevara den avsedda presentationen.</p>
+
+            </details>
+        <h2 id="fvalidationform" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fvalidationform"><code>FValidationForm</code></a></h2><p class="docs-paragraph">Propen <code>useErrorList</code> är inte längre aktiv som standard.</p>
+<p class="docs-paragraph">Om du vill behålla fellistan, lägg till propen explicit:</p>
+
+                <div
+                    id="example-247782"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-validation-form&gt;</span>
+<span class="hljs-addition">+&lt;f-validation-form use-error-list&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om du redan använder <code>:use-error-list=&quot;false&quot;</code> kan du ta bort det:</p>
+
+                <div
+                    id="example-4d2213"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-validation-form :use-error-list=&quot;false&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-validation-form&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om du sätter värdet dynamiskt behöver du inte ändra något.</p>
+
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">Sök igenom applikationens användningar av <code>FValidationForm</code> och <code>&lt;f-validation-form&gt;</code>, inklusive renderfunktioner och JSX.
+För varje användning där <code>useErrorList</code>/<code>use-error-list</code> saknas, lägg till <code>use-error-list</code> för att behålla det tidigare standardbeteendet där fellistan visas.
+Ta bort statiska <code>:use-error-list=&quot;false&quot;</code> eftersom det nu är standardbeteendet.
+Behåll dynamiska värden och ändra inte komponentimplementationen.</p>
+<p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra relevanta tester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
+
+            </details>
+        <h2 id="fformmodal" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fformmodal"><code>FFormModal</code></a></h2><p class="docs-paragraph">Propen <code>useErrorList</code> är inte längre aktiv som standard.</p>
+<p class="docs-paragraph">Om du vill behålla fellistan, lägg till propen explicit:</p>
+
+                <div
+                    id="example-5c4a4e"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-form-modal&gt;</span>
+<span class="hljs-addition">+&lt;f-form-modal use-error-list&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om du redan använder <code>:use-error-list=&quot;false&quot;</code> kan du ta bort det:</p>
+
+                <div
+                    id="example-b06bbc"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-form-modal :use-error-list=&quot;false&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-form-modal&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om du sätter värdet dynamiskt behöver du inte ändra något.</p>
+
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">Sök igenom applikationen efter användningar av <code>FFormModal</code> och <code>&lt;f-form-modal&gt;</code>.
+För varje användning där <code>useErrorList</code>/<code>use-error-list</code> saknas, lägg till <code>use-error-list</code> för att behålla det tidigare standardbeteendet där fellistan visas.
+Ta bort statiska <code>:use-error-list=&quot;false&quot;</code> eftersom det nu är standardbeteendet.
+Behåll dynamiska värden.</p>
+<p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra relevanta tester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
+<h2 id="fcruddataset" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fcruddataset"><code>FCrudDataset</code></a></h2><p class="docs-paragraph"><code>FCrudDataset</code> öppnar inte längre några modaler själv.
+Istället anropas <code>onCreate</code>, <code>onUpdate</code> och <code>onDelete</code> med en callback <code>commit</code> som applikationen anropar när åtgärden ska genomföras.
+Applikationen ansvarar för att öppna modaler, till exempel med <a href="../../../functions/functions/use-modal.html"><code>formModal()</code> och <code>confirmModal()</code></a>.</p>
+<p class="docs-paragraph">Följande har tagits bort:</p>
+<ul>
+<li>Slottarna <code>#add</code>, <code>#modify</code> och <code>#delete</code>.</li>
+<li>Propparna <code>beforeCreate</code>, <code>beforeSubmit</code>, <code>beforeValidation</code>, <code>onCancel</code>, <code>addNewModalHeader</code>, <code>modifyModalHeader</code>, <code>deleteModalHeader</code> och <code>formModalSize</code>.
+Motsvarande värden skickas istället direkt till modalerna.</li>
+<li>Eventen <code>created</code>, <code>updated</code> och <code>deleted</code>.
+Applikationen vet själv när den anropar <code>commit</code>.</li>
+<li>Enumen <code>Operation</code> (<code>ADD</code>, <code>DELETE</code>, <code>MODIFY</code>, <code>NONE</code>).
+Använd istället de åtgärdsspecifika callbackarna <code>onCreate</code>, <code>onUpdate</code> och <code>onDelete</code>, eftersom varje callback redan motsvarar en åtgärd.</li>
+<li>Textnycklarna för modalernas rubriker och knappar (<code>fkui.crud-dataset.modal.*</code>).
+Det finns inga standardtexter längre, så applikationen behöver själv ange knapptexterna.
+För samma beteende som tidigare: &quot;Lägg till&quot; och &quot;Avbryt&quot; när en rad läggs till, &quot;Spara&quot; och &quot;Avbryt&quot; när en rad ändras samt &quot;Ja, ta bort&quot; och &quot;Nej, avbryt&quot; när en rad tas bort.</li>
+<li>Metoderna <code>cancelButton()</code>, <code>confirmButton()</code> och egenskapen <code>form</code> från <code>FCrudDatasetPageObject</code> samt <code>cancelButton()</code> och <code>confirmButton()</code> från <code>FCrudDatasetSelectors</code>.
+Använd <code>FModalPageObject</code> eller <code>FModalSelectors</code> istället.</li>
+<li><code>ActivateItemInjected()</code> och typerna <code>ActivateItemInterface</code> och <code>ActivateItemCallback</code>.
+En egen komponent som presenterar raderna använder istället <code>useCrudDatasetPresenter()</code> med <code>afterCreate</code>, <code>handleDelete</code> och <code>nestedKey</code>.
+<code>handleDelete(item, commit)</code> ersätter <code>registerCallbackBeforeItemDelete</code> och måste anropa <code>commit()</code> synkront.</li>
+</ul>
+<p class="docs-paragraph">Knappen &quot;Lägg till ny&quot; visas när <code>onCreate</code> är satt (tidigare när slotten <code>#add</code> fanns).</p>
+<p class="docs-paragraph">Innehållet kan läggas direkt i <code>FCrudDataset</code>, <code>&lt;template #default&gt;</code> behövs inte längre.</p>
+<p class="docs-paragraph"><code>onCreate</code>, <code>onUpdate</code> och <code>onDelete</code> kan vara asynkrona.
+Om en callback returnerar ett promise som avvisas rapporteras felet till <code>app.config.errorHandler</code>.</p>
+
+                <div
+                    id="example-94e83b"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-crud-dataset v-model=&quot;rows&quot; :before-create @created=&quot;save&quot;&gt;</span>
+<span class="hljs-deletion">-    &lt;template #default&gt; ... &lt;/template&gt;</span>
+<span class="hljs-deletion">-    &lt;template #add=&quot;{ item }&quot;&gt;</span>
+<span class="hljs-deletion">-        &lt;f-text-field v-model=&quot;item.name&quot;&gt; Namn &lt;/f-text-field&gt;</span>
+<span class="hljs-deletion">-    &lt;/template&gt;</span>
+<span class="hljs-deletion">-    &lt;template #delete=&quot;{ item }&quot;&gt; Vill du ta bort {{ item.name }}? &lt;/template&gt;</span>
+<span class="hljs-deletion">-&lt;/f-crud-dataset&gt;</span>
+<span class="hljs-addition">+&lt;f-crud-dataset v-model=&quot;rows&quot; :on-create :on-delete&gt;</span>
+<span class="hljs-addition">+    ...</span>
+<span class="hljs-addition">+&lt;/f-crud-dataset&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-b963b7"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">save</span>(<span class="hljs-params"><span class="hljs-attr">row</span>: <span class="hljs-title class_">Row</span></span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-comment">// save implementation</span>
+}
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onCreate</span>(<span class="hljs-params"><span class="hljs-attr">commit</span>: <span class="hljs-title class_">FCrudDatasetCommitCreate</span>&lt;<span class="hljs-title class_">Row</span>&gt;</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> row = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Row</span>&gt;(<span class="hljs-title class_">MyRowModal</span>, {
+            <span class="hljs-attr">props</span>: { <span class="hljs-attr">row</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span> } },
+        });
+        <span class="hljs-title function_">save</span>(row);
+        <span class="hljs-title function_">commit</span>(row);
+    } <span class="hljs-keyword">catch</span> {
+        <span class="hljs-comment">/* användaren avbröt */</span>
+    }
+}
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onDelete</span>(<span class="hljs-params">
+    <span class="hljs-attr">row</span>: <span class="hljs-title class_">Row</span>,
+    <span class="hljs-attr">commit</span>: <span class="hljs-title class_">FCrudDatasetCommitDelete</span>,
+</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
+    <span class="hljs-keyword">const</span> confirmed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>({
+        <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Är du säker på att du vill ta bort raden?&quot;</span>,
+        <span class="hljs-attr">content</span>: <span class="hljs-string">`Vill du ta bort <span class="hljs-subst">${row.name}</span>?`</span>,
+        <span class="hljs-attr">confirm</span>: <span class="hljs-string">&quot;Ja, ta bort&quot;</span>,
+        <span class="hljs-attr">dismiss</span>: <span class="hljs-string">&quot;Nej, avbryt&quot;</span>,
+    });
+    <span class="hljs-keyword">if</span> (confirmed) {
+        <span class="hljs-title function_">commit</span>();
+    }
+}
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Innehållet från slottarna <code>#add</code> och <code>#modify</code> flyttas till en egen modalkomponent baserad på <code>FFormModal</code> (se <a href="./modal-api-only.html">Modal API only</a>).
+<code>onUpdate</code> får en kopia av objektet, så originalet lämnas orört om användaren avbryter.
+Skicka det ändrade objektet till <code>commit()</code>.</p>
+
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">För varje användning av <code>FCrudDataset</code>:</p>
+<ol>
+<li>Flytta innehållet i slottarna <code>#add</code> och <code>#modify</code> till en ny komponent som använder <code>FFormModal</code> med propparna <code>isOpen</code>, <code>value</code> och vidarebefordrar <code>close</code>-eventet.</li>
+<li>Lägg till <code>onCreate(commit)</code> som öppnar modalen med <code>formModal()</code> från <code>useModal()</code>, med objektet som tidigare returnerades av <code>beforeCreate</code>, och anropar <code>commit(item)</code> med resultatet.
+Fånga avbrott (<code>formModal()</code> avvisar promise när användaren avbryter).</li>
+<li>Lägg till <code>onUpdate(item, commit)</code> på motsvarande sätt och anropa <code>commit(modified)</code>.
+<code>item</code> är redan en kopia, så den behöver inte klonas.</li>
+<li>Ersätt slotten <code>#delete</code> med <code>onDelete(item, commit)</code> som öppnar <code>confirmModal()</code> och anropar <code>commit()</code> om användaren bekräftar.
+Använd tidigare <code>deleteModalHeader</code> som rubrik.</li>
+<li>Flytta logik från eventen <code>created</code>, <code>updated</code> och <code>deleted</code> till respektive callback innan <code>commit</code> anropas.</li>
+<li>Flytta <code>beforeSubmit</code>, <code>beforeValidation</code>, <code>formModalSize</code> och modalrubriker till modalkomponenten.</li>
+<li>Ange knapptexter explicit i modalerna, de har inga standardtexter längre.
+Använd tidigare standardtexter: &quot;Lägg till&quot;/&quot;Avbryt&quot; för lägg till, &quot;Spara&quot;/&quot;Avbryt&quot; för ändra och &quot;Ja, ta bort&quot;/&quot;Nej, avbryt&quot; (<code>confirm</code>/<code>dismiss</code> i <code>confirmModal()</code>) för ta bort.
+Sök efter översättningar av textnycklarna <code>fkui.crud-dataset.modal.*</code> i projektet, använd de värdena istället och ta bort nycklarna.</li>
+<li>Skicka med ett meddelande för skärmläsare som är specifikt för raden som argumentet <code>alert</code> till <code>commit</code>, till exempel <code>commit(item, `${item.name} har lagts till`)</code>, <code>commit(modified, `${modified.name} har ändrats`)</code> och <code>commit(`${item.name} har tagits bort`)</code>.
+Använd ett namn eller annan egenskap som identifierar raden för användaren.</li>
+<li>Ersätt <code>FCrudDatasetPageObject.confirmButton()</code>/<code>cancelButton()</code> i tester med <code>new FModalPageObject(&quot;.modal&quot;).primaryButton()</code>/<code>secondaryButton()</code>.</li>
+<li>Ta bort importer av <code>Operation</code> från <code>@fkui/vue</code>.
+Flytta kod som grenar på <code>Operation.ADD</code>, <code>Operation.MODIFY</code> eller <code>Operation.DELETE</code> till <code>onCreate</code>, <code>onUpdate</code> respektive <code>onDelete</code>.
+Ta bort kod som använder <code>Operation.NONE</code>.</li>
+</ol>
+<p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra enhetstester.</p>
+
+            </details>
+        
+            </details>
+        <h2 id="fmodal" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fmodal"><code>FModal</code></a></h2><p class="docs-paragraph">Propen <code>size</code> stödjer inte längre aliaset <code>fullscreen</code> och är ersatt med <code>fullwidth</code>.</p>
+
+                <div
+                    id="example-bf4685"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> const { openModal } = useModal();
+ const modal = openModal(FModal, {
+<span class="hljs-deletion">-    size: &quot;fullscreen&quot;,</span>
+<span class="hljs-addition">+    size: &quot;fullwidth&quot;,</span>
+ });
+</code></pre>
+                </div>
+            
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">För varje användning av egenskapen <code>size</code> till <code>openModal()</code>, <code>confirmModal()</code> eller <code>formModal()</code>, ersätt värdet <code>fullscreen</code> med <code>fullwidth</code>.
+Värdet är identisk i funktion.</p>
+<p class="docs-paragraph">För varje användning av propen <code>size</code> av <code>FModal</code>, <code>FConfirmModal</code> och <code>FFormModal</code>, ersätt värdet <code>fullscreen</code>med <code>fullwidth</code>.
+Värdet är identisk i funktion.</p>
+<p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra enhetstester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
+<p class="docs-paragraph">Be användaren göra en okulär granskning av de modaler som påverkats för att säkerställa att rätt storlek används.</p>
+
+            </details>
+        <h2 id="fsortfilterdataset" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fsortfilterdataset"><code>FSortFilterDataset</code></a></h2><p class="docs-paragraph">Propen <code>placeholderFilter</code> är borttagen och ersatt med <code>filterLabel</code>.</p>
+
+                <div
+                    id="example-8f26e5"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-sort-filter-dataset
+<span class="hljs-deletion">-    placeholder-filter=&quot;Lorem ipsum&quot;</span>
+<span class="hljs-addition">+    filter-label=&quot;Lorem ipsum&quot;</span>
+ &gt;
+</code></pre>
+                </div>
+            
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">För varje användning av propen <code>placeholderFilter</code> på komponenten <code>FSortFilterDataset</code>, ersätt med propen med <code>filterLabel</code>.
+Propen är identisk i funktion.</p>
+<p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra enhetstester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
+
+            </details>
+        <h2 id="getlegacyinternalkey" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#getlegacyinternalkey"><code>getLegacyInternalKey()</code></a></h2><p class="docs-paragraph">Använd <code>findItemIdentifier()</code> om objektet kan sakna en identifierare, eller <code>getItemIdentifier()</code> om identifieraren är garanterad att finnas, istället för att hämta ut nyckeln.</p>
+
+                <div
+                    id="example-dac3c5"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-const key = getLegacyInternalKey();</span>
+<span class="hljs-deletion">-const id = myObj[key];</span>
+<span class="hljs-addition">+const id = getItemIdentifier(myObj);</span>
+</code></pre>
+                </div>
+            
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">För varje användning av funktionen <code>getLegacyInternalKey()</code>, ersätt med <code>findItemIdentifier()</code> om objektet kan sakna en identifierare, annars <code>getItemIdentifier()</code>.
+Funktionen <code>getLegacyInternalKey()</code> är borttagen och returnerade en unik nyckel för att slå upp en identifierare i ett objekt medans <code>findItemIdentifier()</code>/<code>getItemIdentifier()</code> returnerar identifieraren direkt.</p>
+<p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra enhetstester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
+
+            </details>
+        <h2 id="tablescroll" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tablescroll"><code>TableScroll</code></a></h2><p class="docs-paragraph"><code>FDataTable</code> och <code>FInteractiveTable</code> stödjer inte längre <code>TableScroll.VERTICAL</code> och <code>TableScroll.BOTH</code>.</p>
+
+                <div
+                    id="example-f1d7f2"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-interactive-table
+   :rows
+<span class="hljs-deletion">-  :scroll=&quot;TableScroll.VERTICAL&quot;</span>
+ &gt;&lt;/f-interactive-table&gt;
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Vi rekommenderar att undvika vertikal scroll, behöver du trots allt det så behöver det implementeras i applikationen.</p>
+
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">Tänk på att</p>
+                <p class="docs-paragraph">Tänk på att scrollbara ytor måste gå att tangentbordsnavigera för att vara tillgängliga.</p>
+
+            </div>
+        
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">Summera för användaren vilka förekomster av <code>TableScroll.VERTICAL</code> och <code>TableScroll.BOTH</code> som förekommer i applikationen.
+Per rekommendation från designsystemet föreslå att för <code>TableScroll.VERTICAL</code> ta bort användning och för <code>TableScroll.BOTH</code> ersätta med <code>TableScroll.HORIZONTAL</code>.
+Gör inga ändringar förrän användaren bekräftat vilka åtgärder som ska göras.</p>
+<p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra enhetstester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
+
+            </details>
+        <h2 id="fwizard" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fwizard">FWizard</a></h2><p class="docs-paragraph">I version 7 är initialt fokus på det första steget avstängt som standard.</p>
+<p class="docs-paragraph">Om du vill att det första steget ska få fokus när guiden öppnas, lägg till <code>focus-initial-step</code>:</p>
+
+                <div
+                    id="example-e7db98"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-wizard header-tag=&quot;h2&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-wizard header-tag=&quot;h2&quot; focus-initial-step&gt;</span>
+    &lt;!-- guidesteg --&gt;
+&lt;/f-wizard&gt;
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om du inte vill att det första steget ska få fokus när guiden öppnas behöver du inte längre lägga till någon fokusprop.
+Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, den finns inte längre i version 7.</p>
+<h2 id="fwizardstep" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fwizardstep"><code>FWizardStep</code></a></h2><p class="docs-paragraph">Propen <code>useErrorList</code> är inte längre aktiv som standard.</p>
+<p class="docs-paragraph">Om du vill behålla fellistan, lägg till propen explicit:</p>
+
+                <div
+                    id="example-f8bad4"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-wizard-step key=&quot;step1&quot; title=&quot;Steg 1&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-wizard-step key=&quot;step1&quot; title=&quot;Steg 1&quot; use-error-list&gt;</span>
+    &lt;!-- innehåll --&gt;
+&lt;/f-wizard-step&gt;
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om du redan använder <code>:use-error-list=&quot;false&quot;</code> kan du ta bort det:</p>
+
+                <div
+                    id="example-640e63"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-wizard-step key=&quot;step1&quot; title=&quot;Steg 1&quot; :use-error-list=&quot;false&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-wizard-step key=&quot;step1&quot; title=&quot;Steg 1&quot;&gt;</span>
+    &lt;!-- innehåll --&gt;
+&lt;/f-wizard-step&gt;
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om du sätter värdet dynamiskt behöver du inte ändra något.</p>
+
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">Sök igenom applikationen efter användningar av <code>FWizardStep</code> och <code>&lt;f-wizard-step&gt;</code>.
+För varje användning där <code>useErrorList</code>/<code>use-error-list</code> saknas, lägg till <code>use-error-list</code> för att behålla det tidigare standardbeteendet där fellistan visas.
+Ta bort statiska <code>:use-error-list=&quot;false&quot;</code> eftersom det nu är standardbeteendet.
+Behåll dynamiska värden.</p>
+<p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra relevanta tester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
+
+            </details>
+        
+
+                    </div>
+                </main>
+            </div>
+
+            <footer><div class="docs-footer">
+    <div class="docs-footer__left"><h1>Kontakta oss</h1>
+
+<ul class="docs-footer__link-list">
+    <li>
+        <a class="docs-footer__anchor" href="mailto:designsystem@forsakringskassan.se">
+            designsystem@forsakringskassan.se
+        </a>
+    </li>
+    <li>
+        <a class="docs-footer__anchor" href="../../about/index.html">
+            Om designsystemet
+        </a>
+    </li>
+</ul>
+
+    </div>
+
+    <div class="docs-footer__center"><h2 class="heading--h1">Länkar</h2>
+
+<ul class="docs-footer__link-list">
+    <li>
+        <a class="docs-footer__anchor" href="../../../accessibility.html">
+            Tillgänglighetsredogörelse
+        </a>
+    </li>
+    <li>
+        <a class="docs-footer__anchor" target="_blank" href="https://github.com/Forsakringskassan/designsystem">
+            GitHub
+            <svg focusable="false" class="icon f-icon-new-window">
+                <use href="#f-icon-new-window"></use>
+            </svg>
+            <span class="sr-only">öppnas i ny flik</span>
+        </a>
+    </li>
+    <li>
+        <a class="docs-footer__anchor" target="_blank" href="https://www.figma.com/@fkds">
+            Figma
+            <svg focusable="false" class="icon f-icon-new-window">
+                <use href="#f-icon-new-window"></use>
+            </svg>
+            <span class="sr-only">öppnas i ny flik</span>
+        </a>
+    </li>
+    <li>
+        <a class="docs-footer__anchor" target="_blank" rel="external" href="https://play.vuejs.org/#eNqVVU1v2zAM/SuaTy6Q2IftlCVZty4FWmxtsRY7+eLatK1Glj19ZCmy/PdRkhM7H06Qoghk6fGJpMjHlfe1roOFBm/kjWUiaK2IBKVrwmKeTyJPycibRpyWdSUUWZEc1I0WAri641LFPIEBEZCRNclEVZLIQ67I+9yxuH2BpbqlwNIWdJ3NNQ0PoO7mLSoI7YbFRDyp8EJCm1vJ5Igr/hUirY2/wX0J4rq+qbhCJ8zSIDZcZZUC+x0zbdgwCD/yIs8AxqFLBQaOHwrKmsUK8Ivg3zgbGrJhZkNaDC0LZqplizzcXsSMprGiFQ8E/NFUQDqdKToHpcZhl2JDWwuYjhMkma5W5P758SGQSlCe0+zdX7Xk6yuyXo9DCxyHxsj42/HRG3guocMyroM3WXF825W7JGqO8FFHpNlz++5F0GH0foTfhVK1HIWh5vU8D5KqDFvEtblJqjCl+AOyDClPYYlXRd7gkJNVOU1Ok1rIZay2dk5xIqCHEVd9rBQLY8jo6zCFLNasMc3Q8A0S9VwLioQFgDp99z7NjiNH2Y5HOGTxq32qk2Fa1EWxopGWgDUk+pPYwexw971Kg5dFjJV+jtWhengd7Tri+I/FbPs5UBKreCsU6r0Ggso1IBX/WWns7o64HMjKQb73heiCZ+/yYj82Lf7EdE55n75FHJbWJNM8MXAndD7K0chEQf4RjdFnlEN6NSKLiqab5qQZ8T8Y2ep2q0BrwZG4yZNbICrA3Pr7XjnFM4htrnz/ikymXUoniKqAEr67HPygfI6ymFaJLlFig0QAvtaMIYIrVEqG504tNxz71qh7DBkiT6p31slfL74wg2TSAlxl9VW+NT/aYe6E0bxAtyVWVOfSbTwFxKkZCMBTf9+TNmVtblKQNOeXZ6W1O5ePDtJl4pQMW2wT9fkAW+rd0A4K3E5QW1Zm4RpQScxARvODWYLu1JSBeKxNtR3OlJix6u+93VdCw45eJAUk856zN7l0AvIkQIJYYBftnKtY4Ox3kNnzA07SPQBOS80aaTsB+AWyYtr47qDfsAsxnD2sjeLO9jxO4xc5WyrgchOwcb7JWGNlBejmTGraED4Gn3YEb/0fNqc07Q==">
+            Sandlåda
+            <svg focusable="false" class="icon f-icon-new-window">
+                <use href="#f-icon-new-window"></use>
+            </svg>
+            <span class="sr-only">öppnas i ny flik</span>
+        </a>
+    </li>
+</ul>
+
+    </div>
+
+    <div class="docs-footer__right"><ul class="docs-footer__link-list">
+    <li>
+        <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
+    </li>
+</ul>
+<div class="version"><span class="version-text-block">bugfix/palette-adjustments</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/677b6dc297cf0a82a2aa4de34d85fd14e02f3675">677b6dc</a>)<br />
+        <a href="https://github.com/Forsakringskassan/designsystem/pull/1900">PR 1900</a><br />
+       <span class="version-text-block">2026-11-25 13:09</span>
+</div>
+<form class="docs-selectable-version__form">
+    <button type="submit" class="docs-selectable-version__button">
+        <span class="docs-footer__anchor"> Byt version </span>
+    </button>
+</form></div>
+</div>
+</footer>
+        </div><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-chevrons-left" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M111.3 256L281.2 78.4c17.3-18.1 16.8-46.9-1.4-64.3-18.1-17.3-46.9-16.7-64.3 1.4l-200 209.1C7.2 233.4 3 244.7 3 256c0 11.3 4.2 22.6 12.6 31.4l200 209.1c17.4 18.1 46.1 18.8 64.3 1.4 18.1-17.3 18.7-46.1 1.4-64.3L111.3 256z M329.5 256L499.4 78.4c17.3-18.1 16.8-46.9-1.4-64.3-18.1-17.3-46.9-16.7-64.3 1.4l-200 209.1c-8.4 8.8-12.6 20.1-12.6 31.4c0 11.3 4.2 22.6 12.6 31.4l200 209.1c17.4 18.1 46.1 18.8 64.3 1.4 18.1-17.3 18.8-46.1 1.4-64.3L329.5 256z"
+            />
+        </symbol>
+        <symbol id="docs-icon-menu" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M475.4 209.6H36.6C16.4 209.6 0 225.9 0 246.1s16.4 36.6 36.6 36.6h438.9c20.2 0 36.6-16.4 36.6-36.6s-16.4-36.5-36.6-36.5zM475.4 392.4H36.6C16.4 392.4 0 408.8 0 429s16.4 36.6 36.6 36.6h438.9c20.2 0 36.6-16.4 36.6-36.6s-16.4-36.6-36.6-36.6zM475.4 26.7H36.6C16.4 26.7 0 43.1 0 63.3s16.4 36.6 36.6 36.6h438.9c20.2 0 36.6-16.4 36.6-36.6s-16.4-36.6-36.6-36.6z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-code" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M200 354L102 256L200 158L171 128L43 256L171 384L200 354ZM312 354L410 256L312 158L341 128L469 256L341 384L312 354Z"
+            />
+        </symbol>
+        <!--!Font Awesome Free 6.4.2 -->
+        <symbol id="docs-icon-fullscreen" viewBox="0 0 448 512">
+            <path
+                fill="currentColor"
+                d="M160 64c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V64zM32 320c-17.7 0-32 14.3-32 32s14.3 32 32 32H96v64c0 17.7 14.3 32 32 32s32-14.3 32-32V352c0-17.7-14.3-32-32-32H32zM352 64c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H352V64zM320 320c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32s32-14.3 32-32V384h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H320z"
+            />
+        </symbol>
+    </svg>
+</div><dialog class="docs-modal" id="search-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title" id="search-dialog-title">Sök</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form class="docs-modal__body" id="search-form">
+        <input
+            autofocus
+            autocomplete="off"
+            autocapitalize="off"
+            autocorrect="off"
+            id="search-field"
+            type="search"
+            class="docs-search-dialog__input"
+            maxlength="50"
+            placeholder="Skriv för att börja söka"
+            aria-labelledby="search-dialog-title"
+        />
+        <ul class="docs-search-result__list" id="search-results"></ul>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog>
+
+<template id="search-result-item">
+    <li class="docs-search-result__item">
+        <a class="docs-search-result__link"></a>
+    </li>
+</template>
+<dialog class="docs-modal" id="version-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title">Välj version</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+    <div class="docs-modal__body" id="version-list">
+        <p>Var god vänta, laddar versionsdata...</p>
+    </div>
+</dialog>
+
+<template id="version-list-item">
+    <li class="docs-selectable-version__item">
+        <a class="docs-selectable-version__link"></a>
+    </li>
+</template>
+<div id="teleport-target" class="user-theme"></div><script
+            src="../../../assets/processors_search_search-8695ff.js"
+            type="module"
+            crossorigin
+            integrity="sha384-5O2E2PeenZ0BNtu3r2Q1WA58V1OHBj1tfpr12u41AnTHggbViobwrTZPR1qzFrcN"
+            
+        ></script><script
+            src="../../../assets/processors_motd_index-cda4cc.js"
+            type="module"
+            crossorigin
+            integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
+            
+        ></script><script
+            src="../../../assets/processors_selectable-version_select-version-e8cfe9.js"
+            type="module"
+            crossorigin
+            integrity="sha384-6AQnlZ5/8GDIy1NqCQdy1f6YMq2cX6TCMX7Jt2WBzo3pCdF4bzXVMsxYRT0nBi8w"
+            
+        ></script><script
+            src="../../../assets/processors_cookie_cookie-efa23b.js"
+            type="module"
+            crossorigin
+            integrity="sha384-tVCPgyHrw9QQDcAlHqPg4Kp0bEoCdZDJ17PfDW2CxedfOn3IvSDI/FJUCnY/WxiK"
+            
+        ></script><script
+            src="../../../assets/runtime-83dded.js"
+            type="module"
+            crossorigin
+            integrity="sha384-YfDtc6uetgvHFVFB0ElLpfIuBFD3oO2axYBmdHlOfrVcxUXZqGUc/3D+sPKEvbBn"
+            
+        ></script><script
+            src="../../../assets/main-6bc205.js"
+            type="module"
+            crossorigin
+            integrity="sha384-WUx9VYX7tJH3PhljH5EqI+IptokgZ1JINForzpvAyaTUT4ZALKim9P+Vqq1vbdIx"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: docs/gettingstarted/migration/migrating-to-v7/vue.md
+         Document ID: fs:docs/gettingstarted/migration/migrating-to-v7/vue.md
+         Document name: migrating-to-v7-vue
+         Document alias: 
+
+    -->
+</html>
