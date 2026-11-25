@@ -23,19 +23,19 @@
             {
   "imports": {
     "vue": "../../../assets/vendor-vue-97e993.js",
-    "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-023419.js",
+    "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-ec4ba3.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-61d844.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-05e2c5.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-f0eb4d.js",
     "@fkui/vue-labs": "../../../assets/vendor-fkui-vue-labs-37a3e4.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js"
   },
   "integrity": {
     "../../../assets/vendor-vue-97e993.js": "sha384-0n86uBFQ6HOo5PI5ohkqFZs6RSSBO9pWTrs0kSzWPxBbAAWBltvCTNPdnk/ap8eT",
-    "../../../assets/vendor-fkui-vue-selectors-023419.js": "sha384-VLenLmQc8v93fneTx0efSTJd7J5Ns4fB7DTS3tM7kJz9URQIILL3gC5W3VAEksP3",
+    "../../../assets/vendor-fkui-vue-selectors-ec4ba3.js": "sha384-X7kHsr5wRshwqJOF+A4AJXePaFk73er8pcimXF6uz0kIIbToz2NyvzKWe+slXu7W",
     "../../../assets/vendor-fkui-logic-61d844.js": "sha384-u+VrrunW0wzEofwwfTCUkVW/5R3NtIzcgQ1Z60e7ov5tXLYfjrUjbvH57Zgv2vnB",
     "../../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../../assets/vendor-fkui-vue-05e2c5.js": "sha384-mHqjpVP0n2of+Oc+Fz3Zzk49BRszkOYIAbebMsvHj87KkgZGTwE4R1bs8oktVCn+",
+    "../../../assets/vendor-fkui-vue-f0eb4d.js": "sha384-/Qtq1TWPqiU/MORlqcgWP8zQVecvoQNon0dpXYIxCfbewOsmahhaCDkDmpajsdOd",
     "../../../assets/vendor-fkui-vue-labs-37a3e4.js": "sha384-N/HfKkajpXjdrrHo9mjCSJYlF7njhDq86owwuIac3sUncnfL0s0jYFVrZdohsxm3",
     "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js": "sha384-PDEuCCbROg9gW6fFneYpzXKS04rV0oMFHgqArEkyaM8h1d/H3HBtCKiyFWYKWVcy"
   }
@@ -6341,6 +6341,8 @@
                                 
                                 <li><a href="#fformmodal">FFormModal</a></li>
                                 
+                                <li><a href="#fcruddataset">FCrudDataset</a></li>
+                                
                                 <li><a href="#fmodal">FModal</a></li>
                                 
                                 <li><a href="#fsortfilterdataset">FSortFilterDataset</a></li>
@@ -6612,12 +6614,131 @@ Ta bort statiska <code>:use-error-list=&quot;false&quot;</code> eftersom det nu 
 Behåll dynamiska värden.</p>
 <p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra relevanta tester.
 Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
+<h2 id="fcruddataset" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fcruddataset"><code>FCrudDataset</code></a></h2><p class="docs-paragraph"><code>FCrudDataset</code> öppnar inte längre några modaler själv.
+Istället anropas <code>onCreate</code>, <code>onUpdate</code> och <code>onDelete</code> med en callback <code>commit</code> som applikationen anropar när åtgärden ska genomföras.
+Applikationen ansvarar för att öppna modaler, till exempel med <a href="../../../functions/functions/use-modal.html"><code>formModal()</code> och <code>confirmModal()</code></a>.</p>
+<p class="docs-paragraph">Följande har tagits bort:</p>
+<ul>
+<li>Slottarna <code>#add</code>, <code>#modify</code> och <code>#delete</code>.</li>
+<li>Propparna <code>beforeCreate</code>, <code>beforeSubmit</code>, <code>beforeValidation</code>, <code>onCancel</code>, <code>addNewModalHeader</code>, <code>modifyModalHeader</code>, <code>deleteModalHeader</code> och <code>formModalSize</code>.
+Motsvarande värden skickas istället direkt till modalerna.</li>
+<li>Eventen <code>created</code>, <code>updated</code> och <code>deleted</code>.
+Applikationen vet själv när den anropar <code>commit</code>.</li>
+<li>Enumen <code>Operation</code> (<code>ADD</code>, <code>DELETE</code>, <code>MODIFY</code>, <code>NONE</code>).
+Använd istället de åtgärdsspecifika callbackarna <code>onCreate</code>, <code>onUpdate</code> och <code>onDelete</code>, eftersom varje callback redan motsvarar en åtgärd.</li>
+<li>Textnycklarna för modalernas rubriker och knappar (<code>fkui.crud-dataset.modal.*</code>).
+Det finns inga standardtexter längre, så applikationen behöver själv ange knapptexterna.
+För samma beteende som tidigare: &quot;Lägg till&quot; och &quot;Avbryt&quot; när en rad läggs till, &quot;Spara&quot; och &quot;Avbryt&quot; när en rad ändras samt &quot;Ja, ta bort&quot; och &quot;Nej, avbryt&quot; när en rad tas bort.</li>
+<li>Metoderna <code>cancelButton()</code>, <code>confirmButton()</code> och egenskapen <code>form</code> från <code>FCrudDatasetPageObject</code> samt <code>cancelButton()</code> och <code>confirmButton()</code> från <code>FCrudDatasetSelectors</code>.
+Använd <code>FModalPageObject</code> eller <code>FModalSelectors</code> istället.</li>
+<li><code>ActivateItemInjected()</code> och typerna <code>ActivateItemInterface</code> och <code>ActivateItemCallback</code>.
+En egen komponent som presenterar raderna använder istället <code>useCrudDatasetPresenter()</code> med <code>afterCreate</code>, <code>handleDelete</code> och <code>nestedKey</code>.
+<code>handleDelete(item, commit)</code> ersätter <code>registerCallbackBeforeItemDelete</code> och måste anropa <code>commit()</code> synkront.</li>
+</ul>
+<p class="docs-paragraph">Knappen &quot;Lägg till ny&quot; visas när <code>onCreate</code> är satt (tidigare när slotten <code>#add</code> fanns).</p>
+<p class="docs-paragraph">Innehållet kan läggas direkt i <code>FCrudDataset</code>, <code>&lt;template #default&gt;</code> behövs inte längre.</p>
+<p class="docs-paragraph"><code>onCreate</code>, <code>onUpdate</code> och <code>onDelete</code> kan vara asynkrona.
+Om en callback returnerar ett promise som avvisas rapporteras felet till <code>app.config.errorHandler</code>.</p>
 
+                <div
+                    id="example-94e83b"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-crud-dataset v-model=&quot;rows&quot; :before-create @created=&quot;save&quot;&gt;</span>
+<span class="hljs-deletion">-    &lt;template #default&gt; ... &lt;/template&gt;</span>
+<span class="hljs-deletion">-    &lt;template #add=&quot;{ item }&quot;&gt;</span>
+<span class="hljs-deletion">-        &lt;f-text-field v-model=&quot;item.name&quot;&gt; Namn &lt;/f-text-field&gt;</span>
+<span class="hljs-deletion">-    &lt;/template&gt;</span>
+<span class="hljs-deletion">-    &lt;template #delete=&quot;{ item }&quot;&gt; Vill du ta bort {{ item.name }}? &lt;/template&gt;</span>
+<span class="hljs-deletion">-&lt;/f-crud-dataset&gt;</span>
+<span class="hljs-addition">+&lt;f-crud-dataset v-model=&quot;rows&quot; :on-create :on-delete&gt;</span>
+<span class="hljs-addition">+    ...</span>
+<span class="hljs-addition">+&lt;/f-crud-dataset&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-b963b7"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">save</span>(<span class="hljs-params"><span class="hljs-attr">row</span>: <span class="hljs-title class_">Row</span></span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-comment">// save implementation</span>
+}
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onCreate</span>(<span class="hljs-params"><span class="hljs-attr">commit</span>: <span class="hljs-title class_">FCrudDatasetCommitCreate</span>&lt;<span class="hljs-title class_">Row</span>&gt;</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> row = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Row</span>&gt;(<span class="hljs-title class_">MyRowModal</span>, {
+            <span class="hljs-attr">props</span>: { <span class="hljs-attr">row</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span> } },
+        });
+        <span class="hljs-title function_">save</span>(row);
+        <span class="hljs-title function_">commit</span>(row);
+    } <span class="hljs-keyword">catch</span> {
+        <span class="hljs-comment">/* användaren avbröt */</span>
+    }
+}
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onDelete</span>(<span class="hljs-params">
+    <span class="hljs-attr">row</span>: <span class="hljs-title class_">Row</span>,
+    <span class="hljs-attr">commit</span>: <span class="hljs-title class_">FCrudDatasetCommitDelete</span>,
+</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
+    <span class="hljs-keyword">const</span> confirmed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>({
+        <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Är du säker på att du vill ta bort raden?&quot;</span>,
+        <span class="hljs-attr">content</span>: <span class="hljs-string">`Vill du ta bort <span class="hljs-subst">${row.name}</span>?`</span>,
+        <span class="hljs-attr">confirm</span>: <span class="hljs-string">&quot;Ja, ta bort&quot;</span>,
+        <span class="hljs-attr">dismiss</span>: <span class="hljs-string">&quot;Nej, avbryt&quot;</span>,
+    });
+    <span class="hljs-keyword">if</span> (confirmed) {
+        <span class="hljs-title function_">commit</span>();
+    }
+}
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Innehållet från slottarna <code>#add</code> och <code>#modify</code> flyttas till en egen modalkomponent baserad på <code>FFormModal</code> (se <a href="./modal-api-only.html">Modal API only</a>).
+<code>onUpdate</code> får en kopia av objektet, så originalet lämnas orört om användaren avbryter.
+Skicka det ändrade objektet till <code>commit()</code>.</p>
+
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">För varje användning av <code>FCrudDataset</code>:</p>
+<ol>
+<li>Flytta innehållet i slottarna <code>#add</code> och <code>#modify</code> till en ny komponent som använder <code>FFormModal</code> med propparna <code>isOpen</code>, <code>value</code> och vidarebefordrar <code>close</code>-eventet.</li>
+<li>Lägg till <code>onCreate(commit)</code> som öppnar modalen med <code>formModal()</code> från <code>useModal()</code>, med objektet som tidigare returnerades av <code>beforeCreate</code>, och anropar <code>commit(item)</code> med resultatet.
+Fånga avbrott (<code>formModal()</code> avvisar promise när användaren avbryter).</li>
+<li>Lägg till <code>onUpdate(item, commit)</code> på motsvarande sätt och anropa <code>commit(modified)</code>.
+<code>item</code> är redan en kopia, så den behöver inte klonas.</li>
+<li>Ersätt slotten <code>#delete</code> med <code>onDelete(item, commit)</code> som öppnar <code>confirmModal()</code> och anropar <code>commit()</code> om användaren bekräftar.
+Använd tidigare <code>deleteModalHeader</code> som rubrik.</li>
+<li>Flytta logik från eventen <code>created</code>, <code>updated</code> och <code>deleted</code> till respektive callback innan <code>commit</code> anropas.</li>
+<li>Flytta <code>beforeSubmit</code>, <code>beforeValidation</code>, <code>formModalSize</code> och modalrubriker till modalkomponenten.</li>
+<li>Ange knapptexter explicit i modalerna, de har inga standardtexter längre.
+Använd tidigare standardtexter: &quot;Lägg till&quot;/&quot;Avbryt&quot; för lägg till, &quot;Spara&quot;/&quot;Avbryt&quot; för ändra och &quot;Ja, ta bort&quot;/&quot;Nej, avbryt&quot; (<code>confirm</code>/<code>dismiss</code> i <code>confirmModal()</code>) för ta bort.
+Sök efter översättningar av textnycklarna <code>fkui.crud-dataset.modal.*</code> i projektet, använd de värdena istället och ta bort nycklarna.</li>
+<li>Skicka med ett meddelande för skärmläsare som är specifikt för raden som argumentet <code>alert</code> till <code>commit</code>, till exempel <code>commit(item, `${item.name} har lagts till`)</code>, <code>commit(modified, `${modified.name} har ändrats`)</code> och <code>commit(`${item.name} har tagits bort`)</code>.
+Använd ett namn eller annan egenskap som identifierar raden för användaren.</li>
+<li>Ersätt <code>FCrudDatasetPageObject.confirmButton()</code>/<code>cancelButton()</code> i tester med <code>new FModalPageObject(&quot;.modal&quot;).primaryButton()</code>/<code>secondaryButton()</code>.</li>
+<li>Ta bort importer av <code>Operation</code> från <code>@fkui/vue</code>.
+Flytta kod som grenar på <code>Operation.ADD</code>, <code>Operation.MODIFY</code> eller <code>Operation.DELETE</code> till <code>onCreate</code>, <code>onUpdate</code> respektive <code>onDelete</code>.
+Ta bort kod som använder <code>Operation.NONE</code>.</li>
+</ol>
+<p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra enhetstester.</p>
+
+            </details>
+        
             </details>
         <h2 id="fmodal" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fmodal"><code>FModal</code></a></h2><p class="docs-paragraph">Propen <code>size</code> stödjer inte längre aliaset <code>fullscreen</code> och är ersatt med <code>fullwidth</code>.</p>
 
                 <div
-                    id="example-1490f2"
+                    id="example-bf4685"
                     class="code-preview code-preview--default"
                     
                     
@@ -6648,7 +6769,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="fsortfilterdataset" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fsortfilterdataset"><code>FSortFilterDataset</code></a></h2><p class="docs-paragraph">Propen <code>placeholderFilter</code> är borttagen och ersatt med <code>filterLabel</code>.</p>
 
                 <div
-                    id="example-bdfad8"
+                    id="example-8f26e5"
                     class="code-preview code-preview--default"
                     
                     
@@ -6675,7 +6796,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="getlegacyinternalkey" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#getlegacyinternalkey"><code>getLegacyInternalKey()</code></a></h2><p class="docs-paragraph">Använd <code>findItemIdentifier()</code> om objektet kan sakna en identifierare, eller <code>getItemIdentifier()</code> om identifieraren är garanterad att finnas, istället för att hämta ut nyckeln.</p>
 
                 <div
-                    id="example-9d706e"
+                    id="example-dac3c5"
                     class="code-preview code-preview--default"
                     
                     
@@ -6701,7 +6822,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="tablescroll" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tablescroll"><code>TableScroll</code></a></h2><p class="docs-paragraph"><code>FDataTable</code> och <code>FInteractiveTable</code> stödjer inte längre <code>TableScroll.VERTICAL</code> och <code>TableScroll.BOTH</code>.</p>
 
                 <div
-                    id="example-dfa368"
+                    id="example-f1d7f2"
                     class="code-preview code-preview--default"
                     
                     
@@ -6737,7 +6858,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
 <p class="docs-paragraph">Om du vill att det första steget ska få fokus när guiden öppnas, lägg till <code>focus-initial-step</code>:</p>
 
                 <div
-                    id="example-edd1bc"
+                    id="example-e7db98"
                     class="code-preview code-preview--default"
                     
                     
@@ -6756,7 +6877,7 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
 <p class="docs-paragraph">Om du vill behålla fellistan, lägg till propen explicit:</p>
 
                 <div
-                    id="example-7f6c1d"
+                    id="example-f8bad4"
                     class="code-preview code-preview--default"
                     
                     
@@ -6772,7 +6893,7 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
             <p class="docs-paragraph">Om du redan använder <code>:use-error-list=&quot;false&quot;</code> kan du ta bort det:</p>
 
                 <div
-                    id="example-df9c01"
+                    id="example-640e63"
                     class="code-preview code-preview--default"
                     
                     
@@ -6867,9 +6988,9 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/6f8ee28e8d197758f6033320801c3e3da133998f">6f8ee28</a>)<br />
+<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/5463032490f1ea54008845ac5ec1b7d5352cb16c">5463032</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1850">PR 1850</a><br />
-       <span class="version-text-block">2026-11-25 08:24</span>
+       <span class="version-text-block">2026-11-25 10:04</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

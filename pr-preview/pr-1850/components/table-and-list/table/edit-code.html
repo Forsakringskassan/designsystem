@@ -23,19 +23,19 @@
             {
   "imports": {
     "vue": "../../../assets/vendor-vue-97e993.js",
-    "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-023419.js",
+    "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-ec4ba3.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-61d844.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-05e2c5.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-f0eb4d.js",
     "@fkui/vue-labs": "../../../assets/vendor-fkui-vue-labs-37a3e4.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js"
   },
   "integrity": {
     "../../../assets/vendor-vue-97e993.js": "sha384-0n86uBFQ6HOo5PI5ohkqFZs6RSSBO9pWTrs0kSzWPxBbAAWBltvCTNPdnk/ap8eT",
-    "../../../assets/vendor-fkui-vue-selectors-023419.js": "sha384-VLenLmQc8v93fneTx0efSTJd7J5Ns4fB7DTS3tM7kJz9URQIILL3gC5W3VAEksP3",
+    "../../../assets/vendor-fkui-vue-selectors-ec4ba3.js": "sha384-X7kHsr5wRshwqJOF+A4AJXePaFk73er8pcimXF6uz0kIIbToz2NyvzKWe+slXu7W",
     "../../../assets/vendor-fkui-logic-61d844.js": "sha384-u+VrrunW0wzEofwwfTCUkVW/5R3NtIzcgQ1Z60e7ov5tXLYfjrUjbvH57Zgv2vnB",
     "../../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../../assets/vendor-fkui-vue-05e2c5.js": "sha384-mHqjpVP0n2of+Oc+Fz3Zzk49BRszkOYIAbebMsvHj87KkgZGTwE4R1bs8oktVCn+",
+    "../../../assets/vendor-fkui-vue-f0eb4d.js": "sha384-/Qtq1TWPqiU/MORlqcgWP8zQVecvoQNon0dpXYIxCfbewOsmahhaCDkDmpajsdOd",
     "../../../assets/vendor-fkui-vue-labs-37a3e4.js": "sha384-N/HfKkajpXjdrrHo9mjCSJYlF7njhDq86owwuIac3sUncnfL0s0jYFVrZdohsxm3",
     "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js": "sha384-PDEuCCbROg9gW6fFneYpzXKS04rV0oMFHgqArEkyaM8h1d/H3HBtCKiyFWYKWVcy"
   }
@@ -7457,13 +7457,13 @@ interface <span class="hljs-title class_">Row</span> {
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-eda8e3"></div>
+        <div id="example-cd5d43"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableCrudEdit-eda8e3.js"></script>
+        <script type="module" src="./FTableCrudEdit-cd5d43.js"></script>
     
                 </div>
                 <div>
@@ -7486,13 +7486,15 @@ interface <span class="hljs-title class_">Row</span> {
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { ref, useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">FTableCrudEditModal</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./FTableCrudEditModal.vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
+    type <span class="hljs-title class_">FCrudDatasetCommitDelete</span>,
+    type <span class="hljs-title class_">FCrudDatasetCommitUpdate</span>,
     type <span class="hljs-title class_">TableColumn</span>,
     <span class="hljs-title class_">FCrudDataset</span>,
-    <span class="hljs-title class_">FCurrencyTextField</span>,
-    <span class="hljs-title class_">FSelectField</span>,
     <span class="hljs-title class_">FTable</span>,
     defineTableColumns,
+    useModal,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 interface <span class="hljs-title class_">Row</span> {
@@ -7501,20 +7503,8 @@ interface <span class="hljs-title class_">Row</span> {
     pris?: number;
 }
 
-<span class="hljs-keyword">const</span> lander = [
-    <span class="hljs-string">&quot;&quot;</span>,
-    <span class="hljs-string">&quot;Colombia&quot;</span>,
-    <span class="hljs-string">&quot;Costa Rica&quot;</span>,
-    <span class="hljs-string">&quot;Dominikanska republiken&quot;</span>,
-    <span class="hljs-string">&quot;Ecuador&quot;</span>,
-    <span class="hljs-string">&quot;Frankrike&quot;</span>,
-    <span class="hljs-string">&quot;Italien&quot;</span>,
-    <span class="hljs-string">&quot;Spanien&quot;</span>,
-    <span class="hljs-string">&quot;Sverige&quot;</span>,
-    <span class="hljs-string">&quot;Sydafrika&quot;</span>,
-];
-
 <span class="hljs-keyword">const</span> crud = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;crud&quot;</span>);
+<span class="hljs-keyword">const</span> { formModal, confirmModal } = <span class="hljs-title function_">useModal</span>();
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">columns</span>: <span class="hljs-title class_">Array</span>&lt;<span class="hljs-title class_">TableColumn</span>&lt;<span class="hljs-title class_">Row</span>&gt;&gt; = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
     {
@@ -7574,26 +7564,33 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-attr">pris</span>: <span class="hljs-number">22</span>,
     },
 ]);
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onUpdate</span>(<span class="hljs-params">row: Row, commit: FCrudDatasetCommitUpdate&lt;Row&gt;</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-keyword">void</span>&gt; {
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-title function_">commit</span>(<span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Row</span>&gt;(<span class="hljs-title class_">FTableCrudEditModal</span>, { <span class="hljs-attr">props</span>: { row } }));
+    } <span class="hljs-keyword">catch</span> {
+        <span class="hljs-comment">/* user cancelled */</span>
+    }
+}
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onDelete</span>(<span class="hljs-params">row: Row, commit: FCrudDatasetCommitDelete</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-keyword">void</span>&gt; {
+    <span class="hljs-keyword">const</span> confirmed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>({
+        <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Ta bort frukt&quot;</span>,
+        <span class="hljs-attr">content</span>: <span class="hljs-string">`Vill du verkligen ta bort &quot;<span class="hljs-subst">${row.namn}</span>&quot;?`</span>,
+        <span class="hljs-attr">confirm</span>: <span class="hljs-string">&quot;Ja, ta bort&quot;</span>,
+        <span class="hljs-attr">dismiss</span>: <span class="hljs-string">&quot;Nej, avbryt&quot;</span>,
+    });
+    <span class="hljs-keyword">if</span> (confirmed) {
+        <span class="hljs-title function_">commit</span>();
+    }
+}
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;crud&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;rows&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;table&quot;</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">striped</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>Redigera innehåll-exempel<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">modify</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-select-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.land&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span>Land<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">hidden</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>Välj..<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;land in lander&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;land&quot;</span>&gt;</span>{{ land }}<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-select-field</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-currency-text-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.pris&quot;</span>&gt;</span> Pris <span class="hljs-tag">&lt;/<span class="hljs-name">f-currency-text-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">delete</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span> Vill du verkligen ta bort &quot;{{ item.namn }}&quot;? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;crud&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:on-update</span> <span class="hljs-attr">:on-delete</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;table&quot;</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">striped</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>Redigera innehåll-exempel<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
@@ -7670,9 +7667,9 @@ interface <span class="hljs-title class_">Row</span> {
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/6f8ee28e8d197758f6033320801c3e3da133998f">6f8ee28</a>)<br />
+<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/5463032490f1ea54008845ac5ec1b7d5352cb16c">5463032</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1850">PR 1850</a><br />
-       <span class="version-text-block">2026-11-25 08:24</span>
+       <span class="version-text-block">2026-11-25 10:04</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
