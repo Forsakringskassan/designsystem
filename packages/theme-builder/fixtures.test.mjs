@@ -118,8 +118,6 @@ it("should build simple theme", async (t) => {
     });
     t.assert.snapshot(toTreeSync(vol));
     t.assert.snapshot(await fs.readFile("/out/index.css", "utf8"));
-    t.assert.snapshot(await fs.readFile("/out/index.mjs", "utf8"));
-    t.assert.snapshot(await fs.readFile("/out/index.d.mts", "utf8"));
     t.assert.snapshot(await fs.readFile("/out/metadata.mjs", "utf8"));
     t.assert.snapshot(await fs.readFile("/out/metadata.d.mts", "utf8"));
 });
@@ -148,7 +146,6 @@ it("should generate version", async (t) => {
     });
     t.assert.snapshot(toTreeSync(vol));
     t.assert.snapshot(await fs.readFile("/out/index.css", "utf8"));
-    t.assert.snapshot(await fs.readFile("/out/index.mjs", "utf8"));
 });
 
 it("should include palette", async (t) => {
@@ -179,7 +176,6 @@ it("should include palette", async (t) => {
     });
     t.assert.snapshot(toTreeSync(vol));
     const css = await fs.readFile("/out/index.css", "utf8");
-    const esm = await fs.readFile("/out/index.mjs", "utf8");
     const metadataSource = await fs.readFile("/out/metadata.mjs", "utf8");
     const metadata = JSON.parse(metadataSource.replace(/^export default /, ""));
     t.assert.strictEqual(
@@ -189,15 +185,6 @@ it("should include palette", async (t) => {
           --x-palette-color-awesome-pink: #f0a;
           --x-foobar: var(--x-palette-color-awesome-pink);
         }
-    `,
-    );
-    t.assert.strictEqual(
-        esm,
-        content`
-        export default {
-          "--x-palette-color-awesome-pink": "#f0a",
-          "--x-foobar": "var(--x-palette-color-awesome-pink)"
-        };
     `,
     );
     t.assert.deepStrictEqual(metadata.palette, [

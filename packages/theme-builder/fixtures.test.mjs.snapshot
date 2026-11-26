@@ -2,8 +2,6 @@ exports[`should build simple theme 1`] = `
 /
 ├─ out/
 │  ├─ index.css
-│  ├─ index.d.mts
-│  ├─ index.mjs
 │  ├─ metadata.d.mts
 │  └─ metadata.mjs
 └─ src/
@@ -19,17 +17,6 @@ exports[`should build simple theme 2`] = `
 
 exports[`should build simple theme 3`] = `
 export default {
-  "--x-foobar": "#f0a"
-};
-`;
-
-exports[`should build simple theme 4`] = `
-declare const value: Record<string, string>;
-export default value;
-`;
-
-exports[`should build simple theme 5`] = `
-export default {
   "themes": [
     "light",
     "dark"
@@ -39,7 +26,7 @@ export default {
 }
 `;
 
-exports[`should build simple theme 6`] = `
+exports[`should build simple theme 4`] = `
 
 export interface PaletteColor {
     readonly name: string;
@@ -73,8 +60,6 @@ exports[`should generate version 1`] = `
 /
 ├─ out/
 │  ├─ index.css
-│  ├─ index.d.mts
-│  ├─ index.mjs
 │  ├─ metadata.d.mts
 │  └─ metadata.mjs
 └─ src/
@@ -89,28 +74,10 @@ exports[`should generate version 2`] = `
 }
 `;
 
-exports[`should generate version 3`] = `
-export default {
-  "--x-foobar": "#f0a",
-  "--version": "\\"1.2.3\\""
-};
-`;
-
-exports[`should include deprecated variables 1`] = `
-/
-├─ out/
-│  └─ deprecated-variables.json
-└─ src/
-   ├─ _version.scss
-   └─ deprecated-variables.json
-`;
-
 exports[`should include palette 1`] = `
 /
 ├─ out/
 │  ├─ index.css
-│  ├─ index.d.mts
-│  ├─ index.mjs
 │  ├─ metadata.d.mts
 │  └─ metadata.mjs
 └─ src/

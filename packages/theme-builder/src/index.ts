@@ -2,7 +2,6 @@ import nodefs from "node:fs/promises";
 import path from "node:path/posix";
 import yargs from "yargs";
 import { buildCss } from "./build-css.ts";
-import { buildJs } from "./build-js.ts";
 import { buildMetadata } from "./build-metadata.ts";
 import { extractPalette } from "./build-palette.ts";
 import { clean } from "./clean.ts";
@@ -20,7 +19,7 @@ async function run(options: NormalizedOptions): Promise<void> {
         ["src/_*.scss", paletteVariablesFile],
         options,
     );
-    await buildJs(files, options);
+
     if (files.length === 0) {
         return;
     }
