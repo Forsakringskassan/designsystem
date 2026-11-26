@@ -1,4 +1,12 @@
-<script setup lang="ts" generic="T extends object, KeyAttribute extends keyof T = keyof T">
+<script
+    setup
+    lang="ts"
+    generic="
+        T extends object,
+        KeyAttribute extends keyof T = keyof T,
+        ExpandableAttribute extends TableNestedKeyOf<T> = TableNestedKeyOf<T>
+    "
+>
 import {
     type ComponentPublicInstance,
     type HTMLAttributes,
@@ -57,7 +65,7 @@ const {
     striped?: boolean;
     disableDividers?: boolean;
     selectable?: "single" | "multi";
-    expandableAttribute?: TableNestedKeyOf<T>;
+    expandableAttribute?: ExpandableAttribute;
 }>();
 
 defineSlots<{
@@ -86,8 +94,8 @@ defineSlots<{
 
 const sortFilterDatasetEvents = useSortFilterDatasetEvents();
 
-type ExpandedContent = Required<T>[TableNestedKeyOf<T>] extends unknown[]
-    ? Required<T>[TableNestedKeyOf<T>][number]
+type ExpandedContent = Required<T>[ExpandableAttribute] extends unknown[]
+    ? Required<T>[ExpandableAttribute][number]
     : never;
 
 const $t = useTranslate();
