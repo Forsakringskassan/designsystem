@@ -1159,6 +1159,11 @@ export const IPopup: typeof __VLS_export_75;
 // @public (undocumented)
 export interface IPopupData {
     // (undocumented)
+    anchorOffset: {
+        x: number;
+        y: number;
+    } | null;
+    // (undocumented)
     focus: StackHandle | null;
     // (undocumented)
     placement: Placement;

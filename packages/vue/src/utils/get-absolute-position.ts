@@ -20,12 +20,14 @@ export interface Rect extends Point {
  * @internal
  */
 export function getAbsolutePosition(src: HTMLElement): Rect;
+
 /**
  * Get elements position relative to root element.
  *
  * @internal
  */
 export function getAbsolutePosition(src?: HTMLElement): Rect | undefined;
+
 export function getAbsolutePosition(src?: HTMLElement): Rect | undefined {
     if (!src) {
         return undefined;

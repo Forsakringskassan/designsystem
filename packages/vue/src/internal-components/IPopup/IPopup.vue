@@ -3,7 +3,7 @@
 import { type PropType, defineComponent } from "vue";
 import { debounce, handleTab, popFocus, pushFocus } from "@fkui/logic";
 import { config } from "../../config";
-import { type Point, getAbsolutePosition, getHTMLElementFromVueRef } from "../../utils";
+import { getAbsolutePosition, getHTMLElementFromVueRef } from "../../utils";
 import { MIN_DESKTOP_WIDTH, POPUP_SPACING } from "./constants";
 import { getContainer } from "./get-container";
 import { getFocusableElement } from "./get-focusable-element";
@@ -118,7 +118,7 @@ export default defineComponent({
          */
         "close",
     ],
-    data(): IPopupData & { anchorOffset: Point | null } {
+    data(): IPopupData {
         return {
             teleportDisabled: false,
             placement: Placement.NotCalculated,
