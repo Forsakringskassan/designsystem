@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetCustomTextExample.vue:FCrudDatasetCustomTextExample-83b249.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetSortListExample.vue:FCrudDatasetSortListExample-e80068.js
 import { defineComponent as _defineComponent2 } from "vue";
 import { ref as ref2 } from "vue";
 
@@ -268,11 +268,11 @@ function useFruitCrud(fruits2) {
   };
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetCustomTextExample.vue:FCrudDatasetCustomTextExample-83b249.js
-import { FButton, FCrudDataset, FList } from "@fkui/vue";
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetSortListExample.vue:FCrudDatasetSortListExample-e80068.js
+import { FButton, FCrudDataset, FList, FSortFilterDataset } from "@fkui/vue";
 import { toDisplayString as _toDisplayString2, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode2, withCtx as _withCtx2, createVNode as _createVNode, openBlock as _openBlock2, createBlock as _createBlock2 } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent2({
-  __name: "FCrudDatasetCustomTextExample",
+  __name: "FCrudDatasetSortListExample",
   setup(__props, { expose: __expose }) {
     __expose();
     const fruits2 = ref2(fruits);
@@ -283,19 +283,16 @@ var exampleComponent = /* @__PURE__ */ _defineComponent2({
       return FCrudDataset;
     }, get FList() {
       return FList;
+    }, get FSortFilterDataset() {
+      return FSortFilterDataset;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
 });
-var _hoisted_1 = { class: "row" };
-var _hoisted_2 = { class: "col col--lg-7 col--md-6" };
-var _hoisted_3 = { class: "col col--lg-5 col--md-6" };
-var _hoisted_4 = { class: "row row--align-end" };
-var _hoisted_5 = { class: "col" };
-var _hoisted_6 = { class: "sr-only" };
-var _hoisted_7 = { class: "col" };
-var _hoisted_8 = { class: "sr-only" };
+var _hoisted_1 = { class: "button-group" };
+var _hoisted_2 = { class: "sr-only" };
+var _hoisted_3 = { class: "sr-only" };
 function render2(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock2(), _createBlock2($setup["FCrudDataset"], {
     modelValue: $setup.fruits,
@@ -305,14 +302,19 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
     "on-delete": $setup.onDelete
   }, {
     default: _withCtx2(({ updateItem, deleteItem }) => [
-      _createVNode($setup["FList"], {
-        items: $setup.fruits,
-        "element-id": "example",
-        "key-attribute": "id"
+      _createVNode($setup["FSortFilterDataset"], {
+        data: $setup.fruits,
+        "sortable-attributes": {
+          name: "Namn",
+          origin: "Land"
+        }
       }, {
-        default: _withCtx2(({ item }) => [
-          _createElementVNode("div", _hoisted_1, [
-            _createElementVNode("div", _hoisted_2, [
+        default: _withCtx2(({ sortFilterResult }) => [
+          _createVNode($setup["FList"], {
+            items: sortFilterResult,
+            "key-attribute": "id"
+          }, {
+            default: _withCtx2(({ item }) => [
               _createElementVNode(
                 "h3",
                 null,
@@ -351,99 +353,69 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
                   _toDisplayString2(item.description),
                   1
                   /* TEXT */
-                ),
-                _cache[4] || (_cache[4] = _createElementVNode(
-                  "br",
-                  null,
-                  null,
-                  -1
-                  /* CACHED */
-                ))
+                )
+              ]),
+              _createElementVNode("div", _hoisted_1, [
+                _createVNode($setup["FButton"], {
+                  "align-text": "",
+                  "icon-left": "pen",
+                  size: "medium",
+                  variant: "tertiary",
+                  class: "button-group__item",
+                  onClick: ($event) => updateItem(item)
+                }, {
+                  default: _withCtx2(() => [
+                    _cache[4] || (_cache[4] = _createTextVNode2(
+                      " \xC4ndra ",
+                      -1
+                      /* CACHED */
+                    )),
+                    _createElementVNode(
+                      "span",
+                      _hoisted_2,
+                      _toDisplayString2(item.name),
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  _: 2
+                  /* DYNAMIC */
+                }, 1032, ["onClick"]),
+                _createVNode($setup["FButton"], {
+                  "align-text": "",
+                  "icon-left": "trashcan",
+                  size: "medium",
+                  variant: "tertiary",
+                  class: "button-group__item",
+                  onClick: ($event) => deleteItem(item)
+                }, {
+                  default: _withCtx2(() => [
+                    _cache[5] || (_cache[5] = _createTextVNode2(
+                      " Ta bort ",
+                      -1
+                      /* CACHED */
+                    )),
+                    _createElementVNode(
+                      "span",
+                      _hoisted_3,
+                      _toDisplayString2(item.name),
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  _: 2
+                  /* DYNAMIC */
+                }, 1032, ["onClick"])
               ])
             ]),
-            _createElementVNode("div", _hoisted_3, [
-              _createElementVNode("div", _hoisted_4, [
-                _createElementVNode("div", _hoisted_5, [
-                  _createVNode($setup["FButton"], {
-                    "icon-left": "pen",
-                    size: "small",
-                    type: "button",
-                    variant: "tertiary",
-                    onClick: ($event) => updateItem(item)
-                  }, {
-                    default: _withCtx2(() => [
-                      _cache[5] || (_cache[5] = _createTextVNode2(
-                        " \xC4ndra ",
-                        -1
-                        /* CACHED */
-                      )),
-                      _createElementVNode(
-                        "span",
-                        _hoisted_6,
-                        _toDisplayString2(item.name),
-                        1
-                        /* TEXT */
-                      )
-                    ]),
-                    _: 2
-                    /* DYNAMIC */
-                  }, 1032, ["onClick"])
-                ]),
-                _createElementVNode("div", _hoisted_7, [
-                  _createVNode($setup["FButton"], {
-                    "icon-left": "trashcan",
-                    size: "small",
-                    type: "button",
-                    variant: "tertiary",
-                    onClick: ($event) => deleteItem(item)
-                  }, {
-                    default: _withCtx2(() => [
-                      _cache[6] || (_cache[6] = _createTextVNode2(
-                        " Ta bort ",
-                        -1
-                        /* CACHED */
-                      )),
-                      _createElementVNode(
-                        "span",
-                        _hoisted_8,
-                        _toDisplayString2(item.name),
-                        1
-                        /* TEXT */
-                      )
-                    ]),
-                    _: 2
-                    /* DYNAMIC */
-                  }, 1032, ["onClick"])
-                ])
-              ])
-            ])
-          ])
-        ]),
-        screenreader: _withCtx2(({ item }) => [
-          _createTextVNode2(
-            " Frukt ID " + _toDisplayString2(item.id),
-            1
-            /* TEXT */
-          )
+            _: 2
+            /* DYNAMIC */
+          }, 1032, ["items"])
         ]),
         _: 2
         /* DYNAMIC */
-      }, 1032, ["items"])
+      }, 1032, ["data"])
     ]),
-    "add-button": _withCtx2(() => [..._cache[7] || (_cache[7] = [
-      _createTextVNode2(
-        " L\xE4gg till ny ",
-        -1
-        /* CACHED */
-      ),
-      _createElementVNode(
-        "span",
-        { class: "sr-only" },
-        " frukt ",
-        -1
-        /* CACHED */
-      )
-    ])]),
     _: 1
     /* STABLE */
   }, 8, ["modelValue", "on-create", "on-update", "on-delete"]);
@@ -451,7 +423,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render2;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-83b249"
+  selector: "#example-e80068"
 });
 export {
   render2 as render

@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/internal-components/ICloseButton/examples/ICloseButtonExample.vue:ICloseButtonExample-173665.js
+// virtual-entry:virtual:packages/vue/src/internal-components/ICloseButton/examples/ICloseButtonExample.vue:ICloseButtonExample-53d971.js
 import { defineComponent as _defineComponent } from "vue";
 import { ref, useTemplateRef } from "vue";
 import { FButton, ICloseButton, IPopup, findHTMLElementFromVueRef } from "@fkui/vue";
@@ -76,6 +76,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _createVNode($setup["IPopup"], {
       "is-open": $setup.isOpen,
       anchor: $setup.findHTMLElementFromVueRef($setup.popupAnchor),
+      focus: "",
+      "keyboard-trap": "",
       onClose: _cache[2] || (_cache[2] = ($event) => $setup.isOpen = false)
     }, {
       default: _withCtx(() => [
@@ -111,10 +113,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ]);
 }
 exampleComponent.render = render;
-exampleComponent.__scopeId = "data-v-173665";
+exampleComponent.__scopeId = "data-v-53d971";
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-173665"
+  selector: "#example-53d971"
 });
 export {
   render

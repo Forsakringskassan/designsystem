@@ -263,7 +263,7 @@
     --fkds-color-footer-text-primary: var(--fkds-palette-color-neutral-0);
     --fkds-focus-indicator-color: var(--fkds-palette-color-neutral-900);
     --fkds-focus-indicator-color-background: var(--fkds-palette-color-neutral-0);
-    --fkui-theme-default-version: "6.65.0";
+    --fkui-theme-default-version: "6.66.0";
   }
 }
 @media (prefers-color-scheme: dark) {
@@ -506,7 +506,7 @@
     --fkds-color-footer-text-primary: var(--fkds-palette-color-neutral-0);
     --fkds-focus-indicator-color: var(--fkds-palette-color-neutral-0);
     --fkds-focus-indicator-color-background: var(--fkds-palette-color-neutral-900);
-    --fkui-theme-default-version: "6.65.0";
+    --fkui-theme-default-version: "6.66.0";
   }
 }
 :root {

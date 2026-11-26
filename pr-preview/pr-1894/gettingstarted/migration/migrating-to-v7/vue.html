@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Version 7 migreringsguide: @fkui/vue - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-537cbe.css"
+            href="../../../assets/docs-961777.css"
             crossorigin
-            integrity="sha384-6/19T0QCW98HiXTrNsUzjwS76F/qoZEt4071hkDha2NBiLZkURKd5gxD3bhVYeek"
+            integrity="sha384-Cm+3MhshSqc0lvWh4xp7PuDZDmTpb3QKx7+OnveEQjlGUuBroH0ScTvdnFzptmzT"
             
         />
         <link
             rel="stylesheet"
-            href="../../../assets/docs-fkui-ced1e7.css"
+            href="../../../assets/docs-fkui-565bb1.css"
             crossorigin
-            integrity="sha384-106njLeWyN5OwsWiJAu0lkFaWVp68rGXkCf2GyWO7p8MBfA01H1+ZPteOaYT7vmv"
+            integrity="sha384-hnE8MRa+D0xqnqCwK5U84Dr9PNHCtKUFCd/ku+q14hMSzGD7CDDkGTG+rlQMzQyv"
             
         />
 
@@ -23,19 +23,19 @@
             {
   "imports": {
     "vue": "../../../assets/vendor-vue-97e993.js",
-    "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-ec4ba3.js",
+    "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-8b05fd.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-61d844.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-b15e9b.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-e56230.js",
     "@fkui/vue-labs": "../../../assets/vendor-fkui-vue-labs-37a3e4.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js"
   },
   "integrity": {
     "../../../assets/vendor-vue-97e993.js": "sha384-0n86uBFQ6HOo5PI5ohkqFZs6RSSBO9pWTrs0kSzWPxBbAAWBltvCTNPdnk/ap8eT",
-    "../../../assets/vendor-fkui-vue-selectors-ec4ba3.js": "sha384-X7kHsr5wRshwqJOF+A4AJXePaFk73er8pcimXF6uz0kIIbToz2NyvzKWe+slXu7W",
+    "../../../assets/vendor-fkui-vue-selectors-8b05fd.js": "sha384-2mnkTHm7o+ZAcO/zNNF4QL71Iw2LhmAkVUK7+jnhoZ1o5YP4KO3kW5cPW5lEl+P9",
     "../../../assets/vendor-fkui-logic-61d844.js": "sha384-u+VrrunW0wzEofwwfTCUkVW/5R3NtIzcgQ1Z60e7ov5tXLYfjrUjbvH57Zgv2vnB",
     "../../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../../assets/vendor-fkui-vue-b15e9b.js": "sha384-RtdHn+9f7oPhNcGDqEWsWZKmwDNWzN9DRu13juX+5n30pBCouwzIHVP46O4yYLOM",
+    "../../../assets/vendor-fkui-vue-e56230.js": "sha384-xTFKc1a5powk4MNOUPFaQrtFo48FAs/vtjSze6kRkoYvxzVhfb2gSY/prhQFf6fe",
     "../../../assets/vendor-fkui-vue-labs-37a3e4.js": "sha384-N/HfKkajpXjdrrHo9mjCSJYlF7njhDq86owwuIac3sUncnfL0s0jYFVrZdohsxm3",
     "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js": "sha384-PDEuCCbROg9gW6fFneYpzXKS04rV0oMFHgqArEkyaM8h1d/H3HBtCKiyFWYKWVcy"
   }
@@ -6299,6 +6299,8 @@
                                 
                                 <li><a href="#tablescroll">TableScroll</a></li>
                                 
+                                <li><a href="#ipopup">IPopup</a></li>
+                                
                                 <li><a href="#fwizard">FWizard</a></li>
                                 
                                 <li><a href="#fwizardstep">FWizardStep</a></li>
@@ -6802,11 +6804,140 @@ Gör inga ändringar förrän användaren bekräftat vilka åtgärder som ska g�
 Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
 
             </details>
+        <h2 id="ipopup" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#ipopup"><code>IPopup</code></a></h2><p class="docs-paragraph">Fokushantering är inte längre aktiv som standard i <code>IPopup</code>.
+Om popup tidigare använde standardbeteendet, lägg till <code>focus</code> för att fortsätta flytta fokus till det första tabbningsbara elementet när popup öppnas och återställa fokus när den stängs:</p>
+
+                <div
+                    id="example-048017"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;i-popup :is-open :anchor&gt;</span>
+<span class="hljs-addition">+&lt;i-popup :is-open :anchor focus&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph"><code>set-focus</code>- och <code>focus-element</code>-proparna är borttagna och ersätts av en gemensam <code>focus</code>-prop.
+Ta bort <code>:set-focus=&quot;false&quot;</code> eftersom avstängd fokushantering nu är standard, och ersätt <code>:set-focus=&quot;true&quot;</code> med <code>focus</code>.
+Ett dynamiskt värde för <code>set-focus</code> kan istället skickas till <code>focus</code>:</p>
+
+                <div
+                    id="example-78ab91"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;i-popup :is-open :anchor :set-focus=&quot;shouldSetFocus&quot;&gt;</span>
+<span class="hljs-addition">+&lt;i-popup :is-open :anchor :focus=&quot;shouldSetFocus&quot;&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om du använder <code>focus-element</code>, skicka funktionen till <code>focus</code> istället:</p>
+
+                <div
+                    id="example-794ec8"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;i-popup :is-open :anchor :focus-element=&quot;getFocusElement&quot;&gt;</span>
+<span class="hljs-addition">+&lt;i-popup :is-open :anchor :focus=&quot;getFocusElement&quot;&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om båda propar används kan du flytta villkoret till en funktion som returnerar <code>null</code> när fokus inte ska flyttas.
+Exemplet utgår från att <code>shouldSetFocus</code> är en Vue-ref:</p>
+
+                <div
+                    id="example-1e0bda"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">getPopupFocusElement</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-literal">null</span> {
+    <span class="hljs-keyword">return</span> shouldSetFocus.<span class="hljs-property">value</span> ? <span class="hljs-title function_">getFocusElement</span>() : <span class="hljs-literal">null</span>;
+}
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-589f6a"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;i-popup :is-open :anchor :set-focus=&quot;shouldSetFocus&quot; :focus-element=&quot;getFocusElement&quot;&gt;</span>
+<span class="hljs-addition">+&lt;i-popup :is-open :anchor :focus=&quot;getPopupFocusElement&quot;&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Du kan också använda ett beräknat värde som returnerar elementet eller <code>null</code> och skicka en funktion som returnerar det värdet till <code>focus</code>.
+Se då till att det beräknade värdets beroenden är reaktiva.</p>
+<p class="docs-paragraph">Om funktionen returnerar <code>null</code> flyttas inte fokus och det återställs inte heller när popup stängs.
+Om funktionen returnerar ett element flyttas fokus dit och återställs när popup stängs.</p>
+<p class="docs-paragraph"><code>keyboard-trap</code>-propen är inte aktiv som standard längre.
+Om du tidigare använde standardvärdet, lägg till <code>keyboard-trap</code> för att fortsätta hålla tabbfokus inom popupen.
+Detta gäller även om du hade stängt av fokushanteringen med <code>:set-focus=&quot;false&quot;</code>.
+Behåll dynamiska värden för <code>keyboard-trap</code> och låt den vara avstängd där den tidigare var <code>false</code>.</p>
+
+                <div
+                    id="example-6004ed"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;i-popup :is-open :anchor&gt;</span>
+<span class="hljs-addition">+&lt;i-popup :is-open :anchor keyboard-trap&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-af7661"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;i-popup :is-open :anchor :keyboard-trap=&quot;false&quot;&gt;</span>
+<span class="hljs-addition">+&lt;i-popup :is-open :anchor&gt;</span>
+</code></pre>
+                </div>
+            
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">Sök igenom applikationens användningar av <code>IPopup</code> och <code>&lt;i-popup&gt;</code>, inklusive renderfunktioner och JSX.
+Migrera <code>setFocus</code>/<code>set-focus</code> och <code>focusElement</code>/<code>focus-element</code> till den nya propen <code>focus</code> utan att ändra komponentimplementationen.</p>
+<p class="docs-paragraph">För användningar utan någon av de gamla fokuspropsen, lägg till <code>focus</code> för att behålla det tidigare standardbeteendet.
+Ta bort statiska <code>:set-focus=&quot;false&quot;</code>-bindningar och eventuell <code>focus-element</code> på samma användning eftersom fokus då inte ska hanteras.
+Ersätt ett aktivt <code>set-focus</code> utan <code>focus-element</code> med <code>focus</code> och överför dynamiska booleska värden till <code>focus</code>.
+Ersätt <code>focus-element</code> med <code>focus</code> när fokushantering är aktiv.
+Om <code>set-focus</code> är dynamisk och <code>focus-element</code> används, använd en funktion som returnerar fokusmålet när fokus ska hanteras och annars <code>null</code>, eller ett reaktivt beräknat värde som funktionen returnerar.
+Kontrollera även om en dynamisk <code>focus-element</code> kan saknas och bevara i så fall tidigare fallback till det första tabbningsbara elementet när fokushantering är aktiv.
+Lägg till <code>keyboard-trap</code> där den tidigare var utelämnad, även när <code>set-focus</code> var <code>false</code>.
+Behåll dynamiska värden och låt <code>keyboard-trap</code> vara avstängd där den tidigare var <code>false</code>.</p>
+<p class="docs-paragraph">Kontrollera särskilt funktioner som kan returnera <code>null</code> eller popup-fönster utan tabbningsbara element.
+I version 7 återställs inte fokus i dessa fall; uppmärksamma användaren på beteendeförändringen och undersök om applikationen behöver egen fokushantering.
+Verifiera resultatet genom att bygga projektet och köra relevanta tester, inklusive tester för fokus när popup öppnas och stängs.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
+
+            </details>
         <h2 id="fwizard" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fwizard">FWizard</a></h2><p class="docs-paragraph">I version 7 är initialt fokus på det första steget avstängt som standard.</p>
 <p class="docs-paragraph">Om du vill att det första steget ska få fokus när guiden öppnas, lägg till <code>focus-initial-step</code>:</p>
 
                 <div
-                    id="example-e7db98"
+                    id="example-655f39"
                     class="code-preview code-preview--default"
                     
                     
@@ -6825,7 +6956,7 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
 <p class="docs-paragraph">Om du vill behålla fellistan, lägg till propen explicit:</p>
 
                 <div
-                    id="example-f8bad4"
+                    id="example-a77d19"
                     class="code-preview code-preview--default"
                     
                     
@@ -6841,7 +6972,7 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
             <p class="docs-paragraph">Om du redan använder <code>:use-error-list=&quot;false&quot;</code> kan du ta bort det:</p>
 
                 <div
-                    id="example-640e63"
+                    id="example-cf0dc7"
                     class="code-preview code-preview--default"
                     
                     
@@ -6936,9 +7067,9 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">theme-default-exports</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/d90099c5685d845d1bd0ea5a3128a3de81818af3">d90099c</a>)<br />
+<div class="version"><span class="version-text-block">theme-default-exports</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/d4f5a8ea674eb79125bac2586c52cd338f178b76">d4f5a8e</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1894">PR 1894</a><br />
-       <span class="version-text-block">2026-11-25 18:26</span>
+       <span class="version-text-block">2026-11-26 05:49</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
@@ -7083,10 +7214,10 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../../assets/processors_selectable-version_select-version-e8cfe9.js"
+            src="../../../assets/processors_selectable-version_select-version-818582.js"
             type="module"
             crossorigin
-            integrity="sha384-6AQnlZ5/8GDIy1NqCQdy1f6YMq2cX6TCMX7Jt2WBzo3pCdF4bzXVMsxYRT0nBi8w"
+            integrity="sha384-wOELsk7Fv+P7YifElqGgzC/JgytXzwlwDTjTs9FyMWHCeusOOMU6tLO4yYZBBRXI"
             
         ></script><script
             src="../../../assets/processors_cookie_cookie-efa23b.js"

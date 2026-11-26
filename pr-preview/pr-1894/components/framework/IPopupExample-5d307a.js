@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupExample.vue:IPopupExample-e002a6.js
+// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupExample.vue:IPopupExample-5d307a.js
 import { defineComponent } from "vue";
 import { FButton, IPopup, findHTMLElementFromVueRef } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -79,6 +79,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _createVNode(_component_i_popup, {
       "is-open": _ctx.isOpen,
       anchor: _ctx.anchor(),
+      focus: "",
+      "keyboard-trap": "",
       onClose: _ctx.onClose
     }, {
       default: _withCtx(() => [
@@ -115,7 +117,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e002a6"
+  selector: "#example-5d307a"
 });
 export {
   render
