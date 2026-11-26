@@ -42,10 +42,6 @@ var ExampleModal_default = defineComponent({
   name: "ExampleModal",
   components: { FFormModal, FTextField },
   props: {
-    isOpen: {
-      type: Boolean,
-      required: false
-    },
     size: {
       type: String,
       default: "small"
@@ -103,7 +99,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock(_component_f_form_modal, {
     size: _ctx.size,
     "data-test": _ctx.testId,
-    "is-open": _ctx.isOpen,
     value: _ctx.value,
     "before-submit": _ctx.beforeSubmit,
     buttons: _ctx.buttons ? _ctx.buttons : void 0,
@@ -188,7 +183,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     _: 1
     /* STABLE */
-  }, 8, ["size", "data-test", "is-open", "value", "before-submit", "buttons", "onSubmit", "onCancel", "onClose"]);
+  }, 8, ["size", "data-test", "value", "before-submit", "buttons", "onSubmit", "onCancel", "onClose"]);
 }
 
 // packages/vue/src/components/FModal/examples/ExampleModal.vue

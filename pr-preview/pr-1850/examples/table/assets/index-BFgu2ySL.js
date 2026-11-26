@@ -21296,7 +21296,6 @@ function openModal(callingInstance, Component, options) {
 		};
 		const app = mountComponent(callingInstance, Component, {
 			attachTo,
-			isOpen: true,
 			onClose(data) {
 				terminate("close", data);
 			},
@@ -21400,14 +21399,6 @@ var FModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 			default: () => ElementIdService.generateElementId()
 		},
 		/**
-		* If the modal is open.
-		* Use this to toggle if the modal should be visible or not.
-		*/
-		isOpen: {
-			type: Boolean,
-			required: false
-		},
-		/**
 		* The aria-label attribute text for the top right close button.
 		*/
 		ariaCloseText: {
@@ -21483,15 +21474,10 @@ var FModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 			return hasSlot(this, "header");
 		}
 	},
-	watch: { isOpen: {
-		immediate: true,
-		async handler(value) {
-			if (value) {
-				await this.$nextTick();
-				this.openModal();
-			} else this.restoreState();
-		}
-	} },
+	async mounted() {
+		await this.$nextTick();
+		this.openModal();
+	},
 	beforeUnmount() {
 		this.restoreState();
 	},
@@ -21573,8 +21559,7 @@ var _hoisted_10$6 = { class: "modal__shelf" };
 var _hoisted_11$5 = ["aria-label"];
 function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
 	const _component_f_icon = resolveComponent("f-icon");
-	return _ctx.isOpen ? (openBlock(), createElementBlock("div", {
-		key: 0,
+	return openBlock(), createElementBlock("div", {
 		id: _ctx.id,
 		class: normalizeClass(["modal", _ctx.modalClass])
 	}, [createBaseVNode("div", _hoisted_2$56, [createBaseVNode("div", {
@@ -21619,7 +21604,7 @@ function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
 				onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
 			}, null, 32)
 		])
-	])], 2)])], 32)])], 10, _hoisted_1$79)) : createCommentVNode("v-if", true);
+	])], 2)])], 32)])], 10, _hoisted_1$79);
 }
 var FModal_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FModal_vue_vue_type_script_lang_default, [["render", _sfc_render$49]]);
 (/* @__PURE__ */ __commonJSMin((() => {
@@ -21679,13 +21664,6 @@ var FConfirmModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineCompone
 		* Enable fullscreen mode in mobile.
 		*/
 		fullscreen: {
-			type: Boolean,
-			required: false
-		},
-		/**
-		* Prop for opening modal
-		*/
-		isOpen: {
 			type: Boolean,
 			required: false
 		},
@@ -21781,7 +21759,6 @@ function _sfc_render$48(_ctx, _cache, $props, $setup, $data, $options) {
 	const _component_f_modal = resolveComponent("f-modal");
 	return openBlock(), createBlock(_component_f_modal, {
 		fullscreen: _ctx.fullscreen,
-		"is-open": _ctx.isOpen,
 		"aria-close-text": _ctx.ariaCloseText,
 		type: "warning",
 		size: _ctx.size,
@@ -21805,7 +21782,6 @@ function _sfc_render$48(_ctx, _cache, $props, $setup, $data, $options) {
 		_: 3
 	}, 8, [
 		"fullscreen",
-		"is-open",
 		"aria-close-text",
 		"size",
 		"focus",
@@ -22426,14 +22402,6 @@ var FFormModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent(
 			default: true
 		},
 		/**
-		* If the modal is open.
-		* Use this to toggle if the modal should be visible or not.
-		*/
-		isOpen: {
-			type: Boolean,
-			required: false
-		},
-		/**
 		* The size of modal in desktop mode.
 		*/
 		size: {
@@ -22525,14 +22493,12 @@ var FFormModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent(
 	emits: {
 		/**
 		* Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
-		* In most use cases the isOpen prop should be set to false when this event is triggered.
 		*/
 		cancel() {
 			return true;
 		},
 		/**
 		* Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
-		* In most use cases the isOpen prop should be set to false when this event is triggered.
 		*/
 		close(_payload) {
 			return true;
@@ -22588,7 +22554,6 @@ function _sfc_render$42(_ctx, _cache, $props, $setup, $data, $options) {
 	return openBlock(), createBlock(_component_f_modal, {
 		"data-test": _ctx.dataTest,
 		fullscreen: _ctx.fullscreen,
-		"is-open": _ctx.isOpen,
 		size: _ctx.size,
 		"aria-close-text": _ctx.ariaCloseText,
 		onClose: _ctx.onClose
@@ -22634,7 +22599,6 @@ function _sfc_render$42(_ctx, _cache, $props, $setup, $data, $options) {
 	}, 8, [
 		"data-test",
 		"fullscreen",
-		"is-open",
 		"size",
 		"aria-close-text",
 		"onClose"
@@ -47895,10 +47859,7 @@ var FTableColumnLiveExample_default = /*#__PURE__*/ _plugin_vue_export_helper_de
 // ../../packages/vue/src/components/FTable/tests/FTableCrudDatasetModal.vue
 var FTableCrudDatasetModal_default = /* @__PURE__ */ defineComponent({
 	__name: "FTableCrudDatasetModal",
-	props: {
-		isOpen: { type: Boolean },
-		row: {}
-	},
+	props: { row: {} },
 	emits: ["close"],
 	setup(__props, { emit: __emit }) {
 		const props = __props;
@@ -47907,7 +47868,6 @@ var FTableCrudDatasetModal_default = /* @__PURE__ */ defineComponent({
 		return (_ctx, _cache) => {
 			const _directive_validation = resolveDirective("validation");
 			return openBlock(), createBlock(unref(FFormModal_default), {
-				"is-open": __props.isOpen,
 				value: value.value,
 				"use-error-list": false,
 				onClose: _cache[2] || (_cache[2] = (event) => emit("close", event))
@@ -47939,7 +47899,7 @@ var FTableCrudDatasetModal_default = /* @__PURE__ */ defineComponent({
 					{ maxLength: true }
 				]])]),
 				_: 1
-			}, 8, ["is-open", "value"]);
+			}, 8, ["value"]);
 		};
 	}
 });

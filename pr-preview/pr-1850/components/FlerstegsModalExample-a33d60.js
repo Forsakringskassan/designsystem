@@ -101,13 +101,9 @@ import {
 } from "@fkui/vue";
 var FlerstegsModal_default = /* @__PURE__ */ _defineComponent({
   __name: "FlerstegsModal",
-  props: {
-    isOpen: { type: Boolean, required: false }
-  },
   emits: ["cancel", "close", "submit"],
   setup(__props, { expose: __expose, emit: __emit }) {
     __expose();
-    const props = __props;
     const emit = __emit;
     const DIALOGUE_TREE_DATA = exampleDialogTree();
     const current = ref({
@@ -152,7 +148,7 @@ var FlerstegsModal_default = /* @__PURE__ */ _defineComponent({
         buttons.value = buttons.value.filter((b) => !b.submitButton);
       }
     }
-    const __returned__ = { props, emit, DIALOGUE_TREE_DATA, current, treeData, value, createInitialButtons, buttons, onCancel, onClose, onSubmit, onChange, get FDialogueTree() {
+    const __returned__ = { emit, DIALOGUE_TREE_DATA, current, treeData, value, createInitialButtons, buttons, onCancel, onClose, onSubmit, onChange, get FDialogueTree() {
       return FDialogueTree;
     }, get FFormModal() {
       return FFormModal;
@@ -170,7 +166,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_validation = _resolveDirective("validation");
   const _directive_test = _resolveDirective("test");
   return _openBlock(), _createBlock($setup["FFormModal"], {
-    "is-open": $props.isOpen,
     value: $setup.value,
     buttons: $setup.buttons,
     onSubmit: $setup.onSubmit,
@@ -221,7 +216,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     _: 1
     /* STABLE */
-  }, 8, ["is-open", "value", "buttons"]);
+  }, 8, ["value", "buttons"]);
 }
 
 // packages/vue/src/components/FDialogueTree/examples/FlerstegsModal.vue

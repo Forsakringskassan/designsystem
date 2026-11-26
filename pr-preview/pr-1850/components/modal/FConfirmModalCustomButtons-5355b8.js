@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FConfirmModalCustomButtons.vue:FConfirmModalCustomButtons-da979d.js
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FConfirmModalCustomButtons.vue:FConfirmModalCustomButtons-5355b8.js
 import { defineComponent } from "vue";
 import { FButton, FConfirmModal, openModal } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -38,7 +38,6 @@ var exampleComponent = defineComponent({
   data() {
     return {
       action: void 0,
-      isOpen: false,
       threeButtons: [
         {
           label: "Ja, ta bort",
@@ -94,7 +93,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-da979d"
+  selector: "#example-5355b8"
 });
 export {
   render

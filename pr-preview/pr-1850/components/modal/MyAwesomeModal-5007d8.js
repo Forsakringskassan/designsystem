@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/MyAwesomeModal.vue:MyAwesomeModal-7188b1.js
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/MyAwesomeModal.vue:MyAwesomeModal-5007d8.js
 import { defineComponent as _defineComponent } from "vue";
 import { FButton, FModal } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -50,7 +50,6 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 var _hoisted_1 = { class: "button-group" };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FModal"], {
-    "is-open": "",
     onClose: _cache[1] || (_cache[1] = ($event) => $setup.emit("close"))
   }, {
     header: _withCtx(() => [..._cache[2] || (_cache[2] = [
@@ -94,7 +93,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-7188b1"
+  selector: "#example-5007d8"
 });
 export {
   render

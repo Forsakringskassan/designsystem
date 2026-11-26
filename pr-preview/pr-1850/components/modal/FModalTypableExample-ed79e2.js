@@ -60,7 +60,6 @@ import { createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode a
 var _hoisted_1 = { class: "button-group" };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FModal"], {
-    "is-open": "",
     type: $props.type,
     size: $props.size,
     onClose: _cache[1] || (_cache[1] = ($event) => $setup.emit("close"))

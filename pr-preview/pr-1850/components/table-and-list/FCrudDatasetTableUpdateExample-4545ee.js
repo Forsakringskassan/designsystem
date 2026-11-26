@@ -39,7 +39,6 @@ import { FFormModal, FTextField, FTextareaField } from "@fkui/vue";
 var FruitFormModal_default = /* @__PURE__ */ _defineComponent({
   __name: "FruitFormModal",
   props: {
-    isOpen: { type: Boolean, required: true },
     heading: { type: String, required: true },
     confirmText: { type: String, required: true },
     fruit: { type: Object, required: true }
@@ -71,7 +70,6 @@ import { toDisplayString as _toDisplayString, createTextVNode as _createTextVNod
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_validation = _resolveDirective("validation");
   return _openBlock(), _createBlock($setup["FFormModal"], {
-    "is-open": $props.isOpen,
     value: $setup.value,
     buttons: $setup.buttons,
     "use-error-list": false,
@@ -159,7 +157,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     _: 1
     /* STABLE */
-  }, 8, ["is-open", "value"]);
+  }, 8, ["value"]);
 }
 
 // packages/vue/src/components/FCrudDataset/examples/FruitFormModal.vue

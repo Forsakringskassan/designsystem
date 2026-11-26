@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-8b05fd.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-61d844.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-6dceea.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-25cef4.js",
     "@fkui/vue-labs": "../../../assets/vendor-fkui-vue-labs-37a3e4.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js"
   },
@@ -35,7 +35,7 @@
     "../../../assets/vendor-fkui-vue-selectors-8b05fd.js": "sha384-2mnkTHm7o+ZAcO/zNNF4QL71Iw2LhmAkVUK7+jnhoZ1o5YP4KO3kW5cPW5lEl+P9",
     "../../../assets/vendor-fkui-logic-61d844.js": "sha384-u+VrrunW0wzEofwwfTCUkVW/5R3NtIzcgQ1Z60e7ov5tXLYfjrUjbvH57Zgv2vnB",
     "../../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../../assets/vendor-fkui-vue-6dceea.js": "sha384-Q9BmHeaMu8ydgMPGaW09NRVGtTGra8SpFT7nfLS7cO0vhtyDKoeg3+yPyzgE5u8X",
+    "../../../assets/vendor-fkui-vue-25cef4.js": "sha384-OeAcyW4o0Ss5wV3tE5Xp6MahWdwVZslA1XTVsuJu09ORSlZtsCTfJ1NzDnTbpxwP",
     "../../../assets/vendor-fkui-vue-labs-37a3e4.js": "sha384-N/HfKkajpXjdrrHo9mjCSJYlF7njhDq86owwuIac3sUncnfL0s0jYFVrZdohsxm3",
     "../../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js": "sha384-PDEuCCbROg9gW6fFneYpzXKS04rV0oMFHgqArEkyaM8h1d/H3HBtCKiyFWYKWVcy"
   }
@@ -6272,6 +6272,22 @@
 
 
                         
+                        <details id="docs-outline">
+                            <summary class="outline__heading">
+                                Innehåll
+                                <svg focusable="false" class="docs-icon" aria-hidden="true">
+                                    <use href="#docs-icon-arrow-down"></use>
+                                </svg>
+                            </summary>
+                            <ul>
+                                
+                                <li><a href="#is_open_har_tagits_bort">is-open har tagits bort</a></li>
+                                
+                                <li><a href="#fcruddataset">FCrudDataset</a></li>
+                                
+                            </ul>
+                        </details>
+                        
                     </div>
                     
 
@@ -6328,7 +6344,7 @@
             <p class="docs-paragraph">För att öppna modalen programmatiskt istället:</p>
 <ol>
 <li>Flytta modalen till en egen komponent, till exempel <code>MyAwesomeModal.vue</code>.
-Modalen är alltid öppen (<code>is-open</code>) och skickar <code>close</code>-eventet vidare när den ska stängas:</li>
+Vid stängning ska modalen skicka ett <code>close</code>-event:</li>
 </ol>
 
                 <div
@@ -6346,7 +6362,7 @@ Modalen är alltid öppen (<code>is-open</code>) och skickar <code>close</code>-
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-modal</span> <span class="hljs-attr">is-open</span> @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;emit(&#x27;close&#x27;)&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-modal</span> @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;emit(&#x27;close&#x27;)&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">header</span>&gt;</span> My awesome modal <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">content</span>&gt;</span> My awesome content <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">footer</span>&gt;</span>
@@ -6393,7 +6409,38 @@ Modalen är alltid öppen (<code>is-open</code>) och skickar <code>close</code>-
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
+            <h2 id="is_open_har_tagits_bort" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#is_open_har_tagits_bort"><code>is-open</code> har tagits bort</a></h2><p class="docs-paragraph">Egenskapen <code>is-open</code> har tagits bort från <code>FModal</code>, <code>FConfirmModal</code> och <code>FFormModal</code>.
+En modal är alltid öppen när den renderas och stängs genom att den tas bort (vilket <code>openModal()</code> gör när <code>close</code>-eventet skickas).</p>
+
+                <div
+                    id="example-fb027d"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-modal :is-open&gt;&lt;/f-modal&gt;</span>
+<span class="hljs-addition">+&lt;f-modal&gt;&lt;/f-modal&gt;</span>
+</code></pre>
+                </div>
             
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">Leta efter <code>FModal</code>, <code>FConfirmModal</code> och <code>FFormModal</code> som har proppen <code>is-open</code> och ta bort den.</p>
+<p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra relevanta tester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
+
+            </details>
+        <h2 id="fcruddataset" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fcruddataset">FCrudDataset</a></h2><p class="docs-paragraph"><a href="../../../components/table-and-list/fcruddataset.html"><code>FCrudDataset</code></a> öppnar nu också sina modaler programmatiskt.
+Innehållet i slottarna <code>#add</code>, <code>#modify</code> och <code>#delete</code> renderas därför i en separat Vue-applikation (på samma sätt som för <code>openModal()</code>), men modalen placeras fortfarande inuti <code>.crud-dataset</code>-elementet så selektorer och pageobjects fungerar som tidigare.</p>
+<p class="docs-paragraph">Det kan påverka er applikation om:</p>
+<ul>
+<li>komponenter i slottarna <code>#add</code>, <code>#modify</code> eller <code>#delete</code> använder <code>inject()</code> för att hämta värden som tillhandahålls (<code>provide()</code>) av en komponent ovanför <code>FCrudDataset</code>.</li>
+</ul>
+
 
                     </div>
                 </main>
@@ -6461,9 +6508,9 @@ Modalen är alltid öppen (<code>is-open</code>) och skickar <code>close</code>-
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/88ff9fc242a2053cdfc800e73abd9c2ab140307c">88ff9fc</a>)<br />
+<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/2241324b41f08cbff0927b49eebe1aa205065ffd">2241324</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1850">PR 1850</a><br />
-       <span class="version-text-block">2026-11-26 15:33</span>
+       <span class="version-text-block">2026-11-26 15:52</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

@@ -2084,14 +2084,6 @@ var FModal_default = defineComponent4({
       default: () => ElementIdService.generateElementId()
     },
     /**
-     * If the modal is open.
-     * Use this to toggle if the modal should be visible or not.
-     */
-    isOpen: {
-      type: Boolean,
-      required: false
-    },
-    /**
      * The aria-label attribute text for the top right close button.
      */
     ariaCloseText: {
@@ -2139,8 +2131,8 @@ var FModal_default = defineComponent4({
   },
   emits: [
     /**
-     * Event that is dispatched when the escape button is pressed.
-     * In most use cases the `isOpen` prop should be set to false when this event is triggered.
+     * Event that is dispatched when the escape button or the close button is pressed.
+     * When opened with `openModal()` the modal is closed when this event is triggered.
      */
     "close"
   ],
@@ -2166,18 +2158,9 @@ var FModal_default = defineComponent4({
       return hasSlot(this, "header");
     }
   },
-  watch: {
-    isOpen: {
-      immediate: true,
-      async handler(value) {
-        if (value) {
-          await this.$nextTick();
-          this.openModal();
-        } else {
-          this.restoreState();
-        }
-      }
-    }
+  async mounted() {
+    await this.$nextTick();
+    this.openModal();
   },
   beforeUnmount() {
     this.restoreState();
@@ -2271,8 +2254,7 @@ var _hoisted_10 = { class: "modal__shelf" };
 var _hoisted_11 = ["aria-label"];
 function render4(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = _resolveComponent("f-icon");
-  return _ctx.isOpen ? (_openBlock4(), _createElementBlock4("div", {
-    key: 0,
+  return _openBlock4(), _createElementBlock4("div", {
     id: _ctx.id,
     class: _normalizeClass(["modal", _ctx.modalClass])
   }, [
@@ -2372,7 +2354,7 @@ function render4(_ctx, _cache, $props, $setup, $data, $options) {
         /* NEED_HYDRATION */
       )
     ])
-  ], 10, _hoisted_13)) : _createCommentVNode3("v-if", true);
+  ], 10, _hoisted_13);
 }
 
 // packages/vue/src/components/FModal/FModal.vue
@@ -2410,13 +2392,6 @@ var FConfirmModal_default = defineComponent5({
      * Enable fullscreen mode in mobile.
      */
     fullscreen: {
-      type: Boolean,
-      required: false
-    },
-    /**
-     * Prop for opening modal
-     */
-    isOpen: {
       type: Boolean,
       required: false
     },
@@ -2515,7 +2490,6 @@ function render5(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_modal = _resolveComponent2("f-modal");
   return _openBlock5(), _createBlock2(_component_f_modal, {
     fullscreen: _ctx.fullscreen,
-    "is-open": _ctx.isOpen,
     "aria-close-text": _ctx.ariaCloseText,
     type: "warning",
     size: _ctx.size,
@@ -2577,7 +2551,7 @@ function render5(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     _: 3
     /* FORWARDED */
-  }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "focus", "onClose"]);
+  }, 8, ["fullscreen", "aria-close-text", "size", "focus", "onClose"]);
 }
 
 // packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue
@@ -3559,14 +3533,6 @@ var FFormModal_default = defineComponent11({
       default: true
     },
     /**
-     * If the modal is open.
-     * Use this to toggle if the modal should be visible or not.
-     */
-    isOpen: {
-      type: Boolean,
-      required: false
-    },
-    /**
      * The size of modal in desktop mode.
      */
     size: {
@@ -3663,14 +3629,12 @@ var FFormModal_default = defineComponent11({
   emits: {
     /**
      * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
-     * In most use cases the isOpen prop should be set to false when this event is triggered.
      */
     cancel() {
       return true;
     },
     /**
      * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
-     * In most use cases the isOpen prop should be set to false when this event is triggered.
      */
     /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, should use generics */
     close(_payload) {
@@ -3726,7 +3690,6 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock12(), _createBlock6(_component_f_modal, {
     "data-test": _ctx.dataTest,
     fullscreen: _ctx.fullscreen,
-    "is-open": _ctx.isOpen,
     size: _ctx.size,
     "aria-close-text": _ctx.ariaCloseText,
     onClose: _ctx.onClose
@@ -3796,7 +3759,7 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     _: 3
     /* FORWARDED */
-  }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
+  }, 8, ["data-test", "fullscreen", "size", "aria-close-text", "onClose"]);
 }
 
 // packages/vue/src/components/FModal/FFormModal/FFormModal.vue

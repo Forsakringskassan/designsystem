@@ -39,7 +39,6 @@ import { FCurrencyTextField, FFormModal, FSelectField } from "@fkui/vue";
 var FTableCrudEditModal_default = /* @__PURE__ */ _defineComponent({
   __name: "FTableCrudEditModal",
   props: {
-    isOpen: { type: Boolean, required: true },
     row: { type: Object, required: true }
   },
   emits: ["close"],
@@ -76,7 +75,6 @@ var FTableCrudEditModal_default = /* @__PURE__ */ _defineComponent({
 import { toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, createElementVNode as _createElementVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, withCtx as _withCtx, createVNode as _createVNode, createBlock as _createBlock } from "vue";
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FFormModal"], {
-    "is-open": $props.isOpen,
     value: $setup.value,
     "use-error-list": false,
     onClose: _cache[2] || (_cache[2] = (event) => $setup.emit("close", event))
@@ -148,7 +146,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     _: 1
     /* STABLE */
-  }, 8, ["is-open", "value"]);
+  }, 8, ["value"]);
 }
 
 // packages/vue/src/components/FTable/docs/FTableCrudEditModal.vue
