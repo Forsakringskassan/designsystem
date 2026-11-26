@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetSortListExample.vue:FCrudDatasetSortListExample-e80068.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetSortListExample.vue:FCrudDatasetSortListExample-251bb6.js
 import { defineComponent as _defineComponent2 } from "vue";
 import { ref as ref2 } from "vue";
 
@@ -268,7 +268,7 @@ function useFruitCrud(fruits2) {
   };
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetSortListExample.vue:FCrudDatasetSortListExample-e80068.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetSortListExample.vue:FCrudDatasetSortListExample-251bb6.js
 import { FButton, FCrudDataset, FList, FSortFilterDataset } from "@fkui/vue";
 import { toDisplayString as _toDisplayString2, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode2, withCtx as _withCtx2, createVNode as _createVNode, openBlock as _openBlock2, createBlock as _createBlock2 } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent2({
@@ -304,6 +304,8 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
     default: _withCtx2(({ updateItem, deleteItem }) => [
       _createVNode($setup["FSortFilterDataset"], {
         data: $setup.fruits,
+        "show-sort": "",
+        "show-filter": "",
         "sortable-attributes": {
           name: "Namn",
           origin: "Land"
@@ -423,7 +425,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render2;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e80068"
+  selector: "#example-251bb6"
 });
 export {
   render2 as render

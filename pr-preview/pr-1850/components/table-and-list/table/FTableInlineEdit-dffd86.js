@@ -28,40 +28,67 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableBasicSortFilterExample.vue:FTableBasicSortFilterExample-01b011.js
+// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableInlineEdit.vue:FTableInlineEdit-dffd86.js
 import { defineComponent as _defineComponent } from "vue";
 import { ref } from "vue";
 import { FSortFilterDataset } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue";
-import { createVNode as _createVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FTableBasicSortFilterExample",
+  __name: "FTableInlineEdit",
   setup(__props, { expose: __expose }) {
     __expose();
+    const lander = [
+      "",
+      "Colombia",
+      "Costa Rica",
+      "Dominikanska republiken",
+      "Ecuador",
+      "Frankrike",
+      "Italien",
+      "Spanien",
+      "Sverige",
+      "Sydafrika"
+    ];
     const columns = defineTableColumns([
       {
         type: "text",
         header: "Frukt",
-        key: "frukt"
+        key: "namn"
       },
       {
-        type: "text",
+        type: "select",
+        options: lander,
         header: "Land",
+        label: () => "Land",
         key: "land"
       },
       {
         type: "text:currency",
         header: "Pris per kilo",
-        key: "pris"
+        key: "pris",
+        editable: true
       }
     ]);
     const rows = ref([
-      { frukt: "Apelsin", land: "Spanien", pris: "30" },
-      { frukt: "Banan", land: "Ecuador", pris: "15" },
-      { frukt: "\xC4pple", land: "Sverige", pris: "22" }
+      {
+        namn: "Apelsin",
+        land: "Spanien",
+        pris: 30
+      },
+      {
+        namn: "Banan",
+        land: "Equador",
+        pris: 15
+      },
+      {
+        namn: "\xC4pple",
+        land: "Sverige",
+        pris: 22
+      }
     ]);
-    const sortableAttributes = { frukt: "Text" };
-    const __returned__ = { columns, rows, sortableAttributes, get FSortFilterDataset() {
+    const sortableAttributes = { namn: "Frukt" };
+    const __returned__ = { lander, columns, rows, sortableAttributes, get FSortFilterDataset() {
       return FSortFilterDataset;
     }, get FTable() {
       return FTable;
@@ -73,14 +100,29 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FSortFilterDataset"], {
     data: $setup.rows,
-    "sortable-attributes": $setup.sortableAttributes
+    "sortable-attributes": $setup.sortableAttributes,
+    "show-sort": "",
+    "show-filter": ""
   }, {
     default: _withCtx(({ sortFilterResult }) => [
       _createVNode($setup["FTable"], {
         ref: "table",
         rows: sortFilterResult,
-        columns: $setup.columns
-      }, null, 8, ["rows", "columns"])
+        columns: $setup.columns,
+        striped: ""
+      }, {
+        caption: _withCtx(() => [..._cache[0] || (_cache[0] = [
+          _createElementVNode(
+            "span",
+            { class: "sr-only" },
+            "Redigera inneh\xE5ll-exempel",
+            -1
+            /* CACHED */
+          )
+        ])]),
+        _: 1
+        /* STABLE */
+      }, 8, ["rows", "columns"])
     ]),
     _: 1
     /* STABLE */
@@ -89,7 +131,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-01b011"
+  selector: "#example-dffd86"
 });
 export {
   render

@@ -31314,14 +31314,8 @@ var FSortFilterDataset_default = /* @__PURE__ */ defineComponent({
 		data: {},
 		sortableAttributes: {},
 		defaultSortAttribute: { default: "" },
-		showSort: {
-			type: Boolean,
-			default: true
-		},
-		showFilter: {
-			type: Boolean,
-			default: true
-		},
+		showSort: { type: Boolean },
+		showFilter: { type: Boolean },
 		filterLabel: { default: () => void 0 },
 		defaultSortAscending: {
 			type: Boolean,
@@ -48664,7 +48658,9 @@ var FTableSortFilterExample_default = /* @__PURE__ */ defineComponent({
 				}),
 				withDirectives((openBlock(), createBlock(unref(FSortFilterDataset_default), {
 					data: rows.value,
-					"sortable-attributes": sortableAttributes
+					"sortable-attributes": sortableAttributes,
+					"show-sort": "",
+					"show-filter": ""
 				}, {
 					default: withCtx(({ sortFilterResult }) => [createVNode(unref(FTable_default), {
 						ref: "table",
@@ -48780,6 +48776,8 @@ var FTableSortFilterPaginationExample_default = /* @__PURE__ */ defineComponent(
 					ref: "sortFilter",
 					data: rows.value,
 					"sortable-attributes": sortableAttributes,
+					"show-sort": "",
+					"show-filter": "",
 					"default-sort-attribute": "text"
 				}, {
 					default: withCtx(({ sortFilterResult }) => [createVNode(unref(FPaginateDataset_default), {

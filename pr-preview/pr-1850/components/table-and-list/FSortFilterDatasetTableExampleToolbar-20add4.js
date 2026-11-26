@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetTableExampleToolbar.vue:FSortFilterDatasetTableExampleToolbar-77cc62.js
+// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetTableExampleToolbar.vue:FSortFilterDatasetTableExampleToolbar-20add4.js
 import { defineComponent as _defineComponent } from "vue";
 import { ref } from "vue";
 
@@ -74,7 +74,7 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetTableExampleToolbar.vue:FSortFilterDatasetTableExampleToolbar-77cc62.js
+// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetTableExampleToolbar.vue:FSortFilterDatasetTableExampleToolbar-20add4.js
 import { FButton, FSortFilterDataset, FTable, defineTableColumns } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
@@ -115,6 +115,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       )),
       _createVNode($setup["FSortFilterDataset"], {
         data: $setup.rows,
+        "show-sort": "",
+        "show-filter": "",
         "default-sort-attribute": "name",
         "default-sort-ascending": true,
         "sortable-attributes": $setup.sortableAttributes
@@ -192,7 +194,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-77cc62"
+  selector: "#example-20add4"
 });
 export {
   render

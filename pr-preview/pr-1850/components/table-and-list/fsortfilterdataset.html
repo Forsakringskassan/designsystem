@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-8b05fd.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-61d844.js",
     "@fkui/date": "../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-e56230.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-6dceea.js",
     "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-37a3e4.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js"
   },
@@ -35,7 +35,7 @@
     "../../assets/vendor-fkui-vue-selectors-8b05fd.js": "sha384-2mnkTHm7o+ZAcO/zNNF4QL71Iw2LhmAkVUK7+jnhoZ1o5YP4KO3kW5cPW5lEl+P9",
     "../../assets/vendor-fkui-logic-61d844.js": "sha384-u+VrrunW0wzEofwwfTCUkVW/5R3NtIzcgQ1Z60e7ov5tXLYfjrUjbvH57Zgv2vnB",
     "../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../assets/vendor-fkui-vue-e56230.js": "sha384-xTFKc1a5powk4MNOUPFaQrtFo48FAs/vtjSze6kRkoYvxzVhfb2gSY/prhQFf6fe",
+    "../../assets/vendor-fkui-vue-6dceea.js": "sha384-Q9BmHeaMu8ydgMPGaW09NRVGtTGra8SpFT7nfLS7cO0vhtyDKoeg3+yPyzgE5u8X",
     "../../assets/vendor-fkui-vue-labs-37a3e4.js": "sha384-N/HfKkajpXjdrrHo9mjCSJYlF7njhDq86owwuIac3sUncnfL0s0jYFVrZdohsxm3",
     "../../assets/vendor-forsakringskassan-docs-live-example-e0d8c4.js": "sha384-PDEuCCbROg9gW6fFneYpzXKS04rV0oMFHgqArEkyaM8h1d/H3HBtCKiyFWYKWVcy"
   }
@@ -7214,7 +7214,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/08e6e94459ea0dccb7b292e934eb722598ea0dd9/packages/vue/src/components/FSortFilterDataset/FSortFilterDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/88ff9fc242a2053cdfc800e73abd9c2ab140307c/packages/vue/src/components/FSortFilterDataset/FSortFilterDataset.vue">
                 FSortFilterDataset
             </a>
             
@@ -7266,10 +7266,13 @@
                     
 
                     <div id="docs-content"><p class="docs-paragraph">Datamängdsorterare används vid sortering av datamängd och/eller för sökning i en datamängd i komponenterna lista eller tabell.</p>
-<h2 id="anvandning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Sätt <code>data</code> till lista som ska sorteras och filtreras samt <code>sortableAttributes</code> till en beskrivning av de fält som är sorterbara.</p>
+<h2 id="anvandning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Sätt <code>data</code> till lista som ska sorteras och filtreras samt <code>sortableAttributes</code> till en beskrivning av de fält som är sorterbara.
+Sätt <code>showSort</code> för att visa sorteringslistan och <code>showFilter</code> för att visa sökfältet.
+Båda är dolda som standard och kan visas oberoende av varandra.
+Förvald sortering och sortering via tabellens kolumnrubriker fungerar även när sorteringslistan är dold.</p>
 
                 <div
-                    id="example-b73b01"
+                    id="example-9eea2f"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -7279,6 +7282,8 @@
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span>
     <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;items&quot;</span>
     <span class="hljs-attr">:sortable-attributes</span>=<span class="hljs-string">&quot;{ givenname: &#x27;Förnamn&#x27;, surname: &#x27;Efternamn&#x27; }&quot;</span>
+    <span class="hljs-attr">show-sort</span>
+    <span class="hljs-attr">show-filter</span>
 &gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">header</span>=<span class="hljs-string">&quot;{ slotClass }&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;slotClass&quot;</span>&gt;</span>Rubrik<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
@@ -7292,7 +7297,7 @@
             <h3 id="forvald_sortering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#forvald_sortering">Förvald sortering</a></h3><p class="docs-paragraph">Sätt <code>defaultSortAttribute</code> till namnet på fältet som ska sorteras samt <code>defaultSortAscending</code> till <code>true</code> (default) eller <code>false</code> för att välja om sorteringen ska ske i stigande (<code>true</code>) eller fallande (<code>false</code>) ordning.</p>
 
                 <div
-                    id="example-958406"
+                    id="example-b6d655"
                     class="code-preview code-preview--default"
                     
                     
@@ -7302,6 +7307,8 @@
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-sort-filter-dataset
      :data=&quot;items&quot;
      :sortable-attributes=&quot;{ givenname: &#x27;Förnamn&#x27;, surname: &#x27;Efternamn&#x27; }&quot;
+     show-sort
+     show-filter
 <span class="hljs-addition">+    default-sort-attribute=&quot;name&quot;</span>
 <span class="hljs-addition">+    :default-sort-ascending=&quot;true&quot;</span>
  &gt;
@@ -7318,7 +7325,7 @@
 Om <code>filterAttributes</code> inte anges inkluderas alla attribut i filtreringen.</p>
 
                 <div
-                    id="example-a77d53"
+                    id="example-f76d99"
                     class="code-preview code-preview--default"
                     
                     
@@ -7328,6 +7335,8 @@ Om <code>filterAttributes</code> inte anges inkluderas alla attribut i filtrerin
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-sort-filter-dataset
      :data=&quot;items&quot;
      :sortable-attributes=&quot;{ givenname: &#x27;Förnamn&#x27;, surname: &#x27;Efternamn&#x27; }&quot;
+     show-sort
+     show-filter
 <span class="hljs-addition">+    :filter-attributes=&quot;[&#x27;surname&#x27;]&quot;</span>
  &gt;
      &lt;template #header=&quot;{ slotClass }&quot;&gt;
@@ -7342,7 +7351,7 @@ Om <code>filterAttributes</code> inte anges inkluderas alla attribut i filtrerin
             <h2 id="lista_med_datamangdsorterare" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#lista_med_datamangdsorterare">Lista med datamängdsorterare</a></h2><p class="docs-paragraph">Visar hur <code>FSortFilterDataset</code> kan användas med <a href="./flist.html"><code>FList</code></a>.</p>
 
             <div
-                id="example-34b3f9"
+                id="example-cf1218"
                 class="code-preview code-preview--default"
                 
                 
@@ -7352,13 +7361,13 @@ Om <code>filterAttributes</code> inte anges inkluderas alla attribut i filtrerin
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-88d1a5"></div>
+        <div id="example-75eddd"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FSortFilterDatasetListExample-88d1a5.js"></script>
+        <script type="module" src="./FSortFilterDatasetListExample-75eddd.js"></script>
     
                 </div>
                 <div>
@@ -7400,7 +7409,7 @@ Om <code>filterAttributes</code> inte anges inkluderas alla attribut i filtrerin
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span> <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">:sortable-attributes</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span> <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">:sortable-attributes</span> <span class="hljs-attr">show-sort</span> <span class="hljs-attr">show-filter</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">header</span>=<span class="hljs-string">&quot;{ slotClass }&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;slotClass&quot;</span>&gt;</span>Frukter<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -7429,7 +7438,7 @@ Om <code>filterAttributes</code> inte anges inkluderas alla attribut i filtrerin
         <h2 id="tabell_med_datamangdsorterare" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabell_med_datamangdsorterare">Tabell med datamängdsorterare</a></h2><p class="docs-paragraph">När <a href="table"><code>FTable</code></a> används med datamängdsorteraren behöver nycklarna i <code>sortableAttributes</code> matcha kolumnernas <code>key</code>.</p>
 
                 <div
-                    id="example-742617"
+                    id="example-665a96"
                     class="code-preview code-preview--default"
                     
                     
@@ -7454,7 +7463,7 @@ Om <code>filterAttributes</code> inte anges inkluderas alla attribut i filtrerin
             <h3 id="tabell_med_forvald_sortering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#tabell_med_forvald_sortering">Tabell med förvald sortering</a></h3><p class="docs-paragraph">Visar hur <code>FSortFilterDataset</code> kan användas med <a href="table"><code>FTable</code></a>.</p>
 
             <div
-                id="example-995499"
+                id="example-76f10a"
                 class="code-preview code-preview--default"
                 
                 
@@ -7464,13 +7473,13 @@ Om <code>filterAttributes</code> inte anges inkluderas alla attribut i filtrerin
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-6113f0"></div>
+        <div id="example-4b9a37"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FSortFilterDatasetTableExample-6113f0.js"></script>
+        <script type="module" src="./FSortFilterDatasetTableExample-4b9a37.js"></script>
     
                 </div>
                 <div>
@@ -7507,6 +7516,8 @@ Om <code>filterAttributes</code> inte anges inkluderas alla attribut i filtrerin
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span>
         <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;rows&quot;</span>
+        <span class="hljs-attr">show-sort</span>
+        <span class="hljs-attr">show-filter</span>
         <span class="hljs-attr">default-sort-attribute</span>=<span class="hljs-string">&quot;name&quot;</span>
         <span class="hljs-attr">:default-sort-ascending</span>=<span class="hljs-string">&quot;true&quot;</span>
         <span class="hljs-attr">:sortable-attributes</span>
@@ -7527,7 +7538,7 @@ Om <code>filterAttributes</code> inte anges inkluderas alla attribut i filtrerin
         <h3 id="tabell_med_atgarder" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#tabell_med_atgarder">Tabell med åtgärder</a></h3><p class="docs-paragraph">Åtgärder som till exempel batch-funktioner som rör hela datamängden kan placeras i sloten Header för att gruppera med sortering och filtering.</p>
 
             <div
-                id="example-618d9f"
+                id="example-4be335"
                 class="code-preview code-preview--default"
                 
                 
@@ -7537,13 +7548,13 @@ Om <code>filterAttributes</code> inte anges inkluderas alla attribut i filtrerin
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-77cc62"></div>
+        <div id="example-20add4"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FSortFilterDatasetTableExampleToolbar-77cc62.js"></script>
+        <script type="module" src="./FSortFilterDatasetTableExampleToolbar-20add4.js"></script>
     
                 </div>
                 <div>
@@ -7583,6 +7594,8 @@ Om <code>filterAttributes</code> inte anges inkluderas alla attribut i filtrerin
     <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Frukter<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span>
         <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;rows&quot;</span>
+        <span class="hljs-attr">show-sort</span>
+        <span class="hljs-attr">show-filter</span>
         <span class="hljs-attr">default-sort-attribute</span>=<span class="hljs-string">&quot;name&quot;</span>
         <span class="hljs-attr">:default-sort-ascending</span>=<span class="hljs-string">&quot;true&quot;</span>
         <span class="hljs-attr">:sortable-attributes</span>
@@ -7631,7 +7644,7 @@ Användaren behöver även här aktivt sortera om listan/tabellen.
 Om datamängden ersätts helt körs filter och sortering på nytt.</p>
 <h2 id="datamangdsorterare_och_egen_presentation" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#datamangdsorterare_och_egen_presentation">Datamängdsorterare och egen presentation</a></h2>
             <div
-                id="example-d206d6"
+                id="example-14e1cf"
                 class="code-preview code-preview--default"
                 
                 
@@ -7641,7 +7654,7 @@ Om datamängden ersätts helt körs filter och sortering på nytt.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-38f509"></div>
+        <div id="example-fc67c1"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -7655,7 +7668,7 @@ Om datamängden ersätts helt körs filter och sortering på nytt.</p>
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FSortFilterDatasetCustomExample-38f509.js"></script>
+        <script type="module" src="./FSortFilterDatasetCustomExample-fc67c1.js"></script>
     
                 </div>
                 <div>
@@ -7700,7 +7713,7 @@ Om datamängden ersätts helt körs filter och sortering på nytt.</p>
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span> <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">:sortable-attributes</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span> <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">:sortable-attributes</span> <span class="hljs-attr">show-sort</span> <span class="hljs-attr">show-filter</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ sortFilterResult }&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">pre</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in sortFilterResult&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;item.id&quot;</span>&gt;</span>{{ item }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -7722,7 +7735,7 @@ Om datamängden ersätts helt körs filter och sortering på nytt.</p>
         <h2 id="andra_rubrikniva" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#andra_rubrikniva">Ändra rubriknivå</a></h2><p class="docs-paragraph">Du kan variera storleken genom att inte använda den tillgängliga <code>slotClass</code> (som sätter den standardiserade storleken för rubriken).</p>
 
                 <div
-                    id="example-9e7a8c"
+                    id="example-a352af"
                     class="code-preview code-preview--default"
                     
                     
@@ -7732,6 +7745,8 @@ Om datamängden ersätts helt körs filter och sortering på nytt.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-sort-filter-dataset
      :data=&quot;items&quot;
      :sortable-attributes=&quot;{ givenname: &#x27;Förnamn&#x27;, surname: &#x27;Efternamn&#x27; }&quot;
+     show-sort
+     show-filter
  &gt;
 <span class="hljs-deletion">-    &lt;template #header=&quot;{ slotClass }&quot;&gt;</span>
 <span class="hljs-deletion">-        &lt;h3 :class=&quot;slotClass&quot;&gt;Rubrik&lt;/h3&gt;</span>
@@ -7746,7 +7761,7 @@ Om datamängden ersätts helt körs filter och sortering på nytt.</p>
                 </div>
             
             <div
-                id="example-751564"
+                id="example-8bf58a"
                 class="code-preview code-preview--default"
                 
                 
@@ -7756,13 +7771,13 @@ Om datamängden ersätts helt körs filter och sortering på nytt.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-0b3d4a"></div>
+        <div id="example-d4c927"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FSortFilterDatasetHeader-0b3d4a.js"></script>
+        <script type="module" src="./FSortFilterDatasetHeader-d4c927.js"></script>
     
                 </div>
                 <div>
@@ -7797,6 +7812,8 @@ Om datamängden ersätts helt körs filter och sortering på nytt.</p>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span>
         <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;[]&quot;</span>
         <span class="hljs-attr">:sortable-attributes</span>=<span class="hljs-string">&quot;{ givenname: &#x27;Förnamn&#x27;, surname: &#x27;Efternamn&#x27; }&quot;</span>
+        <span class="hljs-attr">show-sort</span>
+        <span class="hljs-attr">show-filter</span>
     &gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">header</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Stor rubrik<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
@@ -7817,14 +7834,14 @@ Om datamängden ersätts helt körs filter och sortering på nytt.</p>
 Om det går att specificera träffar så är det bättre att göra det, till exempel &quot;Det finns inga frukter att visa&quot; istället för &quot;Det finns inga träffar att visa&quot;.</p>
 
                 <div
-                    id="example-7c4ae7"
+                    id="example-2529d7"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-sort-filter-dataset :data=&quot;items&quot;&gt;
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-sort-filter-dataset :data=&quot;items&quot; :sortable-attributes show-sort show-filter&gt;
      &lt;template #default=&quot;{ sortFilterResult }&quot;&gt;
 <span class="hljs-addition">+        Visar {{ sortFilterResult.length }} av {{ items.length }} frukter.</span>
         &lt;f-table :rows=&quot;sortFilterResult&quot; :columns&gt;
@@ -7837,14 +7854,14 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
             <p class="docs-paragraph">Detta går också utnyttja i tabell för att presentera om tabellen är tom pga filtrering eller att inga rader fanns från första början:</p>
 
                 <div
-                    id="example-7c4a60"
+                    id="example-21bb7f"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-sort-filter-dataset :data=&quot;items&quot;&gt;
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-sort-filter-dataset :data=&quot;items&quot; :sortable-attributes show-sort show-filter&gt;
      &lt;template #default=&quot;{ sortFilterResult }&quot;&gt;
         &lt;f-table :rows=&quot;sortFilterResult&quot; :columns&gt;
              &lt;template #empty&gt;
@@ -7862,7 +7879,7 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
                 </div>
             
                 <div
-                    id="example-79991e"
+                    id="example-cc5d84"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -7872,13 +7889,13 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-273cd0"></div>
+        <div id="example-24ea3e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FSortFilterDatasetEmptySlot-273cd0.js"></script>
+        <script type="module" src="./FSortFilterDatasetEmptySlot-24ea3e.js"></script>
     
                     </div>
                 </div>
@@ -8194,9 +8211,9 @@ Default includes all attributes.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/08e6e94459ea0dccb7b292e934eb722598ea0dd9">08e6e94</a>)<br />
+<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/88ff9fc242a2053cdfc800e73abd9c2ab140307c">88ff9fc</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1850">PR 1850</a><br />
-       <span class="version-text-block">2026-11-26 15:25</span>
+       <span class="version-text-block">2026-11-26 15:33</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

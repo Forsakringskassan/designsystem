@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableBasicSortFilterExample.vue:FTableBasicSortFilterExample-dd4a22.js
+// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableBasicSortFilterExample.vue:FTableBasicSortFilterExample-7a79e8.js
 import { defineComponent as _defineComponent } from "vue";
 import { ref } from "vue";
 import { FSortFilterDataset } from "@fkui/vue";
@@ -73,7 +73,9 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FSortFilterDataset"], {
     data: $setup.rows,
-    "sortable-attributes": $setup.sortableAttributes
+    "sortable-attributes": $setup.sortableAttributes,
+    "show-sort": "",
+    "show-filter": ""
   }, {
     default: _withCtx(({ sortFilterResult }) => [
       _createVNode($setup["FTable"], {
@@ -89,7 +91,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-dd4a22"
+  selector: "#example-7a79e8"
 });
 export {
   render

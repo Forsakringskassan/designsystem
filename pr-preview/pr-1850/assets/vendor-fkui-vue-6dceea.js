@@ -16433,14 +16433,8 @@ var FSortFilterDataset_default = /* @__PURE__ */ defineComponent({
     data: {},
     sortableAttributes: {},
     defaultSortAttribute: { default: "" },
-    showSort: {
-      type: Boolean,
-      default: true
-    },
-    showFilter: {
-      type: Boolean,
-      default: true
-    },
+    showSort: { type: Boolean },
+    showFilter: { type: Boolean },
     filterLabel: { default: () => void 0 },
     defaultSortAscending: {
       type: Boolean,

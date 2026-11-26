@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/styles/examples/SemanticVariables.vue:SemanticVariables-6af708.js
+// virtual-entry:virtual:docs/styles/examples/SemanticVariables.vue:SemanticVariables-efccb7.js
 import { defineComponent as _defineComponent } from "vue";
 import { h as h2 } from "vue";
 
@@ -1405,7 +1405,7 @@ var metadata_default = {
   ]
 };
 
-// virtual-entry:virtual:docs/styles/examples/SemanticVariables.vue:SemanticVariables-6af708.js
+// virtual-entry:virtual:docs/styles/examples/SemanticVariables.vue:SemanticVariables-efccb7.js
 import { FSortFilterDataset, FTable, defineTableColumns } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
@@ -1447,6 +1447,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FSortFilterDataset"], {
     data: $setup.rows,
     "show-sort": false,
+    "show-filter": "",
     "sortable-attributes": {
       name: "Semantisk variabel",
       palette: "Palettf\xE4rg",
@@ -1479,10 +1480,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8, ["data"]);
 }
 exampleComponent.render = render;
-exampleComponent.__scopeId = "data-v-6af708";
+exampleComponent.__scopeId = "data-v-efccb7";
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-6af708"
+  selector: "#example-efccb7"
 });
 export {
   render

@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetListExample.vue:FSortFilterDatasetListExample-88d1a5.js
+// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetListExample.vue:FSortFilterDatasetListExample-75eddd.js
 import { defineComponent } from "vue";
 
 // packages/vue/src/components/FSortFilterDataset/examples/fruit-data.ts
@@ -59,7 +59,7 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetListExample.vue:FSortFilterDatasetListExample-88d1a5.js
+// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetListExample.vue:FSortFilterDatasetListExample-75eddd.js
 import { FList, FSortFilterDataset } from "@fkui/vue";
 import { normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = defineComponent({
@@ -79,7 +79,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_sort_filter_dataset = _resolveComponent("f-sort-filter-dataset");
   return _openBlock(), _createBlock(_component_f_sort_filter_dataset, {
     data: _ctx.fruits,
-    "sortable-attributes": _ctx.sortableAttributes
+    "sortable-attributes": _ctx.sortableAttributes,
+    "show-sort": "",
+    "show-filter": ""
   }, {
     header: _withCtx(({ slotClass }) => [
       _createElementVNode(
@@ -164,7 +166,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-88d1a5"
+  selector: "#example-75eddd"
 });
 export {
   render

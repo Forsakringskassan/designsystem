@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableInlineEdit.vue:FTableInlineEdit-759e75.js
+// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableInlineEdit.vue:FTableInlineEdit-ab1f02.js
 import { defineComponent as _defineComponent } from "vue";
 import { ref } from "vue";
 import { FSortFilterDataset } from "@fkui/vue";
@@ -100,7 +100,9 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FSortFilterDataset"], {
     data: $setup.rows,
-    "sortable-attributes": $setup.sortableAttributes
+    "sortable-attributes": $setup.sortableAttributes,
+    "show-sort": "",
+    "show-filter": ""
   }, {
     default: _withCtx(({ sortFilterResult }) => [
       _createVNode($setup["FTable"], {
@@ -129,7 +131,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-759e75"
+  selector: "#example-ab1f02"
 });
 export {
   render

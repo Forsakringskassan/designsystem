@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableBulkLiveExample.vue:FTableBulkLiveExample-8d6520.js
+// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableBulkLiveExample.vue:FTableBulkLiveExample-bf5ecf.js
 import { defineComponent as _defineComponent } from "vue";
 import { computed, ref, watch } from "vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
@@ -151,7 +151,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
       return (
         /* HTML */
         `
-        <f-sort-filter-dataset :data="rows" :sortable-attributes>
+        <f-sort-filter-dataset :data="rows" :sortable-attributes show-sort show-filter>
             <template #default="{ sortFilterResult }">
                 ${tableTemplate("sortFilterResult")}
             </template>
@@ -177,7 +177,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
       return (
         /* HTML */
         `
-        <f-sort-filter-dataset :data="rows" :sortable-attributes>
+        <f-sort-filter-dataset :data="rows" :sortable-attributes show-sort show-filter>
             <template #default="{ sortFilterResult }">
                 ${paginationTemplate("sortFilterResult")}
             </template>
@@ -258,7 +258,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-8d6520"
+  selector: "#example-bf5ecf"
 });
 export {
   render
