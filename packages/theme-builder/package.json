@@ -35,7 +35,6 @@
     "@adobe/css-tools": "5.0.0",
     "@forsakringskassan/sass-module-importer": "3.0.0",
     "cssnano": "9.9.0",
-    "get-css-variables": "1.1.1",
     "postcss-scss": "4.0.9",
     "sass": "1.108.2",
     "yargs": "18.2.0"
