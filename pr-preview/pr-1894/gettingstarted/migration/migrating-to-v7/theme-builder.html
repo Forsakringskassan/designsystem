@@ -6291,7 +6291,7 @@
 
                     <div id="docs-content"><h2 id="andringar_i_fkui_theme_builder" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#andringar_i_fkui_theme_builder">Ändringar i <code>@fkui/theme-builder</code></a></h2><p class="docs-paragraph">Den här sektionen gäller enbart dig som bygger egna teman.</p>
 <h3 id="palette_json_genereras_inte_langre" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#palette_json_genereras_inte_langre"><code>palette.json</code> genereras inte längre</a></h3><p class="docs-paragraph"><code>palette.json</code> genereras inte längre.
-Palette-information finns i stället i <code>metadata.mjs</code> under <code>palette</code>.</p>
+Palette-information finns i stället i <code>metadata.mjs</code> under nyckeln <code>palette</code>.</p>
 <p class="docs-paragraph">Exempel <code>dist/metadata.mjs</code>:</p>
 
                 <div
@@ -6330,22 +6330,23 @@ Palette-information finns i stället i <code>metadata.mjs</code> under <code>pal
 };
 </code></pre>
                 </div>
-            <h3 id="css_variabler_kan_lasas_ut" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#css_variabler_kan_lasas_ut">CSS-variabler kan läsas ut</a></h3><p class="docs-paragraph">Theme-builder läser nu CSS-variabler med palettprefixet
-<code>--&lt;prefix&gt;-palette-color-</code>.
-Med standardprefixet är ett giltigt namn exempelvis
+            <h3 id="paletten_har_stod_for_css_variabler" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#paletten_har_stod_for_css_variabler">Paletten har stöd för CSS-variabler</a></h3><p class="docs-paragraph">Theme-builder läser nu CSS-variabler med palettprefixet
+<code>--&lt;prefix&gt;-palette-color-</code>.</p>
+<p class="docs-paragraph">Med standardprefixet är ett giltigt namn exempelvis
 <code>--fkds-palette-color-neutral-900</code>.
 Andra CSS-variabler i palettkällan stoppar bygget.</p>
 <p class="docs-paragraph">CSS-variabler kan finnas på rotnivå eller i en Sass-container och extraheras
 med hela namnet.</p>
-<h3 id="sass_variabler_stods_fortfarande" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#sass_variabler_stods_fortfarande">Sass-variabler stöds fortfarande</a></h3><p class="docs-paragraph">Sass-variabler läses fortfarande från palettkällans rotnivå med sitt
-fullständiga namn, till exempel <code>$palette-color-neutral-900</code>.</p>
+<h4 id="sass_variabler_stods_fortfarande" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#sass_variabler_stods_fortfarande">Sass-variabler stöds fortfarande</a></h4><p class="docs-paragraph">Sass-variabler läses fortfarande från palettkällans rotnivå med sitt
+fullständiga namn, till exempel <code>$palette-color-neutral-900</code>.
+Vår rekommendation är dock att du migrerar över befintliga SASS-variabler till CSS.</p>
 <p class="docs-paragraph">Sass- och CSS-variabler grupperas med <code>@group</code>, precis som tidigare.</p>
 <h3 id="temavariabler_har_flyttats_i_metadata" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#temavariabler_har_flyttats_i_metadata">Temavariabler har flyttats i metadata</a></h3><p class="docs-paragraph"><code>@fkui/theme-default</code> exporterar inte längre temavariabler som separata JavaScript-objekt.</p>
 <p class="docs-paragraph">Semantiska temavariabler finns fortfarande i metadata.
 Exemplet hämtar värdet för varje variabel i det ljusa temat:</p>
 
                 <div
-                    id="example-ae4d74"
+                    id="example-703af0"
                     class="code-preview code-preview--default"
                     
                     
@@ -6429,9 +6430,9 @@ Exemplet hämtar värdet för varje variabel i det ljusa temat:</p>
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">theme-default-exports</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/c7c7f0b117de57de6f61636cfd4dbe0a8d02c5ec">c7c7f0b</a>)<br />
+<div class="version"><span class="version-text-block">theme-default-exports</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/7bd9a0d4aa963862e4c8e9361f34ad857ad3ef43">7bd9a0d</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1894">PR 1894</a><br />
-       <span class="version-text-block">2026-11-26 05:56</span>
+       <span class="version-text-block">2026-11-26 06:17</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

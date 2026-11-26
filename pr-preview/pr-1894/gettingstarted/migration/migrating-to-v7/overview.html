@@ -6303,7 +6303,7 @@
 <h3 id="fargpaletten_omskriven_till_css_variabler" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#fargpaletten_omskriven_till_css_variabler">Färgpaletten omskriven till CSS-variabler</a></h3><p class="docs-paragraph"><a href="#fargpaletten_ar_css_variabler--3">Läs mer hur du migrerar.</a></p>
 <h3 id="standardtemat_ingar_inte_langre_i_byggd_css" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#standardtemat_ingar_inte_langre_i_byggd_css">Standardtemat ingår inte längre i byggd CSS</a></h3><p class="docs-paragraph">Den kompilerade versionen utav <code>@fkui/design</code> innehåller inte längre det ljusa temat.</p>
 <p class="docs-paragraph"><a href="./design.html#borttag_utav_tema_i_forkompilerad_css">Läs mer hur du migrerar.</a></p>
-<h3 id="anvandning_av_fkui_theme_default_forandras" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#anvandning_av_fkui_theme_default_forandras">Användning av <code>@fkui/theme-default</code> förändras</a></h3><p class="docs-paragraph"><a href="#fkuitheme_default">Läs mer hur du migrerar</a></p>
+<h3 id="anvandning_av_fkui_theme_default_forandras" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#anvandning_av_fkui_theme_default_forandras">Användning av <code>@fkui/theme-default</code> förändras</a></h3><p class="docs-paragraph"><a href="#anvandning_av_fkui_theme_default_forandras--4">Läs mer hur du migrerar</a></p>
 <h3 id="ovriga_andringar" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ovriga_andringar">Övriga ändringar</a></h3><table class="table">
 <thead>
 <tr class="table__row">
@@ -6435,7 +6435,7 @@ applikationens färgval ska behöva uppdateras.</p>
 <p class="docs-paragraph">För att använda det ljusa temat på hela sidan med Sass, använd mixinen <code>theme.light</code>:</p>
 
                 <div
-                    id="example-c1baf7"
+                    id="example-56018e"
                     class="code-preview code-preview--default"
                     
                     
@@ -6447,12 +6447,17 @@ applikationens färgval ska behöva uppdateras.</p>
 <span class="hljs-selector-pseudo">:root</span> {
     <span class="hljs-keyword">@include</span> theme.light;
 }
+
+<span class="hljs-comment">/* Begränsa temats CSS-variabler till den här delen av sidan */</span>
+<span class="hljs-selector-class">.my-scope</span> {
+    <span class="hljs-keyword">@include</span> theme.light;
+}
 </code></pre>
                 </div>
             <p class="docs-paragraph">Du kan också importera CSS-filen från applikationens JavaScript:</p>
 
                 <div
-                    id="example-85da3d"
+                    id="example-1fbfaa"
                     class="code-preview code-preview--default"
                     
                     
@@ -6460,23 +6465,6 @@ applikationens färgval ska behöva uppdateras.</p>
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/theme-default/theme-light&quot;</span>;
-</code></pre>
-                </div>
-            <p class="docs-paragraph">För en egen selektor kan du istället använda Sass-mixinen <code>theme.light</code>:</p>
-
-                <div
-                    id="example-803720"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="scss"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-scss" tabindex="0"><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;@fkui/theme-default&quot;</span> as theme;
-
-<span class="hljs-selector-class">.my-scope</span> {
-    <span class="hljs-keyword">@include</span> theme.light;
-}
 </code></pre>
                 </div>
             <p class="docs-paragraph">Läs mer om hur du använder standardtemat i <a href="https://github.com/Forsakringskassan/designsystem/tree/main/packages/theme-default">dokumentationen för <code>@fkui/theme-default</code></a>.</p>
@@ -6548,9 +6536,9 @@ applikationens färgval ska behöva uppdateras.</p>
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">theme-default-exports</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/c7c7f0b117de57de6f61636cfd4dbe0a8d02c5ec">c7c7f0b</a>)<br />
+<div class="version"><span class="version-text-block">theme-default-exports</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/7bd9a0d4aa963862e4c8e9361f34ad857ad3ef43">7bd9a0d</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1894">PR 1894</a><br />
-       <span class="version-text-block">2026-11-26 05:56</span>
+       <span class="version-text-block">2026-11-26 06:17</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
