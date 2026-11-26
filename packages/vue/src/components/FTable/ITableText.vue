@@ -28,6 +28,7 @@ import { addInputValidators } from "./input-validators";
 import { isAlphanumeric } from "./is-alphanumeric";
 import { isVisible } from "./is-visible";
 import { type PopupError } from "./popup-error";
+import { punycodeToUnicode } from "./punycode-to-unicode";
 import { useStartStopEdit } from "./start-stop-edit";
 import { type NormalizedTableColumnNumber, type NormalizedTableColumnText } from "./table-column";
 
@@ -333,6 +334,11 @@ function fromColumnValue(): string {
     return value.toString();
 }
 
+function displayValue(): string {
+    const value = fromColumnValue();
+    return column.type === "text:email" ? punycodeToUnicode(value) : value;
+}
+
 function toColumnValue(value: string): unknown {
     assertRef(validity);
 
@@ -474,7 +480,7 @@ function onPendingValidity(): void {
         <template v-if="visible">
             <div :class="divClasses">
                 <span class="table-ng__editable__text" :class="{ 'table-ng__editable__text--wrap': column.wrap }">{{
-                    fromColumnValue()
+                    displayValue()
                 }}</span>
                 <span v-if="viewModeErrorMessage" class="sr-only">{{ viewModeErrorMessage }}</span>
                 <input
@@ -508,7 +514,7 @@ function onPendingValidity(): void {
             class="table-ng__cell--static__text"
             :class="{ 'table-ng__cell--static__text--wrap': column.wrap }"
         >
-            {{ fromColumnValue() }}
+            {{ displayValue() }}
         </div>
     </td>
 </template>

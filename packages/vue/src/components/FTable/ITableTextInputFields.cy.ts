@@ -462,6 +462,44 @@ describe("FTable, email", () => {
         });
     });
 
+    it("should show punycode domain as unicode when model value is punycode", () => {
+        const row = {
+            email: "a@xn--5ca.example",
+        };
+
+        mountTable(row, column);
+        const cell = table.cell({ row: 1, col: 1 });
+        const span = cell.get("span");
+        span.should("contain.text", "a@å.example");
+    });
+
+    it("should show unicode domain as unicode when model value is unicode", () => {
+        const row = {
+            email: "a@å.example",
+        };
+
+        mountTable(row, column);
+        const cell = table.cell({ row: 1, col: 1 });
+        const span = cell.get("span");
+        span.should("contain.text", "a@å.example");
+    });
+
+    it("should show punycode domain as unicode when typed in the input", () => {
+        const row = {
+            email: "",
+        };
+
+        mountTable(row, column);
+        const cell = table.cell({ row: 1, col: 1 });
+        cell.click();
+        const input = cell.get("input");
+        input.type("a@å.example");
+        input.blur();
+
+        const span = cell.get("span");
+        span.should("contain.text", "a@å.example");
+    });
+
     it("should validate with error and update modelvalue", () => {
         const row = {
             email: "",
