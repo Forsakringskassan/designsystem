@@ -1,0 +1,130 @@
+import "html-validate/vitest";
+import { shallowMount } from "@vue/test-utils";
+import { describe, expect, it, vi } from "vitest";
+import FFileSelector from "./FFileSelector.vue";
+
+describe("FFileselector", () => {
+    it("should pass attributes", () => {
+        expect.assertions(1);
+        const filetypesAccepted =
+            "application/pdf, image/jpeg, image/tiff, image/png";
+        const wrapper = shallowMount(FFileSelector, {
+            attrs: {
+                accept: filetypesAccepted,
+            },
+        });
+        const input = wrapper.get("input");
+        expect(input.attributes("accept")).toBe(filetypesAccepted);
+    });
+
+    it("should set text in slot", () => {
+        expect.assertions(2);
+        const wrapper = shallowMount(FFileSelector, {
+            slots: {
+                default: "Select file",
+            },
+        });
+        const label = wrapper.get("label");
+        expect(label.text()).toBe("Select file");
+        expect(wrapper.element).toMatchSnapshot();
+    });
+
+    it("should pass listeners", async () => {
+        expect.assertions(1);
+        const foobar = vi.fn();
+        const wrapper = shallowMount(FFileSelector, {
+            attrs: { onFoobar: foobar },
+        });
+        const element = wrapper.get("input");
+        await element.trigger("foobar");
+        expect(foobar).toHaveBeenCalled();
+    });
+
+    it("should emit on change", async () => {
+        expect.assertions(1);
+        const wrapper = shallowMount(FFileSelector);
+        const input = wrapper.get("input");
+        await input.trigger("change");
+        // emits Event and FileList on change
+        expect(wrapper.emitted("change")).toHaveLength(1);
+    });
+
+    it("should disable component when disabled", () => {
+        expect.assertions(2);
+        const wrapper = shallowMount(FFileSelector, {
+            props: { disabled: true },
+        });
+        const input = wrapper.get("input");
+        const label = wrapper.get("label");
+        expect(input.attributes("aria-disabled")).toBe("true");
+        expect(label.classes()).toContain("disabled");
+    });
+
+    it("should not disable component when not disabled", () => {
+        expect.assertions(2);
+        const wrapper = shallowMount(FFileSelector);
+        const input = wrapper.get("input");
+        const label = wrapper.get("label");
+        expect(input.attributes("aria-disabled")).toBeUndefined();
+        expect(label.classes()).not.toContain("disabled");
+    });
+
+    /*
+     * Fixes bug related to WCAG 2.5.3 (label in name).
+     * The file selector's visible text did not match the text that was read aloud by screen reader.
+     * Instead, the screen reader read the content of the browser's default input[file]
+     * (e.g. "Välj fil: Ingen fil vald" in Edge).
+     */
+    it("should have input with aria-labelledby attribute", () => {
+        expect.assertions(2);
+        const wrapper = shallowMount(FFileSelector, {
+            props: { id: "foo" },
+        });
+        const input = wrapper.get("input");
+        const label = wrapper.get("label");
+        expect(label.attributes("id")).toBe("foo_label");
+        expect(input.attributes("aria-labelledby")).toBe("foo_label");
+    });
+
+    /*
+     * Fixes SFKUI-683. By using the keyboard's arrow keys to navigate past the file selector, the file selector
+     * was read out twice by screen reader.
+     */
+    it("should have label with aria-hidden attribute", () => {
+        expect.assertions(1);
+        const wrapper = shallowMount(FFileSelector);
+        const label = wrapper.get("label");
+        expect(label.attributes("aria-hidden")).toBe("true");
+    });
+});
+
+describe("html-validate", () => {
+    describe("attributes", () => {
+        it("disabled", async () => {
+            expect.assertions(2);
+            const valid = /* HTML */ `
+                <f-file-selector>text</f-file-selector>
+                <f-file-selector disabled>text</f-file-selector>
+                <f-file-selector :disabled="false">text</f-file-selector>
+            `;
+            const invalid = /* HTML */ `
+                <f-file-selector disabled="foobar">text</f-file-selector>
+            `;
+            await expect(valid).toBeValid();
+            await expect(invalid).toMatchInlineCodeframe(`
+                "error: Attribute "disabled" should omit value (attribute-boolean-style)
+                  1 |
+                > 2 |                 <f-file-selector disabled="foobar">text</f-file-selector>
+                    |                                  ^^^^^^^^
+                  3 |
+                Selector: f-file-selector
+                error: Attribute "disabled" has invalid value "foobar" (attribute-allowed-values)
+                  1 |
+                > 2 |                 <f-file-selector disabled="foobar">text</f-file-selector>
+                    |                                            ^^^^^^
+                  3 |
+                Selector: f-file-selector"
+            `);
+        });
+    });
+});

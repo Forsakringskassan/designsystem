@@ -1,0 +1,311 @@
+import { nextTick } from "vue";
+import { type DOMWrapper, type VueWrapper, mount } from "@vue/test-utils";
+import { beforeAll, describe, expect, it, vi } from "vitest";
+import { FPaginatorSelectors } from "../../selectors";
+import FPaginateDataset from "../FPaginateDataset/FPaginateDataset.vue";
+import FPaginator from "./FPaginator.vue";
+
+const paginator = FPaginatorSelectors();
+
+describe("page counter", () => {
+    describe.each`
+        currentPage | numberOfPages | expectedText | expectedAriaText
+        ${1}        | ${3}          | ${"1 av 3"}  | ${"Sida 1 av 3"}
+        ${2}        | ${3}          | ${"2 av 3"}  | ${"Sida 2 av 3"}
+        ${3}        | ${3}          | ${"3 av 3"}  | ${"Sida 3 av 3"}
+    `(
+        "should display correct texts for page $currentPage of $numberOfPages",
+        ({ currentPage, numberOfPages, expectedText, expectedAriaText }) => {
+            const wrapper = mount(FPaginator, {
+                props: {
+                    currentPage,
+                    numberOfPages,
+                },
+            });
+            const selector = paginator.pageCounter();
+
+            it(`should display "${String(expectedText)}" when "aria-hidden"`, () => {
+                expect.assertions(1);
+                expect(wrapper.get(`${selector} [aria-hidden]`).text()).toEqual(
+                    expectedText,
+                );
+            });
+
+            it(`should display "${String(expectedAriaText)}" for screen readers`, () => {
+                expect.assertions(1);
+                expect(wrapper.get(`${selector} .sr-only`).text()).toEqual(
+                    expectedAriaText,
+                );
+            });
+        },
+    );
+});
+
+describe("aria-current", () => {
+    it.each`
+        page | currentPage | expectedValue
+        ${1} | ${2}        | ${"false"}
+        ${2} | ${2}        | ${"page"}
+        ${3} | ${2}        | ${"false"}
+    `(
+        'should have value "$expectedValue" for page button $page when current page is page $currentPage',
+        ({
+            page,
+            currentPage,
+            expectedValue,
+        }: {
+            page: number;
+            currentPage: number;
+            expectedValue: string;
+        }) => {
+            expect.assertions(1);
+            const wrapper = mount(FPaginator, {
+                props: {
+                    currentPage,
+                    numberOfPages: 3,
+                },
+            });
+            const selector = paginator.pageButtonByText(page);
+            const button = wrapper.get(selector);
+            const ariaCurrent = button.attributes("aria-current");
+            expect(ariaCurrent).toEqual(expectedValue);
+        },
+    );
+});
+
+describe("previous button", () => {
+    let previousButton: Omit<DOMWrapper<Element>, "exists">;
+
+    beforeAll(() => {
+        const wrapper = mount(FPaginator, {
+            props: {
+                currentPage: 1,
+                numberOfPages: 10,
+            },
+        });
+        previousButton = wrapper.get(paginator.previousPageButton());
+    });
+
+    it("should have the correct label", () => {
+        expect.assertions(1);
+        expect(previousButton.text()).toBe("Föregående");
+    });
+
+    it("should have the correct value for 'aria-label'", () => {
+        expect.assertions(1);
+        expect(previousButton.attributes("aria-label")).toBe("Föregående");
+    });
+});
+
+describe("next button", () => {
+    let nextButton: Omit<DOMWrapper<Element>, "exists">;
+
+    beforeAll(() => {
+        const wrapper = mount(FPaginator, {
+            props: {
+                currentPage: 1,
+                numberOfPages: 10,
+            },
+        });
+        nextButton = wrapper.get(paginator.nextPageButton());
+    });
+
+    it("should have the correct label", () => {
+        expect.assertions(1);
+        expect(nextButton.text()).toBe("Nästa");
+    });
+
+    it("should have the correct value for 'aria-label'", () => {
+        expect.assertions(1);
+        expect(nextButton.attributes("aria-label")).toBe("Nästa");
+    });
+});
+
+describe("page buttons", () => {
+    const numberOfPages = 5;
+    let wrapper: VueWrapper;
+
+    beforeAll(() => {
+        wrapper = mount(FPaginator, {
+            props: {
+                currentPage: 1,
+                numberOfPages,
+            },
+        });
+    });
+
+    it("should have the correct label", () => {
+        expect.assertions(5);
+        for (let page = 1; page <= numberOfPages; page++) {
+            const selector = paginator.pageButtonByText(page);
+            const button = wrapper.get(selector);
+            expect(button.text()).toEqual(page.toString());
+        }
+    });
+
+    it("should have the correct value for 'aria-label'", () => {
+        expect.assertions(5);
+        for (let page = 1; page <= numberOfPages; page++) {
+            const selector = paginator.pageButtonByText(page);
+            const button = wrapper.get(selector);
+            expect(button.attributes("aria-label")).toBe(`Sida ${page}`);
+        }
+    });
+});
+
+describe("number of pages to show", () => {
+    it("should show 9 pages as default", () => {
+        expect.assertions(1);
+        const wrapper = mount(FPaginator, {
+            props: {
+                currentPage: 10,
+                numberOfPages: 20,
+            },
+        });
+        const buttons = wrapper.findAll(paginator.pageButtons());
+        expect(buttons).toHaveLength(9);
+    });
+});
+
+describe("pages and gaps", () => {
+    it("should show the correct pages and gaps", () => {
+        expect.assertions(9);
+        const wrapper = mount(FPaginator, {
+            props: {
+                currentPage: 10,
+                numberOfPages: 20,
+            },
+        });
+        const expectedPageButtons = [
+            "1",
+            "...",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "...",
+            "20",
+        ];
+        for (const [
+            index,
+            expectedPageButton,
+        ] of expectedPageButtons.entries()) {
+            const selector = paginator.pageButtonByIndex(index);
+            const button = wrapper.get(selector);
+            expect(button.text()).toEqual(expectedPageButton);
+        }
+    });
+});
+
+describe("events", () => {
+    it("should emit event 'paginateDataset:previous' when clicking on 'Previous' button", async () => {
+        expect.assertions(1);
+        const listener = vi.fn();
+        const wrapper = mount(FPaginator, {
+            props: {
+                currentPage: 2,
+                numberOfPages: 5,
+            },
+        });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+        wrapper.element.addEventListener("paginateDataset:previous", listener);
+
+        await wrapper.get(paginator.previousPageButton()).trigger("click");
+
+        expect(listener).toHaveBeenCalledTimes(1);
+    });
+
+    it("should emit event 'paginateDataset:next' when clicking on 'Next' button", async () => {
+        expect.assertions(1);
+        const listener = vi.fn();
+        const wrapper = mount(FPaginator, {
+            props: {
+                currentPage: 2,
+                numberOfPages: 5,
+            },
+        });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+        wrapper.element.addEventListener("paginateDataset:next", listener);
+
+        await wrapper.get(paginator.nextPageButton()).trigger("click");
+
+        expect(listener).toHaveBeenCalledTimes(1);
+    });
+
+    it("should emit event 'paginateDataset:page' when clicking on a page button", async () => {
+        expect.assertions(2);
+        const listener = vi.fn();
+        const wrapper = mount(FPaginator, {
+            props: {
+                currentPage: 2,
+                numberOfPages: 5,
+            },
+        });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+        wrapper.element.addEventListener("paginateDataset:page", listener);
+
+        await wrapper.get(paginator.pageButtonByText(3)).trigger("click");
+
+        expect(listener).toHaveBeenCalledTimes(1);
+        const event = listener.mock.calls[0][0] as CustomEvent<{
+            page: number;
+        }>;
+        expect(event.detail).toEqual({ page: 3 });
+    });
+});
+
+describe("v-model", () => {
+    const items = Array.from({ length: 30 }, (_, index) => ({ index }));
+
+    it("should handle initial value", async () => {
+        expect.assertions(1);
+        const wrapper = mount(FPaginateDataset, {
+            props: {
+                modelValue: 2,
+                items,
+            },
+            slots: {
+                default: FPaginator,
+            },
+        });
+        await nextTick();
+        expect(wrapper.get(paginator.currentPageButton()).text()).toBe("2");
+    });
+
+    it("should handle setting value programmatically", async () => {
+        expect.assertions(2);
+        const wrapper = mount(FPaginateDataset, {
+            props: {
+                modelValue: 2,
+                items,
+            },
+            slots: {
+                default: FPaginator,
+            },
+        });
+        await wrapper.setProps({ modelValue: 1 });
+        expect(wrapper.get(paginator.currentPageButton()).text()).toBe("1");
+        await wrapper.setProps({ modelValue: 3 });
+        expect(wrapper.get(paginator.currentPageButton()).text()).toBe("3");
+    });
+
+    it("should be updated when model is changed internally", async () => {
+        expect.assertions(3);
+        const wrapper = mount(FPaginateDataset, {
+            props: {
+                modelValue: 2,
+                items,
+            },
+            slots: {
+                default: FPaginator,
+            },
+        });
+        await nextTick();
+        expect(wrapper.get(paginator.currentPageButton()).text()).toBe("2");
+        await wrapper.get(paginator.nextPageButton()).trigger("click");
+        await nextTick();
+        expect(wrapper.get(paginator.currentPageButton()).text()).toBe("3");
+        expect(wrapper.emitted("update:modelValue")).toEqual([[3]]);
+    });
+});

@@ -1,0 +1,36 @@
+import { type ValidatableHTMLElement } from "./validation-service-interface";
+
+/**
+ * Resolves element type for a `ValidatableHTMLElement`.
+ *
+ * Input types other than text, radio, checkbox returns \"text\".
+ * Fieldset returns \"radio\" or \"checkbox\" when it contains radio or checkbox elements.
+ *
+ * @internal
+ */
+export function getElementType(
+    element: ValidatableHTMLElement | null,
+): "text" | "radio" | "checkbox" | "select" | "textarea" | undefined {
+    if (element instanceof HTMLInputElement) {
+        return element.type === "checkbox"
+            ? "checkbox"
+            : /* eslint-disable-next-line sonarjs/no-nested-conditional -- technical debt */
+              element.type === "radio"
+              ? "radio"
+              : "text";
+    }
+    if (element instanceof HTMLTextAreaElement) {
+        return "textarea";
+    }
+    if (element instanceof HTMLSelectElement) {
+        return "select";
+    }
+    if (element instanceof HTMLFieldSetElement) {
+        /* eslint-disable-next-line unicorn/no-useless-recursion -- technical debt */
+        return getElementType(
+            element.querySelector<HTMLInputElement>(
+                "input[type='checkbox'], input[type='radio']",
+            ),
+        );
+    }
+}

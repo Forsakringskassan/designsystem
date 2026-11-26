@@ -1,0 +1,17 @@
+@use "../light/theme" as light;
+@use "../dark/theme" as dark;
+@use "../version" as *;
+
+@mixin theme {
+    color-scheme: light dark;
+
+    @media (prefers-color-scheme: light) {
+        @include light.theme;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        @include dark.theme;
+    }
+
+    --fkui-theme-default-version: "#{$version}";
+}

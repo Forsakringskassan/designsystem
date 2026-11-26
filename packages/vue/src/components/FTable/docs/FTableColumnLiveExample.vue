@@ -1,0 +1,448 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
+<script lang="ts">
+import { defineComponent, ref } from "vue";
+import { FDate } from "@fkui/date";
+import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
+import { defaultTnumValue } from "../columns/helpers";
+import { type InputType } from "../input-fields-config";
+import { isEditableColumn } from "../is-editable-column";
+import { isEnableColumn } from "../is-enable-column";
+import { isTextColumn } from "../is-text-column";
+import { type TableColumnType } from "../table-column";
+import { stringifyObject } from "./stringify-object";
+import {
+    type TableColumn,
+    FCheckboxField,
+    FFieldset,
+    FRadioField,
+    FSelectField,
+    FTable,
+    defineTableColumns as defineTableColumnsFunc,
+} from "@fkui/vue";
+
+interface Row {
+    id?: number;
+    value: string | number | boolean;
+}
+
+const columnData: Record<TableColumnType, TableColumn<Row>> = {
+    checkbox: {
+        type: "checkbox",
+        header: "Kryssruta kolumnrubrik",
+        key: "value",
+        label: () => {
+            return "Kryssruta label";
+        },
+    },
+    "text:currency": {
+        type: "text:currency",
+        header: "Valuta kolumnrubrik",
+        key: "value",
+        label: () => {
+            return "Valuta label";
+        },
+    },
+    "text:number": {
+        type: "text:number",
+        decimals: 3,
+        header: "Numeriskt, tre decimaler",
+        key: "value",
+        label: () => {
+            return "Numeriskt label";
+        },
+    },
+    "text:percent": {
+        type: "text:percent",
+        decimals: 2,
+        header: "Procent, två decimaler",
+        key: "value",
+        label: () => {
+            return "Procent label";
+        },
+    },
+    text: {
+        type: "text",
+        header: "Fritext kolumnrubrik",
+        key: "value",
+        label: () => {
+            return "Fritext label";
+        },
+    },
+    "text:bankAccountNumber": {
+        type: "text:bankAccountNumber",
+        header: "Kontonummer kolumnrubrik",
+        key: "value",
+        label: () => {
+            return "Kontonummer label";
+        },
+    },
+    "text:bankgiro": {
+        type: "text:bankgiro",
+        header: "Bankgiro kolumnrubrik",
+        key: "value",
+        label: () => {
+            return "Bankgiro label";
+        },
+    },
+    "text:clearingNumber": {
+        type: "text:clearingNumber",
+        header: "Clearingnummer kolumnrubrik",
+        key: "value",
+        label: () => {
+            return "Clearingnummer label";
+        },
+    },
+    "text:email": {
+        type: "text:email",
+        header: "Mejladress kolumnrubrik",
+        key: "value",
+        label: () => {
+            return "Mejladress label";
+        },
+    },
+    "text:organisationsnummer": {
+        type: "text:organisationsnummer",
+        header: "Organisationsnummer kolumnrubrik",
+        key: "value",
+        label: () => {
+            return "Organisationsnummer label";
+        },
+    },
+    "text:personnummer": {
+        type: "text:personnummer",
+        header: "Personnummer kolumnrubrik",
+        key: "value",
+        label: () => {
+            return "Personnummer label";
+        },
+    },
+    "text:phoneNumber": {
+        type: "text:phoneNumber",
+        header: "Telefonnummer kolumnrubrik",
+        key: "value",
+        label: () => {
+            return "Telefonnummer label";
+        },
+    },
+    "text:plusgiro": {
+        type: "text:plusgiro",
+        header: "Plusgiro kolumnrubrik",
+        key: "value",
+        label: () => {
+            return "Plusgiro label";
+        },
+    },
+    "text:postalCode": {
+        type: "text:postalCode",
+        header: "Postnummer kolumnrubrik",
+        key: "value",
+        label: () => {
+            return "Postnummer label";
+        },
+    },
+    rowheader: {
+        type: "rowheader",
+        header: "Radrubrik",
+        key: "value",
+    },
+    anchor: {
+        type: "anchor",
+        header: "Länk kolumnrubrik",
+        iconRight: "arrow-right",
+        target: "_blank",
+        text: (row) => String(row.value),
+        href: (row) => String(row.id),
+    },
+    button: {
+        type: "button",
+        header: "Knapp kolumnrubrik",
+        text: () => "value",
+        icon: "bell",
+    },
+    select: {
+        type: "select",
+        header: "Dropplista kolumnrubrik",
+        key: "value",
+        options: ["Foo", "Bar", "Baz"],
+        label: () => {
+            return "Dropplista label";
+        },
+    },
+    "text:date": {
+        type: "text:date",
+        header: "Datum kolumnrubrik",
+        key: "value",
+        label: () => {
+            return "Datum label";
+        },
+    },
+    menu: {
+        type: "menu",
+        header: "Åtgärd",
+        text: (row) => {
+            return `Visa åtgärder för rad "${row.id ?? -1}"`;
+        },
+        actions: [
+            {
+                label: "Visa",
+                icon: "search",
+                onClick: (row) => {
+                    console.log(`Visa detaljer för rad "${row.id ?? -1}"`);
+                },
+            },
+            {
+                label: "Redigera",
+                icon: "pen",
+                onClick: (row) => {
+                    console.log(`Redigera rad "${row.id ?? -1}"`);
+                },
+            },
+            {
+                label: "Ta bort",
+                icon: "trashcan",
+                onClick: (row) => {
+                    console.log(`Ta bort rad "${row.id ?? -1}"`);
+                },
+            },
+        ],
+    },
+};
+
+const rowData: Record<TableColumnType, Array<string | number | boolean>> = {
+    checkbox: [true, false],
+    "text:currency": [3_453_455, 10_000],
+    "text:number": [5.4, 10.5],
+    "text:percent": [9.987, 51],
+    text: ["Six seven", "Skibidi"],
+    "text:bankAccountNumber": ["12345678", "1234567890123456"],
+    "text:bankgiro": ["999-9996", "9999-9997"],
+    "text:clearingNumber": ["5678", "5678-1"],
+    "text:email": ["sixseven@example.net", "skibidi@example.net"],
+    "text:organisationsnummer": ["9999999999", "9999999999"],
+    "text:personnummer": ["19120211-9150", "19970131-2390"],
+    "text:phoneNumber": ["12345678901234567", "123456789012345678"],
+    "text:plusgiro": ["11111119", "9999996"],
+    "text:postalCode": ["37324", "93222"],
+    "text:date": [FDate.now().toString(), FDate.now().addDays(1).toString()],
+    rowheader: ["Six seven", "Skibidi"],
+    anchor: ["Six seven", "Skibidi"],
+    button: ["Six seven", "Skibidi"],
+    select: ["Foo"],
+    menu: ["Foo", "Bar", "Baz"],
+};
+
+function getColumn(options: {
+    columnType: TableColumnType;
+    description?: boolean;
+    tnum?: boolean;
+    wrap?: boolean;
+    align?: "left" | "right";
+    enabled?: boolean;
+    editable?: boolean;
+}): TableColumn<Row> {
+    const { columnType, description, tnum, wrap, align, enabled, editable } = options;
+    const column = { ...columnData[columnType] };
+
+    if (description) {
+        column.description = "Text med formatbeskrivning";
+    }
+
+    if (tnum !== undefined && isTextColumn(column)) {
+        column.tnum = tnum;
+    }
+
+    if (wrap !== undefined && isTextColumn(column)) {
+        column.wrap = wrap;
+    }
+
+    if (align !== undefined && isTextColumn(column)) {
+        column.align = align;
+    }
+
+    if (editable !== undefined && isEditableColumn(column)) {
+        column.editable = editable;
+    }
+
+    if (enabled !== undefined && isEnableColumn(column)) {
+        column.enabled = enabled;
+    }
+
+    return column;
+}
+
+export default defineComponent({
+    name: "FTableColumnLiveExample",
+    components: { LiveExample, FSelectField, FFieldset, FCheckboxField, FRadioField },
+    data(): {
+        columnType: TableColumnType;
+        textType: TableColumnType;
+        descriptionChecked: boolean;
+        tnum: boolean;
+        wrap: boolean;
+        align: "left" | "right";
+        editableChecked: boolean;
+        enabledChecked: boolean;
+    } {
+        return {
+            columnType: "text",
+            textType: "text",
+            descriptionChecked: false,
+            tnum: false,
+            wrap: false,
+            align: "left",
+            editableChecked: true,
+            enabledChecked: true,
+        };
+    },
+    computed: {
+        livedata(): object {
+            const rows = ref(
+                rowData[this.columnType].map((it, index) => ({ id: index + 1, value: it })),
+            );
+
+            return {
+                rows,
+            };
+        },
+        livemethods(): object {
+            return {
+                defineTableColumns: defineTableColumnsFunc,
+            };
+        },
+        components(): object {
+            return { FTable };
+        },
+        tnumSupport(): boolean {
+            return this.columnType.includes("text");
+        },
+        wrapSupport(): boolean {
+            return this.columnType.includes("text");
+        },
+        alignSupport(): boolean {
+            return this.columnType.includes("text");
+        },
+        defaultTNUM(): boolean {
+            return defaultTnumValue(this.textType as InputType);
+        },
+        defaultAlign(): "left" | "right" {
+            if (this.columnType.includes("text")) {
+                return ["text:currency", "text:number", "text:percent"].includes(this.textType)
+                    ? "right"
+                    : "left";
+            }
+
+            return "left";
+        },
+        alignLeftText(): string {
+            return this.defaultAlign === "left" ? "Vänster (default)" : "Vänster";
+        },
+        alignRightText(): string {
+            return this.defaultAlign === "right" ? "Höger (default)" : "Höger";
+        },
+        tnumOffText(): string {
+            return !this.defaultTNUM ? "Av (default)" : "Av";
+        },
+        tnumOnText(): string {
+            return this.defaultTNUM ? "På (default)" : "På";
+        },
+        enabledSupport(): boolean {
+            return ["anchor", "button"].includes(this.columnType);
+        },
+        editableSupport(): boolean {
+            return this.columnType.includes("text") || this.columnType === "select";
+        },
+        normalizedKey(): TableColumnType {
+            return this.columnType === "text" ? this.textType : this.columnType;
+        },
+        columns(): string {
+            const column = getColumn({
+                columnType: this.normalizedKey,
+                description: this.descriptionChecked,
+                tnum: this.tnumSupport && this.tnum !== this.defaultTNUM ? this.tnum : undefined,
+                wrap: this.wrapSupport && this.wrap ? this.wrap : undefined,
+                align:
+                    this.alignSupport && this.align !== this.defaultAlign ? this.align : undefined,
+                editable: this.editableSupport ? this.editableChecked : undefined,
+                enabled: this.enabledSupport ? this.enabledChecked : undefined,
+            });
+
+            return `defineTableColumns([${stringifyObject(column as unknown as Record<string, unknown>)}])`;
+        },
+        template(): string {
+            return createElement("f-table", { ":columns": this.columns, ":rows": "rows" });
+        },
+    },
+    methods: {
+        onTypeChange() {
+            this.align = this.defaultAlign;
+            this.tnum = this.defaultTNUM;
+            this.wrap = false;
+        },
+    },
+});
+</script>
+
+<template>
+    <live-example :components :template :livemethods :livedata>
+        <f-select-field v-model="columnType" @change="onTypeChange">
+            <template #label> Kolumntyp </template>
+            <option value="text">Text</option>
+            <option value="text:bankgiro">Bankgiro</option>
+            <option value="text:clearingNumber">Clearingnummer</option>
+            <option value="text:bankAccountNumber">Kontonummer</option>
+            <option value="text:email">Mejladress</option>
+            <option value="text:number">Numeriskt</option>
+            <option value="text:organisationsnummer">Organisationsnummer</option>
+            <option value="text:personnummer">Personnummer</option>
+            <option value="text:plusgiro">Plusgiro</option>
+            <option value="text:postalCode">Postnummer</option>
+            <option value="text:percent">Procent</option>
+            <option value="text:phoneNumber">Telefonnummer</option>
+            <option value="text:currency">Valuta</option>
+            <option value="text:date">Datum</option>
+            <option value="checkbox">Kryssruta</option>
+            <option value="rowheader">Radrubrik</option>
+            <option value="anchor">Länk</option>
+            <option value="button">Knapp</option>
+            <option value="select">Dropplista</option>
+            <option value="menu">Meny</option>
+        </f-select-field>
+
+        <f-checkbox-field v-if="editableSupport" v-model="editableChecked" :value="true">
+            Redigerbar
+        </f-checkbox-field>
+        <f-checkbox-field v-if="enabledSupport" v-model="enabledChecked" :value="true">
+            Enabled
+        </f-checkbox-field>
+
+        <f-fieldset v-if="alignSupport" name="align">
+            <template #label> Justering </template>
+            <f-radio-field v-model="align" value="left">
+                {{ alignLeftText }}
+            </f-radio-field>
+            <f-radio-field v-model="align" value="right">
+                {{ alignRightText }}
+            </f-radio-field>
+        </f-fieldset>
+
+        <f-fieldset v-if="tnumSupport" name="tnum">
+            <template #label> TNUM </template>
+            <f-radio-field v-model="tnum" :value="false"> {{ tnumOffText }} </f-radio-field>
+            <f-radio-field v-model="tnum" :value="true"> {{ tnumOnText }} </f-radio-field>
+        </f-fieldset>
+
+        <f-fieldset v-if="wrapSupport" name="wrap">
+            <template #label> Radbrytning </template>
+            <f-radio-field v-model="wrap" :value="false"> Av (default) </f-radio-field>
+            <f-radio-field v-model="wrap" :value="true"> På </f-radio-field>
+        </f-fieldset>
+
+        <f-fieldset name="rubrik">
+            <template #label> Rubriken </template>
+
+            <f-checkbox-field v-model="descriptionChecked" :value="true">
+                Formatbeskrivning
+            </f-checkbox-field>
+        </f-fieldset>
+    </live-example>
+</template>

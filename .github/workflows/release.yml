@@ -1,0 +1,29 @@
+name: Release
+concurrency: release-${{ github.ref }}
+
+on:
+    workflow_dispatch:
+
+permissions:
+    contents: write
+    issues: write
+    pull-requests: write
+    id-token: write
+
+jobs:
+    release:
+        name: Release
+        uses: Forsakringskassan/.github/.github/workflows/npm-release.yaml@1c8b290ebd7bd260f75ccca9841cf9372221e231 # main
+        with:
+            app-id: ${{ vars.RELEASE_APP_ID }}
+            config-preset: "@forsakringskassan/semantic-release-monorepo-config"
+            build-command: |
+                npm run build
+                npm run build:docs
+        secrets:
+            app-key: ${{ secrets.RELEASE_APP_KEY }}
+
+    deploy-documentation:
+        needs: [release]
+        name: Deploy new documentation
+        uses: ./.github/workflows/docs.yml

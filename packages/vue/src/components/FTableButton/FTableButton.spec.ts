@@ -1,0 +1,270 @@
+import "html-validate/vitest";
+import { shallowMount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
+import FTableButton from "./FTableButton.vue";
+
+it("label should be visually hidden by default", () => {
+    expect.assertions(3);
+    const wrapper = shallowMount(FTableButton, {
+        slots: { default: "lorem ipsum" },
+    });
+    expect(wrapper.text()).toBe("lorem ipsum");
+    expect(wrapper.get(".sr-only").text()).toBe("lorem ipsum");
+    expect(wrapper.html()).toMatchInlineSnapshot(`
+      "<button type="button" class="button table__button">
+        <!--v-if--> <span class="sr-only">lorem ipsum</span>
+      </button>"
+    `);
+});
+
+it("label should be visually rendered when label prop is set", () => {
+    expect.assertions(3);
+    const wrapper = shallowMount(FTableButton, {
+        props: { label: true },
+        slots: { default: "lorem ipsum" },
+    });
+    expect(wrapper.text()).toBe("lorem ipsum");
+    expect(wrapper.find(".sr-only").exists()).toBeFalsy();
+    expect(wrapper.html()).toMatchInlineSnapshot(`
+      "<button type="button" class="button table__button">
+        <!--v-if--> lorem ipsum
+      </button>"
+    `);
+});
+
+it("icon should be present by default", () => {
+    expect.assertions(1);
+    const wrapper = shallowMount(FTableButton, {
+        slots: { default: "lorem ipsum" },
+    });
+    const icon = wrapper.find("f-icon-stub");
+    expect(icon.exists()).toBeFalsy();
+});
+
+it("icon should be rendered when icon prop is used", () => {
+    expect.assertions(2);
+    const wrapper = shallowMount(FTableButton, {
+        props: { icon: "foo" },
+        slots: { default: "lorem ipsum" },
+    });
+    const icon = wrapper.find("f-icon-stub");
+    expect(icon.exists()).toBeTruthy();
+    expect(icon.attributes("name")).toBe("foo");
+});
+
+it("icon library should be set when iconLibrary prop is used", () => {
+    expect.assertions(2);
+    const wrapper = shallowMount(FTableButton, {
+        props: { icon: "foo", iconLibrary: "bar" },
+        slots: { default: "lorem ipsum" },
+    });
+    const icon = wrapper.find("f-icon-stub");
+    expect(icon.exists()).toBeTruthy();
+    expect(icon.attributes("library")).toBe("bar");
+});
+
+describe("html-validate", () => {
+    it("should be deprecated", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-table-column title="lorem ipsum">
+                <f-table-button>lorem ipsum</f-table-button>
+            </f-table-column>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-table-column> is deprecated: use <f-table> and define columns with defineTableColumns() instead of <f-table-column> (deprecated)
+            1 |
+          > 2 |             <f-table-column title="lorem ipsum">
+              |              ^^^^^^^^^^^^^^
+            3 |                 <f-table-button>lorem ipsum</f-table-button>
+            4 |             </f-table-column>
+            5 |
+          Selector: f-table-column
+          error: <f-table-button> is deprecated: use <f-table> with a column of type "button" in defineTableColumns() instead of <f-table-button> (deprecated)
+            1 |
+            2 |             <f-table-column title="lorem ipsum">
+          > 3 |                 <f-table-button>lorem ipsum</f-table-button>
+              |                  ^^^^^^^^^^^^^^
+            4 |             </f-table-column>
+            5 |
+          Selector: f-table-column > f-table-button"
+        `);
+    });
+
+    it("should require text content", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
+            <f-table-column title="column title">
+                <!-- valid -->
+                <f-table-button>lorem ipsum</f-table-button>
+                <f-table-button><span>lorem ipsum</span></f-table-button>
+                <f-table-button>
+                    <span class="sr-only">lorem ipsum</span>
+                </f-table-button>
+
+                <!-- invalid -->
+                <f-table-button></f-table-button>
+                <f-table-button> </f-table-button>
+            </f-table-column>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-table-button> must have accessible text (text-content)
+            10 |
+            11 |                 <!-- invalid -->
+          > 12 |                 <f-table-button></f-table-button>
+               |                  ^^^^^^^^^^^^^^
+            13 |                 <f-table-button> </f-table-button>
+            14 |             </f-table-column>
+            15 |
+          Selector: f-table-column > f-table-button:nth-child(4)
+          error: <f-table-button> must have accessible text (text-content)
+            11 |                 <!-- invalid -->
+            12 |                 <f-table-button></f-table-button>
+          > 13 |                 <f-table-button> </f-table-button>
+               |                  ^^^^^^^^^^^^^^
+            14 |             </f-table-column>
+            15 |
+          Selector: f-table-column > f-table-button:nth-child(5)"
+        `);
+    });
+
+    it("should not allow interactive descendants", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
+            <f-table-column title="column title">
+                <f-table-button>
+                    <button type="button">lorem ipsum</button>
+                    <a href="">lorem ipsum</a>
+                </f-table-button>
+            </f-table-column>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <button> element is not permitted as content under <f-table-button> (element-permitted-content)
+            3 |             <f-table-column title="column title">
+            4 |                 <f-table-button>
+          > 5 |                     <button type="button">lorem ipsum</button>
+              |                      ^^^^^^
+            6 |                     <a href="">lorem ipsum</a>
+            7 |                 </f-table-button>
+            8 |             </f-table-column>
+          Selector: f-table-column > f-table-button > button
+          error: <a> element is not permitted as content under <f-table-button> (element-permitted-content)
+            4 |                 <f-table-button>
+            5 |                     <button type="button">lorem ipsum</button>
+          > 6 |                     <a href="">lorem ipsum</a>
+              |                      ^
+            7 |                 </f-table-button>
+            8 |             </f-table-column>
+            9 |
+          Selector: f-table-column > f-table-button > a"
+        `);
+    });
+
+    it("should be allowed as content under FTableColumn", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
+            <f-table-column title="column title">
+                <f-table-button>lorem ipsum</f-table-button>
+            </f-table-column>
+        `;
+        await expect(markup).toBeValid();
+    });
+
+    it("should require FTableColumn ancestor", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
+            <f-table-button>lorem ipsum</f-table-button>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-table-button> element requires a <f-table-column> ancestor (element-required-ancestor)
+            1 |
+            2 |             <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
+          > 3 |             <f-table-button>lorem ipsum</f-table-button>
+              |              ^^^^^^^^^^^^^^
+            4 |
+          Selector: f-table-button"
+        `);
+    });
+
+    it("should not require icon or label prop", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
+            <f-table-column title="column title">
+                <f-table-button>lorem ipsum</f-table-button>
+            </f-table-column>
+        `;
+        await expect(markup).toBeValid();
+    });
+
+    it("should not allow empty icon prop", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
+            <f-table-column title="column title">
+                <!-- valid -->
+                <f-table-button icon="foo">lorem ipsum</f-table-button>
+
+                <!-- invalid -->
+                <f-table-button icon>lorem ipsum</f-table-button>
+                <f-table-button icon="">lorem ipsum</f-table-button>
+            </f-table-column>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "icon" is missing value (attribute-allowed-values)
+             6 |
+             7 |                 <!-- invalid -->
+          >  8 |                 <f-table-button icon>lorem ipsum</f-table-button>
+               |                                 ^^^^
+             9 |                 <f-table-button icon="">lorem ipsum</f-table-button>
+            10 |             </f-table-column>
+            11 |
+          Selector: f-table-column > f-table-button:nth-child(2)
+          error: Attribute "icon" has invalid value "" (attribute-allowed-values)
+             7 |                 <!-- invalid -->
+             8 |                 <f-table-button icon>lorem ipsum</f-table-button>
+          >  9 |                 <f-table-button icon="">lorem ipsum</f-table-button>
+               |                                 ^^^^
+            10 |             </f-table-column>
+            11 |
+          Selector: f-table-column > f-table-button:nth-child(3)"
+        `);
+    });
+
+    it("should not allow non-boolean label prop", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
+            <f-table-column title="column title">
+                <!-- valid -->
+                <f-table-button label>lorem ipsum</f-table-button>
+                <f-table-button :label="false">lorem ipsum</f-table-button>
+
+                <!-- invalid -->
+                <f-table-button label="foo">lorem ipsum</f-table-button>
+            </f-table-column>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "label" should omit value (attribute-boolean-style)
+             7 |
+             8 |                 <!-- invalid -->
+          >  9 |                 <f-table-button label="foo">lorem ipsum</f-table-button>
+               |                                 ^^^^^
+            10 |             </f-table-column>
+            11 |
+          Selector: f-table-column > f-table-button:nth-child(3)
+          error: Attribute "label" has invalid value "foo" (attribute-allowed-values)
+             7 |
+             8 |                 <!-- invalid -->
+          >  9 |                 <f-table-button label="foo">lorem ipsum</f-table-button>
+               |                                        ^^^
+            10 |             </f-table-column>
+            11 |
+          Selector: f-table-column > f-table-button:nth-child(3)"
+        `);
+    });
+});

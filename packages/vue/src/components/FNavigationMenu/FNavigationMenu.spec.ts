@@ -1,0 +1,281 @@
+import "html-validate/vitest";
+import { mount } from "@vue/test-utils";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import FNavigationMenu from "./FNavigationMenu.vue";
+import { type NavigationMenuItem } from "./navigation-menu-item";
+
+class ResizeObserverMock {
+    public observe = vi.fn();
+    public unobserve = vi.fn();
+    public disconnect = vi.fn();
+}
+
+/* eslint-disable-next-line unicorn/no-global-object-property-assignment -- technical debt */
+global.ResizeObserver = ResizeObserverMock;
+
+const testItems: NavigationMenuItem[] = [
+    { label: "label1", route: "ROUTE_1" },
+    { label: "label2", route: "ROUTE_2" },
+    { label: "label3", route: "ROUTE_3" },
+    { label: "label4", route: "", href: "/", target: "_blank" },
+];
+
+beforeEach(() => {
+    vi.clearAllMocks();
+});
+
+describe("props", () => {
+    describe("routes", () => {
+        it("should have same number of items as in props routes", () => {
+            expect.assertions(1);
+            const wrapper = mount(FNavigationMenu, {
+                props: {
+                    route: "",
+                    routes: testItems,
+                },
+            });
+            const imenuList = wrapper.get(".imenu__list");
+            const items = imenuList.findAll(".imenu__list__item");
+            expect(items).toHaveLength(testItems.length);
+        });
+
+        it("should add href attribute to item element if used in route", () => {
+            expect.assertions(1);
+            const wrapper = mount(FNavigationMenu, {
+                props: {
+                    route: "",
+                    routes: testItems,
+                },
+            });
+
+            const itemLink = wrapper.findAll(".imenu__list__anchor")[3];
+            expect(itemLink.element.getAttribute("href")).toBe("/");
+        });
+
+        it("should add target attribute to item element if used in route", () => {
+            expect.assertions(1);
+            const wrapper = mount(FNavigationMenu, {
+                props: {
+                    route: "",
+                    routes: testItems,
+                },
+            });
+
+            const itemLink = wrapper.findAll(".imenu__list__anchor")[3];
+            expect(itemLink.element.getAttribute("target")).toBe("_blank");
+        });
+    });
+
+    describe("vertical", () => {
+        it("should set horizontal class when `vertical` is not used (default)", async () => {
+            expect.assertions(1);
+            const wrapper = mount(FNavigationMenu, {
+                props: {
+                    route: "",
+                    routes: testItems,
+                },
+            });
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+            await wrapper.vm.$nextTick();
+
+            const nav = wrapper.get("nav");
+            expect(nav.classes()).toContain("imenu--horizontal");
+        });
+
+        it("should set vertical class when `vertical` is used", async () => {
+            expect.assertions(1);
+            const wrapper = mount(FNavigationMenu, {
+                props: {
+                    route: "",
+                    routes: testItems,
+                    vertical: true,
+                },
+            });
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+            await wrapper.vm.$nextTick();
+
+            const nav = wrapper.get("nav");
+            expect(nav.classes()).toContain("imenu--vertical");
+        });
+    });
+});
+
+describe("events", () => {
+    it("should emit selectedRoute on select", async () => {
+        expect.assertions(1);
+        const wrapper = mount(FNavigationMenu, {
+            props: {
+                route: "",
+                routes: testItems,
+            },
+        });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+        await wrapper.vm.$nextTick();
+        const imenuList = wrapper.get(".imenu__list");
+        const firstItem = imenuList.findAll(
+            ".imenu__list__item > .imenu__list__anchor-container > a",
+        )[0];
+        await firstItem.trigger("click");
+        expect(wrapper.emitted().selectedRoute).toEqual([[testItems[0].route]]);
+    });
+
+    it("should select the current route passed with props directly after mount", async () => {
+        expect.assertions(1);
+        // Given
+        const wrapper = mount(FNavigationMenu, {
+            propsData: {
+                route: testItems[1].route,
+                routes: testItems,
+            },
+        });
+        // When directly after mount
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+        await wrapper.vm.$nextTick();
+
+        const li = wrapper.findAll(".imenu__list__item").at(1);
+        // Then highlight is on preselected route item
+        expect(li?.classes()).toContain("imenu__list__item--highlight");
+    });
+
+    it("should set imenu__list__item--highlight class on selected item", async () => {
+        expect.assertions(1);
+        // given
+        const wrapper = mount(FNavigationMenu, {
+            props: {
+                route: "",
+                routes: testItems,
+            },
+        });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+        await wrapper.vm.$nextTick();
+
+        const li = wrapper.findAll(".imenu__list__item")[0];
+        const a = li.get("a");
+
+        // when
+        await a.trigger("click");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+        await wrapper.vm.$nextTick();
+
+        // then
+        expect(li.classes()).toContain("imenu__list__item--highlight");
+    });
+});
+
+describe("html-validate", () => {
+    it("should require routes attribute", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ ` <f-navigation-menu></f-navigation-menu> `;
+        await expect(markup).toMatchInlineCodeframe(`
+            "error: <f-navigation-menu> is missing required "routes" attribute (element-required-attributes)
+            > 1 |  <f-navigation-menu></f-navigation-menu>
+                |   ^^^^^^^^^^^^^^^^^
+            Selector: f-navigation-menu"
+        `);
+    });
+
+    it("should allow setting vertical boolean attribute", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-navigation-menu routes="" vertical></f-navigation-menu>
+        `;
+        await expect(markup).toBeValid();
+    });
+
+    it("should not allow setting vertical value", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-navigation-menu routes="" vertical=""></f-navigation-menu>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "vertical" should omit value (attribute-boolean-style)
+            1 |
+          > 2 |             <f-navigation-menu routes="" vertical=""></f-navigation-menu>
+              |                                          ^^^^^^^^
+            3 |
+          Selector: f-navigation-menu"
+        `);
+    });
+
+    it("should not be allowed in interactive components", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <button type="button">
+                <f-navigation-menu routes=""></f-navigation-menu>
+                button text
+            </button>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-navigation-menu> element is not permitted as content under <button> (element-permitted-content)
+            1 |
+            2 |             <button type="button">
+          > 3 |                 <f-navigation-menu routes=""></f-navigation-menu>
+              |                  ^^^^^^^^^^^^^^^^^
+            4 |                 button text
+            5 |             </button>
+            6 |
+          Selector: button > f-navigation-menu"
+        `);
+    });
+
+    it("should not allow interactive children", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-navigation-menu routes="">
+                <button type="button">button text</button>
+            </f-navigation-menu>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-navigation-menu> must not have text content (text-content)
+            1 |
+          > 2 |             <f-navigation-menu routes="">
+              |              ^^^^^^^^^^^^^^^^^
+            3 |                 <button type="button">button text</button>
+            4 |             </f-navigation-menu>
+            5 |
+          Selector: f-navigation-menu
+          error: <button> element is not permitted as content under <f-navigation-menu> (element-permitted-content)
+            1 |
+            2 |             <f-navigation-menu routes="">
+          > 3 |                 <button type="button">button text</button>
+              |                  ^^^^^^
+            4 |             </f-navigation-menu>
+            5 |
+          Selector: f-navigation-menu > button"
+        `);
+    });
+
+    it("should not allow child elements", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-navigation-menu routes="">
+                <em></em>
+            </f-navigation-menu>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <em> element is not permitted as content under <f-navigation-menu> (element-permitted-content)
+            1 |
+            2 |             <f-navigation-menu routes="">
+          > 3 |                 <em></em>
+              |                  ^^
+            4 |             </f-navigation-menu>
+            5 |
+          Selector: f-navigation-menu > em"
+        `);
+    });
+
+    it("should not allow text", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-navigation-menu routes=""> mjukglass </f-navigation-menu>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-navigation-menu> must not have text content (text-content)
+            1 |
+          > 2 |             <f-navigation-menu routes=""> mjukglass </f-navigation-menu>
+              |              ^^^^^^^^^^^^^^^^^
+            3 |
+          Selector: f-navigation-menu"
+        `);
+    });
+});

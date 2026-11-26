@@ -1,0 +1,19 @@
+/*
+    For help-classes, it is alright to use `!important` when the intent is to
+    overwrite standard behaviour for components.
+
+    All help-classes shall be prefixed with `h-`.
+*/
+.h {
+    &-no-margin {
+        margin: 0 !important;
+    }
+
+    &-root-size {
+        font-size: 1rem !important;
+    }
+
+    &-display-flex {
+        display: flex;
+    }
+}

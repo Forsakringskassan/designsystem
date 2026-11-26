@@ -1,0 +1,150 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`snapshots > should match snapshot with a second label element containing the description and error-message slots 1`] = `
+<div>
+  <div>
+    <label
+      class="label"
+      for="FOR_ID"
+    >
+      
+      LABEL_TEXT
+      
+    </label>
+  </div>
+   
+  
+  TOOLTIP
+  
+   
+  <label
+    class="label sr-separator"
+    for="FOR_ID"
+  >
+    
+    DESCRIPTION
+    
+     
+    <span
+      class="label__message label__message--error"
+    >
+      <f-icon-stub
+        class="label__icon--left"
+        library="f"
+        name="error"
+      />
+       
+      
+      ERROR_MESSAGE
+      
+    </span>
+  </label>
+</div>
+`;
+
+exports[`snapshots > should match snapshot with a second label element containing the error-message slot 1`] = `
+<div>
+  <div>
+    <label
+      class="label"
+      for="FOR_ID"
+    >
+      
+      LABEL_TEXT
+      
+    </label>
+  </div>
+   
+  
+  TOOLTIP
+  
+   
+  <label
+    class="label sr-separator"
+    for="FOR_ID"
+  >
+    
+    
+     
+    <span
+      class="label__message label__message--error"
+    >
+      <f-icon-stub
+        class="label__icon--left"
+        library="f"
+        name="error"
+      />
+       
+      
+      ERROR_MESSAGE
+      
+    </span>
+  </label>
+</div>
+`;
+
+exports[`snapshots > should match snapshot with one label element containing the default slot 1`] = `
+<label
+  class="label"
+  for="FOR_ID"
+>
+  
+  LABEL_TEXT
+  
+   
+  
+  
+   
+  <!--v-if-->
+</label>
+`;
+
+exports[`snapshots > should match snapshot with one label element containing the default, description and error-message slots 1`] = `
+<label
+  class="label"
+  for="FOR_ID"
+>
+  
+  LABEL_TEXT
+  
+   
+  
+  DESCRIPTION
+  
+   
+  <span
+    class="label__message label__message--error"
+  >
+    <f-icon-stub
+      class="label__icon--left"
+      library="f"
+      name="error"
+    />
+     
+    
+    ERRROR_MESSAGE
+    
+  </span>
+</label>
+`;
+
+exports[`snapshots > should match snapshot with the tooltip slot rendered outside the label element 1`] = `
+<div>
+  <div>
+    <label
+      class="label"
+      for="FOR_ID"
+    >
+      
+      LABEL_TEXT
+      
+    </label>
+  </div>
+   
+  
+  TOOLTIP
+  
+   
+  <!--v-if-->
+</div>
+`;

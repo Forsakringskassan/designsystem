@@ -1,0 +1,48 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
+<script lang="ts">
+import { defineComponent, getCurrentInstance } from "vue";
+import { FButton } from "@fkui/vue";
+
+export default defineComponent({
+    name: "ErrorPluginExample",
+    components: { FButton },
+    data() {
+        return {
+            instance: getCurrentInstance(),
+        };
+    },
+    methods: {
+        generateError() {
+            throw new Error("It's game over man!");
+        },
+        generateWarning() {
+            const error = new Error("stacktrace");
+            const warnHandler = this.instance?.appContext.config.warnHandler;
+            if (warnHandler) {
+                warnHandler("It's game over man!", null, error.stack ?? "");
+            }
+        },
+    },
+});
+</script>
+
+<template>
+    <div>
+        <f-button
+            v-test="'generate-error'"
+            size="medium"
+            variant="secondary"
+            @click="generateError()"
+        >
+            Fel
+        </f-button>
+        <f-button
+            v-test="'generate-warning'"
+            size="medium"
+            variant="secondary"
+            @click="generateWarning()"
+        >
+            Varning
+        </f-button>
+    </div>
+</template>

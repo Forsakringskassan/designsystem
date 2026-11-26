@@ -1,0 +1,31 @@
+@use "@fkui/theme-default/src/default" as themeDefault with (
+    $global: false
+);
+
+@use "light/theme" as light;
+@use "dark/theme" as dark;
+@use "auto/theme" as auto;
+
+$global: true !default;
+
+@mixin light {
+    @include themeDefault.light;
+    @include light.theme;
+}
+
+@mixin dark {
+    @include themeDefault.dark;
+    @include dark.theme;
+}
+
+@mixin auto {
+    @include themeDefault.auto;
+    @include auto.theme;
+}
+
+@if $global {
+    :root {
+        @include themeDefault.light;
+        @include light.theme;
+    }
+}

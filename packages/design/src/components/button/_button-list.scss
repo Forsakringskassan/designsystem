@@ -1,0 +1,23 @@
+@use "../../core";
+@use "../../core/size";
+
+.button-list {
+    list-style-type: none;
+    margin-bottom: core.densify(size.$margin-050);
+    margin-top: core.densify(size.$margin-025);
+    padding-left: 0;
+
+    > li button {
+        margin: 0;
+        margin-bottom: core.densify(size.$margin-100);
+
+        &.button--small,
+        &.button--medium {
+            margin-bottom: core.densify(size.$margin-075);
+        }
+
+        &.button--large {
+            margin-bottom: core.densify(size.$margin-100);
+        }
+    }
+}

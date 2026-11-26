@@ -1,0 +1,22 @@
+[
+    {
+        "key": "info",
+        "layers": ["f-icon-circle", "f-icon-i"],
+        "prettyName": "Info"
+    },
+    {
+        "key": "warning",
+        "layers": ["f-icon-circle", "f-icon-alert"],
+        "prettyName": "Warning"
+    },
+    {
+        "key": "error",
+        "layers": ["f-icon-triangle", "f-icon-alert"],
+        "prettyName": "Error"
+    },
+    {
+        "key": "tooltip",
+        "layers": ["f-icon-circle", "f-icon-i"],
+        "prettyName": "Tooltip"
+    }
+]

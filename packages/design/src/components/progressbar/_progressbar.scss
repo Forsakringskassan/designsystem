@@ -1,0 +1,43 @@
+@use "../../core/size";
+@use "variables" as *;
+
+$progressbar-height: var(--f-height-small);
+$progressbar-border-width: var(--f-border-width-medium);
+
+.progress {
+    background-color: $progressbar-color-background;
+    border-radius: var(--f-border-radius-medium);
+    height: $progressbar-height;
+    margin-bottom: size.$margin-150;
+    padding: 0;
+    border: $progressbar-border-width solid $progressbar-color-border;
+
+    @media (forced-colors: active) {
+        border: $progressbar-border-width solid highlight;
+    }
+
+    &__meter {
+        display: block;
+        float: left;
+        height: calc($progressbar-height - ($progressbar-border-width * 2));
+        transition:
+            width var(--f-animation-duration-medium) ease-out,
+            background-color var(--f-animation-duration-medium) ease-out;
+
+        &--inprogress {
+            background: $progressbar-color-meter-inprogress;
+
+            @media (forced-colors: active) {
+                background: highlight;
+            }
+        }
+
+        &--finished {
+            background: $progressbar-color-meter-finished;
+
+            @media (forced-colors: active) {
+                background: highlight;
+            }
+        }
+    }
+}

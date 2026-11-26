@@ -1,0 +1,40 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
+<script lang="ts">
+import { defineComponent } from "vue";
+import { fruits } from "./fruit-data";
+import { FSortFilterDataset } from "@fkui/vue";
+
+export default defineComponent({
+    components: { FSortFilterDataset },
+    data() {
+        return {
+            sortableAttributes: {
+                name: "Namn",
+                origin: "Land",
+            },
+            fruits: fruits.map((it) => {
+                const { description, ...rest } = it;
+                return rest;
+            }),
+        };
+    },
+});
+</script>
+
+<template>
+    <f-sort-filter-dataset :data="fruits" :sortable-attributes>
+        <template #default="{ sortFilterResult }">
+            <pre v-for="item in sortFilterResult" :key="item.id">{{ item }}</pre>
+        </template>
+    </f-sort-filter-dataset>
+</template>
+
+<style>
+.sort-filter-dataset pre {
+    display: inline-block;
+    border: 1px solid var(--fkds-color-border-primary);
+    color: var(--fkds-color-text-primary);
+    padding: 10px;
+    margin: 10px;
+}
+</style>

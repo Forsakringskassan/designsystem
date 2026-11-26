@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "rootDir": ".",
+        "module": "node16",
+        "esModuleInterop": true,
+        "noImplicitAny": true,
+        "moduleResolution": "node16",
+        "isolatedModules": true,
+        "strict": true,
+        "declaration": false,
+        "noEmit": true,
+        "allowJs": true,
+        "lib": ["esnext"]
+    },
+    "include": ["**/*.ts"]
+}

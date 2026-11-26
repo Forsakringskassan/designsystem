@@ -1,0 +1,16 @@
+@use "../../core/size";
+@use ".././selectable-item/selectable-item";
+
+.checkbox-group {
+    &__content {
+        display: flex;
+        flex-direction: column;
+    }
+    &--border {
+        .checkbox-group__content {
+            .checkbox {
+                @extend %selectable-item;
+            }
+        }
+    }
+}

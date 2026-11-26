@@ -1,0 +1,26 @@
+{
+    "extends": ["@fkui/tsconfig/recommended", "@fkui/tsconfig/cypress"],
+    "compilerOptions": {
+        "rootDir": "..",
+        "types": [
+            "cypress",
+            "node",
+            "vite/client",
+            "cypress-real-events",
+            "@forsakringskassan/cypress-config/support",
+            "@forsakringskassan/cypress-visual-regression/commands",
+            "mocha"
+        ],
+        "typeRoots": ["../node_modules", "../node_modules/@types", "./types"],
+        "paths": {
+            "@fkui/date": ["./packages/date/src/index.ts"],
+            "@fkui/logic": ["./packages/logic/src/index.ts"],
+            "@fkui/vue": ["./packages/vue/src/index.ts"],
+            "@fkui/vue-labs/cypress": [
+                "./packages/vue-labs/src/cypress/index.ts"
+            ],
+            "@fkui/vue-labs": ["./packages/vue-labs/src/index.ts"]
+        }
+    },
+    "include": ["**/*.ts"]
+}

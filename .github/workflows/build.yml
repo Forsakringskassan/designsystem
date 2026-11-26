@@ -1,0 +1,120 @@
+name: Build
+
+on: [push, pull_request]
+
+permissions:
+    contents: read
+    checks: write
+
+jobs:
+    build:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+            - name: Use Node.js 22.x
+              uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+              with:
+                  node-version: 22.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Build packages
+              run: npm run build
+            - name: Build documentation
+              run: npm run build:docs
+            - name: Tests
+              uses: Forsakringskassan/vitest-config@377b52787267326aadb6f3e84cd0c00241f38ef7 # v5.1.0
+
+    cypress-e2e:
+        name: Cypress E2E Tests
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+            - name: Use Node.js 22.x
+              uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+              with:
+                  node-version: 22.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Build
+              run: |
+                  npm run build
+                  npm run build:docs
+            - name: Cypress E2E tests
+              uses: cypress-io/github-action@0ed14f5d30c4ad6e5e8ffb6f57dbb69150137a3f # v7.4.10
+              with:
+                  summary-title: "E2E tests"
+                  start: npm start
+                  build: npx cypress info
+                  browser: chrome
+                  wait-on: "http://127.0.0.1:8080"
+                  quiet: true
+            - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+              if: always()
+              with:
+                  name: cypress-e2e-screenshots
+                  path: cypress/screenshots
+                  if-no-files-found: ignore
+
+    cypress-ct:
+        name: Cypress Component Tests
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                containers: [1, 2, 3, 4]
+        steps:
+            - name: Checkout
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+            - name: Use Node.js 22.x
+              uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+              with:
+                  node-version: 22.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Build (minimal)
+              run: npm exec lerna -- run --include-dependencies --scope=@fkui/vue --scope=@fkui/cypress-split build
+            - name: Cypress Component Testing
+              uses: cypress-io/github-action@0ed14f5d30c4ad6e5e8ffb6f57dbb69150137a3f # v7.4.10
+              env:
+                  SPLIT: ${{ strategy.job-total }}
+                  SPLIT_INDEX: ${{ strategy.job-index }}
+              with:
+                  summary-title: "Component tests"
+                  browser: chrome
+                  component: true
+                  install: false
+                  quiet: true
+            - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+              if: always()
+              with:
+                  name: cypress-screenshots
+                  path: cypress/screenshots
+                  if-no-files-found: ignore
+
+    html-validate:
+        name: HTML-Validate (compatibility)
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+            - name: Use Node.js 22.x
+              uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+              with:
+                  node-version: 22.x
+            - name: Update npm
+              run: npm install -g npm@latest
+            - name: Install dependencies
+              run: npm ci
+            - name: Remove conflicting dependencies
+              run: |
+                  npm rm --include-workspace-root --workspaces \
+                      @forsakringskassan/vitest-config \
+                      @forsakringskassan/vitest-config-jsdom \
+                      vitest
+            - name: Install html-validate
+              run: |
+                  npm install $(npx -w packages/vue npm-min-peer --with-name html-validate)
+                  npm ls html-validate
+            - name: HTML-Validate
+              run: npm exec html-validate -- packages/vue/src/components/FBadge/FBadge.vue

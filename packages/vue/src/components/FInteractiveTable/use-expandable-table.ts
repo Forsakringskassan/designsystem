@@ -1,0 +1,177 @@
+import { type ComputedRef, type Ref, type Slots, computed, ref } from "vue";
+import { includeItem, itemEquals } from "../../utils";
+
+/**
+ * @internal
+ */
+export interface ExpandableTable<T> {
+    isExpandableTable: ComputedRef<boolean>;
+    hasExpandableSlot: ComputedRef<boolean>;
+    toggleExpanded(this: void, row: T): void;
+    isExpanded(this: void, row: T): boolean;
+    rowAriaExpanded(this: void, row: T): boolean | undefined;
+    expandableRowClasses(this: void, row: T, index: number): string[];
+    getExpandableDescribedby(this: void, row: T): string | undefined;
+    expandableRows(this: void, row: T): T[] | undefined;
+    hasExpandableContent(this: void, row: T): boolean;
+    getExpandedIndex(this: void, row: T, rows: T[]): number;
+}
+
+type Emit<T> = ((evt: "expand", row: T) => void) &
+    ((evt: "collapse", row: T) => void);
+
+/**
+ * @internal
+ */
+export function useExpandableTable<T extends object>(
+    expandableAttribute: keyof T | undefined,
+    keyAttribute: keyof T,
+    describedby: string | undefined,
+    emit: Emit<T>,
+    slots: Slots,
+): ExpandableTable<T> {
+    const expandedRows: Ref<T[]> = ref([]);
+
+    const isExpandableTable = computed(() => {
+        return Boolean(expandableAttribute);
+    });
+
+    const hasExpandableSlot = computed(() => {
+        return Boolean(slots.expandable);
+    });
+
+    function toggleExpanded(row: T): void {
+        if (isExpanded(row)) {
+            expandedRows.value = expandedRows.value.filter(
+                (it) => !itemEquals(it, row, keyAttribute),
+            );
+            emit("collapse", row);
+        } else {
+            expandedRows.value.push(row);
+            emit("expand", row);
+        }
+    }
+
+    function isExpanded(row: T): boolean {
+        return includeItem(row, expandedRows.value, keyAttribute);
+    }
+
+    function rowAriaExpanded(row: T): boolean | undefined {
+        if (!expandableAttribute) {
+            return undefined;
+        }
+
+        const expandedRow = row[expandableAttribute];
+        if (!expandedRow) {
+            return undefined;
+        }
+
+        return isExpanded(row);
+    }
+
+    function expandableRowClasses(row: T, index: number): string[] {
+        const rows = expandableRows(row);
+
+        if (!rows) {
+            return [];
+        }
+
+        const border =
+            index < rows.length - 1 ? ["table__row--expanded-border"] : [];
+        const expanded = isExpanded(row)
+            ? []
+            : ["table__expandable-row--collapsed"];
+
+        return ["table__expandable-row", ...border, ...expanded];
+    }
+
+    function getExpandableDescribedby(row: T): string | undefined {
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+        if (!isExpandableTable) {
+            return undefined;
+        }
+        if (!describedby || describedby.length === 0) {
+            return undefined;
+        }
+
+        if (!hasExpandableContent(row)) {
+            return undefined;
+        }
+
+        return describedby;
+    }
+
+    function expandableRows(row: T): T[] | undefined {
+        if (!expandableAttribute) {
+            return undefined;
+        }
+
+        const expandableRows = row[expandableAttribute];
+
+        /* eslint-disable-next-line sonarjs/different-types-comparison -- false positive (https://sonarsource.atlassian.net/browse/JS-619) */
+        if (expandableRows === undefined || expandableRows === null) {
+            return undefined;
+        }
+
+        if (!Array.isArray(expandableRows)) {
+            throw new TypeError(`Expandable rows must be an array`);
+        }
+
+        if (expandableRows.length === 0) {
+            return undefined;
+        }
+
+        /* technical debt: we are lying here as `expandableRows` is actually
+         * `T[ExpandableAttribute]` but it breaks lots of other functions as they
+         * always expect `T[]` (often but not always `T[]` and
+         * `T[ExpandableAttribute]` have the same shape though) */
+        return expandableRows as T[];
+    }
+
+    function hasExpandableContent(row: T): boolean {
+        return Boolean(expandableRows(row));
+    }
+
+    /**
+     * Get the flattened index (including expandable rows) from a row.
+     */
+    function getExpandedIndex(row: T, rows: T[]): number {
+        let index = 0;
+
+        for (const currentRow of rows) {
+            if (currentRow === row) {
+                return index;
+            }
+
+            index++;
+
+            if (!hasExpandableContent(currentRow) || !isExpanded(currentRow)) {
+                continue;
+            }
+
+            /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+            const nestedRows = expandableRows(currentRow)!;
+            for (const currentNestedRow of nestedRows) {
+                if (currentNestedRow === row) {
+                    return index;
+                }
+                index++;
+            }
+        }
+
+        return -1;
+    }
+
+    return {
+        isExpandableTable,
+        hasExpandableSlot,
+        toggleExpanded,
+        isExpanded,
+        rowAriaExpanded,
+        expandableRowClasses,
+        getExpandableDescribedby,
+        expandableRows,
+        hasExpandableContent,
+        getExpandedIndex,
+    };
+}

@@ -1,0 +1,119 @@
+@use "../../core";
+@use "../../core/size";
+@use "../../core/mixins/breakpoints";
+@use "variables" as *;
+
+@mixin make-box-variant($background-color, $border-color, $short-layout: false, $selector: ".message-box") {
+    border: var(--f-border-width-medium) solid;
+    border-color: $border-color;
+    background-color: $background-color;
+    border-radius: var(--f-border-radius-small);
+
+    @if $short-layout {
+        border-left: size.$padding-100 solid $border-color;
+
+        #{$selector} {
+            &__icon {
+                font-size: 0; // ignore any whitespaces in template affecting height
+
+                .icon {
+                    height: var(--f-icon-size-large);
+                    width: var(--f-icon-size-large);
+                    &-stack {
+                        height: var(--f-icon-size-large);
+                        width: var(--f-icon-size-large);
+                    }
+                    &__exclamation {
+                        transform: translateY(-0.05rem);
+                    }
+                    &__banner {
+                        fill: $messagebox-error-icon-error-color-border;
+                        color: white;
+                    }
+                }
+            }
+            &__icon__banner {
+                margin-top: 0;
+            }
+        }
+    } @else {
+        border-top: size.$padding-100 solid $border-color;
+    }
+
+    .iflex__item > p {
+        margin-bottom: 0;
+    }
+}
+
+@mixin messagebox-banner-variant($short-layout: false, $selector: ".message-box") {
+    width: var(--f-width-full);
+    box-shadow: var(--f-box-modal-shadow);
+    border-collapse: separate;
+    padding: core.densify(size.$padding-100) size.$padding-100;
+
+    @include make-box-variant($messagebox-error-color-background, $messagebox-error-color-border, $short-layout, $selector: $selector);
+
+    .iflex__item > p {
+        margin-bottom: 0;
+    }
+}
+
+.message-box {
+    padding: core.densify(size.$padding-100) size.$padding-100;
+    margin: size.$margin-150 0 core.densify(size.$margin-150) 0;
+    color: $messagebox-color-text-default;
+
+    &__heading {
+        font-size: var(--f-font-size-large);
+        font-weight: var(--f-font-weight-medium);
+        color: $messagebox-info-color-heading;
+        line-height: var(--f-line-height-medium);
+        align-items: flex-start;
+        margin-bottom: core.densify(size.$margin-050);
+        margin-top: 0;
+    }
+
+    &__icon {
+        line-height: var(--f-line-height-large);
+    }
+
+    &__content {
+        text-align: left;
+    }
+
+    &--info {
+        @include make-box-variant($messagebox-info-color-background, $messagebox-info-color-border);
+    }
+
+    &--info-short {
+        @include make-box-variant($messagebox-info-color-background, $messagebox-info-color-border, $short-layout: true);
+    }
+
+    &--error {
+        @include make-box-variant($messagebox-error-color-background, $messagebox-error-color-border);
+    }
+
+    &--error-short {
+        @include make-box-variant($messagebox-error-color-background, $messagebox-error-color-border, $short-layout: true);
+    }
+
+    &--warning {
+        @include make-box-variant($messagebox-warning-color-background, $messagebox-warning-color-border);
+    }
+
+    &--warning-short {
+        @include make-box-variant($messagebox-warning-color-background, $messagebox-warning-color-border, $short-layout: true);
+    }
+
+    &--success {
+        @include make-box-variant($messagebox-success-color-background, $messagebox-success-color-border);
+    }
+
+    &--success-short {
+        @include make-box-variant($messagebox-success-color-background, $messagebox-success-color-border, $short-layout: true);
+    }
+
+    &--banner {
+        @include messagebox-banner-variant;
+    }
+}

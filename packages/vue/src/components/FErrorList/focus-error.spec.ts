@@ -1,0 +1,65 @@
+import * as logic from "@fkui/logic";
+import { beforeAll, expect, it, vi } from "vitest";
+import { type ErrorItem } from "../../types";
+import { focusError } from "./focus-error";
+
+vi.mock(import("@fkui/logic"));
+
+const mockElement = document.createElement("a");
+const mockInput = document.createElement("input");
+const scrollTo = vi.spyOn(logic, "scrollTo");
+const focus = vi.spyOn(logic, "focus");
+
+beforeAll(() => {
+    mockElement.id = "foo";
+    mockElement.href = "#";
+    mockInput.id = "bar";
+    document.body.append(mockElement);
+    document.body.append(mockInput);
+});
+
+it("should scroll and move focus to element (by id)", () => {
+    expect.assertions(2);
+    const error: ErrorItem = {
+        title: "Mock error",
+        id: mockElement.id,
+    };
+    focusError(error, document);
+    expect(scrollTo).toHaveBeenCalledWith(mockElement, expect.any(Number));
+    expect(focus).toHaveBeenCalledWith(mockElement);
+});
+
+it("should prefer to focus on focusElementId if given", () => {
+    expect.assertions(2);
+    const scrollTo = vi.spyOn(logic, "scrollTo");
+    const error: ErrorItem = {
+        title: "Mock error",
+        id: mockElement.id,
+        focusElementId: mockInput.id,
+    };
+    focusError(error, document);
+    expect(scrollTo).toHaveBeenCalledWith(mockElement, expect.any(Number));
+    expect(focus).toHaveBeenCalledWith(mockInput);
+});
+
+it("should throw error when id element is missing", () => {
+    expect.assertions(1);
+    const error: ErrorItem = {
+        title: "Mock error",
+        id: "missing",
+    };
+    expect(() => {
+        focusError(error, document);
+    }).toThrow(`Can not find element with id "missing"`);
+});
+
+it("should fallback on id when focusElementId is missing", () => {
+    expect.assertions(1);
+    const error: ErrorItem = {
+        title: "Mock error",
+        id: mockElement.id,
+        focusElementId: "missing",
+    };
+    focusError(error, document);
+    expect(focus).toHaveBeenCalledWith(mockElement);
+});

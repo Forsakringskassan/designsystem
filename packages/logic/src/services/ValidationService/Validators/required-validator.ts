@@ -1,0 +1,35 @@
+import { isRadiobuttonOrCheckbox } from "../../../dom";
+import { type Validator } from "../validator";
+
+const REQUIRED_REGEXP = /^\S+/;
+
+function isRelevantElement(input: Element): input is HTMLInputElement {
+    return isRadiobuttonOrCheckbox(input) && !input.disabled;
+}
+
+function validateFieldset(fieldset: HTMLFieldSetElement): boolean {
+    const inputs = Array.from(fieldset.elements).filter(isRelevantElement);
+    /* eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary -- false positive */
+    return inputs.length > 0 ? inputs.some((input) => input.checked) : true;
+}
+
+function validateChecked(element: HTMLInputElement): boolean {
+    return element.checked;
+}
+
+function validateInput(value: string): boolean {
+    return REQUIRED_REGEXP.test(value);
+}
+
+export const requiredValidator: Validator = {
+    name: "required",
+    validation(value, element) {
+        if (element instanceof HTMLFieldSetElement) {
+            return validateFieldset(element);
+        }
+        if (isRadiobuttonOrCheckbox(element)) {
+            return validateChecked(element);
+        }
+        return validateInput(value);
+    },
+};

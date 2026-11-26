@@ -1,0 +1,17 @@
+{
+    "extends": ["@fkui/tsconfig/recommended", "@fkui/tsconfig/vue"],
+    "compilerOptions": {
+        "noEmit": true,
+        "skipLibCheck": true,
+        "rootDir": "../../",
+        "paths": {
+            "@fkui/table-tests-examples/*": [
+                "../../packages/vue/src/components/FTable/tests/*"
+            ],
+            "@fkui/table-docs-examples/*": [
+                "../../packages/vue/src/components/FTable/docs/*"
+            ]
+        }
+    },
+    "include": ["src/**/*.ts", "src/**/*.vue"]
+}

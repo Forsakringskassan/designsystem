@@ -1,0 +1,50 @@
+---
+name: "@fkui/test-utils"
+title: Om testverktyg
+layout: content-with-menu
+sortorder: 0
+search:
+    terms:
+        - automatiska testfall
+        - Vitest
+        - Jest
+        - Cypress
+---
+
+Samling med funktioner och komponenter för Vitest, Jest och Cypress för att underlätta utveckling av automatiska testfall.
+
+```bash
+npm install --save-dev @fkui/test-utils
+```
+
+## Användning
+
+### Generella funktioner
+
+```ts
+import "@fkui/test-utils";
+```
+
+### Vitest
+
+```ts
+import "@fkui/test-utils/vitest";
+```
+
+Denna entrypoint exporterar också allt från `@fkui/test-utils`.
+
+### Jest
+
+```ts
+import "@fkui/test-utils/jest";
+```
+
+Denna entrypoint exporterar också allt från `@fkui/test-utils`.
+
+### Vue
+
+```ts
+import "@fkui/test-utils/vue";
+```
+
+Denna entrypoint exporterar också allt från `@fkui/test-utils`.

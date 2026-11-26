@@ -1,0 +1,190 @@
+---
+title: Expandera rader i tabell (kod)
+short-title: Expandera rader (kod)
+layout: article
+search:
+    terms:
+        - tabell
+---
+
+```import live-example
+FTableExpandableLiveExample.vue
+```
+
+Givet att vi har en datakälla med nästlade rader:
+
+```ts
+interface Row {
+    namn: string;
+    land: string;
+    nested?: Row[];
+}
+```
+
+Ange den nästlade egenskapens namn med `expandable-attribute`:
+
+```html static name=base hidden
+<f-table :rows :columns></f-table>
+```
+
+```html static compare=base
+<f-table :rows :columns expandable-attribute="nested"></f-table>
+```
+
+::: info
+Tidigare angavs den nästlade egenskapens namn via {@link useDatasetRef `useDatasetRef()`} (numera deprekerad).
+:::
+
+## Följa existerande kolumner
+
+Tabellen presenterar rader med nästlad data som expanderade rader.
+Som standard följer expanderade rader samma kolumnstruktur som överordnade rader.
+
+```vue nomarkup
+<script setup lang="ts">
+import { ref } from "vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
+
+interface Row {
+    namn: string;
+    land: string;
+    nested: Row[];
+}
+
+const data: Row[] = [
+    {
+        namn: "Apelsin",
+        land: "Spanien",
+        nested: [
+            {
+                namn: "Äpplen odlas i stor skala i tempererade klimat, bland annat i Sverige, Polen och Kina",
+                land: "",
+            },
+        ],
+    },
+    {
+        namn: "Banan",
+        land: "Ecuador",
+        nested: [
+            {
+                namn: "Bananer importeras främst från tropiska länder i Latinamerika, Afrika och Asien",
+                land: "",
+            },
+        ],
+    },
+    {
+        namn: "Äpple",
+        land: "Sverige",
+        nested: [
+            {
+                namn: "Apelsiner importeras främst från Medelhavsområdet",
+                land: "",
+            },
+        ],
+    },
+];
+const rows = ref(data);
+const columns = defineTableColumns<Row>([
+    {
+        type: "text",
+        header: "Namn",
+        key: "namn",
+    },
+    {
+        type: "text",
+        header: "Land",
+        key: "land",
+    },
+]);
+</script>
+<template>
+    <f-table :rows :columns expandable-attribute="nested"></f-table>
+</template>
+```
+
+## Valfritt innehåll
+
+Valfritt innehåll kan presenteras istället för att följa tabellens kolumner genom att använda slotten `#expandable`.
+Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som ligger i datastrukturen behöver inte följa ordinarie rader.
+
+```html static
+<f-table :rows :columns expandable-attribute="nested">
+    <template #expandable="{ row }">
+        <pre>{{ row }}</pre>
+    </template>
+</f-table>
+```
+
+```vue nomarkup
+<script setup lang="ts">
+import { ref } from "vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
+
+interface Row {
+    namn: string;
+    land: string;
+    nested: Row[];
+}
+
+const data: Row[] = [
+    {
+        namn: "Apelsin",
+        land: "Spanien",
+        nested: [
+            {
+                namn: "Äpplen odlas i stor skala i tempererade klimat, bland annat i Sverige, Polen och Kina",
+                land: "",
+            },
+        ],
+    },
+    {
+        namn: "Banan",
+        land: "Ecuador",
+        nested: [
+            {
+                namn: "Bananer importeras främst från tropiska länder i Latinamerika, Afrika och Asien",
+                land: "",
+            },
+        ],
+    },
+    {
+        namn: "Äpple",
+        land: "Sverige",
+        nested: [
+            {
+                namn: "Apelsiner importeras främst från Medelhavsområdet",
+                land: "",
+            },
+        ],
+    },
+];
+const rows = ref(data);
+const columns = defineTableColumns<Row>([
+    {
+        type: "text",
+        header: "Namn",
+        key: "namn",
+    },
+    {
+        type: "text",
+        header: "Land",
+        key: "land",
+    },
+]);
+</script>
+<template>
+    <f-table :rows :columns expandable-attribute="nested">
+        <template #expandable="{ row }">
+            <pre>{{ row }}</pre>
+        </template>
+    </f-table>
+</template>
+```
+
+Skapa inte ett för komplext expanderat innehåll som till exempel att placera ytterligare expanderbara tabeller inuti.
+
+## Relaterat
+
+{@link expand-rows Expandera rader i tabell}
+
+{@link code Kod för tabell}

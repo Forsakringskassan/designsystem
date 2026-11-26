@@ -1,0 +1,35 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`snapshots > should match snapshot when link 1`] = `
+<li>
+  <a
+    href="javascript:"
+  >
+    <span
+      aria-hidden="true"
+      class="error-list__bullet"
+    />
+     
+    <span
+      class="error-list__link"
+    >
+      With link
+    </span>
+  </a>
+</li>
+`;
+
+exports[`snapshots > should match snapshot when no link 1`] = `
+<li>
+  
+  <span
+    aria-hidden="true"
+    class="error-list__bullet"
+  />
+   
+  <span>
+    With no link
+  </span>
+  
+</li>
+`;

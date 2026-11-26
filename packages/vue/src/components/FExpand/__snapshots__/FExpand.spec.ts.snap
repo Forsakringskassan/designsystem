@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`snapshots > should match snapshot with default slot content 1`] = `
+<transition-stub
+  appear="false"
+  css="false"
+  persisted="false"
+>
+  
+  <p>
+    Content
+  </p>
+  
+</transition-stub>
+`;

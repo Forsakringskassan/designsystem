@@ -1,0 +1,256 @@
+import { defineComponent } from "vue";
+import { mount, shallowMount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
+import FIcon from "./FIcon.vue";
+import "html-validate/vitest";
+
+describe("snapshots", () => {
+    it("should match snapshot and use prop name to set icon", () => {
+        expect.assertions(1);
+        const wrapper = shallowMount(FIcon, {
+            props: { name: "my-icon" },
+        });
+        expect(wrapper.element).toMatchSnapshot();
+    });
+
+    it("should match snapshot when passing content to default slot", () => {
+        expect.assertions(1);
+        const wrapper = shallowMount(FIcon, {
+            props: { name: "my-icon" },
+            slots: {
+                default: /* HTML */ ` <title>FIcon test information</title> `,
+            },
+        });
+        expect(wrapper.element).toMatchSnapshot();
+    });
+});
+
+it("should set css classes", () => {
+    expect.assertions(1);
+    const wrapper = shallowMount(FIcon, {
+        props: { name: "my-icon" },
+    });
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
+    const classes = Array.from(wrapper.element.classList);
+    expect(classes).toEqual(["icon", "f-icon-my-icon"]);
+});
+
+describe("props", () => {
+    describe("flip", () => {
+        describe("should set correct css class", () => {
+            it.each`
+                value           | expected
+                ${"horizontal"} | ${"icon--flip-horizontal"}
+                ${"vertical"}   | ${"icon--flip-vertical"}
+            `("$value", ({ value, expected }) => {
+                expect.assertions(1);
+                const wrapper = shallowMount(FIcon, {
+                    props: {
+                        name: "my-icon",
+                        flip: value,
+                    },
+                });
+                const classes = wrapper.element.classList;
+                expect(classes).toContain(expected);
+            });
+        });
+
+        describe("html-validate", () => {
+            it("should allow valid values", async () => {
+                expect.assertions(1);
+                const markup = /* HTML */ `
+                    <f-icon name="my-icon" flip="horizontal"></f-icon>
+                    <f-icon name="my-icon" flip="vertical"></f-icon>
+                `;
+                await expect(markup).toBeValid();
+            });
+
+            it("should not allow invalid values", async () => {
+                expect.assertions(1);
+                const markup = /* HTML */ `
+                    <f-icon name="my-icon" flip="foo"></f-icon>
+                `;
+                await expect(markup).toMatchInlineCodeframe(`
+                  "error: Attribute "flip" has invalid value "foo" (attribute-allowed-values)
+                    1 |
+                  > 2 |                     <f-icon name="my-icon" flip="foo"></f-icon>
+                      |                                                  ^^^
+                    3 |
+                  Selector: f-icon"
+                `);
+            });
+        });
+    });
+
+    describe("rotate", () => {
+        describe("should set correct css class", () => {
+            it.each`
+                value    | expected
+                ${"90"}  | ${"icon--rotate-90"}
+                ${"180"} | ${"icon--rotate-180"}
+                ${"270"} | ${"icon--rotate-270"}
+            `("$value", ({ value, expected }) => {
+                expect.assertions(1);
+                const wrapper = shallowMount(FIcon, {
+                    props: {
+                        name: "my-icon",
+                        rotate: value,
+                    },
+                });
+                const classes = wrapper.element.classList;
+                expect(classes).toContain(expected);
+            });
+        });
+
+        describe("html-validate", () => {
+            it("should allow valid values", async () => {
+                expect.assertions(1);
+                const markup = /* HTML */ `
+                    <f-icon name="my-icon" rotate="90"></f-icon>
+                    <f-icon name="my-icon" rotate="180"></f-icon>
+                    <f-icon name="my-icon" rotate="270"></f-icon>
+                `;
+                await expect(markup).toBeValid();
+            });
+
+            it("should not allow arbitrary degrees", async () => {
+                expect.assertions(1);
+                const markup = /* HTML */ `
+                    <f-icon name="my-icon" rotate="42"></f-icon>
+                `;
+                await expect(markup).toMatchInlineCodeframe(`
+                    "error: Attribute "rotate" has invalid value "42" (attribute-allowed-values)
+                      1 |
+                    > 2 |                     <f-icon name="my-icon" rotate="42"></f-icon>
+                        |                                                    ^^
+                      3 |
+                    Selector: f-icon"
+                `);
+            });
+
+            it("should not allow invalid values", async () => {
+                expect.assertions(1);
+                const markup = /* HTML */ `
+                    <f-icon name="my-icon" rotate="foo"></f-icon>
+                `;
+                await expect(markup).toMatchInlineCodeframe(`
+                    "error: Attribute "rotate" has invalid value "foo" (attribute-allowed-values)
+                      1 |
+                    > 2 |                     <f-icon name="my-icon" rotate="foo"></f-icon>
+                        |                                                    ^^^
+                      3 |
+                    Selector: f-icon"
+                `);
+            });
+        });
+    });
+});
+
+describe("stacking", () => {
+    it("should render multiple stacked FIcon components", () => {
+        expect.assertions(2);
+        const TestComponent = defineComponent({
+            components: { FIcon },
+            template: /* HTML */ `
+                <div class="icon-stack">
+                    <f-icon name="pdf"></f-icon>
+                    <f-icon name="success"></f-icon>
+                </div>
+            `,
+        });
+        const wrapper = mount(TestComponent);
+        const icons = wrapper.findAll(".icon");
+
+        expect(icons).toHaveLength(2);
+        expect(icons[0].classes()).toContain("f-icon-pdf");
+    });
+});
+
+describe("aria-hidden", () => {
+    it("should be true by default", () => {
+        expect.assertions(1);
+        const wrapper = shallowMount(FIcon, {
+            props: { name: "my-icon" },
+        });
+        const icon = wrapper.get(".icon");
+        expect(icon.attributes("aria-hidden")).toBe("true");
+    });
+
+    it("should be undefined if slot is used", () => {
+        expect.assertions(1);
+        const wrapper = shallowMount(FIcon, {
+            props: { name: "my-icon" },
+            slots: {
+                default: /* HTML */ ` <title>FIcon description</title> `,
+            },
+        });
+        const icon = wrapper.get(".icon");
+        expect(icon.attributes("aria-hidden")).toBeUndefined();
+    });
+
+    it("should be undefined if aria-label is set", () => {
+        expect.assertions(1);
+        const TestComponent = defineComponent({
+            components: { FIcon },
+            template: /* HTML */ `
+                <f-icon name="my-icon" aria-label="My awesome label"></f-icon>
+            `,
+        });
+        const wrapper = mount(TestComponent);
+        const icon = wrapper.get(".icon");
+        expect(icon.attributes("aria-hidden")).toBeUndefined();
+    });
+
+    it("should be undefined if aria-labelledby is set", () => {
+        expect.assertions(1);
+        const TestComponent = defineComponent({
+            components: { FIcon },
+            template: /* HTML */ `
+                <div>
+                    <f-icon name="my-icon" aria-labelledby="my-label"></f-icon>
+                    <span id="my-label"> My awesome label </span>
+                </div>
+            `,
+        });
+        const wrapper = mount(TestComponent);
+        const icon = wrapper.get(".icon");
+        expect(icon.attributes("aria-hidden")).toBeUndefined();
+    });
+
+    it("should be undefined if aria-description is set", () => {
+        expect.assertions(1);
+        const TestComponent = defineComponent({
+            components: { FIcon },
+            template: /* HTML */ `
+                <div>
+                    <f-icon
+                        name="my-icon"
+                        aria-description="My awesome description"
+                    ></f-icon>
+                </div>
+            `,
+        });
+        const wrapper = mount(TestComponent);
+        const icon = wrapper.get(".icon");
+        expect(icon.attributes("aria-hidden")).toBeUndefined();
+    });
+
+    it("should be undefined if aria-describedby is set", () => {
+        expect.assertions(1);
+        const TestComponent = defineComponent({
+            components: { FIcon },
+            template: /* HTML */ `
+                <div>
+                    <f-icon
+                        name="my-icon"
+                        aria-describedby="my-description"
+                    ></f-icon>
+                    <span id="my-description"> My awesome description </span>
+                </div>
+            `,
+        });
+        const wrapper = mount(TestComponent);
+        const icon = wrapper.get(".icon");
+        expect(icon.attributes("aria-hidden")).toBeUndefined();
+    });
+});

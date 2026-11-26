@@ -1,0 +1,163 @@
+import "html-validate/vitest";
+import { mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
+import FPageHeader from "./FPageHeader.vue";
+
+describe("slots", () => {
+    it("should change skipLink text via slot", () => {
+        expect.assertions(1);
+        const mySkipLinkText = "my SkipLink Text";
+        const mySkipLinkHref = "#myhref";
+        const wrapper = mount(FPageHeader, {
+            props: {
+                skipLink: mySkipLinkHref,
+            },
+            slots: {
+                "skip-link-text": mySkipLinkText,
+            },
+        });
+        const skipLinkEl = wrapper.find(".iskiplink");
+        expect(skipLinkEl.text()).toBe(mySkipLinkText);
+    });
+
+    it("should change logo via slot", () => {
+        expect.assertions(1);
+        const logoHtml = "<div>logo</div>";
+        const wrapper = mount(FPageHeader, {
+            slots: {
+                logo: logoHtml,
+            },
+        });
+        expect(wrapper.html()).toContain(logoHtml);
+    });
+
+    it("should change app-name via slot", () => {
+        expect.assertions(1);
+        const myAppName = "myAppName";
+        const wrapper = mount(FPageHeader, {
+            slots: {
+                default: myAppName,
+            },
+        });
+        const headerAppName = wrapper.find(".page-header__app-name");
+        expect(headerAppName.text()).toBe(myAppName);
+    });
+
+    it("should change user-name via slot", () => {
+        expect.assertions(1);
+        const myUserName = "<div>Firstname Lastname</div>";
+        const wrapper = mount(FPageHeader, {
+            slots: {
+                right: myUserName,
+            },
+        });
+        expect(wrapper.html()).toContain(myUserName);
+    });
+});
+
+describe("props", () => {
+    describe("skipLink", () => {
+        it("should enable and set skiplink target", () => {
+            expect.assertions(1);
+            const wrapper = mount(FPageHeader, {
+                props: {
+                    skipLink: "awesome-target",
+                },
+            });
+            const skipLink = wrapper.find(".iskiplink");
+            expect(skipLink.attributes().href).toBe("#awesome-target");
+        });
+
+        it("should disable skiplink when empty string", () => {
+            expect.assertions(1);
+            const wrapper = mount(FPageHeader, {
+                props: {
+                    skipLink: "",
+                },
+            });
+            const skipLink = wrapper.find(".iskiplink");
+            expect(skipLink.exists()).toBeFalsy();
+        });
+    });
+
+    it("should set headerTag as h1 around default slot", () => {
+        expect.assertions(1);
+        const wrapper = mount(FPageHeader, {
+            props: {
+                headerTag: "h1",
+            },
+            slots: {
+                default: "appname",
+            },
+        });
+        const headerTagEl = wrapper.find("h1.page-header__app-name");
+        expect(headerTagEl.html()).toBe(
+            '<h1 class="page-header__app-name">appname</h1>',
+        );
+    });
+});
+
+describe("html-validate", () => {
+    it("should allow usage without attributes, no attributes required", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ ` <f-page-header></f-page-header> `;
+        await expect(markup).toBeValid();
+    });
+
+    it("should allow all slots", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-page-header><template #skip-link-text></template></f-page-header>
+            <f-page-header><template #logo></template></f-page-header>
+            <f-page-header><template #default></template></f-page-header>
+            <f-page-header><template #right></template></f-page-header>
+        `;
+        await expect(markup).toBeValid();
+    });
+
+    it("skip-link", async () => {
+        expect.assertions(2);
+        const valid = /* HTML */ `
+            <f-page-header skip-link="foo"></f-page-header>
+        `;
+        const invalid = /* HTML */ `
+            <!-- omitted value -->
+            <f-page-header skip-link></f-page-header>
+        `;
+        await expect(valid).toBeValid();
+        await expect(invalid).toMatchInlineCodeframe(`
+            "error: Attribute "skip-link" is missing value (attribute-allowed-values)
+              1 |
+              2 |             <!-- omitted value -->
+            > 3 |             <f-page-header skip-link></f-page-header>
+                |                            ^^^^^^^^^
+              4 |
+            Selector: f-page-header"
+        `);
+    });
+
+    describe("header-tag", () => {
+        it.each(["span", "h1"])("%s", async (headerTag) => {
+            expect.assertions(1);
+            const markup = /* HTML */ `
+                <f-page-header header-tag="${headerTag}"></f-page-header>
+            `;
+            await expect(markup).toBeValid();
+        });
+
+        it("h2", async () => {
+            expect.assertions(1);
+            const markup = /* HTML */ `
+                <f-page-header header-tag="h2"></f-page-header>
+            `;
+            await expect(markup).toMatchInlineCodeframe(`
+                "error: Attribute "header-tag" has invalid value "h2" (attribute-allowed-values)
+                  1 |
+                > 2 |                 <f-page-header header-tag="h2"></f-page-header>
+                    |                                            ^^
+                  3 |
+                Selector: f-page-header"
+            `);
+        });
+    });
+});

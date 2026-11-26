@@ -1,0 +1,44 @@
+import {
+    type OmittedNormalizedColumnProperties,
+    type TableColumnBase,
+} from "./base";
+import { getValueFn } from "./helpers";
+import { type NormalizedTableColumnText } from "./text";
+
+/**
+ * @public
+ */
+export interface TableColumnSimple<
+    T,
+    K extends keyof T,
+> extends TableColumnBase<T> {
+    type?: undefined;
+    key?: K;
+    label?(this: void, row: T): string;
+    wrap?: boolean;
+    value?(this: void, row: T): string;
+}
+
+/**
+ * @internal
+ */
+export function normalizeSimpleColumn<T, K extends keyof T>(
+    column: TableColumnSimple<T, K>,
+): Omit<NormalizedTableColumnText<T, K>, OmittedNormalizedColumnProperties> {
+    return {
+        type: "text",
+        label: () => "",
+        tnum: false,
+        wrap: column.wrap ?? false,
+        align: "left",
+        value: getValueFn(column.value, column.key, String, ""),
+        update() {
+            /* do nothing */
+        },
+        editable: () => false,
+        validation: {},
+        hasValidation: false,
+        formatter: (value) => value,
+        parser: (value) => value,
+    };
+}

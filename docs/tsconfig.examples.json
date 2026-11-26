@@ -1,0 +1,18 @@
+{
+    "extends": "@fkui/tsconfig/recommended",
+    "compilerOptions": {
+        "composite": true,
+        "rootDir": ".",
+        "noEmit": true,
+        "skipLibCheck": true
+    },
+    "include": ["**/*.ts", "**/*.vue"],
+    "exclude": [
+        "**/*.cy.ts",
+        "dist/**",
+        "examples/**",
+        "node_modules/**",
+        "playground/**",
+        "src/**"
+    ]
+}

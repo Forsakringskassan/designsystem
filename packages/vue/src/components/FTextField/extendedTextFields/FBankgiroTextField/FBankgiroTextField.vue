@@ -1,0 +1,50 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
+<script lang="ts">
+import { type PropType, defineComponent } from "vue";
+import { type BankgiroString, ValidationService, parseBankgiro } from "@fkui/logic";
+import { TranslationMixin } from "../../../../plugins";
+import { getInputElement } from "../../../../utils";
+import FTextField from "../../FTextField.vue";
+import { type FormatFunction } from "../../index";
+import { useTextFieldSetup } from "../../use-text-field-setup";
+
+export default defineComponent({
+    name: "FBankgiroTextField",
+    extends: FTextField,
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
+    mixins: [TranslationMixin],
+    props: {
+        formatter: {
+            type: Function as PropType<FormatFunction<BankgiroString>>,
+            required: false,
+            default: parseBankgiro,
+        },
+    },
+    setup(props) {
+        return useTextFieldSetup(props);
+    },
+    data() {
+        return {
+            defaultText: this.$t("fkui.bankgiro-text-field.label", "Bankgironummer"),
+        };
+    },
+    mounted() {
+        const inputElement = getInputElement(this);
+
+        ValidationService.addValidatorsToElement(
+            inputElement,
+            {
+                maxLength: { length: 9 },
+                bankgiro: {},
+            },
+            true,
+        );
+
+        inputElement.setAttribute("inputmode", "numeric");
+        inputElement.setAttribute("maxlength", "40");
+
+        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
+        ValidationService.validateElement(inputElement);
+    },
+});
+</script>

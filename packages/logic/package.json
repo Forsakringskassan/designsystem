@@ -1,0 +1,80 @@
+{
+  "name": "@fkui/logic",
+  "version": "6.65.1",
+  "description": "Logic",
+  "keywords": [
+    "fkui",
+    "designsystem"
+  ],
+  "homepage": "https://designsystem.forsakringskassan.se/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
+    "directory": "packages/logic"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "sideEffects": [
+    "./dist/cjs/polyfills.js",
+    "./dist/esm/polyfills.js",
+    "./dist/polyfills.js"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./polyfills": {
+      "types": "./dist/types/polyfills.d.ts",
+      "import": "./dist/esm/polyfills.js",
+      "require": "./dist/cjs/polyfills.js"
+    },
+    "./lib/polyfills": {
+      "types": "./dist/types/polyfills.d.ts",
+      "import": "./dist/esm/polyfills.js",
+      "require": "./dist/cjs/polyfills.js"
+    }
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "tsc",
+    "build": "rollup --config",
+    "postbuild": "fk-api-extractor",
+    "build:docs": "typedoc",
+    "clean": "rimraf dist temp typedoc",
+    "prepack": "release-prepack --bundle --retain-scripts",
+    "postpack": "release-postpack",
+    "prepublishOnly": "release-prepublish --bundle --retain-scripts",
+    "start": "npm run build:docs && fkui-serve typedoc",
+    "watch": "rollup --config --watch"
+  },
+  "dependencies": {
+    "lodash.clonedeep": "4.5.0"
+  },
+  "devDependencies": {
+    "@fkui/date": "6.65.1",
+    "@fkui/test-utils": "6.65.1",
+    "@forsakringskassan/vitest-config-jsdom": "5.1.0",
+    "@rollup/plugin-commonjs": "29.0.3",
+    "@rollup/plugin-node-resolve": "16.0.3",
+    "@rollup/plugin-typescript": "12.3.1",
+    "@types/lodash.clonedeep": "4.5.9",
+    "rollup": "4.68.8",
+    "rollup-plugin-dts": "6.5.1",
+    "vitest": "5.1.1"
+  },
+  "peerDependencies": {
+    "@fkui/date": "^6.65.1"
+  },
+  "engines": {
+    "node": "^22.16 || >= 24",
+    "npm": ">= 7"
+  }
+}

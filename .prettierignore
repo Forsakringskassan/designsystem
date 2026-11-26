@@ -1,0 +1,40 @@
+# owned by tooling
+lerna.json
+package-lock.json
+node_modules/
+
+# generated files
+CHANGELOG.md
+*.api.md
+
+# build artifacts
+build/
+coverage/
+dist/
+docs/examples/files/
+packages/date/lib
+packages/design/lib
+packages/logic/lib
+public/
+temp/
+tests/e2e/screenshots/
+tests/e2e/videos/
+typedoc/
+
+.DS_Store
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+.github/pull-request-changelog/*.hbs

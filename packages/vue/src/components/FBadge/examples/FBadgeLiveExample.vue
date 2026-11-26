@@ -1,0 +1,50 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
+<script lang="ts">
+import { defineComponent } from "vue";
+import { LiveExample } from "@forsakringskassan/docs-live-example";
+import { FBadge, FCheckboxField, FSelectField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FBadgeLiveExample",
+    components: { LiveExample, FCheckboxField, FSelectField },
+    data() {
+        return {
+            isInverted: false,
+            badgeType: "standard",
+        };
+    },
+    computed: {
+        components(): object {
+            return { FBadge };
+        },
+        inverted(): string {
+            const template = /* HTML */ ` inverted`;
+            return this.isInverted ? template : "";
+        },
+        status(): string {
+            if (this.badgeType === "standard") {
+                return "";
+            }
+            const template = /* HTML */ ` status="${this.badgeType}" `;
+            return this.badgeType ? template : "";
+        },
+        template(): string {
+            return /* HTML */ ` <f-badge ${this.status} ${this.inverted}> Text </f-badge> `;
+        },
+    },
+});
+</script>
+
+<template>
+    <live-example :components :template>
+        <f-select-field v-model="badgeType">
+            <template #label> Typ </template>
+            <option value="standard">Standard</option>
+            <option value="warning">Varning</option>
+            <option value="error">Fel</option>
+            <option value="success">Framgång</option>
+            <option value="info">Info</option>
+        </f-select-field>
+        <f-checkbox-field v-model="isInverted" :value="true"> Inverterad </f-checkbox-field>
+    </live-example>
+</template>

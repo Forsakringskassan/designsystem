@@ -1,0 +1,66 @@
+@use "../../core";
+@use "../../core/size";
+@use ".././list/list";
+@use "variables" as *;
+
+%selectable-item {
+    border: list.$list-border;
+    margin-bottom: 0;
+    width: 100%;
+    cursor: pointer;
+    border-bottom: none;
+
+    &:last-child {
+        border-bottom: list.$list-border;
+    }
+
+    input:focus-visible + label {
+        outline: 2px solid $selectable-item-button-border-color-border-default;
+        outline-offset: -2px;
+    }
+
+    input + label::after {
+        top: 0.9rem;
+        left: 1rem;
+    }
+
+    input:checked + label::after {
+        top: 0.9rem;
+        left: 1rem;
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background: $selectable-item-color-background-hover;
+        }
+    }
+
+    label::before {
+        top: 0.9rem;
+        left: 1rem;
+    }
+
+    label {
+        padding: 1rem;
+        padding-left: 3rem;
+        width: 100%;
+    }
+}
+
+.radio-button,
+.checkbox {
+    &__details {
+        color: $selectable-item-color-text-details;
+        display: block;
+        margin-top: core.densify(size.$margin-025);
+    }
+
+    &__width {
+        width: 100%;
+    }
+}
+
+.radio-button.disabled .radio-button__details,
+.checkbox.disabled .checkbox__details {
+    color: inherit;
+}

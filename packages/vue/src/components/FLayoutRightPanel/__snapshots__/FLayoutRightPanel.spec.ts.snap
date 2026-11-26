@@ -1,0 +1,86 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`snapshot > should match snapshot 1`] = `
+<div
+  class="layout-secondary"
+>
+  <div
+    class="layout-secondary__primary"
+    id="layout-secondary__primary"
+  >
+    
+    DEFAULT
+    
+  </div>
+   
+  <aside
+    class="layout-secondary__secondary"
+    style="width: 320px; top: 0px;"
+  >
+    <div
+      class="layout-secondary__secondary__border"
+    >
+      <div
+        class="layout-secondary__secondary__border__dot"
+      />
+       
+      <div
+        class="layout-secondary__secondary__border__dot"
+      />
+       
+      <div
+        class="layout-secondary__secondary__border__dot"
+      />
+    </div>
+     
+    <div
+      class="layout-secondary__secondary__inner"
+    >
+      <div
+        class="layout-secondary__secondary__inner__title"
+        style="max-width: 285px;"
+      >
+        
+        <h3
+          tabindex="-1"
+        >
+          TITEL
+        </h3>
+        
+      </div>
+       
+      <div>
+        <hr
+          aria-hidden="true"
+        />
+      </div>
+       
+      <div
+        class="layout-secondary__secondary__inner__content scroll-target"
+        style="max-width: 285px;"
+      >
+        
+        TOPNAVIGATION
+        
+         
+        <button
+          class="button button--tertiary button--small button--tertiary--muted layout-secondary__secondary__inner__close"
+          type="button"
+        >
+          <span
+            class="sr-only"
+          >
+            Stäng sekundärpanelen
+          </span>
+           
+          <f-icon-stub
+            class="button__icon"
+            library="f"
+            name="close"
+          />
+        </button>
+      </div>
+    </div>
+  </aside>
+</div>
+`;

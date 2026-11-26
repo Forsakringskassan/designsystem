@@ -1,0 +1,37 @@
+{
+  "name": "@fkui/example-page-layout",
+  "version": "6.65.1",
+  "private": true,
+  "description": "An example and testbed for application layout components",
+  "homepage": "https://designsystem.forsakringskassan.se/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
+    "directory": "examples/page-layout"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "scripts": {
+    "prebuild": "vue-tsc",
+    "build": "vite build --mode development",
+    "clean": "rimraf dist",
+    "start": "vite --"
+  },
+  "dependencies": {
+    "@fkui/design": "6.65.1",
+    "@fkui/icon-lib-default": "6.65.1",
+    "@fkui/theme-default": "6.65.0",
+    "@fkui/vue": "6.65.1",
+    "vue": "3.5.46",
+    "vue-router": "5.5.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "6.0.11",
+    "vite": "8.3.8"
+  },
+  "engines": {
+    "node": "^22.16 || >= 24",
+    "npm": ">= 7"
+  }
+}

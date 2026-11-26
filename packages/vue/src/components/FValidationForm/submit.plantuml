@@ -1,0 +1,17 @@
+@startuml
+start
+if (beforeValidation()) is (<color:red>cancel) then
+stop
+else ()
+if (has form errors?) is (yes) then
+stop;
+else ()
+if (beforeSubmit()) is (<color:red>cancel) then
+stop;
+else ()
+if (has form errors?) is (yes) then
+stop;
+else ()
+:trigger submit event;
+stop;
+@enduml

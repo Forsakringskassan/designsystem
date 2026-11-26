@@ -1,0 +1,17 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FPhoneTextField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FPhoneTextFieldSimple",
+    components: { FPhoneTextField },
+    data() {
+        return { phone: "" };
+    },
+});
+</script>
+
+<template>
+    <f-phone-text-field v-model="phone" v-validation.required></f-phone-text-field>
+</template>

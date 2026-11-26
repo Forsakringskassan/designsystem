@@ -1,0 +1,262 @@
+import {
+    type Mock,
+    afterEach,
+    beforeEach,
+    describe,
+    expect,
+    it,
+    vi,
+} from "vitest";
+import { requiredValidator } from "./Validators/required-validator";
+import { ValidationService } from "./validation-service";
+import { type ValidatableHTMLElement } from "./validation-service-interface";
+
+ValidationService.registerValidator(requiredValidator);
+
+let fieldset: HTMLFieldSetElement;
+
+let input1InFieldset: HTMLInputElement,
+    input2InFieldset: HTMLInputElement,
+    inputOutsideFieldset: HTMLInputElement;
+
+function dispatchEvent(
+    eventName: string,
+    element: ValidatableHTMLElement,
+    target?: EventTarget,
+): void {
+    const event = new Event(eventName, { bubbles: true, cancelable: true });
+    if (target) {
+        Object.defineProperty(event, "target", {
+            writable: false,
+            value: target,
+        });
+    }
+    element.dispatchEvent(event);
+}
+
+function mountFieldsetElementAndValidator(): HTMLFieldSetElement {
+    document.body.innerHTML = /* HTML */ `
+        <div>
+            <fieldset id="fieldset-element">
+                <legend id="legend">Legend</legend>
+                <input id="test-element1" type="checkbox" />
+                <input id="test-element2" type="checkbox" />
+            </fieldset>
+            <input id="test-element3" type="checkbox" />
+        </div>
+    `;
+    return document.querySelector("fieldset")!;
+}
+
+beforeEach(() => {
+    fieldset = mountFieldsetElementAndValidator();
+    [input1InFieldset, input2InFieldset] = Array.from(
+        fieldset.querySelectorAll("input"),
+    );
+    inputOutsideFieldset = document.querySelector("#test-element3")!;
+});
+
+afterEach(() => {
+    document.body.replaceChildren();
+    ValidationService.clearAllStates();
+    vi.resetAllMocks();
+    vi.clearAllMocks();
+});
+
+it("On init - adds required attribute to child input elements, focusin- and validate event listener", () => {
+    expect.assertions(4);
+    const addEventListener = vi.fn();
+    fieldset.addEventListener = addEventListener;
+    ValidationService.addValidatorsToElement(fieldset, { required: {} });
+    expect(fieldset).toMatchSnapshot();
+    expect(addEventListener).toHaveBeenCalledWith(
+        "focusin",
+        expect.any(Function),
+    );
+    expect(addEventListener).toHaveBeenCalledWith(
+        "change",
+        expect.any(Function),
+    );
+    expect(addEventListener).toHaveBeenCalledWith(
+        "validate",
+        expect.any(Function),
+    );
+});
+
+describe("Document listeners", () => {
+    let validityMock: Mock;
+
+    beforeEach(() => {
+        validityMock = vi.fn();
+        fieldset.addEventListener("validity", validityMock);
+        ValidationService.addValidatorsToElement(fieldset, { required: {} });
+    });
+
+    afterEach(() => {
+        dispatchEvent("click", fieldset, inputOutsideFieldset); // Reset document event listener added by FieldsetValidatorHandler
+        vi.restoreAllMocks();
+    });
+
+    it("should add listener when user clicks onfocusable element", () => {
+        expect.assertions(3);
+        const listenerSpy = vi.spyOn(document, "addEventListener");
+        dispatchEvent("focusin", fieldset, input1InFieldset);
+        expect(listenerSpy).toHaveBeenCalledTimes(2);
+        expect(listenerSpy).toHaveBeenCalledWith(
+            "focusin",
+            expect.any(Function),
+        );
+        expect(listenerSpy).toHaveBeenCalledWith("click", expect.any(Function));
+    });
+
+    it("should NOT add listener when user clicks on non focusable element", () => {
+        expect.assertions(1);
+        const listenerSpy = vi.spyOn(document, "addEventListener");
+
+        const legend = document.querySelector("#legend")!;
+        dispatchEvent("focusin", fieldset, legend);
+
+        expect(listenerSpy).toHaveBeenCalledTimes(0);
+    });
+});
+
+describe("Fieldset group", () => {
+    let validityMock: Mock;
+
+    beforeEach(() => {
+        validityMock = vi.fn();
+        fieldset.addEventListener("validity", validityMock);
+        ValidationService.addValidatorsToElement(fieldset, { required: {} });
+        dispatchEvent("focusin", fieldset, input1InFieldset); // Init fieldset validation
+    });
+
+    afterEach(() => {
+        dispatchEvent("click", fieldset, inputOutsideFieldset); // Reset document event listener added by FieldsetValidatorHandler
+    });
+
+    it("should send validity event when checking radio/checkbox input", () => {
+        expect.assertions(2);
+        input1InFieldset.checked = true;
+        dispatchEvent("focusin", fieldset, input1InFieldset);
+        expect(validityMock.mock.calls[0][0].detail).toMatchSnapshot();
+
+        inputOutsideFieldset.click();
+        expect(validityMock.mock.calls[1][0].detail).toMatchSnapshot();
+    });
+
+    it("should send validity event when radio/checkbox input emit change event", () => {
+        expect.assertions(1);
+        input1InFieldset.checked = true;
+        dispatchEvent("change", fieldset, input1InFieldset);
+        expect(validityMock.mock.calls[0][0].detail.validityMode).toBe("VALID");
+    });
+
+    it("should not send validity event when unchecking radio/checkbox input", () => {
+        expect.assertions(3);
+        input1InFieldset.checked = true;
+        dispatchEvent("focusin", fieldset, input1InFieldset);
+        expect(validityMock.mock.calls).toHaveLength(1);
+
+        input1InFieldset.checked = false;
+        dispatchEvent("focusin", fieldset, input1InFieldset);
+        expect(validityMock.mock.calls).toHaveLength(1);
+
+        inputOutsideFieldset.click();
+        expect(validityMock.mock.calls).toHaveLength(2);
+    });
+
+    it("should send validity event when leaving fieldset group (focusin-event on element outside fieldset)", () => {
+        expect.assertions(4);
+        input1InFieldset.checked = false;
+        dispatchEvent("focusin", fieldset, input1InFieldset);
+        expect(validityMock.mock.calls).toHaveLength(0);
+
+        // focusin-events simulates keyboard-navigation with tab which leads to focus on next input-element in fieldset
+        dispatchEvent("focusin", fieldset, input2InFieldset);
+        expect(validityMock.mock.calls).toHaveLength(0);
+
+        // Leaves fieldset
+        dispatchEvent("focusin", fieldset, inputOutsideFieldset);
+
+        expect(validityMock.mock.calls).toHaveLength(1);
+
+        expect(validityMock.mock.calls[0][0].detail).toMatchSnapshot();
+    });
+
+    it("should send validity event when clicking outside fieldset group", () => {
+        expect.assertions(3);
+        dispatchEvent("focusin", fieldset, input1InFieldset);
+
+        expect(validityMock.mock.calls).toHaveLength(0);
+
+        // Leaves fieldset
+        dispatchEvent("click", fieldset, inputOutsideFieldset);
+        expect(validityMock.mock.calls).toHaveLength(1);
+
+        expect(validityMock.mock.calls[0][0].detail).toMatchSnapshot();
+    });
+
+    it("should send validity events for fieldset and required radio/checkbox input when leaving fieldset group", () => {
+        expect.assertions(3);
+        input1InFieldset.required = true;
+        ValidationService.addValidatorsToElement(input1InFieldset, {
+            required: {},
+        });
+
+        dispatchEvent("focusin", fieldset, input2InFieldset);
+        inputOutsideFieldset.click();
+
+        expect(validityMock).toHaveBeenCalledTimes(2);
+
+        expect(validityMock.mock.calls[0][0].detail).toEqual({
+            elementId: "fieldset-element",
+            isValid: false,
+            nativeEvent: "validate",
+            target: fieldset,
+            validationMessage: "Välj minst ett alternativ.",
+            validityMode: "INITIAL",
+        });
+        expect(validityMock.mock.calls[1][0].detail).toEqual({
+            elementId: "test-element1",
+            isValid: false,
+            nativeEvent: "validate",
+            target: input1InFieldset,
+            validationMessage: "Välj minst ett alternativ.",
+            validityMode: "INITIAL",
+        });
+    });
+
+    it("should send validity events for fieldset and required radio/checkbox input when checking non-required radio/checkbox input in fieldset", () => {
+        expect.assertions(3);
+        input1InFieldset.required = true;
+        ValidationService.addValidatorsToElement(input1InFieldset, {
+            required: {},
+        });
+
+        const nonRequiredInputInFieldset =
+            fieldset.querySelector<HTMLInputElement>("#test-element2")!;
+        nonRequiredInputInFieldset.checked = true;
+        dispatchEvent("focusin", fieldset, nonRequiredInputInFieldset);
+
+        // A validity event for both fieldset and required input should be emitted
+        expect(validityMock).toHaveBeenCalledTimes(2);
+
+        expect(validityMock.mock.calls[0][0].detail).toEqual({
+            elementId: "fieldset-element",
+            isValid: true,
+            nativeEvent: "validate",
+            target: fieldset,
+            validationMessage: "",
+            validityMode: "VALID",
+        });
+
+        expect(validityMock.mock.calls[1][0].detail).toEqual({
+            elementId: "test-element1",
+            isValid: false,
+            nativeEvent: "validate",
+            target: input1InFieldset,
+            validationMessage: "Välj minst ett alternativ.",
+            validityMode: "INITIAL",
+        });
+    });
+});

@@ -1,0 +1,69 @@
+@use "../../core";
+@use "../../core/size";
+@use "variables" as *;
+
+@at-root {
+    %icon--base {
+        display: inline-block;
+        height: var(--f-icon-size-small);
+        max-height: 100%;
+        max-width: 100%;
+        pointer-events: none;
+        width: var(--f-icon-size-small);
+    }
+
+    %icon--inset-top-right {
+        display: inline;
+        height: var(--f-icon-size-large);
+        position: absolute;
+        right: size.$margin-075;
+        top: core.densify(size.$margin-050);
+        transition: opacity var(--f-animation-duration-medium) ease-in-out;
+        width: var(--f-icon-size-large);
+    }
+}
+
+.icon {
+    @extend %icon--base;
+
+    &--flip-horizontal {
+        transform: scaleX(-1);
+    }
+
+    &--flip-vertical {
+        transform: scaleY(-1);
+    }
+
+    &--rotate-90 {
+        transform: rotate(90deg);
+    }
+
+    &--rotate-180 {
+        transform: rotate(180deg);
+    }
+
+    &--rotate-270 {
+        transform: rotate(270deg);
+    }
+}
+
+.icon {
+    &--new-window {
+        // anchor icons to top-right and bottom-left
+        .icon {
+            &.f-icon-new-window {
+                width: 55%;
+                height: 55%;
+                top: 0;
+                right: 0;
+            }
+
+            &:not(.f-icon-new-window) {
+                width: 83%;
+                height: 83%;
+                bottom: 0;
+                left: 5%;
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+$wizardstep-color-stepofselector-text: var(--fkds-color-text-secondary) !default;
+$wizardstep-color-line: var(--fkds-color-border-strong) !default;
+
+// HEADING
+$wizardstep-color-heading-open: var(--fkds-color-text-primary) !default;
+$wizardstep-color-heading-pending: var(--fkds-color-text-primary) !default;
+$wizardstep-color-heading-done: var(--fkds-color-feedback-text-positive) !default;
+
+// CIRCLE
+$wizardstep-color-circle-border-open: var(--fkds-color-border-strong) !default;
+$wizardstep-color-circle-border-pending: var(--fkds-color-border-strong) !default;
+$wizardstep-color-circle-border-done: var(--fkds-color-feedback-border-positive) !default;
+$wizardstep-color-circle-background-open: var(--fkds-color-background-primary) !default;
+$wizardstep-color-circle-background-pending: var(--fkds-color-background-primary) !default;
+$wizardstep-color-circle-background-done: var(--fkds-color-feedback-background-positive-strong) !default;
+$wizardstep-color-circle-content-open: var(--fkds-color-text-primary) !default;
+$wizardstep-color-circle-content-pending: var(--fkds-color-text-primary) !default;
+$wizardstep-color-circle-content-done: var(--fkds-color-text-inverted) !default;
+
+// BODY
+$wizardstep-color-text-default: var(--fkds-color-text-primary) !default;

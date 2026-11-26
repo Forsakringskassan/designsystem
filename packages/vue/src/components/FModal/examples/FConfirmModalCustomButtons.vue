@@ -1,0 +1,45 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
+<script lang="ts">
+import { defineComponent } from "vue";
+import { type ModalResult, FButton, FConfirmModal, openModal } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FConfirmModalCustomButtons",
+    components: { FButton },
+    data() {
+        return {
+            action: undefined as ModalResult | undefined,
+            isOpen: false,
+            threeButtons: [
+                {
+                    label: "Ja, ta bort",
+                    type: "primary",
+                    screenreader: "telefonnumret",
+                    event: "confirm",
+                },
+                { label: "Nej, uppdatera telefonnumret", event: "update" },
+                { label: "Nej, ta inte bort", screenreader: "telefonnumret", event: "dismiss" },
+            ],
+        };
+    },
+    methods: {
+        async onClick() {
+            this.action = await openModal(this, FConfirmModal, {
+                props: {
+                    heading: "Ta bort telefonnummer",
+                    content: "Vill du ta bort ditt telefonnummer?",
+                    buttons: this.threeButtons,
+                    size: "large",
+                },
+            });
+        },
+    },
+});
+</script>
+
+<template>
+    <div>
+        <f-button size="medium" variant="secondary" @click="onClick">Tre knappar</f-button>
+        <pre> Modalen stängdes med resultatet: {{ action }} </pre>
+    </div>
+</template>

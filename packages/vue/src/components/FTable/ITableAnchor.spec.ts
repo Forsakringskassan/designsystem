@@ -1,0 +1,205 @@
+import { type ComponentPublicInstance } from "vue";
+import { mount, shallowMount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
+import ITableAnchor from "./ITableAnchor.vue";
+import { normalizeTableColumn } from "./table-column";
+
+describe("text", () => {
+    interface Row {
+        value?: string | null;
+    }
+
+    it("should render empty text when `text` is null", () => {
+        expect.assertions(2);
+        const row: Row = { value: undefined };
+        const column = normalizeTableColumn<Row, keyof Row>({
+            type: "anchor",
+            header: "header",
+            text: () => null,
+            href: "",
+        });
+        const wrapper = shallowMount(
+            ITableAnchor as unknown as ComponentPublicInstance,
+            {
+                props: { column, row },
+            },
+        );
+
+        expect(wrapper.find("a").exists()).toBeFalsy();
+        expect(wrapper.find("td").text()).toBe("");
+    });
+
+    it("should render empty text when `text` is empty string", () => {
+        expect.assertions(2);
+        const row: Row = { value: undefined };
+        const column = normalizeTableColumn<Row, keyof Row>({
+            type: "anchor",
+            header: "header",
+            text: () => "",
+            href: "",
+        });
+        const wrapper = shallowMount(
+            ITableAnchor as unknown as ComponentPublicInstance,
+            {
+                props: { column, row },
+            },
+        );
+
+        expect(wrapper.find("a").exists()).toBeFalsy();
+        expect(wrapper.find("td").text()).toBe("");
+    });
+
+    it("should render anchor with text when `text` is set", () => {
+        expect.assertions(2);
+        const row: Row = { value: undefined };
+        const column = normalizeTableColumn<Row, keyof Row>({
+            type: "anchor",
+            header: "header",
+            text: () => "my awesome anchor",
+            href: "",
+        });
+        const wrapper = shallowMount(
+            ITableAnchor as unknown as ComponentPublicInstance,
+            {
+                props: { column, row },
+            },
+        );
+
+        expect(wrapper.find("a").exists()).toBeTruthy();
+        expect(wrapper.find("td").text()).toBe("my awesome anchor");
+    });
+
+    it("should render icon when `iconLeft` or `iconRight` is set", () => {
+        expect.assertions(3);
+        const row: Row = { value: undefined };
+        const column = normalizeTableColumn<Row, keyof Row>({
+            type: "anchor",
+            header: "header",
+            iconLeft: "chevrons-left",
+            iconRight: "arrow-right",
+            text: () => "my awesome anchor",
+            href: "",
+        });
+        const wrapper = mount(
+            ITableAnchor as unknown as ComponentPublicInstance,
+            {
+                props: { column, row },
+            },
+        );
+
+        expect(wrapper.find("a").exists()).toBeTruthy();
+        expect(wrapper.find(".f-icon-chevrons-left").exists()).toBeTruthy();
+        expect(wrapper.find(".f-icon-arrow-right").exists()).toBeTruthy();
+    });
+
+    it("should have custom target attribute when `target` is set", () => {
+        expect.assertions(2);
+        const row: Row = { value: undefined };
+        const column = normalizeTableColumn<Row, keyof Row>({
+            type: "anchor",
+            header: "header",
+            target: "_self",
+            text: () => "my awesome anchor",
+            href: "",
+        });
+        const wrapper = shallowMount(
+            ITableAnchor as unknown as ComponentPublicInstance,
+            {
+                props: { column, row },
+            },
+        );
+
+        expect(wrapper.find("a").exists()).toBeTruthy();
+        expect(wrapper.find("a").attributes("target")).toBe("_self");
+    });
+
+    it("should have default target attribute when `target` is not set", () => {
+        expect.assertions(2);
+        const row: Row = { value: undefined };
+        const column = normalizeTableColumn<Row, keyof Row>({
+            type: "anchor",
+            header: "header",
+            text: () => "my awesome anchor",
+            href: "",
+        });
+        const wrapper = shallowMount(
+            ITableAnchor as unknown as ComponentPublicInstance,
+            {
+                props: { column, row },
+            },
+        );
+
+        expect(wrapper.find("a").exists()).toBeTruthy();
+        expect(wrapper.find("a").attributes("target")).toBe("_blank");
+    });
+
+    it("should render basic string href", () => {
+        expect.assertions(1);
+        const row: Row = { value: undefined };
+        const column = normalizeTableColumn<Row, keyof Row>({
+            type: "anchor",
+            header: "header",
+            text: () => "my awesome anchor",
+            href: "https://example.com",
+        });
+        const wrapper = shallowMount(
+            ITableAnchor as unknown as ComponentPublicInstance,
+            {
+                props: { column, row },
+            },
+        );
+
+        expect(wrapper.find("a").attributes("href")).toBe(
+            "https://example.com",
+        );
+    });
+
+    it("should render row-based href", () => {
+        expect.assertions(1);
+        const row: Row = { value: "my-awesome-path" };
+        const column = normalizeTableColumn<Row, keyof Row>({
+            type: "anchor",
+            header: "header",
+            text: () => "my awesome anchor",
+            href: (row) => `https://example.com/${String(row.value)}`,
+        });
+        const wrapper = shallowMount(
+            ITableAnchor as unknown as ComponentPublicInstance,
+            {
+                props: { column, row },
+            },
+        );
+
+        expect(wrapper.find("a").attributes("href")).toBe(
+            "https://example.com/my-awesome-path",
+        );
+    });
+
+    it("should prevent default when Space is pressed on the anchor cell", () => {
+        expect.assertions(1);
+        const row: Row = { value: undefined };
+        const column = normalizeTableColumn<Row, keyof Row>({
+            type: "anchor",
+            header: "header",
+            text: () => "my awesome anchor",
+            href: "https://example.com",
+        });
+        const wrapper = mount(
+            ITableAnchor as unknown as ComponentPublicInstance,
+            {
+                props: { column, row },
+            },
+        );
+
+        const event = new KeyboardEvent("keydown", {
+            bubbles: true,
+            cancelable: true,
+            key: " ",
+            code: "Space",
+        });
+
+        wrapper.get("td").element.dispatchEvent(event);
+
+        expect(event.defaultPrevented).toBe(true);
+    });
+});

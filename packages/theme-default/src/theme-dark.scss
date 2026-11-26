@@ -1,0 +1,7 @@
+// stylelint-disable custom-property-empty-line-before -- technical debt, should just add a comment before each block
+
+@use "dark/theme" as dark;
+
+:root {
+    @include dark.theme;
+}

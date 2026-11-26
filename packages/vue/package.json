@@ -1,0 +1,105 @@
+{
+  "name": "@fkui/vue",
+  "version": "6.65.1",
+  "description": "Vue implementation of FKUI components",
+  "keywords": [
+    "fkui",
+    "designsystem",
+    "vue"
+  ],
+  "homepage": "https://designsystem.forsakringskassan.se/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
+    "directory": "packages/vue"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.esm.js",
+      "require": "./dist/cjs/index.cjs.js"
+    },
+    "./cypress": {
+      "types": "./dist/types/cypress.d.ts",
+      "import": "./dist/esm/cypress.esm.js",
+      "require": "./dist/cjs/cypress.cjs.js"
+    },
+    "./selectors": {
+      "types": "./dist/types/selectors.d.ts",
+      "import": "./dist/esm/selectors.esm.js",
+      "require": "./dist/cjs/selectors.cjs.js"
+    },
+    "./htmlvalidate": "./htmlvalidate/index.mjs",
+    "./htmlvalidate/cypress": "./htmlvalidate/cypress.js",
+    "./package.json": "./package.json",
+    "./tsconfig.json": "./tsconfig-consumer.json"
+  },
+  "main": "dist/cjs/index.cjs.js",
+  "module": "dist/esm/index.esm.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "htmlvalidate",
+    "tsconfig-consumer.json",
+    "!**/*.spec.{js,ts,d.ts}",
+    "!htmlvalidate/tsconfig.json"
+  ],
+  "scripts": {
+    "build": "run-s build:lib build:dts build:api build:test-bundles",
+    "build:api": "fk-api-extractor --patch-augmentations --patch-declare-var-vls api-extractor.*.json",
+    "build:dts": "vue-tsc -b",
+    "build:lib": "fk-build-vue-lib --clean --pageobjects --selectors",
+    "build:test-bundles": "node build-test-bundles.mjs",
+    "clean": "rimraf -g dist temp",
+    "prepack": "release-prepack --bundle --retain-scripts",
+    "postpack": "release-postpack",
+    "prepublishOnly": "release-prepublish --bundle --retain-scripts",
+    "start": "vite --"
+  },
+  "dependencies": {
+    "@vueuse/core": "15.0.0",
+    "lodash": "4.18.1",
+    "punycode": "2.3.1"
+  },
+  "devDependencies": {
+    "@fkui/date": "6.65.1",
+    "@fkui/design": "6.65.1",
+    "@fkui/icon-lib-default": "6.65.1",
+    "@fkui/logic": "6.65.1",
+    "@fkui/test-utils": "6.65.1",
+    "@fkui/theme-default": "6.65.0",
+    "@forsakringskassan/vite-lib-config": "6.0.2",
+    "@forsakringskassan/vitest-config-jsdom": "5.1.0",
+    "@types/punycode": "2.1.4",
+    "@vue/test-utils": "2.6.0",
+    "esbuild": "0.28.2",
+    "vite": "8.3.8",
+    "vitest": "5.1.1",
+    "vue": "3.5.46",
+    "vue-router": "5.5.1"
+  },
+  "peerDependencies": {
+    "@fkui/date": "^6.65.1",
+    "@fkui/design": "^6.65.1",
+    "@fkui/logic": "^6.65.1",
+    "fk-icons": "^4.30.1",
+    "html-validate": ">= 10.10.0",
+    "vue": "^3.5.40"
+  },
+  "peerDependenciesMeta": {
+    "fk-icons": {
+      "optional": true
+    },
+    "html-validate": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": "^22.16 || >= 24",
+    "npm": ">= 7"
+  },
+  "externalDependencies": []
+}

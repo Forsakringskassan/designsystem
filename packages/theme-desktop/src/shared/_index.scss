@@ -1,0 +1,11 @@
+// stylelint-disable custom-property-empty-line-before -- technical debt, should just add a comment before each block
+
+@use "../palette-variables" as *;
+
+@mixin variables {
+    /// Default font size, 1 rem will be based on this value.
+    --f-font-size-default-rem: 14px;
+
+    /// Default font size for larger viewports, 1 rem will be based on this value.
+    --f-font-size-default-large-up-rem: 14px;
+}

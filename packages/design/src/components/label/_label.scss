@@ -1,0 +1,51 @@
+@use "../../core";
+@use "../../core/size";
+@use "../icon/icon";
+@use "variables" as *;
+
+.label {
+    color: $label-color-text;
+    display: inline-block;
+    font-size: var(--f-font-size-standard);
+    font-weight: var(--f-font-weight-medium);
+    line-height: var(--f-line-height-large);
+    margin-bottom: core.densify(size.$margin-025);
+    width: var(--f-width-full);
+
+    &.sr-only {
+        width: auto;
+    }
+
+    &__message {
+        display: block;
+        font-weight: var(--f-font-weight-normal);
+        margin-top: var(--f-label-message-margin-top);
+
+        &--error {
+            color: $label-color-text-message-error;
+        }
+    }
+
+    &__icon-wrapper {
+        position: relative;
+    }
+
+    &__icon {
+        @extend %icon--inset-top-right;
+
+        &--left {
+            position: relative;
+            top: core.densify(3px);
+        }
+    }
+
+    &__description {
+        display: block;
+        font-weight: var(--f-font-weight-normal);
+        color: $label-color-text-description;
+
+        &--format {
+            color: $label-color-text-description-format;
+        }
+    }
+}

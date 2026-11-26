@@ -1,0 +1,13 @@
+// TEXT
+$radio-button-color-text-default: var(--fkds-color-text-primary) !default;
+$radio-button-color-text-disabled: var(--fkds-color-text-disabled) !default;
+
+// BACKGROUND
+$radio-button-color-background-default: var(--fkds-color-background-primary) !default;
+$radio-button-color-background-selected: var(--fkds-color-select-background-primary-default) !default;
+$radio-button-color-background-disabled: var(--fkds-color-background-disabled) !default;
+
+// BORDER
+$radio-button-color-border-default: var(--fkds-color-border-primary) !default;
+$radio-button-color-border-selected: transparent !default;
+$radio-button-color-border-disabled: var(--fkds-color-border-disabled) !default;

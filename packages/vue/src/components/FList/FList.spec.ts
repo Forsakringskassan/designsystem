@@ -1,0 +1,759 @@
+import "html-validate/vitest";
+import { defineComponent } from "vue";
+import { mount, shallowMount } from "@vue/test-utils";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { type ListArray, type UnknownItem } from "../../types";
+import * as ListUtils from "../../utils/list-utils";
+import FList from "./FList.vue";
+
+const items = [
+    { id: "1", name: "TEST 1", permission: "Read" },
+    { id: "2", name: "TEST 2", permission: "Write" },
+    { id: "3", name: "TEST 3", permission: "Read" },
+];
+
+const oneItem = [{ id: "1", name: "TEST 1", permission: "Read" }];
+
+afterEach(() => {
+    vi.restoreAllMocks();
+});
+
+describe("snapshots", () => {
+    it("should match snapshot with a list containg three items", () => {
+        expect.assertions(1);
+        const wrapper = shallowMount(FList, {
+            props: {
+                items,
+                keyAttribute: "id",
+            },
+            slots: {
+                default: `<p>{{ params.item.id }}, {{ params.item.name }}, {{ params.item.permission }}</p>`,
+            },
+        });
+        expect(wrapper.element).toMatchSnapshot();
+    });
+
+    it("should match snapshot with list being selectable with second item active", async () => {
+        expect.assertions(1);
+        const wrapper = shallowMount(FList, {
+            props: {
+                items,
+                selectable: true,
+                keyAttribute: "id",
+            },
+            slots: {
+                default: `<p>{{ params.item.id }}, {{ params.item.name }}, {{ params.item.permission }}</p>`,
+                screenreader: /* HTML */ `<span>{{ params.item.name }}</span>`,
+            },
+        });
+
+        await wrapper
+            .findAll("li")[1]
+            .findAll(".list__item__itempane")[0]
+            .trigger("click");
+
+        expect(wrapper.element).toMatchSnapshot();
+    });
+
+    it("should match snapshot with list being selectable with first and second item selected", () => {
+        expect.assertions(1);
+        const preSelectedItems = [items[0], items[1]];
+        const wrapper = shallowMount(FList, {
+            props: {
+                items,
+                selectable: true,
+                modelValue: preSelectedItems,
+                keyAttribute: "id",
+            },
+            slots: {
+                default: `<p>{{ params.item.id }}, {{ params.item.name }}, {{ params.item.permission }}</p>`,
+                screenreader: /* HTML */ `<span>{{ params.item.name }}</span>`,
+            },
+        });
+        expect(wrapper.element).toMatchSnapshot();
+    });
+
+    it("should match snapshot with no items in list and default text", () => {
+        expect.assertions(1);
+        const wrapper = shallowMount(FList, {
+            props: {
+                items: [],
+            },
+        });
+        expect(wrapper.element).toMatchSnapshot();
+    });
+
+    it("should match snapshot with no items in list and custom text", () => {
+        expect.assertions(1);
+        const wrapper = shallowMount(FList, {
+            props: {
+                items: [],
+            },
+            slots: {
+                empty: "THE LIST IS EMPTY!",
+            },
+        });
+        expect(wrapper.element).toMatchSnapshot();
+    });
+});
+
+describe("active element", () => {
+    it("should activate element and emit change event when clicking item", async () => {
+        expect.assertions(2);
+        const wrapper = shallowMount(FList, {
+            props: {
+                items,
+                selectable: true,
+            },
+            slots: {
+                screenreader: "",
+            },
+        });
+        const item = wrapper.findAll(".list__item__itempane")[1];
+        await item.trigger("click");
+        const li = item.element.closest("li")!;
+        expect(Array.from(li.classList.values())).toMatchInlineSnapshot(`
+            [
+              "list__item--active",
+              "list__item",
+            ]
+        `);
+        expect(wrapper.emitted("change")![0][0]).toMatchInlineSnapshot(`
+            {
+              "id": "2",
+              "name": "TEST 2",
+              "permission": "Write",
+            }
+        `);
+    });
+
+    it.each([" ", "Spacebar"])(
+        "should activate element and emit change event when item getting space key (%s) down event",
+        async (key: string) => {
+            expect.assertions(2);
+            const wrapper = shallowMount(FList, {
+                props: {
+                    items,
+                    selectable: true,
+                },
+                slots: {
+                    screenreader: "",
+                },
+            });
+            const li = wrapper.findAll("li")[1];
+            await li.trigger("keydown", { key });
+            expect(Array.from(li.element.classList.values())).toMatchSnapshot();
+            expect(wrapper.emitted("change")![0][0]).toMatchSnapshot();
+        },
+    );
+
+    it("should activate element and emit click event when clicking item", async () => {
+        expect.assertions(3);
+        const wrapper = shallowMount(FList, {
+            props: {
+                items,
+                selectable: true,
+            },
+            slots: {
+                screenreader: "",
+            },
+        });
+        const item = wrapper.findAll(".list__item__itempane")[1];
+        await item.trigger("click");
+        const li = item.element.closest("li")!;
+        expect(Array.from(li.classList.values())).toMatchInlineSnapshot(`
+            [
+              "list__item--active",
+              "list__item",
+            ]
+        `);
+        expect(wrapper.emitted("click")![0][0]).toMatchInlineSnapshot(`
+            {
+              "id": "2",
+              "name": "TEST 2",
+              "permission": "Write",
+            }
+        `);
+        expect(wrapper.emitted("click")).toHaveLength(1);
+    });
+
+    it.each([" ", "Spacebar"])(
+        "should activate element and emit click event when item getting space key (%s) down event",
+        async (key: string) => {
+            expect.assertions(3);
+            const wrapper = shallowMount(FList, {
+                props: {
+                    items,
+                    selectable: true,
+                },
+                slots: {
+                    screenreader: "",
+                },
+            });
+            const li = wrapper.findAll("li")[1];
+            await li.trigger("keydown", { key });
+            expect(Array.from(li.element.classList.values())).toMatchSnapshot();
+            expect(wrapper.emitted("click")![0][0]).toMatchSnapshot();
+            expect(wrapper.emitted("click")!).toHaveLength(1);
+        },
+    );
+
+    it("should emit click event when clicking on active item", async () => {
+        expect.assertions(1);
+        const wrapper = shallowMount(FList, {
+            props: {
+                items,
+                selectable: true,
+            },
+            slots: {
+                screenreader: "",
+            },
+        });
+        const item = wrapper.findAll(".list__item__itempane")[1];
+        await item.trigger("click");
+        await item.trigger("click");
+        expect(wrapper.emitted("click")!).toHaveLength(2);
+    });
+
+    it.each([" ", "Spacebar"])(
+        "should emit click event when active item getting space key (%s) down event",
+        async (key: string) => {
+            expect.assertions(1);
+            const wrapper = shallowMount(FList, {
+                props: {
+                    items,
+                    selectable: true,
+                },
+                slots: {
+                    screenreader: "",
+                },
+            });
+            const li = wrapper.findAll("li")[1];
+            await li.trigger("keydown", { key });
+            await li.trigger("keydown", { key });
+            expect(wrapper.emitted("click")!).toHaveLength(2);
+        },
+    );
+
+    it("should emit update:active when clicking on item", async () => {
+        expect.assertions(1);
+        const wrapper = shallowMount(FList, {
+            props: {
+                items,
+                selectable: true,
+            },
+            slots: {
+                screenreader: "",
+            },
+        });
+        const item = wrapper.findAll(".list__item__itempane")[1];
+        await item.trigger("click");
+        expect(wrapper.emitted("update:active")![0][0]).toMatchInlineSnapshot(`
+            {
+              "id": "2",
+              "name": "TEST 2",
+              "permission": "Write",
+            }
+        `);
+    });
+
+    it("should reset active item", async () => {
+        expect.assertions(2);
+        const TestComponent = defineComponent({
+            name: "TestComponent",
+            components: { FList },
+            data() {
+                return {
+                    items,
+                    activeItem: undefined as UnknownItem | undefined,
+                    selectedItems: [],
+                };
+            },
+            template: /* HTML */ `
+                <f-list
+                    v-model="selectedItems"
+                    v-model:active="activeItem"
+                    :items="items"
+                    key-attribute="id"
+                    selectable
+                >
+                    <template #default="{ item }">
+                        <h3>{{ item.frukt }}</h3>
+                    </template>
+                    <template #screenreader="{ item }">
+                        Frukt {{ item.frukt }}
+                    </template>
+                </f-list>
+            `,
+        });
+        const wrapper = mount(TestComponent);
+        wrapper.vm.$data.activeItem = items[1];
+        await wrapper.vm.$nextTick();
+        const listItem = wrapper.findAll(".list__item")[1];
+        expect(listItem.classes()).toContain("list__item--active");
+        wrapper.vm.$data.activeItem = undefined;
+        await wrapper.vm.$nextTick();
+        expect(listItem.classes()).not.toContain("list__item--active");
+    });
+});
+
+describe("select events", () => {
+    it("should emit select event when items selectpane is clicked", async () => {
+        expect.assertions(1);
+        const wrapper = mount(FList, {
+            props: {
+                items,
+                selectable: true,
+            },
+            slots: {
+                screenreader: "",
+            },
+        });
+        await wrapper.findAll("div.list__item__selectpane")[1].trigger("click");
+        expect(wrapper.emitted().select).toEqual([[items[1]]]);
+    });
+
+    it("should emit select event when items checkbox is clicked", async () => {
+        expect.assertions(1);
+        const wrapper = mount(FList, {
+            props: {
+                items,
+                selectable: true,
+                keyAttribute: "id",
+            },
+            slots: {
+                screenreader: "",
+            },
+        });
+        await wrapper.findAll("input")[1].trigger("click");
+        expect(wrapper.emitted().select).toEqual([[items[1]]]);
+    });
+
+    it("should emit unselect event when items checkbox is clicked", async () => {
+        expect.assertions(1);
+        const preSelected = [items[1]];
+        const wrapper = mount(FList, {
+            props: {
+                items,
+                selectable: true,
+                modelValue: preSelected,
+            },
+            slots: {
+                screenreader: "",
+            },
+        });
+        await wrapper.findAll("input")[1].trigger("click");
+        expect(wrapper.emitted().unselect).toEqual([[items[1]]]);
+    });
+});
+
+describe("v-model (update event)", () => {
+    it("should update v-model when selecting and unselecting same item", async () => {
+        expect.assertions(2);
+        const modelValue: ListArray = [];
+        const wrapper = mount(FList, {
+            props: {
+                items,
+                selectable: true,
+                modelValue,
+            },
+            slots: {
+                screenreader: "",
+            },
+        });
+        const secondCheckbox = wrapper.findAll("input")[1];
+
+        await secondCheckbox.trigger("click");
+        expect(wrapper.emitted("update:modelValue")![0][0])
+            .toMatchInlineSnapshot(`
+            [
+              {
+                "id": "2",
+                "name": "TEST 2",
+                "permission": "Write",
+              },
+            ]
+        `);
+
+        await secondCheckbox.trigger("click");
+        expect(
+            wrapper.emitted("update:modelValue")![1][0],
+        ).toMatchInlineSnapshot(`[]`);
+    });
+
+    it("should update v-model when selecting two different items", async () => {
+        expect.assertions(2);
+        const modelValue: ListArray = [];
+        const wrapper = mount(FList, {
+            props: {
+                items,
+                selectable: true,
+                modelValue,
+            },
+            slots: {
+                screenreader: "",
+            },
+        });
+        const firstCheckbox = wrapper.findAll("input")[0];
+        const secondCheckbox = wrapper.findAll("input")[1];
+
+        await firstCheckbox.trigger("click");
+        expect(wrapper.emitted("update:modelValue")![0][0]).toEqual([
+            {
+                id: "1",
+                name: "TEST 1",
+                permission: "Read",
+            },
+        ]);
+
+        await secondCheckbox.trigger("click");
+        expect(wrapper.emitted("update:modelValue")![1][0]).toEqual([
+            {
+                id: "1",
+                name: "TEST 1",
+                permission: "Read",
+            },
+            {
+                id: "2",
+                name: "TEST 2",
+                permission: "Write",
+            },
+        ]);
+    });
+
+    it("should update v-model when selecting and unselecting two items", async () => {
+        expect.assertions(2);
+        const modelValue: ListArray = [];
+        const wrapper = mount(FList, {
+            props: {
+                items,
+                selectable: true,
+                modelValue,
+            },
+            slots: {
+                screenreader: "",
+            },
+        });
+        const firstCheckbox = wrapper.findAll("input")[0];
+        const secondCheckbox = wrapper.findAll("input")[1];
+
+        await firstCheckbox.trigger("click");
+        await secondCheckbox.trigger("click");
+
+        expect(wrapper.emitted("update:modelValue")![0][0]).toEqual([
+            {
+                id: "1",
+                name: "TEST 1",
+                permission: "Read",
+            },
+            {
+                id: "2",
+                name: "TEST 2",
+                permission: "Write",
+            },
+        ]);
+
+        await firstCheckbox.trigger("click");
+        await secondCheckbox.trigger("click");
+
+        expect(
+            wrapper.emitted("update:modelValue")![3][0],
+        ).toMatchInlineSnapshot(`[]`);
+    });
+
+    it("should select items when updating v-model", async () => {
+        expect.assertions(6);
+        const wrapper = mount(FList, {
+            props: {
+                items,
+                selectable: true,
+            },
+            slots: {
+                screenreader: "",
+            },
+        });
+
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+        let allInputs = wrapper.element.querySelectorAll("input");
+        expect(allInputs[0].checked).toBeFalsy();
+        expect(allInputs[1].checked).toBeFalsy();
+        expect(allInputs[2].checked).toBeFalsy();
+
+        await wrapper.setProps({ modelValue: [items[0], items[2]] });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- false positive */
+        await wrapper.vm.$nextTick();
+
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+        allInputs = wrapper.element.querySelectorAll("input");
+        expect(allInputs[0].checked).toBeTruthy();
+        expect(allInputs[1].checked).toBeFalsy();
+        expect(allInputs[2].checked).toBeTruthy();
+    });
+
+    it("should update activeItem from v-model if provided or changed", async () => {
+        expect.assertions(2);
+        const active = items[1];
+        const wrapper = shallowMount(FList, {
+            props: {
+                items,
+                selectable: true,
+                active,
+            },
+            slots: {
+                screenreader: "",
+            },
+        });
+
+        const liItems = wrapper.findAll("li");
+        expect(Array.from(liItems[1].element.classList.values())).toContain(
+            "list__item--active",
+        );
+
+        await wrapper.setProps({ active: items[2] });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- false positive */
+        await wrapper.vm.$nextTick();
+
+        expect(Array.from(liItems[2].element.classList.values())).toContain(
+            "list__item--active",
+        );
+    });
+
+    it("should be able to preselect items", () => {
+        expect.assertions(3);
+        const wrapper = mount(FList, {
+            props: {
+                items,
+                selectable: true,
+                modelValue: [items[0], items[2]],
+            },
+            slots: {
+                screenreader: "",
+            },
+        });
+
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+        const allInputs = wrapper.element.querySelectorAll("input");
+        expect(allInputs[0].checked).toBeTruthy();
+        expect(allInputs[1].checked).toBeFalsy();
+        expect(allInputs[2].checked).toBeTruthy();
+    });
+});
+
+describe("`keyAttribute`", () => {
+    it("should not throw if valid and unique", () => {
+        expect.assertions(1);
+        expect(() => {
+            shallowMount(FList, {
+                props: {
+                    keyAttribute: "id",
+                    items: [{ id: "a" }, { id: "b" }, { id: "c" }],
+                },
+            });
+        }).not.toThrow();
+    });
+
+    it("should throw error if not unique in items", () => {
+        expect.assertions(1);
+        expect(() => {
+            shallowMount(FList, {
+                props: {
+                    keyAttribute: "id",
+                    items: [{ id: "a" }, { id: "b" }, { id: "b" }],
+                },
+            });
+        }).toThrowErrorMatchingInlineSnapshot(
+            `[Error: Expected each item to have identifier [id] with unique value but encountered duplicate of "b" in item index 2.]`,
+        );
+    });
+
+    it("should be optional", () => {
+        expect.assertions(1);
+        expect(() => {
+            shallowMount(FList, {
+                props: {
+                    items: [{ id: "a" }, { id: "b" }, { id: "c" }],
+                },
+            });
+        }).not.toThrow();
+    });
+});
+
+describe("keyboard navigation", () => {
+    it.each(["Up", "Down", "ArrowUp", "ArrowDown"])(
+        "should pass key '%s' to handleKeyboardFocusNavigation method",
+        async (key: string) => {
+            expect.assertions(1);
+            const methodSpy = vi.spyOn(
+                ListUtils,
+                "handleKeyboardFocusNavigation",
+            );
+            const wrapper = shallowMount(FList, {
+                props: {
+                    items: oneItem,
+                    selectable: true,
+                },
+                slots: {
+                    screenreader: "",
+                },
+            });
+            // Need to use setProps to trigger Updated() on the component
+            await wrapper.setProps({ items });
+            const li = wrapper.findAll("li")[1];
+            await li.trigger("keydown", { key });
+            expect(methodSpy).toHaveBeenCalledWith(
+                key,
+                expect.anything(),
+                expect.anything(),
+            );
+        },
+    );
+
+    it.each`
+        key           | action
+        ${"PageUp"}   | ${"previous"}
+        ${"PageDown"} | ${"next"}
+    `(
+        "should emit 'paginateDataset:$action' event on '$key' key press",
+        async ({ key, action }: { key: string; action: string }) => {
+            expect.assertions(1);
+            const listener = vi.fn();
+            const wrapper = shallowMount(FList, {
+                props: {
+                    items: oneItem,
+                    selectable: true,
+                },
+                slots: {
+                    screenreader: "Default",
+                },
+            });
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+            wrapper.element.addEventListener(
+                `paginateDataset:${action}`,
+                listener,
+            );
+            // Need to use setProps to trigger Updated() on the component
+            await wrapper.setProps({ items });
+            const li = wrapper.findAll("li")[1];
+            await li.trigger("keydown", { key });
+            expect(listener).toHaveBeenCalled();
+        },
+    );
+});
+
+describe("screenreader slot", () => {
+    it("should throw exception if missing screenreader slot and selectable option", () => {
+        expect.assertions(1);
+        expect(() => {
+            shallowMount(FList, {
+                props: {
+                    items: [],
+                    selectable: true,
+                },
+            });
+        }).toThrowErrorMatchingInlineSnapshot(
+            `[Error: Slot "screenreader" is required when having "selectable" & "checkbox" option.]`,
+        );
+    });
+});
+
+describe("html-validate", () => {
+    it("should require `key-attribute` to be non-empty if used", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ ` <f-list items key-attribute=""></f-list> `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "key-attribute" has invalid value "" (attribute-allowed-values)
+          > 1 |  <f-list items key-attribute=""></f-list>
+              |                ^^^^^^^^^^^^^
+          Selector: f-list"
+        `);
+    });
+
+    it("should require items attribute", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ ` <f-list></f-list> `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-list> is missing required "items" attribute (element-required-attributes)
+          > 1 |  <f-list></f-list>
+              |   ^^^^^^
+          Selector: f-list"
+        `);
+    });
+
+    it("should allow aria-label or aria-labelledby", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-list :items="[]" aria-label="lorem ipsum"></f-list>
+
+            <h2 id="header">lorem ipsum</h2>
+            <f-list :items="[]" aria-labelledby="header"></f-list>
+        `;
+        await expect(markup).toBeValid();
+    });
+
+    it("should not allow empty aria-label", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-list :items="[]" aria-label=""></f-list>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "aria-label" has invalid value "" (attribute-allowed-values)
+            1 |
+          > 2 |             <f-list :items="[]" aria-label=""></f-list>
+              |                                 ^^^^^^^^^^
+            3 |
+          Selector: f-list"
+        `);
+    });
+});
+
+describe.each([{ selectable: false }, { selectable: true }])(
+    "striped when selectable $selectable",
+    ({ selectable }) => {
+        it("should not set striped class when striped is not set", () => {
+            expect.assertions(1);
+            const wrapper = mount(FList, {
+                props: {
+                    items,
+                    selectable,
+                },
+                slots: {
+                    screenreader: "",
+                },
+            });
+            const list = wrapper.find("ul");
+            expect(list.classes()).not.contain("list--striped");
+        });
+
+        it("should set striped class when striped is set to false", () => {
+            expect.assertions(1);
+            const wrapper = mount(FList, {
+                props: {
+                    items,
+                    selectable,
+                    striped: false,
+                },
+                slots: {
+                    screenreader: "",
+                },
+            });
+            const list = wrapper.find("ul");
+            expect(list.classes()).not.contain("list--striped");
+        });
+
+        it("should set striped class when striped is set to true", () => {
+            expect.assertions(1);
+            const wrapper = mount(FList, {
+                props: {
+                    items,
+                    selectable,
+                    striped: true,
+                },
+                slots: {
+                    screenreader: "",
+                },
+            });
+            const list = wrapper.find("ul");
+            expect(list.classes()).contain("list--striped");
+        });
+    },
+);

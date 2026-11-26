@@ -1,0 +1,91 @@
+import { describe, expect, it, vi } from "vitest";
+import { getUpdateFn } from "./get-update-fn";
+
+interface TableRow {
+    id: string;
+    text: string;
+}
+
+describe("getUpdateFn()", () => {
+    it("should return and call provided update-function", () => {
+        expect.assertions(1);
+        const fnMock = vi.fn(
+            (_row: TableRow, _newValue: string, _oldValue: string) => {
+                /* empty */
+            },
+        );
+
+        const rows: TableRow[] = [
+            {
+                id: "1",
+                text: "aaa",
+            },
+            {
+                id: "2",
+                text: "bbb",
+            },
+        ];
+        const myUpdateFn = getUpdateFn(fnMock, undefined);
+        myUpdateFn(rows[0], "ccc", "ddd");
+        expect(fnMock).toHaveBeenNthCalledWith(1, rows[0], "ccc", "ddd");
+    });
+
+    it("should create and call created update-function", () => {
+        expect.assertions(1);
+        const rows: TableRow[] = [
+            {
+                id: "1",
+                text: "aaa",
+            },
+            {
+                id: "2",
+                text: "bbb",
+            },
+        ];
+        const key = "text";
+        const myUpdateFn = getUpdateFn<TableRow, string, keyof TableRow>(
+            undefined,
+            key,
+        );
+        myUpdateFn(rows[0], "new value", "aaa");
+        expect(rows).toStrictEqual([
+            {
+                id: "1",
+                text: "new value",
+            },
+            {
+                id: "2",
+                text: "bbb",
+            },
+        ]);
+    });
+
+    it("should return a function when fn and key is undefined", () => {
+        expect.assertions(1);
+        const rows: TableRow[] = [
+            {
+                id: "1",
+                text: "aaa",
+            },
+            {
+                id: "2",
+                text: "bbb",
+            },
+        ];
+        const myUpdateFn = getUpdateFn(undefined, undefined);
+
+        myUpdateFn(rows[0], "new value", "aaa");
+
+        //rows should be untouched
+        expect(rows).toStrictEqual([
+            {
+                id: "1",
+                text: "aaa",
+            },
+            {
+                id: "2",
+                text: "bbb",
+            },
+        ]);
+    });
+});

@@ -1,0 +1,5 @@
+# pageobject output
+pageobject/**/*.d.ts
+pageobject/**/*.d.ts.map
+pageobject/**/*.js
+pageobject/**/*.js.map

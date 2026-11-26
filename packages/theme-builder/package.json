@@ -1,0 +1,67 @@
+{
+  "name": "@fkui/theme-builder",
+  "version": "6.65.0",
+  "description": "Build script for FKUI theme",
+  "keywords": [
+    "fkui",
+    "designsystem",
+    "css"
+  ],
+  "homepage": "https://designsystem.forsakringskassan.se/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
+    "directory": "packages/theme-builder"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "bin": {
+    "fkui-theme-builder": "./bin/fkui-theme-builder.mjs"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "tsc",
+    "build": "node build.mjs",
+    "test": "node --test",
+    "unit": "node --test"
+  },
+  "dependencies": {
+    "@adobe/css-tools": "5.0.0",
+    "@forsakringskassan/sass-module-importer": "3.0.0",
+    "cssnano": "9.9.0",
+    "get-css-variables": "1.1.1",
+    "postcss-scss": "4.0.9",
+    "sass": "1.108.2",
+    "yargs": "18.2.0"
+  },
+  "devDependencies": {
+    "@html-validate/release-scripts": "7.6.22",
+    "@types/node": "22.20.5",
+    "@types/yargs": "17.0.35",
+    "@typescript/native": "npm:typescript@7.0.2",
+    "dedent": "1.7.2",
+    "esbuild": "0.28.2",
+    "memfs": "4.80.1",
+    "postcss": "8.5.33",
+    "stream-buffers": "3.0.3",
+    "typescript": "npm:@typescript/typescript6@6.0.2"
+  },
+  "peerDependencies": {
+    "postcss": "^8.0.0"
+  },
+  "engines": {
+    "node": "^22.22.3 || ^24.15.0 || >= 26",
+    "npm": ">= 7"
+  },
+  "externalDependencies": [
+    "cssnano",
+    "postcss",
+    "sass"
+  ]
+}

@@ -1,0 +1,36 @@
+@use "../../core/size";
+@use "../../core/mixins/breakpoints" as bp;
+@use "../selectable-item/selectable-item";
+@use "./radio-button";
+
+.radio-button-group {
+    &__content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &--horizontal {
+        .radio-button-group__content {
+            flex-direction: row;
+
+            .radio-button {
+                margin-bottom: 0;
+            }
+
+            @include bp.breakpoint-down(sm) {
+                flex-direction: column;
+
+                .radio-button {
+                    margin-bottom: size.$margin-100;
+                }
+            }
+        }
+    }
+    &--border {
+        .radio-button-group__content {
+            .radio-button {
+                @extend %selectable-item;
+            }
+        }
+    }
+}

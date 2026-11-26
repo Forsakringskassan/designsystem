@@ -1,0 +1,18 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FFileItem } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FFileItemDefault",
+    components: { FFileItem },
+    data() {
+        return { fileName: "bar.jpg", fileType: "image/jpeg" };
+    },
+    methods: {},
+});
+</script>
+
+<template>
+    <f-file-item :file-name :mime-type="fileType"></f-file-item>
+</template>

@@ -1,0 +1,23 @@
+@use "../../core";
+@use "../../core/config-variables";
+@use "variables" as *;
+
+.output-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    line-height: max(1, core.densify(var(--f-line-height-large)));
+    margin: 0 0 core.densify(var(--f-margin-component-bottom));
+    position: relative;
+    width: var(--f-width-full);
+
+    &__output {
+        color: $output-field-color-text-default;
+        line-height: max(1, core.densify(var(--f-line-height-large)));
+        font-size: var(--f-font-size-standard);
+        min-height: var(--f-height-medium);
+        position: relative;
+        width: var(--f-width-full);
+        margin-bottom: 0;
+    }
+}

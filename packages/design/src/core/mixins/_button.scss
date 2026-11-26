@@ -1,0 +1,89 @@
+@use "focus";
+@use "variables" as *;
+
+@mixin make-button-variant(
+    $name,
+    $background-color,
+    $background-color--hover: $background-color,
+    $background-color--active: $background-color--hover,
+    $background-color--focus: $background-color,
+    $background-color--disabled: $button-color-background-disabled,
+    $border-color: $button-color-border-default,
+    $border-color--hover: $border-color,
+    $border-color--active: $border-color--hover,
+    $border-color--focus: $border-color,
+    $border-color--disabled: $button-color-border-disabled,
+    $border-width: var(--f-border-width-medium),
+    $color,
+    $color--hover: $color,
+    $color--active: $color--hover,
+    $color--focus: $color,
+    $color--disabled: $button-color-text-disabled,
+    $shadow,
+    $shadow--hover: $shadow,
+    $shadow--active: $shadow,
+    $padding-top,
+    $padding-right,
+    $padding-bottom,
+    $padding-left
+) {
+    background-color: $background-color;
+    border-color: $border-color;
+    border-width: $border-width;
+    box-shadow: $shadow;
+    color: $color;
+    padding: $padding-top $padding-right $padding-bottom $padding-left;
+    transition-duration: var(--f-animation-duration-extra-short);
+    transition-property: background-color, border-color, transform;
+    transition-timing-function: var(--f-button-animation-curve);
+
+    &:focus-visible {
+        background-color: $background-color--focus;
+        border-color: $border-color--focus;
+        color: $color--focus;
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: $background-color--hover;
+            border-color: $border-color--hover;
+            box-shadow: $shadow--hover;
+            color: $color--hover;
+        }
+    }
+
+    &:active {
+        background-color: $background-color--active;
+        border-color: $border-color--active;
+        box-shadow: $shadow--active;
+        color: $color--active;
+        transform: translateY(1px);
+    }
+
+    &:focus-visible {
+        @include focus.focus-indicator;
+    }
+
+    &.disabled,
+    &.disabled:hover,
+    &:disabled,
+    &:disabled:hover,
+    &[aria-disabled="true"],
+    &[aria-disabled="true"]:hover,
+    &#{$name}--disabled,
+    &#{$name}--disabled:hover {
+        background-color: $background-color--disabled;
+        border-color: $border-color--disabled;
+        color: $color--disabled;
+        pointer-events: none;
+    }
+
+    &[aria-disabled="true"] {
+        pointer-events: none;
+
+        @media (forced-colors: active) {
+            border-color: GrayText;
+            color: GrayText;
+        }
+    }
+}

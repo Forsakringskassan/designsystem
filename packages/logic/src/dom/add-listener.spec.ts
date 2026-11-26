@@ -1,0 +1,49 @@
+import {
+    type Mock,
+    afterEach,
+    beforeEach,
+    describe,
+    expect,
+    it,
+    vi,
+} from "vitest";
+import { addFocusListener } from "./add-listener";
+
+function setupDomElements(): HTMLElement[] {
+    const a = document.createElement("input");
+    const b = document.createElement("input");
+    document.body.append(a);
+    document.body.append(b);
+    return [a, b];
+}
+
+afterEach(() => {
+    document.body.innerHTML = "<div></div>";
+});
+
+describe("addFocusListener", () => {
+    let mockEventListener: Mock;
+
+    beforeEach(() => {
+        mockEventListener = vi.fn();
+    });
+
+    it("should be able to add focusListener", () => {
+        expect.assertions(1);
+        const elements = setupDomElements();
+        elements[0].addEventListener = mockEventListener;
+        elements[1].addEventListener = mockEventListener;
+
+        addFocusListener(elements, vi.fn());
+        expect(mockEventListener).toHaveBeenCalledTimes(2);
+    });
+
+    it("should call callback function when focus is changed", () => {
+        expect.assertions(1);
+        const mockEventCallback = vi.fn();
+        const elements = setupDomElements();
+        addFocusListener(elements, mockEventCallback);
+        elements[0].focus();
+        expect(mockEventCallback).toHaveBeenCalled();
+    });
+});

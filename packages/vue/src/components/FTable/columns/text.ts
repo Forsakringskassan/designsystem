@@ -1,0 +1,119 @@
+import { type Component } from "vue";
+import { type ValidatorConfigs } from "@fkui/logic";
+import { type InputTypeText, inputFieldConfig } from "../input-fields-config";
+import {
+    type NormalizedTableColumnBase,
+    type OmittedNormalizedColumnProperties,
+    type TableColumnBase,
+} from "./base";
+import {
+    defaultTnumValue,
+    getLabelFn,
+    getUpdateFn,
+    getValueFn,
+} from "./helpers";
+
+/**
+ * @public
+ */
+export interface TableColumnText<
+    T,
+    K extends keyof T,
+> extends TableColumnBase<T> {
+    /**
+     * Column type (`text` or a specialized field such as `text:date` or
+     * `text:number`)
+     */
+    type: InputTypeText;
+    key?: K;
+    /** Screenreader text for input field */
+    label?(this: void, row: T): string;
+    /** When enabled, the cells are rendered with tabular numbers */
+    tnum?: boolean;
+    /**
+     * Allow cell content to wrap onto multiple lines.
+     * Default `false` (content is displayed on a single line).
+     */
+    wrap?: boolean;
+    /** Set the alignment of the cells. Default: `"left"` */
+    align?: "left" | "right";
+    /** Arbitrary attributes passed to input field */
+    attributes?:
+        | Record<string, string | number | boolean | undefined>
+        | ((
+              this: void,
+              row: T,
+          ) => Record<string, string | number | boolean | undefined>);
+    value?(this: void, row: T): string;
+    update?(this: void, row: T, newValue: string, oldValue: string): void;
+    /** When enabled, the cells are editable. Default: `false` */
+    editable?: boolean | ((this: void, row: T) => boolean);
+    validation?: ValidatorConfigs;
+    parser?(this: void, value: string): string | undefined;
+    formatter?(this: void, value: string): string | undefined;
+}
+
+/**
+ * @internal
+ */
+export interface NormalizedTableColumnText<
+    T,
+    K,
+> extends NormalizedTableColumnBase<T, K> {
+    readonly type: InputTypeText;
+    readonly validation: ValidatorConfigs;
+    readonly hasValidation: boolean;
+    readonly tnum: boolean;
+    readonly wrap: boolean;
+    readonly align: "left" | "right";
+    readonly component: Component<{
+        row: T;
+        column: NormalizedTableColumnText<T, K>;
+        activeErrorAnchor?: HTMLElement;
+    }>;
+    attributes?:
+        | Record<string, string | number | boolean | undefined>
+        | ((
+              this: void,
+              row: T,
+          ) => Record<string, string | number | boolean | undefined>);
+    label(this: void, row: T): string;
+    value(this: void, row: T): string;
+    update(this: void, row: T, newValue: string, oldValue: string): void;
+    parser(this: void, value: string): string | undefined;
+    formatter(this: void, value: string): string | undefined;
+    editable(this: void, row: T): boolean;
+}
+
+/**
+ * @internal
+ */
+export function normalizeTextColumn<T, K extends keyof T>(
+    column: TableColumnText<T, K>,
+): Omit<NormalizedTableColumnText<T, K>, OmittedNormalizedColumnProperties> {
+    const type = column.type;
+    const config = inputFieldConfig[type];
+    /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt (real bug), "this" is never bound so it will never work as intended, plus the typings are wrong */
+    const parser = column.parser ?? config.parser;
+    /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt (real bug), "this" is never bound so it will never work as intended, plus the typings are wrong */
+    const formatter = column.formatter ?? config.formatter;
+    return {
+        type,
+        tnum: column.tnum ?? defaultTnumValue(type),
+        wrap: column.wrap ?? false,
+        align: column.align ?? "left",
+        attributes: column.attributes,
+        label: getLabelFn(column.label),
+        value: getValueFn(column.value, column.key, String, ""),
+        update: getUpdateFn(column.update, column.key),
+        editable:
+            typeof column.editable === "function"
+                ? column.editable
+                : () => Boolean(column.editable ?? false),
+        validation: column.validation ?? {},
+        hasValidation:
+            column.type.startsWith("text:") || Boolean(column.validation),
+        formatter,
+        parser,
+    };
+}

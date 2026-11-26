@@ -1,0 +1,169 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
+<script lang="ts">
+import { defineComponent, toRefs } from "vue";
+import { focus } from "@fkui/logic";
+import { TranslationMixin } from "../../plugins";
+import { getElementFromVueRef } from "../../utils";
+import { FIcon } from "../FIcon";
+import { useLayoutPanel } from "./f-layout-left-panel-mixin";
+
+export default defineComponent({
+    name: "FLayoutLeftPanel",
+    components: {
+        FIcon,
+    },
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
+    mixins: [TranslationMixin],
+    props: {
+        /**
+         * The default width for the panel in pixels
+         */
+        initialWidth: {
+            type: String,
+            default: "320",
+            validator(value: string): boolean {
+                const parsed = Math.trunc(Number(value));
+                return !Number.isNaN(parsed);
+            },
+        },
+        /**
+         * Unique accessible name for navigation landmark.
+         */
+        navLabel: {
+            type: String,
+            required: false,
+            default: "",
+        },
+    },
+    setup(props) {
+        const { initialWidth } = toRefs(props);
+        return useLayoutPanel({
+            initialWidth,
+            minWidth: "150" /* px */,
+            maxWidth: 0.5 /* ratio [1..0] */,
+            grow: "right",
+        });
+    },
+    data() {
+        return {
+            isOpen: true,
+            offsetTop: 0,
+        };
+    },
+    computed: {
+        navigationStyle(): Record<string, string> {
+            if (this.isOpen) {
+                return { width: `${String(this.panelWidth)}px`, top: `${String(this.offsetTop)}px` };
+            }
+            return { top: `${String(this.offsetTop)}px` };
+        },
+        primaryStyle(): Record<string, string> {
+            if (this.isOpen) {
+                return { "margin-left": `${String(this.panelWidth)}px` };
+            }
+            return { "margin-left": `3.5rem` };
+        },
+        // This is to make word-wrap work in IE11
+        contentStyle(): Record<string, string> {
+            return { "max-width": `${String(this.panelWidth - 35)}px` };
+        },
+        ariaLabel(): string {
+            return this.navLabel || this.$t("fkui.layout-left-panel.nav.label", "Vänstermeny");
+        },
+    },
+    mounted(): void {
+        const headers = document.querySelectorAll(".layout-application-template__header");
+        const header = headers.item(0) as HTMLElement;
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+        if (header) {
+            this.offsetTop = header.offsetHeight;
+        }
+    },
+    methods: {
+        toggleSideNavigation(): void {
+            this.isOpen = !this.isOpen;
+            window.setTimeout(() => {
+                this.updatePrimaryGrid();
+
+                const ref = this.isOpen ? "close-button" : "open-button";
+                const element = getElementFromVueRef(this.$refs[ref]);
+                focus(element);
+            }, 0);
+        },
+    },
+});
+</script>
+
+<template>
+    <div class="layout-navigation">
+        <!-- [html-validate-disable-next no-inline-style] -->
+        <nav
+            id="layout-navigation__navigation"
+            class="layout-navigation__navigation"
+            :style="navigationStyle"
+            :aria-expanded="isOpen"
+            :aria-label
+        >
+            <div class="layout-navigation__navigation__inner">
+                <template v-if="isOpen">
+                    <!-- [html-validate-disable-next no-inline-style] -->
+                    <div class="layout-navigation__navigation__inner__title" :style="contentStyle">
+                        <!-- @slot Slot for heading -->
+                        <slot name="heading"></slot>
+                        <button
+                            ref="close-button"
+                            class="layout-navigation__navigation__inner__button"
+                            type="button"
+                            @click="toggleSideNavigation"
+                        >
+                            <span class="sr-only">Stäng navigationspanelen</span>
+                            <f-icon name="chevrons-left" />
+                        </button>
+                    </div>
+                    <div>
+                        <hr />
+                    </div>
+                    <!-- [html-validate-disable-next no-inline-style] -->
+                    <div
+                        class="layout-navigation__navigation__inner__content scroll-target"
+                        :class="gridClasses"
+                        :style="contentStyle"
+                    >
+                        <!--
+@slot Slot for displaying content in the navigation-panel
+                        -->
+                        <slot name="content"></slot>
+                    </div>
+                </template>
+                <div v-if="!isOpen" class="layout-navigation__navigation__inner--minimized">
+                    <button
+                        ref="open-button"
+                        class="layout-navigation__navigation__inner__button"
+                        type="button"
+                        @click="toggleSideNavigation"
+                    >
+                        <span class="sr-only">Öppna navigationspanelen</span>
+                        <f-icon name="bars" />
+                    </button>
+                </div>
+            </div>
+            <div v-if="isOpen" class="layout-navigation__navigation__border" @mousedown="onBorderMouseDown">
+                <div class="layout-navigation__navigation__border__dot"></div>
+                <div class="layout-navigation__navigation__border__dot"></div>
+                <div class="layout-navigation__navigation__border__dot"></div>
+            </div>
+        </nav>
+        <!-- [html-validate-disable-next no-inline-style] -->
+        <div
+            id="layout-navigation__primary"
+            class="layout-navigation__primary"
+            :class="leftPrimaryClasses"
+            :style="primaryStyle"
+        >
+            <!--
+@slot Slot for displaying the primary content.
+            -->
+            <slot name="default"></slot>
+        </div>
+    </div>
+</template>

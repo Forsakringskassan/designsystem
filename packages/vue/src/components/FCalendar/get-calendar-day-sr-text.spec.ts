@@ -1,0 +1,102 @@
+import { FDate } from "@fkui/date";
+import { type TranslateFunction } from "@fkui/logic";
+import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { getCalendarDaySrText } from "./get-calendar-day-sr-text";
+
+const t: TranslateFunction = (
+    key: string,
+    defaultValueOrArgs?: string | Record<string, unknown>,
+): string => {
+    if (typeof defaultValueOrArgs !== "string") {
+        throw new TypeError("default translation missing");
+    }
+
+    return defaultValueOrArgs;
+};
+
+vi.useFakeTimers();
+
+afterAll(() => {
+    vi.useRealTimers();
+});
+
+describe("yesterday, today, tomorrow", () => {
+    beforeEach(() => {
+        vi.setSystemTime(new Date("2022-12-24"));
+    });
+
+    it("should return today text when date is today", () => {
+        expect.assertions(1);
+        expect(getCalendarDaySrText(FDate.now(), true, false, t)).toBe(
+            "idag lördag\u{A0}24\u{A0}december\u{A0}2022",
+        );
+    });
+
+    it("should return yesterday text when date is yesterday", () => {
+        expect.assertions(1);
+        expect(
+            getCalendarDaySrText(FDate.now().addDays(-1), true, false, t),
+        ).toBe("igår fredag\u{A0}23\u{A0}december\u{A0}2022");
+    });
+
+    it("should return tomorrow text when date is tomorrow", () => {
+        expect.assertions(1);
+        expect(
+            getCalendarDaySrText(FDate.now().addDays(1), true, false, t),
+        ).toBe("imorgon söndag\u{A0}25\u{A0}december\u{A0}2022");
+    });
+
+    it("should not return extra text when date differs from yesterday, today, tomorrow", () => {
+        expect.assertions(2);
+        expect(
+            getCalendarDaySrText(FDate.now().addDays(-2), true, false, t),
+        ).toBe("torsdag\u{A0}22\u{A0}december\u{A0}2022");
+
+        expect(
+            getCalendarDaySrText(FDate.now().addDays(2), true, false, t),
+        ).toBe("måndag\u{A0}26\u{A0}december\u{A0}2022");
+    });
+});
+
+describe("selected", () => {
+    it("should return selected text when date is selected", () => {
+        expect.assertions(1);
+        expect(
+            getCalendarDaySrText(FDate.fromIso("2022-06-22"), true, true, t),
+        ).toBe("vald dag onsdag\u{A0}22\u{A0}juni\u{A0}2022");
+    });
+
+    it("should not return selected text when date is not selected", () => {
+        expect.assertions(1);
+        expect(
+            getCalendarDaySrText(FDate.fromIso("2022-06-22"), true, false, t),
+        ).toBe("onsdag\u{A0}22\u{A0}juni\u{A0}2022");
+    });
+});
+
+describe("enabled", () => {
+    it("should not return disabled text when date is enabled", () => {
+        expect.assertions(1);
+        expect(
+            getCalendarDaySrText(FDate.fromIso("2022-06-22"), true, false, t),
+        ).toBe("onsdag\u{A0}22\u{A0}juni\u{A0}2022");
+    });
+
+    it("should return disabled text when date is disabled", () => {
+        expect.assertions(1);
+        expect(
+            getCalendarDaySrText(FDate.fromIso("2022-06-22"), false, false, t),
+        ).toBe("inte valbar onsdag\u{A0}22\u{A0}juni\u{A0}2022");
+    });
+});
+
+describe("mixed today, selected, enabled", () => {
+    it("should return text in correct order when date is today, selected and enabled", () => {
+        expect.assertions(1);
+        vi.setSystemTime(new Date("2022-08-08"));
+
+        expect(
+            getCalendarDaySrText(FDate.fromIso("2022-08-08"), true, true, t),
+        ).toBe("vald dag idag måndag\u{A0}8\u{A0}augusti\u{A0}2022");
+    });
+});

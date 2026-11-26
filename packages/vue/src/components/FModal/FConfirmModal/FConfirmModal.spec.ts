@@ -1,0 +1,206 @@
+import { mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
+import { FKUIConfigButtonOrder, config } from "../../../config";
+import FConfirmModal from "./FConfirmModal.vue";
+
+describe("events", () => {
+    it('should send "close" event on close button clicked', async () => {
+        expect.assertions(1);
+        const wrapper = mount(FConfirmModal, {
+            props: {
+                isOpen: true,
+            },
+        });
+        const closeElement = wrapper.get(".close-button");
+
+        await closeElement.trigger("click");
+        expect(wrapper.emitted().close).toBeTruthy();
+    });
+
+    it('should send "confirm" event on confirm button clicked', async () => {
+        expect.assertions(1);
+        const wrapper = mount(FConfirmModal, {
+            props: {
+                isOpen: true,
+            },
+        });
+        const dismissElement = wrapper.get(".button--primary");
+
+        await dismissElement.trigger("click");
+        expect(wrapper.emitted().confirm).toBeTruthy();
+    });
+
+    it('should send custom event "unsure" event on maybe button clicked', async () => {
+        expect.assertions(1);
+        const wrapper = mount(FConfirmModal, {
+            props: {
+                isOpen: true,
+                buttons: [
+                    {
+                        label: "Kanske",
+                        reason: "unsure",
+                        event: "unsure",
+                        type: "secondary",
+                    },
+                ],
+            },
+            emits: ["close", "unsure"],
+        });
+        const closeElement = wrapper.get(".button--secondary");
+
+        await closeElement.trigger("click");
+        expect(wrapper.emitted().unsure).toBeTruthy();
+    });
+});
+
+describe("button order", () => {
+    it("should display buttons left to right", () => {
+        expect.assertions(1);
+        config.buttonOrder = FKUIConfigButtonOrder.LEFT_TO_RIGHT;
+        const wrapper = mount(FConfirmModal, {
+            props: {
+                isOpen: true,
+            },
+        });
+        const buttonsGroup = wrapper.get(".modal__footer");
+        const primary = buttonsGroup.findAll("button")[0];
+        expect(primary.classes()).toContain("button--primary");
+    });
+
+    it("should display buttons right to left", () => {
+        expect.assertions(1);
+        config.buttonOrder = FKUIConfigButtonOrder.RIGHT_TO_LEFT;
+        const wrapper = mount(FConfirmModal, {
+            props: {
+                isOpen: true,
+            },
+        });
+        const buttonsGroup = wrapper.get(".modal__footer");
+        const primary = buttonsGroup.findAll("button")[1];
+        expect(primary.classes()).toContain("button--primary");
+    });
+});
+
+describe("props", () => {
+    it("should change heading text via headring prop", () => {
+        expect.assertions(1);
+        const wrapper = mount(FConfirmModal, {
+            props: {
+                isOpen: true,
+                heading: "foo heading",
+            },
+        });
+
+        const heading = wrapper.find("h1");
+        expect(heading.text()).toBe("foo heading");
+    });
+
+    it("should change content text via content prop", () => {
+        expect.assertions(1);
+        const wrapper = mount(FConfirmModal, {
+            props: {
+                isOpen: true,
+                content: "bar content",
+            },
+        });
+
+        const content = wrapper.find(".modal__content");
+        expect(content.text()).toBe("bar content");
+    });
+
+    it("should append screenreader text if given", () => {
+        expect.assertions(1);
+        const wrapper = mount(FConfirmModal, {
+            props: {
+                isOpen: true,
+                buttons: [
+                    {
+                        label: "Lorem ipsum",
+                        screenreader: "with screenreader text",
+                        type: "secondary",
+                    },
+                ],
+            },
+        });
+
+        const button = wrapper.get(".button--secondary");
+        expect(button.html()).toMatchInlineSnapshot(
+            `"<button type="button" class="button button--secondary button-group__item"><span>Lorem ipsum</span> <span class="sr-only">&nbsp;with screenreader text</span></button>"`,
+        );
+    });
+
+    it("should not append extra space if no screenreader text is given", () => {
+        expect.assertions(1);
+        const wrapper = mount(FConfirmModal, {
+            props: {
+                isOpen: true,
+                buttons: [{ label: "Lorem ipsum", type: "secondary" }],
+            },
+        });
+
+        const button = wrapper.get(".button--secondary");
+        expect(button.text()).toBe("Lorem ipsum");
+    });
+});
+
+describe("slots", () => {
+    it("should change heading via slot", () => {
+        expect.assertions(1);
+        const wrapper = mount(FConfirmModal, {
+            props: {
+                isOpen: true,
+            },
+            slots: {
+                heading: "foo heading",
+            },
+        });
+
+        const heading = wrapper.find("h1");
+        expect(heading.text()).toBe("foo heading");
+    });
+
+    it("should change content via slot", () => {
+        expect.assertions(1);
+        const wrapper = mount(FConfirmModal, {
+            props: {
+                isOpen: true,
+            },
+            slots: {
+                heading: "<pre>bar content</pre>",
+            },
+        });
+
+        const content = wrapper.find("pre");
+        expect(content.text()).toBe("bar content");
+    });
+
+    it("should use slot over prop in heading", () => {
+        expect.assertions(1);
+        const wrapper = mount(FConfirmModal, {
+            props: {
+                isOpen: true,
+                heading: "prop heading",
+            },
+            slots: {
+                heading: "slot heading",
+            },
+        });
+
+        expect(wrapper.find(".modal__header").text()).toBe("slot heading");
+    });
+
+    it("should use content slot over prop", () => {
+        expect.assertions(1);
+        const wrapper = mount(FConfirmModal, {
+            props: {
+                isOpen: true,
+                content: "<p>prop content</p>",
+            },
+            slots: {
+                content: "<pre>slot content</pre>",
+            },
+        });
+
+        expect(wrapper.find(".modal__content").text()).toBe("slot content");
+    });
+});

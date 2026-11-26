@@ -1,0 +1,49 @@
+<script setup lang="ts">
+import { computed, useTemplateRef } from "vue";
+import { useTranslate } from "../../plugins";
+import { type FTableCellApi } from "./f-table-api";
+
+const { selectable, state } = defineProps<{ selectable: "single" | "multi"; state: boolean | "indeterminate" }>();
+
+const emit = defineEmits<{
+    /**
+     * Emitted when checkbox value changes.
+     */
+    toggle: [];
+}>();
+const $t = useTranslate();
+const indeterminate = computed(() => state === "indeterminate");
+/* eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary -- false positive */
+const checked = computed(() => (state === "indeterminate" ? false : state));
+const expose: Partial<FTableCellApi> = {};
+const ariaLabel = computed(() => {
+    if (!checked.value || indeterminate.value) {
+        /** Screenreader text for "toggle all" checkbox when not all rows are selected. */
+        return $t("fkui.ftable.select-all.aria-label", "Välj alla rader");
+    }
+
+    /** Screenreader text for "toggle all" checkbox when all rows are selected. */
+    return $t("fkui.ftable.unselect-all.aria-label", "Avmarkera alla rader");
+});
+if (selectable === "multi") {
+    const inputRef = useTemplateRef("input");
+    expose.tabstopEl = inputRef;
+}
+
+defineExpose(expose);
+</script>
+
+<template>
+    <th scope="col" class="table-ng__column table-ng__column--selectable table-ng__column--shrink">
+        <input
+            v-if="selectable === 'multi'"
+            ref="input"
+            :checked
+            :indeterminate
+            type="checkbox"
+            :aria-label
+            tabindex="-1"
+            @change="emit('toggle')"
+        />
+    </th>
+</template>

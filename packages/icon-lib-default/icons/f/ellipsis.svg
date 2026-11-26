@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <!--!Font Awesome Free v6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+    <path
+        d="M 40 256 a 56 56 0 1 1 112 0 A 56 56 0 1 1 40 256 z m 160 0 a 56 56 0 1 1 112 0 a 56 56 0 1 1 -112 0 z m 216 -56 a 56 56 0 1 1 0 112 a 56 56 0 1 1 0 -112 z"
+        fill="currentColor"
+    />
+</svg>

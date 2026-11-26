@@ -1,0 +1,10 @@
+{
+    "vueCompilerOptions": {
+        "experimentalModelPropName": {
+            "": {
+                "f-radio-field": true,
+                "f-checkbox-field": true
+            }
+        }
+    }
+}

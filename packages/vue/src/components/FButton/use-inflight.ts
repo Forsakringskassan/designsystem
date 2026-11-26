@@ -1,0 +1,34 @@
+import { type Ref, ref } from "vue";
+
+export type UseInflightFn = () => void | Promise<void>;
+export type UseInflightWrapped = () => Promise<void>;
+
+export interface UseInflight {
+    inflight: Readonly<Ref<boolean>>;
+    fn: UseInflightWrapped | undefined;
+}
+
+export function useInflight(fn: unknown, disabled: Ref<boolean>): UseInflight {
+    const inflight = ref(false);
+
+    if (!fn || typeof fn !== "function") {
+        return { inflight, fn: undefined };
+    }
+
+    const originalFn = fn;
+
+    async function wrapper(): Promise<void> {
+        if (disabled.value) {
+            return;
+        }
+        try {
+            inflight.value = true;
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+            await originalFn();
+        } finally {
+            inflight.value = false;
+        }
+    }
+
+    return { inflight, fn: wrapper };
+}

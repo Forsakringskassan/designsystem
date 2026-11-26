@@ -1,0 +1,214 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
+<script lang="ts">
+import { type PropType, computed, defineComponent } from "vue";
+import { ElementIdService, ValidationService, focus } from "@fkui/logic";
+import { type ComponentValidityEvent, type ErrorItem, type GroupValidityEvent } from "../../types";
+import { buttonInflightInjectionKey } from "../FButton";
+import { type BeforeNavigate, FErrorList } from "../FErrorList";
+import { FValidationGroup } from "../FValidationGroup";
+import { type FValidationFormCallback, FValidationFormAction } from "./types";
+
+function noop(): void {
+    /* do nothing */
+}
+
+export default defineComponent({
+    name: "FValidationForm",
+    components: { FValidationGroup, FErrorList },
+    provide() {
+        return {
+            [buttonInflightInjectionKey]: computed(() => this.isInflight),
+        };
+    },
+    inheritAttrs: false,
+    props: {
+        /**
+         * Callback function triggered when the form is submitted.
+         *
+         * Since this component declares `emits: ["submit"]`, Vue automatically
+         * intercepts the `@submit` event listener. By declaring this `onSubmit`
+         * prop, the component can intercept, await, and monitor the lifecycle
+         * of the parent's asynchronous submit handler before the event is emitted.
+         *
+         * @ignore
+         */
+        onSubmit: {
+            type: Function as PropType<FValidationFormCallback>,
+            required: false,
+            default() {
+                return noop;
+            },
+        },
+        /**
+         * If given, this function is called before the `submit` event is emitted.
+         *
+         * Optionally this callback may return `FValidationFormAction`. If
+         * `FValidationFormAction.CANCEL` is returned the submission is
+         * cancelled and no event will be emitted. The consumer should make it
+         * clear why the action was cancelled.
+         *
+         * If a promise is returned it will be awaited.
+         *
+         * The consumer does not need to validate form data, it is handled
+         * internally by the component.
+         */
+        beforeSubmit: {
+            type: Function as PropType<FValidationFormCallback>,
+            required: false,
+            default() {
+                return noop;
+            },
+        },
+        /**
+         * If given, this function is called before the form data is validated and the `submit` event is emitted.
+         */
+        beforeValidation: {
+            type: Function as PropType<FValidationFormCallback>,
+            required: false,
+            default() {
+                return noop;
+            },
+        },
+        /**
+         * The id for the form id attribute.
+         * If the prop is not set a random value will be generated.
+         */
+        id: {
+            type: String,
+            required: false,
+            default: () => ElementIdService.generateElementId(),
+        },
+        /**
+         * Include the error list component.
+         */
+        useErrorList: {
+            type: Boolean,
+            required: false,
+            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
+            default: true,
+        },
+        /**
+         *Optional callback function to the error list component for performing actions before navigation.
+         */
+        errorListBeforeNavigate: {
+            type: Function as PropType<BeforeNavigate>,
+            required: false,
+            default(): BeforeNavigate {
+                return noop;
+            },
+        },
+    },
+    emits: [
+        /**
+         * Emitted when form is successfully submitted.
+         */
+        "submit",
+    ],
+    data(): { validity: GroupValidityEvent; submitted: boolean; isInflight: boolean } {
+        return {
+            validity: { isValid: true, componentsWithError: [], componentCount: 0 },
+            submitted: false,
+            isInflight: false,
+        };
+    },
+    computed: {
+        groupKey(): string {
+            return `${this.id}-group`;
+        },
+        errors(): ErrorItem[] {
+            return this.validity.componentsWithError.map((c: ComponentValidityEvent) => ({
+                id: c.elementId,
+                focusElementId: c.focusElementId,
+                title: c.errorMessage,
+            }));
+        },
+        displayErrors(): boolean {
+            return this.useErrorList && this.submitted && this.errors.length > 0;
+        },
+    },
+    methods: {
+        async hasFormErrors(): Promise<boolean> {
+            ValidationService.setSubmitted(this.$el);
+            await ValidationService.validateAllElements(this.$el);
+            await this.$nextTick();
+            await new Promise((resolve) => window.setTimeout(resolve, 0));
+
+            if (this.validity.isValid) {
+                return false;
+            }
+            if (this.useErrorList) {
+                focus(this.$refs.errors as HTMLElement);
+            } else {
+                const firstError = this.validity.componentsWithError[0];
+                const element = this.$el.querySelector(`#${firstError.focusElementId}`);
+                focus(element);
+            }
+
+            return true;
+        },
+        async submit(event: Event): Promise<void> {
+            this.submitted = true;
+            this.isInflight = true;
+
+            try {
+                /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+                const beforeValidation = this.beforeValidation ? await this.beforeValidation() : undefined;
+                if (beforeValidation === FValidationFormAction.CANCEL) {
+                    this.isInflight = false;
+                    return;
+                }
+
+                if (await this.hasFormErrors()) {
+                    this.isInflight = false;
+                    return;
+                }
+
+                /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+                const beforeAction = this.beforeSubmit ? await this.beforeSubmit() : undefined;
+                if (beforeAction === FValidationFormAction.CANCEL) {
+                    this.isInflight = false;
+                    return;
+                }
+
+                if (await this.hasFormErrors()) {
+                    this.isInflight = false;
+                    return;
+                }
+
+                const parentSubmitHandler = this.$props.onSubmit;
+
+                if (typeof parentSubmitHandler === "function") {
+                    await parentSubmitHandler(event);
+                } else {
+                    this.$emit("submit", event);
+                }
+            } finally {
+                this.isInflight = false;
+            }
+        },
+    },
+});
+</script>
+
+<template>
+    <f-validation-group :key="groupKey" v-model="validity" :stop-propagation="true">
+        <!-- [html-validate-disable-next wcag/h32 -- submit button is slotted] -->
+        <form :id v-bind="$attrs" novalidate autocomplete="off" @submit.prevent="submit">
+            <nav v-if="displayErrors" ref="errors" tabindex="-1" role="group">
+                <f-error-list :items="errors" :before-navigate="errorListBeforeNavigate">
+                    <template #title>
+                        <!--
+                            @slot **optional** Slot for displaying error description.
+
+                            After this slot a list of invalid elements is listed.
+                            When an item is clicked it will scroll to and focus that invalid element.
+                        -->
+                        <slot name="error-message"></slot>
+                    </template>
+                </f-error-list>
+            </nav>
+            <!-- @slot Slot for content, i.e. input elements. -->
+            <slot name="default"></slot>
+        </form>
+    </f-validation-group>
+</template>

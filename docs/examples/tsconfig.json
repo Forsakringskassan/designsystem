@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "tsBuildInfoFile": "${configDir}/../temp/tsconfig.examples.tsbuildinfo",
+        "rootDir": ".",
+        "noEmit": true,
+        "allowJs": true,
+        "checkJs": true,
+        "strict": true,
+        "isolatedModules": true,
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "types": ["node"],
+        "lib": ["es2023", "dom"],
+        "skipLibCheck": true
+    },
+    "include": ["**/*.ts", "**/*.js"],
+    "exclude": ["**/*-nocompile*"]
+}

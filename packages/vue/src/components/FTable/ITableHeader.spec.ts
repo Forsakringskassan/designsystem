@@ -1,0 +1,188 @@
+import { type ComponentPublicInstance, ref } from "vue";
+import { mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
+import ITableHeader from "./ITableHeader.vue";
+import { type TableColumnWidth } from "./columns/base.js";
+import { normalizeTableColumn } from "./table-column";
+
+describe("description", () => {
+    const selector = ".table-ng__column__description";
+
+    it("should not render description element by default", () => {
+        expect.assertions(1);
+        const column = normalizeTableColumn({
+            header: "lorem ipsum",
+        });
+        const wrapper = mount(ITableHeader, {
+            props: { column, sortEnabled: false, sortOrder: "unsorted" },
+        });
+        const description = wrapper.find(selector);
+        expect(description.exists()).toBeFalsy();
+    });
+
+    it("should render description element when column has description text", () => {
+        expect.assertions(2);
+        const column = normalizeTableColumn({
+            header: "lorem ipsum",
+            description: "dolor sit amet",
+        });
+        const wrapper = mount(ITableHeader, {
+            props: { column, sortEnabled: false, sortOrder: "unsorted" },
+        });
+        const description = wrapper.find(selector);
+        expect(description.exists()).toBeTruthy();
+        expect(description.text()).toBe("dolor sit amet");
+    });
+
+    it("should be reactive", async () => {
+        expect.assertions(3);
+        const prop = ref<string | null>(null);
+        const column = normalizeTableColumn({
+            header: "lorem ipsum",
+            description: prop,
+        });
+        const wrapper = mount(ITableHeader, {
+            props: { column, sortEnabled: false, sortOrder: "unsorted" },
+        });
+        expect(wrapper.find(selector).exists()).toBeFalsy();
+        prop.value = "dolor sit amet";
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+        await wrapper.vm.$nextTick();
+        expect(wrapper.find(selector).exists()).toBeTruthy();
+        expect(wrapper.find(selector).text()).toBe("dolor sit amet");
+    });
+});
+
+describe("9.1 sorting aria attributes", () => {
+    it.each`
+        order
+        ${"ascending"}
+        ${"descending"}
+    `(
+        "should set aria-sort to '$order' when sortOrder is '$order'",
+        ({ order }) => {
+            expect.assertions(1);
+            const column = normalizeTableColumn({
+                header: "lorem ipsum",
+            });
+            const wrapper = mount(ITableHeader, {
+                props: { column, sortEnabled: true, sortOrder: order },
+            });
+            expect(wrapper.find("th").attributes("aria-sort")).toBe(order);
+        },
+    );
+
+    it("should not define aria-sort when sortOrder is 'unsorted'", () => {
+        expect.assertions(1);
+        const column = normalizeTableColumn({
+            header: "lorem ipsum",
+        });
+        const wrapper = mount(ITableHeader, {
+            props: { column, sortEnabled: true, sortOrder: "unsorted" },
+        });
+        expect(wrapper.find("th").attributes("aria-sort")).toBeUndefined();
+    });
+
+    it("should not define aria-sort when sorting is disabled", () => {
+        expect.assertions(1);
+        const column = normalizeTableColumn({
+            header: "lorem ipsum",
+        });
+        const wrapper = mount(ITableHeader, {
+            props: { column, sortEnabled: false, sortOrder: "unsorted" },
+        });
+        expect(wrapper.find("th").attributes("aria-sort")).toBeUndefined();
+    });
+});
+
+describe("sorting keyboard interaction", () => {
+    interface TestRow {
+        name: string;
+    }
+
+    it("should emit toggleSortOrder when pressing Space", async () => {
+        expect.assertions(1);
+        const column = normalizeTableColumn<TestRow>({
+            header: "lorem ipsum",
+            sort: true,
+            key: "name",
+        });
+        const wrapper = mount(
+            ITableHeader as unknown as ComponentPublicInstance,
+            {
+                props: { column, sortEnabled: true, sortOrder: "unsorted" },
+            },
+        );
+
+        await wrapper.get("th").trigger("keydown", { code: "Space", key: " " });
+
+        expect(wrapper.emitted("toggleSortOrder")).toEqual([["name"]]);
+    });
+
+    it("should not emit toggleSortOrder when sorting is disabled", async () => {
+        expect.assertions(1);
+        const column = normalizeTableColumn<TestRow>({
+            header: "lorem ipsum",
+            sort: true,
+            key: "name",
+        });
+        const wrapper = mount(
+            ITableHeader as unknown as ComponentPublicInstance,
+            {
+                props: { column, sortEnabled: false, sortOrder: "unsorted" },
+            },
+        );
+
+        await wrapper.get("th").trigger("keydown", { code: "Space", key: " " });
+
+        expect(wrapper.emitted("toggleSortOrder")).toBeUndefined();
+    });
+});
+
+describe("Fixed width", () => {
+    interface TestRow {
+        name: string;
+    }
+
+    it("should not set width when width is not provided", () => {
+        expect.assertions(3);
+        const column = normalizeTableColumn<TestRow>({
+            header: "lorem ipsum",
+            key: "name",
+        });
+        const wrapper = mount(
+            ITableHeader as unknown as ComponentPublicInstance,
+            { props: { column, sortEnabled: false, sortOrder: "unsorted" } },
+        );
+
+        expect(wrapper.get("th").element.style.width).toBe("");
+        expect(wrapper.get("th").element.style.minWidth).toBe("");
+        expect(wrapper.get("th").element.style.maxWidth).toBe("");
+    });
+
+    it.each(["200px", "200rem", "20ch", "20%"] as TableColumnWidth[])(
+        "should set width as provided %s",
+        (width) => {
+            expect.assertions(3);
+            const column = normalizeTableColumn<TestRow>({
+                header: "lorem ipsum",
+                key: "name",
+                width,
+            });
+            const wrapper = mount(
+                ITableHeader as unknown as ComponentPublicInstance,
+                {
+                    props: {
+                        column,
+                        sortEnabled: false,
+                        sortOrder: "unsorted",
+                    },
+                },
+            );
+
+            expect(wrapper.get("th").element.style.width).toBe(width);
+            expect(wrapper.get("th").element.style.minWidth).toBe(width);
+            expect(wrapper.get("th").element.style.maxWidth).toBe(width);
+        },
+    );
+});

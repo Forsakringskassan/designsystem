@@ -1,0 +1,19 @@
+@use "../../core/size";
+@use "../../core/config-variables";
+
+.iskiplink {
+    position: absolute;
+    top: -200px;
+
+    &:focus {
+        color: var(--fkds-color-action-text-primary-default);
+        background-color: var(--fkds-color-background-primary);
+        left: 20px;
+        top: 20px;
+        font-size: var(--f-font-size-standard);
+        font-weight: var(--f-font-weight-medium);
+        text-decoration: underline;
+        text-underline-offset: 0.25em;
+        padding: size.$padding-025 size.$padding-050;
+    }
+}

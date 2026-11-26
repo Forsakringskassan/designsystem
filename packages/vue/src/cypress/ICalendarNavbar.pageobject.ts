@@ -1,0 +1,47 @@
+import { type BasePageObject, type DefaultCypressChainable } from "./common";
+
+/**
+ * @public
+ */
+export class ICalendarNavbarPageObject implements BasePageObject {
+    public selector: string;
+
+    /**
+     * @param selector - CSS selector to the ICalendarNavbar object
+     */
+    public constructor(selector: string = ".calendar-navbar") {
+        this.selector = selector;
+    }
+
+    public el(): DefaultCypressChainable {
+        return cy.get(this.selector);
+    }
+
+    /**
+     * @deprecated Use title() instead. Deprecated since v6.56.0.
+     */
+    public text(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .calendar-navbar__month--title`);
+    }
+
+    public title(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .calendar-navbar__month--title`);
+    }
+
+    /**
+     * @internal
+     */
+    public yearSelectorButton(): DefaultCypressChainable {
+        return cy.get(
+            `${this.selector} .calendar-navbar__year-selector-button`,
+        );
+    }
+
+    public prevButton(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .calendar-navbar__arrow--previous`);
+    }
+
+    public nextButton(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .calendar-navbar__arrow--next`);
+    }
+}

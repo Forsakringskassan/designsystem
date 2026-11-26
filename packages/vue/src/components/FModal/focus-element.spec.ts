@@ -1,0 +1,52 @@
+import { describe, expect, it } from "vitest";
+import "@fkui/test-utils/vitest";
+import { focusElement } from "./focus-element";
+
+describe("focusElement", () => {
+    it("should focus text field", () => {
+        expect.assertions(1);
+        document.body.innerHTML = /* HTML */ ` <input type="text" /> `;
+        const textField = document.querySelector("input")!;
+        focusElement(textField, document.body);
+        expect(textField).toHaveFocus();
+    });
+
+    it("should focus first radio button when none is checked", () => {
+        expect.assertions(1);
+        document.body.innerHTML = /* HTML */ `
+            <div>
+                <input type="radio" value="true" name="radio-group" />
+                <input type="radio" value="false" name="radio-group" />
+            </div>
+        `;
+        const radioButtons = document.querySelectorAll("input");
+        const firstRadioButton = radioButtons[0];
+
+        focusElement(firstRadioButton, document.body);
+        expect(firstRadioButton).toHaveFocus();
+    });
+
+    it("should focus second radio button when it is checked", () => {
+        expect.assertions(1);
+        document.body.innerHTML = /* HTML */ `
+            <div>
+                <input type="radio" value="true" name="radio-group" />
+                <input type="radio" value="false" name="radio-group" checked />
+            </div>
+        `;
+        const radioButtons = document.querySelectorAll("input");
+        const firstRadioButton = radioButtons[0];
+        const secondRadioButton = radioButtons[1];
+
+        focusElement(firstRadioButton, document.body);
+        expect(secondRadioButton).toHaveFocus();
+    });
+
+    it("should focus div with tabindex='0'", () => {
+        expect.assertions(1);
+        document.body.innerHTML = /* HTML */ ` <div tabindex="0"></div> `;
+        const div = document.querySelector("div")!;
+        focusElement(div, document.body);
+        expect(div).toHaveFocus();
+    });
+});

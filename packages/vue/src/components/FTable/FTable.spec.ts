@@ -1,0 +1,1539 @@
+import { nextTick, ref } from "vue";
+import { flushPromises, mount } from "@vue/test-utils";
+import { describe, expect, it, vi } from "vitest";
+import { useDatasetRef } from "../../utils";
+import FTable from "./FTable.vue";
+import { type TableColumnSize, defineTableColumns } from "./table-column";
+
+const expandableAttribute = "nested";
+
+describe("1.4 Rowheader", () => {
+    it("should set rowheader", () => {
+        expect.assertions(2);
+        const rows = [{ text: "Foo" }, { text: "Bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "rowheader",
+                header: "Header",
+                key: "text",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows: ref(rows).value,
+                columns,
+            },
+        });
+        const rowheaders = wrapper.findAll("tbody th");
+        expect(rowheaders[0].text()).toBe("Foo");
+        expect(rowheaders[1].text()).toBe("Bar");
+    });
+
+    it("should set rowheader on expandable rows", async () => {
+        expect.assertions(6);
+        interface ExpandableRow {
+            text: string;
+            nested?: ExpandableRow[];
+        }
+
+        const rows: ExpandableRow[] = [
+            { text: "A", nested: [{ text: "A1" }, { text: "A2" }] },
+            { text: "B", nested: [{ text: "B1" }, { text: "B2" }] },
+        ];
+        const columns = defineTableColumns<ExpandableRow>([
+            {
+                type: "rowheader",
+                header: "A",
+                key: "text",
+            },
+        ]);
+        const wrapper = mount(FTable<ExpandableRow>, {
+            props: {
+                rows: ref(rows).value,
+                columns,
+                expandableAttribute,
+            },
+        });
+
+        const expandButtons = wrapper.findAll("tbody button");
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+
+        const rowheaders = wrapper.findAll("tbody th");
+        expect(rowheaders[0].text()).toBe("A");
+        expect(rowheaders[1].text()).toBe("A1");
+        expect(rowheaders[2].text()).toBe("A2");
+        expect(rowheaders[3].text()).toBe("B");
+        expect(rowheaders[4].text()).toBe("B1");
+        expect(rowheaders[5].text()).toBe("B2");
+    });
+});
+
+describe("1.6 column size", () => {
+    const rows = ref([]);
+
+    it("should have grow class if not set", () => {
+        expect.assertions(1);
+        const columns = defineTableColumns([
+            {
+                type: "text",
+                header: "A",
+            },
+        ]);
+        const wrapper = mount(FTable, {
+            props: {
+                rows: rows.value,
+                columns,
+            },
+        });
+        const header = wrapper.get("thead th");
+        expect(header.classes()).toContain("table-ng__column--grow");
+    });
+
+    it("should have grow class if set to null", () => {
+        expect.assertions(1);
+        const columns = defineTableColumns([
+            {
+                type: "text",
+                header: "A",
+                size: ref(null),
+            },
+        ]);
+        const wrapper = mount(FTable, {
+            props: {
+                rows: rows.value,
+                columns,
+            },
+        });
+        const header = wrapper.get("thead th");
+        expect(header.classes()).toContain("table-ng__column--grow");
+    });
+
+    it("should have grow class if set to grow", () => {
+        expect.assertions(1);
+        const columns = defineTableColumns([
+            {
+                type: "text",
+                header: "A",
+                size: "grow",
+            },
+        ]);
+        const wrapper = mount(FTable, {
+            props: {
+                rows: rows.value,
+                columns,
+            },
+        });
+        const header = wrapper.get("thead th");
+        expect(header.classes()).toContain("table-ng__column--grow");
+    });
+
+    it("should have shrink class if set to shrink", () => {
+        expect.assertions(1);
+        const columns = defineTableColumns([
+            {
+                type: "text",
+                header: "A",
+                size: "shrink",
+            },
+        ]);
+        const wrapper = mount(FTable, {
+            props: {
+                rows: rows.value,
+                columns,
+            },
+        });
+        const header = wrapper.get("thead th");
+        expect(header.classes()).toContain("table-ng__column--shrink");
+    });
+
+    it.each([null, "shrink", "grow"] as Array<TableColumnSize | null>)(
+        "should have fixed class if width is set and size is %s",
+        (size) => {
+            expect.assertions(3);
+            const columns = defineTableColumns([
+                {
+                    type: "text",
+                    header: "A",
+                    size: ref(size),
+                    width: "20rem",
+                },
+            ]);
+            const wrapper = mount(FTable, {
+                props: {
+                    rows: rows.value,
+                    columns,
+                },
+            });
+            const header = wrapper.get("thead th");
+            expect(header.classes()).not.toContain("table-ng__column--grow");
+            expect(header.classes()).not.toContain("table-ng__column--shrink");
+            expect(header.classes()).toContain("table-ng__column--fixed");
+        },
+    );
+});
+
+describe("1.7 enabled columns", () => {
+    it("should not render columns when enabled is false", () => {
+        expect.assertions(4);
+        const rows = [{ foo: "Foo", bar: "Bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "Foo",
+                key: "foo",
+                enabled: false,
+            },
+            {
+                type: "text",
+                header: "Bar",
+                key: "bar",
+                enabled: true,
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows: ref(rows).value,
+                columns,
+            },
+        });
+
+        const headers = wrapper.findAll("thead th");
+        expect(headers).toHaveLength(1);
+        expect(headers[0].text()).toBe("Bar");
+
+        const cells = wrapper.findAll("tbody td");
+        expect(cells).toHaveLength(1);
+        expect(cells[0].text()).toBe("Bar");
+    });
+
+    it("should not render header or body sections when all columns are disabled", () => {
+        expect.assertions(2);
+        const rows = [{ foo: "Foo", bar: "Bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "Foo",
+                key: "foo",
+                enabled: false,
+            },
+            {
+                type: "text",
+                header: "Bar",
+                key: "bar",
+                enabled: false,
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows: ref(rows).value,
+                columns,
+            },
+        });
+
+        expect(wrapper.find("thead").exists()).toBeFalsy();
+        expect(wrapper.find("tbody").exists()).toBeFalsy();
+    });
+});
+
+describe("1.8 when table is empty", () => {
+    interface Row {
+        nested?: Row[];
+    }
+    const rows = ref<Row[]>([]);
+    const expandableRows = ref<Row[]>([]);
+    const columns = defineTableColumns<Row>([
+        {
+            type: "text",
+            header: "A",
+        },
+        {
+            type: "text",
+            header: "B",
+        },
+        {
+            type: "text",
+            header: "C",
+        },
+    ]);
+
+    it("should have a single empty row with default text", () => {
+        expect.assertions(2);
+        const wrapper = mount(FTable<Row>, {
+            props: {
+                rows: rows.value,
+                columns,
+            },
+        });
+        const bodyRows = wrapper.findAll("tbody tr");
+        expect(bodyRows).toHaveLength(1);
+
+        const emptyCell = wrapper.get("tbody td");
+        expect(emptyCell.text()).toBe("Tabellen är tom");
+    });
+
+    it("should be able to change text of empty row", () => {
+        expect.assertions(1);
+        const wrapper = mount(FTable<Row>, {
+            props: {
+                rows: rows.value,
+                columns,
+            },
+            slots: { empty: "Foo" },
+        });
+        const emptyCell = wrapper.get("tbody td");
+        expect(emptyCell.text()).toBe("Foo");
+    });
+
+    it("should span all columns", () => {
+        expect.assertions(1);
+        const wrapper = mount(FTable<Row>, {
+            props: {
+                rows: rows.value,
+                columns,
+            },
+        });
+        const emptyCell = wrapper.get("tbody td");
+        expect(emptyCell.attributes("colspan")).toBe("3");
+    });
+
+    it("should span all columns when expandable", () => {
+        expect.assertions(1);
+        const wrapper = mount(FTable<Row>, {
+            props: {
+                rows: expandableRows.value,
+                columns,
+                expandableAttribute,
+            },
+        });
+        const emptyCell = wrapper.get("tbody td");
+        expect(emptyCell.attributes("colspan")).toBe("4");
+    });
+
+    it("should span all columns when selectable", () => {
+        expect.assertions(1);
+        const wrapper = mount(FTable<Row>, {
+            props: {
+                rows: rows.value,
+                columns,
+                selectable: "multi",
+            },
+        });
+        const emptyCell = wrapper.get("tbody td");
+        expect(emptyCell.attributes("colspan")).toBe("4");
+    });
+
+    it("should span all columns when selectable and expandable", () => {
+        expect.assertions(1);
+        const wrapper = mount(FTable<Row>, {
+            props: {
+                rows: expandableRows.value,
+                columns,
+                expandableAttribute,
+                selectable: "multi",
+            },
+        });
+        const emptyCell = wrapper.get("tbody td");
+        expect(emptyCell.attributes("colspan")).toBe("5");
+    });
+
+    it("should not render table header or body when table has no columns", () => {
+        expect.assertions(2);
+        const wrapper = mount(FTable<Row>, {
+            props: {
+                rows: rows.value,
+                columns: [],
+            },
+        });
+
+        expect(wrapper.find("thead").exists()).toBeFalsy();
+        expect(wrapper.find("tbody").exists()).toBeFalsy();
+    });
+
+    it("should prevent default when Space is pressed on the empty cell", () => {
+        expect.assertions(1);
+        const wrapper = mount(FTable<Row>, {
+            props: {
+                rows: rows.value,
+                columns,
+            },
+        });
+
+        const event = new KeyboardEvent("keydown", {
+            bubbles: true,
+            cancelable: true,
+            key: " ",
+            code: "Space",
+        });
+        wrapper.get("tbody td").element.dispatchEvent(event);
+
+        expect(event.defaultPrevented).toBe(true);
+    });
+});
+
+describe("1.12 aria-rowcount and aria-rowindex", () => {
+    interface Row {
+        text: string;
+        nested?: Row[];
+    }
+
+    const columns = defineTableColumns<Row>([
+        {
+            type: "text",
+            header: "Header",
+            key: "text",
+        },
+    ]);
+
+    function mountTable(
+        rows: Row[],
+        options: { expandable?: boolean; footer?: boolean } = {},
+    ): ReturnType<typeof mount<typeof FTable<Row>>> {
+        return mount(FTable<Row>, {
+            props: {
+                rows: ref(rows).value,
+                columns,
+                expandableAttribute: options.expandable ? "nested" : undefined,
+            },
+            slots: options.footer ? { footer: "Footer" } : {},
+        });
+    }
+
+    const expandableRows: Row[] = [
+        { text: "Foo", nested: [{ text: "Foo1" }, { text: "Foo2" }] },
+        { text: "Bar" },
+    ];
+
+    it("should not set aria-rowcount or aria-rowindex when table is not expandable", () => {
+        expect.assertions(3);
+        const wrapper = mountTable([{ text: "Foo" }, { text: "Bar" }], {
+            footer: true,
+        });
+        expect(
+            wrapper.get("table").attributes("aria-rowcount"),
+        ).toBeUndefined();
+        expect(wrapper.findAll("[aria-rowindex]")).toHaveLength(0);
+        expect(
+            wrapper.get("tfoot tr").attributes("aria-rowindex"),
+        ).toBeUndefined();
+    });
+
+    it("should include body rows and header", () => {
+        expect.assertions(1);
+        const wrapper = mountTable([{ text: "Foo" }, { text: "Bar" }], {
+            expandable: true,
+        });
+        expect(wrapper.get("table").attributes("aria-rowcount")).toBe("3");
+    });
+
+    it("should include footer", () => {
+        expect.assertions(1);
+        const wrapper = mountTable([{ text: "Foo" }, { text: "Bar" }], {
+            expandable: true,
+            footer: true,
+        });
+        expect(wrapper.get("table").attributes("aria-rowcount")).toBe("4");
+    });
+
+    it("should include nested rows", () => {
+        expect.assertions(1);
+        const wrapper = mountTable(expandableRows, { expandable: true });
+        expect(wrapper.get("table").attributes("aria-rowcount")).toBe("5");
+    });
+
+    it("should set aria-rowindex on header, body rows and footer", () => {
+        expect.assertions(1);
+        const wrapper = mountTable(expandableRows, {
+            expandable: true,
+            footer: true,
+        });
+        const indices = wrapper
+            .findAll("tr")
+            .map((it) => it.attributes("aria-rowindex"));
+        expect(indices).toEqual(["1", "2", "5", "6"]);
+    });
+
+    it("should exclude header and body rows when table has no columns", () => {
+        expect.assertions(1);
+        const wrapper = mount(FTable<Row>, {
+            props: {
+                rows: ref([{ text: "Foo" }, { text: "Bar" }]).value,
+                columns: [],
+                expandableAttribute: "nested",
+            },
+        });
+        expect(wrapper.get("table").attributes("aria-rowcount")).toBe("0");
+    });
+
+    it("should include footer when table has no columns", () => {
+        expect.assertions(1);
+        const wrapper = mount(FTable<Row>, {
+            props: {
+                rows: ref([{ text: "Foo" }, { text: "Bar" }]).value,
+                columns: [],
+                expandableAttribute: "nested",
+            },
+            slots: { footer: "Footer" },
+        });
+        expect(wrapper.get("table").attributes("aria-rowcount")).toBe("1");
+    });
+});
+
+describe("6 Expandable table", () => {
+    interface ExpandableRow {
+        text: string;
+        nested?: ExpandableRow[];
+    }
+
+    const rows: ExpandableRow[] = [
+        { text: "A", nested: [{ text: "A1" }, { text: "A2" }] },
+        { text: "B", nested: [{ text: "B1" }, { text: "B2" }] },
+    ];
+    const columns = defineTableColumns<ExpandableRow>([
+        {
+            type: "text",
+            header: "Header",
+            key: "text",
+        },
+    ]);
+
+    it("6.1 should expand row when clicking expand cell", async () => {
+        expect.assertions(8);
+        const wrapper = mount(FTable<ExpandableRow>, {
+            props: {
+                rows: ref(rows).value,
+                columns,
+                expandableAttribute,
+            },
+        });
+
+        const withoutExpandedRows = wrapper.findAll("tbody tr");
+        expect(withoutExpandedRows).toHaveLength(2);
+
+        const expandButtons = wrapper.findAll("tbody button");
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+        const withExpandedRows = wrapper.findAll("tbody tr");
+        expect(withExpandedRows).toHaveLength(6);
+
+        const textCells = wrapper.findAll("tbody td:nth-child(2)");
+        expect(textCells[0].text()).toBe("A");
+        expect(textCells[1].text()).toBe("A1");
+        expect(textCells[2].text()).toBe("A2");
+        expect(textCells[3].text()).toBe("B");
+        expect(textCells[4].text()).toBe("B1");
+        expect(textCells[5].text()).toBe("B2");
+    });
+
+    it("6.3 should collapse expanded row when pressing click on expand button", async () => {
+        expect.assertions(4);
+        const wrapper = mount(FTable<ExpandableRow>, {
+            props: {
+                rows: ref(rows).value,
+                columns,
+                expandableAttribute,
+            },
+        });
+
+        const expandButtons = wrapper.findAll("tbody button");
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+        const withExpandedRows = wrapper.findAll("tbody tr");
+        expect(withExpandedRows).toHaveLength(6);
+
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+        const withoutExpandedRows = wrapper.findAll("tbody tr");
+        expect(withoutExpandedRows).toHaveLength(2);
+
+        const textCells = wrapper.findAll("tbody td:nth-child(2)");
+        expect(textCells[0].text()).toBe("A");
+        expect(textCells[1].text()).toBe("B");
+    });
+
+    it("6.4 should set correct aria-expanded on expandable rows", async () => {
+        expect.assertions(6);
+        const wrapper = mount(FTable<ExpandableRow>, {
+            props: {
+                rows: ref(rows).value,
+                columns,
+                expandableAttribute,
+            },
+        });
+
+        const expandButtons = wrapper.findAll("tbody button");
+
+        expect(expandButtons[0].attributes("aria-expanded")).toBe("false");
+        expect(expandButtons[1].attributes("aria-expanded")).toBe("false");
+
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+        expect(expandButtons[0].attributes("aria-expanded")).toBe("true");
+        expect(expandButtons[1].attributes("aria-expanded")).toBe("true");
+
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+        expect(expandButtons[0].attributes("aria-expanded")).toBe("false");
+        expect(expandButtons[1].attributes("aria-expanded")).toBe("false");
+    });
+
+    it("6.4 should set correct aria-level, aria-setsize, aria-posinset on rows", async () => {
+        expect.assertions(1);
+        const wrapper = mount(FTable<ExpandableRow>, {
+            props: {
+                rows: ref(rows).value,
+                columns,
+                expandableAttribute,
+            },
+        });
+
+        const expandButtons = wrapper.findAll("tbody button");
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+
+        const bodyRows = wrapper.findAll("tbody tr");
+
+        expect(bodyRows.map((it) => it.attributes())).toMatchObject([
+            {
+                "aria-level": "1",
+                "aria-posinset": "1",
+                "aria-setsize": "2",
+            },
+            {
+                "aria-level": "2",
+                "aria-posinset": "1",
+                "aria-setsize": "2",
+            },
+            {
+                "aria-level": "2",
+                "aria-posinset": "2",
+                "aria-setsize": "2",
+            },
+            {
+                "aria-level": "1",
+                "aria-posinset": "2",
+                "aria-setsize": "2",
+            },
+            {
+                "aria-level": "2",
+                "aria-posinset": "1",
+                "aria-setsize": "2",
+            },
+            {
+                "aria-level": "2",
+                "aria-posinset": "2",
+                "aria-setsize": "2",
+            },
+        ]);
+    });
+
+    it("6.6 should render custom expanded row with colspan spanning all columns", async () => {
+        expect.assertions(4);
+        const customColumns = defineTableColumns<ExpandableRow>([
+            {
+                type: "text",
+                header: "Header 1",
+                key: "text",
+            },
+            {
+                type: "text",
+                header: "Header 2",
+                key: "text",
+            },
+            {
+                type: "text",
+                header: "Header 3",
+                key: "text",
+            },
+        ]);
+        const wrapper = mount(FTable<ExpandableRow>, {
+            props: {
+                rows: ref(rows).value,
+                columns: customColumns,
+                expandableAttribute,
+            },
+            slots: {
+                expandable: "Lorem ipsum",
+            },
+        });
+
+        const expandButtons = wrapper.findAll("tbody button");
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+
+        const customExpandedCell = wrapper.findAll(
+            'tbody tr[aria-level="2"] td:nth-child(2)',
+        );
+
+        expect(customExpandedCell[0].attributes("colspan")).toBe("3");
+        expect(customExpandedCell[1].attributes("colspan")).toBe("3");
+        expect(customExpandedCell[2].attributes("colspan")).toBe("3");
+        expect(customExpandedCell[3].attributes("colspan")).toBe("3");
+    });
+
+    it("6.7 should include selectable column in custom expanded row colspan", async () => {
+        expect.assertions(4);
+        const customColumns = defineTableColumns<ExpandableRow>([
+            {
+                type: "text",
+                header: "Header 1",
+                key: "text",
+            },
+            {
+                type: "text",
+                header: "Header 2",
+                key: "text",
+            },
+            {
+                type: "text",
+                header: "Header 3",
+                key: "text",
+            },
+        ]);
+        const wrapper = mount(FTable<ExpandableRow>, {
+            props: {
+                rows: ref(rows).value,
+                columns: customColumns,
+                expandableAttribute,
+                selectable: "multi",
+            },
+            slots: {
+                expandable: "Lorem ipsum",
+            },
+        });
+
+        const expandButtons = wrapper.findAll("tbody button");
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+
+        const customExpandedCell = wrapper.findAll(
+            'tbody tr[aria-level="2"] td:nth-child(2)',
+        );
+
+        expect(customExpandedCell[0].attributes("colspan")).toBe("4");
+        expect(customExpandedCell[1].attributes("colspan")).toBe("4");
+        expect(customExpandedCell[2].attributes("colspan")).toBe("4");
+        expect(customExpandedCell[3].attributes("colspan")).toBe("4");
+    });
+});
+
+describe("1.17 footer", () => {
+    const rows = ref([]);
+    const columns = defineTableColumns([]);
+
+    it("should add footer slot content to table footer", () => {
+        expect.assertions(1);
+        const wrapper = mount(FTable, {
+            props: {
+                rows: rows.value,
+                columns,
+            },
+            slots: {
+                footer: "Footer",
+            },
+        });
+        const footer = wrapper.get("tfoot");
+        expect(footer.text()).toBe("Footer");
+    });
+
+    it("should not render table footer if footer slot is not used", () => {
+        expect.assertions(1);
+        const wrapper = mount(FTable, {
+            props: {
+                rows: rows.value,
+                columns,
+            },
+        });
+        expect(wrapper.find("tfoot").exists()).toBeFalsy();
+    });
+
+    describe("cell", () => {
+        interface Row {
+            nested?: Row[];
+        }
+        const rows = ref<Row[]>([]);
+        const expandableRows = ref<Row[]>([]);
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "A",
+            },
+            {
+                type: "text",
+                header: "B",
+            },
+            {
+                type: "text",
+                header: "C",
+            },
+        ]);
+
+        it("should span all columns", () => {
+            expect.assertions(1);
+            const wrapper = mount(FTable<Row>, {
+                props: {
+                    rows: rows.value,
+                    columns,
+                },
+                slots: {
+                    footer: "Footer",
+                },
+            });
+            const footerCell = wrapper.get("tfoot td");
+            expect(footerCell.attributes("colspan")).toBe("3");
+        });
+
+        it("should span all columns when selectable", () => {
+            expect.assertions(1);
+            const wrapper = mount(FTable<Row>, {
+                props: {
+                    rows: rows.value,
+                    columns,
+                    selectable: "multi",
+                },
+                slots: {
+                    footer: "Footer",
+                },
+            });
+            const footerCell = wrapper.get("tfoot td");
+            expect(footerCell.attributes("colspan")).toBe("4");
+        });
+
+        it("should span all columns when expandable", () => {
+            expect.assertions(1);
+            const wrapper = mount(FTable<Row>, {
+                props: {
+                    rows: expandableRows.value,
+                    columns,
+                    expandableAttribute,
+                },
+                slots: {
+                    footer: "Footer",
+                },
+            });
+            const footerCell = wrapper.get("tfoot td");
+            expect(footerCell.attributes("colspan")).toBe("4");
+        });
+
+        it("should span all columns when selectable and expandable", () => {
+            expect.assertions(1);
+            const wrapper = mount(FTable<Row>, {
+                props: {
+                    rows: expandableRows.value,
+                    columns,
+                    expandableAttribute,
+                    selectable: "multi",
+                },
+                slots: {
+                    footer: "Footer",
+                },
+            });
+            const footerCell = wrapper.get("tfoot td");
+            expect(footerCell.attributes("colspan")).toBe("5");
+        });
+
+        it("should prevent default when Space is pressed on the footer cell", () => {
+            expect.assertions(1);
+            const wrapper = mount(FTable<Row>, {
+                props: {
+                    rows: rows.value,
+                    columns,
+                },
+                slots: {
+                    footer: "Footer",
+                },
+            });
+
+            const event = new KeyboardEvent("keydown", {
+                bubbles: true,
+                cancelable: true,
+                key: " ",
+                code: "Space",
+            });
+            wrapper.get("tfoot td").element.dispatchEvent(event);
+
+            expect(event.defaultPrevented).toBe(true);
+        });
+    });
+});
+
+describe("1.1 caption", () => {
+    const rows = ref([]);
+    const columns = defineTableColumns([]);
+
+    it("should not render if missing slot 'caption'", () => {
+        expect.assertions(1);
+        const wrapper = mount(FTable, {
+            props: {
+                columns,
+                rows: rows.value,
+            },
+            slots: {},
+        });
+        expect(wrapper.find("[data-test='caption']").exists()).toBeFalsy();
+    });
+
+    it("should not render if slot 'caption' is empty", () => {
+        expect.assertions(1);
+        const wrapper = mount(FTable, {
+            props: {
+                columns,
+                rows: rows.value,
+            },
+            slots: {
+                caption: "",
+            },
+        });
+        expect(wrapper.find("[data-test='caption']").exists()).toBeFalsy();
+    });
+
+    it("should render if slot 'caption' is present", () => {
+        expect.assertions(2);
+        const wrapper = mount(FTable, {
+            props: {
+                columns,
+                rows: rows.value,
+            },
+            slots: {
+                caption: "Table caption",
+            },
+        });
+        const caption = wrapper.find("[data-test='caption']");
+        expect(caption.exists()).toBeTruthy();
+        expect(caption.text()).toBe("Table caption");
+    });
+
+    it("should render with class 'sr-only' if slot 'caption' with class 'sr-only' is present", () => {
+        expect.assertions(3);
+        const wrapper = mount(FTable, {
+            props: {
+                columns,
+                rows: rows.value,
+            },
+            slots: {
+                caption: '<span class="sr-only">Table caption</span>',
+            },
+        });
+        const caption = wrapper.find("[data-test='caption']");
+        expect(caption.exists()).toBeTruthy();
+        expect(caption.find(".sr-only").exists()).toBeTruthy();
+        expect(caption.text()).toBe("Table caption");
+    });
+});
+
+describe("7.1 Bulk checkbox in header when multiselect is enabled", () => {
+    it("should render bulk checkbox in first column header for regular table", () => {
+        expect.assertions(1);
+        const rows = [{ text: "Foo" }, { text: "Bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "Header",
+                key: "text",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                selectable: "multi",
+                rows: ref(rows).value,
+                columns,
+            },
+            global: {
+                stubs: ["i-table-header-selectable"],
+            },
+        });
+        expect(
+            wrapper.get("thead tr:first-child :first-child").html(),
+        ).toMatchInlineSnapshot(
+            `"<i-table-header-selectable-stub selectable="multi" state="false"></i-table-header-selectable-stub>"`,
+        );
+    });
+
+    it("should render bulk checkbox in second column header for expandable table", () => {
+        expect.assertions(1);
+        const expandableAttribute = "children";
+
+        interface ExpandableRow {
+            text: string;
+            children?: ExpandableRow[];
+        }
+
+        const rows: ExpandableRow[] = [
+            { text: "Foo", children: [{ text: "Bar" }] },
+        ];
+        const columns = defineTableColumns<ExpandableRow>([
+            {
+                type: "text",
+                header: "Header",
+                key: "text",
+            },
+        ]);
+        const wrapper = mount(FTable<ExpandableRow>, {
+            props: {
+                selectable: "multi",
+                rows: ref(rows).value,
+                columns,
+                expandableAttribute,
+            },
+            global: {
+                stubs: ["i-table-header-selectable"],
+            },
+        });
+        expect(
+            wrapper.get("thead tr:first-child :nth-child(2)").html(),
+        ).toMatchInlineSnapshot(
+            `"<i-table-header-selectable-stub selectable="multi" state="false"></i-table-header-selectable-stub>"`,
+        );
+    });
+
+    it("should select all rows when click on checkbox in header", async () => {
+        expect.assertions(3);
+        const rows = [{ text: "Foo" }, { text: "Bar" }, { text: "Baz" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "Header",
+                key: "text",
+            },
+        ]);
+        let selectedRows: typeof rows = [];
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            attachTo: document.body,
+            props: {
+                selectable: "multi",
+                rows: ref(rows).value,
+                columns,
+                "onUpdate:selectedRows": (value: typeof rows) => {
+                    selectedRows = value;
+                },
+            },
+        });
+
+        const selectAllCheckbox = wrapper.get<HTMLInputElement>(
+            "thead th input[type='checkbox']",
+        );
+        await nextTick();
+        expect(selectedRows).toHaveLength(0);
+        await selectAllCheckbox.trigger("click");
+        expect(selectAllCheckbox.element.checked).toBeTruthy();
+        expect(selectedRows).toHaveLength(3);
+    });
+
+    it("should select all rows when click on th cell for sellect all in header", async () => {
+        expect.assertions(3);
+        const rows = [{ text: "Foo" }, { text: "Bar" }, { text: "Baz" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "Header",
+                key: "text",
+            },
+        ]);
+        let selectedRows: typeof rows = [];
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            attachTo: document.body,
+            props: {
+                selectable: "multi",
+                rows: ref(rows).value,
+                columns,
+                "onUpdate:selectedRows": (value: typeof rows) => {
+                    selectedRows = value;
+                },
+            },
+        });
+
+        const selectThCell = wrapper.get<HTMLTableCellElement>(
+            "thead th.table-ng__column--selectable",
+        );
+        const selectAllCheckbox = wrapper.get<HTMLInputElement>(
+            "thead th input[type='checkbox']",
+        );
+        await nextTick();
+        expect(selectedRows).toHaveLength(0);
+        await selectThCell.trigger("click");
+        expect(selectAllCheckbox.element.checked).toBeTruthy();
+        expect(selectedRows).toHaveLength(3);
+    });
+});
+
+describe("7.4 Bulk selection in expandable", () => {
+    const expandableAttribute = "children";
+
+    interface ExpandableRow {
+        text: string;
+        children?: ExpandableRow[];
+    }
+
+    it("should render checkboxes only for top-level rows", async () => {
+        expect.assertions(2);
+        const rows: ExpandableRow[] = [
+            { text: "Foo", children: [{ text: "Bar" }] },
+        ];
+        const columns = defineTableColumns<ExpandableRow>([
+            {
+                type: "text",
+                header: "Header",
+                key: "text",
+            },
+        ]);
+        const wrapper = mount(FTable<ExpandableRow>, {
+            props: {
+                selectable: "multi",
+                rows: ref(rows).value,
+                columns,
+                expandableAttribute,
+            },
+        });
+
+        await wrapper.get("button").trigger("click"); // expand row
+        await flushPromises();
+
+        expect(
+            wrapper.find("tbody tr:nth-child(1) input").exists(),
+        ).toBeTruthy();
+        expect(
+            wrapper.find("tbody tr:nth-child(2) input").exists(),
+        ).toBeFalsy();
+    });
+
+    it("should place selection checkboxes in column 2 when expandable column exists", async () => {
+        expect.assertions(2);
+        const rows: ExpandableRow[] = [
+            { text: "Foo", children: [{ text: "Bar" }] },
+        ];
+        const columns = defineTableColumns<ExpandableRow>([
+            {
+                type: "text",
+                header: "Header",
+                key: "text",
+            },
+        ]);
+        const wrapper = mount(FTable<ExpandableRow>, {
+            props: {
+                selectable: "multi",
+                rows: ref(rows).value,
+                columns,
+                expandableAttribute,
+            },
+            global: {
+                stubs: ["i-table-selectable"],
+            },
+        });
+
+        await wrapper.get("button").trigger("click"); // expand row
+        await flushPromises();
+
+        expect(
+            wrapper.get("tbody tr:nth-child(1) :nth-child(2)").html(),
+        ).toMatchInlineSnapshot(
+            `"<i-table-selectable-stub selectable="multi" row="[object Object]" state="false" level="1"></i-table-selectable-stub>"`,
+        );
+        expect(
+            wrapper.get("tbody tr:nth-child(2) :nth-child(2)").html(),
+        ).toMatchInlineSnapshot(
+            `"<i-table-selectable-stub selectable="multi" row="[object Object]" state="false" level="2"></i-table-selectable-stub>"`,
+        );
+    });
+});
+
+describe("7.6 aria-selected", () => {
+    it("should set aria-selected=true when row is selected via checkbox", async () => {
+        expect.assertions(2);
+        const rows = [{ text: "Foo" }, { text: "Bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "Header",
+                key: "text",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                columns,
+                rows: ref(rows).value,
+                selectable: "multi",
+                keyAttribute: "text",
+                selectedRows: [],
+            },
+        });
+
+        expect(
+            wrapper.get("tbody tr:first-child").attributes("aria-selected"),
+        ).toBe("false");
+
+        await wrapper.get("tbody tr:first-child input").setValue();
+
+        expect(
+            wrapper.get("tbody tr:first-child").attributes("aria-selected"),
+        ).toBe("true");
+    });
+
+    it("should set aria-selected=true only for top-level rows expandable table", async () => {
+        expect.assertions(1);
+        const expandableAttribute = "children";
+
+        interface ExpandableRow {
+            text: string;
+            children?: ExpandableRow[];
+        }
+
+        const rows: ExpandableRow[] = [
+            { text: "1", children: [{ text: "2" }] },
+            { text: "3", children: [{ text: "4" }] },
+        ];
+        const columns = defineTableColumns<ExpandableRow>([
+            {
+                type: "text",
+                header: "Header",
+                key: "text",
+            },
+        ]);
+        const wrapper = mount(FTable<ExpandableRow>, {
+            props: {
+                columns,
+                rows: ref(rows).value,
+                expandableAttribute,
+                selectable: "multi",
+                keyAttribute: "text",
+                selectedRows: [],
+            },
+        });
+
+        await wrapper.get("tbody tr:last-child button").trigger("click");
+        await wrapper.get("tbody tr:first-child button").trigger("click");
+        await wrapper.get("thead tr input").setValue();
+
+        const trs = wrapper.findAll("tbody tr");
+        expect(
+            trs.map(
+                (tr, index) =>
+                    `Row ${index + 1} aria-selected: ${String(
+                        tr.attributes("aria-selected"),
+                    )}`,
+            ),
+        ).toMatchObject([
+            "Row 1 aria-selected: true",
+            "Row 2 aria-selected: false",
+            "Row 3 aria-selected: true",
+            "Row 4 aria-selected: false",
+        ]);
+    });
+});
+
+describe("select cell", () => {
+    // eslint-disable-next-line vitest/prefer-spy-on -- technical debt: Vitest migration
+    Element.prototype.scrollTo = vi.fn();
+
+    it("should set value when selecting option with click", async () => {
+        expect.assertions(4);
+        const rows = [{ option: "Foo" }, { option: "Bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "select",
+                header: "A",
+                options: ["Foo", "Bar", "Baz"],
+                key: "option",
+                label: () => "Label",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                columns,
+                rows: ref(rows).value,
+            },
+            global: {
+                stubs: ["teleport"],
+            },
+        });
+
+        const cellView = wrapper.findAll(
+            "tbody td .table-ng__editable[role='combobox']",
+        );
+        expect(cellView[0].text()).toBe("Foo");
+        expect(cellView[1].text()).toBe("Bar");
+
+        await wrapper.get("tbody tr:first-child td").trigger("click");
+        await nextTick();
+
+        const thirdOption = wrapper.get(
+            ".combobox__listbox li.combobox__listbox__option:nth-child(3)",
+        );
+        await thirdOption.trigger("click");
+        expect(cellView[0].text()).toBe("Baz");
+        expect(cellView[1].text()).toBe("Bar");
+    });
+
+    it("should call update on selecting option with click", async () => {
+        expect.assertions(1);
+        const listener = vi.fn();
+        const rows = [{ option: "Foo" }, { option: "Bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "select",
+                header: "A",
+                options: ["Foo", "Bar", "Baz"],
+                key: "option",
+                label: () => "Label",
+                update: listener,
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                columns,
+                rows: ref(rows).value,
+            },
+            global: {
+                stubs: ["teleport"],
+            },
+        });
+
+        const cell = wrapper.get("tbody td:nth-child(1)");
+        await cell.trigger("click");
+        const options = wrapper.findAll(".combobox__listbox li");
+        await options[1].trigger("click");
+        expect(listener).toHaveBeenCalled();
+    });
+
+    it("should set correct aria-expanded", async () => {
+        expect.assertions(4);
+        const rows = [{ option: "Foo" }, { option: "Bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "select",
+                header: "A",
+                options: ["Foo", "Bar", "Baz"],
+                key: "option",
+                label: () => "Label",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                columns,
+                rows: ref(rows).value,
+            },
+            global: {
+                stubs: ["teleport"],
+            },
+        });
+
+        const cellEditable = wrapper.findAll(
+            "tbody td .table-ng__editable[aria-expanded]",
+        );
+        expect(cellEditable[0].attributes("aria-expanded")).toBe("false");
+        expect(cellEditable[1].attributes("aria-expanded")).toBe("false");
+
+        const cell = wrapper.get("tbody tr:nth-child(1) td");
+        await cell.trigger("click");
+        expect(cellEditable[0].attributes("aria-expanded")).toBe("true");
+        expect(cellEditable[1].attributes("aria-expanded")).toBe("false");
+    });
+
+    it("should open dropdown on space", async () => {
+        expect.assertions(1);
+        const rows = [{ option: "Foo" }, { option: "Bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "select",
+                header: "A",
+                options: ["Foo", "Bar", "Baz"],
+                key: "option",
+                label: () => "Label",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                columns,
+                rows: ref(rows).value,
+            },
+            global: {
+                stubs: ["teleport"],
+            },
+        });
+
+        const cell = wrapper.get("tbody tr:nth-child(1) td");
+        await cell.trigger("keydown", { code: "Space" });
+
+        const cellEditable = wrapper.findAll(
+            ".table-ng__editable[aria-expanded]",
+        );
+        expect(cellEditable[0].attributes("aria-expanded")).toBe("true");
+    });
+});
+
+describe("Clickable cells", () => {
+    it("Should be possible to click on cell instead of checkbox", async () => {
+        expect.assertions(2);
+        const rows = [{ active: false }, { active: false }, { active: false }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "checkbox",
+                header: "Header",
+                label: () => "Label",
+                key: "active",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            attachTo: document.body,
+            props: {
+                rows: ref(rows).value,
+                columns,
+            },
+        });
+
+        const cell = wrapper.get<HTMLTableCellElement>(
+            "tr:nth-child(2) td:first-child",
+        );
+
+        await nextTick();
+        await cell.trigger("click");
+
+        const checkbox = wrapper.get<HTMLInputElement>(
+            "tr:nth-child(2) td:first-child input[type='checkbox']",
+        );
+
+        expect(checkbox.element.checked).toBeTruthy();
+        expect(rows).toEqual([
+            { active: false },
+            { active: true },
+            { active: false },
+        ]);
+    });
+
+    it("Should be possible to click on cell instead of button", async () => {
+        expect.assertions(2);
+        const rows = [
+            { text: "text 1" },
+            { text: "text 2" },
+            { text: "text 3" },
+        ];
+        const onClickSpy = vi.fn();
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "button",
+                header: "Knapp",
+                icon: "trashcan",
+                size: "shrink",
+                text() {
+                    return `Ta bort`;
+                },
+                onClick: (row) => {
+                    onClickSpy(row);
+                },
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            attachTo: document.body,
+            props: {
+                rows: ref(rows).value,
+                columns,
+            },
+        });
+
+        const cell = wrapper.get<HTMLTableCellElement>(
+            "tr:nth-child(2) td:first-child",
+        );
+
+        await nextTick();
+        await cell.trigger("click");
+
+        // Let the 0‑ms timer inside ITableButton.vue fire
+        await new Promise((r) => setTimeout(r, 0));
+
+        expect(onClickSpy).toHaveBeenCalledTimes(1);
+        expect(onClickSpy).toHaveBeenCalledWith({ text: "text 2" });
+    });
+});
+
+describe("editable cells", () => {
+    it("should keep a tabstop after value update and blur", async () => {
+        expect.assertions(5);
+        const rows = [{ text: "Foo" }];
+
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "Text",
+                key: "text",
+                editable: true,
+                label: () => "Text",
+            },
+        ]);
+
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            attachTo: document.body,
+            props: {
+                rows: ref(rows).value,
+                columns,
+            },
+        });
+
+        const td = wrapper.get("tbody td");
+        expect((td.element as HTMLElement).tabIndex).toBe(-1);
+
+        await td.trigger("click");
+        await flushPromises();
+
+        const input = wrapper.get("input");
+        expect(input.element.tabIndex).toBe(0);
+
+        await input.setValue("Bar");
+        await input.trigger("blur");
+        await flushPromises();
+
+        expect(rows[0].text).toBe("Bar");
+
+        const tabstops = wrapper.findAll('[tabindex="0"]');
+        expect(tabstops).toHaveLength(1);
+        expect(tabstops[0].element.tagName).toBe("TD");
+    });
+});
+
+describe("useDatasetRef compatibility", () => {
+    interface Row {
+        text: string;
+        nested?: Row[];
+    }
+
+    const columns = defineTableColumns<Row>([
+        {
+            type: "text",
+            header: "Header",
+            key: "text",
+        },
+    ]);
+
+    it("should render a basic table from a dataset", () => {
+        expect.assertions(2);
+        const dataset = useDatasetRef<Row>([{ text: "A" }, { text: "B" }]);
+        const wrapper = mount(FTable<Row>, {
+            props: {
+                rows: dataset.value,
+                columns,
+            },
+        });
+        expect(wrapper.get("table").attributes("role")).toBe("grid");
+        expect(wrapper.findAll("tbody tr")).toHaveLength(2);
+    });
+
+    it("should support expandable rows from a dataset", async () => {
+        expect.assertions(4);
+        const dataset = useDatasetRef<Row>(
+            [{ text: "A", nested: [{ text: "A1" }] }],
+            "nested",
+        );
+        const wrapper = mount(FTable<Row>, {
+            props: {
+                rows: dataset.value,
+                columns,
+            },
+        });
+
+        expect(wrapper.get("table").attributes("role")).toBe("treegrid");
+        expect(wrapper.findAll("tbody tr")).toHaveLength(1);
+
+        await wrapper.get("tbody button").trigger("click");
+
+        expect(wrapper.findAll("tbody tr")).toHaveLength(2);
+        expect(wrapper.findAll("tbody td:nth-child(2)")[1].text()).toBe("A1");
+    });
+});

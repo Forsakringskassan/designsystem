@@ -1,0 +1,55 @@
+import { describe, expect, it } from "vitest";
+import { maxDateValidator } from "./max-date-validator";
+
+const element = document.createElement("input");
+
+const testConfig = {
+    limit: "2020-02-02",
+};
+
+describe("validation", () => {
+    it.each`
+        value           | expected | config        | description
+        ${"2020-02-02"} | ${true}  | ${testConfig} | ${"YYYY-MM-DD date equal to limit should be valid"}
+        ${"2020-02-03"} | ${false} | ${testConfig} | ${"YYYY-MM-DD date after limit should be invalid"}
+        ${"2020-03-02"} | ${false} | ${testConfig} | ${"YYYY-MM-DD date after limit should be invalid"}
+        ${"2021-02-02"} | ${false} | ${testConfig} | ${"YYYY-MM-DD date after limit should be invalid"}
+        ${"2020-02-01"} | ${true}  | ${testConfig} | ${"YYYY-MM-DD date before limit should be valid"}
+        ${"2020-01-02"} | ${true}  | ${testConfig} | ${"YYYY-MM-DD date before limit should be valid"}
+        ${"2019-02-02"} | ${true}  | ${testConfig} | ${"YYYY-MM-DD date before limit should be valid"}
+        ${"20200202"}   | ${true}  | ${testConfig} | ${"YYYYMMDD date equal to limit should be valid"}
+        ${"20200203"}   | ${false} | ${testConfig} | ${"YYYYMMDD date after limit should be invalid"}
+        ${"20200302"}   | ${false} | ${testConfig} | ${"YYYYMMDD date after limit should be invalid"}
+        ${"20210202"}   | ${false} | ${testConfig} | ${"YYYYMMDD date after limit should be invalid"}
+        ${"20200201"}   | ${true}  | ${testConfig} | ${"YYYYMMDD date before limit should be valid"}
+        ${"20200102"}   | ${true}  | ${testConfig} | ${"YYYYMMDD date before limit should be valid"}
+        ${"20190202"}   | ${true}  | ${testConfig} | ${"YYYYMMDD date before limit should be valid"}
+        ${"2020/02/02"} | ${true}  | ${testConfig} | ${"YYYY/MM/DD date equal to limit should be valid"}
+        ${"2020/02/03"} | ${false} | ${testConfig} | ${"YYYY/MM/DD date after limit should be invalid"}
+        ${"2020/03/02"} | ${false} | ${testConfig} | ${"YYYY/MM/DD date after limit should be invalid"}
+        ${"2021/02/02"} | ${false} | ${testConfig} | ${"YYYY/MM/DD date after limit should be invalid"}
+        ${"2020/02/01"} | ${true}  | ${testConfig} | ${"YYYY/MM/DD date before limit should be valid"}
+        ${"2020/01/02"} | ${true}  | ${testConfig} | ${"YYYY/MM/DD date before limit should be valid"}
+        ${"2019/02/02"} | ${true}  | ${testConfig} | ${"YYYY/MM/DD date before limit should be valid"}
+        ${undefined}    | ${true}  | ${testConfig} | ${"undefined should be valid"}
+        ${null}         | ${true}  | ${testConfig} | ${"null should be valid"}
+        ${""}           | ${true}  | ${testConfig} | ${"empty string should be valid"}
+    `(
+        'should return "$expected" for "$value" because of $description',
+        ({
+            value,
+            expected,
+            config,
+        }: {
+            value: unknown;
+            expected: boolean;
+            config: unknown;
+        }) => {
+            expect.assertions(1);
+            /* @ts-expect-error -- technical debt, we're lying to the type system */
+            expect(maxDateValidator.validation(value, element, config)).toEqual(
+                expected,
+            );
+        },
+    );
+});

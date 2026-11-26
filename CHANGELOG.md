@@ -1,0 +1,1402 @@
+# CHANGELOG
+
+## 6.65.1 (2026-11-13)
+
+### Bug Fixes
+
+* **@fkui/design:** set primary background color on body (refs SB-4982) 3310a54
+
+## 6.65.0 (2026-11-12)
+
+### Features
+
+* **@fkui/docs, @fkui/design, @fkui/vue:** add configurable text wrapping to FTable (refs SFKUI-8223) 08c2310
+* **@fkui/docs, @fkui/theme-default:** revert `legacy-palette` (refs SFKUI-6500) f938abf
+* **@fkui/vue:** add popup anchor overlap mode (refs SFKUI-8236) cfb8d58
+* **deps:** update dependency @adobe/css-tools to v5 7b6335b
+
+### Bug Fixes
+
+* **@fkui/design:** preserve datepicker close button text color (refs SFKUI-6500) 356478b
+* **@fkui/theme-builder:** match shortened hex colors to palette names (refs SFKUI-6500) 09d00f8
+* **@fkui/vue-labs, @fkui/vue:** increase vue peer dep to ^3.5.40 (refs SFKUI-6500) be1f6d8
+* **@fkui/vue:** prevent datepicker popup from overlapping field (refs SFKUI-8236) addddd5
+* **@fkui/vue:** prevent form submit when editing table cells with enter (fixes SFKUI-8363) a3fd29e
+* **deps:** update dependency i18next to v26.7.1 4414923
+* **deps:** update dependency i18next to v26.7.2 ([#1811](undefined/Forsakringskassan/designsystem/issues/1811)) f0c17ce
+* **deps:** update dependency sass to v1.108.0 2e2bb82
+* **deps:** update dependency sass to v1.108.1 51f90c2
+* **deps:** update vue monorepo to v3.5.44 ([#1759](undefined/Forsakringskassan/designsystem/issues/1759)) e3599b5
+
+## 6.64.1 (2026-11-03)
+
+### Bug Fixes
+
+* **@fkui/design:** preserve button text and border colors (refs SFKUI-6500) 91c17b5
+
+## 6.64.0 (2026-11-03)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** add required validation for FTable select columns (refs SFKUI-8346) 8454860
+* **deps:** replace `glob` with native glob from `node:fs` (refs SFKUI-6500) f29d81d
+
+### Bug Fixes
+
+* **@fkui/design:** wrap HTML5 elements in `:where()` to fix `<dialog>` behavior (refs SFKUI-8164) 2cee558
+* **@fkui/theme-default, @fkui/vue:** separate footer color tokens from header (refs SFKUI-6500) 92f85f9
+* **@fkui/vue:** enter should not open ´IComboxDropdowm´ (refs SFKUI-7564) 7ee8864
+* **deps:** update dependency i18next to v26.5.11 eae54ba
+* **deps:** update dependency i18next to v26.5.12 c2c522e
+* **deps:** update dependency sass to v1.107.0 c7fcb88
+* **deps:** update dependency sass to v1.107.1 85d1eae
+
+## 6.63.0 (2026-10-28)
+
+### Features
+
+* **@fkui/docs, @fkui/vue:** deprecate dataset (refs SFKUI-8305) 1a9b274
+* **@fkui/docs, @fkui/vue:** ftable support removing non-dataset rows (refs SFKUI-8305) f777737
+* **@fkui/vue:** add `TableNestedKeyOf` (refs SFKUI-8305) ea8a8c7
+* **@fkui/vue:** f-table `rows` prop accepts `T[]` (refs SFKUI-8305) d3c5ee5
+
+### Bug Fixes
+
+* **@fkui/vue:** save FTable text cell value when editable(row) changes after mount (refs SFKUI-8362) a902168
+* **deps:** update dependency cssnano to v9.6.0 083435d
+* **deps:** update dependency cssnano to v9.8.0 ([#1761](undefined/Forsakringskassan/designsystem/issues/1761)) 37420ad
+* **deps:** update dependency cssnano to v9.9.0 f72aae0
+* **deps:** update dependency i18next to v26.4.3 ([#1753](undefined/Forsakringskassan/designsystem/issues/1753)) ec1f3b4
+* **deps:** update dependency i18next to v26.4.4 78cbef0
+* **deps:** update dependency i18next to v26.4.5 c72a40c
+* **deps:** update dependency i18next to v26.4.6 bfbd0bf
+* **deps:** update dependency i18next to v26.4.7 1dac3c6
+* **deps:** update dependency i18next to v26.5.10 72c0d9e
+* **deps:** update dependency i18next to v26.5.2 92a73ea
+* **deps:** update dependency i18next to v26.5.3 44c0c2d
+* **deps:** update dependency i18next to v26.5.4 b03048d
+* **deps:** update dependency i18next to v26.5.5 1c25d4e
+* **deps:** update dependency i18next to v26.5.6 515e114
+* **deps:** update dependency i18next to v26.5.7 c582f97
+* **deps:** update dependency sass to v1.105.2 ([#1768](undefined/Forsakringskassan/designsystem/issues/1768)) 4274277
+* **deps:** update dependency sass to v1.106.0 e6559cd
+* **deps:** update dependency sass to v1.106.1 953128c
+
+## 6.62.0 (2026-10-14)
+
+### Features
+
+* **@fkui/docs, @fkui/vue:** deprecate FTableButton (refs SFKUI-8146) d4f01c3
+* **@fkui/docs, @fkui/vue:** deprecate FTableColumn (refs SFKUI-8146) 2e3da72
+* **@fkui/docs, @fkui/vue:** expose updateItem and deleteItem from FCrudDataset (refs SFKUI-8146) d5452d6
+* **@fkui/vue:** add progressbar selectors (refs SFKUI-8230) da78af3
+* **@fkui/vue:** deprecate FDataTable and FInteractiveTable (refs SFKUI-8146) 2f24f34
+* **@fkui/vue:** selector objects for definitionlist and selectfield (refs SFKUI-8230) b241026
+
+### Bug Fixes
+
+* **@fkui/date:** use non-breaking spaces in date formats (refs SFKUI-6500) be7ed42
+* **@fkui/design:** add width to none appearance input (refs SFKUI-8270) f90fa8f
+* **@fkui/design:** fix shrinking calendar arrow buttons (fixes SFKUI-8179) 2442828
+* **@fkui/vue:** set selectedMode on toggle open use-combobox (refs SFKUI-7922) cc9cd33
+* **@fkui/vue:** sync FTable select value with row changes (fixes SFKUI-8344) ca90300
+* **deps:** update dependency cssnano to v9.2.2 ([#1735](undefined/Forsakringskassan/designsystem/issues/1735)) 2f6687f
+* **deps:** update dependency cssnano to v9.3.1 ([#1741](undefined/Forsakringskassan/designsystem/issues/1741)) 8c44ba1
+* **deps:** update dependency cssnano to v9.4.0 596e4f2
+* **deps:** update dependency express to v5.3.0 d5e2378
+* **deps:** update dependency vue-router to v5.4.0 fe53593
+
+## 6.61.0 (2026-10-07)
+
+### Features
+
+* **@fkui/docs, @fkui/theme-default:** add `legacy-palette` (refs SFKUI-6500) 24a5060
+
+### Bug Fixes
+
+* **deps:** update dependency cssnano to v9.1.1 ([#1723](undefined/Forsakringskassan/designsystem/issues/1723)) 206bf77
+* **deps:** update dependency cssnano to v9.1.2 4173954
+* **deps:** update dependency cssnano to v9.2.0 065a7d3
+* **deps:** update dependency sass to v1.105.1 dab2735
+
+## 6.60.0 (2026-09-30)
+
+### Features
+
+* **@fkui/docs, @fkui/vue:** add support for focusing and activating a specific cell in FTable (refs SFKUI-7355) 2b2ce1b
+
+### Bug Fixes
+
+* **@fkui/vue:** focus lost when updating enabled on columns in FTable (refs SFKUI-8154) 3a8a1ff
+* **deps:** update dependency sass to v1.105.0 ([#1710](undefined/Forsakringskassan/designsystem/issues/1710)) 62c2215
+* **deps:** update dependency yargs to v18.2.0 9d41106
+
+## 6.59.0 (2026-09-23)
+
+### Features
+
+* **@fkui/docs:** include documents in `@fkui/docs` (refs SFKUI-6500) b79b557
+* **@fkui/docs:** new (empty) package `@fkui/docs` (refs SFKUI-6500) 7ad8837
+* **@fkui/vue:** allow select column options in FTable to be a function (refs SFKUI-8120) 4869d45
+* **@fkui/vue:** migration towards selector objects part 3 (refs SFKUI-6500) 09d5dfb
+* **deps:** update dependency @vueuse/core to v15 e4ef46a
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** disabled text color for checkbox/radio details (refs SFKUI-6500) 1b3513a
+* **@fkui/design, @fkui/vue:** remove bullets from `button-list` (fixes SFKUI-8002) 56eb1c3
+* **@fkui/design:** remove extra focus styles from `FList` (fixes SFKUI-8213) 96c0539
+* **@fkui/docs, @fkui/design, @fkui/vue:** only activate hover style on devices that can hover (fixes SFKUI-8163) e0222ef
+* **@fkui/vue:** ´IComboboxDropdown´ add mousedown to li element (refs SFKUI-8129) e49efbc
+* **@fkui/vue:** update broken table live example (refs SFKUI-6500) b367f9f
+* **deps:** update dependency cssnano to v9.0.5 9683b66
+* **deps:** update vue monorepo to v3.5.43 982431f
+
+## 6.58.0 (2026-09-17)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** add support for fixed column width in FTable (refs SFKUI-7270) dfffaff
+* **@fkui/vue:** creating selectors for textfields (refs SFKUI-8165) ee3f18a
+
+### Bug Fixes
+
+* **@fkui/vue:** fixed some issues with the tests (refs SFKUI-8156) c284e10
+* **@fkui/vue:** prevent hidden content from being focusable (refs SFKUI-8156) fb3fb43
+* **deps:** update dependency cssnano to v9.0.4 79ca968
+* **deps:** update dependency sass to v1.104.1 192ba72
+* **vscode:** fix html-validate issue when resolving paths (refs SFKUI-6500) c4d1f18
+
+## 6.57.1 (2026-09-10)
+
+### Bug Fixes
+
+* **@fkui/vue:** handle Tab and Shift+Tab when editing in ITableText (refs SFKUI-8084) 85ec9d1
+* **deps:** allow vitest v5 when using @fkui/test-utils (refs SFKUI-6500) 1a8000c
+* **deps:** update dependency cssnano to v9.0.3 ([#1663](undefined/Forsakringskassan/designsystem/issues/1663)) a4303cd
+* handle Tab and Shift+Tab when editing textfield in `FTable` (refs SFKUI-8084) be0f6c8
+
+## 6.57.0 (2026-09-09)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** focus styles use `focus-visible` (refs SFKUI-7690) 5c1279f
+* **@fkui/design, @fkui/vue:** show focus indicator only on `focus-visible` (refs SFKUI-7690) 456efb5
+* **@fkui/vue:** add property to set position for buttons in `FCrudDataset` (refs SFKUI-7778) ([#1647](undefined/Forsakringskassan/designsystem/issues/1647)) 375e2b5
+* **@fkui/vue:** support for other icons on ITableMenu (refs SFKUI-7901) 37fc99b
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** secondary text color for checkbox/radio details (refs SFKUI-8126) a2cbe1e
+* **@fkui/vue:** expandablepanel po wrong selector when using has (refs SFKUI-7854) b3bde79
+* **deps:** update dependency cssnano to v9.0.2 ([#1644](undefined/Forsakringskassan/designsystem/issues/1644)) 887029e
+* **deps:** update dependency i18next to v26.4.1 ([#1642](undefined/Forsakringskassan/designsystem/issues/1642)) 7a41139
+* **deps:** update dependency i18next to v26.4.2 ([#1653](undefined/Forsakringskassan/designsystem/issues/1653)) cc5e7a6
+* **deps:** update dependency sass to v1.104.0 ([#1655](undefined/Forsakringskassan/designsystem/issues/1655)) be5ff77
+* **deps:** update dependency vue-router to v5.3.1 ([#1650](undefined/Forsakringskassan/designsystem/issues/1650)) f566988
+
+## 6.56.0 (2026-09-02)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** add prop for striped in FList (refs SFKUI-5653) f672738
+* **@fkui/vue:** add selector objects (part 2) ([#1476](undefined/Forsakringskassan/designsystem/issues/1476)) 63be7a7
+* **@fkui/vue:** add support for hiding content in cells for `FTable` per row (refs SFKUI-7876) f25938b
+* **@fkui/vue:** deprecate ICalenderNavbarPageObject.text() (refs SFKUI-8092) 3bb5dc9
+* **deps:** update dependency cssnano to v9 d9f0c4e
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** scroll to checkbox, radio input on error (fixes SFKUI-7293) bfd5852
+* **@fkui/design:** set tooltip header text color (refs SFKUI-6500) 7f2212e
+* **@fkui/vue:** provide and inject to tell fbutton when inflight is present (refs SFKUI-7684) c876b46
+* **@fkui/vue:** shadow DOM selection in form components (refs SFKUI-6500) 223313e, closes #1595
+* **deps:** update dependency cssnano to v8.0.10 66ca8a6
+* **deps:** update dependency cssnano to v8.0.9 14173e8
+* **deps:** update dependency cssnano to v9.0.1 3e79193
+* **deps:** update dependency svgo to v4.1.0 aa155a2
+* **deps:** update dependency vue-router to v5.3.0 8858f9f
+* **deps:** update vue monorepo to v3.5.42 b5be47d
+
+## 6.55.0 (2026-08-27)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** add textwrapping for `FTable` text columns (refs SFKUI-7876) ([#1609](undefined/Forsakringskassan/designsystem/issues/1609)) e2c8e6c
+
+### Bug Fixes
+
+* **@fkui/design:** use pointer cursor for combobox toggle (refs SFKUI-6500) 764973c
+* **@fkui/vue:** remove redundant FFieldset checkbox screen reader texts (fixes SFKUI-7816) f0e4577
+* **@fkui/vue:** reset FDialogueTree SFKUI-7415 (refs SFKUI-8094) a3a5e85
+* **deps:** update dependency cssnano to v8.0.8 5aad630
+* **deps:** update dependency dayjs to v1.11.23 e27ddcc
+* **deps:** update dependency i18next to v26.4.0 f724531
+* **deps:** update dependency sass to v1.103.0 f831926
+* **deps:** update dependency sass to v1.103.1 ([#1614](undefined/Forsakringskassan/designsystem/issues/1614)) 57353f1
+
+## 6.54.0 (2026-08-20)
+
+### Features
+
+* **@fkui/design:** add documentation for anchor mixins (refs KA-2356) 9b00a0e
+* **@fkui/design:** refactor discrete anchor styles into reusable mixins (refs KA-2356) ebe05df
+* **@fkui/vue:** extend date period formatter with human readable format (refs SFKUI-5499) b32d728
+
+### Bug Fixes
+
+* **@fkui/vue:** the ITableButton should not steal focus when activated (fixes SFKUI-8005) 3aa0a8a
+* **deps:** update dependency cssnano to v8.0.6 b697e8f
+* **deps:** update dependency dayjs to v1.11.22 a424280
+
+## 6.53.0 (2026-08-14)
+
+### Features
+
+* **@fkui/design:** create mixin for anchor discrete (refs KA-2356) 96e6b22
+* **@fkui/vue:** add f-table select editable prop (refs SFKUI-6500) 36c96df
+
+### Bug Fixes
+
+* **@fkui/vue:** fix combobox not opening on click (refs SFKUI-6500) 2eda92e
+* **deps:** update dependency cssnano to v8.0.5 ([#1567](undefined/Forsakringskassan/designsystem/issues/1567)) 91d363a
+
+## 6.52.3 (2026-08-10)
+
+### Bug Fixes
+
+* **@fkui/design:** retain card background when `FCard` is invalid (refs SFKUI-6500) 7a72378, closes #1524
+* **@fkui/vue:** add missing `TranslationMixin` to `FFileItem` (refs SFKUI-6500) 92bc009
+* **@fkui/vue:** fix warning when passing id as anchor to `IPopup` and `IPopupMenu` (refs SFKUI-6500) 587942d
+* **@fkui/vue:** selector objects use `:scope` as default selector (refs SFKUI-6500) 936f25a
+* **deps:** update dependency @vueuse/core to v14.4.0 7970678
+* **deps:** update dependency cssnano to v8.0.3 2fdb934
+* **deps:** update dependency cssnano to v8.0.4 ([#1553](undefined/Forsakringskassan/designsystem/issues/1553)) 896c136
+* **deps:** update dependency sass to v1.101.3 1bab743
+* **deps:** update dependency sass to v1.101.6 e3ee49a
+* **deps:** update dependency sass to v1.101.7 b2a20c3
+* **deps:** update dependency sass to v1.102.0 b592bb6
+* **deps:** update dependency vue-router to v5.2.0 1556904
+* **deps:** update dependency yargs to v18.1.0 d7deb7e
+* **deps:** update vue monorepo to v3.5.39 ([#1464](undefined/Forsakringskassan/designsystem/issues/1464)) e5c7867
+* **deps:** update vue monorepo to v3.5.41 852d2ab
+
+## 6.52.2 (2026-07-15)
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v26.3.4 e40bd12
+* **deps:** update dependency i18next to v26.3.5 561b6f6
+* **deps:** update dependency i18next to v26.3.6 98ca12b
+* **deps:** update dependency svgo to v4.0.2 7d5a687
+
+## 6.52.1 (2026-07-03)
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** fix `FLayoutLeftPanel` content overlap (fixes SFKUI-7858) c5d9cb9
+* **@fkui/test-utils:** make jest matchers work with `injectGlobals: false` (refs SFKUI-6500) ca164b3
+
+## 6.52.0 (2026-07-02)
+
+### Features
+
+* **@fkui/vue-labs, @fkui/vue:** `FButton` change prop `size` and `variant` to required (refs SFKUI-7994) 79b6d33
+* **@fkui/vue:** add `FBadgeSelectors` (refs SFKUI-6500) 1821004
+* **@fkui/vue:** add `FButtonSelectors` (refs SFKUI-6500) c9fecc0
+* **@fkui/vue:** add `FCrudDatasetSelectors` (refs SFKUI-6500) 0a28b5f
+* **@fkui/vue:** add `FDetailsPanelSelectors` (refs SFKUI-6500) a6b10b6
+* **@fkui/vue:** add `FLabelSelectors` (refs SFKUI-6500) c06f2f4
+* **@fkui/vue:** add `FLoaderSelectors` (refs SFKUI-6500) 403f8e0
+* **@fkui/vue:** add `FMinimizablePanelSelectors` (refs SFKUI-6500) 88a3a34
+
+### Bug Fixes
+
+* **@fkui/vue:** add missing nav landmark label to application layout (refs SFKUI-6500) aaf7050
+* **deps:** update dependency i18next to v26.3.2 e4cc0a3
+* **deps:** update dependency i18next to v26.3.3 3dbfbe4
+
+## 6.51.0 (2026-06-25)
+
+### Features
+
+* **deps:** update dependency vue-router to v5 3479b60
+
+## 6.50.0 (2026-06-17)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default, @fkui/vue:** add textarea auto resize support (refs SFKUI-7920) 5183183
+* **deps:** update vueuse monorepo to v14 4f2cdbe
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/theme-default, @fkui/vue:** button focus should not change style (refs SFKUI-7949) eef6228
+* **@fkui/design:** show tooltip arrow in forced colors (fixes SFKUI-7985) 6b2eed1
+* **deps:** update dependency cssnano to v8.0.2 ([#1424](undefined/Forsakringskassan/designsystem/issues/1424)) a3b783c
+* **deps:** update dependency sass to v1.101.0 ([#1426](undefined/Forsakringskassan/designsystem/issues/1426)) af82a51
+* **deps:** update vue monorepo to v3.5.38 ([#1425](undefined/Forsakringskassan/designsystem/issues/1425)) 1099d7c
+* disable Cypress env to suppress message (refs SFKUI-6500) 06d5bad
+
+## 6.49.1 (2026-06-11)
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** prevent hover background while editing table cells (fixes SFKUI-7930) 4abef06
+* **@fkui/test-utils:** don't bundle Vitest in @fkui/test-utils (refs SFKUI-7787) 9cdb03e
+* **deps:** update dependency i18next to v26.3.1 1bd0b31
+* **FTable:** toggle context menu on repeated activation (fixes SFKUI-7929) 5302494
+
+## 6.49.0 (2026-06-03)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** `FButton` `tertiary-style` `black` renamed to `muted` (refs SFKUI-7907) 18b5d03
+* **@fkui/design, @fkui/vue:** focus indicator keep element border radius (refs SFKUI-7931) 04fcd27
+* **@fkui/vue:** change FBadge content category to phrasing (fixes SFKUI-7908) f6dad05
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/theme-default:** use semantic tokens for focus indicator (refs SFKUI-6500) acaace9
+* **@fkui/design, @fkui/theme-default:** use semantic tokens for layout panels (refs SFKUI-6500) 7863256
+* **@fkui/design, @fkui/vue:** restore height auto after transition (refs SFKUI-7689) 7120ef0
+* **@fkui/design:** respect focus box shadow theme override (refs SFKUI-6500) f62d5b1
+* **deps:** update dependency dayjs to v1.11.21 3d80bd9
+* **deps:** update dependency i18next to v26.3.0 3a3932b
+* **deps:** update vue monorepo to v3.5.35 c65b513
+
+## 6.48.0 (2026-05-28)
+
+### Features
+
+* **@fkui/test-utils:** add support for Vitest in @fkui/test-utils (refs SFKUI-7787) 41d8021
+* **@fkui/tsconfig:** add node & vite/client to types field for @fkui/tsconfig/vue  (refs SB-4982) 5ef4a50
+* **@fkui/vue:** f-table anchor dynamic href support (refs SFKUI-6500) 596973b
+* **@fkui/vue:** f-table tnum default for text:date (refs SFKUI-6500) 861f76e
+* **deps:** update dependency @forsakringskassan/sass-module-importer to v3 4e0c94c
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** align static and editable table text cell sizing (fixes SFKUI-7862) b04f80d
+* **@fkui/design, @fkui/vue:** f-table readonly text cell styling when using tnum (fixes SFKUI-7860) fa677c3
+* **@fkui/vue:** ensure table cells are visible during keyboard navigation (fixes SFKUI-7483) 51d76eb
+* **@fkui/vue:** f-table selectable column should be shrinked (fixes SFKUI-7895) 78bd6a3
+* **deps:** update dependency @adobe/css-tools to v4.5.0 02d4376
+* **deps:** update dependency sass to v1.100.0 6dc1de1
+
+## 6.47.0 (2026-05-20)
+
+### Features
+
+* **deps:** require nodejs v22 or later (refs SFKUI-6500) fa880ae
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** show table sort icons in forced colors mode (fixes SFKUI-7801) 65955c4
+* **@fkui/design:** add background color for empty table (fixes SFKUI-7859) e6dbebc
+* **@fkui/vue:** preserve tabstop column after row removal (fixes SFKUI-7799) ([#1298](undefined/Forsakringskassan/designsystem/issues/1298)) 6323910
+* **@fkui/vue:** reposition popup error at scroll (refs SFKUI-7609) 9301d98
+* **deps:** update dependency i18next to v26.1.0 7317450
+* **deps:** update dependency i18next to v26.2.0 587b25b
+
+## 6.46.0 (2026-05-13)
+
+### Features
+
+* **@fkui/logic, @fkui/vue-labs:** updated the type ValidatorConfig to allow objects as values (refs KDK-58279) 710dc57
+* **@fkui/tsconfig:** add resolveJsonModule to @fkui/tsconfig/recommended (refs SFKUI-6500) 3004215
+* **deps:** update dependency cssnano to v8 3be6532
+* **FTable:** support dynamic menu actions (refs SFKUI-7870) ([#1282](undefined/Forsakringskassan/designsystem/issues/1282)) 8893b2f
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** disabled tertiary button keep same size (fixes SFKUI-7864) eeee718
+* **@fkui/design, @fkui/vue:** move box-shadow to li element (refs SFKUI-7523) 4498a7b
+* **deps:** update dependency cssnano to v7.1.9 26116ab
+* **deps:** update dependency cssnano to v8.0.1 dacdb43
+* **deps:** update dependency i18next to v26.0.10 f0ecbed
+* **deps:** update dependency i18next to v26.0.9 f6d94b2
+* **deps:** update html-validate minimum required version to v10.10.0 (refs SFKUI-6500) 484d7ef
+* **deps:** update vue monorepo to v3.5.34 244286b
+
+## 6.45.0 (2026-05-06)
+
+### Features
+
+* **@fkui/vue:** set f-table nested aria attributes (refs SFKUI-7436) 1214a1a
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/theme-default, @fkui/vue:** tertiary button size change to same as other button sizes (fixes SFKUI-7526) b917355
+* **@fkui/vue:** prevent page scroll on space in empty table cells (fixes SFKUI-7812) 1103e34
+* **deps:** update dependency cssnano to v7.1.8 f983768
+
+## 6.44.0 (2026-04-30)
+
+### Features
+
+* **@fkui/vue-labs, @fkui/vue:** add f-table component to fkui-vue (refs SFKUI-6500) 77a632a
+* **@fkui/vue:** add `v-model` for `FPaginateDataset` (refs SFKUI-6500) 2079b35
+* **@fkui/vue:** remove `bullets` prop from `FErrorList` (refs SFKUI-7294) 0a12a8e
+* **@fkui/vue:** remove `errorListBullets` prop from `FValidationForm` (refs SFKUI-7294) 47dddb8
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** wrong position for close button in `FLayoutRightPanel` (fixes SFKUI-7839) b24dff4
+* **@fkui/design:** wizard step new font size  (refs SFKUI-7817) 3beb9cb
+* **@fkui/vue:** ignore object values in sort filter dataset (fixes SFKUI-7863) ff93697
+* **@fkui/vue:** run transition functions in `FExpandablePanel`  mounted (refs SFKUI-7689) 893813e
+* **deps:** raised the allowed version of sass to 1.92 (refs SFKUI-7836) 3d18ccc
+* **deps:** update dependency cssnano to v7.1.7 27e7023
+* **deps:** update dependency i18next to v26.0.7 22205c3
+* **deps:** update dependency i18next to v26.0.8 bb5dfcb
+* **deps:** update vue monorepo to v3.5.33 9b5d464
+
+## 6.43.1 (2026-04-22)
+
+### Bug Fixes
+
+* **deps:** update dependency cssnano to v7.1.5 84d2a1f
+* **deps:** update dependency i18next to v26.0.5 4233761
+* **deps:** update dependency i18next to v26.0.6 f8b5367
+
+## 6.43.0 (2026-04-15)
+
+### Features
+
+* **@fkui/vue-labs:** new labs component `XRelativeTime` (refs SFKUI-6500) 272adee
+* **@fkui/vue:** add new `FExpandableParagraphPageObject` (refs SFKUI-6500) f250109
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** file item missing support for `forced-colors` media feature (fixes SFKUI-7568) 5cb1ce0
+* **@fkui/design, @fkui/vue:** hover on `IComboboxDropdown` when highlight active (refs SFKUI-7362) 8598637
+* **deps:** update dependency i18next to v26.0.4 3281630
+
+## 6.42.0 (2026-04-08)
+
+### Features
+
+* **@fkui/vue:** add `datasetIterator()` (refs SFKUI-7348) 99f143e
+* **@fkui/vue:** add `FListSelectors` (refs SFKUI-6500) 10b9ed6
+
+### Bug Fixes
+
+* **@fkui/tsconfig:** add `dom.iterable` to cypress config to make it consistent with recommended (refs SFKUI-6500) 1e9ce3e
+* **@fkui/vue:** fix false positives for `emptyMessage` in `FListPageObject` (refs SFKUI-6500) 7700081, closes #1192
+* **@fkui/vue:** handle nested `FList`s in `FListPageObject` (refs SFKUI-6500) 86a012d, closes #1187
+* **deps:** update dependency cssnano to v7.1.4 91b15f9
+* **deps:** update dependency i18next to v26.0.3 156debc
+* **deps:** update dependency lodash to v4.18.1 [security] 4a01640
+* **deps:** update dependency sass to v1.99.0 52e8b6f
+* **deps:** update vue monorepo to v3.5.32 f58406f
+
+## 6.41.0 (2026-04-01)
+
+### Features
+
+* **@fkui/vue-labs:** new `getTableSortableAttributes()` helper for usage with `FSortFilterDataset` and `FTable` (refs SFKUI-6500) e9e8b16
+* **@fkui/vue:** handle nested rows in datasets (refs SFKUI-7348) a6c1556
+* **@fkui/vue:** store nested attribute in datasets (refs SFKUI-7763) 9743da2
+* **deps:** update dependency @forsakringskassan/sass-module-importer to v2 ac7590d
+* **deps:** update dependency i18next to v26 6c23fc5
+
+### Bug Fixes
+
+* **@fkui/design:** calender navbar not supporting `forced-colors` media feature (fixes SFKUI-7573) 72b695f
+* **@fkui/design:** datepicker field icon missing support for `forced-colors` media feature (fixes SFKUI-6981) ccf5d5b
+* **@fkui/design:** loader spinner not visible when `forced-colors: active` (fixes SFKUI-7571) 140a887
+* **@fkui/design:** select field missing support for `forced-colors` media feature (fixes SFKUI-7572) 00b114f
+* **deps:** update dependency i18next to v25.10.10 435fd94
+* **deps:** update dependency i18next to v25.10.9 7eb0453
+* **deps:** update vue monorepo to v3.5.31 41a8620
+
+## 6.40.0 (2026-03-27)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** new `FDefinitionList` component (refs SFKUI-7296) 056ff4d
+* **@fkui/vue:** add `getDatasetMetadata()` (refs SFKUI-7348) fdce652
+* **@fkui/vue:** restrict dataset to be array of objects (refs SFKUI-7348) 2da4034
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:**  close button align center (refs SFKUI-7739) 304072d
+* **@fkui/design, @fkui/vue:** `FileItem` does not break long file names (refs SFKUI-7552) f7a5e42
+* **@fkui/design, @fkui/vue:** fix `FSortFilterDataset` clear button alignment (fixes SFKUI-7538) c04952f
+* **@fkui/design, @fkui/vue:** restore focus for buttons on modal close (refs SFKUI-7549) b904c09
+* **@fkui/design:** `cursor` set to `pointer` only for label in dialogue tree list item (fixes SFKUI-7714) ebd1668
+* **@fkui/design:** `FFileSelector` ::not support `forced-colors` (refs SFKUI-7569) 79f1d7d
+* **@fkui/design:** wrong background color for active page in `FPaginator` (fixes SFKUI-7707) 7f5462b
+* **@fkui/vue:** recalculate `IPopup` horizontal position on scroll (refs SFKUI-7591) 80b4d17
+* **deps:** update dependency dayjs to v1.11.20 f81b734
+* **deps:** update dependency i18next to v25.10.3 83aafa9
+* **deps:** update dependency i18next to v25.10.4 1139833
+* **deps:** update dependency i18next to v25.10.5 4bdd7c3
+* **deps:** update dependency i18next to v25.8.17 a6787aa
+* **deps:** update dependency i18next to v25.8.18 d984cc4
+* **deps:** update dependency i18next to v25.8.19 2d7121c
+* **deps:** update dependency i18next to v25.8.20 731eb64
+* **deps:** update dependency i18next to v25.9.0 5306f5f
+* **deps:** update dependency sass to v1.98.0 7001b20
+* **deps:** update vue monorepo to v3.5.30 a2e81b0
+
+## 6.39.0 (2026-03-12)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** added semantic token concept interactive surface (refs SFKUI-6500) 22a91fe
+* **@fkui/tsconfig:** update cypress configuration to use ES2023 by default (refs SFKUI-6500) b32da13
+* **@fkui/vue:** add `useDatasetRef()` for creating datasets with metadata (refs SFKUI-7348) 2386793
+* **@fkui/vue:** passing `Dataset<T>` to `FSortFilterDataset` or `FPaginateDataset` returns `Dataset<T>` (refs SFKUI-7348) 1ae187a
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** fix icon vertical at top, no shrink to icon (refs SFKUI-7425) 9dce004
+* **@fkui/design:** navigation menu not supporting `forced-colors` media feature (fixes SFKUI-7565) 2b890dd
+* **@fkui/design:** popup menu not supporting `forced-colors` media feature (fixes SFKUI-7565) d7868b8
+* **@fkui/theme-default:** `--f-font-weight-bold` variable value (fixes SFKUI-7399) 6fcbecc
+* **@fkui/theme-default:** `--f-font-weight-medium` variable value (fixes SFKUI-7399) dad9e83
+* **@fkui/vue:** `focusRef` prop in `FCard` not supporting component references (refs SFKUI-7688) 3cbf4f8
+* **deps:** update dependency cssnano to v7.1.3 1b5c962
+* **deps:** update dependency i18next to v25.8.14 2a97409
+* **deps:** update dependency svgo to v4.0.1 [security] c4e8e3c
+
+## 6.38.0 (2026-03-04)
+
+### Features
+
+* **@fkui/logic, @fkui/vue:** typed translated keys interface and helper functions (refs MISI-4607) 70e9884
+* **@fkui/vue:** deprecate `icon--stack` class (refs SFKUI-6500) b3338c4
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** `IPopupError` add support for forced-colors (refs SFKUI-7588) 9750f35
+* **@fkui/design:** `i` icon not supporting `forced-colors` media feature (fixes SFKUI-7567) 070e4fe
+* **@fkui/design:** `success` icon not supporting `forced-colors` media feature (fixes SFKUI-7567) a5a0e4d
+* **@fkui/design:** disabled checkbox label displayed as default (fixes SFKUI-7551) 3a2fd40
+* **@fkui/design:** disabled radio button label displayed as default (fixes SFKUI-7551) 57dfb2e
+* **@fkui/design:** icons not supporting `forced-colors` media feature (fixes SFKUI-7567) cd7a98e
+* **@fkui/design:** paginator `:hover` effect not supporting `forced-colors` media feature (fixes SFKUI-7510) 4a7a60c
+* **@fkui/design:** paginator button border not supporting `forced-colors` media feature (fixes SFKUI-7510) 93db0db
+* **@fkui/design:** paginator current page button not supporting `forced-colors` media feature (fixes SFKUI-7510) 5d5ffa6
+* **@fkui/design:** tooltip icon stack not supporting `forced-colors` media feature (fixes SFKUI-7672) bb47204
+* **@fkui/design:** visible page header separator (fixes SFKUI-7284) 7ef2d50
+* **@fkui/vue:** combobox list recalculate position on scroll (refs SFKUI-7584) 6fa70ea
+* **@fkui/vue:** fix `FContextMenu` to not scroll to top on open (fixes SFKUI-7683) a6fe8ce
+* **deps:** update dependency get-css-variables to v1.1.1 51e5542
+* **deps:** update vue monorepo to v3.5.29 1645998
+* **html-validate:** proper handling of `FButton` as submit button (refs SFKUI-6500) 6f275c8
+
+## 6.37.0 (2026-02-25)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** add semantic color token for header texts (refs SFKUI-7658) 136f913
+
+### Bug Fixes
+
+* **@fkui/design:** expandable paragraph icon background not visible in higher contrast (fixes SFKUI-7576) a60742a
+* **@fkui/font-default, @fkui/icon-lib-builder:** fix nodejs version requirements (refs SFKUI-6500) 735dc67
+* **deps:** update dependency glob to v13.0.5 c4501c4
+* **deps:** update dependency glob to v13.0.6 a016f6e
+* **deps:** update dependency i18next to v25.8.10 e09d926
+* **deps:** update dependency i18next to v25.8.11 5b89141
+* **deps:** update dependency i18next to v25.8.13 20d88b1
+* **deps:** update dependency i18next to v25.8.8 8be9a3d
+
+## 6.36.1 (2026-02-18)
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/theme-default:** text contrast on warning color (refs SFKUI-6500) f092ee3
+* **@fkui/design:** expandable panel text color in darkmode (refs SFKUI-6500) 46abbf2
+* **@fkui/design:** output-field text color in darkmode (refs SFKUI-6500) 2d52371
+* **@fkui/design:** tooltip text color in darkmode (refs SFKUI-6500) e561a90
+* **@fkui/design:** wizard body text color in darkmode (refs SFKUI-6500) 1d169bc
+* **@fkui/vue:** combo box dropdown list icon pointing down when open (fixes SFKUI-7563) e47f5b1
+* **@fkui/vue:** expand text color in darkmode (refs SFKUI-6500) 65fb265
+* **deps:** update dependency glob to v13.0.2 8267983
+* **deps:** update dependency glob to v13.0.3 fa890c0
+* **deps:** update dependency i18next to v25.8.5 fdee2fd
+* **deps:** update dependency i18next to v25.8.6 a5b1461
+* **deps:** update dependency i18next to v25.8.7 c817a78
+* **deps:** update vue monorepo to v3.5.28 593b8dc
+
+## 6.36.0 (2026-02-11)
+
+### Features
+
+* **@fkui/design:** update list with semantic color tokens for item texts (refs SFKUI-7263) 3247595
+* **@fkui/font-default:** expose `fontDir` and `filePath` (full path to font file) (refs SFKUI-6500) 42f902c
+* **@fkui/vue:** new `iconLibrary` prop in `FTableButton` (fixes SFKUI-7621) d85a1e8
+
+### Bug Fixes
+
+* **@fkui/design:** `line-height` CSS prop not set for anchor (fixes SFKUI-7583) 6b77278
+* **@fkui/design:** hover effect displayed for highlighted option in `FNavigationMenu` (fixes SFKUI-7480) 5e3e1ca
+* **@fkui/design:** hover effect displayed for highlighted option in popup menu (fixes SFKUI-7480) e0338ea
+* **@fkui/vue:** combobox dropdown should not follow horizontal scroll (fixes SFKUI-7595) 265ad6b
+* **deps:** update dependency glob to v13.0.1 fa36f12
+* **deps:** update dependency i18next to v25.8.1 7fdb19d
+* **deps:** update dependency i18next to v25.8.3 1f20c57
+* **deps:** update dependency i18next to v25.8.4 5c05c7e
+
+## 6.35.0 (2026-02-04)
+
+### Features
+
+* **@fkui/vue-labs:** add text validation logic (refs SFKUI-7344) 6882d57
+* **@fkui/vue:** new `disabled` prop in `FButton` (fixes SFKUI-7587) cfe25ec, closes #952
+
+### Bug Fixes
+
+* **@fkui/design:** application layout `default` slot visible under `header` slot (fixes SFKUI-7606) 2497992, closes #969
+
+## 6.34.1 (2026-01-30)
+
+### Bug Fixes
+
+* **@fkui/tsconfig, @fkui/vue-labs, @fkui/vue:** revert typescript config emit (refs SB-4982) 1373364
+* **@fkui/vue:** `FExpandablePanel` page objects unable to use `data-*` or `id` as selectors (fixes SFKUI-7553) 4b843cc
+* **@fkui/vue:** fix to not scroll to top on combobox selection (fixes SFKUI-7368) 2088cf0, closes #709
+* **deps:** update dependency i18next to v25.8.0 3596daf
+* **deps:** update dependency sass to v1.97.3 d3401ec
+
+## 6.34.0 (2026-01-23)
+
+### Features
+
+* **@fkui/vue:** new `@fkui/vue/selectors` library with test framework-agnostic selectors (refs SFKUI-6500) 91ade58
+* **@fkui/vue:** new `size` prop in `FFileSelector` (fixes SFKUI-7505) 1e444da
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** checkbox/radio field `details` slot using `br` element as margin (refs SFKUI-7545) 345acb1
+* **@fkui/design:** `not-allowed` cursor displayed for disabled chips (fixes SFKUI-7537) 33e14b7
+* **@fkui/design:** stabilize scrollbar (refs SFKUI-6500) e3b9c1f
+* **@fkui/tsconfig, @fkui/vue-labs, @fkui/vue:** cypress typescript config should not emit compiled files (refs SB-4982) a29becb
+* **@fkui/vue:** revert `internal-key` being read-only (fixes SFKUI-7586) da5bcc1, closes #933
+* **deps:** update dependency lodash to v4.17.23 [security] 3fd11ac
+* **deps:** update vue monorepo to v3.5.27 d5d3978
+
+## 6.33.0 (2026-01-14)
+
+### Features
+
+* **@fkui/vue-labs:** new `XSortFilterDatasetNg` component in labs (refs SFKUI-6500) d298c9a
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v25.7.4 3a21e3e
+* **deps:** update dependency sass to v1.97.2 a483487
+
+## 6.32.1 (2026-01-08)
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** message box icon not visible in `FWizardStep` (fixes SFKUI-7547) b0c19de, closes #888
+* **@fkui/design, @fkui/vue:** set `FWizardStep` button-group top margin (fixes SFKUI-7554) 61a81e4, closes #904
+
+## 6.32.0 (2025-12-28)
+
+### Features
+
+* **@fkui/logic:** allow popping focus frame without restoring focus (refs SFKUI-6500) 044fabe
+* **@fkui/vue-labs:** new `text:date` table column type (fixes SFKUI-7527) 7931cb7
+
+### Bug Fixes
+
+* **@fkui/i18next-translate, @fkui/vue-labs, @fkui/vue:** make composables compatible with eslint `@typescript-eslint/unbound-method` (refs SFKUI-6500) ad6045e
+* **@fkui/vue:** clicking outside of `FContextMenu` no longer moves focus back to button (refs SFKUI-6500) 88b7d59
+* **deps:** update dependency i18next to v25.7.3 157bbf5
+* **deps:** update dependency sass to v1.97.0 88caed1
+* **deps:** update dependency sass to v1.97.1 bf4e565
+* **deps:** update vue monorepo to v3.5.26 d7f295a
+
+## 6.31.1 (2025-12-18)
+
+### Bug Fixes
+
+* **@fkui/design:** ipopupmenu has a  transparent background (refs SFKUI-7548) 38aeb16
+
+## 6.31.0 (2025-12-15)
+
+### Features
+
+* **@fkui/design, @fkui/icon-lib-default, @fkui/theme-default, @fkui/vue:** add semantic tokens to anchor (refs SFKUI-7312) 5eddf3e
+* **@fkui/design, @fkui/theme-default, @fkui/vue:** update Page Header with semantic color tokens (refs SFKUI-7535) 61834ce
+* **@fkui/design, @fkui/theme-default:** update skiplink with semantic color tokens (refs SFKUI-7541) d9831ae
+* **@fkui/vue:** `FContextMenu` no longer handles tab for interelement navigation (refs SFKUI-6500) 3996515
+* **deps:** update dependency yargs to v18 d94098d
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** set `FFieldset` label margin-bottom (refs SFKUI-7411) b297a95
+* **@fkui/design:** always use full width for content in `FWizardStep` (fixes SFKUI-7532) 991c652
+* **@fkui/design:** non-semantic colors in `_paginator.scss` (refs SFKUI-6500) 01478cc
+* **@fkui/design:** remove FBadge dark mode selector (refs SB-4982) a01535d
+* **@fkui/vue:** add translation support for `FContextMenu` (refs SFKUI-6500) 5d0e614
+* **@fkui/vue:** avoid combobox errormessage flickering (fixes SFKUI-7539) 6e72ce1
+* **@fkui/vue:** export `FModalSize` type for consumers creating custom modals (refs SFKUI-6500) 1d3ad0f
+* **deps:** update dependency i18next to v25.7.1 deaf19c
+* **deps:** update dependency i18next to v25.7.2 d07377f
+* **deps:** update dependency sass to v1.95.0 37ddae4
+* **deps:** update dependency sass to v1.95.1 4c504d5
+* **deps:** update dependency sass to v1.96.0 7f35818
+* **deps:** update dependency vue-router to v4.6.4 9f883f9
+
+## 6.30.0 (2025-12-05)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** static panel with semantic tokens  (refs SFKUI-7519) c981234
+* **@fkui/vue-labs:** new `XFileDragdrop` component (refs SFKUI-6500) 6a5cda8
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** larger click area for `FTooltip` button (fixes SFKUI-7459) c065e0e
+* **@fkui/design:** `FSelectField` flip arrow icon vertically when open(fixes SFKUI-7422) 6ecf07b
+* **@fkui/vue-labs:** retain tabindex for f-table headers (refs SFKUI-7512) 6368bf9
+* **@fkui/vue:** `FSelectFieldPageobject.listOfOptions()` trim leading and trailing whitespace from options (refs SFKUI-6500) 91d685d
+* **@fkui/vue:** `pageCounter` selector in `FPaginator.pageobject` includes `sr-only` element (refs SFKUI-6500) 1d50807
+* **@fkui/vue:** `sortableAttributes` can be `Ref<string>` (refs SFKUI-6500) 4a7f9bb
+* **deps:** update dependency express to v5.2.0 [security] ebf3645
+* **deps:** update dependency express to v5.2.1 e44234b
+* **deps:** update vue monorepo to v3.5.25 20dc2e1
+
+## 6.29.0 (2025-11-27)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** new `FPaginateDataset` and `FPaginator` components (refs SFKUI-7352) ce1daff
+* **@fkui/vue:** add `PageUp` and `PageDown` pagination on component `FList` (refs SFKUI-7352) 90f95db
+
+### Bug Fixes
+
+* **@fkui/logic:** use untrimmed value for whitelist validation (fixes SFKUI-7421) 2548121
+
+## 6.28.0 (2025-11-25)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default, @fkui/vue:** expandable panel with semantic tokens and new design (refs SFKUI-7326) 51d2580
+* **@fkui/vue:** selectable radio in f-interactive-table (refs SFKUI-6500) ecf0aa7
+* **deps:** update dependency glob to v13 141e73d
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** align `FTableButton` icon´s with text (fixes SFKUI-7424) f340d9b
+* **@fkui/vue:** handle expandable row in `FInteractiveTable` not having same shape as parent (refs SFKUI-6500) d45fb4e
+* **@fkui/vue:** require `expandableAttribute` in `FInteractiveTable` to be property of `row` (refs SFKUI-6500) 5a6ebc5
+* **@fkui/vue:** require `keyAttribute` in `FInteractiveTable` to be a property of `row` (refs SFKUI-6500) cd387ba
+* **deps:** update dependency i18next to v25.6.3 d4305ed
+* **deps:** update dependency sass to v1.94.2 bde1709
+
+## 6.27.0 (2025-11-21)
+
+### Features
+
+* **@fkui/vue:** exposes FFormModal size props (refs SFKUI-7464) ca6614d
+* **deps:** update dependency glob to v12 948a9ef
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** `FTableColumn` do not render content if header (fixes SFKUI-7322) 78f79cd
+* **@fkui/design:** fix deprecation warning from `@fkui/design` stylelint plugin (refs SFKUI-6500) 368778a
+* **deps:** update dependency glob to v11.1.0 [security] 5ca34ea
+* **deps:** update dependency i18next to v25.6.2 90f66d2
+* **deps:** update dependency sass to v1.94.0 568c2a2
+* **deps:** update dependency sass to v1.94.1 1e30049
+
+## 6.26.0 (2025-11-10)
+
+### Features
+
+* **@fkui/logic:** add fraction digits optional option to `parseNumber` and `parsePercent` (refs SFKUI-6500) a64030d
+
+### Bug Fixes
+
+* **@fkui/design:** bold headings in modals (refs SFKUI-6500) 084230d
+* **@fkui/theme-builder:** include semantic metadata for all themes (refs SFKUI-6500) 053d92a
+* **deps:** update dependency i18next to v25.6.1 e6bfe30
+* **deps:** update vue monorepo to v3.5.23 0b7da29
+* **deps:** update vue monorepo to v3.5.24 cb5c232
+
+## 6.25.1 (2025-11-07)
+
+### Bug Fixes
+
+* **deps:** add missing dependencies to `@fkui/theme-builder` (refs SFKUI-6500) 724e7cb
+* **deps:** update dependency cssnano to v7.1.2 d1662dc
+* **deps:** update dependency sass to v1.93.3 b796dec
+
+## 6.25.0 (2025-11-06)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** deprecate color variables  (refs SFKUI-7420) 3172739
+* **@fkui/theme-builder, @fkui/theme-default, @fkui/theme-desktop:** new `@fkui/theme-builder` with build scripts for FKDS themes (refs SFKUI-7370) b1ba1ca
+* **@fkui/vue-labs:** add tabstop logic (refs SFKUI-7353) f763bd0
+
+### Bug Fixes
+
+* **@fkui/theme-desktop:** theme-desktop deps (refs SFKUI-6500) 4b5d986
+* **deps:** update dependency dayjs to v1.11.19 c070292
+
+## 6.24.1 (2025-10-29)
+
+### Bug Fixes
+
+* **@fkui/font-default:** f-font-weight-medium updated to 600 (refs SFKUI-6500) 2212c4d
+* **@fkui/theme-default, @fkui/theme-desktop:** add missing type declaration for theme css-variables (refs SFKUI-6500) 2eae261
+
+## 6.24.0 (2025-10-29)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** semantic tokens expandable paragraph (refs SFKUI-6500) ff25669
+* **@fkui/vue-labs:** table cell api (refs SFKUI-6500) e1a91dd
+
+### Bug Fixes
+
+* **@fkui/font-default:** add missing font directory to NPM package (refs SFKUI-6500) 1488ceb
+
+## 6.23.0 (2025-10-24)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default, @fkui/vue-labs, @fkui/vue:** support light, dark, auto in theme-default (refs SFKUI-7409) 6e73ca1
+* **@fkui/design, @fkui/theme-default:** change semantic tokens for icon  (refs SFKUI-7369) c3f0015
+* **@fkui/font-default:** new `@fkui/font-default` package (refs SFKUI-7370) 78919e5
+* **@fkui/logo-default:** new `@fkui/logo-default` package (refs SFKUI-7370) 12cda4d
+* **@fkui/theme-desktop:** add `@fkui/theme-desktop` (refs SFKUI-7371) 159d0df
+
+### Bug Fixes
+
+* **@fkui/design:** `FFormModal` mobile scroll (fixes SFKUI-5960) bbf96ca
+* **@fkui/test-utils:** jest support is optional (refs SFKUI-6500) 02af2b5
+* **@fkui/test-utils:** support jest v30 (refs SFKUI-6500) 1edec12
+* **@fkui/vue:** missing screenreader context for dialogue-tree questions (refs SFKUI-7416) c91cf06
+* **deps:** update dependency vue-router to v4.6.0 5bd841c
+* **deps:** update dependency vue-router to v4.6.2 2ab8ada
+* **deps:** update dependency vue-router to v4.6.3 bccc35f
+
+## 6.22.0 (2025-10-15)
+
+### Features
+
+* **@fkui/design:** hover and selected in forced colors mode  (refs SFKUI-7361) 14949ad
+* **@fkui/design:** update table component with semantic variables  (refs SFKUI-6500) 2dc82d6
+
+### Bug Fixes
+
+* **@fkui/vue:** `FLayoutRightPanelService` treeshakable (refs SFKUI-6500) 5efe06f
+* **@fkui/vue:** `FTooltip` `attachTo` accepts `undefined` for easier usage with `useTemplateRef()` (refs SFKUI-6500) 8f310f1
+* **deps:** update dependency i18next to v25.6.0 3c3fcc3
+
+## 6.21.0 (2025-10-09)
+
+### Features
+
+* **@fkui/design:** changed size of heading, padding and margins on `FMessageBox` (fixes SFKUI-6815) b41b7f0
+
+### Bug Fixes
+
+* **@fkui/vue:** fix redundant classes being added to FButton (refs SFKUI-6500) eef7377
+* **deps:** update dependency i18next to v25.5.3 45172b6
+
+## 6.20.1 (2025-09-29)
+
+### Bug Fixes
+
+* **@fkui/tsconfig:** modern tsconfig for Cypress preset (refs SB-4982) cd49e06
+
+## 6.20.0 (2025-09-28)
+
+### Features
+
+* **@fkui/icon-lib-default:** add ellipsis icon (refs SFKUI-6500) ded7a01
+
+### Bug Fixes
+
+* **@fkui/vue:** add missing `iconLibrary` prop to `FButton` (refs SFKUI-6500) aec9d97
+* **@fkui/vue:** f-form-modal event typing (refs SFKUI-6500) 6cfd9cf
+* **@fkui/vue:** fix `FButton` `type` attribute not being set (refs SFKUI-6500) cb7cf47
+* **deps:** update dependency sass to v1.93.1 5225028
+* **deps:** update dependency sass to v1.93.2 c5ba8de
+* **deps:** update vue monorepo to v3.5.22 caa295a
+
+## 6.19.1 (2025-09-24)
+
+### Bug Fixes
+
+* **deps:** update dependency sass to v1.93.0 e21c4a3
+
+## 6.19.0 (2025-09-19)
+
+### Features
+
+* **@fkui/design, @fkui/icon-lib-default, @fkui/theme-dark, @fkui/theme-default, @fkui/vue:** add spinner to `FButton` with async operation (refs SFKUI-7248) 142c630
+
+## 6.18.1 (2025-09-17)
+
+### Bug Fixes
+
+* bugfixes for FTable component (refs SFKUI-6500) 26611df
+
+## 6.18.0 (2025-09-11)
+
+### Features
+
+* **@fkui/design, @fkui/vue-labs, @fkui/vue:** add f-table component draft (refs SFKUI-7265) 8e9ce84
+* **@fkui/vue:** trigger v-model update earlier in combobox component (refs SFKUI-7314) 359e589
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v25.5.0 ddc5a49
+* **deps:** update dependency i18next to v25.5.2 ([#661](undefined/Forsakringskassan/designsystem/issues/661)) a7b0569
+* **deps:** update dependency sass to v1.92.0 5fce740
+* **deps:** update dependency sass to v1.92.1 41fc8ff
+* **deps:** update vue monorepo to v3.5.21 900beaf
+
+## 6.17.0 (2025-09-05)
+
+### Features
+
+* **@fkui/design:** update component contextmenu with semantic color variables (refs SFKUI-7302) d3690f3
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** combobox listbox option not highlighted (refs SFKUI-6500) 84cda30
+
+## 6.16.1 (2025-09-03)
+
+### Bug Fixes
+
+* **deps:** update dependency dayjs to v1.11.18 cf24fec
+* **deps:** update dependency i18next to v25.4.0 b31feab
+* **deps:** update dependency i18next to v25.4.1 0bdc8b3
+* **deps:** update dependency i18next to v25.4.2 cae287d
+* **deps:** update dependency sass to v1.91.0 a852ee2
+* **deps:** update vue monorepo to v3.5.19 0efba11
+* **deps:** update vue monorepo to v3.5.20 c8a4eec
+
+## 6.16.0 (2025-08-22)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default, @fkui/vue:** add year selector to calendar component (refs SFKUI-7246) 963fdd8
+* **@fkui/vue:** new `FButton` component (refs SFKUI-7248) 4792668
+
+### Bug Fixes
+
+* **@fkui/vue:** `FSortFilterDataset` use current sort on data change (fixes SFKUI-7310) 0fdbb8e, closes #618
+* **@fkui/vue:** fix `FCrudDataset` delete on nested items (fixes SFKUI-7084) 2df70c8
+* **deps:** update dependency i18next to v25.3.4 f97ffd3
+* **deps:** update dependency i18next to v25.3.6 9384f5a
+
+## 6.15.0 (2025-08-09)
+
+### Features
+
+* **@fkui/logic, @fkui/vue:** new `ValidationService.setErrorMessages` with better control over merges (refs SFKUI-6500) 68aa647
+* **@fkui/logic:** add `assertRef` function (refs SFKUI-6500) dcc6405
+* **@fkui/logic:** add `assertSet` function (refs SFKUI-6500) 4417f84
+
+### Bug Fixes
+
+* **@fkui/design:** numeric table column headers not right aligned (refs SFKUI-6500) b1edbf6, closes #599
+* **@fkui/design:** table message box content centered (refs SFKUI-6500) f3e8d32, closes #598
+* **@fkui/design:** table message box icon alignment error (refs SFKUI-6500) 0b877ba, closes #598
+* **@fkui/vue:** `hasSlot()` returns `true` for nested vue components (fixes SFKUI-7303) 255dec5
+* **deps:** update dependency sass to v1.90.0 17b8da7
+* **deps:** update vue monorepo to v3.5.18 eaafb04
+
+## 6.14.0 (2025-07-22)
+
+### Features
+
+* **@fkui/design:** expose table scss variables (refs SFKUI-6500) 137e28a
+* **@fkui/design:** forward sass variables from components (refs SFKUI-6500) 12c4c7d
+* **@fkui/vue:** remove `FFileItem` icon stack (fixes SFKUI-7249) cd47c24
+
+### Bug Fixes
+
+* **@fkui/design:** fix configuring `@fkui/design` with sass `[@use](undefined/use) .. with` (refs SFKUI-6500) 1a8cd22, closes #582
+* **@fkui/design:** unnecessary horizontal scroll bar shown for fieldsets with tooltips (fixes SFKUI-7292) 78e2efb, closes #544
+* **@fkui/vue:** fix `FSortFilterDataset` focus on clear search (fixes SFKUI-7080) 705a1a4
+* **deps:** update dependency i18next to v25.3.1 7ce8969
+* **deps:** update dependency i18next to v25.3.2 675bbe5
+
+## 6.13.0 (2025-07-07)
+
+### Features
+
+* **@fkui/design:** update errorlist tokens (refs SFKUI-7290) adcdffb
+* **@fkui/vue:** make it possible to start minimizablepanel minimized (refs HLS-32397) d52f2cc
+* **deps:** update dependency svgo to v4 acb447a
+
+### Bug Fixes
+
+* **@fkui/vue:** allow `aria-label` on `FList` (refs SFKUI-6500) a277350
+* **@fkui/vue:** f-navigation-menu handles component is unmounted before resize handler fires (refs HLS-34566) c84d7f9
+* **deps:** update dependency i18next to v25.3.0 a7b31dc
+* **deps:** update vue monorepo to v3.5.17 60159ba
+
+## 6.12.0 (2025-06-18)
+
+### Features
+
+* **@fkui/date:** add `FDate.previous()` for symmetry with `next()` (refs SFKUI-6500) 0d9a43b
+* **@fkui/date:** new `clamp()` function to limit date values between min/max (refs SFKUI-6500) e55c2b6
+* **@fkui/date:** new `FYear` class representing a year (refs SFKUI-6500) 3a4bab9
+* **@fkui/design:** semantic tokens and HCM support on checkbox (refs SFKUI-7178) eaf7628
+* **@fkui/design:** semantic tokens and HCM support on radio button (refs SFKUI-7179) 7b069fe
+* **@fkui/design:** update dialogue tree semantic tokens (refs SFKUI-7206) 5213cba
+* **@fkui/design:** update progressbar with semantic tokens for colors (refs SFKUI-7273) a52dc04
+* **@fkui/theme-default:** deprecated color variables progressbar (refs SFKUI-7273) 0fa50fb
+
+## 6.11.0 (2025-06-16)
+
+### Features
+
+* **@fkui/vue:** deprecate `FTableColumnPageObject` (refs SFKUI-6500) aa42b2d
+
+### Bug Fixes
+
+* **@fkui/vue:** use a public symbol for `useResize()` if consumer needs to recreate it (fixes SFKUI-7285) 88e845f
+* **deps:** update dependency glob to v11.0.3 7e2ad9d
+
+## 6.10.0 (2025-06-13)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** deprecated calendar variables (refs SFKUI-6990) 9f905de
+* **@fkui/design, @fkui/theme-default:** tokens calendar components (refs SFKUI-6990) ea497a4
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** fix table button broken padding (refs SFKUI-6500) c4b2305
+* **@fkui/design:** properly expose `densify()` function (refs SFKUI-6500) 42aa981
+* **@fkui/tsconfig:** use `bundler` as default `moduleResolution` in `@fkui/tsconfig/recommended` (refs SFKUI-6500) 0e0e87b
+* **@fkui/vue:** `FSortFilterDataset` respect sort attribute after dataset update (fixes SFKUI-6399) 80fc166
+* **@fkui/vue:** allow passing unwrapped datatypes to `useResize()` (refs SFKUI-6500) 11e415b
+* **deps:** update dependency i18next to v25.2.1 88beaa7
+* **deps:** update dependency sass to v1.89.1 98dbde0
+* **deps:** update dependency sass to v1.89.2 e6b78f8
+* **deps:** update vue monorepo to v3.5.15 1474ed9
+* **deps:** update vue monorepo to v3.5.16 8b12e97
+* **html-validate:** allow `FWizardStep` in `<template>` (refs SFKUI-6500) 775d6b6
+* **html-validate:** handle Vue SFC `<template>` in `fkui/no-template-modal` rule (refs SFKUI-6500) 45728c5
+
+## 6.9.0 (2025-05-23)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** update semantic tokens for select (refs SFKUI-7236) 7275a1f
+* **@fkui/vue:** deprecate `FCrudButton` (refs SFKUI-7155) 7650477
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** reset min width of file item to enable wrapping of its file name (refs FRI-850) a4260c4
+* **@fkui/design:** prevent wizard step from overflowing when its content has unbreakable text (refs FRI-850) cee4ffc
+* **deps:** update dependency i18next to v25.2.0 e04b932
+* **deps:** update vue monorepo to v3.5.14 ([#504](undefined/Forsakringskassan/designsystem/issues/504)) 7766571
+* **fkui-vue:** radio field component allows null model value (refs SFKUI-6500) f9bf9d5
+* **fkui-vue:** select field component allows null model value (refs SFKUI-6500) b46968f
+
+## 6.8.0 (2025-05-19)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** updated semantic tokens for colors (refs SFKUI-7232) 07841f1
+* **@fkui/design, @fkui/vue:** update calender navbar styling (refs SFKUI-7243) 8d83771
+* **@fkui/design:** button icon and forced colors  (refs SFKUI-6980) df48aae
+* **@fkui/icon-lib-builder:** allow SCSS entry in icon lib (refs SB-4982) cbac36c
+
+### Bug Fixes
+
+* **@fkui/vue:** `FInteractiveTable` do not activate row on delete (refs SFKUI-4237) f413fd3
+* **@fkui/vue:** `FInteractiveTable` focus correct interactable on delete (fixes SFKUI-5257) 88886f4
+* **@fkui/vue:** add filterAttributes prop for FSortFilterDataset (fixes SFKUI-6581) 2ff2a96
+* **@fkui/vue:** add prop to FLoader to toggle focus on overlay (fixes SFKUI-5466) 38bbbce
+* **deps:** update dependency i18next to v25.1.3 1bb0012
+* **deps:** update dependency sass to v1.89.0 29d053b
+
+## 6.7.1 (2025-05-15)
+
+### Bug Fixes
+
+* **@fkui/design:** prevent fieldset from overflowing when its content has unbreakable text (refs FRI-850) b2285d9
+* **@fkui/vue:** selector in turnOffAnimation in wizard pageobject (refs SFKUI-6500) 8bd6456
+
+## 6.7.0 (2025-05-14)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default, @fkui/vue:** new `table__button` class for table action buttons (refs SFKUI-7155) 2c18d8e
+* **@fkui/design:** new `table__anchor` class for links in tables (refs SFKUI-7155) e4701c2
+* **@fkui/design:** remove styling for table scroll values `VERTICAL` and `BOTH` (refs SFKUI-7119) 1022932
+* **@fkui/vue:** add `f-fixed-pane` component (refs SFKUI-6500) b154d07
+* **@fkui/vue:** expose `FCrudDataset` button callbacks as slot attributes (refs SFKUI-7155) 9ad32b7
+* **@fkui/vue:** new `FTableButton` component (refs SFKUI-7155) dc0e212
+* **@fkui/vue:** new html-validate rule to detect when table checkbox-description is missing (refs SFKUI-6500) c08c906
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** issue with FWizardStep header overflow (fixes SFKUI-6168) 3f3b018
+* **@fkui/design:** horizontal scroll bar shown when `scroll="vertical"` (fixes SFKUI-7119) 901ac00
+* **@fkui/design:** visible hover effect for inactive bordered checkboxes (fixes SFKUI-7214) feac7d6
+* **@fkui/vue:** fix malformed cells on empty table (fixes SFKUI-7219) 71bfcc7, closes #454
+* **@fkui/vue:** use distinct translation key `fkui.interactive-table.expand` (refs SFKUI-7070) ee58c2a
+* **deps:** update dependency i18next to v25.0.2 afe49a6
+* **deps:** update dependency i18next to v25.1.1 ffbf811
+* **deps:** update dependency i18next to v25.1.2 4d7f2b1
+* **deps:** update dependency vue-router to v4.5.1 6fff20a
+
+## 6.6.0 (2025-04-25)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** add directive and plugin for formatting number (refs SFKUI-7093) dbf2f81
+* **@fkui/design, @fkui/vue:** add plusgiro directive formatter (refs SFKUI-7093) 4f21f03
+* **@fkui/design, @fkui/vue:** add postal code directive formatter (refs SFKUI-7093) ee397aa
+* **@fkui/design, @fkui/vue:** forward `focus-indicator()` mixin (refs SFKUI-6500) bef76a2
+* **@fkui/vue:** add `FInteractiveTablePageObject.cell()` (refs SFKUI-6500) 97b1dec
+* **@fkui/vue:** add bankgiro directive formatter (refs SFKUI-7093) 6eb783c
+* **@fkui/vue:** add date directive formatter (refs SFKUI-7093) ff47fc7
+* **@fkui/vue:** add minimizable panel (refs SFKUI-7191) 10e0e24
+* **@fkui/vue:** add organisationsnummer directive formatter (refs SFKUI-7093) c25c76b
+* **@fkui/vue:** add personnummer directive formatter (refs SFKUI-7093) fde3cd5
+* **@fkui/vue:** add text directive formatter (refs SFKUI-7093) 6615f36
+* **@fkui/vue:** new component `FDetailsPanel` (refs SFKUI-6993) 7aeec09
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** header element in FWizardStep anchor when completed (fixes SFKUI-7207) d3712cc
+* **deps:** update dependency i18next to v25.0.1 79f1b77
+
+## 6.5.0 (2025-04-23)
+
+### Features
+
+* **deps:** update dependency i18next to v25 223cfd7
+
+### Bug Fixes
+
+* **@fkui/vue:** `FTableColumn` `name` only required with `FSortFilterDataset` (fixes SFKUI-7059) 3dc3454, closes #312
+* **@fkui/vue:** default value in FSortFilterDataset dropdown (fixes SFKUI-7083) 401f110
+* **@fkui/vue:** fix "set operation on key value failed" on `FInteractiveTable` (refs SFKUI-6500) 7bb357e
+* **@fkui/vue:** fix "set operation on key value failed" on `FTableColumn` (refs SFKUI-6500) 0fe7409
+* **@fkui/vue:** wrong button order in `FFormModal` (fixes SFKUI-7185) ([#429](undefined/Forsakringskassan/designsystem/issues/429)) 886b8f4
+
+## 6.4.0 (2025-04-11)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** add semantic tokens for colors to wizard (refs SFKUI-7160) 23a3c86
+* **@fkui/design, @fkui/theme-default:** remove background for selected list/table rows (refs SFKUI-4410) ([#413](undefined/Forsakringskassan/designsystem/issues/413)) af9f3ee
+* **@fkui/design:** add styling `text-align: left` on component `th` (fixes SFKUI-7151) 86c1b0f
+* **@fkui/design:** update card semantic tokens (refs SFKUI-7166) 6c50ad5
+* **@fkui/design:** update entrypoint with tokens  (refs SFKUI-7040) 6c2f0f1
+* **@fkui/vue:** support custom buttons in `FCrudDataset` (fixes SFKUI-7068) 07ee345, closes #321
+* **deps:** update dependency express to v5 6c388e3
+* **deps:** update dependency express to v5 a48fef0
+
+### Bug Fixes
+
+* **@fkui/design:** collapsed expandable rows in `FInteractiveTable` shown as white gaps in iOS browsers (fixes SFKUI-6984) ([#406](undefined/Forsakringskassan/designsystem/issues/406)) 40421a7
+* **@fkui/vue:** card throws error when content is validated (fixes SFKUI-7190) 4c1e690
+
+## 6.3.1 (2025-03-25)
+
+### Bug Fixes
+
+* **@fkui/test-utils, @fkui/tsconfig:** use `moduleResolution` `bundler` instead of `node16` (refs SFKUI-6500) effa960
+* **@fkui/vue:** move focus with arrow keys in `FInteractiveTable` (fixes SFKUI-7136) 2231d03
+* **@fkui/vue:** set `keyAttribute` as optional for `FDataTable` (fixes SFKUI-6936) 3c64d99, closes #158
+* **@fkui/vue:** set `keyAttribute` as optional for `FInteractiveTable` (fixes SFKUI-6936) 2f8d465, closes #158
+* **@fkui/vue:** set `keyAttribute` as optional for `FList` (fixes SFKUI-6936) bb28be4, closes #158
+* **deps:** update dependency i18next to v24.2.3 ac251de
+* stage `publiccode.yml` after prepare (refs SFKUI-6500) fe63716
+
+## 6.3.0 (2025-03-11)
+
+### Features
+
+* **@fkui/date, @fkui/i18next-translate, @fkui/logic, @fkui/test-utils, @fkui/tsconfig, @fkui/vue-labs, @fkui/vue:** new package `@fkui/tsconfig` (refs SFKUI-6500) e036065
+* **@fkui/design, @fkui/theme-default:** semantic tokens label (refs SFKUI-6835) c249d5e
+* **@fkui/theme-default, @fkui/vue:** new component `FResizePane` (refs SFKUI-6993) d01b0a1
+* **@fkui/vue-labs:** `@fkui/vue-labs/pageobject` moved to `@fkui/vue-labs/cypress` (refs SFKUI-6500) 1676ebf
+* **@fkui/vue:** set colors on `FPageLayout` areas (refs SFKUI-6500) 37d6370
+
+### Bug Fixes
+
+* **@fkui/design:** anchor underline offset relative to parent element. [#345](undefined/Forsakringskassan/designsystem/issues/345) (refs SB-4982) 1041436
+* **@fkui/vue:** `FInteractiveTable` do not render as expandable row if empty (fixes SFKUI-7078) 2fdf973, closes #333
+* **@fkui/vue:** `FInteractiveTable` set selected on `v-model` change (fixes SFKUI-7052) f8b8af3, closes #293
+* **@fkui/vue:** fix `FPageLayout` size on IOS (refs SFKUI-6500) 69bbec5
+* **@fkui/vue:** remove `tabindex` from `FList` `ul` element (fixes SFKUI-5962) fb7ba82
+* **@fkui/vue:** text field components allow null model value (fixes SFKUI-7076) 840d200, closes #316
+* **deps:** update dependency core-js to v3.41.0 5c79e8b
+
+## 6.2.0 (2025-02-28)
+
+### Features
+
+* **@fkui/vue:** add `useAreaData()` composable (refs SFKUI-6992) 8e62c60
+* **@fkui/vue:** cypress pageobjects as esm hybrid package (refs SFKUI-6500) a3bfe08
+* **@fkui/vue:** new `FPageLayout` component (refs SFKUI-6992) 26f0d41
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/theme-default:** changed semantic tokens for icons and color for some semantic tokens  (refs SFKUI-7038) 98e7a6c
+* **@fkui/vue:** add offset top to IPopupListbox (refs SFKUI-6500) cabd15b
+
+## 6.1.0 (2025-02-20)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** added semantic tokens to Messagebox (refs SFKUI-6986) 3472153
+* **@fkui/design, @fkui/theme-default:** update Modal with semantic tokens  (refs SFKUI-7034) b759bc0
+* **@fkui/vue:** `FCrudDataset` generic and type-safe (refs SFKUI-6500) 5fa2d7b
+* **@fkui/vue:** `FDataTable` generic and type-safe (refs SFKUI-6500) 3381443
+* **@fkui/vue:** `FInteractiveTable` generic and type-safe (refs SFKUI-6500) 908146a
+* **@fkui/vue:** `FList` generic and type-safe (refs SFKUI-6500) 21bf92e
+* **@fkui/vue:** `FSortFilterDataset` generic and type-safe (refs SFKUI-6500) 4b27b43
+* **@fkui/vue:** `useSlotUtils.hasSlot()` takes same arguments options api `hasSlot()` (refs SFKUI-6500) 14707dd
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/theme-default, @fkui/vue:** remove `navbar` styles (refs SFKUI-7039) 058eee5
+* **@fkui/design, @fkui/theme-default:** set sideEffects field for css packages (refs SFKUI-6500) d7b993f
+* **@fkui/design, @fkui/vue:** `FCalendar` improved accessablility (fixes SFKUI-7011) 6fa234d
+* **@fkui/design:** fix action buttons wrapping in `FInteractiveTable` (fixes SFKUI-6902) 36ec7ef, closes #296
+* **@fkui/design:** fix missing type declaration for `@fkui/design` (refs SFKUI-6500) a711cc6, closes #288
+* **@fkui/theme-default:** fix missing type declaration for `@fkui/theme-default` (refs SFKUI-6500) a6c7a6e, closes #287
+* **@fkui/vue:** use `teleportTarget` in `IPopupError` (refs SFKUI-7050) 3314ba7
+
+## 6.0.1 (2025-02-11)
+
+### Bug Fixes
+
+* **@fkui/design:** focus in highcontrast mode (refs SFKUI-6909) a0e5ea6
+* **@fkui/vue:** stepNumber for cancel button slot in FWizardStep (refs SFKUI-6500) 7a9928f
+* **deps:** fix broken peerDependencies (refs SFKUI-6500) 6a4a995
+
+För äldre versioner se:
+
+- {@link changelog-v5 Changelog för v5}
+
+## 6.0.0 (2025-02-10)
+
+Denna release innehåller brytande ändringar.
+Läs mer om hur du {@link migrating-to-v6 migrerar till version 6}.
+
+### ⚠ BREAKING CHANGES
+
+* **@fkui/design, @fkui/vue-labs:** `@fkui/design` no longer provides logotype images.
+* **@fkui/design, @fkui/vue:** Consumers of `entrypoint` need to define their disered width.
+* **@fkui/design, @fkui/vue:** `FPageHeader` no longer provides default content in
+`logo` slot.
+* **@fkui/vue:** The `FProgressbarPageObject.ariaValueNow()` method has been
+renamed to `value()` and returns `number` instead of `string`.
+* **@fkui/vue:** default `buttonOrder` is now `RIGHT_TO_LEFT`.
+* **@fkui/vue:** The `change` event has been removed from `FCrudDataset`.
+* **@fkui/vue:** The `change` event has been removed from `FDialogueTree`.
+* **@fkui/vue:** The `update` event has been removed from `FInteractiveTable`.
+* **@fkui/vue:** The `update` event has been removed from `FList`.
+* **@fkui/vue:** The `change` event has been removed from `FWizard`.
+* **@fkui/vue:** The `update` event has been removed from `FTextField`.
+* **@fkui/vue:** The `change` event has been removed from `FCalendar`.
+* **@fkui/vue:** `@fkui/vue/pageobject` has been renamed to `@fkui/vue/cypress`.
+* **@fkui/design, @fkui/vue-labs, @fkui/vue:** `discreteDescriptionClass` has been renamed to
+`formatDescriptionClass` in `FLabel` and all components using `FLabel`.
+* **@fkui/vue:** FTooltip now requires a `headerTag` if it has a header-slot
+* **@fkui/logic, @fkui/vue:** Deprecated `FForm` has been removed.
+* **@fkui/vue:** Deprecated `FFormStep` has been removed.
+* **@fkui/vue:** Deprecated `FFormStepButton` has been removed.
+* **@fkui/logic:** The internal function `isRadiobuttonOrCheckbox(..)` has been removed.
+* **@fkui/logic:** The deprecated parameter `timeLimitMillis` to `setCookie(..) has been removed.
+* **@fkui/logic:** The deprecated and obsolete function `applyValidationMessages(..)` has been removed.
+* **@fkui/logic:** The deprecated constant `FORMAT_3_DIGITS_GROUP` has been removed.
+* **@fkui/logic:** The deprecated constant `WHITESPACE_PATTERN` has been removed.
+* **@fkui/logic:** The deprecated constant `DATE_REGEXP_WITH_DASH` has been removed.
+* **@fkui/logic:** The deprecated and legacy entrypoint
+`@fkui/logic/lib/polyfills` has been removed and replaced with `@fkui/logic/polyfills`.
+* **@fkui/vue:** The following deprecated methods from Cypress Pageobjects has
+been removed:
+
+- `FTooltipPageObject.contents()`.
+- `FNavigationMenuPageObject.menu()`.
+- `FMessageBoxPageobject.body()`.
+- `FMessageBoxPageobject.title()`.
+- `FLoaderPageobject.loader()`.
+* **@fkui/vue:** The deprecated configuration options `modalTarget` and
+`popupTarget` has been removed and replaced with `teleportTarget`.
+* **@fkui/vue:** `getTextFromScopedSlot(..)` function has been removed.
+* **@fkui/vue:** Deprecated validator `personnummer` has been removed.
+Use validators `personnummerFormat` and `personnummerLuhn` instead.
+* **@fkui/logic, @fkui/vue:** Deprecated validator `personnummer` has been removed.
+Use validators `personnummerFormat` and `personnummerLuhn` instead.
+* **@fkui/vue:** The deprecated `skipLinkHref` prop has been removed from `FPageHeader`.
+* **@fkui/vue:** Deprecated `FFormModal` slots `submit-button-text` and
+`cancel-button-text` removed.
+* **@fkui/vue-labs, @fkui/vue:** The deprecated `trimmedText()` method has been removed from all pageobjects.
+* **@fkui/vue:** The deprecated `FCheckboxGroup` component and the deprecated alias
+`FCheckboxGroupField` has been removed.
+* **@fkui/vue:** The deprecated `FRadioGroup` component and the deprecated alias
+`FRadioGroupField` has been removed.
+
+### Features
+
+* **@fkui/design, @fkui/theme-default, @fkui/vue-labs, @fkui/vue:** add `@fkui/theme-default` package (refs SFKUI-6970) 466cc2e
+* **@fkui/design, @fkui/theme-default, @fkui/vue:** add `FLogo` component (refs SFKUI-6960) d72c041
+* **@fkui/design, @fkui/vue-labs, @fkui/vue:** rename `discreteDescriptionClass` to `formatDescriptionClass` (refs SFKUI-7002) d0193d4
+* **@fkui/design, @fkui/vue-labs:** remove logos from `@fkui/design` (refs SFKUI-6938) 90ef626
+* **@fkui/design, @fkui/vue:** entrypoint always uses full width (refs SB-4982) b0ae343
+* **@fkui/design, @fkui/vue:** remove `FPageHeader` `logo` slot content (refs SFKUI-6960) 129b092
+* **@fkui/design:** remove deprecated alias `modal__dialog-container-{large,fullscreen}` classes (refs SFKUI-6963) be16655
+* **@fkui/design:** updated button with semantic tokens (refs SFKUI-6988) 8a6d96c
+* **@fkui/logic, @fkui/vue:** remove deprecated `FForm` (refs SFKUI-6961) eaef002
+* **@fkui/logic, @fkui/vue:** remove deprecated validator `personnummer` (refs SFKUI-6965) 8c3f6c2
+* **@fkui/logic:** remove deprecated `applyValidationMessages` function from `@fkui/logic` (refs SFKUI-6963) 66cd2ed
+* **@fkui/logic:** remove deprecated `DATE_REGEXP_WITH_DASH` constant from `@fkui/logic` (refs SFKUI-6963) de34aec
+* **@fkui/logic:** remove deprecated `FORMAT_3_DIGITS_GROUP` constant from `@fkui/logic` (refs SFKUI-6963) 2d46557
+* **@fkui/logic:** remove deprecated `WHITESPACE_PATTERN` constant from `@fkui/logic` (refs SFKUI-6963) f214863
+* **@fkui/logic:** remove deprecated entrypoint `@fkui/logic/lib/polyfills` (refs SFKUI-6963) 381df2e
+* **@fkui/logic:** remove deprecated parameter `timeLimitMillis` from `setCookie(..)` (refs SFKUI-6963) 8d2777f
+* **@fkui/logic:** remove internal function `isRadiobuttonOrCheckbox` from `@fkui/logic` (refs SFKUI-6963) c9e5638
+* **@fkui/vue-labs, @fkui/vue:** remove deprecated `trimmedText()` method from all pageobjects (refs SFKUI-6963) a6b1df5
+* **@fkui/vue:** change default `buttonOrder` to `RIGHT_TO_LEFT` (refs SFKUI-6500) 8334635
+* **@fkui/vue:** deprecate template modals (refs SFKUI-6841) 463e617, closes #54
+* **@fkui/vue:** emit change event for all input components (refs SFKUI-6963) 1790bfe
+* **@fkui/vue:** group-validity event for `FValidationGroup` formalized (refs SFKUI-6500) 3cfd520
+* **@fkui/vue:** new `FSelectField.selectedOption()` method (refs SFKUI-6500) d37456e
+* **@fkui/vue:** remove `change` event from `FCalendar` (refs SFKUI-6963) 41269e1
+* **@fkui/vue:** remove `change` event from `FWizard` (refs SFKUI-6963) b9253d5
+* **@fkui/vue:** remove `update` event from `FTextField` (refs SFKUI-6963) 1fc5bde
+* **@fkui/vue:** remove deprecated `{submit,cancel}-button-text` from `FFormModal` refs (refs SFKUI-6963) 6e62fe4
+* **@fkui/vue:** remove deprecated `change` event from `FCrudDataset` (refs SFKUI-6963) 98c6d1e
+* **@fkui/vue:** remove deprecated `change` event from `FDialogueTree` (refs SFKUI-6963) 16c3329
+* **@fkui/vue:** remove deprecated `config.modalTarget` and `config.popupTarget` (refs SFKUI-6963) 6bc9959
+* **@fkui/vue:** remove deprecated `FCheckboxGroup` and `FCheckboxGroupField` (refs SFKUI-6963) 2350d9c
+* **@fkui/vue:** remove deprecated `FFormStep` (refs SFKUI-6961) 19058f0
+* **@fkui/vue:** remove deprecated `FFormStepButton` (refs SFKUI-6961) 57b0035
+* **@fkui/vue:** remove deprecated `FRadioGroup` and `FRadioGroupField` (refs SFKUI-6963) 4500e05
+* **@fkui/vue:** remove deprecated `getTextFromScopedSlot(..)` function (refs SFKUI-6963) 778d9d7
+* **@fkui/vue:** remove deprecated `skipLinkHref` prop from `FPageHeader` (refs SFKUI-6963) a7a46c2
+* **@fkui/vue:** remove deprecated `update` event from `FInteractiveTable` (refs SFKUI-6963) e3b9ef9
+* **@fkui/vue:** remove deprecated `update` event from `FList` (refs SFKUI-6963) 85ef64d
+* **@fkui/vue:** remove deprecated methods from Cypress pageobjects (refs SFKUI-6963) e0207cb
+* **@fkui/vue:** remove deprecated validator `personnummer` (refs SFKUI-6965) a2b3a23
+* **@fkui/vue:** rename `@fkui/vue/pageobject` to `@fkui/vue/cypress` (refs SFKUI-6963) 9652321
+* **@fkui/vue:** rename `FProgressbarPageObject.ariaValueNow()` to `value()` (refs SFKUI-6500) c05bdfb
+
+### Bug Fixes
+
+* **@fkui/vue:** combobox reactive options (fixes SFKUI-7010) 3c74336
+* **@fkui/vue:** fix `aria-label` prop on `FProgressbar` (fixes SFKUI-7004) 3c5c4f0
+* **@fkui/vue:** update FTooltip to require headerTag if header exists (refs SFKUI-6972) 1efb8fe
+* **deps:** update dependency i18next to v24.2.2 8346550

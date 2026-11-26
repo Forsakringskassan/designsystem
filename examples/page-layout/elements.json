@@ -1,0 +1,23 @@
+{
+    "$schema": "https://html-validate.org/schemas/elements.json",
+
+    "x-context-bar": {
+        "flow": true
+    },
+
+    "x-toolbar": {
+        "flow": true
+    },
+
+    "x-person-panel": {
+        "flow": true
+    },
+
+    "x-expense-panel": {
+        "flow": true
+    },
+
+    "x-left-panel": {
+        "flow": true
+    }
+}

@@ -1,0 +1,21 @@
+/// Style element as a circle with optional background and border.
+///
+/// @param {color} $background - If given it will be set as the background color.
+/// @param {border} $border - If given it will be set as the border.
+/// @param {length} $size - If given it will set width/height (diagonal, not radius).
+@mixin circle($background: false, $border: false, $size: false) {
+    border-radius: 50%;
+
+    @if $background {
+        background-color: $background;
+    }
+
+    @if $border {
+        border: $border;
+    }
+
+    @if $size {
+        width: $size;
+        height: $size;
+    }
+}

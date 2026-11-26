@@ -1,0 +1,34 @@
+import { beforeEach, describe, expect, it } from "vitest";
+import { Locale, getLocale, isLocale, resetLocale, setLocale } from "./locale";
+
+beforeEach(() => {
+    resetLocale();
+});
+
+describe("locale", () => {
+    it("isLocale should return false for empty value", () => {
+        expect.assertions(1);
+        expect(isLocale()).toBe(false);
+    });
+
+    it("isLocale should return boolean value for string", () => {
+        expect.assertions(4);
+        expect(isLocale("en")).toBe(true);
+        expect(isLocale("sv")).toBe(true);
+        expect(isLocale("SV")).toBe(false);
+        expect(isLocale("invalidLocale")).toBe(false);
+    });
+
+    it("isLocale should return true for locale enum", () => {
+        expect.assertions(2);
+        expect(isLocale(Locale.SWEDISH)).toBe(true);
+        expect(isLocale(Locale.ENGLISH)).toBe(true);
+    });
+
+    it("setLocale should set current locale", () => {
+        expect.assertions(2);
+        expect(getLocale()).toEqual(Locale.SWEDISH);
+        setLocale(Locale.ENGLISH);
+        expect(getLocale()).toEqual(Locale.ENGLISH);
+    });
+});

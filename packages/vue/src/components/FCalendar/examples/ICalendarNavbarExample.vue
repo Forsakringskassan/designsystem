@@ -1,0 +1,23 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
+<script lang="ts">
+import { defineComponent, shallowRef } from "vue";
+import { FDate } from "@fkui/date";
+import { ICalendarNavbar } from "@fkui/vue";
+
+export default defineComponent({
+    components: {
+        ICalendarNavbar,
+    },
+    data() {
+        return {
+            minDate: shallowRef(FDate.fromIso("2026-01-01")),
+            maxDate: shallowRef(FDate.fromIso("2026-12-31")),
+        };
+    },
+});
+</script>
+
+<template>
+    <i-calendar-navbar v-model="minDate" :min-date :max-date />
+    <i-calendar-navbar v-model="maxDate" :min-date :max-date year-selector />
+</template>

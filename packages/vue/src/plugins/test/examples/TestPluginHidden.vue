@@ -1,0 +1,29 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FButton, FTextField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "TestPluginHidden",
+    components: { FButton, FTextField },
+    data() {
+        return { isVisible: false };
+    },
+});
+</script>
+
+<template>
+    <div>
+        <f-text-field
+            v-if="isVisible"
+            id="child-name"
+            v-validation.maxLength="{ maxLength: { length: 100 } }"
+        >
+            Barnets namn
+        </f-text-field>
+
+        <f-button size="medium" variant="primary" @click="isVisible = !isVisible">
+            {{ isVisible ? "Göm inmatningsfält" : "Visa inmatningsfält" }}
+        </f-button>
+    </div>
+</template>

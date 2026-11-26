@@ -1,0 +1,35 @@
+*.tgz
+*.zip
+node_modules/
+
+# Build artifacts
+.eslintcache
+build/
+coverage/
+dist/
+docs/examples/files/
+public/
+temp/
+
+# Cypress output
+cypress/screenshots/
+test-results/
+
+# Local env files
+.env.local
+.env.*.local
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.DS_Store
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

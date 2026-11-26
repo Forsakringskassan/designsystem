@@ -1,0 +1,16 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FIcon } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FIconInfo",
+    components: { FIcon },
+});
+</script>
+
+<template>
+    <f-icon name="pen" tabindex="0">
+        <title>Redigera</title>
+    </f-icon>
+</template>

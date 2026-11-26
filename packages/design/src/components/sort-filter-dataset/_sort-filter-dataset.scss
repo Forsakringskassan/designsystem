@@ -1,0 +1,15 @@
+@use "../../core";
+@use "../../core/size";
+
+.sort-filter-dataset {
+    &__sort {
+        min-width: 80px;
+    }
+
+    &__search input {
+        @include core.breakpoint-up(md) {
+            // technical debt: should use `FTextField` `input-width` prop but is not compatible with `inline`.
+            width: 160px;
+        }
+    }
+}

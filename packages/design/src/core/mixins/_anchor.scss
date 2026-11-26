@@ -1,0 +1,58 @@
+@use "variables" as *;
+
+// @public
+@mixin anchor() {
+    color: $anchor-color-text-standard-default;
+    font-weight: var(--f-font-weight-medium);
+    line-height: var(--f-line-height-large);
+    text-decoration-color: $anchor-color-text-standard-default;
+    text-decoration-line: underline;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: $anchor-underline-width-default;
+    text-underline-offset: $anchor-underline-offset-default;
+
+    @media (hover: hover) {
+        &:hover {
+            color: $anchor-color-text-standard-default;
+            text-decoration-color: $anchor-color-text-standard-default;
+            text-decoration-thickness: $anchor-underline-width-hover;
+
+            @media (forced-colors: active) {
+                color: LinkText;
+            }
+        }
+    }
+
+    &:active {
+        color: $anchor-color-text-standard-default;
+        text-decoration-color: $anchor-color-text-standard-default;
+        text-decoration-thickness: $anchor-underline-width-active;
+        text-underline-offset: $anchor-underline-offset-active;
+
+        @media (forced-colors: active) {
+            color: LinkText;
+        }
+    }
+
+    @media (forced-colors: active) {
+        color: LinkText;
+    }
+}
+
+@mixin anchor-discrete-colors {
+    color: $anchor-color-text-discrete-default;
+    text-decoration-color: $anchor-color-text-decoration-discrete-default;
+
+    @media (hover: hover) {
+        &:hover {
+            color: $anchor-color-text-discrete-default;
+            text-decoration-color: $anchor-color-text-decoration-discrete-default;
+        }
+    }
+}
+
+// @public
+@mixin anchor-discrete {
+    @include anchor;
+    @include anchor-discrete-colors;
+}
