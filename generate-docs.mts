@@ -76,11 +76,9 @@ function themeProcessor(): Processor {
     };
 }
 
+const { site, sourceFiles } = config;
 const docs = new Generator(import.meta.url, {
-    site: {
-        name: "FK Designsystem",
-        lang: "sv",
-    },
+    site,
     outputFolder: "./public",
     cacheFolder: "./temp/docs",
     exampleFolders: [
@@ -169,6 +167,7 @@ const docs = new Generator(import.meta.url, {
         htmlRedirectProcessor(),
     ],
     setupPath: path.resolve("docs/src/setup.ts"),
+    sourceFiles,
 });
 
 docs.compileScript("main", "./docs/src/main.js", {
@@ -187,7 +186,7 @@ docs.copyResource("images", "docs/src/assets/images");
 docs.copyResource("fonts", fontDir);
 
 try {
-    await docs.build(config.sourceFiles);
+    await docs.build();
 
     const latest = `v${pkg.version}`;
     const versions = JSON.stringify(

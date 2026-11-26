@@ -1467,8 +1467,11 @@ export type TableColumn<T, K extends keyof T = keyof T> = TableColumnSimple<T, K
 // @public (undocumented)
 export interface TableColumnAnchor<T, K extends keyof T> extends TableColumnBase<T> {
     href: string | ((this: void, row: T) => string);
+    iconLeft?: string;
+    iconRight?: string;
     // (undocumented)
     key?: K;
+    target?: "_blank" | "_self" | "_parent" | "_top";
     text(this: void, row: T): string | null;
     type: "anchor";
 }

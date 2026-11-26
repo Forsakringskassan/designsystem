@@ -293,6 +293,14 @@ $button--tertiary: (
             min-width: 0;
         }
 
+        &:focus-visible {
+            // A hack to hide little pixels on the edges of the tertiary button when having focus
+            @media (forced-colors: none) {
+                outline: 2px solid var(--fkds-focus-indicator-color-background);
+                outline-offset: -0.1px;
+            }
+        }
+
         @include core.breakpoint-down(sm) {
             &.button--full-width {
                 min-width: var(--f-width-full);

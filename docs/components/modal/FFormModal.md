@@ -32,14 +32,11 @@ interface Person {
 Din komponent ska innehålla en prop `value` motsvarande ett objekt av interfacet:
 
 ```diff
- export default defineComponent({
-     props: {
-+        value: {
-+            type: Object as PropType<Person>,
-+            required: true,
-+        },
-     },
- });
+ <script setup lang="ts">
++const { value } = defineProps<{
++    value: Person;
++}>();
+ </script>
 ```
 
 Template använder `FFormModal` och binder `value` dels som `value`-propen men också som `v-model` för respektive inmatningsfält.
@@ -59,36 +56,8 @@ Inmatningsfälten läggs in i `#input-text-fields`-slotten.
 
 ::: details Fullständigt exempel
 
-```vue static
-<template>
-    <f-form-modal :value>
-        <template #header> Awesome Modal </template>
-        <template #input-text-fields>
-            <f-text-field v-model="value.name"> Namn </f-text-field>
-            <f-text-field v-model="value.age"> Ålder </f-text-field>
-        </template>
-    </f-form-modal>
-</template>
-
-<script lang="ts">
-import { type PropType, defineComponent } from "vue";
-import { FFormModal, FTextField } from "@fkui/vue";
-
-interface Person {
-    name: string;
-    age: string;
-}
-
-export default defineComponent({
-    components: { FFormModal, FTextField },
-    props: {
-        value: {
-            type: Object as PropType<Person>,
-            required: true,
-        },
-    },
-});
-</script>
+```import static
+FFormModalExample.vue
 ```
 
 :::
@@ -103,33 +72,7 @@ Du kan antingen låta din formulärsmodal hantera detta genom att internt kopier
 
 ## Öppna modal
 
-Du öppnar modalen med {@link form-modal `formModal()`} (options API) eller {@link useModal `useModal()`} (composition API).
-
-**Options API:**
-
-```ts
-import { defineComponent } from "vue";
-import { formModal } from "@fkui/vue";
-
-/* eslint-disable-next-line @typescript-eslint/no-empty-object-type */
-interface Person {}
-
-const PersonFormModal = defineComponent({});
-
-defineComponent({
-    methods: {
-        async dummy() {
-            /* --- cut above --- */
-
-            const result = await formModal<Person>(this, PersonFormModal);
-
-            /* --- cut below --- */
-        },
-    },
-});
-```
-
-**Composition API:**
+Du öppnar modalen med {@link form-modal `formModal()`}.
 
 ```ts
 import { defineComponent } from "vue";
@@ -144,7 +87,6 @@ const PersonFormModal = defineComponent({});
 import { useModal } from "@fkui/vue";
 
 const { formModal } = useModal();
-
 async function onOpen(): Promise<void> {
     const result = await formModal<Person>(PersonFormModal);
 
@@ -170,7 +112,6 @@ const PersonFormModal = defineComponent({});
 import { useModal } from "@fkui/vue";
 
 const { formModal } = useModal();
-
 const result = await formModal<Person>(PersonFormModal, {
     props: {
         value: {
@@ -207,7 +148,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 
 ```ts
 import { defineComponent } from "vue";
-import { formModal } from "@fkui/vue";
+import { useModal } from "@fkui/vue";
 
 const MyAwesomeModal = defineComponent({});
 
@@ -216,7 +157,8 @@ defineComponent({
         async dummy() {
             /* --- cut above --- */
 
-            const formdata = await formModal(this, MyAwesomeModal, {
+            const { formModal } = useModal();
+            const formdata = await formModal(MyAwesomeModal, {
                 props: {
                     buttons: [/* ... */],
                 },
@@ -268,8 +210,8 @@ Inmatningsfälten valideras redan med vanlig validering, men om du behöver utf�
 
 ```html static
 <f-form-modal
-    :is-open="isOpen"
-    :value="value"
+    :is-open
+    :value
     :before-submit="onBeforeSubmit"
     @submit="onSubmit"
 >
@@ -280,52 +222,35 @@ Notera att det är metoden `onBeforeSubmit` som ska skickas in i sin helhelt, an
 I `onBeforeSubmit` har du möjlighet att sätta nya valideringsfel på inmatningsfält:
 
 ```ts
-import { defineComponent } from "vue";
+import { ref, useTemplateRef } from "vue";
 import { ValidationService } from "@fkui/logic";
 import { FFormModalAction, getElementFromVueRef } from "@fkui/vue";
 
-defineComponent({
-    data() {
-        return {
-            showErrorMessage: false,
-        };
-    },
-    methods: {
-        /* --- cut above --- */
+/* --- cut above --- */
 
-        onBeforeSubmit(): void {
-            const myField = getElementFromVueRef(this.$refs.myField);
-            ValidationService.setError(myField, "This value is invalid!");
-        },
+const showErrorMessage = ref(false);
+const myField = useTemplateRef("my-field");
 
-        /* --- cut below --- */
-    },
-});
+function onBeforeSubmit(): void {
+    const element = getElementFromVueRef(myField.value);
+    ValidationService.setError(element, "This value is invalid!");
+}
 ```
 
 Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera `FFormModalAction.CANCEL` från `onBeforeSubmit`:
 
 ```ts
-import { defineComponent } from "vue";
+import { ref } from "vue";
 import { FFormModalAction } from "@fkui/vue";
 
-defineComponent({
-    data() {
-        return {
-            showErrorMessage: false,
-        };
-    },
-    methods: {
-        /* --- cut above --- */
+/* --- cut above --- */
 
-        onBeforeSubmit(): FFormModalAction {
-            this.showErrorMessage = true;
-            return FFormModalAction.CANCEL;
-        },
+const showErrorMessage = ref(false);
 
-        /* --- cut below --- */
-    },
-});
+function onBeforeSubmit(): FFormModalAction {
+    showErrorMessage.value = true;
+    return FFormModalAction.CANCEL;
+}
 ```
 
 ## API

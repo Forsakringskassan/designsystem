@@ -192,9 +192,7 @@ describe("should display error icon when error is present", () => {
             wrapper.element as ValidatableHTMLElement,
         );
         await flushPromises();
-        const icon = wrapper.findComponent(FIcon) as VueWrapper<
-            InstanceType<typeof FIcon>
-        >;
+        const icon = wrapper.findComponent(FIcon);
         expect(icon.exists()).toBeTruthy();
         expect(icon.attributes("name")).toBe("error");
     });
@@ -211,9 +209,7 @@ describe("should display error icon when error is present", () => {
             wrapper.element as ValidatableHTMLElement,
         );
         await flushPromises();
-        const icon = wrapper.findComponent(FIcon) as VueWrapper<
-            InstanceType<typeof FIcon>
-        >;
+        const icon = wrapper.findComponent(FIcon);
         expect(icon.exists()).toBeTruthy();
         expect(icon.attributes("name")).toBe("error");
     });

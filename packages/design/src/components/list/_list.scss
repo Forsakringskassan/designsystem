@@ -89,6 +89,12 @@ $list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
                 }
             }
         }
+
+        &:focus-visible {
+            box-shadow: none;
+            outline: 3px solid var(--fkds-focus-indicator-color);
+            outline-offset: -3px;
+        }
     }
 
     &--hover {

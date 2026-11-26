@@ -10,6 +10,12 @@ Popup är en ramverkskomponent som används tillsammans med andra komponenter f�
 IPopupExample.vue
 ```
 
+```html name=ipopup-base hidden
+<i-popup :is-open :anchor>
+    <!-- popup content -->
+</i-popup>
+```
+
 ## Styling
 
 Som standard har popup enbart `box-shadow` när den är overlay och konsumenten ansvarar för all annan styling samt layout.
@@ -34,21 +40,20 @@ samt att fokus återställs när popup stängs.
 Om du behöver sätta fokus på ett annat element när popup öppnas kan du
 använda `focus-element` som tar en funktion som returnerar det element du vill ska få fokus.
 
-```diff
- <i-popup
-+    :focus-element="() => myFocusElement"
- >
+```html compare=ipopup-base
+<i-popup :is-open :anchor :focus-element="() => myFocusElement">
+    <!-- popup content -->
+</i-popup>
 ```
 
 Du kan stänga av den automatiska fokushanteringen genom att sätta `set-focus` till `false`.
 För att själv sätta fokus i detta fallet kan du lyssna på `"open"` eventet
 som sänds när popup är synlig och beräkning av position är klar.
 
-```diff
- <i-popup
-+    :set-focus="false"
-+    @open="onOpenSetFocus"
- >
+```html compare=ipopup-base
+<i-popup :is-open :anchor :set-focus="false">
+    <!-- popup content -->
+</i-popup>
 ```
 
 ## Teleport
@@ -88,6 +93,16 @@ Positioneringen föredrar:
 - "H" - popup vänster om ankaren linjering i toppen av begränsade ytan.
 - "I" - popup vertikalt och horisontellt centrerad i begränsade ytan.
 
+Standardvärdet `anchor-overlap="allow"` tillåter att popupen använder en placering som överlappar ankaret.
+Sätt `anchor-overlap="never"` om ankaret alltid ska vara synligt.
+Då utesluts placeringar som överlappar ankaret, medan ordningen för övriga placeringar är oförändrad.
+
+```html compare=ipopup-base
+<i-popup :is-open :anchor anchor-overlap="never">
+    <!-- popup content -->
+</i-popup>
+```
+
 Ifall ingen av ovanstående positioner fungerar kommer en fallback användas.
 
 - Om `inline` är satt till `never` positioneras popup under ankare utan linjering.
@@ -109,6 +124,10 @@ När popup öppnas som inline kommer den att skrolla så att den är synlig i f�
 
 Popup använder först och främst sin närmaste förälder med klassen `scroll-target` som skrollyta.
 Om popup inte hittar en förälder med `scroll-target` så kommer den istället använda fönstret (`window`).
+
+Med `anchor-overlap="never"` följer en overlay ankaret med samma placering och mellanrum vid skrollning, även om delar av den hamnar utanför den synliga ytan.
+När fönsterstorleken eller `anchor-overlap` ändras kan placeringen beräknas om medan popupen är öppen.
+När popupen öppnas nästa gång väljs placeringen på nytt.
 
 ## API
 

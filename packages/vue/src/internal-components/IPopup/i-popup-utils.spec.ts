@@ -531,4 +531,71 @@ describe("fitInsideArea()", () => {
             y: 20,
         });
     });
+
+    it("should preserve the centered placement when anchor overlap is allowed", () => {
+        expect.assertions(2);
+        const target = { x: NaN, y: NaN, width: 180, height: 120 };
+        const anchor = { x: 95, y: 65, width: 10, height: 10 };
+        const area = { x: 0, y: 0, width: 200, height: 140 };
+        const options = {
+            target,
+            anchor,
+            area,
+            spacing: 0,
+            candidateOrder: CandidateOrder.Default,
+        };
+
+        expect(fitInsideArea(options)).toEqual({
+            placement: Placement.I,
+            x: 10,
+            y: 10,
+        });
+        expect(fitInsideArea({ ...options, allowAnchorOverlap: true })).toEqual(
+            {
+                placement: Placement.I,
+                x: 10,
+                y: 10,
+            },
+        );
+    });
+
+    it("should use fallback when the only fitting candidate overlaps the anchor", () => {
+        expect.assertions(1);
+        const target = { x: NaN, y: NaN, width: 180, height: 120 };
+        const anchor = { x: 95, y: 65, width: 10, height: 10 };
+        const area = { x: 0, y: 0, width: 200, height: 140 };
+
+        expect(
+            fitInsideArea({
+                target,
+                anchor,
+                area,
+                spacing: 0,
+                candidateOrder: CandidateOrder.Default,
+                allowAnchorOverlap: false,
+            }),
+        ).toEqual({
+            placement: Placement.Fallback,
+            x: 0,
+            y: 75,
+        });
+    });
+
+    it("should retain a side placement that does not overlap the anchor", () => {
+        expect.assertions(1);
+        const target = { x: NaN, y: NaN, width: 20, height: 100 };
+        const anchor = { x: 10, y: 10, width: 10, height: 10 };
+        const area = { x: 0, y: 0, width: 200, height: 100 };
+
+        expect(
+            fitInsideArea({
+                target,
+                anchor,
+                area,
+                spacing: 0,
+                candidateOrder: CandidateOrder.Default,
+                allowAnchorOverlap: false,
+            }).placement,
+        ).toBe(Placement.G);
+    });
 });

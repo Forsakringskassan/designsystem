@@ -1,5 +1,58 @@
 # CHANGELOG
 
+## 6.66.0 (2026-11-25)
+
+### Features
+
+* **@fkui/docs, @fkui/vue:** add icon and target support to table anchor (refs SB-4982) 0cd72b9
+* **deps:** update dependency i18next to v27 ed10aa7
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** cut off focus border when scroll on FList (refs SFKUI-6758) f84d19a
+* **@fkui/design, @fkui/vue:** edge pixels on tertiary button when focused (refs SFKUI-8292) f1d84d6
+* **@fkui/design:** add missing color for empty table (fixes SFKUI-8432) ed8cebc
+* **@fkui/logic:** reuse screen reader wrapper across instances (refs SB-4982) 2b6d8b4
+* **@fkui/vue:** aria-current for FNavigationMenu (refs SFKUI-8411) ([#1857](undefined/Forsakringskassan/designsystem/issues/1857)) 2df1716
+* **@fkui/vue:** sync table input values after row updates (fixes SFKUI-8391) 3ccbd87
+* **deps:** support stylelint 18 (refs SFKUI-6500) ae60292
+* **deps:** update dependency i18next to v27.1.5 cd5b95a
+* **deps:** update dependency i18next to v27.2.1 a6bbc92
+* **deps:** update dependency i18next to v27.2.2 6c8aaf1
+* **deps:** update dependency i18next to v27.2.3 f647c0f
+* **deps:** update dependency sass to v1.108.2 7acc07b
+* **deps:** update dependency vue-router to v5.5.0 9e81be0
+* **deps:** update dependency vue-router to v5.5.1 ee317ca
+* **deps:** update vue monorepo to v3.5.46 ([#1889](undefined/Forsakringskassan/designsystem/issues/1889)) b081a86
+
+## 6.65.1 (2026-11-13)
+
+### Bug Fixes
+
+* **@fkui/design:** set primary background color on body (refs SB-4982) 3310a54
+
+## 6.65.0 (2026-11-12)
+
+### Features
+
+* **@fkui/docs, @fkui/design, @fkui/vue:** add configurable text wrapping to FTable (refs SFKUI-8223) 08c2310
+* **@fkui/docs, @fkui/theme-default:** revert `legacy-palette` (refs SFKUI-6500) f938abf
+* **@fkui/vue:** add popup anchor overlap mode (refs SFKUI-8236) cfb8d58
+* **deps:** update dependency @adobe/css-tools to v5 7b6335b
+
+### Bug Fixes
+
+* **@fkui/design:** preserve datepicker close button text color (refs SFKUI-6500) 356478b
+* **@fkui/theme-builder:** match shortened hex colors to palette names (refs SFKUI-6500) 09d00f8
+* **@fkui/vue-labs, @fkui/vue:** increase vue peer dep to ^3.5.40 (refs SFKUI-6500) be1f6d8
+* **@fkui/vue:** prevent datepicker popup from overlapping field (refs SFKUI-8236) addddd5
+* **@fkui/vue:** prevent form submit when editing table cells with enter (fixes SFKUI-8363) a3fd29e
+* **deps:** update dependency i18next to v26.7.1 4414923
+* **deps:** update dependency i18next to v26.7.2 ([#1811](undefined/Forsakringskassan/designsystem/issues/1811)) f0c17ce
+* **deps:** update dependency sass to v1.108.0 2e2bb82
+* **deps:** update dependency sass to v1.108.1 51f90c2
+* **deps:** update vue monorepo to v3.5.44 ([#1759](undefined/Forsakringskassan/designsystem/issues/1759)) e3599b5
+
 ## 6.64.1 (2026-11-03)
 
 ### Bug Fixes

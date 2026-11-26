@@ -20,9 +20,33 @@ afterEach(() => {
 describe("alertScreenReader", () => {
     alertScreenReader("Screen reader text");
 
+    it("should reuse the wrapper from another module instance", async () => {
+        expect.assertions(1);
+        vi.resetModules();
+        const secondModule = await import("./alert-screen-reader");
+        secondModule.createScreenReaderWrapper({ assertive: false });
+
+        expect(
+            document.querySelectorAll('[id="fkui-alert-screen-reader"]'),
+        ).toHaveLength(1);
+    });
+
     it("should create wrapper element", () => {
         expect.assertions(1);
         expect(getWrapper()).toBeTruthy();
+    });
+
+    it("should recreate wrapper if it has been removed from the DOM", () => {
+        expect.assertions(2);
+        const previousWrapper = getWrapper();
+        previousWrapper.remove();
+
+        alertScreenReader("Screen reader text");
+
+        expect(getWrapper()).not.toBe(previousWrapper);
+        expect(
+            document.querySelectorAll('[id="fkui-alert-screen-reader"]'),
+        ).toHaveLength(1);
     });
 
     it("should set aria-live attribute", () => {

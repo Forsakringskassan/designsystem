@@ -20,10 +20,10 @@ jobs:
             - name: Minimal build
               run: npm exec lerna -- run --include-dependencies --scope=@fkui/theme-default --scope=@fkui/vue --scope=@fkui/vue-labs --scope=@fkui/cypress-split build
             - name: Prettier
-              uses: Forsakringskassan/prettier-config@b170cc346f291b88a74cf9ab01501aa61e4602a7 # v3.7.13
+              uses: Forsakringskassan/prettier-config@747363ec97d22f19cf46afb24aa3b300409e6cb3 # v3.7.16
             - name: ESLint
               if: success() || failure()
-              uses: Forsakringskassan/eslint-config@541e9be57965e04661baa3f2f6f6061e03ae304c # v15.13.10
+              uses: Forsakringskassan/eslint-config@c71c43cff1ed496a12aea4ff8f0f343ac7e94e7b # v15.13.22
             - name: HTML Validate
               if: success() || failure()
               run: npm run html-validate -- --max-warnings 0 || false
@@ -56,7 +56,7 @@ jobs:
                   npm run build
                   npm run build:docs
             - name: npm-pkg-lint
-              uses: ext/npm-pkg-lint@3ec3576422cbd4418a6b1eed27738effd0ea7038 # v5.4.1
+              uses: ext/npm-pkg-lint@ad63685df0711a75bccfa89671d9a513add6245c # v5.5.0
               with:
                   build: false
                   folders: packages/* docs

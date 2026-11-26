@@ -56,6 +56,26 @@ function isRootRule(rule: CssAtRuleAST): rule is CssRuleAST {
     return rule.type === CssTypes.rule && rule.selectors.includes(":root");
 }
 
+/**
+ * Expand shorthand hex colors and lowercase hex digits for palette lookups.
+ *
+ * - `#f0a` → `#ff00aa`
+ * - `#f0a9` → `#ff00aa99`
+ * - `#ff00aa` → `#ff00aa`
+ * - `#ff00aa99` → `#ff00aa99`
+ */
+function normalizeHexColor(value: string): string {
+    if (!/^#(?:[\da-f]{3,4}|[\da-f]{6}|[\da-f]{8})$/i.test(value)) {
+        return value;
+    }
+
+    const hex = value.toLowerCase();
+    if (hex.length <= 5) {
+        return hex.replaceAll(/[\da-f]/g, (digit) => digit.repeat(2));
+    }
+    return hex;
+}
+
 function* getTokens(
     rule: CssRuleAST | undefined,
     palette: Record<string, string>,
@@ -73,7 +93,7 @@ function* getTokens(
             last = {
                 name: decl.property,
                 value: decl.value,
-                palette: palette[decl.value] ?? null,
+                palette: palette[normalizeHexColor(decl.value)] ?? null,
                 comment: null,
             };
             yield last;
@@ -94,7 +114,7 @@ async function fromFile(
     const palette = Object.fromEntries(
         paletteVariables
             .flatMap((it) => it.variables)
-            .map((it) => [it.value, it.name]),
+            .map((it) => [normalizeHexColor(it.value), it.name]),
     );
     const { stylesheet } = parse(css);
     const rule = stylesheet.rules.find(isRootRule);

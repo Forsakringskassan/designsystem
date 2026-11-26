@@ -60,35 +60,34 @@ export default defineComponent({
                     <f-list :items="sortFilterResult" key-attribute="id">
                         <template #default="{ item }">
                             <h3>{{ item.name }}</h3>
-                            <div class="row">
-                                <div class="col col--lg-10">
-                                    Land:
-                                    <em> {{ item.origin }} </em>
-                                    <br />
-                                    Beskrivning:
-                                    <em> {{ item.description }} </em>
-                                    <br />
-                                </div>
-                                <div class="col col--sm-1">
-                                    <f-button
-                                        icon-left="pen"
-                                        size="small"
-                                        variant="tertiary"
-                                        @click="updateItem(item)"
-                                    >
-                                        Ändra <span class="sr-only">{{ item.name }}</span>
-                                    </f-button>
-                                </div>
-                                <div class="col col--sm-1">
-                                    <f-button
-                                        icon-left="trashcan"
-                                        size="small"
-                                        variant="tertiary"
-                                        @click="deleteItem(item)"
-                                    >
-                                        Ta bort <span class="sr-only">{{ item.name }}</span>
-                                    </f-button>
-                                </div>
+                            <p>
+                                Land:
+                                <em> {{ item.origin }} </em>
+                                <br />
+                                Beskrivning:
+                                <em> {{ item.description }} </em>
+                            </p>
+                            <div class="button-group">
+                                <f-button
+                                    align-text
+                                    icon-left="pen"
+                                    size="medium"
+                                    variant="tertiary"
+                                    class="button-group__item"
+                                    @click="updateItem(item)"
+                                >
+                                    Ändra <span class="sr-only">{{ item.name }}</span>
+                                </f-button>
+                                <f-button
+                                    align-text
+                                    icon-left="trashcan"
+                                    size="medium"
+                                    variant="tertiary"
+                                    class="button-group__item"
+                                    @click="deleteItem(item)"
+                                >
+                                    Ta bort <span class="sr-only">{{ item.name }}</span>
+                                </f-button>
                             </div>
                         </template>
                     </f-list>

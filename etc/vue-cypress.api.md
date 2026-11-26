@@ -496,7 +496,7 @@ export class FModalPageObject implements BasePageObject {
     // (undocumented)
     closeCross(): DefaultCypressChainable;
     // (undocumented)
-    el: () => DefaultCypressChainable;
+    el(): DefaultCypressChainable;
     // (undocumented)
     primaryButton(): DefaultCypressChainable;
     // (undocumented)
