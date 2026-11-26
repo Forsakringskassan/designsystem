@@ -187,7 +187,7 @@
   --fkds-color-footer-text-primary: #ffffff;
   --fkds-focus-indicator-color: #1b1e23;
   --fkds-focus-indicator-color-background: #ffffff;
-  --fkui-theme-default-version: "6.65.0";
+  --fkui-theme-default-version: "6.66.0";
 }
 
 *,
@@ -5863,6 +5863,7 @@ input[type=search]:focus-visible,
 .table-ng tfoot .table-ng__row--empty {
   background: var(--fkds-color-background-primary);
   text-align: center;
+  color: var(--fkds-color-text-primary);
 }
 .table-ng__column__description {
   background: transparent;

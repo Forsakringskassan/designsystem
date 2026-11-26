@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetListExample.vue:FCrudDatasetListExample-a4263b.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetSortListExample.vue:FCrudDatasetSortListExample-19f33a.js
 import { defineComponent } from "vue";
 
 // packages/vue/src/components/FCrudDataset/examples/fruit-data.ts
@@ -73,14 +73,23 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetListExample.vue:FCrudDatasetListExample-a4263b.js
-import { FButton, FCrudDataset, FList, FStaticField, FTextField, FTextareaField } from "@fkui/vue";
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetSortListExample.vue:FCrudDatasetSortListExample-19f33a.js
+import {
+  FButton,
+  FCrudDataset,
+  FList,
+  FSortFilterDataset,
+  FStaticField,
+  FTextField,
+  FTextareaField
+} from "@fkui/vue";
 import { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, resolveDirective as _resolveDirective, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
 var exampleComponent = defineComponent({
   components: {
     FButton,
     FCrudDataset,
     FList,
+    FSortFilterDataset,
     FStaticField,
     FTextField,
     FTextareaField
@@ -104,21 +113,16 @@ var exampleComponent = defineComponent({
       return this.fruits.reduce((max, item) => {
         return Math.max(max, Math.trunc(Number(item.id)));
       }, 0);
-    },
-    saveModel(row) {
-      console.log("Post model to backend", row);
     }
   }
 });
-var _hoisted_1 = { class: "row" };
-var _hoisted_2 = { class: "col col--md-7" };
-var _hoisted_3 = { class: "col col--md-5" };
-var _hoisted_4 = { class: "button-list" };
-var _hoisted_5 = { class: "sr-only" };
-var _hoisted_6 = { class: "sr-only" };
+var _hoisted_1 = { class: "button-group" };
+var _hoisted_2 = { class: "sr-only" };
+var _hoisted_3 = { class: "sr-only" };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_button = _resolveComponent("f-button");
   const _component_f_list = _resolveComponent("f-list");
+  const _component_f_sort_filter_dataset = _resolveComponent("f-sort-filter-dataset");
   const _component_f_text_field = _resolveComponent("f-text-field");
   const _component_f_textarea_field = _resolveComponent("f-textarea-field");
   const _component_f_static_field = _resolveComponent("f-static-field");
@@ -127,29 +131,29 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock(_component_f_crud_dataset, {
     modelValue: _ctx.fruits,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.fruits = $event),
-    "data-test": "f-crud-dataset-list-example",
-    "before-create": _ctx.beforeCreate,
-    onCreated: _ctx.saveModel,
-    onUpdated: _ctx.saveModel,
-    onDeleted: _ctx.saveModel
+    "before-create": _ctx.beforeCreate
   }, {
     default: _withCtx(({ updateItem, deleteItem }) => [
-      _createVNode(_component_f_list, {
-        items: _ctx.fruits,
-        "element-id": "example",
-        "key-attribute": "id",
-        selectable: ""
+      _createVNode(_component_f_sort_filter_dataset, {
+        data: _ctx.fruits,
+        "sortable-attributes": {
+          name: "Namn",
+          origin: "Land"
+        }
       }, {
-        default: _withCtx(({ item }) => [
-          _createElementVNode(
-            "h3",
-            null,
-            _toDisplayString(item.name),
-            1
-            /* TEXT */
-          ),
-          _createElementVNode("div", _hoisted_1, [
-            _createElementVNode("div", _hoisted_2, [
+        default: _withCtx(({ sortFilterResult }) => [
+          _createVNode(_component_f_list, {
+            items: sortFilterResult,
+            "key-attribute": "id"
+          }, {
+            default: _withCtx(({ item }) => [
+              _createElementVNode(
+                "h3",
+                null,
+                _toDisplayString(item.name),
+                1
+                /* TEXT */
+              ),
               _createElementVNode("p", null, [
                 _cache[1] || (_cache[1] = _createTextVNode(
                   " Land: ",
@@ -181,84 +185,68 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   _toDisplayString(item.description),
                   1
                   /* TEXT */
-                ),
-                _cache[4] || (_cache[4] = _createElementVNode(
-                  "br",
-                  null,
-                  null,
-                  -1
-                  /* CACHED */
-                ))
+                )
+              ]),
+              _createElementVNode("div", _hoisted_1, [
+                _createVNode(_component_f_button, {
+                  "align-text": "",
+                  "icon-left": "pen",
+                  size: "medium",
+                  variant: "tertiary",
+                  class: "button-group__item",
+                  onClick: ($event) => updateItem(item)
+                }, {
+                  default: _withCtx(() => [
+                    _cache[4] || (_cache[4] = _createTextVNode(
+                      " \xC4ndra ",
+                      -1
+                      /* CACHED */
+                    )),
+                    _createElementVNode(
+                      "span",
+                      _hoisted_2,
+                      _toDisplayString(item.name),
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  _: 2
+                  /* DYNAMIC */
+                }, 1032, ["onClick"]),
+                _createVNode(_component_f_button, {
+                  "align-text": "",
+                  "icon-left": "trashcan",
+                  size: "medium",
+                  variant: "tertiary",
+                  class: "button-group__item",
+                  onClick: ($event) => deleteItem(item)
+                }, {
+                  default: _withCtx(() => [
+                    _cache[5] || (_cache[5] = _createTextVNode(
+                      " Ta bort ",
+                      -1
+                      /* CACHED */
+                    )),
+                    _createElementVNode(
+                      "span",
+                      _hoisted_3,
+                      _toDisplayString(item.name),
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  _: 2
+                  /* DYNAMIC */
+                }, 1032, ["onClick"])
               ])
             ]),
-            _createElementVNode("div", _hoisted_3, [
-              _createElementVNode("ul", _hoisted_4, [
-                _createElementVNode("li", null, [
-                  _createVNode(_component_f_button, {
-                    "icon-left": "pen",
-                    size: "small",
-                    type: "button",
-                    variant: "tertiary",
-                    onClick: ($event) => updateItem(item)
-                  }, {
-                    default: _withCtx(() => [
-                      _cache[5] || (_cache[5] = _createTextVNode(
-                        " \xC4ndra ",
-                        -1
-                        /* CACHED */
-                      )),
-                      _createElementVNode(
-                        "span",
-                        _hoisted_5,
-                        _toDisplayString(item.name),
-                        1
-                        /* TEXT */
-                      )
-                    ]),
-                    _: 2
-                    /* DYNAMIC */
-                  }, 1032, ["onClick"])
-                ]),
-                _createElementVNode("li", null, [
-                  _createVNode(_component_f_button, {
-                    "icon-left": "trashcan",
-                    size: "small",
-                    type: "button",
-                    variant: "tertiary",
-                    onClick: ($event) => deleteItem(item)
-                  }, {
-                    default: _withCtx(() => [
-                      _cache[6] || (_cache[6] = _createTextVNode(
-                        " Ta bort ",
-                        -1
-                        /* CACHED */
-                      )),
-                      _createElementVNode(
-                        "span",
-                        _hoisted_6,
-                        _toDisplayString(item.name),
-                        1
-                        /* TEXT */
-                      )
-                    ]),
-                    _: 2
-                    /* DYNAMIC */
-                  }, 1032, ["onClick"])
-                ])
-              ])
-            ])
-          ])
-        ]),
-        screenreader: _withCtx(({ item }) => [
-          _createTextVNode(
-            " Frukt ID " + _toDisplayString(item.id),
-            1
-            /* TEXT */
-          )
+            _: 2
+            /* DYNAMIC */
+          }, 1032, ["items"])
         ]),
         _: 2
         /* DYNAMIC */
-      }, 1032, ["items"])
+      }, 1032, ["data"])
     ]),
     add: _withCtx(({ item }) => [
       _withDirectives((_openBlock(), _createBlock(_component_f_text_field, {
@@ -266,7 +254,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.name = $event,
         type: "text"
       }, {
-        default: _withCtx(() => [..._cache[7] || (_cache[7] = [
+        default: _withCtx(() => [..._cache[6] || (_cache[6] = [
           _createTextVNode(
             " Namn ",
             -1
@@ -291,7 +279,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.origin = $event,
         type: "text"
       }, {
-        default: _withCtx(() => [..._cache[8] || (_cache[8] = [
+        default: _withCtx(() => [..._cache[7] || (_cache[7] = [
           _createTextVNode(
             " Land ",
             -1
@@ -315,7 +303,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: item.description,
         "onUpdate:modelValue": ($event) => item.description = $event
       }, {
-        default: _withCtx(() => [..._cache[9] || (_cache[9] = [
+        default: _withCtx(() => [..._cache[8] || (_cache[8] = [
           _createTextVNode(
             " Beskrivning ",
             -1
@@ -339,7 +327,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.name = $event,
         type: "text"
       }, {
-        label: _withCtx(() => [..._cache[10] || (_cache[10] = [
+        label: _withCtx(() => [..._cache[9] || (_cache[9] = [
           _createTextVNode(
             " Namn ",
             -1
@@ -361,7 +349,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.origin = $event,
         type: "text"
       }, {
-        default: _withCtx(() => [..._cache[11] || (_cache[11] = [
+        default: _withCtx(() => [..._cache[10] || (_cache[10] = [
           _createTextVNode(
             " Land ",
             -1
@@ -384,19 +372,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     delete: _withCtx(({ item }) => [
       _createTextVNode(
-        ' Vill du verkligen radera frukten "' + _toDisplayString(item.name) + '" med ID ' + _toDisplayString(item.id),
+        ' Vill du verkligen ta bort frukten "' + _toDisplayString(item.name) + '" med ID ' + _toDisplayString(item.id),
         1
         /* TEXT */
       )
     ]),
     _: 1
     /* STABLE */
-  }, 8, ["modelValue", "before-create", "onCreated", "onUpdated", "onDeleted"]);
+  }, 8, ["modelValue", "before-create"]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a4263b"
+  selector: "#example-19f33a"
 });
 export {
   render
