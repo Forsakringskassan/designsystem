@@ -223,6 +223,8 @@ Behåll dynamiska värden.
 Verifiera resultatet genom att bygga projektet och köra relevanta tester.
 Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.
 
+:::
+
 ## `FCrudDataset`
 
 `FCrudDataset` öppnar inte längre några modaler själv.
