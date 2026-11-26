@@ -28,9 +28,8 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/styles/examples/SemanticVariables.vue:SemanticVariables-4ce0c7.js
-import { defineComponent as _defineComponent } from "vue";
-import { h as h2 } from "vue";
+// virtual-entry:virtual:docs/styles/examples/PaletteList.vue:PaletteList-5d47d9.js
+import { defineComponent } from "vue";
 
 // packages/theme-default/dist/metadata.mjs
 var metadata_default = {
@@ -1405,85 +1404,123 @@ var metadata_default = {
   ]
 };
 
-// virtual-entry:virtual:docs/styles/examples/SemanticVariables.vue:SemanticVariables-4ce0c7.js
-import { FSortFilterDataset, FTable, defineTableColumns } from "@fkui/vue";
-import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
-var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "SemanticVariables",
+// sfc-script:/home/runner/work/designsystem/designsystem/docs/styles/examples/ColorTable.vue?type=script
+import { defineComponent as _defineComponent } from "vue";
+import { h as h2 } from "vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
+var ColorTable_default = /* @__PURE__ */ _defineComponent({
+  __name: "ColorTable",
+  props: {
+    colors: { type: Array, required: true }
+  },
   setup(__props, { expose: __expose }) {
     __expose();
-    const rows = metadata_default.tokens;
-    const themes = metadata_default.themes;
     const columns = defineTableColumns([
-      { type: "text", header: "Semantisk variabel", key: "name", size: "shrink" },
-      ...themes.map((name) => ({
-        header: name,
-        size: "shrink",
-        render(token) {
-          const value = token.values?.[name];
+      { type: "text", header: "Namn", key: "name", size: "shrink" },
+      {
+        header: "F\xE4rg",
+        size: "grow",
+        render(row) {
           return h2("td", { class: "table-ng__cell table-ng__cell--static" }, [
             h2("div", [
               h2("span", {
                 class: "color-table__color",
-                style: { "--value": value?.value }
+                style: { "--value": row.value }
               }),
-              h2("code", { class: "color-table__term" }, value?.palette ?? value?.value ?? "")
+              h2("code", { class: "color-table__term" }, row.value)
             ])
           ]);
         }
-      })),
-      { type: "text", header: "Beskrivning", value: () => "-" }
+      }
     ]);
-    const __returned__ = { rows, themes, columns, get FSortFilterDataset() {
-      return FSortFilterDataset;
-    }, get FTable() {
+    const __returned__ = { columns, get FTable() {
       return FTable;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
 });
+
+// sfc-template:/home/runner/work/designsystem/designsystem/docs/styles/examples/ColorTable.vue?type=template
+import { createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createBlock($setup["FSortFilterDataset"], {
-    data: $setup.rows,
-    "show-sort": false,
-    "sortable-attributes": {
-      name: "Semantisk variabel",
-      palette: "Palettf\xE4rg",
-      value: "F\xE4rgkod"
-    }
+  return _openBlock(), _createBlock($setup["FTable"], {
+    rows: $props["colors"],
+    columns: $setup.columns,
+    class: "density-densest"
   }, {
-    default: _withCtx(({ sortFilterResult }) => [
-      _createVNode($setup["FTable"], {
-        rows: sortFilterResult,
-        columns: $setup.columns,
-        striped: "",
-        class: "density-densest",
-        "aria-labelledby": "semantiska_farger"
-      }, {
-        caption: _withCtx(() => [..._cache[0] || (_cache[0] = [
-          _createElementVNode(
-            "span",
-            { class: "sr-only" },
-            "Semantiska f\xE4rger",
-            -1
-            /* CACHED */
-          )
-        ])]),
-        _: 1
-        /* STABLE */
-      }, 8, ["rows", "columns"])
-    ]),
+    caption: _withCtx(() => [..._cache[0] || (_cache[0] = [
+      _createElementVNode(
+        "span",
+        { class: "sr-only" },
+        " F\xE4rgpaletten ",
+        -1
+        /* CACHED */
+      )
+    ])]),
     _: 1
     /* STABLE */
-  }, 8, ["data"]);
+  }, 8, ["rows", "columns"]);
 }
-exampleComponent.render = render;
-exampleComponent.__scopeId = "data-v-4ce0c7";
+
+// docs/styles/examples/ColorTable.vue
+ColorTable_default.render = render;
+ColorTable_default.__file = "docs/styles/examples/ColorTable.vue";
+var ColorTable_default2 = ColorTable_default;
+
+// virtual-entry:virtual:docs/styles/examples/PaletteList.vue:PaletteList-5d47d9.js
+import { renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock2, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, createElementVNode as _createElementVNode2, resolveComponent as _resolveComponent, createVNode as _createVNode } from "vue";
+var groups = Map.groupBy(metadata_default.palette, (color) => color.group);
+var palette = Array.from(groups, ([name, colors]) => ({
+  name,
+  variables: colors
+}));
+var exampleComponent = defineComponent({
+  components: { ColorTable: ColorTable_default2 },
+  data() {
+    return {
+      palette
+    };
+  }
+});
+function render2(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_color_table = _resolveComponent("color-table");
+  return _openBlock2(), _createElementBlock("div", null, [
+    (_openBlock2(true), _createElementBlock(
+      _Fragment,
+      null,
+      _renderList(_ctx.palette, (p) => {
+        return _openBlock2(), _createElementBlock(
+          _Fragment,
+          {
+            key: p.name
+          },
+          [
+            _createElementVNode2(
+              "h3",
+              null,
+              _toDisplayString(p.name),
+              1
+              /* TEXT */
+            ),
+            _createVNode(_component_color_table, {
+              colors: p.variables
+            }, null, 8, ["colors"])
+          ],
+          64
+          /* STABLE_FRAGMENT */
+        );
+      }),
+      128
+      /* KEYED_FRAGMENT */
+    ))
+  ]);
+}
+exampleComponent.render = render2;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-4ce0c7"
+  selector: "#example-5d47d9"
 });
 export {
-  render
+  render2 as render
 };

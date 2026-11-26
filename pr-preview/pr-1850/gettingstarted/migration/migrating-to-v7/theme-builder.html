@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Version 7 migreringsguide: Ändringar i theme-builder - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-56f542.css"
+            href="../../../assets/docs-961777.css"
             crossorigin
-            integrity="sha384-Q40xkbNxBjuQlpsy5JFAFI2Vhzlhw0DCZMX5N0hEe9EiQopZHSFsFehXJhm9QJdN"
+            integrity="sha384-Cm+3MhshSqc0lvWh4xp7PuDZDmTpb3QKx7+OnveEQjlGUuBroH0ScTvdnFzptmzT"
             
         />
         <link
@@ -6291,7 +6291,7 @@
 
                     <div id="docs-content"><h2 id="andringar_i_fkui_theme_builder" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#andringar_i_fkui_theme_builder">Ändringar i <code>@fkui/theme-builder</code></a></h2><p class="docs-paragraph">Den här sektionen gäller enbart dig som bygger egna teman.</p>
 <h3 id="palette_json_genereras_inte_langre" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#palette_json_genereras_inte_langre"><code>palette.json</code> genereras inte längre</a></h3><p class="docs-paragraph"><code>palette.json</code> genereras inte längre.
-Palette-information finns i stället i <code>metadata.mjs</code> under <code>palette</code>.</p>
+Palette-information finns i stället i <code>metadata.mjs</code> under nyckeln <code>palette</code>.</p>
 <p class="docs-paragraph">Exempel <code>dist/metadata.mjs</code>:</p>
 
                 <div
@@ -6330,33 +6330,39 @@ Palette-information finns i stället i <code>metadata.mjs</code> under <code>pal
 };
 </code></pre>
                 </div>
-            <h3 id="css_variabler_kan_lasas_ut" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#css_variabler_kan_lasas_ut">CSS-variabler kan läsas ut</a></h3><p class="docs-paragraph">Theme-builder läser nu CSS-variabler med palettprefixet
-<code>--&lt;prefix&gt;-palette-color-</code>.
-Med standardprefixet är ett giltigt namn exempelvis
+            <h3 id="paletten_har_stod_for_css_variabler" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#paletten_har_stod_for_css_variabler">Paletten har stöd för CSS-variabler</a></h3><p class="docs-paragraph">Theme-builder läser nu CSS-variabler med palettprefixet
+<code>--&lt;prefix&gt;-palette-color-</code>.</p>
+<p class="docs-paragraph">Med standardprefixet är ett giltigt namn exempelvis
 <code>--fkds-palette-color-neutral-900</code>.
 Andra CSS-variabler i palettkällan stoppar bygget.</p>
 <p class="docs-paragraph">CSS-variabler kan finnas på rotnivå eller i en Sass-container och extraheras
 med hela namnet.</p>
-<h3 id="sass_variabler_stods_fortfarande" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#sass_variabler_stods_fortfarande">Sass-variabler stöds fortfarande</a></h3><p class="docs-paragraph">Sass-variabler läses fortfarande från palettkällans rotnivå med sitt
-fullständiga namn, till exempel <code>$palette-color-neutral-900</code>.</p>
+<h4 id="sass_variabler_stods_fortfarande" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#sass_variabler_stods_fortfarande">Sass-variabler stöds fortfarande</a></h4><p class="docs-paragraph">Sass-variabler läses fortfarande från palettkällans rotnivå med sitt
+fullständiga namn, till exempel <code>$palette-color-neutral-900</code>.
+Vår rekommendation är dock att du migrerar över befintliga SASS-variabler till CSS.</p>
 <p class="docs-paragraph">Sass- och CSS-variabler grupperas med <code>@group</code>, precis som tidigare.</p>
-<h3 id="temaexporterna_ar_es_moduler" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#temaexporterna_ar_es_moduler">Temaexporterna är ES-moduler</a></h3><p class="docs-paragraph">Temaexporterna är ES-moduler i stället för CommonJS-moduler.
-Filerna använder nu tillägget <code>.mjs</code>, exempelvis <code>theme-light.mjs</code>.</p>
-<p class="docs-paragraph">Importera temavariablerna med ESM och dess default-export:</p>
+<h3 id="temavariabler_har_flyttats_i_metadata" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#temavariabler_har_flyttats_i_metadata">Temavariabler har flyttats i metadata</a></h3><p class="docs-paragraph"><code>@fkui/theme-default</code> exporterar inte längre temavariabler som separata JavaScript-objekt.</p>
+<p class="docs-paragraph">Semantiska temavariabler finns fortfarande i metadata.
+Exemplet hämtar värdet för varje variabel i det ljusa temat:</p>
 
                 <div
-                    id="example-5dde27"
+                    id="example-703af0"
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="diff"
+                    data-language="javascript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-const variables = require(&quot;@fkui/theme-default/dist/theme-light.js&quot;);</span>
-<span class="hljs-addition">+import variables from &quot;@fkui/theme-default/dist/theme-light.mjs&quot;;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> metadata <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/theme-default/metadata&quot;</span>;
+
+<span class="hljs-keyword">const</span> tokens = metadata.<span class="hljs-property">tokens</span>.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">token</span>) =&gt;</span> ({
+    <span class="hljs-attr">name</span>: token.<span class="hljs-property">name</span>,
+    <span class="hljs-attr">value</span>: token.<span class="hljs-property">values</span>.<span class="hljs-property">light</span>.<span class="hljs-property">value</span>,
+}));
 </code></pre>
                 </div>
-            
+            <p class="docs-paragraph">Byt <code>light</code> mot <code>dark</code> för att hämta värden för det mörka temat.</p>
+
 
                     </div>
                 </main>
@@ -6424,9 +6430,9 @@ Filerna använder nu tillägget <code>.mjs</code>, exempelvis <code>theme-light.
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/6e62ad4efe7bbbf80fb68052f5d2c048d36129a5">6e62ad4</a>)<br />
+<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/7833e19c0fee5bab90f00f26b1d7aad217d76446">7833e19</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1850">PR 1850</a><br />
-       <span class="version-text-block">2026-11-26 05:43</span>
+       <span class="version-text-block">2026-11-26 08:29</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

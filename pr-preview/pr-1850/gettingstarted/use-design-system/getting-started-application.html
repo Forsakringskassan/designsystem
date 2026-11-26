@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Ta fram applikation - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-56f542.css"
+            href="../../assets/docs-961777.css"
             crossorigin
-            integrity="sha384-Q40xkbNxBjuQlpsy5JFAFI2Vhzlhw0DCZMX5N0hEe9EiQopZHSFsFehXJhm9QJdN"
+            integrity="sha384-Cm+3MhshSqc0lvWh4xp7PuDZDmTpb3QKx7+OnveEQjlGUuBroH0ScTvdnFzptmzT"
             
         />
         <link
@@ -6315,15 +6315,19 @@ På så sätt får du tillgång till de mixins och Sass-funktioner som finns i F
         <h3 id="sass" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#sass">Sass</a></h3><p class="docs-paragraph">Gå in i din main.scss-fil eller motsvarande och lägg in följande rader:</p>
 
                 <div
-                    id="example-c1a83d"
+                    id="example-c5f195"
                     class="code-preview code-preview--default"
                     data-test="sass-base"
                     
                     data-language="scss"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-scss" tabindex="0"><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;@fkui/theme-default&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-scss" tabindex="0"><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;@fkui/theme-default&quot;</span> as theme;
 <span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;@fkui/design&quot;</span>;
+
+<span class="hljs-selector-pseudo">:root</span> {
+    <span class="hljs-keyword">@include</span> theme.light;
+}
 </code></pre>
                 </div>
             <p class="docs-paragraph">Uppdatera exemplet ovan med de filer som din applikation ska använda.</p>
@@ -6331,49 +6335,49 @@ På så sätt får du tillgång till de mixins och Sass-funktioner som finns i F
 I exemplet nedan importeras styling för enbart inmatningsfält och flerradigt inmatningsfält.</p>
 
                 <div
-                    id="example-4fed37"
+                    id="example-eddafe"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> @use &quot;@fkui/theme-default&quot;;
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> @use &quot;@fkui/theme-default&quot; as theme;
 <span class="hljs-deletion">-@use &quot;@fkui/design&quot;;</span>
 <span class="hljs-addition">+@use &quot;@fkui/design/src/components/text-field/text-field&quot;;</span>
 <span class="hljs-addition">+@use &quot;@fkui/design/src/components/textarea-field/textarea-field&quot;;</span>
+ 
+ :root {
+     @include theme.light;
 </code></pre>
                 </div>
             <p class="docs-paragraph">Om du behöver applicera tema på en egen selector (exempelvis kanske du har flera uppsättningar av FKUI i olika versioner på samma webbsida) så rekommenderar vi att selectorn läggs till med en PostCSS plugin likt <a href="https://www.npmjs.com/package/postcss-prefix-selector">postcss-prefix-selector</a>.</p>
 <p class="docs-paragraph">Det finns begränsat stöd för att importera CSS-variabler från temat på en egen selector:</p>
 
                 <div
-                    id="example-6bbf5d"
+                    id="example-bb8ac1"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-@use &quot;@fkui/theme-default&quot;;</span>
-<span class="hljs-addition">+@use &quot;@fkui/theme-default&quot; as theme with (</span>
-<span class="hljs-addition">+    $global: false</span>
-<span class="hljs-addition">+);</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> @use &quot;@fkui/theme-default&quot; as theme;
  @use &quot;@fkui/design&quot;;
-<span class="hljs-addition">+</span>
+ 
+<span class="hljs-deletion">-:root {</span>
 <span class="hljs-addition">+.my-scope {</span>
-<span class="hljs-addition">+    @include theme.light;</span>
-<span class="hljs-addition">+}</span>
+     @include theme.light;
+ }
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Notera: variabeln <code>$global</code> måste sättas till <code>false</code> annars sätts samtliga variabler på <code>:root</code> selector.</p>
-<h3 id="css" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#css">CSS</a></h3><p class="docs-paragraph">Om din applikation inte använder Sass ska du istället placera <code>@fkui/design/lib/fkui.min.css</code> i en assets-katalog.
-Placera även <code>@fkui/theme-default/dist/theme-auto.css</code> i assets-katalogen.
+            <h3 id="css" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#css">CSS</a></h3><p class="docs-paragraph">Om din applikation inte använder Sass ska du istället placera <code>@fkui/design/lib/fkui.min.css</code> i en assets-katalog.
+Kopiera även filen <code>dist/theme-auto.css</code> från det installerade paketet <code>@fkui/theme-default</code> till assets-katalogen.
 Den filen väljer automatiskt ljust eller mörkt tema utifrån användarens systeminställning.
 Ladda design-systemets CSS efter temafilen:</p>
 
                 <div
-                    id="example-237ad1"
+                    id="example-7c72db"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -6387,14 +6391,15 @@ Ladda design-systemets CSS efter temafilen:</p>
             <p class="docs-paragraph">Om du behöver importera styling till javascript:</p>
 
                 <div
-                    id="example-8e0b5b"
+                    id="example-e73499"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="javascript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/design&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/theme-default/theme-auto&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/design&quot;</span>;
 </code></pre>
                 </div>
             <h3 id="eget_tema" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#eget_tema">Eget tema</a></h3><p class="docs-paragraph">Utgå från standardtemat och skriv över de variabler som ska ändras.</p>
@@ -6405,7 +6410,7 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
 <p class="docs-paragraph">Importera ikonbiblioteket genom att lägga nedan i applikationens index.ts eller motsvarande:</p>
 
                 <div
-                    id="example-b1abe5"
+                    id="example-ad72c9"
                     class="code-preview code-preview--default"
                     
                     
@@ -6421,7 +6426,7 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
 Importera den genom:</p>
 
                 <div
-                    id="example-c39a66"
+                    id="example-fc6b40"
                     class="code-preview code-preview--default"
                     
                     
@@ -6504,9 +6509,9 @@ Du bygger då ett nytt ikonbibliotek.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/6e62ad4efe7bbbf80fb68052f5d2c048d36129a5">6e62ad4</a>)<br />
+<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/7833e19c0fee5bab90f00f26b1d7aad217d76446">7833e19</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1850">PR 1850</a><br />
-       <span class="version-text-block">2026-11-26 05:43</span>
+       <span class="version-text-block">2026-11-26 08:29</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

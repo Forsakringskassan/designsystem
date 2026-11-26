@@ -10,7 +10,7 @@
   --fkds-palette-color-neutral-200: #d6d8dc;
   --fkds-palette-color-neutral-100: #ecedef;
   --fkds-palette-color-neutral-50: #f7f7f8;
-  --fkds-palette-color-neutral-0: #ffffff;
+  --fkds-palette-color-neutral-0: #fff;
   --fkds-palette-color-blue-900: #0e1623;
   --fkds-palette-color-blue-800: #162f5d;
   --fkds-palette-color-blue-700: #1b478d;
@@ -57,10 +57,10 @@
   --f-text-color-heading-4: inherit;
   --f-text-color-heading-5: inherit;
   --f-text-color-heading-6: inherit;
-  --f-background-overlay: rgba(0, 0, 0, 0.75);
+  --f-background-overlay: rgba(0,0,0,.75);
   --f-background-sidepanel-button-tertiary-hover: var(--fkds-color-action-background-secondary-hover);
-  --f-box-modal-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  --f-input-shadow-inset: inset 0 2px 3px rgba(0, 0, 0, 0.1);
+  --f-box-modal-shadow: 0 0 20px rgba(0,0,0,.3);
+  --f-input-shadow-inset: inset 0 2px 3px rgba(0,0,0,.1);
   --f-font-family: "ExpFont", "NeueHass", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
   --f-font-family-code: "Consolas", "Liberation Mono", "Courier", monospace;
   --f-font-size-default-rem: 16px;
@@ -105,8 +105,8 @@
   --f-animation-expand-close: all 500ms cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
   --f-density-factor: 1;
   --f-label-message-margin-top: 0.25rem;
-  --f-button-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --f-button-shadow-hover: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --f-button-shadow: 0 1px 3px rgba(0,0,0,.3);
+  --f-button-shadow-hover: 0 1px 3px rgba(0,0,0,.3);
   --f-button-shadow-active: none;
   --f-button-min-width: 9.5rem;
   --f-button-letter-spacing: 0.01rem;
