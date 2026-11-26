@@ -24974,9 +24974,10 @@ function getContainer(element, prop) {
 	if (parent) return parent;
 	return config.popupContainer;
 }
-function getFocusableElement(rootElement, callback) {
+function getFocusableElement(rootElement, focus) {
 	var _elements$;
-	if (callback) return callback();
+	if (!focus) return null;
+	if (typeof focus === "function") return focus();
 	return (_elements$ = findTabbableElements(getHTMLElementFromVueRef(rootElement))[0]) !== null && _elements$ !== void 0 ? _elements$ : null;
 }
 function offset(page, el) {
@@ -25365,24 +25366,21 @@ var IPopup_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 		*/
 		keyboardTrap: {
 			type: Boolean,
-			required: false,
-			default: true
+			required: false
 		},
 		/**
-		* Function that returns the element that will receive focus
+		* Automatically move focus when popup is opened.
+		*
+		* - When set to `true` it focuses on the first tabbable element.
+		* - When omitted or set to `false` focus management is disabled.
+		* - When set to a function it focuses on the returned element; `null` leaves focus unchanged.
+		*
+		* When an element is focused, the previous focus is restored when the popup closes.
 		*/
-		focusElement: {
-			type: Function,
+		focus: {
+			type: [Function, Boolean],
 			required: false,
-			default: null
-		},
-		/**
-		* Set focus on first tabbable element (or element in the `focusElement` prop if provided) when opened.
-		*/
-		setFocus: {
-			type: Boolean,
-			required: false,
-			default: true
+			default: false
 		}
 	},
 	emits: ["open", "close"],
@@ -25390,7 +25388,7 @@ var IPopup_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 		return {
 			teleportDisabled: false,
 			placement: Placement.NotCalculated,
-			focus: null,
+			focusHandle: null,
 			anchorOffset: null
 		};
 	},
@@ -25459,9 +25457,9 @@ var IPopup_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 			if (!isOpen) {
 				this.placement = Placement.NotCalculated;
 				this.anchorOffset = null;
-				if (this.focus) {
-					popFocus(this.focus);
-					this.focus = null;
+				if (this.focusHandle) {
+					popFocus(this.focusHandle);
+					this.focusHandle = null;
 				}
 				return;
 			}
@@ -25515,11 +25513,11 @@ var IPopup_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 			else window.scrollTo(scrollOptions);
 		},
 		applyFocus() {
-			if (!this.setFocus) return;
+			if (!this.focus) return;
 			const wrapper = this.$refs.wrapper;
 			if (!wrapper) return;
-			const focusableElement = getFocusableElement(wrapper, this.focusElement);
-			this.focus = pushFocus(focusableElement);
+			const focusableElement = getFocusableElement(wrapper, this.focus);
+			if (focusableElement) this.focusHandle = pushFocus(focusableElement);
 		},
 		isMobileSize() {
 			return window.innerWidth < 640;
@@ -26995,7 +26993,6 @@ var FContextMenu_default = /* @__PURE__ */ defineComponent({
 				"is-open": __props.isOpen,
 				"keyboard-trap": false,
 				anchor: __props.anchor,
-				"set-focus": false,
 				inline: "never",
 				onClose: _cache[0] || (_cache[0] = ($event) => closePopup($event)),
 				onOpen: onPopupOpen
