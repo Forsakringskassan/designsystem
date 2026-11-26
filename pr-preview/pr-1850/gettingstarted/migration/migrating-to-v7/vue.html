@@ -6564,7 +6564,9 @@ Ta bort statiska <code>:use-error-list=&quot;false&quot;</code> eftersom det nu 
 Behåll dynamiska värden.</p>
 <p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra relevanta tester.
 Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.</p>
-<h2 id="fcruddataset" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fcruddataset"><code>FCrudDataset</code></a></h2><p class="docs-paragraph"><code>FCrudDataset</code> öppnar inte längre några modaler själv.
+
+            </details>
+        <h2 id="fcruddataset" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fcruddataset"><code>FCrudDataset</code></a></h2><p class="docs-paragraph"><code>FCrudDataset</code> öppnar inte längre några modaler själv.
 Istället anropas <code>onCreate</code>, <code>onUpdate</code> och <code>onDelete</code> med en callback <code>commit</code> som applikationen anropar när åtgärden ska genomföras.
 Applikationen ansvarar för att öppna modaler, till exempel med <a href="../../../functions/functions/use-modal.html"><code>formModal()</code> och <code>confirmModal()</code></a>.</p>
 <p class="docs-paragraph">Följande har tagits bort:</p>
@@ -6591,7 +6593,7 @@ En egen komponent som presenterar raderna använder istället <code>useCrudDatas
 Om en callback returnerar ett promise som avvisas rapporteras felet till <code>app.config.errorHandler</code>.</p>
 
                 <div
-                    id="example-94e83b"
+                    id="example-c5b902"
                     class="code-preview code-preview--default"
                     
                     
@@ -6612,7 +6614,7 @@ Om en callback returnerar ett promise som avvisas rapporteras felet till <code>a
                 </div>
             
                 <div
-                    id="example-b963b7"
+                    id="example-e7d90e"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -6683,12 +6685,10 @@ Ta bort kod som använder <code>Operation.NONE</code>.</li>
 <p class="docs-paragraph">Verifiera resultatet genom att bygga projektet och köra enhetstester.</p>
 
             </details>
-        
-            </details>
         <h2 id="fmodal" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fmodal"><code>FModal</code></a></h2><p class="docs-paragraph">Propen <code>size</code> stödjer inte längre aliaset <code>fullscreen</code> och är ersatt med <code>fullwidth</code>.</p>
 
                 <div
-                    id="example-bf4685"
+                    id="example-745c59"
                     class="code-preview code-preview--default"
                     
                     
@@ -6719,7 +6719,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="fsortfilterdataset" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fsortfilterdataset"><code>FSortFilterDataset</code></a></h2><p class="docs-paragraph">Propen <code>placeholderFilter</code> är borttagen och ersatt med <code>filterLabel</code>.</p>
 
                 <div
-                    id="example-8f26e5"
+                    id="example-0065c7"
                     class="code-preview code-preview--default"
                     
                     
@@ -6746,7 +6746,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="getlegacyinternalkey" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#getlegacyinternalkey"><code>getLegacyInternalKey()</code></a></h2><p class="docs-paragraph">Använd <code>findItemIdentifier()</code> om objektet kan sakna en identifierare, eller <code>getItemIdentifier()</code> om identifieraren är garanterad att finnas, istället för att hämta ut nyckeln.</p>
 
                 <div
-                    id="example-dac3c5"
+                    id="example-b4313a"
                     class="code-preview code-preview--default"
                     
                     
@@ -6772,7 +6772,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <h2 id="tablescroll" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tablescroll"><code>TableScroll</code></a></h2><p class="docs-paragraph"><code>FDataTable</code> och <code>FInteractiveTable</code> stödjer inte längre <code>TableScroll.VERTICAL</code> och <code>TableScroll.BOTH</code>.</p>
 
                 <div
-                    id="example-f1d7f2"
+                    id="example-d30ee5"
                     class="code-preview code-preview--default"
                     
                     
@@ -6808,7 +6808,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
 Om popup tidigare använde standardbeteendet, lägg till <code>focus</code> för att fortsätta flytta fokus till det första tabbningsbara elementet när popup öppnas och återställa fokus när den stängs:</p>
 
                 <div
-                    id="example-048017"
+                    id="example-eea1ea"
                     class="code-preview code-preview--default"
                     
                     
@@ -6824,7 +6824,7 @@ Ta bort <code>:set-focus=&quot;false&quot;</code> eftersom avstängd fokushanter
 Ett dynamiskt värde för <code>set-focus</code> kan istället skickas till <code>focus</code>:</p>
 
                 <div
-                    id="example-78ab91"
+                    id="example-268807"
                     class="code-preview code-preview--default"
                     
                     
@@ -6838,7 +6838,7 @@ Ett dynamiskt värde för <code>set-focus</code> kan istället skickas till <cod
             <p class="docs-paragraph">Om du använder <code>focus-element</code>, skicka funktionen till <code>focus</code> istället:</p>
 
                 <div
-                    id="example-794ec8"
+                    id="example-cf4ede"
                     class="code-preview code-preview--default"
                     
                     
@@ -6853,7 +6853,7 @@ Ett dynamiskt värde för <code>set-focus</code> kan istället skickas till <cod
 Exemplet utgår från att <code>shouldSetFocus</code> är en Vue-ref:</p>
 
                 <div
-                    id="example-1e0bda"
+                    id="example-284422"
                     class="code-preview code-preview--default"
                     
                     
@@ -6867,7 +6867,7 @@ Exemplet utgår från att <code>shouldSetFocus</code> är en Vue-ref:</p>
                 </div>
             
                 <div
-                    id="example-589f6a"
+                    id="example-3c6e3e"
                     class="code-preview code-preview--default"
                     
                     
@@ -6888,7 +6888,7 @@ Detta gäller även om du hade stängt av fokushanteringen med <code>:set-focus=
 Behåll dynamiska värden för <code>keyboard-trap</code> och låt den vara avstängd där den tidigare var <code>false</code>.</p>
 
                 <div
-                    id="example-6004ed"
+                    id="example-e0caeb"
                     class="code-preview code-preview--default"
                     
                     
@@ -6901,7 +6901,7 @@ Behåll dynamiska värden för <code>keyboard-trap</code> och låt den vara avst
                 </div>
             
                 <div
-                    id="example-af7661"
+                    id="example-d13ae2"
                     class="code-preview code-preview--default"
                     
                     
@@ -6937,7 +6937,7 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
 <p class="docs-paragraph">Om du vill att det första steget ska få fokus när guiden öppnas, lägg till <code>focus-initial-step</code>:</p>
 
                 <div
-                    id="example-655f39"
+                    id="example-0d7592"
                     class="code-preview code-preview--default"
                     
                     
@@ -6956,7 +6956,7 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
 <p class="docs-paragraph">Om du vill behålla fellistan, lägg till propen explicit:</p>
 
                 <div
-                    id="example-a77d19"
+                    id="example-e99f90"
                     class="code-preview code-preview--default"
                     
                     
@@ -6972,7 +6972,7 @@ Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, 
             <p class="docs-paragraph">Om du redan använder <code>:use-error-list=&quot;false&quot;</code> kan du ta bort det:</p>
 
                 <div
-                    id="example-cf0dc7"
+                    id="example-dd871a"
                     class="code-preview code-preview--default"
                     
                     
@@ -7067,9 +7067,9 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/7833e19c0fee5bab90f00f26b1d7aad217d76446">7833e19</a>)<br />
+<div class="version"><span class="version-text-block">release/v7</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/08e6e94459ea0dccb7b292e934eb722598ea0dd9">08e6e94</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1850">PR 1850</a><br />
-       <span class="version-text-block">2026-11-26 08:29</span>
+       <span class="version-text-block">2026-11-26 15:25</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
