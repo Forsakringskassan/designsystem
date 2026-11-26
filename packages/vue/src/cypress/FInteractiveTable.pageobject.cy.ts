@@ -499,6 +499,8 @@ it("`getColumnSortedByIcon()` should get sort icon of given column and order", (
         template: /* HTML */ `
             <f-sort-filter-dataset
                 :data="rows"
+                show-sort
+                show-filter
                 default-sort-attribute="a"
                 :default-sort-ascending="true"
                 :sortable-attributes="sortableAttributes"

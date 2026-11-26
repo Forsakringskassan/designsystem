@@ -13,6 +13,8 @@ const { onCreate, onUpdate, onDelete } = useFruitCrud(fruits);
         <template #default="{ updateItem, deleteItem }">
             <f-sort-filter-dataset
                 :data="fruits"
+                show-sort
+                show-filter
                 :sortable-attributes="{
                     name: 'Namn',
                     origin: 'Land',

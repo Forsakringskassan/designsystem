@@ -106,8 +106,8 @@ const TestComponent = defineComponent({
     computed: {
         showHideAttrs(): Record<string, boolean | undefined> {
             return {
-                showSort: this.showSort ? undefined : false,
-                showFilter: this.showFilter ? undefined : false,
+                showSort: this.showSort,
+                showFilter: this.showFilter,
             };
         },
     },
@@ -203,6 +203,7 @@ describe("sort", () => {
             props: {
                 data: [],
                 sortableAttributes: { column: name },
+                showSort: true,
             },
             attrs: {
                 "data-test": "sort-filter-dataset-example",
@@ -309,27 +310,35 @@ describe("sort & filter in combination", () => {
     });
 });
 
-describe("remove sort & filter fields", () => {
-    it("should remove sort selectfield", () => {
-        cy.mount(TestComponent, {
-            props: {
-                showSort: false,
-            },
+describe("sort & filter fields", () => {
+    it("should hide both controls by default", () => {
+        cy.mount(FSortFilterDataset, {
+            props: { data: [], sortableAttributes: {} },
+            attrs: { "data-test": "sort-filter-dataset-example" },
         });
 
         sortFilterDataset.selectField.el().should("not.exist");
-        sortFilterDataset.textField.el().should("exist");
+        sortFilterDataset.textField.el().should("not.exist");
     });
 
-    it("should remove filter textfield", () => {
-        cy.mount(TestComponent, {
-            props: {
-                showFilter: false,
-            },
+    it("should show sort selectfield when showSort is enabled", () => {
+        cy.mount(FSortFilterDataset, {
+            props: { data: [], sortableAttributes: {}, showSort: true },
+            attrs: { "data-test": "sort-filter-dataset-example" },
         });
 
         sortFilterDataset.selectField.el().should("exist");
         sortFilterDataset.textField.el().should("not.exist");
+    });
+
+    it("should show filter textfield when showFilter is enabled", () => {
+        cy.mount(FSortFilterDataset, {
+            props: { data: [], sortableAttributes: {}, showFilter: true },
+            attrs: { "data-test": "sort-filter-dataset-example" },
+        });
+
+        sortFilterDataset.selectField.el().should("not.exist");
+        sortFilterDataset.textField.el().should("exist");
     });
 });
 

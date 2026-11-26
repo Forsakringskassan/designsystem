@@ -172,7 +172,7 @@ function onRemoveSelectedRows(): void {
 <template>
     <f-button size="medium" variant="secondary" @click="onRemoveSelectedRows"> Ta bort markerade rader </f-button>
 
-    <f-sort-filter-dataset :data="rows" :sortable-attributes>
+    <f-sort-filter-dataset :data="rows" :sortable-attributes show-sort show-filter>
         <template #default="{ sortFilterResult }">
             <f-paginate-dataset :items="sortFilterResult" :items-per-page>
                 <template #default="{ items: currentPageItems }">

@@ -12,6 +12,8 @@ export default defineComponent({
     <f-sort-filter-dataset
         :data="[]"
         :sortable-attributes="{ givenname: 'Förnamn', surname: 'Efternamn' }"
+        show-sort
+        show-filter
     >
         <template #header>
             <h1>Stor rubrik</h1>

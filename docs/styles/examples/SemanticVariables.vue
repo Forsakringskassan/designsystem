@@ -31,6 +31,7 @@ const columns = defineTableColumns([
     <f-sort-filter-dataset
         :data="rows"
         :show-sort="false"
+        show-filter
         :sortable-attributes="{
             name: 'Semantisk variabel',
             palette: 'Palettfärg',
