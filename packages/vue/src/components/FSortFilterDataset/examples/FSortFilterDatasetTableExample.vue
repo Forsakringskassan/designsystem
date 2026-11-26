@@ -14,6 +14,8 @@ const sortableAttributes = { name: "Namn", origin: "Land" };
 <template>
     <f-sort-filter-dataset
         :data="rows"
+        show-sort
+        show-filter
         default-sort-attribute="name"
         :default-sort-ascending="true"
         :sortable-attributes

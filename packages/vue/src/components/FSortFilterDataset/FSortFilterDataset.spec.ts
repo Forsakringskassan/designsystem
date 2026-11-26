@@ -33,6 +33,8 @@ function createWrapper(): VueWrapper {
         props: {
             data: DATA,
             sortableAttributes: ATTRIBUTES,
+            showSort: true,
+            showFilter: true,
         },
         global: {
             stubs: ["f-text-field", "f-icon"],
@@ -105,6 +107,8 @@ function createTableWrapper(
             <f-sort-filter-dataset
                 :data="data"
                 :sortable-attributes="attributes"
+                show-sort
+                show-filter
                 default-sort-attribute="a"
                 :default-sort-ascending="true"
             >
@@ -133,6 +137,8 @@ const tableTestComponentWithOutput = {
         <f-sort-filter-dataset
             :data="data"
             :sortable-attributes="attributes"
+            show-sort
+            show-filter
             default-sort-attribute="a"
             :default-sort-ascending="true"
             @used-sort-attributes="usedSortAttributes($event)"
@@ -420,6 +426,8 @@ it("should throw error when sorting objects", () => {
         mount(FSortFilterDataset, {
             props: {
                 data: DATA,
+                showSort: true,
+                showFilter: true,
                 sortableAttributes: {
                     d: "Column with objects",
                 },

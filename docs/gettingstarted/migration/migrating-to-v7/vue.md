@@ -394,6 +394,33 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
 
 :::
 
+Sorteringslistan och sökfältet är nu dolda som standard.
+Ange `showSort` och `showFilter` för att visa dem, om du tidigare förlitade dig på standardvärdena.
+Du kan ange dem oberoende av varandra.
+
+```diff
+ <f-sort-filter-dataset
+     :data="items"
+     :sortable-attributes
++    show-sort
++    show-filter
+ >
+```
+
+Om du redan anger proparna med `true`, `false` eller dynamiska värden behåller de samma funktion.
+Förvald sortering och sortering via tabellens kolumnrubriker påverkas inte av att sorteringslistan döljs.
+
+::: details 🤖 Prompt för AI Agenter
+
+För varje användning av `FSortFilterDataset`, lägg till `show-sort` respektive `show-filter` där propen saknas och motsvarande kontroll tidigare visades.
+Ta bort statiska `:show-sort="false"` och `:show-filter="false"` eftersom kontrollerna nu är dolda som standard.
+Behåll explicita `true`-värden och dynamiska värden.
+
+Verifiera resultatet genom att bygga projektet och köra enhetstester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.
+
+:::
+
 ## `getLegacyInternalKey()`
 
 Använd `findItemIdentifier()` om objektet kan sakna en identifierare, eller `getItemIdentifier()` om identifieraren är garanterad att finnas, istället för att hämta ut nyckeln.

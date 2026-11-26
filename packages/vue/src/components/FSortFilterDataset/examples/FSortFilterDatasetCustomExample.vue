@@ -22,7 +22,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-sort-filter-dataset :data="fruits" :sortable-attributes>
+    <f-sort-filter-dataset :data="fruits" :sortable-attributes show-sort show-filter>
         <template #default="{ sortFilterResult }">
             <pre v-for="item in sortFilterResult" :key="item.id">{{ item }}</pre>
         </template>

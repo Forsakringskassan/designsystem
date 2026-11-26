@@ -126,6 +126,8 @@ function onChangeDataset(): void {
         v-test="'filter'"
         :data="rows"
         :sortable-attributes
+        show-sort
+        show-filter
         default-sort-attribute="text"
     >
         <template #default="{ sortFilterResult }">

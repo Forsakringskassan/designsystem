@@ -19,7 +19,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-sort-filter-dataset :data="fruits" :sortable-attributes>
+    <f-sort-filter-dataset :data="fruits" :sortable-attributes show-sort show-filter>
         <template #header="{ slotClass }">
             <h3 :class="slotClass">Frukter</h3>
         </template>

@@ -107,7 +107,7 @@ function onChangeDataset(): void {
     <f-button data-test="change-dataset" size="medium" variant="secondary" @click="onChangeDataset">
         Ändra dataset
     </f-button>
-    <f-sort-filter-dataset v-test="'filter'" :data="rows" :sortable-attributes>
+    <f-sort-filter-dataset v-test="'filter'" :data="rows" :sortable-attributes show-sort show-filter>
         <template #default="{ sortFilterResult }">
             <f-table
                 ref="table"
