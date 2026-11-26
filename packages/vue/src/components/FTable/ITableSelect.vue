@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { computed, nextTick, ref, useTemplateRef, watch, watchEffect } from "vue";
+import { computed, nextTick, ref, unref, useTemplateRef, watch, watchEffect } from "vue";
 import { type ValidityEvent, ElementIdService, ValidationService } from "@fkui/logic";
 import { useElementHover, useFocusWithin } from "@vueuse/core";
 import { IPopupError } from "../../internal-components";
@@ -66,7 +66,7 @@ const viewModeAriaInvalid = computed(() => hasError.value || undefined);
 
 const ariaLabel = computed(() => {
     const value = column.label(row);
-    return value.length > 0 ? value : undefined;
+    return value.trim() || unref(column.header).trim() || undefined;
 });
 
 const visible = computed((): boolean => isVisible(column.visible, row));

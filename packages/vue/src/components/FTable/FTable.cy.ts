@@ -908,8 +908,7 @@ describe("3.6 Feedback to user on table validation errors at submit", () => {
         cy.focused().clear();
         cy.focused().type("100{enter}");
 
-        table.cell({ row: 1, col: 1 }).click();
-        table.selectDropdownOption(2).click();
+        table.select({ row: 1, col: 1 }).select("B");
         cy.wrap(rows.value[0]).should("have.property", "amount", null);
 
         cy.get('button[type="submit"]').click();
