@@ -5976,17 +5976,17 @@ input[type=search]:focus-visible,
   box-sizing: border-box;
 }
 .table-ng__cell--select.table-ng__cell--error:not(:has(:focus-visible)) .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:not(:has(:focus-visible)) .table-ng__editable {
-  box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-text-negative);
+  box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-border-negative);
   border-radius: 0;
 }
 @media (hover: hover) {
   .table-ng__cell--select.table-ng__cell--error:hover:not(:has(:focus-visible)) .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:hover:not(:has(:focus-visible)) .table-ng__editable {
-    box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-text-negative);
+    box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-border-negative);
     border-radius: 0;
   }
 }
 .table-ng__cell--select.table-ng__cell--error:focus-visible .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:focus-visible .table-ng__editable {
-  box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-text-negative);
+  box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-border-negative);
   border-radius: 0;
 }
 .table-ng__cell--text:focus-visible {
@@ -9879,7 +9879,7 @@ body:has(#mobile-toggle:checked) {
   color-scheme: light dark;
 }
 
-#docs-content a.button, #docs-content a.docs-example-button {
+#docs-content a.button.sandbox-button, #docs-content a.sandbox-button.docs-example-button {
   color: var(--fkds-color-action-text-inverted-default);
   text-decoration: none;
 }
