@@ -37,6 +37,8 @@ Write tests for isolated logic and component behavior with Vitest, and run them 
 
 Write Cypress component tests for browser interactions with an individual component, and run them with `npx cypress run --component --headless`.
 
-- Visual regression (screenshot) tests are enabled by default and inherently flaky; disable them unless explicitly requested by setting `FKDS_DISABLE_VISUAL_REGRESSION=1` before running tests.
+- Visual regression (screenshot) tests are enabled by default and inherently flaky; disable them unless explicitly requested by setting `env FKDS_DISABLE_VISUAL_REGRESSION=1` before running tests.
+  Only disable if one or more suites uses `toMatchScreenshot()` assertions.
 - Target a component spec with `--spec <path-to-spec>`.
+  Multiple paths are joined with comma.
 - Update screenshot reference-image baselines with `--env type=base` (with both `CI` and `FKDS_DISABLE_VISUAL_REGRESSION` unset).
