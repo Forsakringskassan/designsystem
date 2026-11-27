@@ -125,11 +125,20 @@ FSortFilterDatasetTableExampleToolbar.vue
 
 ## Redigering av innehåll
 
-Om innehållet i en sorterad lista/tabell redigeras (exempelvis att användaren redigerar en rad) uppdateras inte sorteringsordningen i listan/tabellen.
-Användaren måste aktivt sortera om listan/tabellen .
-Nya rader läggs till sist oavsett sorteringsordning.
-Användaren behöver även här aktivt sortera om listan/tabellen.
-Om datamängden ersätts helt körs filter och sortering på nytt.
+När rader läggs till, ändras eller tas bort körs varken sortering eller filtrering om.
+Raderna ligger kvar där de är så att användaren inte tappar bort raden som just ändrats:
+
+- Ändrade rader ligger kvar på samma plats.
+- Nya rader läggs till sist.
+- Borttagna rader försvinner.
+- Sökningen och markerade rader behålls.
+- Sorteringslistan återställs till "Välj" eftersom listan inte längre är sorterad.
+
+Det gäller även om raden inte längre matchar sorteringen eller sökningen.
+Användaren sorterar om genom att välja sortering igen och filtrerar om genom att ändra sökningen.
+
+Samma sak gäller när `data` sätts till en ny lista som innehåller någon av de tidigare raderna, till exempel med {@link FCrudDataset datamängdredigeraren}.
+Om datamängden ersätts helt, det vill säga den nya listan innehåller ingen av de tidigare raderna, töms sökningen och både filtrering och sortering körs på nytt.
 
 ## Datamängdsorterare och egen presentation
 

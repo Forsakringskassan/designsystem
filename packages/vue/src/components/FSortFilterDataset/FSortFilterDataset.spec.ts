@@ -321,7 +321,11 @@ describe("should keep sort on data change", () => {
         expect(rows[1].findAll("td")[1].text()).toBe("k");
         expect(rows[2].findAll("td")[1].text()).toBe("ö");
 
-        const newData = [...DATA, { a: 0, b: "b", c: "dummy", d: {} }];
+        /* new row objects: a new array keeping existing rows is an edit and is not resorted */
+        const newData = [
+            ...DATA.map((it) => ({ ...it })),
+            { a: 0, b: "b", c: "dummy", d: {} },
+        ];
         await wrapper.setData({ data: newData });
         await wrapper.vm.$nextTick();
 
@@ -345,7 +349,11 @@ describe("should keep sort on data change", () => {
         expect(rows[1].findAll("td")[1].text()).toBe("k");
         expect(rows[2].findAll("td")[1].text()).toBe("ö");
 
-        const newData = [...DATA, { a: 0, b: "b", c: "dummy", d: {} }];
+        /* new row objects: a new array keeping existing rows is an edit and is not resorted */
+        const newData = [
+            ...DATA.map((it) => ({ ...it })),
+            { a: 0, b: "b", c: "dummy", d: {} },
+        ];
         await wrapper.setData({ data: newData });
         await wrapper.vm.$nextTick();
 

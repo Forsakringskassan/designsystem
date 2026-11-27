@@ -34,16 +34,17 @@ Den kompilerade versionen utav `@fkui/design` innehåller inte längre det ljusa
 
 ### Övriga ändringar
 
-| Komponent                                                                                  | Ändring                                                  |
-| :----------------------------------------------------------------------------------------- | :------------------------------------------------------- |
-| {@link migrating-to-v7-pageobjects Cypress}                                                | Namnändringar och borttagna metoder i våra Pageobjects.  |
-| {@link migrating-to-v7-vue#fcrudbutton FCrudButton (FCrudButton)}                          | Komponenten har tagits bort.                             |
-| {@link migrating-to-v7-@fkui/design#ersattning_av_klasser_pa_knappar Knapp (@fkui/design)} | Vissa klasser på `button` ersätts.                       |
-| {@link migrating-to-v7-vue#FModal Modal (Fmodal)}                                          | Tagit bort template Api:et.                              |
-| {@link migrating-to-v7-vue#ipopup Popup (IPopup)}                                          | Fokushantering och tangentbordsfälla är opt in.          |
-| {@link migrating-to-v7-vue#FWizard Steg för steg (FWizard)}                                | Focushantering är opt in istället för opt out            |
-| {@link migrating-to-v7-vue#ftable Tabell (FTable)}                                         | Egenskapen `text` har bytt namn till `screenreaderText`. |
-| {@link migrating-to-v7-theme-builder @fkui/theme-builder}                                  | Flera uppdateringar för dig som bygger dina egna teman.  |
+| Komponent                                                                                  | Ändring                                                                                           |
+| :----------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
+| {@link migrating-to-v7-pageobjects Cypress}                                                | Namnändringar och borttagna metoder i våra Pageobjects.                                           |
+| {@link migrating-to-v7-vue#fcrudbutton FCrudButton (FCrudButton)}                          | Komponenten har tagits bort.                                                                      |
+| {@link migrating-to-v7-@fkui/design#ersattning_av_klasser_pa_knappar Knapp (@fkui/design)} | Vissa klasser på `button` ersätts.                                                                |
+| {@link migrating-to-v7-vue#FModal Modal (Fmodal)}                                          | Tagit bort template Api:et.                                                                       |
+| {@link migrating-to-v7-vue#ipopup Popup (IPopup)}                                          | Fokushantering och tangentbordsfälla är opt in.                                                   |
+| {@link migrating-to-v7-vue#FWizard Steg för steg (FWizard)}                                | Focushantering är opt in istället för opt out                                                     |
+| {@link migrating-to-v7-vue#ftable Tabell (FTable)}                                         | Egenskapen `text` har bytt namn till `screenreaderText`.                                          |
+| {@link migrating-to-v7-vue#fsortfilterdataset Datamängdsorterare (FSortFilterDataset)}     | Sortering och sökfält är dolda som standard. Ny lista med befintliga rader räknas som redigering. |
+| {@link migrating-to-v7-theme-builder @fkui/theme-builder}                                  | Flera uppdateringar för dig som bygger dina egna teman.                                           |
 
 ## ESM Only
 
