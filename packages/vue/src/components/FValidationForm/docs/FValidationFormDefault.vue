@@ -33,8 +33,8 @@ export default defineComponent({
         };
     },
     methods: {
-        onSubmit() {
-            alert("Spara");
+        onSubmit(event: SubmitEvent) {
+            alert(event.type);
         },
         onCancel() {
             alert("Avbryt");
