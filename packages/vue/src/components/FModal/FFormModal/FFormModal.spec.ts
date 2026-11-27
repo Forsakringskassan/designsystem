@@ -2,7 +2,7 @@ import "html-validate/vitest";
 import { defineComponent } from "vue";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { type VueWrapper, flushPromises, mount } from "@vue/test-utils";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../../plugins";
 import { FTextField } from "../../FTextField";
 import FModal from "../FModal.vue";
@@ -63,23 +63,10 @@ function createWrapper(
 async function doTriggerSubmit(wrapper: VueWrapper): Promise<void> {
     const formElement = wrapper.get("form");
     await formElement.trigger("submit");
-    await wrapper.vm.$nextTick();
-    await flushPromises();
-    vi.runAllTimers();
-    await flushPromises();
-    vi.runAllTimers();
     await flushPromises();
 }
 
 describe("events", () => {
-    beforeEach(() => {
-        vi.useFakeTimers();
-    });
-
-    afterEach(() => {
-        vi.useRealTimers();
-    });
-
     it('should send "cancel" and "close" event on close button clicked', async () => {
         expect.assertions(2);
         const wrapper = mount(FFormModal, {

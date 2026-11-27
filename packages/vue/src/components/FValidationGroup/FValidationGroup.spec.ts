@@ -2,7 +2,7 @@ import "html-validate/vitest";
 import { defineComponent } from "vue";
 import { type ValidatableHTMLElement } from "@fkui/logic";
 import { flushPromises, mount } from "@vue/test-utils";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import {
     type ComponentUnmountEvent,
     type ComponentValidityEvent,
@@ -10,13 +10,8 @@ import {
 } from "../../types";
 import FValidationGroup from "./FValidationGroup.vue";
 
-beforeEach(() => {
-    vi.useFakeTimers();
-});
-
 afterEach(() => {
     vi.restoreAllMocks();
-    vi.useRealTimers();
 });
 
 function triggerComponentValidityEvent(
@@ -68,7 +63,6 @@ describe("events", () => {
         });
         const input = wrapper.get<HTMLInputElement>("#input1");
         triggerComponentValidityEvent(input.element);
-        vi.runAllTimers();
         await flushPromises();
         expect(wrapper.emitted("group-validity")).toHaveLength(1);
     });
@@ -140,7 +134,6 @@ describe("events", () => {
         const input2 = wrapper.get<HTMLInputElement>("#input2");
         triggerComponentValidityEvent(input2.element, { isValid: true });
 
-        vi.runAllTimers();
         await flushPromises();
 
         const event =
@@ -169,7 +162,6 @@ describe("events", () => {
         triggerComponentValidityEvent(input1.element, { isValid: true });
         const input2 = wrapper.get<HTMLInputElement>("#input2");
         triggerComponentValidityEvent(input2.element, { isValid: true });
-        vi.runAllTimers();
         await flushPromises();
         expect(
             wrapper.emitted<GroupValidityEvent[]>("group-validity")![1][0]
@@ -191,7 +183,6 @@ describe("events", () => {
         triggerComponentValidityEvent(input1.element, { isValid: true });
         const input2 = wrapper.get<HTMLInputElement>("#input2");
         triggerComponentValidityEvent(input2.element, { isValid: false });
-        vi.runAllTimers();
         await flushPromises();
         expect(
             wrapper.emitted<GroupValidityEvent[]>("group-validity")![1][0]
@@ -233,7 +224,6 @@ describe("events", () => {
             isValid: false,
             validityMode: "ERROR",
         });
-        vi.runAllTimers();
         await flushPromises();
         const event =
             wrapper.emitted<GroupValidityEvent[]>("group-validity")![1][0];
@@ -261,7 +251,6 @@ describe("events", () => {
             isValid: false,
             validityMode: "ERROR",
         });
-        vi.runAllTimers();
         await flushPromises();
         const event =
             wrapper.emitted<GroupValidityEvent[]>("group-validity")![1][0];
@@ -288,9 +277,8 @@ describe("events", () => {
 
         input1.element.remove();
 
-        // Process first event's timer before dispatching second event,
-        // so cleanUpElements for event 2 sees the updated components state
-        vi.runAllTimers();
+        // Process first event before dispatching second event, so
+        // cleanUpElements for event 2 sees the updated components state
         await flushPromises();
 
         const input2 = wrapper.get<HTMLInputElement>("#input2");
@@ -299,7 +287,6 @@ describe("events", () => {
             validityMode: "ERROR",
         });
 
-        vi.runAllTimers();
         await flushPromises();
 
         const firstEvent =
@@ -332,7 +319,6 @@ describe("events", () => {
             isValid: false,
             validityMode: "INITIAL",
         });
-        vi.runAllTimers();
         await flushPromises();
 
         const event =
@@ -373,7 +359,6 @@ describe("v-model", () => {
         const input = wrapper.get<HTMLInputElement>("#input1");
         triggerComponentValidityEvent(input.element);
 
-        vi.runAllTimers();
         await flushPromises();
         wrapper.vm.$forceUpdate();
 

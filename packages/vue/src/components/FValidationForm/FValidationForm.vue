@@ -130,8 +130,11 @@ export default defineComponent({
         async hasFormErrors(): Promise<boolean> {
             ValidationService.setSubmitted(this.$el);
             await ValidationService.validateAllElements(this.$el);
+            /* wait for the group to process the resulting validity events (the
+             * group is gone if the form was unmounted while submitting) */
+            const group = this.$refs.group as InstanceType<typeof FValidationGroup> | null;
+            await group?.settled();
             await this.$nextTick();
-            await new Promise((resolve) => window.setTimeout(resolve, 0));
 
             if (this.validity.isValid) {
                 return false;
@@ -191,7 +194,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-validation-group :key="groupKey" v-model="validity" :stop-propagation="true">
+    <f-validation-group ref="group" :key="groupKey" v-model="validity" :stop-propagation="true">
         <!-- [html-validate-disable-next wcag/h32 -- submit button is slotted] -->
         <form :id v-bind="$attrs" novalidate autocomplete="off" @submit.prevent="submit">
             <nav v-if="displayErrors" ref="errors" tabindex="-1" role="group">

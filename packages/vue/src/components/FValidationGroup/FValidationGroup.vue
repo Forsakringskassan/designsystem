@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
-import { type PropType, defineComponent } from "vue";
+import { type PropType, defineComponent, markRaw } from "vue";
 import { documentOrderComparator } from "@fkui/logic";
 import { type ComponentUnmountEvent, type ComponentValidityEvent, type GroupValidityEvent } from "../../types";
 import { cleanUpElements } from "./form-utils";
@@ -46,12 +46,25 @@ export default defineComponent({
          */
         "update:modelValue",
     ],
-    data(): { components: Record<string, ComponentValidityEvent> } {
+    data(): { components: Record<string, ComponentValidityEvent>; pending: Set<Promise<void>> } {
         return {
             components: {},
+            /* non-reactive bookkeeping of validity updates still in progress */
+            pending: markRaw(new Set<Promise<void>>()),
         };
     },
     methods: {
+        /**
+         * Resolves when all `component-validity` events received so far have
+         * been processed and the group validity has been emitted.
+         *
+         * @internal
+         */
+        async settled(): Promise<void> {
+            while (this.pending.size > 0) {
+                await Promise.all(this.pending);
+            }
+        },
         onComponentUnmount(event: CustomEvent<ComponentUnmountEvent>): void {
             // eslint-disable-next-line @typescript-eslint/no-dynamic-delete -- Technical debt, a map would have been better.
             delete this.components[event.detail.elementId];
@@ -62,9 +75,18 @@ export default defineComponent({
                 event.stopPropagation();
             }
 
-            await cleanUpElements(this);
-            this.components[event.detail.elementId] = event.detail;
-            this.triggerGroupValidityEvent();
+            const { detail } = event;
+            const update = (async (): Promise<void> => {
+                await cleanUpElements(this);
+                this.components[detail.elementId] = detail;
+                this.triggerGroupValidityEvent();
+            })();
+            this.pending.add(update);
+            try {
+                await update;
+            } finally {
+                this.pending.delete(update);
+            }
         },
         triggerGroupValidityEvent(): void {
             const components: ComponentValidityEvent[] = Object.values(this.components);

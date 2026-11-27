@@ -84,7 +84,11 @@ export default defineComponent({
     },
     data() {
         return {
-            step: {} as FWizardStepDefinition,
+            /* placeholder until registered in `mounted()`, uses same defaults as
+             * `addStep()` so the step renders as closed (otherwise
+             * `IAnimateExpand` would default to expanded and render the content,
+             * only to be discarded when registered) */
+            step: { isOpen: false, currentOpen: -1, stepNumber: -1 } as FWizardStepDefinition,
             validity: { isValid: true, componentsWithError: [], componentCount: 0 },
             isOpenedFirstTime: true,
             ignoreClick: false,
