@@ -82,25 +82,20 @@ export default defineComponent({
         keyboardTrap: {
             type: Boolean,
             required: false,
-            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-            default: true,
         },
         /**
-         * Function that returns the element that will receive focus
+         * Automatically move focus when popup is opened.
+         *
+         * - When set to `true` it focuses on the first tabbable element.
+         * - When omitted or set to `false` focus management is disabled.
+         * - When set to a function it focuses on the returned element; `null` leaves focus unchanged.
+         *
+         * When an element is focused, the previous focus is restored when the popup closes.
          */
-        focusElement: {
-            type: Function as PropType<() => HTMLElement | null>,
+        focus: {
+            type: [Function, Boolean] as PropType<(() => HTMLElement | null) | boolean>,
             required: false,
-            default: null,
-        },
-        /**
-         * Set focus on first tabbable element (or element in the `focusElement` prop if provided) when opened.
-         */
-        setFocus: {
-            type: Boolean,
-            required: false,
-            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-            default: true,
+            default: false,
         },
     },
     emits: [
@@ -122,7 +117,7 @@ export default defineComponent({
         return {
             teleportDisabled: false,
             placement: Placement.NotCalculated,
-            focus: null,
+            focusHandle: null,
             anchorOffset: null,
         };
     },
@@ -223,9 +218,9 @@ export default defineComponent({
                 this.anchorOffset = null;
 
                 /* restore focus */
-                if (this.focus) {
-                    popFocus(this.focus);
-                    this.focus = null;
+                if (this.focusHandle) {
+                    popFocus(this.focusHandle);
+                    this.focusHandle = null;
                 }
                 return;
             }
@@ -302,15 +297,17 @@ export default defineComponent({
             }
         },
         applyFocus(): void {
-            if (!this.setFocus) {
+            if (!this.focus) {
                 return;
             }
             const wrapper = this.$refs.wrapper;
             if (!wrapper) {
                 return;
             }
-            const focusableElement = getFocusableElement(wrapper, this.focusElement);
-            this.focus = pushFocus(focusableElement);
+            const focusableElement = getFocusableElement(wrapper, this.focus);
+            if (focusableElement) {
+                this.focusHandle = pushFocus(focusableElement);
+            }
         },
         isMobileSize(): boolean {
             return window.innerWidth < MIN_DESKTOP_WIDTH;

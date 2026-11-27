@@ -46,7 +46,7 @@ import {
     tableScrollClasses,
 } from "../../utils";
 import { FCheckboxField } from "../FCheckboxField";
-import { ActivateItemInjected } from "../FCrudDataset";
+import { useCrudDatasetPresenter } from "../FCrudDataset";
 import { FIcon } from "../FIcon";
 import { FRadioField } from "../FRadioField";
 import { FSortFilterDatasetInjected, useSortFilterDatasetEvents } from "../FSortFilterDataset";
@@ -210,10 +210,18 @@ const slots = useSlots();
 const { hasSlot } = useSlotUtils();
 const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
 const { onFilter } = useSortFilterDatasetEvents();
-const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete, setNestedKey } = ActivateItemInjected<T>();
 
 /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
 const internalKey = getLegacyInternalKey<T>();
+
+useCrudDatasetPresenter<T>({
+    nestedKey: () => expandableAttribute,
+    afterCreate: callbackAfterItemAdd,
+    handleDelete(item, commit) {
+        callbackBeforeItemDelete(item);
+        commit();
+    },
+});
 
 const activeRow = ref<T | undefined>(undefined);
 const columns = ref<FTableColumnData[]>([]);
@@ -373,15 +381,9 @@ onMounted(() => {
     if (tbody.value) {
         updateTr(tbody.value);
     }
-    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, vue/no-ref-as-operand -- technical debt */
-    if (isExpandableTable) {
-        setNestedKey(expandableAttribute);
-    }
     registerCallbackOnSort(callbackOnSort);
     registerCallbackOnMount(callbackSortableColumns);
     onFilter(callbackOnFilter);
-    registerCallbackAfterItemAdd(callbackAfterItemAdd);
-    registerCallbackBeforeItemDelete(callbackBeforeItemDelete);
 });
 
 function isActive(row: T): boolean {

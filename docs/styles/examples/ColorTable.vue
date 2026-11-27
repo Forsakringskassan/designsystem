@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { h } from "vue";
-import { type SassVariable } from "@fkui/theme-default/dist/palette.json";
-import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { type PaletteColor } from "@fkui/theme-default/metadata";
+import { FTable, defineTableColumns } from "@fkui/vue";
 
-const props = defineProps<{ colors: SassVariable[] }>();
+const { colors: rows } = defineProps<{ colors: PaletteColor[] }>();
 
-const columns = defineTableColumns<SassVariable>([
+const columns = defineTableColumns<PaletteColor>([
     { type: "text", header: "Namn", key: "name", size: "shrink" },
     {
         header: "Färg",
@@ -23,8 +23,6 @@ const columns = defineTableColumns<SassVariable>([
         },
     },
 ]);
-
-const rows = useDatasetRef(props.colors);
 </script>
 
 <template>

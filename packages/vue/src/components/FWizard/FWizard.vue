@@ -18,8 +18,8 @@ export default defineComponent({
             get headerTag(): string {
                 return wizard.headerTag;
             },
-            get disableInitialFocus(): boolean {
-                return wizard.disableInitialFocus;
+            get focusInitialStep(): boolean {
+                return wizard.focusInitialStep;
             },
         };
         return {
@@ -56,10 +56,9 @@ export default defineComponent({
             },
         },
         /**
-         * When the first wizard step is registered, it is opened and focused by default.
-         * Set this property to disable that behaviour.
+         * Focus the first wizard step when it is opened initially.
          */
-        disableInitialFocus: {
+        focusInitialStep: {
             type: Boolean,
             required: false,
         },

@@ -11,7 +11,7 @@ import { FFormModalAction } from "./action";
 
 function generateFFormModalTemplate(errorMessage: string): string {
     return /* HTML */ `
-        <f-form-modal use-error-list is-open>
+        <f-form-modal use-error-list>
             <template #error-message>${errorMessage}</template>
             <template #input-text-fields>
                 <f-text-field
@@ -82,11 +82,7 @@ describe("events", () => {
 
     it('should send "cancel" and "close" event on close button clicked', async () => {
         expect.assertions(2);
-        const wrapper = mount(FFormModal, {
-            props: {
-                isOpen: true,
-            },
-        });
+        const wrapper = mount(FFormModal);
         const closeElement = wrapper.get(".close-button");
         await closeElement.trigger("click");
         expect(wrapper.emitted().cancel).toBeTruthy();
@@ -95,11 +91,7 @@ describe("events", () => {
 
     it('should send "cancel" and "close" event on cancel button clicked', async () => {
         expect.assertions(2);
-        const wrapper = mount(FFormModal, {
-            props: {
-                isOpen: true,
-            },
-        });
+        const wrapper = mount(FFormModal);
         const closeElement = wrapper.get(".button--secondary");
         await closeElement.trigger("click");
         expect(wrapper.emitted().cancel).toBeTruthy();
@@ -108,11 +100,7 @@ describe("events", () => {
 
     it('should send "submit" and "close" event on submit button clicked', async () => {
         expect.assertions(2);
-        const wrapper = mount(FFormModal, {
-            props: {
-                isOpen: true,
-            },
-        });
+        const wrapper = mount(FFormModal);
 
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         await doTriggerSubmit(wrapper);
@@ -125,7 +113,6 @@ describe("events", () => {
         const beforeSubmit = vi.fn();
         const wrapper = mount(FFormModal, {
             props: {
-                isOpen: true,
                 beforeSubmit,
             },
         });
@@ -144,7 +131,6 @@ describe("events", () => {
         }
         const wrapper = mount(FFormModal, {
             props: {
-                isOpen: true,
                 beforeSubmit: onBeforeSubmit,
             },
         });
@@ -162,7 +148,6 @@ describe("events", () => {
         }
         const wrapper = mount(FFormModal, {
             props: {
-                isOpen: true,
                 beforeSubmit: onBeforeSubmit,
             },
         });
@@ -180,7 +165,6 @@ describe("events", () => {
         }
         const wrapper = mount(FFormModal, {
             props: {
-                isOpen: true,
                 beforeSubmit: onBeforeSubmit,
             },
         });
@@ -193,11 +177,7 @@ describe("events", () => {
 
     it("should emit submit when beforeSubmit props not set (default)", async () => {
         expect.assertions(1);
-        const wrapper = mount(FFormModal, {
-            props: {
-                isOpen: true,
-            },
-        });
+        const wrapper = mount(FFormModal);
 
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         await doTriggerSubmit(wrapper);
@@ -240,9 +220,6 @@ describe("slots", () => {
         expect.assertions(1);
         const headerText = "foo header";
         const wrapper = mount(FFormModal, {
-            props: {
-                isOpen: true,
-            },
             slots: {
                 header: headerText,
             },
@@ -256,9 +233,6 @@ describe("slots", () => {
         expect.assertions(1);
         const contentText = "bar content";
         const wrapper = mount(FFormModal, {
-            props: {
-                isOpen: true,
-            },
             slots: {
                 header: /* HTML */ ` <pre>${contentText}</pre> `,
             },
@@ -272,9 +246,6 @@ describe("slots", () => {
         expect.assertions(1);
         const contentText = "bar content";
         const wrapper = mount(FFormModal, {
-            props: {
-                isOpen: true,
-            },
             slots: {
                 default: contentText,
             },
@@ -328,7 +299,6 @@ describe("props", () => {
         expect.assertions(1);
         const wrapper = mount(FFormModal, {
             props: {
-                isOpen: true,
                 ariaCloseText: "CLOSE_TEXT",
             },
             slots: {},
@@ -342,7 +312,6 @@ describe("props", () => {
         expect.assertions(1);
         const wrapper = mount(FFormModal, {
             props: {
-                isOpen: true,
                 buttons: [
                     {
                         label: "Lorem ipsum",
@@ -362,7 +331,6 @@ describe("props", () => {
         expect.assertions(1);
         const wrapper = mount(FFormModal, {
             props: {
-                isOpen: true,
                 buttons: [{ label: "Lorem ipsum", type: "secondary" }],
             },
         });
@@ -393,50 +361,13 @@ describe("html-validate", () => {
     describe("attributes", () => {
         const validSizes = ["small", "large", "fullwidth"];
 
-        describe("is-open", () => {
-            it("should allow boolean value", async () => {
-                expect.assertions(1);
-                const markup = /* HTML */ `
-                    <f-form-modal is-open></f-form-modal>
-                    <f-form-modal :is-open="false"></f-form-modal>
-                `;
-                await expect(markup).toBeValid();
-            });
-
-            it("should not allow empty string", async () => {
-                expect.assertions(1);
-                const markup = /* HTML */ `
-                    <f-form-modal is-open=""></f-form-modal>
-                `;
-                await expect(markup).toMatchInlineCodeframe(`
-                    "error: Attribute "is-open" should omit value (attribute-boolean-style)
-                      1 |
-                    > 2 |                     <f-form-modal is-open=""></f-form-modal>
-                        |                                   ^^^^^^^
-                      3 |
-                    Selector: f-form-modal"
-                `);
-            });
-
-            it("should not allow invalid values", async () => {
-                expect.assertions(1);
-                const markup = /* HTML */ `
-                    <f-form-modal is-open="invalid"></f-form-modal>
-                `;
-                await expect(markup).toMatchInlineCodeframe(`
-                    "error: Attribute "is-open" should omit value (attribute-boolean-style)
-                      1 |
-                    > 2 |                     <f-form-modal is-open="invalid"></f-form-modal>
-                        |                                   ^^^^^^^
-                      3 |
-                    Selector: f-form-modal
-                    error: Attribute "is-open" has invalid value "invalid" (attribute-allowed-values)
-                      1 |
-                    > 2 |                     <f-form-modal is-open="invalid"></f-form-modal>
-                        |                                            ^^^^^^^
-                      3 |
-                    Selector: f-form-modal"
-                `);
+        it("should report removed is-open", async () => {
+            expect.assertions(1);
+            const markup = /* HTML */ ` <f-form-modal is-open></f-form-modal> `;
+            await expect(markup).not.toHTMLValidate({
+                ruleId: "fkui/no-template-modal",
+                message:
+                    '"is-open" has been removed from f-form-modal, modals are always open when rendered. Open the modal with openModal() or useModal() instead.',
             });
         });
 

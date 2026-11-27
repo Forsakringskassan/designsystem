@@ -20,7 +20,7 @@ function setValid(): void {
 </script>
 
 <template>
-    <f-validation-form :use-error-list="false">
+    <f-validation-form>
         <f-card ref="card" v-validation :focus-ref>
             <template #header="{ headingSlotClass }">
                 <h3 :class="headingSlotClass">Arbete</h3>

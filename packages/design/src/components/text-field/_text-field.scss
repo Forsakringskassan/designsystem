@@ -47,9 +47,19 @@
         min-height: core.densify(var(--f-height-large));
         padding: 0 0.75rem;
         width: var(--f-width-full);
+
+        &::placeholder {
+            color: var(--fkds-color-text-secondary);
+            opacity: 1;
+        }
+
+        &:disabled::placeholder {
+            color: $textfield-color-text-disabled;
+        }
     }
 
     &__icon-wrapper {
+        color: $textfield-color-text-default;
         flex: 1 1 auto;
         position: relative;
 

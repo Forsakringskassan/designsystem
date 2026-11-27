@@ -1,10 +1,18 @@
 <script setup lang="ts">
-import { useTemplateRef } from "vue";
+import { ref, useTemplateRef } from "vue";
+import FruitFormModal from "./FruitFormModal.vue";
 import { type FruitData, fruits } from "./fruit-data";
-import { FCrudDataset, FTable, FTextField, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import {
+    type FCrudDatasetCommitUpdate,
+    FCrudDataset,
+    FTable,
+    defineTableColumns,
+    useModal,
+} from "@fkui/vue";
 
-const rows = useDatasetRef(fruits);
+const rows = ref(fruits);
 const crud = useTemplateRef("crud");
+const { formModal } = useModal();
 const columns = defineTableColumns([
     { type: "text", header: "Namn", key: "name", size: "shrink" },
     { type: "text", header: "Land", key: "origin", size: "shrink" },
@@ -12,7 +20,7 @@ const columns = defineTableColumns([
     {
         type: "button",
         header: "Åtgärd",
-        text: (row: FruitData) => `Ändra ${row.name}`,
+        screenreaderText: (row: FruitData) => `Ändra ${row.name}`,
         icon: "pen",
         onClick: (row: FruitData) => {
             crud.value?.updateItem(row);
@@ -20,32 +28,26 @@ const columns = defineTableColumns([
     },
 ]);
 
-function saveModel(row: FruitData): void {
-    console.log("Post model to backend", row);
+async function onUpdate(
+    fruit: FruitData,
+    commit: FCrudDatasetCommitUpdate<FruitData>,
+): Promise<void> {
+    try {
+        const modified = await formModal<FruitData>(FruitFormModal, {
+            props: { heading: "Ändra frukt", confirmText: "Spara", fruit },
+        });
+        console.log("Post model to backend", modified);
+        commit(modified, `Frukten ${modified.name} har ändrats`);
+    } catch {
+        /* user cancelled */
+    }
 }
 </script>
 
 <template>
-    <f-crud-dataset
-        ref="crud"
-        v-model="rows"
-        @created="saveModel"
-        @updated="saveModel"
-        @deleted="saveModel"
-    >
-        <template #default>
-            <f-table :rows :columns>
-                <template #caption> <b>Frukter</b> </template>
-            </f-table>
-        </template>
-        <template #modify="{ item }">
-            <f-text-field
-                v-model="item.name"
-                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
-                type="text"
-            >
-                Namn
-            </f-text-field>
-        </template>
+    <f-crud-dataset ref="crud" v-model="rows" :on-update>
+        <f-table :rows :columns>
+            <template #caption> <b>Frukter</b> </template>
+        </f-table>
     </f-crud-dataset>
 </template>

@@ -1,12 +1,9 @@
 @use "light/theme" as light;
 @use "dark/theme" as dark;
 @use "auto/theme" as auto;
-
-$global: true !default;
-
-@mixin css-variables {
-    @include light.theme;
-}
+@use "deprecated-variables" as deprecated with (
+    $global: false
+);
 
 @mixin light {
     @include light.theme;
@@ -20,9 +17,6 @@ $global: true !default;
     @include auto.theme;
 }
 
-// for backwards compability
-@if $global {
-    :root {
-        @include light.theme;
-    }
+@mixin deprecated-variables {
+    @include deprecated.deprecated-variables;
 }

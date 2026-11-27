@@ -3,7 +3,6 @@ import { type Ref, computed, nextTick, onMounted, onUnmounted, provide, watch } 
 import { TranslationService, alertScreenReader, debounce } from "@fkui/logic";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
 import { useTranslate } from "../../plugins";
-import { type Dataset } from "../../utils";
 import { FSelectField } from "../FSelectField";
 import { provideSelectableRowSource, useSelectableRowSource } from "../FTable";
 import { FSearchTextField } from "../FTextField";
@@ -19,13 +18,9 @@ const {
     data,
     sortableAttributes,
     defaultSortAttribute = "",
-    /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-    showSort = true,
-    /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-    showFilter = true,
+    showSort,
+    showFilter,
     filterLabel = undefined,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility
-    placeholderFilter = undefined,
     /* eslint-disable-next-line vue/no-boolean-default -- reasonable default */
     defaultSortAscending = true,
     filterAttributes = undefined,
@@ -33,7 +28,7 @@ const {
     /**
      * The data that you wish to sort or filter.
      */
-    data: Dataset<T> | T[];
+    data: T[];
     /**
      * All the attributes you want to enable sorting for and the corresponding name to display in the dropdown.
      * Structured as `{attributeName: "Name for dropdown", secondAttributeName: "Name for dropdown"}`
@@ -56,14 +51,6 @@ const {
      */
     filterLabel?: string;
     /**
-     * Previously set placeholder text in filter input field.
-     *
-     * Default is textkey "fkui.sort-filter-dataset.placeholder.filter"
-     *
-     * @deprecated Use `filterLabel` instead. Deprecated since v6.40.0.
-     */
-    placeholderFilter?: string;
-    /**
      * The order the data will be sorted by if defaultSortAttribute has been set.
      */
     defaultSortAscending?: boolean;
@@ -80,7 +67,7 @@ const emit = defineEmits<{
      *
      * @arg items - The sorted data.
      */
-    datasetSorted: [items: Dataset<T> | T[]];
+    datasetSorted: [items: T[]];
 
     /**
      * Emits the used sorting attributes.
@@ -132,7 +119,7 @@ const {
 const clearableScreenReaderText = $t("fkui.sort-filter-dataset.clear.filter", "Rensa sökfält");
 
 const translatedFilterLabel = computed(() => {
-    const label = filterLabel ?? placeholderFilter;
+    const label = filterLabel;
     if (label) {
         return label;
     }

@@ -7,5 +7,5 @@ $details-panel-gap: 0.5rem;
 /* panel background color */
 $details-panel-background: var(--f-page-layout-background);
 
-/* button background color when hovering */
-$details-panel-icon-hover: var(--fkds-color-action-background-secondary-hover);
+/* Reuse the select token to keep hover visible in dark mode until a shared close button is available. */
+$details-panel-icon-hover: var(--fkds-color-select-background-primary-hover);

@@ -100,6 +100,7 @@ async function postprocess(
 
 export async function buildCss(
     pattern: string,
+    exclude: string[],
     options: NormalizedOptions,
 ): Promise<string[]> {
     const { logger, cwd, outdir, fs } = options;
@@ -107,16 +108,10 @@ export async function buildCss(
     logger.group("Compiling CSS:");
 
     /* eslint-disable-next-line @typescript-eslint/await-thenable -- memfs returns a promise instead */
-    const items = await fs.glob(pattern, { cwd });
+    const items = await fs.glob(pattern, { cwd, exclude });
     for await (const item of items) {
         const src = item.replaceAll("\\", "/");
         const { name } = path.parse(src);
-        if (name.startsWith("_")) {
-            continue;
-        }
-        if (name === "palette-variables") {
-            continue;
-        }
         const dst = `${outdir}/${name}.css`;
         logger.log(src, "->", dst);
         await compileSass(src, dst, options);

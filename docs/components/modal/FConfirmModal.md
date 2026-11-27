@@ -20,38 +20,7 @@ FConfirmModalApiExample.vue
 
 ## Användning
 
-För att öppna en bekräftelsemodal använder du {@link confirm-modal `confirmModal()`} (options API) eller {@link useModal `useModal()`} (composition API).
-
-**Options API:**
-
-```ts
-import { defineComponent } from "vue";
-import { confirmModal } from "@fkui/vue";
-
-const frukt = { namn: "Frukt" };
-
-defineComponent({
-    methods: {
-        async onOpen(): Promise<void> {
-            /* --- cut above --- */
-
-            const confirmed = await confirmModal(this, {
-                heading: "Ta bort frukt",
-                content: `Är du säker att du vill ta bort "${frukt.namn}"?`,
-                confirm: "Ja, ta bort",
-                dismiss: "Nej, behåll",
-            });
-            if (confirmed) {
-                /* do something */
-            }
-
-            /* --- cut below --- */
-        },
-    },
-});
-```
-
-**Composition API:**
+För att öppna en bekräftelsemodal använder du {@link useModal `useModal()`}.
 
 ```ts
 const frukt = { namn: "Frukt" };
@@ -73,22 +42,6 @@ async function onOpen(): Promise<void> {
         /* do something */
     }
 }
-```
-
-### Användning med template (deprekerad)
-
-Att använda `FConfirmModal` i template är deprekerat.
-Om du använder detta rekommenderar vi att du tar bort `f-confirm-modal` och istället använder API för att öppna modalen.
-
-Se {@link FConfirmModal#anvandning `Användning`} för hur du använder `FConfirmModal` med API.
-
-```diff
- <template>
-     <div>
-         <f-button @click="onClick">Open modal</f-button>
--        <f-confirm-modal></f-confirm-modal>
-     </div>
- </template>
 ```
 
 ## Knapparna

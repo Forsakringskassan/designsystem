@@ -1,7 +1,16 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from "vue";
-import { FCrudDataset, FTextField } from "@fkui/vue";
-import { type TableColumn, FTable, defineTableColumns } from "@fkui/vue";
+import FTableCrudDatasetModal from "./FTableCrudDatasetModal.vue";
+import {
+    type FCrudDatasetCommitCreate,
+    type FCrudDatasetCommitDelete,
+    type FCrudDatasetCommitUpdate,
+    type TableColumn,
+    FCrudDataset,
+    FTable,
+    defineTableColumns,
+    useModal,
+} from "@fkui/vue";
 
 interface Row {
     id: string;
@@ -10,6 +19,7 @@ interface Row {
 }
 
 const crud = useTemplateRef("crud");
+const { formModal, confirmModal } = useModal();
 
 const rows = ref<Row[]>([
     {
@@ -44,7 +54,7 @@ const columns: Array<TableColumn<Row>> = defineTableColumns<Row>([
     {
         type: "menu",
         header: "Åtgärder",
-        text(row) {
+        screenreaderText(row) {
             return `Visa åtgärder för ${row.name}`;
         },
         actions: [
@@ -68,66 +78,41 @@ const columns: Array<TableColumn<Row>> = defineTableColumns<Row>([
 
 const nextId = ref(4);
 
-function beforeCreate(): Row {
-    const id = String(nextId.value);
-    nextId.value += 1;
-    return {
-        id,
-        name: "",
-        description: "",
-    };
+async function onCreate(commit: FCrudDatasetCommitCreate<Row>): Promise<void> {
+    try {
+        const row = { id: String(nextId.value), name: "", description: "" };
+        commit(await formModal<Row>(FTableCrudDatasetModal, { props: { row } }));
+        nextId.value += 1;
+    } catch {
+        /* user cancelled */
+    }
 }
 
-function saveModel(row: Row): void {
-    console.log("Post model to backend", row);
+async function onUpdate(row: Row, commit: FCrudDatasetCommitUpdate<Row>): Promise<void> {
+    try {
+        commit(await formModal<Row>(FTableCrudDatasetModal, { props: { row } }));
+    } catch {
+        /* user cancelled */
+    }
+}
+
+async function onDelete(row: Row, commit: FCrudDatasetCommitDelete): Promise<void> {
+    const confirmed = await confirmModal({
+        heading: "Ta bort ärende",
+        content: `Vill du verkligen ta bort "${row.name}" med ID ${row.id}?`,
+        confirm: "Ja, ta bort",
+        dismiss: "Nej, avbryt",
+    });
+    if (confirmed) {
+        commit();
+    }
 }
 </script>
 
 <template>
-    <f-crud-dataset
-        ref="crud"
-        v-model="rows"
-        :before-create
-        @created="saveModel"
-        @updated="saveModel"
-        @deleted="saveModel"
-    >
-        <template #default>
-            <f-table :rows :columns key-attribute="id">
-                <template #caption> Exempeldata </template>
-            </f-table>
-        </template>
-
-        <template #modify="{ item }">
-            <f-text-field v-model="item.name" v-validation.maxLength="{ maxLength: { length: 32 } }" type="text">
-                Namn
-            </f-text-field>
-
-            <f-text-field
-                v-model="item.description"
-                v-validation.maxLength="{ maxLength: { length: 100 } }"
-                type="text"
-            >
-                Beskrivning
-            </f-text-field>
-
-            ID {{ item.id }}
-        </template>
-
-        <template #add="{ item }">
-            <f-text-field v-model="item.name" v-validation.maxLength="{ maxLength: { length: 32 } }" type="text">
-                Namn
-            </f-text-field>
-
-            <f-text-field
-                v-model="item.description"
-                v-validation.maxLength="{ maxLength: { length: 100 } }"
-                type="text"
-            >
-                Beskrivning
-            </f-text-field>
-        </template>
-
-        <template #delete="{ item }"> Vill du verkligen ta bort "{{ item.name }}" med ID {{ item.id }}? </template>
+    <f-crud-dataset ref="crud" v-model="rows" :on-create :on-update :on-delete>
+        <f-table :rows :columns key-attribute="id">
+            <template #caption> Exempeldata </template>
+        </f-table>
     </f-crud-dataset>
 </template>

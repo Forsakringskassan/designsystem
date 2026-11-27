@@ -1,6 +1,6 @@
 import { createMount } from "@forsakringskassan/cypress-config/support";
 import { injectSpritesheet } from "@fkui/icon-lib-default/dist/f/injectSpritesheet";
-import "@fkui/theme-default";
+import "@fkui/theme-default/theme-auto";
 import "cypress-real-events";
 
 import "./main.scss";

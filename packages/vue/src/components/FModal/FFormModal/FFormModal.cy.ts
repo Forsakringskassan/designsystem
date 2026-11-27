@@ -8,8 +8,7 @@ import FFormModal from "./FFormModal.vue";
 const TestComponent = defineComponent({
     template: /* HTML */ `
         <f-form-modal
-            :use-error-list="useErrorList"
-            :is-open="true"
+            :use-error-list
             data-test="form-modal-example"
             :buttons="buttons"
         >

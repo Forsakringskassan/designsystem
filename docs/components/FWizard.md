@@ -69,6 +69,25 @@ En guide består av `<f-wizard>` och en eller fler guidesteg `<f-wizard-step>`.
 </f-wizard>
 ```
 
+Lägg till `focus-initial-step` för att sätta fokus på det första steget när guiden öppnas:
+
+```html static
+<f-wizard header-tag="h2" focus-initial-step>
+    <!-- guidesteg -->
+</f-wizard>
+```
+
+Lägg till `use-error-list` på ett guidesteg för att visa en fellista när steget innehåller valideringsfel:
+
+```diff
+<f-wizard header-tag="h2">
+-    <f-wizard-step key="unique-identifier" title="Beskrivande titel">
++    <f-wizard-step key="unique-identifier" title="Beskrivande titel" use-error-list>
+        <template #default>Innehåll</template>
+    </f-wizard-step>
+</f-wizard>
+```
+
 Inmatningsfälten valideras redan med vanlig validering, men om du behöver utföra extra validering (manuella steg, korsvalidering eller validering på backend osv) så kan du använda beforeSubmit:
 
 ```html static

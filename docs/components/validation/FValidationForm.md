@@ -21,15 +21,15 @@ Attributet `autocomplete` är satt till `off`.
 FValidationFormDefault.vue
 ```
 
-## Formulär med få fält
+## Formulär med många fält
 
-Är det få fält som ingår i formuläret är det onödigt att visa en fellista.
+Är det många fält som ingår i formuläret är det rekommenderat att visa en fellista.
 Då finns ett alternativ att fokusera på första felaktiga fältet.
 
 ```diff
      <f-validation-form
          @submit="onSubmit"
-+        :use-error-list="false"
++        use-error-list
      >
      </f-validation-form>
 ```
@@ -42,7 +42,8 @@ Använd `errorListBeforeNavigate` för att öppna den expanderbara ytan innan fo
 ```diff
 <template>
      <f-validation-form
-+         :error-list-before-navigate="expandPanel"
+       use-error-list
++      :error-list-before-navigate="expandPanel"
      >
       <template #default>
         <f-expandable-panel :expanded="expand">

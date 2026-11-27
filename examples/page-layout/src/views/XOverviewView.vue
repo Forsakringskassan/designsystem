@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import { FButton, FTable, defineTableColumns, useDatasetRef, useDetailsPanel } from "@fkui/vue";
+import { FButton, FTable, defineTableColumns, useDetailsPanel } from "@fkui/vue";
 import { type Expense } from "../expense";
 import { type Person } from "../person";
 
 const personPanel = useDetailsPanel<Person>("person-panel");
 const expensePanel = useDetailsPanel<Expense>("expense-panel");
 
-const ankeborgare: Person[] = [
+const rows: Person[] = [
     { name: "Kalle Anka", adress: "Paradisäppelvägen 111", city: "Ankeborg", car: "Skruttomobil" },
     { name: "Kajsa Anka", adress: null, city: "Ankeborg", car: null },
     { name: "Magica De Hex", adress: "Vulkanen", city: "Vesuvius", car: null },
     { name: "Bolivar", adress: "Paradisäppelvägen 111", city: "Ankeborg", car: null },
 ];
-// eslint-disable-next-line @typescript-eslint/no-deprecated -- test
-const rows = useDatasetRef(ankeborgare);
 
 function showPerson(item: Person): void {
     personPanel.open(item);
@@ -28,7 +26,7 @@ const columns = defineTableColumns<Person>([
         type: "button",
         header: "Namn",
         key: "name",
-        text: (row) => row.name,
+        screenreaderText: (row) => row.name,
         onClick: showPerson,
     },
     { type: "text", header: "Adress", key: "adress" },

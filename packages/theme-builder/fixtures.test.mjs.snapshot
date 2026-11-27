@@ -2,12 +2,8 @@ exports[`should build simple theme 1`] = `
 /
 ├─ out/
 │  ├─ index.css
-│  ├─ index.d.ts
-│  ├─ index.js
 │  ├─ metadata.d.mts
-│  ├─ metadata.mjs
-│  ├─ palette.json
-│  └─ palette.json.d.ts
+│  └─ metadata.mjs
 └─ src/
    ├─ _version.scss
    └─ index.scss
@@ -20,32 +16,23 @@ exports[`should build simple theme 2`] = `
 `;
 
 exports[`should build simple theme 3`] = `
-const value = {
-  "--x-foobar": "#f0a"
-};
-module.exports = value;
-`;
-
-exports[`should build simple theme 4`] = `
-declare const value: Record<string, string>;
-export = value;
-`;
-
-exports[`should build simple theme 5`] = `
-[]
-`;
-
-exports[`should build simple theme 6`] = `
 export default {
   "themes": [
     "light",
     "dark"
   ],
+  "palette": [],
   "tokens": []
 }
 `;
 
-exports[`should build simple theme 7`] = `
+exports[`should build simple theme 4`] = `
+
+export interface PaletteColor {
+    readonly name: string;
+    readonly value: string;
+    readonly group: string;
+}
 
 export interface TokenValue {
     readonly value: string | null;
@@ -61,6 +48,7 @@ export interface Token {
 export interface Metadata {
     readonly themes: string[];
     readonly tokens: Token[];
+    readonly palette: PaletteColor[];
 }
 
 declare const metadata: Metadata;
@@ -72,12 +60,8 @@ exports[`should generate version 1`] = `
 /
 ├─ out/
 │  ├─ index.css
-│  ├─ index.d.ts
-│  ├─ index.js
 │  ├─ metadata.d.mts
-│  ├─ metadata.mjs
-│  ├─ palette.json
-│  └─ palette.json.d.ts
+│  └─ metadata.mjs
 └─ src/
    ├─ _version.scss
    └─ index.scss
@@ -90,35 +74,12 @@ exports[`should generate version 2`] = `
 }
 `;
 
-exports[`should generate version 3`] = `
-const value = {
-  "--x-foobar": "#f0a",
-  "--version": "\\"1.2.3\\""
-};
-module.exports = value;
-`;
-
-exports[`should include deprecated variables 1`] = `
-/
-├─ out/
-│  ├─ deprecated-variables.json
-│  ├─ palette.json
-│  └─ palette.json.d.ts
-└─ src/
-   ├─ _version.scss
-   └─ deprecated-variables.json
-`;
-
 exports[`should include palette 1`] = `
 /
 ├─ out/
 │  ├─ index.css
-│  ├─ index.d.ts
-│  ├─ index.js
 │  ├─ metadata.d.mts
-│  ├─ metadata.mjs
-│  ├─ palette.json
-│  └─ palette.json.d.ts
+│  └─ metadata.mjs
 └─ src/
    ├─ _version.scss
    ├─ index.scss

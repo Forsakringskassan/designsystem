@@ -15,11 +15,16 @@ Datamängdsorterare används vid sortering av datamängd och/eller för sökning
 ## Användning
 
 Sätt `data` till lista som ska sorteras och filtreras samt `sortableAttributes` till en beskrivning av de fält som är sorterbara.
+Sätt `showSort` för att visa sorteringslistan och `showFilter` för att visa sökfältet.
+Båda är dolda som standard och kan visas oberoende av varandra.
+Förvald sortering och sortering via tabellens kolumnrubriker fungerar även när sorteringslistan är dold.
 
 ```html static
 <f-sort-filter-dataset
     :data="items"
     :sortable-attributes="{ givenname: 'Förnamn', surname: 'Efternamn' }"
+    show-sort
+    show-filter
 >
     <template #header="{ slotClass }">
         <h3 :class="slotClass">Rubrik</h3>
@@ -38,6 +43,8 @@ Sätt `defaultSortAttribute` till namnet på fältet som ska sorteras samt `defa
  <f-sort-filter-dataset
      :data="items"
      :sortable-attributes="{ givenname: 'Förnamn', surname: 'Efternamn' }"
+     show-sort
+     show-filter
 +    default-sort-attribute="name"
 +    :default-sort-ascending="true"
  >
@@ -59,6 +66,8 @@ Om `filterAttributes` inte anges inkluderas alla attribut i filtreringen.
  <f-sort-filter-dataset
      :data="items"
      :sortable-attributes="{ givenname: 'Förnamn', surname: 'Efternamn' }"
+     show-sort
+     show-filter
 +    :filter-attributes="['surname']"
  >
      <template #header="{ slotClass }">
@@ -136,6 +145,8 @@ Du kan variera storleken genom att inte använda den tillgängliga `slotClass` (
  <f-sort-filter-dataset
      :data="items"
      :sortable-attributes="{ givenname: 'Förnamn', surname: 'Efternamn' }"
+     show-sort
+     show-filter
  >
 -    <template #header="{ slotClass }">
 -        <h3 :class="slotClass">Rubrik</h3>
@@ -164,7 +175,7 @@ Vi använder begreppet "träffar" för att presentera resultat.
 Om det går att specificera träffar så är det bättre att göra det, till exempel "Det finns inga frukter att visa" istället för "Det finns inga träffar att visa".
 
 ```diff
- <f-sort-filter-dataset :data="items">
+ <f-sort-filter-dataset :data="items" :sortable-attributes show-sort show-filter>
      <template #default="{ sortFilterResult }">
 +        Visar {{ sortFilterResult.length }} av {{ items.length }} frukter.
         <f-table :rows="sortFilterResult" :columns>
@@ -177,7 +188,7 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
 Detta går också utnyttja i tabell för att presentera om tabellen är tom pga filtrering eller att inga rader fanns från första början:
 
 ```diff
- <f-sort-filter-dataset :data="items">
+ <f-sort-filter-dataset :data="items" :sortable-attributes show-sort show-filter>
      <template #default="{ sortFilterResult }">
         <f-table :rows="sortFilterResult" :columns>
              <template #empty>

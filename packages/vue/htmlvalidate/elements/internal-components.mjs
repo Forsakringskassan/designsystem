@@ -1,6 +1,16 @@
 import { defineMetadata } from "html-validate";
 
 export default defineMetadata({
+    "i-close-button": {
+        inherit: "button",
+        textContent: "default",
+        submitButton: false,
+        attributes: {
+            compact: { boolean: true },
+            "icon-only": { boolean: true },
+        },
+    },
+
     "i-flex": {
         flow: true,
         attributes: {
@@ -183,6 +193,12 @@ export default defineMetadata({
                 required: false,
             },
             "focus-element": {
+                deprecated: "Use the focus prop instead",
+            },
+            "set-focus": {
+                deprecated: "Use the focus prop instead",
+            },
+            focus: {
                 required: false,
             },
         },

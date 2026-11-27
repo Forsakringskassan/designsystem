@@ -1,5 +1,3 @@
-import { type Dataset } from "../../utils";
-
 function includesAllSearchTerms(
     item: Record<PropertyKey, string | number | undefined>,
     filterAttributes: PropertyKey[],
@@ -23,11 +21,11 @@ function includesAllSearchTerms(
     return true;
 }
 
-export function filter<T extends object, TArray extends Dataset<T> | T[]>(
-    list: TArray,
+export function filter<T extends object>(
+    list: T[],
     filterAttributes: PropertyKey[],
     searchString: string,
-): TArray {
+): T[] {
     searchString = searchString.trim();
     if (searchString.trim() === "") {
         return list;
@@ -43,5 +41,5 @@ export function filter<T extends object, TArray extends Dataset<T> | T[]>(
             filterAttributes,
             searchTerms,
         ),
-    ) as TArray;
+    );
 }

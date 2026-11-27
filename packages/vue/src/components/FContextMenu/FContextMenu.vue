@@ -239,15 +239,7 @@ async function activateItem(index: number): Promise<void> {
 </script>
 
 <template>
-    <i-popup
-        :is-open
-        :keyboard-trap="false"
-        :anchor
-        :set-focus="false"
-        inline="never"
-        @close="closePopup($event)"
-        @open="onPopupOpen"
-    >
+    <i-popup :is-open :keyboard-trap="false" :anchor inline="never" @close="closePopup($event)" @open="onPopupOpen">
         <nav class="contextmenu" :aria-label @keyup="onKeyUp" @keydown="onKeyDown">
             <ul ref="contextmenu" role="menu" tabindex="-1" class="contextmenu__list">
                 <li v-for="(item, index) in popupItems" :key="item.key" role="menuitem" @click="onClickItem(item)">

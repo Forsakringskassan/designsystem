@@ -106,8 +106,8 @@ const TestComponent = defineComponent({
     computed: {
         showHideAttrs(): Record<string, boolean | undefined> {
             return {
-                showSort: this.showSort ? undefined : false,
-                showFilter: this.showFilter ? undefined : false,
+                showSort: this.showSort,
+                showFilter: this.showFilter,
             };
         },
     },
@@ -116,10 +116,7 @@ const TestComponent = defineComponent({
 function assertTable(values: string[], column: number): void {
     for (const [i, value] of values.entries()) {
         table
-            /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
-            .columnItem(i + 1)
-            /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
-            .tableRowBodyContent(column)
+            .cell({ row: i + 1, col: column + 1 })
             .should("contain.text", value);
     }
 
@@ -174,8 +171,7 @@ describe("sort", () => {
     });
 
     it("should update selectfield when dataset is sorted by clicking table header", () => {
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
-        table.headerRowItem().tableRowHeaderContent().eq(COLUMN_TEXT).click();
+        table.header(COLUMN_TEXT + 1).click();
 
         table.getColumnSortedByIcon(COLUMN_TEXT, "ascending").should("exist");
         table.getColumnSortedByIcon(COLUMN_YEAR, "unsorted").should("exist");
@@ -184,10 +180,8 @@ describe("sort", () => {
             .selectedOption()
             .should("contain.text", "Text (stigande)");
 
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
-        table.headerRowItem().tableRowHeaderContent().eq(COLUMN_YEAR).click();
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
-        table.headerRowItem().tableRowHeaderContent().eq(COLUMN_YEAR).click();
+        table.header(COLUMN_YEAR + 1).click();
+        table.header(COLUMN_YEAR + 1).click();
 
         table.getColumnSortedByIcon(COLUMN_TEXT, "unsorted").should("exist");
         table.getColumnSortedByIcon(COLUMN_YEAR, "descending").should("exist");
@@ -209,6 +203,7 @@ describe("sort", () => {
             props: {
                 data: [],
                 sortableAttributes: { column: name },
+                showSort: true,
             },
             attrs: {
                 "data-test": "sort-filter-dataset-example",
@@ -315,27 +310,35 @@ describe("sort & filter in combination", () => {
     });
 });
 
-describe("remove sort & filter fields", () => {
-    it("should remove sort selectfield", () => {
-        cy.mount(TestComponent, {
-            props: {
-                showSort: false,
-            },
+describe("sort & filter fields", () => {
+    it("should hide both controls by default", () => {
+        cy.mount(FSortFilterDataset, {
+            props: { data: [], sortableAttributes: {} },
+            attrs: { "data-test": "sort-filter-dataset-example" },
         });
 
         sortFilterDataset.selectField.el().should("not.exist");
-        sortFilterDataset.textField.el().should("exist");
+        sortFilterDataset.textField.el().should("not.exist");
     });
 
-    it("should remove filter textfield", () => {
-        cy.mount(TestComponent, {
-            props: {
-                showFilter: false,
-            },
+    it("should show sort selectfield when showSort is enabled", () => {
+        cy.mount(FSortFilterDataset, {
+            props: { data: [], sortableAttributes: {}, showSort: true },
+            attrs: { "data-test": "sort-filter-dataset-example" },
         });
 
         sortFilterDataset.selectField.el().should("exist");
         sortFilterDataset.textField.el().should("not.exist");
+    });
+
+    it("should show filter textfield when showFilter is enabled", () => {
+        cy.mount(FSortFilterDataset, {
+            props: { data: [], sortableAttributes: {}, showFilter: true },
+            attrs: { "data-test": "sort-filter-dataset-example" },
+        });
+
+        sortFilterDataset.selectField.el().should("not.exist");
+        sortFilterDataset.textField.el().should("exist");
     });
 });
 

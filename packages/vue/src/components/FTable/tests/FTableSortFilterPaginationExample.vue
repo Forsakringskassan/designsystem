@@ -26,7 +26,7 @@ const columns = defineTableColumns<Row>([
         header: "Åtgärd",
         icon: "trashcan",
         size: "shrink",
-        text(row) {
+        screenreaderText(row) {
             return `Ta bort ${row.text}`;
         },
         onClick: (row) => {
@@ -126,6 +126,8 @@ function onChangeDataset(): void {
         v-test="'filter'"
         :data="rows"
         :sortable-attributes
+        show-sort
+        show-filter
         default-sort-attribute="text"
     >
         <template #default="{ sortFilterResult }">

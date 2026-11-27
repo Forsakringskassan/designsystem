@@ -22,7 +22,7 @@ const sortableAttributes = {
 ```
 
 ```html static
-<f-sort-filter-dataset :data="rows" :sortable-attributes>
+<f-sort-filter-dataset :data="rows" :sortable-attributes show-sort show-filter>
     <template #default="{ sortFilterResult }">
         <f-table :rows="sortFilterResult" :columns></f-table>
     </template>
@@ -117,7 +117,7 @@ const sortableAttributes = {
 ```
 
 ```html static
-<f-sort-filter-dataset :data="rows" :sortable-attributes>
+<f-sort-filter-dataset :data="rows" :sortable-attributes show-sort show-filter>
     <template #default="{ sortFilterResult }">
         <f-table :rows="sortFilterResult" :columns></f-table>
     </template>

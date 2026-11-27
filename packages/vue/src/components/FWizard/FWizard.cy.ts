@@ -23,7 +23,7 @@ const TestComponent = defineComponent({
                 header-tag="h2"
                 @cancel="onCancel"
                 @completed="onCompleted"
-                :disable-initial-focus="disableInitialFocus"
+                :focus-initial-step="focusInitialStep"
             >
                 <f-wizard-step title="TITLE_1" key="STEP1">
                     STEP_1_CONTENT
@@ -49,7 +49,7 @@ const TestComponent = defineComponent({
             type: String,
             required: false,
         },
-        disableInitialFocus: {
+        focusInitialStep: {
             type: Boolean,
             default: false,
         },
@@ -80,7 +80,7 @@ interface PageObjects {
 
 function mountAndGetPageObjects(props: {
     openStep: string | undefined;
-    disableInitialFocus?: boolean;
+    focusInitialStep?: boolean;
 }): PageObjects {
     cy.mount(TestComponent, {
         props,
@@ -224,27 +224,26 @@ describe("v-model", () => {
 });
 
 describe("focus", () => {
-    it("should focus initially on first step by default", () => {
+    it("should not focus initially on first step by default", () => {
         const { step1 } = mountAndGetPageObjects({
             openStep: undefined,
-        });
-        step1.waitOnOpen();
-        step1.header.el().should("have.focus");
-    });
-
-    it("should not focus initially on first step when `disableInitialFocus` is set", () => {
-        const { step1 } = mountAndGetPageObjects({
-            openStep: undefined,
-            disableInitialFocus: true,
         });
         step1.waitOnOpen();
         step1.header.el().should("not.have.focus");
     });
 
+    it("should focus initially on first step when `focusInitialStep` is set", () => {
+        const { step1 } = mountAndGetPageObjects({
+            openStep: undefined,
+            focusInitialStep: true,
+        });
+        step1.waitOnOpen();
+        step1.header.el().should("have.focus");
+    });
+
     it("should be able to continue to next step", () => {
         const { step1, step2 } = mountAndGetPageObjects({
             openStep: undefined,
-            disableInitialFocus: true,
         });
         step1.waitOnOpen();
         step1.continue().click();
@@ -255,7 +254,6 @@ describe("focus", () => {
     it("should focus when first step is opened for the second time", () => {
         const { step1, step2 } = mountAndGetPageObjects({
             openStep: undefined,
-            disableInitialFocus: true,
         });
         step1.waitOnOpen();
         step1.continue().click();

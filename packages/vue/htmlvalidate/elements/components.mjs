@@ -1091,17 +1091,43 @@ export default defineMetadata({
     "f-crud-dataset": {
         flow: true,
         interactive: true,
-        slots: ["default", "add", "delete", "modify", "add-button", "buttons"],
-        requiredSlots: ["default"],
+        slots: ["default", "add-button", "buttons"],
         attributes: {
-            value: ["/.*/"],
-            beforeCreate: ["/.*/"],
-            "form-modal-size": {
-                enum: ["small", "medium", "large", "fullwidth"],
-            },
-            "add-button-position": {
+            "button-position": {
                 required: false,
                 enum: ["bottom", "top"],
+            },
+            "before-create": {
+                deprecated:
+                    "prop has been removed, open modals from `onCreate`, `onUpdate` or `onDelete` instead",
+            },
+            "before-submit": {
+                deprecated:
+                    "prop has been removed, open modals from `onCreate`, `onUpdate` or `onDelete` instead",
+            },
+            "before-validation": {
+                deprecated:
+                    "prop has been removed, open modals from `onCreate`, `onUpdate` or `onDelete` instead",
+            },
+            "on-cancel": {
+                deprecated:
+                    "prop has been removed, open modals from `onCreate`, `onUpdate` or `onDelete` instead",
+            },
+            "add-new-modal-header": {
+                deprecated:
+                    "prop has been removed, open modals from `onCreate`, `onUpdate` or `onDelete` instead",
+            },
+            "modify-modal-header": {
+                deprecated:
+                    "prop has been removed, open modals from `onCreate`, `onUpdate` or `onDelete` instead",
+            },
+            "delete-modal-header": {
+                deprecated:
+                    "prop has been removed, open modals from `onCreate`, `onUpdate` or `onDelete` instead",
+            },
+            "form-modal-size": {
+                deprecated:
+                    "prop has been removed, open modals from `onCreate`, `onUpdate` or `onDelete` instead",
             },
         },
     },
@@ -1124,7 +1150,7 @@ export default defineMetadata({
         requiredAncestors: ["f-crud-dataset"],
         deprecated: {
             message:
-                "<f-crud-button> is deprecated, for table replace with <f-table-button> or <button> in other cases",
+                "<f-crud-button> has been removed, use <f-button> instead.",
             source: "@fkui/vue",
         },
     },
@@ -1213,9 +1239,6 @@ export default defineMetadata({
             size: {
                 enum: ["small", "medium", "large", "fullwidth"],
             },
-            "is-open": {
-                boolean: true,
-            },
         },
     },
 
@@ -1237,9 +1260,6 @@ export default defineMetadata({
         permittedContent: ["template"],
         attributes: {
             "aria-close-text": {},
-            "is-open": {
-                boolean: true,
-            },
             content: {
                 enum: ["/.+/"],
             },
@@ -1335,6 +1355,10 @@ export default defineMetadata({
         permittedContent: ["f-wizard-step", "@flow"],
         attributes: {
             "disable-initial-focus": {
+                deprecated:
+                    "Initial focus is disabled by default; remove this obsolete prop. Use focus-initial-step to enable initial focus.",
+            },
+            "focus-initial-step": {
                 required: false,
                 boolean: true,
             },
@@ -1361,6 +1385,7 @@ export default defineMetadata({
             },
             "use-error-list": {
                 required: false,
+                boolean: true,
             },
         },
         permittedContent: ["@flow", "template"],

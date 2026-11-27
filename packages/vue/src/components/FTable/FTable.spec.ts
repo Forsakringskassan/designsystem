@@ -1,7 +1,6 @@
 import { nextTick, ref } from "vue";
 import { flushPromises, mount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
-import { useDatasetRef } from "../../utils";
 import FTable from "./FTable.vue";
 import { type TableColumnSize, defineTableColumns } from "./table-column";
 
@@ -1413,7 +1412,7 @@ describe("Clickable cells", () => {
                 header: "Knapp",
                 icon: "trashcan",
                 size: "shrink",
-                text() {
+                screenreaderText() {
                     return `Ta bort`;
                 },
                 onClick: (row) => {
@@ -1488,7 +1487,7 @@ describe("editable cells", () => {
     });
 });
 
-describe("useDatasetRef compatibility", () => {
+describe("expandable rows", () => {
     interface Row {
         text: string;
         nested?: Row[];
@@ -1502,12 +1501,11 @@ describe("useDatasetRef compatibility", () => {
         },
     ]);
 
-    it("should render a basic table from a dataset", () => {
+    it("should render a basic table from an array", () => {
         expect.assertions(2);
-        const dataset = useDatasetRef<Row>([{ text: "A" }, { text: "B" }]);
         const wrapper = mount(FTable<Row>, {
             props: {
-                rows: dataset.value,
+                rows: [{ text: "A" }, { text: "B" }],
                 columns,
             },
         });
@@ -1515,16 +1513,13 @@ describe("useDatasetRef compatibility", () => {
         expect(wrapper.findAll("tbody tr")).toHaveLength(2);
     });
 
-    it("should support expandable rows from a dataset", async () => {
+    it("should support expandable rows with an explicit attribute", async () => {
         expect.assertions(4);
-        const dataset = useDatasetRef<Row>(
-            [{ text: "A", nested: [{ text: "A1" }] }],
-            "nested",
-        );
         const wrapper = mount(FTable<Row>, {
             props: {
-                rows: dataset.value,
+                rows: [{ text: "A", nested: [{ text: "A1" }] }],
                 columns,
+                expandableAttribute: "nested",
             },
         });
 

@@ -65,7 +65,7 @@ const sortableAttributes = { namn: "Frukt" };
 </script>
 
 <template>
-    <f-sort-filter-dataset :data="rows" :sortable-attributes>
+    <f-sort-filter-dataset :data="rows" :sortable-attributes show-sort show-filter>
         <template #default="{ sortFilterResult }">
             <f-table ref="table" :rows="sortFilterResult" :columns striped>
                 <template #caption><span class="sr-only">Redigera innehåll-exempel</span></template>

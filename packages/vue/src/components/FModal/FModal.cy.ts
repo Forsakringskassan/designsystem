@@ -1,24 +1,18 @@
 import { type DefineComponent, defineComponent } from "vue";
-import {
-    FButton,
-    FConfirmModal,
-    FFormModal,
-    FModal,
-    FSelectField,
-    FValidationForm,
-} from "..";
+import { FButton, FFormModal, FModal, FSelectField } from "..";
 import {
     FFormModalPageObject,
     FModalPageObject,
     FSelectFieldPageObject,
 } from "../../cypress";
+import { openModal } from "../../utils";
 
 const VIEWPORT = {
     width: 800,
     height: 600,
 };
 
-function generateModalMarkup(focusStrategy = "on"): string {
+function generateModalMarkup(): string {
     return /* HTML */ `
         <div class="f-modal-example">
             <div class="row">
@@ -70,45 +64,6 @@ function generateModalMarkup(focusStrategy = "on"): string {
             >
                 Öppna modal
             </f-button>
-            <f-modal
-                :is-open="isOpen"
-                data-test="modul-open"
-                close-text="Stäng"
-                aria-close-text="Stäng"
-                :fullscreen="fullscreen"
-                :type="type"
-                :size="size"
-                focus="${focusStrategy}"
-                @close="onCloseModal"
-            >
-                <template #header> Träutensilierna </template>
-                <template #content>
-                    <p v-for="paragraph in modalContent" :key="paragraph">
-                        {{ paragraph }}
-                    </p>
-                </template>
-                <template #footer>
-                    <div class="button-group">
-                        <f-button
-                            data-test="closeButton"
-                            size="large"
-                            variant="secondary"
-                            class="button-group__item"
-                            @click="onClickCloseModal"
-                        >
-                            Stäng sekundär
-                        </f-button>
-                        <f-button
-                            size="large"
-                            variant="primary"
-                            class="button-group__item"
-                            @click="onClickCloseModal"
-                        >
-                            Stäng
-                        </f-button>
-                    </div>
-                </template>
-            </f-modal>
         </div>
     `;
 }
@@ -153,14 +108,65 @@ const content = {
     ],
 };
 
-function createComponent(template: string): DefineComponent {
+/* test modal opened with openModal(), the modal must be the root element */
+const TestModal = defineComponent({
+    components: { FButton, FModal },
+    props: {
+        fullscreen: { type: Boolean, default: false },
+        type: { type: String, default: "" },
+        size: { type: String, default: "" },
+        focus: { type: String, default: "on" },
+        modalContent: { type: Array, default: () => [] },
+    },
+    emits: ["close"],
+    template: /* HTML */ `
+        <f-modal
+            data-test="modul-open"
+            aria-close-text="Stäng"
+            :fullscreen="fullscreen"
+            :type="type"
+            :size="size"
+            :focus="focus"
+            @close="$emit('close')"
+        >
+            <template #header> Träutensilierna </template>
+            <template #content>
+                <p v-for="paragraph in modalContent" :key="paragraph">
+                    {{ paragraph }}
+                </p>
+            </template>
+            <template #footer>
+                <div class="button-group">
+                    <f-button
+                        data-test="closeButton"
+                        size="large"
+                        variant="secondary"
+                        class="button-group__item"
+                        @click="$emit('close')"
+                    >
+                        Stäng sekundär
+                    </f-button>
+                    <f-button
+                        size="large"
+                        variant="primary"
+                        class="button-group__item"
+                        @click="$emit('close')"
+                    >
+                        Stäng
+                    </f-button>
+                </div>
+            </template>
+        </f-modal>
+    `,
+});
+
+function createComponent(focusStrategy = "on"): DefineComponent {
     return defineComponent({
-        template,
-        components: { FButton, FModal, FSelectField },
+        template: generateModalMarkup(),
+        components: { FButton, FSelectField },
         data() {
             return {
                 fullscreen: false,
-                isOpen: false,
                 type: "",
                 size: "",
                 modalContent: content.normal,
@@ -169,13 +175,15 @@ function createComponent(template: string): DefineComponent {
         },
         methods: {
             onClickOpenModal() {
-                this.isOpen = true;
-            },
-            onCloseModal() {
-                this.isOpen = false;
-            },
-            onClickCloseModal() {
-                this.isOpen = false;
+                void openModal(this, TestModal, {
+                    props: {
+                        fullscreen: this.fullscreen,
+                        type: this.type,
+                        size: this.size,
+                        focus: focusStrategy,
+                        modalContent: this.modalContent,
+                    },
+                });
             },
         },
     });
@@ -198,7 +206,18 @@ describe("FModal", () => {
     beforeEach(() => {
         cy.clearLocalStorage();
 
-        cy.mount(createComponent(generateModalMarkup()));
+        cy.mount(createComponent());
+    });
+
+    afterEach(() => {
+        /* the modal is opened with openModal() and is not unmounted together
+         * with the component, close it if a test left it open */
+        cy.get("body").then((body) => {
+            if (body.find(modal.selector).length > 0) {
+                modal.closeCross().click();
+            }
+        });
+        modal.el().should("not.exist");
     });
 
     it("should provide a page object that can access any necessary elements", () => {
@@ -267,7 +286,7 @@ describe("FModal", () => {
 
     describe("focus", () => {
         it("default should set focus when modal is opened and closed", () => {
-            cy.mount(createComponent(generateModalMarkup("on")));
+            cy.mount(createComponent("on"));
             cy.get(openModalButton).click();
 
             cy.focused().should("have.class", "modal__title");
@@ -281,14 +300,14 @@ describe("FModal", () => {
         });
 
         it("default should set focus on button that opened modal when modal is closed", () => {
-            cy.mount(createComponent(generateModalMarkup("on")));
+            cy.mount(createComponent("on"));
             cy.get(openModalButton).click();
             modal.secondaryButton().click();
             cy.get(openModalButton).should("have.focus");
         });
 
         it("should be able to disable focus strategy", () => {
-            cy.mount(createComponent(generateModalMarkup("off")));
+            cy.mount(createComponent("off"));
             cy.get('[data-test="open-example-modal-button"]').click();
             cy.focused().should(
                 "have.attr",
@@ -300,7 +319,7 @@ describe("FModal", () => {
         });
 
         it("should be able to disable close focus", () => {
-            cy.mount(createComponent(generateModalMarkup("open")));
+            cy.mount(createComponent("open"));
             cy.get('[data-test="open-example-modal-button"]').click();
             cy.focused().should("have.class", "modal__title");
             modal.primaryButton().click();
@@ -313,59 +332,25 @@ it("should retain scroll by default when closed", () => {
     const template = /* HTML */ `
         <div class="container">
             <div style="background-color: yellow; height: 1000px"></div>
-
-            <f-validation-form>
-                <button
-                    class="button button--medium button--secondary"
-                    data-test="open-edit-modal-button"
-                    type="submit"
-                    @click="isEditing = true"
-                >
-                    Open edit modal
-                </button>
-
-                <button
-                    class="button button--medium button--secondary"
-                    type="button"
-                    @click="isConfirming = true"
-                >
-                    Open confirm modal
-                </button>
-
-                <div v-if="isEditing || isConfirming">
-                    <f-form-modal
-                        :is-open="isEditing"
-                        @close="isEditing = false"
-                    ></f-form-modal>
-                    <f-confirm-modal
-                        :is-open="isConfirming"
-                        :buttons="confirmDeleteButtons"
-                        @close="isConfirming = false"
-                    >
-                        <template #heading>Are you sure?</template>
-                        <template #content></template>
-                    </f-confirm-modal>
-                </div>
-            </f-validation-form>
+            <f-button
+                data-test="open-edit-modal-button"
+                variant="secondary"
+                size="large"
+                @click="onClick"
+            >
+                Open edit modal
+            </f-button>
         </div>
     `;
 
     const testComponent = defineComponent({
+        components: { FButton },
         template,
-        components: { FValidationForm, FConfirmModal, FFormModal },
-        data() {
-            return {
-                confirmDeleteButtons: [
-                    {
-                        label: "Yes",
-                        type: "primary",
-                        event: "confirm",
-                    },
-                    { label: "No", type: "secondary" },
-                ],
-                isEditing: false,
-                isConfirming: false,
-            };
+        methods: {
+            onClick() {
+                /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- false positives, the proper type of vue components are not passed to typescript-eslint */
+                void openModal(this, FFormModal);
+            },
         },
     });
 
@@ -374,5 +359,6 @@ it("should retain scroll by default when closed", () => {
     cy.get('[data-test="open-edit-modal-button"]').click();
     const modal = new FFormModalPageObject(".modal");
     modal.primaryButton().click();
+    modal.el().should("not.exist");
     cy.window().its("scrollY").should("not.equal", 0);
 });

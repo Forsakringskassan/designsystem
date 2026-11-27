@@ -6,11 +6,7 @@ import FConfirmModal from "./FConfirmModal.vue";
 describe("events", () => {
     it('should send "close" event on close button clicked', async () => {
         expect.assertions(1);
-        const wrapper = mount(FConfirmModal, {
-            props: {
-                isOpen: true,
-            },
-        });
+        const wrapper = mount(FConfirmModal);
         const closeElement = wrapper.get(".close-button");
 
         await closeElement.trigger("click");
@@ -19,11 +15,7 @@ describe("events", () => {
 
     it('should send "confirm" event on confirm button clicked', async () => {
         expect.assertions(1);
-        const wrapper = mount(FConfirmModal, {
-            props: {
-                isOpen: true,
-            },
-        });
+        const wrapper = mount(FConfirmModal);
         const dismissElement = wrapper.get(".button--primary");
 
         await dismissElement.trigger("click");
@@ -34,7 +26,6 @@ describe("events", () => {
         expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
-                isOpen: true,
                 buttons: [
                     {
                         label: "Kanske",
@@ -57,11 +48,7 @@ describe("button order", () => {
     it("should display buttons left to right", () => {
         expect.assertions(1);
         config.buttonOrder = FKUIConfigButtonOrder.LEFT_TO_RIGHT;
-        const wrapper = mount(FConfirmModal, {
-            props: {
-                isOpen: true,
-            },
-        });
+        const wrapper = mount(FConfirmModal);
         const buttonsGroup = wrapper.get(".modal__footer");
         const primary = buttonsGroup.findAll("button")[0];
         expect(primary.classes()).toContain("button--primary");
@@ -70,11 +57,7 @@ describe("button order", () => {
     it("should display buttons right to left", () => {
         expect.assertions(1);
         config.buttonOrder = FKUIConfigButtonOrder.RIGHT_TO_LEFT;
-        const wrapper = mount(FConfirmModal, {
-            props: {
-                isOpen: true,
-            },
-        });
+        const wrapper = mount(FConfirmModal);
         const buttonsGroup = wrapper.get(".modal__footer");
         const primary = buttonsGroup.findAll("button")[1];
         expect(primary.classes()).toContain("button--primary");
@@ -86,7 +69,6 @@ describe("props", () => {
         expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
-                isOpen: true,
                 heading: "foo heading",
             },
         });
@@ -99,7 +81,6 @@ describe("props", () => {
         expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
-                isOpen: true,
                 content: "bar content",
             },
         });
@@ -112,7 +93,6 @@ describe("props", () => {
         expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
-                isOpen: true,
                 buttons: [
                     {
                         label: "Lorem ipsum",
@@ -133,7 +113,6 @@ describe("props", () => {
         expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
-                isOpen: true,
                 buttons: [{ label: "Lorem ipsum", type: "secondary" }],
             },
         });
@@ -147,9 +126,6 @@ describe("slots", () => {
     it("should change heading via slot", () => {
         expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
-            props: {
-                isOpen: true,
-            },
             slots: {
                 heading: "foo heading",
             },
@@ -162,9 +138,6 @@ describe("slots", () => {
     it("should change content via slot", () => {
         expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
-            props: {
-                isOpen: true,
-            },
             slots: {
                 heading: "<pre>bar content</pre>",
             },
@@ -178,7 +151,6 @@ describe("slots", () => {
         expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
-                isOpen: true,
                 heading: "prop heading",
             },
             slots: {
@@ -193,7 +165,6 @@ describe("slots", () => {
         expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
-                isOpen: true,
                 content: "<p>prop content</p>",
             },
             slots: {

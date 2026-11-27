@@ -31,6 +31,7 @@ components/framework/ianimateexpand.html
 components/framework/icalendarmonth.html
 components/framework/icalendarmonthgrid.html
 components/framework/icalendarnavbar.html
+components/framework/iclosebutton.html
 components/framework/iflex.html
 components/framework/iflexitem.html
 components/framework/ipopup.html
@@ -133,8 +134,9 @@ functions/cypress/pageobjects/FFileItemPageObject/filename.html
 functions/cypress/pageobjects/FFileItemPageObject/index.html
 functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html
 functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html
-functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html
+functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html -> functions/cypress/pageobjects/FInteractiveTablePageObject/selectable.html
 functions/cypress/pageobjects/FInteractiveTablePageObject/header.html
+functions/cypress/pageobjects/FInteractiveTablePageObject/selectable.html
 functions/cypress/pageobjects/FLabelPageObject/description.html
 functions/cypress/pageobjects/FLabelPageObject/error-icon.html
 functions/cypress/pageobjects/FLabelPageObject/error-message.html
@@ -172,7 +174,6 @@ functions/date/f-year/value.html
 functions/font-default.html
 functions/functions/assert-ref.html
 functions/functions/assert-set.html
-functions/functions/dataset-iterator.html
 functions/functions/dispatch-component-validity-event.html
 functions/functions/dom-functions/find-element-from-vue-ref.html
 functions/functions/dom-functions/find-html-element-from-vue-ref.html
@@ -191,7 +192,6 @@ functions/functions/dom-functions/ref-is-element.html
 functions/functions/dom-functions/ref-is-html-element-array.html
 functions/functions/dom-functions/ref-is-vue-array.html
 functions/functions/dom-functions/ref-is-vue.html
-functions/functions/get-dataset-metadata.html
 functions/functions/handle-keyboard-focus-navigation.html
 functions/functions/include-item.html
 functions/functions/item-equals.html
@@ -205,7 +205,6 @@ functions/functions/render-slot-text.html
 functions/functions/table-scroll-classes.html
 functions/functions/table-scroll.html
 functions/functions/use-area-data.html
-functions/functions/use-dataset-ref.html
 functions/functions/use-details-panel.html
 functions/functions/use-modal.html
 functions/functions/use-resize.html
@@ -257,7 +256,7 @@ gettingstarted/contribute-to-fkds/testing.html
 gettingstarted/contribute-to-fkds/testverktyg.html
 gettingstarted/help-and-support.html
 gettingstarted/index.html
-gettingstarted/migration/migrating-crud-button.html
+gettingstarted/migration/migrating-crud-button.html -> gettingstarted/migration/migrating-to-v7/vue.html
 gettingstarted/migration/migrating-to-fieldset.html
 gettingstarted/migration/migrating-to-ftable.html
 gettingstarted/migration/migrating-to-v5.html
@@ -266,6 +265,11 @@ gettingstarted/migration/migrating-to-v6/design.html
 gettingstarted/migration/migrating-to-v6/logic.html
 gettingstarted/migration/migrating-to-v6/overview.html
 gettingstarted/migration/migrating-to-v6/vue.html
+gettingstarted/migration/migrating-to-v7/design.html
+gettingstarted/migration/migrating-to-v7/general.html
+gettingstarted/migration/migrating-to-v7/overview.html
+gettingstarted/migration/migrating-to-v7/theme-builder.html
+gettingstarted/migration/migrating-to-v7/vue.html
 gettingstarted/use-design-system/getting-started-application.html
 gettingstarted/use-design-system/getting-started.html
 gettingstarted/use-design-system/icon-library.html

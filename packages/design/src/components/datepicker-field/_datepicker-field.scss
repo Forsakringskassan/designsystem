@@ -2,7 +2,6 @@
 @use "../../core/size";
 @use "../../core/config-variables";
 @use "../../core/mixins/breakpoints";
-@use "../button/variables" as button;
 @use "variables" as *;
 
 // 40px = popup spacing (20px) * 2
@@ -63,18 +62,6 @@ $calendar-width: calc(100vw - #{$popup-spacing});
     &__close {
         display: flex;
         justify-content: flex-end;
-    }
-
-    &__close > &__close__button {
-        margin: 0;
-        padding: 1rem;
-        align-items: center;
-
-        &:hover,
-        &:active {
-            color: button.$button-tertiary-muted-color-text-default;
-            mix-blend-mode: normal;
-        }
     }
 }
 

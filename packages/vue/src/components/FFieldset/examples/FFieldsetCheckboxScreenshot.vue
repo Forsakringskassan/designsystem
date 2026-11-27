@@ -6,7 +6,7 @@ const data = ref();
 </script>
 
 <template>
-    <f-validation-form id="screenshot" :use-error-list="false">
+    <f-validation-form id="screenshot">
         <template #default>
             <f-fieldset id="checkbox" v-validation.required name="checkbox" show-details="always">
                 <template #label> Fieldset-etikett </template>

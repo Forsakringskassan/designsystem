@@ -127,7 +127,7 @@ function tableTemplate(rowsRef?: string) {
 
 function sortFilterTemplate(): string {
     return /* HTML */ `
-        <f-sort-filter-dataset :data="rows" :sortable-attributes>
+        <f-sort-filter-dataset :data="rows" :sortable-attributes show-sort show-filter>
             <template #default="{ sortFilterResult }">
                 ${tableTemplate("sortFilterResult")}
             </template>
@@ -150,7 +150,7 @@ function paginationTemplate(itemsRef?: string): string {
 
 function sortFilterPaginationTemplate(): string {
     return /* HTML */ `
-        <f-sort-filter-dataset :data="rows" :sortable-attributes>
+        <f-sort-filter-dataset :data="rows" :sortable-attributes show-sort show-filter>
             <template #default="{ sortFilterResult }">
                 ${paginationTemplate("sortFilterResult")}
             </template>

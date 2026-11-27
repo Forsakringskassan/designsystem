@@ -141,7 +141,7 @@ const columns = defineTableColumns<ExpandableTabstopRow>([
     },
     {
         type: "button",
-        text() {
+        screenreaderText() {
             return "Ta bort";
         },
         header: "remove",

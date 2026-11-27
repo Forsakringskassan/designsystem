@@ -9,6 +9,19 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version %version%
+
+2026-12-02
+
+### Ny release med brytande ändringar
+
+Releasen innehåller bland annat följande uppdateringar:
+
+- ny färgpalett
+- fyll på
+
+{@link migrating-to-v7 Läs mer i migreringsguiden för version 7}
+
 ## Version v6.65.0
 
 2026-11-11
@@ -364,7 +377,7 @@ Tabellen behåller nu sorteringen på den kolumn som användaren har valt efter 
 
 2025-05-23
 
-`FCrudButton` är deprekerad, läs mer om att {@link migrating-crud-button migrera FCrudButton}.
+`FCrudButton` är deprekerad.
 
 ## Version 6.7.0
 

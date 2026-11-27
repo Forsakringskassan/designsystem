@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { type FruitData, fruits } from "../../FCrudDataset/examples/fruit-data";
-import { FSortFilterDataset, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { FSortFilterDataset, FTable, defineTableColumns } from "@fkui/vue";
 
-const rows = useDatasetRef([...fruits]);
+const rows = [...fruits];
 const columns = defineTableColumns<FruitData>([
     { type: "text", header: "Namn", key: "name", size: "shrink" },
     { type: "text", header: "Land", key: "origin", size: "shrink" },
@@ -14,6 +14,8 @@ const sortableAttributes = { name: "Namn", origin: "Land" };
 <template>
     <f-sort-filter-dataset
         :data="rows"
+        show-sort
+        show-filter
         default-sort-attribute="name"
         :default-sort-ascending="true"
         :sortable-attributes

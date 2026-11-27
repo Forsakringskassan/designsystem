@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import { h } from "vue";
-/* eslint-disable-next-line import-x/extensions -- does not work without
- * extension unless we add exports field to theme package :( (but that would
- * be breaking) */
-import theme from "@fkui/theme-default/dist/metadata.mjs";
-import { FSortFilterDataset, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import theme from "@fkui/theme-default/metadata";
+import { FSortFilterDataset, FTable, defineTableColumns } from "@fkui/vue";
 
-const rows = useDatasetRef(theme.tokens);
+const rows = theme.tokens;
 const themes = theme.themes;
 const columns = defineTableColumns([
     { type: "text", header: "Semantisk variabel", key: "name", size: "shrink" },
@@ -34,6 +31,7 @@ const columns = defineTableColumns([
     <f-sort-filter-dataset
         :data="rows"
         :show-sort="false"
+        show-filter
         :sortable-attributes="{
             name: 'Semantisk variabel',
             palette: 'Palettfärg',

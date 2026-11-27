@@ -31,7 +31,7 @@ Som konsument finns det fortfarande möjlighet att själv tillhandahålla specif
 
 Möjlighet finns att importera separat vid behov.
 
-```scss
+```scss nocompile
 @use "@fkui/theme-default/src/fkui-css-variables-deprecated" as *;
 
 :root {

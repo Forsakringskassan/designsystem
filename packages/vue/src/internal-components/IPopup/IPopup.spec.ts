@@ -364,15 +364,45 @@ describe("html-validate", () => {
         await expect(markup).toBeValid();
     });
 
-    it("should allow setting focus-element value", async () => {
+    it("should allow setting focus value", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
+            <!-- with omitted value -->
+            <i-popup anchor="anchorref" is-open focus></i-popup>
+
+            <!-- with boolean values -->
+            <i-popup anchor="anchorref" is-open :focus="true"></i-popup>
+            <i-popup anchor="anchorref" is-open :focus="false"></i-popup>
+
+            <!-- with ref -->
             <i-popup
                 anchor="anchorref"
                 is-open
-                focus-element="focuselementref"
+                :focus="focuselementref"
             ></i-popup>
         `;
         await expect(markup).toBeValid();
+    });
+
+    it("should deprecate focus-element", async () => {
+        expect.assertions(1);
+        const markup = `<i-popup anchor="anchorref" is-open focus-element="target"></i-popup>`;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "focus-element" is deprecated on <i-popup> element (no-deprecated-attr)
+          > 1 | <i-popup anchor="anchorref" is-open focus-element="target"></i-popup>
+              |                                     ^^^^^^^^^^^^^
+          Selector: i-popup"
+        `);
+    });
+
+    it("should deprecate set-focus", async () => {
+        expect.assertions(1);
+        const markup = `<i-popup anchor="anchorref" is-open set-focus></i-popup>`;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "set-focus" is deprecated on <i-popup> element (no-deprecated-attr)
+          > 1 | <i-popup anchor="anchorref" is-open set-focus></i-popup>
+              |                                     ^^^^^^^^^
+          Selector: i-popup"
+        `);
     });
 });

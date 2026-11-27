@@ -42,7 +42,7 @@ export default defineComponent({
                 size="small"
                 variant="tertiary"
             >
-                Tertiary
+                Tertiary (icon)
             </f-button>
         </div>
         <!-- [html-validate-disable-next no-inline-style] -->
@@ -70,7 +70,7 @@ export default defineComponent({
                 size="medium"
                 variant="tertiary"
             >
-                Tertiary
+                Tertiary (icon)
             </f-button>
         </div>
         <!-- [html-validate-disable-next no-inline-style] -->
@@ -98,7 +98,7 @@ export default defineComponent({
                 size="large"
                 variant="tertiary"
             >
-                Tertiary
+                Tertiary (icon)
             </f-button>
         </div>
         <!-- [html-validate-disable-next no-inline-style] -->
@@ -126,7 +126,7 @@ export default defineComponent({
                 size="medium"
                 variant="tertiary"
             >
-                Tertiary
+                Tertiary (icon)
             </f-button>
             <f-button
                 class="button-group__item"
@@ -134,7 +134,7 @@ export default defineComponent({
                 size="medium"
                 variant="tertiary"
             >
-                Discrete
+                Tertiary
             </f-button>
             <f-button
                 class="button-group__item"
@@ -143,15 +143,7 @@ export default defineComponent({
                 tertiary-style="inverted"
                 variant="tertiary"
             >
-                Discrete Inverted
-            </f-button>
-            <f-button
-                class="button-group__item"
-                :mobile-full-width="useFullWidth"
-                size="medium"
-                variant="secondary"
-            >
-                Standard
+                Tertiary Inverted
             </f-button>
         </div>
     </div>

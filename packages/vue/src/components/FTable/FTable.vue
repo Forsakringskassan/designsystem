@@ -23,8 +23,8 @@ import {
 import { assertRef, assertSet } from "@fkui/logic";
 import { useSlotUtils } from "../../composables";
 import { useTranslate } from "../../plugins";
-import { type Dataset, type ItemIdentifier, getDatasetMetadata, setItemIdentifiers } from "../../utils";
-import { isDataset } from "../../utils/dataset";
+import { type ItemIdentifier, setItemIdentifiers } from "../../utils";
+import { useCrudDatasetPresenter } from "../FCrudDataset/crud-dataset-presenter";
 import { FSortFilterDatasetInjected, useSortFilterDatasetEvents } from "../FSortFilterDataset";
 import ITableExpandButton from "./ITableExpandButton.vue";
 import ITableExpandable from "./ITableExpandable.vue";
@@ -56,7 +56,7 @@ const {
     expandableAttribute = undefined,
 } = defineProps<{
     columns: Array<TableColumn<T, KeyAttribute>>;
-    rows: Dataset<T> | T[];
+    rows: T[];
     keyAttribute?: KeyAttribute;
     /**
      * Optional callback for setting classes on table rows (`<tr>` element).
@@ -102,12 +102,7 @@ const $t = useTranslate();
 const { hasSlot } = useSlotUtils();
 const tableRef = useTemplateRef("table");
 const expandedKeys: Ref<Set<ItemIdentifier>> = ref(new Set());
-const expandableAttributeName = isDataset(rows)
-    ? computed(
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- required by vue-tsc as `DatasetNestedKeyOf<T>` is not provably assignable for generic `T`
-          () => getDatasetMetadata(rows).nestedAttribute as TableNestedKeyOf<T> | undefined,
-      )
-    : computed(() => expandableAttribute);
+const expandableAttributeName = computed(() => expandableAttribute);
 
 const keyedRows = computed(() => setItemIdentifiers(rows, keyAttribute, expandableAttributeName.value));
 const { rows: selectableSourceRows, isProvided: isSelectableSourceProvided } = useSelectableRowSource();
@@ -379,8 +374,16 @@ const { selectableHeaderState, toggleSelectableHeader, selectableRowState, toggl
 const tableApi = useTabstop(tableRef, metaRows);
 defineExpose(tableApi);
 
+useCrudDatasetPresenter<T>({
+    nestedKey: expandableAttributeName,
+    handleDelete(_row, commit) {
+        void tableApi.withTabstopBehaviour("row-removal", commit);
+    },
+});
+
 onMounted(() => {
     assertRef(tableRef);
+
     registerCallbackOnMount(callbackSortableColumns);
     registerCallbackOnSort(callbackOnSort);
     sortFilterDatasetEvents.onFilter(() => (selectedRows.value = []));

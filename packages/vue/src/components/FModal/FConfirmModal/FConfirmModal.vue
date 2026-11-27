@@ -27,13 +27,6 @@ export default defineComponent({
             required: false,
         },
         /**
-         * Prop for opening modal
-         */
-        isOpen: {
-            type: Boolean,
-            required: false,
-        },
-        /**
          * Simple text content
          */
         content: {
@@ -50,10 +43,10 @@ export default defineComponent({
             default: "Rubrik",
         },
         /**
-         * The size of modal. 'large' and 'fullscreen' is valid.
+         * The size of modal in desktop mode.
          */
         size: {
-            type: String as PropType<FModalSize | "fullscreen" | "">,
+            type: String as PropType<FModalSize | "">,
             default: "",
         },
         /**
@@ -125,7 +118,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-modal :fullscreen :is-open :aria-close-text type="warning" :size :focus @close="onClose">
+    <f-modal :fullscreen :aria-close-text type="warning" :size :focus @close="onClose">
         <template #header>
             <!--@slot Slot for advanced header. -->
             <slot name="heading">{{ heading }}</slot>

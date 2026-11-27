@@ -34,7 +34,7 @@ export default defineComponent({
             Öppna popup
         </f-button>
 
-        <i-popup :is-open :anchor="anchor()" @close="onClose">
+        <i-popup :is-open :anchor="anchor()" focus keyboard-trap @close="onClose">
             <div class="my-awesome-popup">
                 <p>
                     Träutensilierna i ett tryckeri äro ingalunda en oviktig faktor, för trevnadens,

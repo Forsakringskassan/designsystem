@@ -152,27 +152,4 @@ export default [
             "unicorn/filename-case": "off",
         },
     },
-
-    {
-        name: "deprecated/dataset-api",
-        files: ["packages/vue/src/**/*.{ts,vue}"],
-        rules: {
-            "@typescript-eslint/no-deprecated": [
-                "error",
-                {
-                    allow: [
-                        "Dataset",
-                        "DatasetArrayMetadata",
-                        "DatasetElementMetadata",
-                        "DatasetNestedKeyOf",
-                        "datasetIterator",
-                        "getDatasetMetadata",
-                        "isDataset",
-                        "toDataset",
-                        "useDatasetRef",
-                    ],
-                },
-            ],
-        },
-    },
 ];
