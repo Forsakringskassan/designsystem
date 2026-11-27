@@ -28,13 +28,13 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/gettingstarted/migration/migrating-to-v7/modal-api-only.md:modal-api-only-540ca0.js
+// virtual-entry:virtual:docs/gettingstarted/migration/migrating-to-v7/vue.md:vue-e6360e.js
 import { defineComponent as _defineComponent } from "vue";
 import { ref } from "vue";
 import { FButton, FModal } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "modal-api-only",
+  __name: "vue",
   setup(__props, { expose: __expose }) {
     __expose();
     const isOpen = ref(false);
@@ -123,7 +123,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-540ca0"
+  selector: "#example-e6360e"
 });
 export {
   render
