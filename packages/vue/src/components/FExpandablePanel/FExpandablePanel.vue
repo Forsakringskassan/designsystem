@@ -90,13 +90,6 @@ export default defineComponent({
         screenReaderNotificationText(): string {
             return this.screenReaderNotificationTemplate.replace("%VALUE%", () => this.notifications.toString());
         },
-        notificationTitle(): string {
-            /** Title text for notification */
-            return this.$t("fkui.expandable-panel.notification.title", "{{ count }} notifiering{{ suffix }}", {
-                count: this.notifications,
-                suffix: this.notifications > 1 ? "ar" : "",
-            });
-        },
     },
     methods: {
         onClickHeadingButton(event: MouseEvent): void {
@@ -122,7 +115,7 @@ export default defineComponent({
                         <slot name="title"></slot>
                     </span>
 
-                    <span v-if="haveNotifications" class="expandable-panel__notification" :title="notificationTitle">
+                    <span v-if="haveNotifications" class="expandable-panel__notification">
                         <span class="sr-only">{{ screenReaderNotificationText }}</span>
                         <f-icon name="bell"></f-icon>
                     </span>

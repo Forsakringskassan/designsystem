@@ -90,8 +90,7 @@ it("notification() should exist when notifications prop is set", () => {
         props: { id: "my-panel", notifications: 3 },
     });
     const { notification } = FExpandablePanelSelectors();
-    const el = wrapper.get(notification());
-    expect(el.element.getAttribute("title")).toBe("3 notifieringar");
+    expect(wrapper.find(notification()).exists()).toBeTruthy();
 });
 
 it("notification() should not exist when notifications prop is zero", () => {
