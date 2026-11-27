@@ -12,13 +12,15 @@ Med en expanderbar panel kan mängden information som visas vid en första anbli
 FExpandablePanelExample.vue
 ```
 
-En expanderbar panel består av 3 ytor (slots):
+En expanderbar panel består av 4 ytor (slots):
 
 - Title: panelens rubrik.
 - Default: innehåll som ska visas när panelen är öppen.
 - Outside: relaterat innehåll som visas under den öppna panelen.
+- Icon: valfri slot för att ersätta standard ikonen som visas när panelen har notifieringar.
 
 En expanderbar panel ger möjlighet att uppmärksamma användare på förändringar eller händelser.
+Som standard visas en klock-ikon vid notifieringar, ikonen kan anpassas med sloten `icon`.
 
 ```import test-id=notification-example
 FExpandablePanelNotificationExample.vue

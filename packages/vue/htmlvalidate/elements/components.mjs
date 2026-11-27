@@ -307,7 +307,7 @@ export default defineMetadata({
         attributes: {
             "header-tag": ["h1", "h2", "h3", "h4", "h5", "h6"],
         },
-        slots: ["default", "title", "outside"],
+        slots: ["default", "title", "outside", "icon"],
         requiredSlots: ["default", "title"],
     },
 

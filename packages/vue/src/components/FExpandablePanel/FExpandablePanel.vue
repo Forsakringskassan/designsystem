@@ -124,7 +124,9 @@ export default defineComponent({
 
                     <span v-if="haveNotifications" class="expandable-panel__notification" :title="notificationTitle">
                         <span class="sr-only">{{ screenReaderNotificationText }}</span>
-                        <f-icon name="bell"></f-icon>
+                        <slot name="icon">
+                            <f-icon name="bell"></f-icon>
+                        </slot>
                     </span>
                 </span>
 
