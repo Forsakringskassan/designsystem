@@ -158,7 +158,7 @@ export function useTabstop(
         const targetRowIndex = rowAboveIndex ?? rowBelowIndex;
 
         if (targetRowIndex !== undefined) {
-            const target = getCellTarget(
+            const target = findClosestRemainingCell(
                 tableRef.value,
                 targetRowIndex + 1,
                 oldCellIndex,
@@ -201,4 +201,15 @@ export function useTabstop(
             focusCellElement(cell);
         },
     };
+}
+
+function findClosestRemainingCell(
+    tableElement: HTMLTableElement,
+    rowIndex: number,
+    oldCellIndex: number,
+): HTMLElement {
+    const targetCells = tableElement.rows[rowIndex].cells;
+    const targetCellIndex = Math.min(oldCellIndex, targetCells.length - 1);
+
+    return getCellTarget(tableElement, rowIndex, targetCellIndex);
 }
