@@ -27,8 +27,9 @@ $fk-logo-large: "fk-logo-primary-large.svg";
     color-scheme: light dark;
 }
 
-#content a.button.docs-button {
-    color: #fff;
+#docs-content a.button.sandbox-button {
+    color: var(--fkds-color-action-text-inverted-default);
+    text-decoration: none;
 }
 
 .mermaid p {
