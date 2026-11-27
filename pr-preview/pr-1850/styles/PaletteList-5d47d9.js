@@ -45,12 +45,12 @@ var metadata_default = {
     },
     {
       "name": "--fkds-palette-color-neutral-800",
-      "value": "#292d34",
+      "value": "#24282f",
       "group": "Neutral"
     },
     {
       "name": "--fkds-palette-color-neutral-700",
-      "value": "#494f5b",
+      "value": "#323842",
       "group": "Neutral"
     },
     {
@@ -85,7 +85,7 @@ var metadata_default = {
     },
     {
       "name": "--fkds-palette-color-neutral-50",
-      "value": "#f7f7f8",
+      "value": "#f9f9fa",
       "group": "Neutral"
     },
     {
@@ -120,7 +120,7 @@ var metadata_default = {
     },
     {
       "name": "--fkds-palette-color-blue-400",
-      "value": "#578edb",
+      "value": "#5d94e2",
       "group": "Blue"
     },
     {
@@ -304,8 +304,8 @@ var metadata_default = {
           "palette": "--fkds-palette-color-blue-700"
         },
         "dark": {
-          "value": "#a2bfe3",
-          "palette": "--fkds-palette-color-blue-200"
+          "value": "#5d94e2",
+          "palette": "--fkds-palette-color-blue-400"
         }
       }
     },
@@ -346,8 +346,8 @@ var metadata_default = {
           "palette": "--fkds-palette-color-blue-700"
         },
         "dark": {
-          "value": "#a2bfe3",
-          "palette": "--fkds-palette-color-blue-200"
+          "value": "#5d94e2",
+          "palette": "--fkds-palette-color-blue-400"
         }
       }
     },
@@ -360,8 +360,8 @@ var metadata_default = {
           "palette": "--fkds-palette-color-blue-100"
         },
         "dark": {
-          "value": "#292d34",
-          "palette": "--fkds-palette-color-neutral-800"
+          "value": "#323842",
+          "palette": "--fkds-palette-color-neutral-700"
         }
       }
     },
@@ -370,12 +370,12 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#ffffff",
-          "palette": "--fkds-palette-color-neutral-0"
+          "value": "transparent",
+          "palette": null
         },
         "dark": {
-          "value": "#1b1e23",
-          "palette": "--fkds-palette-color-neutral-900"
+          "value": "transparent",
+          "palette": null
         }
       }
     },
@@ -384,12 +384,12 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#ffffff",
-          "palette": "--fkds-palette-color-neutral-0"
+          "value": "transparent",
+          "palette": null
         },
         "dark": {
-          "value": "#1b1e23",
-          "palette": "--fkds-palette-color-neutral-900"
+          "value": "transparent",
+          "palette": null
         }
       }
     },
@@ -402,8 +402,8 @@ var metadata_default = {
           "palette": "--fkds-palette-color-blue-100"
         },
         "dark": {
-          "value": "#292d34",
-          "palette": "--fkds-palette-color-neutral-800"
+          "value": "#323842",
+          "palette": "--fkds-palette-color-neutral-700"
         }
       }
     },
@@ -416,8 +416,8 @@ var metadata_default = {
           "palette": "--fkds-palette-color-blue-700"
         },
         "dark": {
-          "value": "#a2bfe3",
-          "palette": "--fkds-palette-color-blue-200"
+          "value": "#5d94e2",
+          "palette": "--fkds-palette-color-blue-400"
         }
       }
     },
@@ -458,8 +458,8 @@ var metadata_default = {
           "palette": "--fkds-palette-color-blue-700"
         },
         "dark": {
-          "value": "#a2bfe3",
-          "palette": "--fkds-palette-color-blue-200"
+          "value": "#5d94e2",
+          "palette": "--fkds-palette-color-blue-400"
         }
       }
     },
@@ -528,8 +528,8 @@ var metadata_default = {
           "palette": "--fkds-palette-color-blue-700"
         },
         "dark": {
-          "value": "#a2bfe3",
-          "palette": "--fkds-palette-color-blue-200"
+          "value": "#5d94e2",
+          "palette": "--fkds-palette-color-blue-400"
         }
       }
     },
@@ -570,8 +570,8 @@ var metadata_default = {
           "palette": "--fkds-palette-color-blue-700"
         },
         "dark": {
-          "value": "#a2bfe3",
-          "palette": "--fkds-palette-color-blue-200"
+          "value": "#5d94e2",
+          "palette": "--fkds-palette-color-blue-400"
         }
       }
     },
@@ -640,7 +640,7 @@ var metadata_default = {
           "palette": "--fkds-palette-color-neutral-100"
         },
         "dark": {
-          "value": "#292d34",
+          "value": "#24282f",
           "palette": "--fkds-palette-color-neutral-800"
         }
       }
@@ -664,11 +664,11 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#f7f7f8",
+          "value": "#f9f9fa",
           "palette": "--fkds-palette-color-neutral-50"
         },
         "dark": {
-          "value": "#292d34",
+          "value": "#24282f",
           "palette": "--fkds-palette-color-neutral-800"
         }
       }
@@ -682,7 +682,7 @@ var metadata_default = {
           "palette": "--fkds-palette-color-neutral-100"
         },
         "dark": {
-          "value": "#494f5b",
+          "value": "#323842",
           "palette": "--fkds-palette-color-neutral-700"
         }
       }
@@ -734,12 +734,12 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#494f5b",
-          "palette": "--fkds-palette-color-neutral-700"
+          "value": "#606876",
+          "palette": "--fkds-palette-color-neutral-600"
         },
         "dark": {
-          "value": "#d6d8dc",
-          "palette": "--fkds-palette-color-neutral-200"
+          "value": "#afb3bb",
+          "palette": "--fkds-palette-color-neutral-300"
         }
       }
     },
@@ -780,7 +780,7 @@ var metadata_default = {
           "palette": "--fkds-palette-color-blue-500"
         },
         "dark": {
-          "value": "#578edb",
+          "value": "#5d94e2",
           "palette": "--fkds-palette-color-blue-400"
         }
       }
@@ -822,8 +822,8 @@ var metadata_default = {
           "palette": "--fkds-palette-color-neutral-0"
         },
         "dark": {
-          "value": "#292d34",
-          "palette": "--fkds-palette-color-neutral-800"
+          "value": "#1b1e23",
+          "palette": "--fkds-palette-color-neutral-900"
         }
       }
     },
@@ -906,7 +906,7 @@ var metadata_default = {
           "palette": "--fkds-palette-color-blue-500"
         },
         "dark": {
-          "value": "#578edb",
+          "value": "#5d94e2",
           "palette": "--fkds-palette-color-blue-400"
         }
       }
@@ -1074,7 +1074,7 @@ var metadata_default = {
           "palette": "--fkds-palette-color-neutral-100"
         },
         "dark": {
-          "value": "#494f5b",
+          "value": "#323842",
           "palette": "--fkds-palette-color-neutral-700"
         }
       }
@@ -1084,11 +1084,11 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#f7f7f8",
+          "value": "#f9f9fa",
           "palette": "--fkds-palette-color-neutral-50"
         },
         "dark": {
-          "value": "#292d34",
+          "value": "#24282f",
           "palette": "--fkds-palette-color-neutral-800"
         }
       }
@@ -1098,11 +1098,11 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#f7f7f8",
+          "value": "#f9f9fa",
           "palette": "--fkds-palette-color-neutral-50"
         },
         "dark": {
-          "value": "#292d34",
+          "value": "#24282f",
           "palette": "--fkds-palette-color-neutral-800"
         }
       }
@@ -1116,7 +1116,7 @@ var metadata_default = {
           "palette": "--fkds-palette-color-neutral-100"
         },
         "dark": {
-          "value": "#494f5b",
+          "value": "#323842",
           "palette": "--fkds-palette-color-neutral-700"
         }
       }
@@ -1130,7 +1130,7 @@ var metadata_default = {
           "palette": "--fkds-palette-color-green-100"
         },
         "dark": {
-          "value": "#494f5b",
+          "value": "#323842",
           "palette": "--fkds-palette-color-neutral-700"
         }
       }
@@ -1158,8 +1158,8 @@ var metadata_default = {
           "palette": "--fkds-palette-color-green-200"
         },
         "dark": {
-          "value": "#494f5b",
-          "palette": "--fkds-palette-color-neutral-700"
+          "value": "#606876",
+          "palette": "--fkds-palette-color-neutral-600"
         }
       }
     },
@@ -1186,7 +1186,7 @@ var metadata_default = {
           "palette": "--fkds-palette-color-blue-100"
         },
         "dark": {
-          "value": "#494f5b",
+          "value": "#323842",
           "palette": "--fkds-palette-color-neutral-700"
         }
       }
@@ -1214,7 +1214,7 @@ var metadata_default = {
           "palette": "--fkds-palette-color-blue-100"
         },
         "dark": {
-          "value": "#494f5b",
+          "value": "#323842",
           "palette": "--fkds-palette-color-neutral-700"
         }
       }
@@ -1228,8 +1228,8 @@ var metadata_default = {
           "palette": "--fkds-palette-color-blue-100"
         },
         "dark": {
-          "value": "#292d34",
-          "palette": "--fkds-palette-color-neutral-800"
+          "value": "#323842",
+          "palette": "--fkds-palette-color-neutral-700"
         }
       }
     },
@@ -1242,7 +1242,7 @@ var metadata_default = {
           "palette": "--fkds-palette-color-green-100"
         },
         "dark": {
-          "value": "#494f5b",
+          "value": "#323842",
           "palette": "--fkds-palette-color-neutral-700"
         }
       }
@@ -1270,7 +1270,7 @@ var metadata_default = {
           "palette": "--fkds-palette-color-green-100"
         },
         "dark": {
-          "value": "#494f5b",
+          "value": "#323842",
           "palette": "--fkds-palette-color-neutral-700"
         }
       }
@@ -1284,21 +1284,7 @@ var metadata_default = {
           "palette": "--fkds-palette-color-green-100"
         },
         "dark": {
-          "value": "#292d34",
-          "palette": "--fkds-palette-color-neutral-800"
-        }
-      }
-    },
-    {
-      "name": "--fkds-color-select-background-tertiary-hover",
-      "comment": null,
-      "values": {
-        "light": {
-          "value": "#dee9f7",
-          "palette": "--fkds-palette-color-blue-100"
-        },
-        "dark": {
-          "value": "#494f5b",
+          "value": "#323842",
           "palette": "--fkds-palette-color-neutral-700"
         }
       }
