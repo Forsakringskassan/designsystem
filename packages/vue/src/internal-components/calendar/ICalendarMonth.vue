@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
-import { type PropType, defineComponent } from "vue";
-import { FDate } from "@fkui/date";
+import { type PropType, type ShallowRef, defineComponent } from "vue";
+import { FDate, range } from "@fkui/date";
 import { alertScreenReader, focus } from "@fkui/logic";
 import { TranslationMixin } from "../../plugins";
 import { getHTMLElementFromVueRef } from "../../utils";
@@ -51,27 +51,91 @@ export default defineComponent({
             required: true,
         },
     },
-    emits: [
-        /**
-         * `click` event.
-         * @type {string}
-         */
-        "click",
-        /**
-         * `v-model` event.
-         * @type {string}
-         */
-        "update:modelValue",
-    ],
+    emits: {
+        click(_date: FDate) {
+            return true;
+        },
+        "update:modelValue"(_date: FDate) {
+            return true;
+        },
+        selecting(_days: string[]) {
+            return true;
+        },
+        select(_days: string[]) {
+            return true;
+        },
+    },
+    data() {
+        return {
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- poc
+            mouseDown: "" as ShallowRef<FDate> | "",
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- poc
+            mouseOver: "" as ShallowRef<FDate> | "",
+            shift: false,
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- poc
+            navigateDown: "" as ShallowRef<FDate> | "",
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- poc
+            lastFocusedDay: "" as ShallowRef<FDate> | "",
+        };
+    },
     methods: {
-        onClickDay(date: FDate): void {
+        onClickDay(date: FDate, event: MouseEvent): void {
+            if (this.lastFocusedDay && event.shiftKey) {
+                const days = this.getSelection(this.lastFocusedDay, date, event.shiftKey);
+                this.$emit("select", days);
+            } else {
+                this.$emit("select", [date.toString()]);
+            }
+
+            this.lastFocusedDay = date;
+
             this.$emit("click", date);
+        },
+        onMouseDown(date: FDate, event: MouseEvent): void {
+            if (event.button === 0) {
+                this.mouseDown = date;
+                this.mouseOver = date;
+                this.$emit("selecting", [date.toString()]);
+            } else {
+                this.mouseDown = "";
+                this.mouseOver = "";
+                this.$emit("selecting", []);
+            }
+        },
+        onMouseUp(date: FDate): void {
+            if (this.mouseDown && !date.equals(this.mouseDown)) {
+                const days = this.getSelection(this.mouseDown, date, false);
+                this.$emit("select", days);
+            }
+
+            this.mouseDown = "";
+            this.mouseOver = "";
+        },
+        onMouseOver(date: FDate): void {
+            if (!this.mouseDown) {
+                return;
+            }
+
+            this.mouseOver = date;
+            const days = this.getSelection(this.mouseDown, date, false);
+            this.$emit("selecting", days);
+        },
+        onMouseLeaveComponent() {
+            this.mouseDown = "";
+            this.mouseOver = "";
+            this.$emit("selecting", []);
         },
         async onKeydownDay(date: FDate, event: KeyboardEvent): Promise<void> {
             if (event.code === "Enter" || event.code === "Space") {
                 event.preventDefault();
                 this.$emit("click", date);
                 return;
+            }
+
+            if (this.mouseDown && this.mouseOver && this.shift !== event.shiftKey) {
+                this.shift = event.shiftKey;
+                const days = this.getSelection(this.mouseDown, this.mouseOver, event.shiftKey);
+                this.$emit("selecting", days);
             }
 
             if (!isDayStepKey(event)) {
@@ -89,6 +153,18 @@ export default defineComponent({
                 return;
             }
 
+            if (event.shiftKey) {
+                if (!this.navigateDown) {
+                    this.navigateDown = date;
+                }
+
+                const days = this.getSelection(this.navigateDown, navigatedDay, true);
+                this.$emit("selecting", days);
+            } else {
+                this.navigateDown = "";
+                this.$emit("selecting", []);
+            }
+
             this.$emit("update:modelValue", navigatedMonth);
 
             if (navigatedDay.month !== date.month) {
@@ -104,6 +180,15 @@ export default defineComponent({
             const navigatedDayElement = getHTMLElementFromVueRef(navigatedDayRef);
             focus(navigatedDayElement);
         },
+        onKeyupDay(date: FDate, event: KeyboardEvent): void {
+            if (!(this.navigateDown && event.key === "Shift")) {
+                return;
+            }
+
+            const days = this.getSelection(this.navigateDown, date, true);
+            this.navigateDown = "";
+            this.$emit("select", days);
+        },
         isDayFocused(date: FDate): boolean {
             return document.activeElement === this.$refs[date.toString()];
         },
@@ -117,12 +202,56 @@ export default defineComponent({
 
             return getDayTabindex(date, activeDate, this.tabDate);
         },
+        getSelection(a: FDate, b: FDate, shiftKey: boolean): string[] {
+            let start: FDate, end: FDate;
+            const minWeekDay = Math.min(a.weekDay, b.weekDay);
+            const maxWeekDay = Math.max(a.weekDay, b.weekDay);
+
+            if (a.isBefore(b)) {
+                start = a;
+                end = b;
+            } else {
+                start = b;
+                end = a;
+            }
+
+            if (shiftKey) {
+                const days = range(start, end);
+                return Array.from(days, (day) => day.toString());
+            }
+
+            let selectionStart: FDate, selectionEnd: FDate;
+            if (end.weekDay < start.weekDay) {
+                const diff = start.weekDay - end.weekDay;
+
+                selectionStart = start.addDays(-diff);
+                if (selectionStart.month < start.month) {
+                    selectionStart = start.startOfMonth();
+                }
+
+                selectionEnd = end.addDays(diff);
+                if (selectionEnd.month > end.month) {
+                    selectionEnd = end.endOfMonth();
+                }
+            } else {
+                selectionStart = start;
+                selectionEnd = end;
+            }
+
+            const days = range(selectionStart, selectionEnd);
+            return (
+                Array.from(days)
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison -- poc
+                    .filter((day) => day.weekDay >= minWeekDay && day.weekDay <= maxWeekDay)
+                    .map((day) => day.toString())
+            );
+        },
     },
 });
 </script>
 
 <template>
-    <i-calendar-month-grid :value="modelValue">
+    <i-calendar-month-grid :value="modelValue" @mouseleave="onMouseLeaveComponent">
         <template #default="{ date }">
             <div
                 :ref="date.toString()"
@@ -131,8 +260,12 @@ export default defineComponent({
                 data-test="select-day-button"
                 :data-date="date.toString()"
                 :tabindex="getTabindex(date)"
-                @click.stop.prevent="onClickDay(date)"
+                @click.stop.prevent="onClickDay(date, $event)"
+                @mousedown="onMouseDown(date, $event)"
+                @mouseup="onMouseUp(date)"
+                @mouseover="onMouseOver(date)"
                 @keydown="onKeydownDay(date, $event)"
+                @keyup="onKeyupDay(date, $event)"
             >
                 <!--
                     @slot Slot for rendering of day content.
