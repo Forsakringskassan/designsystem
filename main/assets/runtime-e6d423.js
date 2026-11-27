@@ -928,7 +928,7 @@ function requireOmap() {
   const _toString = Object.prototype.toString;
   function resolveYamlOmap(data6) {
     if (data6 === null) return true;
-    const objectKeys = {};
+    const objectKeys2 = {};
     const object4 = data6;
     for (let index2 = 0, length2 = object4.length; index2 < length2; index2 += 1) {
       const pair = object4[index2];
@@ -942,8 +942,8 @@ function requireOmap() {
         }
       }
       if (!pairHasKey) return false;
-      if (_hasOwnProperty.call(objectKeys, pairKey2)) return false;
-      Object.defineProperty(objectKeys, pairKey2, { value: true });
+      if (_hasOwnProperty.call(objectKeys2, pairKey2)) return false;
+      Object.defineProperty(objectKeys2, pairKey2, { value: true });
     }
     return true;
   }
@@ -4666,7 +4666,6 @@ function AsyncGenerator(e3) {
 }
 function unapply(func) {
   return function(thisArg) {
-    if (thisArg instanceof RegExp) thisArg.lastIndex = 0;
     for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) args[_key3 - 1] = arguments[_key3];
     return apply(func, thisArg, args);
   };
@@ -4712,6 +4711,13 @@ function clone(object4) {
     }
   }
   return newObject;
+}
+function cloneSet(set5) {
+  const newSet = create(null);
+  const keys3 = objectKeys(set5);
+  let l4 = keys3.length;
+  while (l4--) newSet[keys3[l4]] = set5[keys3[l4]];
+  return newSet;
 }
 function stringifyValue(value3) {
   switch (typeof value3) {
@@ -4765,6 +4771,7 @@ function lookupAccessor(object4, prop) {
   return null;
 }
 function isRegex(value3) {
+  if (!value3) return false;
   try {
     regExpTest(value3, "");
     return true;
@@ -4775,7 +4782,7 @@ function isRegex(value3) {
 function createDOMPurify() {
   let window3 = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : getGlobal();
   const DOMPurify = (root4) => createDOMPurify(root4);
-  DOMPurify.version = "3.4.17";
+  DOMPurify.version = "3.4.18";
   DOMPurify.removed = [];
   if (!window3 || !window3.document || window3.document.nodeType !== NODE_TYPE.document || !window3.Element) {
     DOMPurify.isSupported = false;
@@ -4784,11 +4791,7 @@ function createDOMPurify() {
   let document2 = window3.document;
   const originalDocument = document2;
   const currentScript = originalDocument.currentScript;
-  window3.DocumentFragment;
-  const HTMLTemplateElement = window3.HTMLTemplateElement, Node = window3.Node, Element3 = window3.Element, NodeFilter = window3.NodeFilter;
-  window3.NamedNodeMap === void 0 && (window3.NamedNodeMap || window3.MozNamedAttrMap);
-  window3.HTMLFormElement;
-  const DOMParser2 = window3.DOMParser, trustedTypes = window3.trustedTypes;
+  const HTMLTemplateElement = window3.HTMLTemplateElement, Node = window3.Node, Element3 = window3.Element, NodeFilter = window3.NodeFilter, DOMParser2 = window3.DOMParser, trustedTypes = window3.trustedTypes;
   const ElementPrototype = Element3.prototype;
   const cloneNode = lookupGetter(ElementPrototype, "cloneNode");
   const remove3 = lookupGetter(ElementPrototype, "remove");
@@ -4832,6 +4835,9 @@ function createDOMPurify() {
       IN_TRUSTED_TYPES_POLICY--;
     }
   };
+  const _signOutput = function _signOutput2(html3) {
+    return trustedTypesPolicy && RETURN_TRUSTED_TYPE ? _createTrustedHTML(html3) : html3;
+  };
   const _createTrustedScriptURL = function _createTrustedScriptURL2(scriptUrl) {
     _assertNotInTrustedTypesPolicy();
     IN_TRUSTED_TYPES_POLICY++;
@@ -4869,26 +4875,7 @@ function createDOMPurify() {
     ...mathMl,
     ...xml
   ]);
-  let CUSTOM_ELEMENT_HANDLING = Object.seal(create(null, {
-    tagNameCheck: {
-      writable: true,
-      configurable: false,
-      enumerable: true,
-      value: null
-    },
-    attributeNameCheck: {
-      writable: true,
-      configurable: false,
-      enumerable: true,
-      value: null
-    },
-    allowCustomizedBuiltInElements: {
-      writable: true,
-      configurable: false,
-      enumerable: true,
-      value: false
-    }
-  }));
+  let CUSTOM_ELEMENT_HANDLING = null;
   let FORBID_TAGS = null;
   let FORBID_ATTR = null;
   const EXTRA_ELEMENT_HANDLING = Object.seal(create(null, {
@@ -4925,7 +4912,7 @@ function createDOMPurify() {
   let KEEP_CONTENT = true;
   let IN_PLACE = false;
   let IN_PLACE_VISITED = null;
-  let USE_PROFILES = {};
+  let USE_PROFILES = false;
   let FORBID_CONTENTS = null;
   const DEFAULT_FORBID_CONTENTS = addToSet({}, [
     "annotation-xml",
@@ -4992,16 +4979,17 @@ function createDOMPurify() {
     SVG_NAMESPACE,
     HTML_NAMESPACE
   ], stringToString);
-  const DEFAULT_MATHML_TEXT_INTEGRATION_POINTS = freeze([
+  const DEFAULT_MATHML_TEXT_INTEGRATION_POINTS = freeze(addToSet({}, [
     "mi",
     "mo",
     "mn",
     "ms",
     "mtext"
-  ]);
-  let MATHML_TEXT_INTEGRATION_POINTS = addToSet({}, DEFAULT_MATHML_TEXT_INTEGRATION_POINTS);
-  const DEFAULT_HTML_INTEGRATION_POINTS = freeze(["annotation-xml"]);
-  let HTML_INTEGRATION_POINTS = addToSet({}, DEFAULT_HTML_INTEGRATION_POINTS);
+  ]));
+  let MATHML_TEXT_INTEGRATION_POINTS = null;
+  const DEFAULT_HTML_INTEGRATION_POINTS = freeze(addToSet({}, ["annotation-xml"]));
+  let HTML_INTEGRATION_POINTS = null;
+  const DEFAULT_CUSTOM_ELEMENT_HANDLING = freeze(create(null));
   const COMMON_SVG_AND_HTML_ELEMENTS = addToSet({}, [
     "title",
     "style",
@@ -5020,7 +5008,6 @@ function createDOMPurify() {
   };
   const _parseConfig = function _parseConfig2() {
     let cfg = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-    if (CONFIG && CONFIG === cfg) return;
     if (!cfg || typeof cfg !== "object") cfg = {};
     cfg = clone(cfg);
     PARSER_MEDIA_TYPE = SUPPORTED_PARSER_MEDIA_TYPES.indexOf(cfg.PARSER_MEDIA_TYPE) === -1 ? DEFAULT_PARSER_MEDIA_TYPE : cfg.PARSER_MEDIA_TYPE;
@@ -5037,8 +5024,8 @@ function createDOMPurify() {
       base: DEFAULT_DATA_URI_TAGS
     });
     FORBID_CONTENTS = _resolveSetOption(cfg, "FORBID_CONTENTS", DEFAULT_FORBID_CONTENTS, { transform: transformCaseFunc });
-    FORBID_TAGS = _resolveSetOption(cfg, "FORBID_TAGS", clone({}), { transform: transformCaseFunc });
-    FORBID_ATTR = _resolveSetOption(cfg, "FORBID_ATTR", clone({}), { transform: transformCaseFunc });
+    FORBID_TAGS = _resolveSetOption(cfg, "FORBID_TAGS", create(null), { transform: transformCaseFunc });
+    FORBID_ATTR = _resolveSetOption(cfg, "FORBID_ATTR", create(null), { transform: transformCaseFunc });
     USE_PROFILES = objectHasOwnProperty(cfg, "USE_PROFILES") ? cfg.USE_PROFILES && typeof cfg.USE_PROFILES === "object" ? clone(cfg.USE_PROFILES) : cfg.USE_PROFILES : false;
     ALLOW_ARIA_ATTR = cfg.ALLOW_ARIA_ATTR !== false;
     ALLOW_DATA_ATTR = cfg.ALLOW_DATA_ATTR !== false;
@@ -5057,9 +5044,9 @@ function createDOMPurify() {
     IN_PLACE = cfg.IN_PLACE || false;
     IS_ALLOWED_URI$1 = isRegex(cfg.ALLOWED_URI_REGEXP) ? cfg.ALLOWED_URI_REGEXP : IS_ALLOWED_URI;
     NAMESPACE2 = typeof cfg.NAMESPACE === "string" ? cfg.NAMESPACE : HTML_NAMESPACE;
-    MATHML_TEXT_INTEGRATION_POINTS = _resolveObjectOption(cfg, "MATHML_TEXT_INTEGRATION_POINTS", () => addToSet({}, DEFAULT_MATHML_TEXT_INTEGRATION_POINTS));
-    HTML_INTEGRATION_POINTS = _resolveObjectOption(cfg, "HTML_INTEGRATION_POINTS", () => addToSet({}, DEFAULT_HTML_INTEGRATION_POINTS));
-    const customElementHandling = _resolveObjectOption(cfg, "CUSTOM_ELEMENT_HANDLING", () => create(null));
+    MATHML_TEXT_INTEGRATION_POINTS = _resolveObjectOption(cfg, "MATHML_TEXT_INTEGRATION_POINTS", DEFAULT_MATHML_TEXT_INTEGRATION_POINTS);
+    HTML_INTEGRATION_POINTS = _resolveObjectOption(cfg, "HTML_INTEGRATION_POINTS", DEFAULT_HTML_INTEGRATION_POINTS);
+    const customElementHandling = _resolveObjectOption(cfg, "CUSTOM_ELEMENT_HANDLING", DEFAULT_CUSTOM_ELEMENT_HANDLING);
     CUSTOM_ELEMENT_HANDLING = create(null);
     if (objectHasOwnProperty(customElementHandling, "tagNameCheck") && isRegexOrFunction(customElementHandling.tagNameCheck)) CUSTOM_ELEMENT_HANDLING.tagNameCheck = customElementHandling.tagNameCheck;
     if (objectHasOwnProperty(customElementHandling, "attributeNameCheck") && isRegexOrFunction(customElementHandling.attributeNameCheck)) CUSTOM_ELEMENT_HANDLING.attributeNameCheck = customElementHandling.attributeNameCheck;
@@ -5068,6 +5055,7 @@ function createDOMPurify() {
     if (SAFE_FOR_TEMPLATES) ALLOW_DATA_ATTR = false;
     if (RETURN_DOM_FRAGMENT) RETURN_DOM = true;
     if (USE_PROFILES) {
+      if ((objectHasOwnProperty(cfg, "ALLOWED_TAGS") || objectHasOwnProperty(cfg, "ALLOWED_ATTR")) && typeof console !== "undefined" && typeof console.warn === "function") console.warn("DOMPurify: USE_PROFILES overrides ALLOWED_TAGS and ALLOWED_ATTR. Do not use these options together.");
       ALLOWED_TAGS = addToSet({}, text);
       ALLOWED_ATTR = create(null);
       if (USE_PROFILES.html === true) {
@@ -5095,19 +5083,19 @@ function createDOMPurify() {
     if (objectHasOwnProperty(cfg, "ADD_TAGS")) {
       if (typeof cfg.ADD_TAGS === "function") EXTRA_ELEMENT_HANDLING.tagCheck = cfg.ADD_TAGS;
       else if (arrayIsArray(cfg.ADD_TAGS)) {
-        if (ALLOWED_TAGS === DEFAULT_ALLOWED_TAGS) ALLOWED_TAGS = clone(ALLOWED_TAGS);
+        if (ALLOWED_TAGS === DEFAULT_ALLOWED_TAGS) ALLOWED_TAGS = cloneSet(ALLOWED_TAGS);
         addToSet(ALLOWED_TAGS, cfg.ADD_TAGS, transformCaseFunc);
       }
     }
     if (objectHasOwnProperty(cfg, "ADD_ATTR")) {
       if (typeof cfg.ADD_ATTR === "function") EXTRA_ELEMENT_HANDLING.attributeCheck = cfg.ADD_ATTR;
       else if (arrayIsArray(cfg.ADD_ATTR)) {
-        if (ALLOWED_ATTR === DEFAULT_ALLOWED_ATTR) ALLOWED_ATTR = clone(ALLOWED_ATTR);
+        if (ALLOWED_ATTR === DEFAULT_ALLOWED_ATTR) ALLOWED_ATTR = cloneSet(ALLOWED_ATTR);
         addToSet(ALLOWED_ATTR, cfg.ADD_ATTR, transformCaseFunc);
       }
     }
     if (objectHasOwnProperty(cfg, "ADD_FORBID_CONTENTS") && arrayIsArray(cfg.ADD_FORBID_CONTENTS)) {
-      if (FORBID_CONTENTS === DEFAULT_FORBID_CONTENTS) FORBID_CONTENTS = clone(FORBID_CONTENTS);
+      if (FORBID_CONTENTS === DEFAULT_FORBID_CONTENTS) FORBID_CONTENTS = cloneSet(FORBID_CONTENTS);
       addToSet(FORBID_CONTENTS, cfg.ADD_FORBID_CONTENTS, transformCaseFunc);
     }
     if (KEEP_CONTENT) ALLOWED_TAGS["#text"] = true;
@@ -5117,7 +5105,7 @@ function createDOMPurify() {
       "body"
     ]);
     if (ALLOWED_TAGS.table) {
-      addToSet(ALLOWED_TAGS, ["tbody"]);
+      ALLOWED_TAGS.tbody = true;
       delete FORBID_TAGS.tbody;
     }
     if (cfg.TRUSTED_TYPES_POLICY) {
@@ -5138,8 +5126,7 @@ function createDOMPurify() {
       if (trustedTypesPolicy === void 0) trustedTypesPolicy = _getDefaultTrustedTypesPolicy();
       if (trustedTypesPolicy && typeof emptyHTML === "string") emptyHTML = _createTrustedHTML("");
     }
-    if (freeze) freeze(cfg);
-    CONFIG = cfg;
+    CONFIG = freeze(cfg);
   };
   const ALL_SVG_TAGS = addToSet({}, [
     ...svg$1,
@@ -5147,40 +5134,36 @@ function createDOMPurify() {
     ...svgDisallowed
   ]);
   const ALL_MATHML_TAGS = addToSet({}, [...mathMl$1, ...mathMlDisallowed]);
-  const _checkSvgNamespace = function _checkSvgNamespace2(tagName, parent4, parentTagName) {
-    if (parent4.namespaceURI === HTML_NAMESPACE) return tagName === "svg";
-    if (parent4.namespaceURI === MATHML_NAMESPACE) return tagName === "svg" && (parentTagName === "annotation-xml" || MATHML_TEXT_INTEGRATION_POINTS[parentTagName]);
+  const _checkSvgNamespace = function _checkSvgNamespace2(tagName, parentNamespace, parentTagName) {
+    if (parentNamespace === HTML_NAMESPACE) return tagName === "svg";
+    if (parentNamespace === MATHML_NAMESPACE) return tagName === "svg" && (parentTagName === "annotation-xml" || MATHML_TEXT_INTEGRATION_POINTS[parentTagName]);
     return Boolean(ALL_SVG_TAGS[tagName]);
   };
-  const _checkMathMlNamespace = function _checkMathMlNamespace2(tagName, parent4, parentTagName) {
-    if (parent4.namespaceURI === HTML_NAMESPACE) return tagName === "math";
-    if (parent4.namespaceURI === SVG_NAMESPACE) return tagName === "math" && HTML_INTEGRATION_POINTS[parentTagName];
+  const _checkMathMlNamespace = function _checkMathMlNamespace2(tagName, parentNamespace, parentTagName) {
+    if (parentNamespace === HTML_NAMESPACE) return tagName === "math";
+    if (parentNamespace === SVG_NAMESPACE) return tagName === "math" && HTML_INTEGRATION_POINTS[parentTagName];
     return Boolean(ALL_MATHML_TAGS[tagName]);
   };
-  const _checkHtmlNamespace = function _checkHtmlNamespace2(tagName, parent4, parentTagName) {
-    if (parent4.namespaceURI === SVG_NAMESPACE && !HTML_INTEGRATION_POINTS[parentTagName]) return false;
-    if (parent4.namespaceURI === MATHML_NAMESPACE && !MATHML_TEXT_INTEGRATION_POINTS[parentTagName]) return false;
+  const _checkHtmlNamespace = function _checkHtmlNamespace2(tagName, parentNamespace, parentTagName) {
+    if (parentNamespace === SVG_NAMESPACE && !HTML_INTEGRATION_POINTS[parentTagName]) return false;
+    if (parentNamespace === MATHML_NAMESPACE && !MATHML_TEXT_INTEGRATION_POINTS[parentTagName]) return false;
     return !ALL_MATHML_TAGS[tagName] && (COMMON_SVG_AND_HTML_ELEMENTS[tagName] || !ALL_SVG_TAGS[tagName]);
   };
   const _checkValidNamespace = function _checkValidNamespace2(element3) {
     const elementNamespace = _readNamespaceURI(element3);
     const tagName = stringToLowerCase(_readNodeName(element3));
     const parentNode = getParentNode(element3);
-    let parent4;
-    let parentTagName;
+    let parentNamespace = NAMESPACE2;
+    let parentTagName = "template";
     if (parentNode && _readNodeType(parentNode) === NODE_TYPE.element) {
-      parent4 = { namespaceURI: _readNamespaceURI(parentNode) };
+      parentNamespace = _readNamespaceURI(parentNode);
       parentTagName = stringToLowerCase(_readNodeName(parentNode));
-    } else {
-      parent4 = { namespaceURI: NAMESPACE2 };
-      parentTagName = "template";
     }
     if (!ALLOWED_NAMESPACES[elementNamespace]) return false;
-    if (elementNamespace === SVG_NAMESPACE) return _checkSvgNamespace(tagName, parent4, parentTagName);
-    if (elementNamespace === MATHML_NAMESPACE) return _checkMathMlNamespace(tagName, parent4, parentTagName);
-    if (elementNamespace === HTML_NAMESPACE) return _checkHtmlNamespace(tagName, parent4, parentTagName);
-    if (PARSER_MEDIA_TYPE === "application/xhtml+xml" && ALLOWED_NAMESPACES[elementNamespace]) return true;
-    return false;
+    if (elementNamespace === SVG_NAMESPACE) return _checkSvgNamespace(tagName, parentNamespace, parentTagName);
+    if (elementNamespace === MATHML_NAMESPACE) return _checkMathMlNamespace(tagName, parentNamespace, parentTagName);
+    if (elementNamespace === HTML_NAMESPACE) return _checkHtmlNamespace(tagName, parentNamespace, parentTagName);
+    return PARSER_MEDIA_TYPE === "application/xhtml+xml";
   };
   const _forceRemove = function _forceRemove2(node2) {
     arrayPush(DOMPurify.removed, { element: node2 });
@@ -5210,12 +5193,7 @@ function createDOMPurify() {
       } catch (_3) {
       }
     });
-    const attributes = _readNodeType(root4) === NODE_TYPE.element ? getAttributes(root4) : null;
-    if (attributes) for (let i4 = attributes.length - 1; i4 >= 0; --i4) {
-      const attribute = attributes[i4];
-      const name = attribute && attribute.name;
-      if (typeof name === "string") _stripAttributeNode(root4, attribute, name);
-    }
+    if (_readNodeType(root4) === NODE_TYPE.element) _stripAttributes(root4, false);
   };
   const _removeAttribute = function _removeAttribute2(name, element3, attr) {
     if (!attr) try {
@@ -5227,14 +5205,10 @@ function createDOMPurify() {
       attribute: attr || null,
       from: element3
     });
-    try {
-      if (attr) removeAttributeNode(element3, attr);
-      else element3.removeAttribute(name);
+    if (attr) _stripAttributeNode(element3, attr, name);
+    else try {
+      element3.removeAttribute(name);
     } catch (_3) {
-      try {
-        element3.removeAttribute(name);
-      } catch (_4) {
-      }
     }
     if (name === "is") {
       if (RETURN_DOM || RETURN_DOM_FRAGMENT) try {
@@ -5247,14 +5221,13 @@ function createDOMPurify() {
       }
     }
   };
-  const _stripDisallowedAttributes = function _stripDisallowedAttributes2(element3) {
+  const _stripAttributes = function _stripAttributes2(element3, keepAllowed) {
     const attributes = getAttributes(element3);
     if (!attributes) return;
     for (let i4 = attributes.length - 1; i4 >= 0; --i4) {
       const attribute = attributes[i4];
       const name = attribute && attribute.name;
-      if (typeof name !== "string" || ALLOWED_ATTR[transformCaseFunc(name)]) continue;
-      _stripAttributeNode(element3, attribute, name);
+      if (typeof name === "string" && !(keepAllowed && ALLOWED_ATTR[transformCaseFunc(name)])) _stripAttributeNode(element3, attribute, name);
     }
   };
   const _walkTree = function _walkTree2(root4, visit) {
@@ -5273,7 +5246,7 @@ function createDOMPurify() {
   };
   const _neutralizeSubtree = function _neutralizeSubtree2(root4) {
     _walkTree(root4, (node2) => {
-      if (_readNodeType(node2) === NODE_TYPE.element) _stripDisallowedAttributes(node2);
+      if (_readNodeType(node2) === NODE_TYPE.element) _stripAttributes(node2, true);
     });
   };
   const _collectLiveNodes = function _collectLiveNodes2(root4) {
@@ -5289,7 +5262,7 @@ function createDOMPurify() {
       if (_readNodeType(node2) === NODE_TYPE.element) setAdd(reachable, node2);
     });
     arrayForEach(before, (node2) => {
-      if (_readNodeType(node2) === NODE_TYPE.element && !setHas(reachable, node2)) _stripDisallowedAttributes(node2);
+      if (_readNodeType(node2) === NODE_TYPE.element && !setHas(reachable, node2)) _stripAttributes(node2, true);
     });
   };
   const _neutralizeDiscarded = function _neutralizeDiscarded2(root4, before) {
@@ -5337,9 +5310,7 @@ function createDOMPurify() {
     while (node2 = iterator.nextNode()) {
       if (!setHas(original, node2) || setHas(IN_PLACE_VISITED, node2)) continue;
       if (inShadow) _executeHooks(hooks.uponSanitizeShadowNode, node2, null);
-      _sanitizeElements(node2, root4);
-      _sanitizeAttributes(node2, root4);
-      if (_isDocumentFragment(node2.content)) _sanitizeShadowDOM2(node2.content);
+      _sanitizeNode(node2, root4);
     }
   };
   const _markVisited = function _markVisited2(node2) {
@@ -5378,7 +5349,7 @@ function createDOMPurify() {
     let leadingWhitespace = null;
     if (FORCE_BODY) dirty = "<remove></remove>" + dirty;
     else {
-      const matches33 = stringMatch(dirty, /^[\r\n\t ]+/);
+      const matches33 = stringMatch(dirty, LEADING_WHITESPACE);
       leadingWhitespace = matches33 && matches33[0];
     }
     if (PARSER_MEDIA_TYPE === "application/xhtml+xml" && NAMESPACE2 === HTML_NAMESPACE) dirty = '<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>' + dirty + "</body></html>";
@@ -5400,8 +5371,9 @@ function createDOMPurify() {
     return WHOLE_DOCUMENT ? doc.documentElement : body;
   };
   const _createNodeIterator = function _createNodeIterator2(root4) {
+    let characterDataOnly = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
     const doc = getOwnerDocument ? getOwnerDocument(root4) : root4.ownerDocument;
-    return createNodeIterator.call(doc || root4, root4, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_TEXT | NodeFilter.SHOW_PROCESSING_INSTRUCTION | NodeFilter.SHOW_CDATA_SECTION, null);
+    return createNodeIterator.call(doc || root4, root4, (characterDataOnly ? 0 : NodeFilter.SHOW_ELEMENT) | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_TEXT | NodeFilter.SHOW_PROCESSING_INSTRUCTION | NodeFilter.SHOW_CDATA_SECTION, null);
   };
   const _stripTemplateExpressions = function _stripTemplateExpressions2(value3) {
     value3 = stringReplace(value3, MUSTACHE_EXPR$1, " ");
@@ -5419,8 +5391,7 @@ function createDOMPurify() {
   };
   const _scrubOwnCharacterData = function _scrubOwnCharacterData2(node2) {
     node2.normalize();
-    const doc = getOwnerDocument ? getOwnerDocument(node2) : node2.ownerDocument;
-    const walker = createNodeIterator.call(doc || node2, node2, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_CDATA_SECTION | NodeFilter.SHOW_PROCESSING_INSTRUCTION, null);
+    const walker = _createNodeIterator(node2, true);
     let currentNode = walker.nextNode();
     while (currentNode) {
       currentNode.data = _stripTemplateExpressions(currentNode.data);
@@ -5433,21 +5404,20 @@ function createDOMPurify() {
     if (transformCaseFunc(realTagName) !== "form") return false;
     return typeof element3.nodeName !== "string" || typeof element3.textContent !== "string" || typeof element3.removeChild !== "function" || element3.attributes !== getAttributes(element3) || typeof element3.removeAttribute !== "function" || typeof element3.removeAttributeNode !== "function" || typeof element3.getAttributeNode !== "function" || typeof element3.setAttribute !== "function" || typeof element3.namespaceURI !== "string" || typeof element3.insertBefore !== "function" || typeof element3.hasChildNodes !== "function" || element3.nodeType !== getNodeType(element3) || element3.childNodes !== getChildNodes(element3);
   };
-  const _isDocumentFragment = function _isDocumentFragment2(value3) {
-    if (!getNodeType || typeof value3 !== "object" || value3 === null) return false;
+  const _nodeTypeOf = function _nodeTypeOf2(value3) {
+    if (!getNodeType || typeof value3 !== "object" || value3 === null) return null;
     try {
-      return getNodeType(value3) === NODE_TYPE.documentFragment;
+      const nodeType3 = getNodeType(value3);
+      return typeof nodeType3 === "number" ? nodeType3 : null;
     } catch (_3) {
-      return false;
+      return null;
     }
   };
+  const _isDocumentFragment = function _isDocumentFragment2(value3) {
+    return _nodeTypeOf(value3) === NODE_TYPE.documentFragment;
+  };
   const _isNode = function _isNode2(value3) {
-    if (!getNodeType || typeof value3 !== "object" || value3 === null) return false;
-    try {
-      return typeof getNodeType(value3) === "number";
-    } catch (_3) {
-      return false;
-    }
+    return _nodeTypeOf(value3) !== null;
   };
   function _executeHooks(hooks2, currentNode, data6) {
     if (hooks2.length === 0) return;
@@ -5455,11 +5425,11 @@ function createDOMPurify() {
       hook2.call(DOMPurify, currentNode, data6, CONFIG);
     });
   }
-  const _isUnsafeNode = function _isUnsafeNode2(currentNode, tagName) {
-    if (SAFE_FOR_XML && currentNode.hasChildNodes() && !_isNode(currentNode.firstElementChild) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.textContent) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.innerHTML)) return true;
-    if (SAFE_FOR_XML && LITERAL_TEXT_ELEMENTS[tagName] && _readNodeType(currentNode) === NODE_TYPE.element && _readNamespaceURI(currentNode) === HTML_NAMESPACE && (_isNode(currentNode.firstElementChild) || typeof currentNode.textContent === "string" && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.textContent))) return true;
-    if (currentNode.nodeType === NODE_TYPE.processingInstruction) return true;
-    if (SAFE_FOR_XML && currentNode.nodeType === NODE_TYPE.comment && regExpTest(COMMENT_MARKUP_PROBE, currentNode.data)) return true;
+  const _isUnsafeNode = function _isUnsafeNode2(currentNode, tagName, nodeType3) {
+    if (SAFE_FOR_XML && nodeType3 === NODE_TYPE.element && currentNode.hasChildNodes() && !_isNode(currentNode.firstElementChild) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.textContent) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.innerHTML)) return true;
+    if (SAFE_FOR_XML && LITERAL_TEXT_ELEMENTS[tagName] && nodeType3 === NODE_TYPE.element && _readNamespaceURI(currentNode) === HTML_NAMESPACE && (_isNode(currentNode.firstElementChild) || typeof currentNode.textContent === "string" && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.textContent))) return true;
+    if (nodeType3 === NODE_TYPE.processingInstruction) return true;
+    if (SAFE_FOR_XML && nodeType3 === NODE_TYPE.comment && regExpTest(COMMENT_MARKUP_PROBE, currentNode.data)) return true;
     return false;
   };
   const _matchesNameCheck = function _matchesNameCheck2(check, name) {
@@ -5488,7 +5458,7 @@ function createDOMPurify() {
   };
   const _forkSharedAllowlist = function _forkSharedAllowlist2(hookList, set5, defaultSet, setConfigSet) {
     if (hookList.length === 0) return set5;
-    return set5 === defaultSet || set5 === setConfigSet ? clone(set5) : set5;
+    return set5 === defaultSet || set5 === setConfigSet ? cloneSet(set5) : set5;
   };
   const _handleHookDetachedNode = function _handleHookDetachedNode2(currentNode, root4) {
     if (currentNode === root4 || getParentNode(currentNode) !== null) return false;
@@ -5504,13 +5474,14 @@ function createDOMPurify() {
       return true;
     }
     const tagName = transformCaseFunc(_readNodeName(currentNode));
+    const nodeType3 = _readNodeType(currentNode);
     ALLOWED_TAGS = _forkSharedAllowlist(hooks.uponSanitizeElement, ALLOWED_TAGS, DEFAULT_ALLOWED_TAGS, SET_CONFIG_ALLOWED_TAGS);
     _executeHooks(hooks.uponSanitizeElement, currentNode, {
       tagName,
       allowedTags: ALLOWED_TAGS
     });
     if (_handleHookDetachedNode(currentNode, root4)) return true;
-    if (_isUnsafeNode(currentNode, tagName)) {
+    if (_isUnsafeNode(currentNode, tagName, nodeType3)) {
       _forceRemove(currentNode);
       return true;
     }
@@ -5522,7 +5493,7 @@ function createDOMPurify() {
       }
       return removed;
     }
-    if (_readNodeType(currentNode) === NODE_TYPE.element && !_checkValidNamespace(currentNode)) {
+    if (nodeType3 === NODE_TYPE.element && !_checkValidNamespace(currentNode)) {
       _forceRemove(currentNode);
       return true;
     }
@@ -5530,9 +5501,10 @@ function createDOMPurify() {
       _forceRemove(currentNode);
       return true;
     }
-    if (SAFE_FOR_TEMPLATES && currentNode.nodeType === NODE_TYPE.text) {
-      const content = _stripTemplateExpressions(currentNode.textContent);
-      if (currentNode.textContent !== content) {
+    if (SAFE_FOR_TEMPLATES && nodeType3 === NODE_TYPE.text) {
+      const text5 = currentNode.textContent;
+      const content = _stripTemplateExpressions(text5);
+      if (text5 !== content) {
         arrayPush(DOMPurify.removed, { element: currentNode.cloneNode() });
         currentNode.textContent = content;
       }
@@ -5549,9 +5521,10 @@ function createDOMPurify() {
     if (ALLOW_ARIA_ATTR && regExpTest(ARIA_ATTR$1, lcName)) return true;
     if (!nameIsPermitted) return _isBasicCustomElement(lcTag) && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.tagNameCheck, lcTag) && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.attributeNameCheck, lcName, lcTag) || lcName === "is" && CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.tagNameCheck, value3);
     if (URI_SAFE_ATTRIBUTES[lcName]) return true;
-    if (regExpTest(IS_ALLOWED_URI$1, stringReplace(value3, ATTR_WHITESPACE$1, ""))) return true;
+    const compactValue = stringReplace(value3, ATTR_WHITESPACE$1, "");
+    if (regExpTest(IS_ALLOWED_URI$1, compactValue)) return true;
     if ((lcName === "src" || lcName === "xlink:href" || lcName === "href") && lcTag !== "script" && stringIndexOf(value3, "data:") === 0 && DATA_URI_TAGS[lcTag]) return true;
-    if (ALLOW_UNKNOWN_PROTOCOLS && !regExpTest(IS_SCRIPT_OR_DATA$1, stringReplace(value3, ATTR_WHITESPACE$1, ""))) return true;
+    if (ALLOW_UNKNOWN_PROTOCOLS && !regExpTest(IS_SCRIPT_OR_DATA$1, compactValue)) return true;
     return !value3;
   };
   const RESERVED_CUSTOM_ELEMENT_NAMES = addToSet({}, [
@@ -5591,8 +5564,8 @@ function createDOMPurify() {
     }
   };
   const _isUnsafeAttributeValue = function _isUnsafeAttributeValue2(name, value3) {
-    if (SAFE_FOR_XML && regExpTest(/((--!?|])>)|<\/(style|script|title|xmp|textarea|noscript|iframe|noembed|noframes)/i, value3)) return true;
-    return stringToLowerCase(name) === "attributename" && stringMatch(value3, "href") !== null;
+    if (SAFE_FOR_XML && regExpTest(ATTR_VALUE_BREAKOUT, value3)) return true;
+    return stringToLowerCase(name) === "attributename" && stringIndexOf(value3, "href") !== -1;
   };
   const _sanitizeAttributes = function _sanitizeAttributes2(currentNode, root4) {
     _executeHooks(hooks.beforeSanitizeAttributes, currentNode, null);
@@ -5608,7 +5581,7 @@ function createDOMPurify() {
       forceKeepAttr: void 0
     };
     let l4 = attributes.length;
-    const lcTag = transformCaseFunc(currentNode.nodeName);
+    const lcTag = transformCaseFunc(_readNodeName(currentNode));
     while (l4--) {
       const attr = attributes[l4];
       const name = attr.name, namespaceURI = attr.namespaceURI, attrValue = attr.value;
@@ -5653,15 +5626,18 @@ function createDOMPurify() {
     _executeHooks(hooks.afterSanitizeAttributes, currentNode, null);
     _handleHookDetachedNode(currentNode, root4);
   };
+  const _sanitizeNode = function _sanitizeNode2(node2, root4) {
+    _sanitizeElements(node2, root4);
+    _sanitizeAttributes(node2, root4);
+    if (_isDocumentFragment(node2.content)) _sanitizeShadowDOM2(node2.content);
+  };
   const _sanitizeShadowDOM2 = function _sanitizeShadowDOM(fragment) {
     let shadowNode = null;
     const shadowIterator = _createNodeIterator(fragment);
     _executeHooks(hooks.beforeSanitizeShadowDOM, fragment, null);
     while (shadowNode = shadowIterator.nextNode()) {
       _executeHooks(hooks.uponSanitizeShadowNode, shadowNode, null);
-      _sanitizeElements(shadowNode, fragment);
-      _sanitizeAttributes(shadowNode, fragment);
-      if (_isDocumentFragment(shadowNode.content)) _sanitizeShadowDOM2(shadowNode.content);
+      _sanitizeNode(shadowNode, fragment);
       if (_readNodeType(shadowNode) === NODE_TYPE.element) {
         const innerSr = getShadowRoot(shadowNode);
         if (_isDocumentFragment(innerSr)) {
@@ -5730,8 +5706,6 @@ function createDOMPurify() {
       ALLOWED_TAGS = SET_CONFIG_ALLOWED_TAGS;
       ALLOWED_ATTR = SET_CONFIG_ALLOWED_ATTR;
     } else _parseConfig(cfg);
-    if (hooks.uponSanitizeElement.length > 0 || hooks.uponSanitizeAttribute.length > 0) ALLOWED_TAGS = clone(ALLOWED_TAGS);
-    if (hooks.uponSanitizeAttribute.length > 0) ALLOWED_ATTR = clone(ALLOWED_ATTR);
     DOMPurify.removed = [];
     const inPlace = IN_PLACE && typeof dirty !== "string" && _isNode(dirty);
     let inPlaceNodes = [];
@@ -5760,7 +5734,7 @@ function createDOMPurify() {
       else body.appendChild(importedNode);
       _sanitizeAttachedShadowRoots(body);
     } else {
-      if (!RETURN_DOM && !SAFE_FOR_TEMPLATES && !WHOLE_DOCUMENT && dirty.indexOf("<") === -1) return trustedTypesPolicy && RETURN_TRUSTED_TYPE ? _createTrustedHTML(dirty) : dirty;
+      if (!RETURN_DOM && !SAFE_FOR_TEMPLATES && !WHOLE_DOCUMENT && dirty.indexOf("<") === -1) return _signOutput(dirty);
       body = _initDocument(dirty);
       if (!body) return RETURN_DOM ? null : RETURN_TRUSTED_TYPE ? emptyHTML : "";
     }
@@ -5769,11 +5743,7 @@ function createDOMPurify() {
     try {
       if (inPlace) _sanitizeAttachedShadowRoots(dirty);
       const nodeIterator = _createNodeIterator(walkRoot);
-      while (currentNode = nodeIterator.nextNode()) {
-        _sanitizeElements(currentNode, walkRoot);
-        _sanitizeAttributes(currentNode, walkRoot);
-        if (_isDocumentFragment(currentNode.content)) _sanitizeShadowDOM2(currentNode.content);
-      }
+      while (currentNode = nodeIterator.nextNode()) _sanitizeNode(currentNode, walkRoot);
       if (inPlace) _sanitizeUnvisitedNodes(dirty, inPlaceNodes);
     } catch (error3) {
       if (inPlace) {
@@ -5798,10 +5768,14 @@ function createDOMPurify() {
       if (ALLOWED_ATTR.shadowroot || ALLOWED_ATTR.shadowrootmode) returnNode = importNode.call(originalDocument, returnNode, true);
       return returnNode;
     }
-    let serializedHTML = WHOLE_DOCUMENT ? body.outerHTML : body.innerHTML;
+    const serialize2 = () => WHOLE_DOCUMENT ? body.outerHTML : body.innerHTML;
+    let serializedHTML = serialize2();
+    if (SAFE_FOR_TEMPLATES && regExpTest(TMPL_MARKER_SERIALIZED, serializedHTML)) {
+      _scrubOwnCharacterData(body);
+      serializedHTML = serialize2();
+    }
     if (WHOLE_DOCUMENT && ALLOWED_TAGS["!doctype"] && body.ownerDocument && body.ownerDocument.doctype && body.ownerDocument.doctype.name && regExpTest(DOCTYPE_NAME, body.ownerDocument.doctype.name)) serializedHTML = "<!DOCTYPE " + body.ownerDocument.doctype.name + ">\n" + serializedHTML;
-    if (SAFE_FOR_TEMPLATES) serializedHTML = _stripTemplateExpressions(serializedHTML);
-    return trustedTypesPolicy && RETURN_TRUSTED_TYPE ? _createTrustedHTML(serializedHTML) : serializedHTML;
+    return _signOutput(serializedHTML);
   };
   DOMPurify.setConfig = function() {
     let cfg = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
@@ -5848,6 +5822,7 @@ function createDOMPurify() {
   return DOMPurify;
 }
 var entries;
+var objectKeys;
 var setPrototypeOf;
 var isFrozen;
 var getPrototypeOf;
@@ -5880,6 +5855,7 @@ var bigintToString;
 var symbolToString;
 var objectHasOwnProperty;
 var objectToString;
+var regExpTestRaw;
 var regExpTest;
 var typeErrorCreate;
 var html$1;
@@ -5896,6 +5872,7 @@ var xml;
 var MUSTACHE_EXPR;
 var ERB_EXPR;
 var TMPLIT_EXPR;
+var TMPL_MARKER_SERIALIZED;
 var DATA_ATTR;
 var ARIA_ATTR;
 var IS_ALLOWED_URI;
@@ -5907,6 +5884,8 @@ var ELEMENT_MARKUP_PROBE;
 var COMMENT_MARKUP_PROBE;
 var FALLBACK_TAG_CLOSE;
 var SELF_CLOSING_TAG;
+var ATTR_VALUE_BREAKOUT;
+var LEADING_WHITESPACE;
 var NODE_TYPE;
 var LITERAL_TEXT_ELEMENTS;
 var getGlobal;
@@ -5927,6 +5906,7 @@ var init_purify_es = __esm({
       return this._invoke("return", e3);
     };
     entries = Object.entries;
+    objectKeys = Object.keys;
     setPrototypeOf = Object.setPrototypeOf;
     isFrozen = Object.isFrozen;
     getPrototypeOf = Object.getPrototypeOf;
@@ -5952,7 +5932,6 @@ var init_purify_es = __esm({
       return new Func(...args);
     };
     arrayForEach = unapply(Array.prototype.forEach);
-    Array.prototype.indexOf;
     arrayLastIndexOf = unapply(Array.prototype.lastIndexOf);
     arrayPop = unapply(Array.prototype.pop);
     arrayPush = unapply(Array.prototype.push);
@@ -5974,7 +5953,11 @@ var init_purify_es = __esm({
     symbolToString = typeof Symbol === "undefined" ? null : unapply(Symbol.prototype.toString);
     objectHasOwnProperty = unapply(Object.prototype.hasOwnProperty);
     objectToString = unapply(Object.prototype.toString);
-    regExpTest = unapply(RegExp.prototype.test);
+    regExpTestRaw = RegExp.prototype.test;
+    regExpTest = function regExpTest2(regExp, value3) {
+      if (regExp instanceof RegExp) regExp.lastIndex = 0;
+      return apply(regExpTestRaw, regExp, [value3]);
+    };
     typeErrorCreate = unconstruct(TypeError);
     html$1 = freeze([
       "a",
@@ -6111,8 +6094,6 @@ var init_purify_es = __esm({
       "defs",
       "desc",
       "ellipse",
-      "enterkeyhint",
-      "exportparts",
       "filter",
       "font",
       "g",
@@ -6120,14 +6101,12 @@ var init_purify_es = __esm({
       "glyphref",
       "hkern",
       "image",
-      "inputmode",
       "line",
       "lineargradient",
       "marker",
       "mask",
       "metadata",
       "mpath",
-      "part",
       "path",
       "pattern",
       "polygon",
@@ -6627,6 +6606,7 @@ var init_purify_es = __esm({
     MUSTACHE_EXPR = seal(/{{[\w\W]*|^[\w\W]*}}/g);
     ERB_EXPR = seal(/<%[\w\W]*|^[\w\W]*%>/g);
     TMPLIT_EXPR = seal(/\${[\w\W]*/g);
+    TMPL_MARKER_SERIALIZED = seal(/{{|}}|\${|<%|%>|&lt;%|%&gt;/);
     DATA_ATTR = seal(/^data-[\-\w.\u00B7-\uFFFF]+$/);
     ARIA_ATTR = seal(/^aria-[\-\w]+$/);
     IS_ALLOWED_URI = seal(/^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp|matrix):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i);
@@ -6638,19 +6618,15 @@ var init_purify_es = __esm({
     COMMENT_MARKUP_PROBE = seal(/<[/\w]/g);
     FALLBACK_TAG_CLOSE = seal(/<\/no(script|embed|frames)/i);
     SELF_CLOSING_TAG = seal(/\/>/i);
+    ATTR_VALUE_BREAKOUT = seal(/((--!?|])>)|<\/(style|script|title|xmp|textarea|noscript|iframe|noembed|noframes)/i);
+    LEADING_WHITESPACE = seal(/^[\r\n\t ]+/);
     NODE_TYPE = {
       element: 1,
-      attribute: 2,
       text: 3,
-      cdataSection: 4,
-      entityReference: 5,
-      entityNode: 6,
       processingInstruction: 7,
       comment: 8,
       document: 9,
-      documentType: 10,
-      documentFragment: 11,
-      notation: 12
+      documentFragment: 11
     };
     LITERAL_TEXT_ELEMENTS = freeze(addToSet({}, [
       "style",
@@ -6699,11 +6675,11 @@ var init_purify_es = __esm({
       };
     };
     _resolveSetOption = function _resolveSetOption2(cfg, key, fallback, options2) {
-      return objectHasOwnProperty(cfg, key) && arrayIsArray(cfg[key]) ? addToSet(options2.base ? clone(options2.base) : {}, cfg[key], options2.transform) : fallback;
+      return objectHasOwnProperty(cfg, key) && arrayIsArray(cfg[key]) ? addToSet(options2.base ? cloneSet(options2.base) : {}, cfg[key], options2.transform) : fallback;
     };
-    _resolveObjectOption = function _resolveObjectOption2(cfg, key, makeFallback) {
+    _resolveObjectOption = function _resolveObjectOption2(cfg, key, fallback) {
       const value3 = objectHasOwnProperty(cfg, key) ? cfg[key] : void 0;
-      return value3 && typeof value3 === "object" ? clone(value3) : makeFallback();
+      return value3 && typeof value3 === "object" ? clone(value3) : fallback;
     };
     purify_default = createDOMPurify();
   }
@@ -50211,11 +50187,11 @@ function findEdgeIntersections(edges3) {
       const segmentsB = buildSegmentList(edgeB.points);
       for (const [si, segA] of segmentsA.entries()) {
         for (const [sj, segB] of segmentsB.entries()) {
-          const hit = segmentIntersection(segA.a, segA.b, segB.a, segB.b);
-          if (!hit) {
+          const hit2 = segmentIntersection(segA.a, segA.b, segB.a, segB.b);
+          if (!hit2) {
             continue;
           }
-          if (crossingSitsInRoundedCorner(edgeA, si, hit.tA) || crossingSitsInRoundedCorner(edgeB, sj, hit.tB)) {
+          if (crossingSitsInRoundedCorner(edgeA, si, hit2.tA) || crossingSitsInRoundedCorner(edgeB, sj, hit2.tB)) {
             continue;
           }
           const aHoriz = isHorizontalSeg(segA);
@@ -50227,16 +50203,16 @@ function findEdgeIntersections(edges3) {
               jumpEdgeId: edgeA.id,
               otherEdgeId: edgeB.id,
               segIndex: si,
-              t: hit.tA,
-              point: hit.point
+              t: hit2.tA,
+              point: hit2.point
             });
           } else {
             crossings.push({
               jumpEdgeId: edgeB.id,
               otherEdgeId: edgeA.id,
               segIndex: sj,
-              t: hit.tB,
-              point: hit.point
+              t: hit2.tB,
+              point: hit2.point
             });
           }
         }
@@ -165669,6 +165645,37 @@ function satPolygonIntersection(poly1, poly2) {
   }
   return true;
 }
+function doLinesIntersect(p1, p22, q1, q22) {
+  function ccw(a3, b11, c4) {
+    return (c4.y - a3.y) * (b11.x - a3.x) > (b11.y - a3.y) * (c4.x - a3.x);
+  }
+  return ccw(p1, q1, q22) !== ccw(p22, q1, q22) && ccw(p1, p22, q1) !== ccw(p1, p22, q22);
+}
+function pointInPolygon(point3, polygon2) {
+  var inside = false;
+  for (var i4 = 0, j3 = polygon2.length - 1; i4 < polygon2.length; j3 = i4++) {
+    var pi7 = polygon2[i4];
+    var pj = polygon2[j3];
+    var intersects = pi7.y > point3.y !== pj.y > point3.y && point3.x < (pj.x - pi7.x) * (point3.y - pi7.y) / (pj.y - pi7.y) + pi7.x;
+    if (intersects) {
+      inside = !inside;
+    }
+  }
+  return inside;
+}
+function segmentIntersectsPolygon(p1, p22, polygon2) {
+  if (pointInPolygon(p1, polygon2)) {
+    return true;
+  }
+  for (var i4 = 0; i4 < polygon2.length; i4++) {
+    var q1 = polygon2[i4];
+    var q22 = polygon2[(i4 + 1) % polygon2.length];
+    if (doLinesIntersect(p1, p22, q1, q22)) {
+      return true;
+    }
+  }
+  return false;
+}
 function clusteringDistance(method, length2, getP, getQ, nodeP, nodeQ) {
   var impl2;
   if (fn$6(method)) {
@@ -166734,8 +166741,18 @@ function defineParallelEdgesFunction(params) {
     return this.spawn(elements2, true).filter(selector2);
   };
 }
+function solveTForX(x6, a3, b11, c4) {
+  var j3 = 1 / Math.max(c4, Math.sqrt(x6)), k4 = x6 * j3, l4 = k4 * j3, s3 = c4 * j3, q3 = b11 * l4, m3 = s3 * s3 + q3, h2 = -s3 * (s3 * s3 + 1.5 * q3) - a3 * k4 * l4, D6 = h2 * h2 - m3 * m3 * m3, v3;
+  if (m3 === 0 || D6 > 1e-12 * h2 * h2) {
+    var U3 = -cbrt(h2 < 0 ? h2 - Math.sqrt(D6) : h2 + Math.sqrt(D6));
+    v3 = U3 + m3 / U3 || 0;
+  } else {
+    var r2 = Math.sqrt(m3);
+    v3 = 2 * r2 * Math.cos(Math.acos(Math.max(-1, Math.min(1, -h2 / (m3 * r2)))) / 3);
+  }
+  return Math.min(1, k4 / (v3 + s3));
+}
 function generateCubicBezier(mX1, mY1, mX2, mY2) {
-  var NEWTON_ITERATIONS = 4, NEWTON_MIN_SLOPE = 1e-3, SUBDIVISION_PRECISION = 1e-7, SUBDIVISION_MAX_ITERATIONS = 10, kSplineTableSize = 11, kSampleStepSize = 1 / (kSplineTableSize - 1), float32ArraySupported = typeof Float32Array !== "undefined";
   if (arguments.length !== 4) {
     return false;
   }
@@ -166748,87 +166765,19 @@ function generateCubicBezier(mX1, mY1, mX2, mY2) {
   mX2 = Math.min(mX2, 1);
   mX1 = Math.max(mX1, 0);
   mX2 = Math.max(mX2, 0);
-  var mSampleValues = float32ArraySupported ? new Float32Array(kSplineTableSize) : new Array(kSplineTableSize);
-  function A6(aA1, aA2) {
-    return 1 - 3 * aA2 + 3 * aA1;
-  }
-  function B5(aA1, aA2) {
-    return 3 * aA2 - 6 * aA1;
-  }
-  function C5(aA1) {
-    return 3 * aA1;
-  }
-  function calcBezier(aT, aA1, aA2) {
-    return ((A6(aA1, aA2) * aT + B5(aA1, aA2)) * aT + C5(aA1)) * aT;
-  }
-  function getSlope(aT, aA1, aA2) {
-    return 3 * A6(aA1, aA2) * aT * aT + 2 * B5(aA1, aA2) * aT + C5(aA1);
-  }
-  function newtonRaphsonIterate(aX, aGuessT) {
-    for (var _i6 = 0; _i6 < NEWTON_ITERATIONS; ++_i6) {
-      var currentSlope = getSlope(aGuessT, mX1, mX2);
-      if (currentSlope === 0) {
-        return aGuessT;
-      }
-      var currentX = calcBezier(aGuessT, mX1, mX2) - aX;
-      aGuessT -= currentX / currentSlope;
-    }
-    return aGuessT;
-  }
-  function calcSampleValues() {
-    for (var _i22 = 0; _i22 < kSplineTableSize; ++_i22) {
-      mSampleValues[_i22] = calcBezier(_i22 * kSampleStepSize, mX1, mX2);
-    }
-  }
-  function binarySubdivide(aX, aA, aB) {
-    var currentX, currentT, i5 = 0;
-    do {
-      currentT = aA + (aB - aA) / 2;
-      currentX = calcBezier(currentT, mX1, mX2) - aX;
-      if (currentX > 0) {
-        aB = currentT;
-      } else {
-        aA = currentT;
-      }
-    } while (Math.abs(currentX) > SUBDIVISION_PRECISION && ++i5 < SUBDIVISION_MAX_ITERATIONS);
-    return currentT;
-  }
-  function getTForX(aX) {
-    var intervalStart = 0, currentSample = 1, lastSample = kSplineTableSize - 1;
-    for (; currentSample !== lastSample && mSampleValues[currentSample] <= aX; ++currentSample) {
-      intervalStart += kSampleStepSize;
-    }
-    --currentSample;
-    var dist3 = (aX - mSampleValues[currentSample]) / (mSampleValues[currentSample + 1] - mSampleValues[currentSample]), guessForT = intervalStart + dist3 * kSampleStepSize, initialSlope = getSlope(guessForT, mX1, mX2);
-    if (initialSlope >= NEWTON_MIN_SLOPE) {
-      return newtonRaphsonIterate(aX, guessForT);
-    } else if (initialSlope === 0) {
-      return guessForT;
-    } else {
-      return binarySubdivide(aX, intervalStart, intervalStart + kSampleStepSize);
-    }
-  }
-  var _precomputed = false;
-  function precompute() {
-    _precomputed = true;
-    if (mX1 !== mY1 || mX2 !== mY2) {
-      calcSampleValues();
-    }
-  }
+  var isLinear = mX1 === mY1 && mX2 === mY2, a3 = (3 * mX1 - 3 * mX2 + 1) / 2, b11 = mX2 - 2 * mX1, c4 = mX1, ay = 3 * mY1 - 3 * mY2 + 1, by = 3 * (mY2 - 2 * mY1), cy = 3 * mY1;
   var f2 = function f3(aX) {
-    if (!_precomputed) {
-      precompute();
-    }
-    if (mX1 === mY1 && mX2 === mY2) {
+    if (isLinear) {
       return aX;
     }
-    if (aX === 0) {
+    if (aX <= 0) {
       return 0;
     }
-    if (aX === 1) {
+    if (aX >= 1) {
       return 1;
     }
-    return calcBezier(getTForX(aX), mY1, mY2);
+    var t4 = solveTForX(aX, a3, b11, c4);
+    return ((ay * t4 + by) * t4 + cy) * t4;
   };
   f2.getControlPoints = function() {
     return [{
@@ -167127,12 +167076,8 @@ function CoseLayout(options2) {
   var notEdges = edges3.filter(function(e3) {
     var sourceId = e3.source().data("id");
     var targetId = e3.target().data("id");
-    var hasSource = nodes5.some(function(n2) {
-      return n2.data("id") === sourceId;
-    });
-    var hasTarget = nodes5.some(function(n2) {
-      return n2.data("id") === targetId;
-    });
+    var hasSource = nodes5.hasElementWithId(sourceId);
+    var hasTarget = nodes5.hasElementWithId(targetId);
     return !hasSource || !hasTarget;
   });
   this.options.eles = this.options.eles.not(notEdges);
@@ -167377,7 +167322,7 @@ function toWebGLColor(color2, opacity, outArray) {
   var r2 = color2[0] / 255;
   var g2 = color2[1] / 255;
   var b11 = color2[2] / 255;
-  var a3 = opacity;
+  var a3 = (color2[3] == null ? 1 : color2[3]) * opacity;
   var arr = outArray || new Array(4);
   arr[0] = r2 * a3;
   arr[1] = g2 * a3;
@@ -167915,8 +167860,10 @@ function renderWebgl(r2, options2, renderTarget) {
       drawAxes(r2);
       drawAtlases(r2);
     }
-    r2.data.canvasNeedsRedraw[r2.NODE] = false;
-    r2.data.canvasNeedsRedraw[r2.DRAG] = false;
+    if (renderTarget.screen) {
+      r2.data.canvasNeedsRedraw[r2.NODE] = false;
+      r2.data.canvasNeedsRedraw[r2.DRAG] = false;
+    }
   }
   if (r2.webglDebug) {
     var end = performance.now();
@@ -168604,6 +168551,7 @@ var mean;
 var median2;
 var _gcd;
 var gcdMultipleZeroIfNonInt;
+var isIntegerMultiple;
 var deg2rad;
 var getAngleFromDisp;
 var log22;
@@ -168657,6 +168605,7 @@ var getRoundPolygonRadius;
 var getCutRectangleCornerLength;
 var bezierPtsToQuadCoeff;
 var getBarrelCurveConstants;
+var getRotatedLabelBox$1;
 var pageRankDefaults;
 var elesfn$o;
 var defaults$f;
@@ -168900,10 +168849,12 @@ var labelValign;
 var labelJustification;
 var fn$3;
 var elesfn$b;
+var getLabelPolygon;
 var noninf;
 var updateBounds;
 var updateBoundsFromBox;
 var prefixedProperty;
+var getRotatedLabelBox2;
 var updateBoundsFromArrow;
 var updateBoundsFromLabel;
 var updateBoundsFromOutline;
@@ -168913,6 +168864,7 @@ var boundingBoxImpl;
 var getKey;
 var getBoundingBoxPosKey;
 var cachedBoundingBoxImpl;
+var getLabelPolygonPosKey;
 var defBbOpts;
 var defBbOptsKey;
 var filledBbOpts;
@@ -168968,6 +168920,7 @@ var defineDagAllHops;
 var Collection;
 var elesfn$1;
 var corefn$9;
+var cbrt;
 var generateSpringRK4;
 var cubicBezier;
 var easings;
@@ -168989,6 +168942,8 @@ var styfn$6;
 var styfn$5;
 var styfn$4;
 var styfn$3;
+var arrowPrefixes;
+var getArrowScale;
 var styfn$2;
 var styfn$1;
 var _Style;
@@ -169146,6 +169101,8 @@ var CRp$6;
 var drawNodeOverlayUnderlay;
 var CRp$5;
 var motionBlurDelay;
+var colorAlpha;
+var effectiveAlpha;
 var fpsHeight;
 var ARRAY_TYPE;
 var Atlas;
@@ -171078,6 +171035,11 @@ var init_cytoscape_esm = __esm({
       }
       return out;
     };
+    isIntegerMultiple = function isIntegerMultiple2(a3, b11) {
+      var ratio = a3 / b11;
+      var nearest = Math.round(ratio);
+      return nearest >= 1 && Math.abs(ratio - nearest) < 1e-6;
+    };
     deg2rad = function deg2rad2(deg) {
       return Math.PI * deg / 180;
     };
@@ -171906,6 +171868,39 @@ var init_cytoscape_esm = __esm({
         ctrlPtOffsetPct: 0.05
       };
     };
+    getRotatedLabelBox$1 = function getRotatedLabelBox(bb, lx, ly, theta, ox, oy, th) {
+      var lx1 = bb.x1 - th - ox;
+      var lx2 = bb.x2 + th - ox;
+      var ly1 = bb.y1 - th - oy;
+      var ly2 = bb.y2 + th - oy;
+      if (theta) {
+        var cos4 = Math.cos(theta);
+        var sin4 = Math.sin(theta);
+        var rotate2 = function rotate3(x6, y6) {
+          x6 = x6 - lx;
+          y6 = y6 - ly;
+          return {
+            x: x6 * cos4 - y6 * sin4 + lx + ox,
+            y: x6 * sin4 + y6 * cos4 + ly + oy
+          };
+        };
+        return [rotate2(lx1, ly1), rotate2(lx2, ly1), rotate2(lx2, ly2), rotate2(lx1, ly2)];
+      } else {
+        return [{
+          x: lx1 + ox,
+          y: ly1 + oy
+        }, {
+          x: lx2 + ox,
+          y: ly1 + oy
+        }, {
+          x: lx2 + ox,
+          y: ly2 + oy
+        }, {
+          x: lx1 + ox,
+          y: ly2 + oy
+        }];
+      }
+    };
     pageRankDefaults = defaults$g({
       dampingFactor: 0.8,
       precision: 1e-6,
@@ -171946,7 +171941,7 @@ var init_cytoscape_esm = __esm({
           matrix[_n] += w4;
           columnSum[s3] += w4;
         }
-        var p3 = 1 / numNodes + additionalProb;
+        var p3 = dampingFactor / numNodes + additionalProb;
         for (var _j = 0; _j < numNodes; _j++) {
           if (columnSum[_j] === 0) {
             for (var _i22 = 0; _i22 < numNodes; _i22++) {
@@ -171956,7 +171951,7 @@ var init_cytoscape_esm = __esm({
           } else {
             for (var _i32 = 0; _i32 < numNodes; _i32++) {
               var _n3 = _i32 * numNodes + _j;
-              matrix[_n3] = matrix[_n3] / columnSum[_j] + additionalProb;
+              matrix[_n3] = dampingFactor * matrix[_n3] / columnSum[_j] + additionalProb;
             }
           }
         }
@@ -172717,6 +172712,9 @@ var init_cytoscape_esm = __esm({
       var nodes5 = this.nodes();
       var node2 = null;
       var opts = setOptions$2(options2);
+      if (opts.k > nodes5.length) {
+        error("kMedoids: k (".concat(opts.k, ") cannot exceed the number of nodes (").concat(nodes5.length, ")."));
+      }
       var clusters = new Array(opts.k);
       var medoids;
       var assignment = {};
@@ -172937,12 +172935,14 @@ var init_cytoscape_esm = __esm({
         merged = {
           left: c1,
           right: c22,
-          key: c1.key
+          key: c1.key,
+          size: c1.size + c22.size
         };
       } else {
         merged = {
           value: c1.value.concat(c22.value),
-          key: c1.key
+          key: c1.key,
+          size: c1.size + c22.size
         };
       }
       clusters[c1.index] = merged;
@@ -173055,6 +173055,9 @@ var init_cytoscape_esm = __esm({
     hierarchicalClustering = function hierarchicalClustering2(options2) {
       var cy = this.cy();
       var nodes5 = this.nodes();
+      if (nodes5.length === 0) {
+        return [];
+      }
       var opts = setOptions$1(options2);
       var attrs = opts.attributes;
       var getDist3 = function getDist4(n1, n22) {
@@ -173072,7 +173075,8 @@ var init_cytoscape_esm = __esm({
         var cluster = {
           value: opts.mode === "dendrogram" ? nodes5[n2] : [nodes5[n2]],
           key: n2,
-          index: n2
+          index: n2,
+          size: 1
         };
         clusters[n2] = cluster;
         index2[n2] = cluster;
@@ -175296,7 +175300,8 @@ var init_cytoscape_esm = __esm({
         operator = operator.replace("@", "");
         caseInsensitive = true;
       }
-      if (isFieldStr || isValStr || caseInsensitive) {
+      var isSubstrCmp = operator === "*=" || operator === "^=" || operator === "$=";
+      if (isFieldStr || isValStr || caseInsensitive || isSubstrCmp) {
         fieldStr = !isFieldStr && !isFieldNum ? "" : "" + fieldVal;
         valStr = "" + value3;
       }
@@ -175892,6 +175897,9 @@ var init_cytoscape_esm = __esm({
             ele.children().shift(delta, silent);
           }
           ele.dirtyBoundingBoxCache();
+          if (ele.isNode()) {
+            ele.connectedEdges().dirtyBoundingBoxCache();
+          }
         }
       }
     };
@@ -176160,6 +176168,29 @@ var init_cytoscape_esm = __esm({
         h: y22 - y1
       };
     };
+    getLabelPolygon = function getLabelPolygon2(ele) {
+      var label = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "main";
+      if (!ele || !ele.cy().styleEnabled()) {
+        return null;
+      }
+      var prefix = label === "main" ? void 0 : label;
+      var _p = ele._private;
+      var cache3 = _p.labelPolygonCache;
+      var posKey = getLabelPolygonPosKey(ele);
+      var isDirty = cache3 == null || cache3[label] == null || _p.styleDirty || _p.labelPolygonPosKey !== posKey;
+      if (!isDirty) {
+        return cache3[label];
+      }
+      ele.recalculateRenderedStyle();
+      posKey = getLabelPolygonPosKey(ele);
+      if (_p.labelPolygonCache == null || _p.labelPolygonPosKey !== posKey) {
+        _p.labelPolygonCache = {};
+        _p.labelPolygonPosKey = posKey;
+      }
+      var polygon2 = getRotatedLabelBox2(ele, prefix);
+      _p.labelPolygonCache[label] = polygon2;
+      return polygon2;
+    };
     elesfn$b.dirtyCompoundBoundsCache = function() {
       var silent = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : false;
       var cy = this.cy();
@@ -176328,13 +176359,39 @@ var init_cytoscape_esm = __esm({
     prefixedProperty = function prefixedProperty2(obj, field, prefix) {
       return getPrefixedProperty(obj, field, prefix);
     };
+    getRotatedLabelBox2 = function getRotatedLabelBox3(ele, prefix) {
+      if (ele.cy().headless()) {
+        return;
+      }
+      var _p = ele._private;
+      var prefixDash = prefix ? prefix + "-" : "";
+      var label = ele.pstyle(prefixDash + "label").strValue;
+      if (!label) {
+        return null;
+      }
+      ele.boundingBox({
+        includeLabels: true
+      });
+      var bbPrefix = prefix || "main";
+      var bb = _p.labelBounds[bbPrefix];
+      if (!bb) {
+        return null;
+      }
+      var lx = prefixedProperty(_p.rscratch, "labelX", prefix);
+      var ly = prefixedProperty(_p.rscratch, "labelY", prefix);
+      var theta = prefixedProperty(_p.rscratch, "labelAngle", prefix);
+      var ox = ele.pstyle(prefixDash + "text-margin-x").pfValue;
+      var oy = ele.pstyle(prefixDash + "text-margin-y").pfValue;
+      return getRotatedLabelBox$1(bb, lx, ly, theta, ox, oy, 0);
+    };
     updateBoundsFromArrow = function updateBoundsFromArrow2(bounds4, ele, prefix) {
       if (ele.cy().headless()) {
         return;
       }
       var _p = ele._private;
       var rstyle = _p.rstyle;
-      var halfArW = rstyle.arrowWidth / 2;
+      var arW = rstyle.arrowWidths != null && rstyle.arrowWidths[prefix] != null ? rstyle.arrowWidths[prefix] : rstyle.arrowWidth;
+      var halfArW = arW / 2;
       var arrowType = ele.pstyle(prefix + "-arrow-shape").value;
       var x6;
       var y6;
@@ -176826,6 +176883,17 @@ var init_cytoscape_esm = __esm({
       }
       return bb;
     };
+    getLabelPolygonPosKey = function getLabelPolygonPosKey2(ele) {
+      var angle2 = ele.pstyle("text-rotation").pfValue || 0;
+      if (ele.isEdge()) {
+        var p1 = ele.source().position();
+        var p22 = ele.target().position();
+        return hashIntsArray([Math.round(p1.x), Math.round(p1.y), Math.round(p22.x), Math.round(p22.y), Math.round(angle2 * 1e3)]);
+      } else {
+        var pos = ele.position();
+        return hashIntsArray([Math.round(pos.x), Math.round(pos.y), Math.round(angle2 * 1e3)]);
+      }
+    };
     defBbOpts = {
       includeNodes: true,
       includeEdges: true,
@@ -176903,6 +176971,8 @@ var init_cytoscape_esm = __esm({
         _p.arrowBounds.target = null;
         _p.arrowBounds["mid-source"] = null;
         _p.arrowBounds["mid-target"] = null;
+        _p.labelPolygonCache = {};
+        _p.labelPolygonPosKey = null;
       }
       this.emitAndNotify("bounds");
       return this;
@@ -177790,6 +177860,120 @@ var init_cytoscape_esm = __esm({
           value: min10,
           ele: minEle
         };
+      },
+      withinBox: function withinBox(box) {
+        var cy = this.cy();
+        var r2 = cy.renderer();
+        if (cy.styleEnabled()) {
+          this.recalculateRenderedStyle();
+        }
+        var x22 = box.x2 != null ? box.x2 : box.x1 + box.w;
+        var y22 = box.y2 != null ? box.y2 : box.y1 + box.h;
+        var bb = makeBoundingBox({
+          x1: Math.min(box.x1, x22),
+          x2: Math.max(box.x1, x22),
+          y1: Math.min(box.y1, y22),
+          y2: Math.max(box.y1, y22)
+        });
+        var allInBox = r2.getAllInBox(bb.x1, bb.y1, bb.x2, bb.y2);
+        var col = this;
+        return this.spawn(allInBox.filter(function(ele) {
+          return col.has(ele);
+        }));
+      },
+      hit: function hit(pos, options2) {
+        var cy = this.cy();
+        var r2 = cy.renderer();
+        if (cy.styleEnabled()) {
+          this.recalculateRenderedStyle();
+        }
+        return this.spawn(r2.hitTestAt(pos.x, pos.y, this, options2));
+      },
+      polygonIntersection: function polygonIntersection(polygon2) {
+        var eles = this;
+        var cy = eles.cy();
+        if (cy.styleEnabled()) {
+          this.recalculateRenderedStyle();
+        }
+        var matches33 = [];
+        for (var i4 = 0; i4 < eles.length; i4++) {
+          var ele = eles[i4];
+          ele.boundingBox();
+          if (ele.isEdge()) {
+            var rs = ele._private.rscratch;
+            var rstyle = ele._private.rstyle;
+            var pts2 = rstyle.bezierPts || rstyle.linePts || rstyle.haystackPts;
+            if (rstyle.bezierPts && rs.allpts && rs.allpts.length >= 6) {
+              var spans = (rs.allpts.length - 2) / 4;
+              var samplesPerSpan = rstyle.bezierPts.length / spans;
+              pts2 = [{
+                x: rs.allpts[0],
+                y: rs.allpts[1]
+              }];
+              for (var k4 = 0; k4 < spans; k4++) {
+                for (var j3 = 0; j3 < samplesPerSpan; j3++) {
+                  pts2.push(rstyle.bezierPts[k4 * samplesPerSpan + j3]);
+                }
+                pts2.push({
+                  x: rs.allpts[k4 * 4 + 4],
+                  y: rs.allpts[k4 * 4 + 5]
+                });
+              }
+            }
+            if ((!pts2 || pts2.length < 2) && rs.startX != null && rs.startY != null && rs.endX != null && rs.endY != null) {
+              pts2 = [{
+                x: rs.startX,
+                y: rs.startY
+              }, {
+                x: rs.endX,
+                y: rs.endY
+              }];
+            }
+            if (pts2 && pts2.length > 1) {
+              var bodyMatched = false;
+              for (var _k = 0; _k < pts2.length - 1 && !bodyMatched; _k++) {
+                if (segmentIntersectsPolygon(pts2[_k], pts2[_k + 1], polygon2)) {
+                  matches33.push(ele);
+                  bodyMatched = true;
+                }
+              }
+              if (bodyMatched) {
+                continue;
+              }
+            }
+          } else {
+            var bb = ele._private.bodyBounds;
+            if (bb) {
+              var bodyPoly = [{
+                x: bb.x1,
+                y: bb.y1
+              }, {
+                x: bb.x2,
+                y: bb.y1
+              }, {
+                x: bb.x2,
+                y: bb.y2
+              }, {
+                x: bb.x1,
+                y: bb.y2
+              }];
+              if (satPolygonIntersection(bodyPoly, polygon2)) {
+                matches33.push(ele);
+                continue;
+              }
+            }
+          }
+          var labels = ele.isEdge() ? ["main", "source", "target"] : ["main"];
+          var labelMatched = false;
+          for (var _j = 0; _j < labels.length && !labelMatched; _j++) {
+            var labelPoly = getLabelPolygon(ele, labels[_j]);
+            if (labelPoly && labelPoly.length && satPolygonIntersection(labelPoly, polygon2)) {
+              matches33.push(ele);
+              labelMatched = true;
+            }
+          }
+        }
+        return this.spawn(matches33);
       }
     };
     fn$1 = elesfn$8;
@@ -179164,7 +179348,7 @@ var init_cytoscape_esm = __esm({
       var removeFromPool2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : true;
       var self2 = this;
       var elesToRemove = [];
-      var elesToRemoveIds = {};
+      var elesToRemoveIds = new Set$1();
       var cy = self2._private.cy;
       function addConnectedEdges(node2) {
         var edges3 = node2._private.edges;
@@ -179179,11 +179363,11 @@ var init_cytoscape_esm = __esm({
         }
       }
       function add4(ele2) {
-        var alreadyAdded = elesToRemoveIds[ele2.id()];
+        var alreadyAdded = elesToRemoveIds.has(ele2.id());
         if (removeFromPool2 && ele2.removed() || alreadyAdded) {
           return;
         } else {
-          elesToRemoveIds[ele2.id()] = true;
+          elesToRemoveIds.add(ele2.id());
         }
         if (ele2.isNode()) {
           elesToRemove.push(ele2);
@@ -179206,7 +179390,7 @@ var init_cytoscape_esm = __esm({
         pllEdge2.clearTraversalCache();
       }
       var alteredParents = [];
-      alteredParents.ids = {};
+      alteredParents.ids = new Set$1();
       function removeChildRef(parent5, ele2) {
         ele2 = ele2[0];
         parent5 = parent5[0];
@@ -179214,8 +179398,8 @@ var init_cytoscape_esm = __esm({
         var pid = parent5.id();
         removeFromArray(children2, ele2);
         ele2._private.parent = null;
-        if (!alteredParents.ids[pid]) {
-          alteredParents.ids[pid] = true;
+        if (!alteredParents.ids.has(pid)) {
+          alteredParents.ids.add(pid);
           alteredParents.push(parent5);
         }
       }
@@ -179381,6 +179565,9 @@ var init_cytoscape_esm = __esm({
         }
         return collection4.remove();
       }
+    };
+    cbrt = Math.cbrt || function(x6) {
+      return x6 < 0 ? -Math.pow(-x6, 1 / 3) : Math.pow(x6, 1 / 3);
     };
     generateSpringRK4 = /* @__PURE__ */ (function() {
       function springAccelerationForState(state5) {
@@ -180269,14 +180456,14 @@ var init_cytoscape_esm = __esm({
             var b22 = prop.valueMax[2];
             var a1 = prop.valueMin[3] == null ? 1 : prop.valueMin[3];
             var a22 = prop.valueMax[3] == null ? 1 : prop.valueMax[3];
-            var clr = [Math.round(r1 + (r2 - r1) * percent), Math.round(g1 + (g2 - g1) * percent), Math.round(b12 + (b22 - b12) * percent), Math.round(a1 + (a22 - a1) * percent)];
+            var clr = [Math.round(r1 + (r2 - r1) * percent), Math.round(g1 + (g2 - g1) * percent), Math.round(b12 + (b22 - b12) * percent), a1 + (a22 - a1) * percent];
             flatProp = {
               // colours are simple, so just create the flat property instead of expensive string parsing
               bypass: prop.bypass,
               // we're a bypass if the mapping property is a bypass
               name: prop.name,
               value: clr,
-              strValue: "rgb(" + clr[0] + ", " + clr[1] + ", " + clr[2] + ")"
+              strValue: "rgba(" + clr[0] + ", " + clr[1] + ", " + clr[2] + ", " + clr[3] + ")"
             };
           } else if (type3.number) {
             var calcValue = prop.valueMin + (prop.valueMax - prop.valueMin) * percent;
@@ -180589,7 +180776,7 @@ var init_cytoscape_esm = __esm({
             prop.pfValue = value3;
           }
           if (isColor) {
-            prop.strValue = "rgb(" + value3.join(",") + ")";
+            prop.strValue = value3[3] == null ? "rgb(" + value3[0] + "," + value3[1] + "," + value3[2] + ")" : "rgba(" + value3[0] + "," + value3[1] + "," + value3[2] + "," + value3[3] + ")";
           } else if (isMulti) {
             prop.strValue = value3.join(" ");
           } else {
@@ -180923,6 +181110,16 @@ var init_cytoscape_esm = __esm({
       style4.appendFromString(string4);
       return style4;
     };
+    arrowPrefixes = ["source", "mid-source", "target", "mid-target"];
+    getArrowScale = function getArrowScale2(edge, prefix) {
+      if (prefix != null) {
+        var prefixed = edge.pstyle(prefix + "-arrow-scale");
+        if (prefixed != null && prefixed.value !== "inherit") {
+          return prefixed.value;
+        }
+      }
+      return edge.pstyle("arrow-scale").value;
+    };
     styfn$2 = {};
     (function() {
       var number$13 = number6;
@@ -181012,6 +181209,13 @@ var init_cytoscape_esm = __esm({
           unitless: true,
           min: 0,
           strictMin: true
+        },
+        arrowScale: {
+          number: true,
+          unitless: true,
+          min: 0,
+          strictMin: true,
+          enums: ["inherit"]
         },
         size: {
           number: true,
@@ -181556,6 +181760,18 @@ var init_cytoscape_esm = __esm({
         name: "overlay-color",
         type: t4.color
       }, {
+        name: "overlay-fill",
+        type: t4.fill
+      }, {
+        name: "overlay-gradient-stop-colors",
+        type: t4.colors
+      }, {
+        name: "overlay-gradient-stop-positions",
+        type: t4.percentages
+      }, {
+        name: "overlay-gradient-direction",
+        type: t4.gradientDirection
+      }, {
         name: "overlay-opacity",
         type: t4.zeroOneNumber,
         triggersBounds: diff2.zeroNonZero
@@ -181574,6 +181790,18 @@ var init_cytoscape_esm = __esm({
       }, {
         name: "underlay-color",
         type: t4.color
+      }, {
+        name: "underlay-fill",
+        type: t4.fill
+      }, {
+        name: "underlay-gradient-stop-colors",
+        type: t4.colors
+      }, {
+        name: "underlay-gradient-stop-positions",
+        type: t4.percentages
+      }, {
+        name: "underlay-gradient-direction",
+        type: t4.gradientDirection
       }, {
         name: "underlay-opacity",
         type: t4.zeroOneNumber,
@@ -182012,7 +182240,7 @@ var init_cytoscape_esm = __esm({
         });
       }
       var edgeArrow = [];
-      var arrowPrefixes = styfn$2.arrowPrefixes = ["source", "mid-source", "target", "mid-target"];
+      styfn$2.arrowPrefixes = arrowPrefixes;
       [{
         name: "arrow-shape",
         type: t4.arrowShape,
@@ -182026,6 +182254,10 @@ var init_cytoscape_esm = __esm({
       }, {
         name: "arrow-width",
         type: t4.arrowWidth
+      }, {
+        name: "arrow-scale",
+        type: t4.arrowScale,
+        triggersBounds: diff2.any
       }].forEach(function(prop2) {
         arrowPrefixes.forEach(function(prefix) {
           var name = prefix + "-" + prop2.name;
@@ -182200,11 +182432,19 @@ var init_cytoscape_esm = __esm({
         "target-text-margin-y": 0,
         "overlay-opacity": 0,
         "overlay-color": "#000",
+        "overlay-fill": "solid",
+        "overlay-gradient-stop-colors": "#999",
+        "overlay-gradient-stop-positions": "0%",
+        "overlay-gradient-direction": "to-bottom",
         "overlay-padding": 10,
         "overlay-shape": "round-rectangle",
         "overlay-corner-radius": "auto",
         "underlay-opacity": 0,
         "underlay-color": "#000",
+        "underlay-fill": "solid",
+        "underlay-gradient-stop-colors": "#999",
+        "underlay-gradient-stop-positions": "0%",
+        "underlay-gradient-direction": "to-bottom",
         "underlay-padding": 10,
         "underlay-shape": "round-rectangle",
         "underlay-corner-radius": "auto",
@@ -182361,6 +182601,9 @@ var init_cytoscape_esm = __esm({
       }, {
         name: "arrow-width",
         value: 1
+      }, {
+        name: "arrow-scale",
+        value: "inherit"
       }].reduce(function(css, prop2) {
         styfn$2.arrowPrefixes.forEach(function(prefix) {
           var name2 = prefix + "-" + prop2.name;
@@ -182705,8 +182948,7 @@ var init_cytoscape_esm = __esm({
           name,
           value: tuple,
           pfValue: tuple,
-          strValue: "rgb(" + tuple[0] + "," + tuple[1] + "," + tuple[2] + ")",
-          // n.b. no spaces b/c of multiple support
+          strValue: tuple[3] == null ? "rgb(" + tuple[0] + "," + tuple[1] + "," + tuple[2] + ")" : "rgba(" + tuple[0] + "," + tuple[1] + "," + tuple[2] + "," + tuple[3] + ")",
           bypass: propIsBypass
         };
       } else if (type3.regex || type3.regexes) {
@@ -185565,6 +185807,12 @@ var init_cytoscape_esm = __esm({
       isHeadless: function isHeadless() {
         return true;
       },
+      getAllInBox: function getAllInBox() {
+        return [];
+      },
+      hitTestAt: function hitTestAt() {
+        return [];
+      },
       png: throwImgErr,
       jpg: throwImgErr
     };
@@ -185610,8 +185858,8 @@ var init_cytoscape_esm = __esm({
         }
         return ret;
       };
-      var standardGap = function standardGap2(edge) {
-        return edge.pstyle("width").pfValue * edge.pstyle("arrow-scale").pfValue * 2;
+      var standardGap = function standardGap2(edge, prefix) {
+        return edge.pstyle("width").pfValue * getArrowScale(edge, prefix) * 2;
       };
       var defineArrowShape = function defineArrowShape2(name, defn) {
         if (string2(defn)) {
@@ -185630,7 +185878,7 @@ var init_cytoscape_esm = __esm({
             var points = transformPoints3(this.points, size4, angle2, translation);
             renderer16.arrowShapeImpl("polygon")(context, points);
           },
-          spacing: function spacing2(edge) {
+          spacing: function spacing2(edge, prefix) {
             return 0;
           },
           gap: standardGap
@@ -185657,8 +185905,8 @@ var init_cytoscape_esm = __esm({
           var ctrlPtTrans = transform8(ctrlPt[0], ctrlPt[1], size4, angle2, translation);
           renderer16.arrowShapeImpl(this.name)(context, ptsTrans, ctrlPtTrans);
         },
-        gap: function gap(edge) {
-          return standardGap(edge) * 0.8;
+        gap: function gap(edge, prefix) {
+          return standardGap(edge, prefix) * 0.8;
         }
       });
       defineArrowShape("triangle-tee", {
@@ -185689,8 +185937,8 @@ var init_cytoscape_esm = __esm({
           var triPts = transformPoints3(this.pointsTr, size4, angle2, translation);
           renderer16.arrowShapeImpl(this.name)(context, triPts, translation.x, translation.y, this.radius * size4);
         },
-        spacing: function spacing2(edge) {
-          return renderer16.getArrowWidth(edge.pstyle("width").pfValue, edge.pstyle("arrow-scale").value) * this.radius;
+        spacing: function spacing2(edge, prefix) {
+          return renderer16.getArrowWidth(edge.pstyle("width").pfValue, getArrowScale(edge, prefix)) * this.radius;
         }
       });
       defineArrowShape("triangle-cross", {
@@ -185730,8 +185978,8 @@ var init_cytoscape_esm = __esm({
       });
       defineArrowShape("vee", {
         points: [-0.15, -0.3, 0, 0, 0.15, -0.3, 0, -0.15],
-        gap: function gap(edge) {
-          return standardGap(edge) * 0.525;
+        gap: function gap(edge, prefix) {
+          return standardGap(edge, prefix) * 0.525;
         }
       });
       defineArrowShape("circle", {
@@ -185744,16 +185992,16 @@ var init_cytoscape_esm = __esm({
         draw: function draw35(context, size4, angle2, translation, edgeWidth) {
           renderer16.arrowShapeImpl(this.name)(context, translation.x, translation.y, this.radius * size4);
         },
-        spacing: function spacing2(edge) {
-          return renderer16.getArrowWidth(edge.pstyle("width").pfValue, edge.pstyle("arrow-scale").value) * this.radius;
+        spacing: function spacing2(edge, prefix) {
+          return renderer16.getArrowWidth(edge.pstyle("width").pfValue, getArrowScale(edge, prefix)) * this.radius;
         }
       });
       defineArrowShape("tee", {
         points: [-0.15, 0, -0.15, -0.1, 0.15, -0.1, 0.15, 0],
-        spacing: function spacing2(edge) {
+        spacing: function spacing2(edge, prefix) {
           return 1;
         },
-        gap: function gap(edge) {
+        gap: function gap(edge, prefix) {
           return 1;
         }
       });
@@ -185762,14 +186010,14 @@ var init_cytoscape_esm = __esm({
       });
       defineArrowShape("diamond", {
         points: [-0.15, -0.15, 0, -0.3, 0.15, -0.15, 0, 0],
-        gap: function gap(edge) {
-          return edge.pstyle("width").pfValue * edge.pstyle("arrow-scale").value;
+        gap: function gap(edge, prefix) {
+          return edge.pstyle("width").pfValue * getArrowScale(edge, prefix);
         }
       });
       defineArrowShape("chevron", {
         points: [0, 0, -0.15, -0.15, -0.1, -0.2, 0, -0.1, 0.1, -0.2, 0.15, -0.15],
-        gap: function gap(edge) {
-          return 0.95 * edge.pstyle("width").pfValue * edge.pstyle("arrow-scale").value;
+        gap: function gap(edge, prefix) {
+          return 0.95 * edge.pstyle("width").pfValue * getArrowScale(edge, prefix);
         }
       });
     };
@@ -185823,6 +186071,169 @@ var init_cytoscape_esm = __esm({
     BRp$e.invalidateContainerClientCoordsCache = function() {
       this.containerBB = null;
     };
+    BRp$e.getLabelHitPolygon = function(ele, prefix, th) {
+      var _p = ele._private;
+      var prefixDash = prefix ? prefix + "-" : "";
+      ele.boundingBox();
+      var bb = _p.labelBounds[prefix || "main"];
+      if (!bb) {
+        return null;
+      }
+      var lx = getPrefixedProperty(_p.rscratch, "labelX", prefix);
+      var ly = getPrefixedProperty(_p.rscratch, "labelY", prefix);
+      var theta = getPrefixedProperty(_p.rscratch, "labelAngle", prefix);
+      var ox = ele.pstyle(prefixDash + "text-margin-x").pfValue;
+      var oy = ele.pstyle(prefixDash + "text-margin-y").pfValue;
+      return getRotatedLabelBox$1(bb, lx, ly, theta, ox, oy, th);
+    };
+    BRp$e.checkLabelHitAt = function(ele, x6, y6, prefix, th) {
+      var prefixDash = prefix ? prefix + "-" : "";
+      var text5 = ele.pstyle(prefixDash + "label").value;
+      var eventsEnabled = ele.pstyle("text-events").strValue === "yes";
+      if (!eventsEnabled || !text5) {
+        return false;
+      }
+      var polygon2 = this.getLabelHitPolygon(ele, prefix, th);
+      if (!polygon2) {
+        return false;
+      }
+      var points = [];
+      for (var i4 = 0; i4 < polygon2.length; i4++) {
+        points.push(polygon2[i4].x, polygon2[i4].y);
+      }
+      return pointInsidePolygonPoints(x6, y6, points);
+    };
+    BRp$e.checkNodeHitAt = function(node2, x6, y6, threshold) {
+      var r2 = this;
+      var width3 = node2.outerWidth() + 2 * threshold;
+      var height2 = node2.outerHeight() + 2 * threshold;
+      var pos = node2.position();
+      if (pos.x - width3 / 2 <= x6 && x6 <= pos.x + width3 / 2 && pos.y - height2 / 2 <= y6 && y6 <= pos.y + height2 / 2) {
+        var cornerRadius = node2.pstyle("corner-radius").value === "auto" ? "auto" : node2.pstyle("corner-radius").pfValue;
+        var shape = r2.nodeShapes[r2.getNodeShape(node2)];
+        return shape.checkPoint(x6, y6, 0, width3, height2, pos.x, pos.y, cornerRadius, node2._private.rscratch);
+      }
+      return false;
+    };
+    BRp$e.checkEdgeHitAt = function(edge, x6, y6, threshold) {
+      var r2 = this;
+      var _p = edge._private;
+      var rs = _p.rscratch;
+      var styleWidth = edge.pstyle("width").pfValue;
+      var width3 = styleWidth / 2 + threshold;
+      var widthSq = width3 * width3;
+      var width22 = width3 * 2;
+      var sqDist;
+      if (rs.edgeType === "segments" || rs.edgeType === "straight" || rs.edgeType === "haystack") {
+        var linePts = rs.allpts;
+        for (var i4 = 0; i4 + 3 < linePts.length; i4 += 2) {
+          if (inLineVicinity(x6, y6, linePts[i4], linePts[i4 + 1], linePts[i4 + 2], linePts[i4 + 3], width22) && widthSq > (sqDist = sqdistToFiniteLine(x6, y6, linePts[i4], linePts[i4 + 1], linePts[i4 + 2], linePts[i4 + 3]))) {
+            return {
+              sqDist
+            };
+          }
+        }
+      } else if (rs.edgeType === "bezier" || rs.edgeType === "multibezier" || rs.edgeType === "self" || rs.edgeType === "compound") {
+        var bezierPts = rs.allpts;
+        for (var k4 = 0; k4 + 5 < bezierPts.length; k4 += 4) {
+          if (inBezierVicinity(x6, y6, bezierPts[k4], bezierPts[k4 + 1], bezierPts[k4 + 2], bezierPts[k4 + 3], bezierPts[k4 + 4], bezierPts[k4 + 5], width22) && widthSq > (sqDist = sqdistToQuadraticBezier(x6, y6, bezierPts[k4], bezierPts[k4 + 1], bezierPts[k4 + 2], bezierPts[k4 + 3], bezierPts[k4 + 4], bezierPts[k4 + 5]))) {
+            return {
+              sqDist
+            };
+          }
+        }
+      }
+      var arrows = [{
+        name: "source",
+        x: rs.arrowStartX,
+        y: rs.arrowStartY,
+        angle: rs.srcArrowAngle
+      }, {
+        name: "target",
+        x: rs.arrowEndX,
+        y: rs.arrowEndY,
+        angle: rs.tgtArrowAngle
+      }, {
+        name: "mid-source",
+        x: rs.midX,
+        y: rs.midY,
+        angle: rs.midsrcArrowAngle
+      }, {
+        name: "mid-target",
+        x: rs.midX,
+        y: rs.midY,
+        angle: rs.midtgtArrowAngle
+      }];
+      for (var j3 = 0; j3 < arrows.length; j3++) {
+        var ar = arrows[j3];
+        var shape = r2.arrowShapes[edge.pstyle(ar.name + "-arrow-shape").value];
+        var edgeWidth = styleWidth;
+        var arSize = r2.getArrowWidth(styleWidth, getArrowScale(edge, ar.name));
+        if (shape.roughCollide(x6, y6, arSize, ar.angle, {
+          x: ar.x,
+          y: ar.y
+        }, edgeWidth, threshold) && shape.collide(x6, y6, arSize, ar.angle, {
+          x: ar.x,
+          y: ar.y
+        }, edgeWidth, threshold)) {
+          return {
+            sqDist: null
+          };
+        }
+      }
+      return null;
+    };
+    BRp$e.hitTestAt = function(x6, y6, eles, options2) {
+      var r2 = this;
+      var zoom3 = r2.cy.zoom();
+      var opts = options2 || {};
+      var isTouch = opts.isTouch;
+      var includeBody = opts.includeBody !== false;
+      var includeMainLabels = opts.includeMainLabels !== false;
+      var includeSourceLabels = opts.includeSourceLabels !== false;
+      var includeTargetLabels = opts.includeTargetLabels !== false;
+      var nodeThreshold = (isTouch ? 8 : 2) / zoom3;
+      var labelThreshold = (isTouch ? 8 : 2) / zoom3;
+      var edgeThreshold = (isTouch ? 24 : 8) / zoom3;
+      var eleIds = /* @__PURE__ */ new Set();
+      for (var i4 = 0; i4 < eles.length; i4++) {
+        eleIds.add(eles[i4]._private.data.id);
+      }
+      var zSorted = r2.getCachedZSortedEles().interactive;
+      var matches33 = [];
+      for (var j3 = zSorted.length - 1; j3 >= 0; j3--) {
+        var ele = zSorted[j3];
+        if (!eleIds.has(ele._private.data.id)) {
+          continue;
+        }
+        var hit2 = false;
+        if (ele.isNode()) {
+          if (includeBody) {
+            hit2 = r2.checkNodeHitAt(ele, x6, y6, nodeThreshold);
+          }
+          if (!hit2 && includeMainLabels) {
+            hit2 = r2.checkLabelHitAt(ele, x6, y6, null, labelThreshold);
+          }
+        } else {
+          if (includeBody) {
+            hit2 = r2.checkEdgeHitAt(ele, x6, y6, edgeThreshold) != null;
+          }
+          if (!hit2 && includeMainLabels) {
+            hit2 = r2.checkLabelHitAt(ele, x6, y6, null, labelThreshold);
+          }
+          if (!hit2 && includeSourceLabels) {
+            hit2 = r2.checkLabelHitAt(ele, x6, y6, "source", labelThreshold);
+          }
+          if (!hit2 && includeTargetLabels) {
+            hit2 = r2.checkLabelHitAt(ele, x6, y6, "target", labelThreshold);
+          }
+        }
+        if (hit2) {
+          matches33.push(ele);
+        }
+      }
+      return matches33;
+    };
     BRp$e.findNearestElement = function(x6, y6, interactiveElementsOnly, isTouch) {
       return this.findNearestElements(x6, y6, interactiveElementsOnly, isTouch)[0];
     };
@@ -185871,26 +186282,15 @@ var init_cytoscape_esm = __esm({
         }
       }
       function checkNode(node2) {
-        var width3 = node2.outerWidth() + 2 * nodeThreshold;
-        var height2 = node2.outerHeight() + 2 * nodeThreshold;
-        var hw = width3 / 2;
-        var hh = height2 / 2;
-        var pos = node2.position();
-        var cornerRadius = node2.pstyle("corner-radius").value === "auto" ? "auto" : node2.pstyle("corner-radius").pfValue;
-        var rs = node2._private.rscratch;
-        if (pos.x - hw <= x6 && x6 <= pos.x + hw && pos.y - hh <= y6 && y6 <= pos.y + hh) {
-          var shape = r2.nodeShapes[self2.getNodeShape(node2)];
-          if (shape.checkPoint(x6, y6, 0, width3, height2, pos.x, pos.y, cornerRadius, rs)) {
-            addEle(node2, 0);
-            return true;
-          }
+        if (r2.checkNodeHitAt(node2, x6, y6, nodeThreshold)) {
+          addEle(node2, 0);
+          return true;
         }
       }
       function checkEdge(edge) {
         var _p = edge._private;
         var rs = _p.rscratch;
         var styleWidth = edge.pstyle("width").pfValue;
-        var scale3 = edge.pstyle("arrow-scale").value;
         var width3 = styleWidth / 2 + edgeThreshold;
         var widthSq = width3 * width3;
         var width22 = width3 * 2;
@@ -185916,7 +186316,6 @@ var init_cytoscape_esm = __esm({
         }
         var src = src || _p.source;
         var tgt = tgt || _p.target;
-        var arSize = self2.getArrowWidth(styleWidth, scale3);
         var arrows = [{
           name: "source",
           x: rs.arrowStartX,
@@ -185942,6 +186341,7 @@ var init_cytoscape_esm = __esm({
           var ar = arrows[i5];
           var shape = r2.arrowShapes[edge.pstyle(ar.name + "-arrow-shape").value];
           var edgeWidth = edge.pstyle("width").pfValue;
+          var arSize = self2.getArrowWidth(styleWidth, getArrowScale(edge, ar.name));
           if (shape.roughCollide(x6, y6, arSize, ar.angle, {
             x: ar.x,
             y: ar.y
@@ -185958,69 +186358,10 @@ var init_cytoscape_esm = __esm({
           checkNode(tgt);
         }
       }
-      function preprop(obj, name, pre) {
-        return getPrefixedProperty(obj, name, pre);
-      }
       function checkLabel(ele2, prefix) {
-        var _p = ele2._private;
-        var th = labelThreshold;
-        var prefixDash;
-        if (prefix) {
-          prefixDash = prefix + "-";
-        } else {
-          prefixDash = "";
-        }
-        ele2.boundingBox();
-        var bb = _p.labelBounds[prefix || "main"];
-        var text5 = ele2.pstyle(prefixDash + "label").value;
-        var eventsEnabled = ele2.pstyle("text-events").strValue === "yes";
-        if (!eventsEnabled || !text5) {
-          return;
-        }
-        var lx = preprop(_p.rscratch, "labelX", prefix);
-        var ly = preprop(_p.rscratch, "labelY", prefix);
-        var theta = preprop(_p.rscratch, "labelAngle", prefix);
-        var ox = ele2.pstyle(prefixDash + "text-margin-x").pfValue;
-        var oy = ele2.pstyle(prefixDash + "text-margin-y").pfValue;
-        var lx1 = bb.x1 - th - ox;
-        var lx2 = bb.x2 + th - ox;
-        var ly1 = bb.y1 - th - oy;
-        var ly2 = bb.y2 + th - oy;
-        if (theta) {
-          var cos4 = Math.cos(theta);
-          var sin4 = Math.sin(theta);
-          var rotate2 = function rotate3(x7, y7) {
-            x7 = x7 - lx;
-            y7 = y7 - ly;
-            return {
-              x: x7 * cos4 - y7 * sin4 + lx,
-              y: x7 * sin4 + y7 * cos4 + ly
-            };
-          };
-          var px1y1 = rotate2(lx1, ly1);
-          var px1y2 = rotate2(lx1, ly2);
-          var px2y1 = rotate2(lx2, ly1);
-          var px2y2 = rotate2(lx2, ly2);
-          var points = [
-            // with the margin added after the rotation is applied
-            px1y1.x + ox,
-            px1y1.y + oy,
-            px2y1.x + ox,
-            px2y1.y + oy,
-            px2y2.x + ox,
-            px2y2.y + oy,
-            px1y2.x + ox,
-            px1y2.y + oy
-          ];
-          if (pointInsidePolygonPoints(x6, y6, points)) {
-            addEle(ele2);
-            return true;
-          }
-        } else {
-          if (inBoundingBox(bb, x6, y6)) {
-            addEle(ele2);
-            return true;
-          }
+        if (self2.checkLabelHitAt(ele2, x6, y6, prefix, labelThreshold)) {
+          addEle(ele2);
+          return true;
         }
       }
       for (var i4 = eles.length - 1; i4 >= 0; i4--) {
@@ -186034,6 +186375,7 @@ var init_cytoscape_esm = __esm({
       return near;
     };
     BRp$e.getAllInBox = function(x12, y1, x22, y22) {
+      var r2 = this;
       var eles = this.getCachedZSortedEles().interactive;
       var zoom3 = this.cy.zoom();
       var labelThreshold = 2 / zoom3;
@@ -186066,56 +186408,10 @@ var init_cytoscape_esm = __esm({
         y: boxBb.y2
       }];
       var boxEdges = [[selectionBox[0], selectionBox[1]], [selectionBox[1], selectionBox[2]], [selectionBox[2], selectionBox[3]], [selectionBox[3], selectionBox[0]]];
-      function preprop(obj, name, pre) {
-        return getPrefixedProperty(obj, name, pre);
+      function getRotatedLabelBox4(ele2, prefix) {
+        return r2.getLabelHitPolygon(ele2, prefix, labelThreshold);
       }
-      function getRotatedLabelBox(ele2, prefix) {
-        var _p2 = ele2._private;
-        var th = labelThreshold;
-        var prefixDash = "";
-        ele2.boundingBox();
-        var bb = _p2.labelBounds["main"];
-        if (!bb) {
-          return null;
-        }
-        var lx = preprop(_p2.rscratch, "labelX", prefix);
-        var ly = preprop(_p2.rscratch, "labelY", prefix);
-        var theta = preprop(_p2.rscratch, "labelAngle", prefix);
-        var ox = ele2.pstyle(prefixDash + "text-margin-x").pfValue;
-        var oy = ele2.pstyle(prefixDash + "text-margin-y").pfValue;
-        var lx1 = bb.x1 - th - ox;
-        var lx2 = bb.x2 + th - ox;
-        var ly1 = bb.y1 - th - oy;
-        var ly2 = bb.y2 + th - oy;
-        if (theta) {
-          var cos4 = Math.cos(theta);
-          var sin4 = Math.sin(theta);
-          var rotate2 = function rotate3(x6, y6) {
-            x6 = x6 - lx;
-            y6 = y6 - ly;
-            return {
-              x: x6 * cos4 - y6 * sin4 + lx,
-              y: x6 * sin4 + y6 * cos4 + ly
-            };
-          };
-          return [rotate2(lx1, ly1), rotate2(lx2, ly1), rotate2(lx2, ly2), rotate2(lx1, ly2)];
-        } else {
-          return [{
-            x: lx1,
-            y: ly1
-          }, {
-            x: lx2,
-            y: ly1
-          }, {
-            x: lx2,
-            y: ly2
-          }, {
-            x: lx1,
-            y: ly2
-          }];
-        }
-      }
-      function doLinesIntersect(p1, p22, q1, q22) {
+      function doLinesIntersect2(p1, p22, q1, q22) {
         function ccw(a3, b12, c4) {
           return (c4.y - a3.y) * (b12.x - a3.x) > (b12.y - a3.y) * (c4.x - a3.x);
         }
@@ -186140,7 +186436,7 @@ var init_cytoscape_esm = __esm({
           if (nodeBoxSelectMode === "contain") {
             var selected = false;
             if (labelBoxSelectEnabled && textEvents) {
-              var rotatedLabelBox = getRotatedLabelBox(node2);
+              var rotatedLabelBox = getRotatedLabelBox4(node2);
               if (rotatedLabelBox && satPolygonIntersection(rotatedLabelBox, selectionBox)) {
                 box.push(node2);
                 selected = true;
@@ -186175,7 +186471,7 @@ var init_cytoscape_esm = __esm({
               if (satPolygonIntersection(nodeBodyCorners, selectionBox)) {
                 box.push(node2);
               } else {
-                var _rotatedLabelBox = getRotatedLabelBox(node2);
+                var _rotatedLabelBox = getRotatedLabelBox4(node2);
                 if (_rotatedLabelBox && satPolygonIntersection(_rotatedLabelBox, selectionBox)) {
                   box.push(node2);
                 }
@@ -186246,7 +186542,7 @@ var init_cytoscape_esm = __esm({
                 var segEnd = _pts[_i22 + 1];
                 for (var b11 = 0; b11 < boxEdges.length; b11++) {
                   var _boxEdges$b = _slicedToArray2(boxEdges[b11], 2), boxStart = _boxEdges$b[0], boxEnd = _boxEdges$b[1];
-                  if (doLinesIntersect(segStart, segEnd, boxStart, boxEnd)) {
+                  if (doLinesIntersect2(segStart, segEnd, boxStart, boxEnd)) {
                     box.push(edge);
                     _selected = true;
                     break;
@@ -186701,6 +186997,15 @@ var init_cytoscape_esm = __esm({
       };
       var dx = subDWH(pdx, dw);
       var dy = subDWH(pdy, dh);
+      var midBetween = function midBetween2(c1, c22, size1, size22) {
+        if (!dIncludesNodeBody) {
+          return (c1 + c22) / 2;
+        }
+        var sgn = signum(c22 - c1);
+        var side1 = c1 + sgn * size1 / 2;
+        var side2 = c22 - sgn * size22 / 2;
+        return sgn * (side2 - side1) >= 0 ? (side1 + side2) / 2 : (c1 + c22) / 2;
+      };
       var isExplicitDir = false;
       if (rawTaxiDir === AUTO) {
         taxiDir = Math.abs(dx) > Math.abs(dy) ? HORIZONTAL : VERTICAL;
@@ -186740,11 +187045,11 @@ var init_cytoscape_esm = __esm({
           var lShapeInsideSrc = Math.abs(pl) <= srcH / 2;
           var lShapeInsideTgt = Math.abs(pdx) <= tgtW / 2;
           if (lShapeInsideSrc) {
-            var x6 = (posPts.x1 + posPts.x2) / 2;
+            var x6 = midBetween(posPts.x1, posPts.x2, srcW, tgtW);
             var y1 = posPts.y1, y22 = posPts.y2;
             rs.segpts = [x6, y1, x6, y22];
           } else if (lShapeInsideTgt) {
-            var y6 = (posPts.y1 + posPts.y2) / 2;
+            var y6 = midBetween(posPts.y1, posPts.y2, srcH, tgtH);
             var x12 = posPts.x1, x22 = posPts.x2;
             rs.segpts = [x12, y6, x22, y6];
           } else {
@@ -186754,11 +187059,11 @@ var init_cytoscape_esm = __esm({
           var _lShapeInsideSrc = Math.abs(pl) <= srcW / 2;
           var _lShapeInsideTgt = Math.abs(pdy) <= tgtH / 2;
           if (_lShapeInsideSrc) {
-            var _y = (posPts.y1 + posPts.y2) / 2;
+            var _y = midBetween(posPts.y1, posPts.y2, srcH, tgtH);
             var _x = posPts.x1, _x2 = posPts.x2;
             rs.segpts = [_x, _y, _x2, _y];
           } else if (_lShapeInsideTgt) {
-            var _x3 = (posPts.x1 + posPts.x2) / 2;
+            var _x3 = midBetween(posPts.x1, posPts.x2, srcW, tgtW);
             var _y2 = posPts.y1, _y3 = posPts.y2;
             rs.segpts = [_x3, _y2, _x3, _y3];
           } else {
@@ -186792,8 +187097,9 @@ var init_cytoscape_esm = __esm({
         var badEnd = !number$12(rs.endX) || !number$12(rs.endY);
         var badAEnd = !number$12(rs.arrowEndX) || !number$12(rs.arrowEndY);
         var minCpADistFactor = 3;
-        var arrowW = this.getArrowWidth(edge.pstyle("width").pfValue, edge.pstyle("arrow-scale").value) * this.arrowShapeWidth;
-        var minCpADist = minCpADistFactor * arrowW;
+        var edgeWidth = edge.pstyle("width").pfValue;
+        var minCpASrcDist = minCpADistFactor * this.getArrowWidth(edgeWidth, getArrowScale(edge, "source")) * this.arrowShapeWidth;
+        var minCpATgtDist = minCpADistFactor * this.getArrowWidth(edgeWidth, getArrowScale(edge, "target")) * this.arrowShapeWidth;
         var startACpDist = dist({
           x: rs.ctrlpts[0],
           y: rs.ctrlpts[1]
@@ -186801,15 +187107,7 @@ var init_cytoscape_esm = __esm({
           x: rs.startX,
           y: rs.startY
         });
-        var closeStartACp = startACpDist < minCpADist;
-        var endACpDist = dist({
-          x: rs.ctrlpts[0],
-          y: rs.ctrlpts[1]
-        }, {
-          x: rs.endX,
-          y: rs.endY
-        });
-        var closeEndACp = endACpDist < minCpADist;
+        var closeStartACp = startACpDist < minCpASrcDist;
         var overlapping = false;
         if (badStart || badAStart || closeStartACp) {
           overlapping = true;
@@ -186832,13 +187130,21 @@ var init_cytoscape_esm = __esm({
           };
           var srcCtrlPtIntn = srcShape.intersectLine(srcPos.x, srcPos.y, srcW, srcH, cpProj.x, cpProj.y, 0, srcCornerRadius, srcRs);
           if (closeStartACp) {
-            rs.ctrlpts[0] = rs.ctrlpts[0] + cpM.x * (minCpADist - startACpDist);
-            rs.ctrlpts[1] = rs.ctrlpts[1] + cpM.y * (minCpADist - startACpDist);
+            rs.ctrlpts[0] = rs.ctrlpts[0] + cpM.x * (minCpASrcDist - startACpDist);
+            rs.ctrlpts[1] = rs.ctrlpts[1] + cpM.y * (minCpASrcDist - startACpDist);
           } else {
-            rs.ctrlpts[0] = srcCtrlPtIntn[0] + cpM.x * minCpADist;
-            rs.ctrlpts[1] = srcCtrlPtIntn[1] + cpM.y * minCpADist;
+            rs.ctrlpts[0] = srcCtrlPtIntn[0] + cpM.x * minCpASrcDist;
+            rs.ctrlpts[1] = srcCtrlPtIntn[1] + cpM.y * minCpASrcDist;
           }
         }
+        var endACpDist = dist({
+          x: rs.ctrlpts[0],
+          y: rs.ctrlpts[1]
+        }, {
+          x: rs.endX,
+          y: rs.endY
+        });
+        var closeEndACp = endACpDist < minCpATgtDist;
         if (badEnd || badAEnd || closeEndACp) {
           overlapping = true;
           var _cpD = {
@@ -186860,11 +187166,11 @@ var init_cytoscape_esm = __esm({
           };
           var tgtCtrlPtIntn = tgtShape.intersectLine(tgtPos.x, tgtPos.y, tgtW, tgtH, _cpProj.x, _cpProj.y, 0, tgtCornerRadius, tgtRs);
           if (closeEndACp) {
-            rs.ctrlpts[0] = rs.ctrlpts[0] + _cpM.x * (minCpADist - endACpDist);
-            rs.ctrlpts[1] = rs.ctrlpts[1] + _cpM.y * (minCpADist - endACpDist);
+            rs.ctrlpts[0] = rs.ctrlpts[0] + _cpM.x * (minCpATgtDist - endACpDist);
+            rs.ctrlpts[1] = rs.ctrlpts[1] + _cpM.y * (minCpATgtDist - endACpDist);
           } else {
-            rs.ctrlpts[0] = tgtCtrlPtIntn[0] + _cpM.x * minCpADist;
-            rs.ctrlpts[1] = tgtCtrlPtIntn[1] + _cpM.y * minCpADist;
+            rs.ctrlpts[0] = tgtCtrlPtIntn[0] + _cpM.x * minCpATgtDist;
+            rs.ctrlpts[1] = tgtCtrlPtIntn[1] + _cpM.y * minCpATgtDist;
           }
         }
         if (overlapping) {
@@ -187350,8 +187656,8 @@ var init_cytoscape_esm = __esm({
           }
         }
       }
-      var arrowEnd = shortenIntersection(intersect3, p1, r2.arrowShapes[tgtArShape].spacing(edge) + tgtDist);
-      var edgeEnd = shortenIntersection(intersect3, p1, r2.arrowShapes[tgtArShape].gap(edge) + tgtDist);
+      var arrowEnd = shortenIntersection(intersect3, p1, r2.arrowShapes[tgtArShape].spacing(edge, "target") + tgtDist);
+      var edgeEnd = shortenIntersection(intersect3, p1, r2.arrowShapes[tgtArShape].gap(edge, "target") + tgtDist);
       rs.endX = edgeEnd[0];
       rs.endY = edgeEnd[1];
       rs.arrowEndX = arrowEnd[0];
@@ -187413,8 +187719,8 @@ var init_cytoscape_esm = __esm({
           }
         }
       }
-      var arrowStart = shortenIntersection(intersect3, p22, r2.arrowShapes[srcArShape].spacing(edge) + srcDist);
-      var edgeStart = shortenIntersection(intersect3, p22, r2.arrowShapes[srcArShape].gap(edge) + srcDist);
+      var arrowStart = shortenIntersection(intersect3, p22, r2.arrowShapes[srcArShape].spacing(edge, "source") + srcDist);
+      var edgeStart = shortenIntersection(intersect3, p22, r2.arrowShapes[srcArShape].gap(edge, "source") + srcDist);
       rs.startX = edgeStart[0];
       rs.startY = edgeStart[1];
       rs.arrowStartX = arrowStart[0];
@@ -187490,7 +187796,18 @@ var init_cytoscape_esm = __esm({
           y: hpts[3]
         }];
       }
-      _p.rstyle.arrowWidth = this.getArrowWidth(edge.pstyle("width").pfValue, edge.pstyle("arrow-scale").value) * this.arrowShapeWidth;
+      var edgeWidth = edge.pstyle("width").pfValue;
+      var arrowWidths = _p.rstyle.arrowWidths = _p.rstyle.arrowWidths || {};
+      var maxScale = 0;
+      for (var _i6 = 0; _i6 < arrowPrefixes.length; _i6++) {
+        var prefix = arrowPrefixes[_i6];
+        var scale3 = getArrowScale(edge, prefix);
+        arrowWidths[prefix] = this.getArrowWidth(edgeWidth, scale3) * this.arrowShapeWidth;
+        if (scale3 > maxScale) {
+          maxScale = scale3;
+        }
+      }
+      _p.rstyle.arrowWidth = this.getArrowWidth(edgeWidth, maxScale) * this.arrowShapeWidth;
     };
     BRp$a.recalculateEdgeProjections = function(edges3) {
       this.findEdgeControlPoints(edges3);
@@ -189017,6 +189334,11 @@ var init_cytoscape_esm = __esm({
       var wheelDeltaN = 4;
       var inaccurateScrollDevice;
       var inaccurateScrollFactor = 1e5;
+      var sampledScrollFactor;
+      var wheelFactorMaxReduction = 4;
+      var wheelNotchMaxReduction = 8;
+      var wheelSmallDeltaMax = 15;
+      var unconfirmedMagnitude = null;
       var allAreSameMagnitude = function allAreSameMagnitude2(list) {
         var firstMag = Math.abs(list[0]);
         for (var i4 = 1; i4 < list.length; i4++) {
@@ -189053,14 +189375,34 @@ var init_cytoscape_esm = __esm({
               if (factor > 1) {
                 inaccurateScrollDevice = true;
                 inaccurateScrollFactor = factor;
+                sampledScrollFactor = factor;
               }
             }
           } else {
             wheelDeltas.push(Math.abs(delta));
             clamp3 = true;
           }
-        } else if (inaccurateScrollDevice) {
-          inaccurateScrollFactor = Math.min(Math.abs(delta), inaccurateScrollFactor);
+        }
+        var isWheelNotch = false;
+        if (inaccurateScrollDevice) {
+          var magnitude = Math.abs(delta);
+          isWheelNotch = isIntegerMultiple(magnitude, inaccurateScrollFactor);
+          if (isWheelNotch) ;
+          else if (magnitude < Math.min(sampledScrollFactor / wheelNotchMaxReduction, wheelSmallDeltaMax)) {
+            unconfirmedMagnitude = null;
+          } else if (!integer(magnitude) && isIntegerMultiple(inaccurateScrollFactor, magnitude)) {
+            inaccurateScrollFactor = magnitude;
+            unconfirmedMagnitude = null;
+            isWheelNotch = true;
+          } else if (magnitude === unconfirmedMagnitude) {
+            var commonFactor = gcdMultipleZeroIfNonInt([inaccurateScrollFactor, magnitude]);
+            inaccurateScrollFactor = commonFactor * wheelFactorMaxReduction >= sampledScrollFactor ? commonFactor : magnitude;
+            unconfirmedMagnitude = null;
+            isWheelNotch = true;
+          } else {
+            unconfirmedMagnitude = magnitude;
+            clamp3 = integer(magnitude) || magnitude > inaccurateScrollFactor;
+          }
         }
         if (r2.scrollingPage) {
           return;
@@ -189088,7 +189430,7 @@ var init_cytoscape_esm = __esm({
             delta = signum(delta) * 5;
           }
           diff2 = delta / -250;
-          if (inaccurateScrollDevice) {
+          if (isWheelNotch) {
             diff2 /= inaccurateScrollFactor;
             diff2 *= 3;
           }
@@ -190380,6 +190722,7 @@ var init_cytoscape_esm = __esm({
         }
         if (cy.batching()) ;
         else if (r2.requestedFrame && !r2.skipFrame) {
+          r2.requestedFrame = false;
           beforeRenderCallbacks(r2, true, requestTime);
           var startTime = performanceNow();
           r2.render(r2.renderOptions);
@@ -190398,7 +190741,6 @@ var init_cytoscape_esm = __esm({
           r2.redrawTotalTime += duration;
           r2.lastRedrawTime = duration;
           r2.averageRedrawTime = r2.averageRedrawTime / 2 + duration / 2;
-          r2.requestedFrame = false;
         } else {
           beforeRenderCallbacks(r2, false, requestTime);
         }
@@ -191863,7 +192205,7 @@ var init_cytoscape_esm = __esm({
         context.lineWidth = edgeWidth + lineOutlineWidth;
         context.lineCap = lineCap;
         if (lineOutlineWidth > 0) {
-          r2.colorStrokeStyle(context, lineOutlineColor[0], lineOutlineColor[1], lineOutlineColor[2], strokeOpacity);
+          r2.colorStrokeStyle(context, lineOutlineColor, strokeOpacity);
         } else {
           context.lineCap = "butt";
           return;
@@ -191922,6 +192264,7 @@ var init_cytoscape_esm = __esm({
         throw new Error("Invalid state");
       }
       return function(context, edge) {
+        var _edge$pstyle;
         if (!edge.visible()) {
           return;
         }
@@ -191934,14 +192277,25 @@ var init_cytoscape_esm = __esm({
         var rs = edge._private.rscratch;
         var padding = edge.pstyle("".concat(overlayOrUnderlay, "-padding")).pfValue;
         var width3 = 2 * padding;
-        var color2 = edge.pstyle("".concat(overlayOrUnderlay, "-color")).value;
         context.lineWidth = width3;
         if (rs.edgeType === "self" && !usePaths) {
           context.lineCap = "butt";
         } else {
           context.lineCap = "round";
         }
-        r2.colorStrokeStyle(context, color2[0], color2[1], color2[2], opacity);
+        var fillStyle = (_edge$pstyle = edge.pstyle("".concat(overlayOrUnderlay, "-fill"))) === null || _edge$pstyle === void 0 ? void 0 : _edge$pstyle.value;
+        if (fillStyle === "linear-gradient" || fillStyle === "radial-gradient") {
+          var gradient = r2.createGradientStyleFor(context, overlayOrUnderlay, edge, fillStyle, opacity);
+          if (gradient) {
+            context.strokeStyle = gradient;
+          } else {
+            var color2 = edge.pstyle("".concat(overlayOrUnderlay, "-color")).value;
+            r2.colorStrokeStyle(context, color2, opacity);
+          }
+        } else {
+          var _color = edge.pstyle("".concat(overlayOrUnderlay, "-color")).value;
+          r2.colorStrokeStyle(context, _color, opacity);
+        }
         r2.drawEdgePath(edge, context, rs.allpts, "solid");
       };
     };
@@ -192083,17 +192437,17 @@ var init_cytoscape_esm = __esm({
       var gco = context.globalCompositeOperation;
       if (opacity !== 1 || arrowFill === "hollow") {
         context.globalCompositeOperation = "destination-out";
-        self2.colorFillStyle(context, 255, 255, 255, 1);
-        self2.colorStrokeStyle(context, 255, 255, 255, 1);
-        self2.drawArrowShape(edge, context, arrowClearFill, edgeWidth, arrowShape, arrowWidth, x6, y6, angle2);
+        self2.colorFillStyle(context, [255, 255, 255], 1);
+        self2.colorStrokeStyle(context, [255, 255, 255], 1);
+        self2.drawArrowShape(edge, context, arrowClearFill, edgeWidth, arrowShape, arrowWidth, x6, y6, angle2, prefix);
         context.globalCompositeOperation = gco;
       }
       var color2 = edge.pstyle(prefix + "-arrow-color").value;
-      self2.colorFillStyle(context, color2[0], color2[1], color2[2], opacity);
-      self2.colorStrokeStyle(context, color2[0], color2[1], color2[2], opacity);
-      self2.drawArrowShape(edge, context, arrowFill, edgeWidth, arrowShape, arrowWidth, x6, y6, angle2);
+      self2.colorFillStyle(context, color2, opacity);
+      self2.colorStrokeStyle(context, color2, opacity);
+      self2.drawArrowShape(edge, context, arrowFill, edgeWidth, arrowShape, arrowWidth, x6, y6, angle2, prefix);
     };
-    CRp$9.drawArrowShape = function(edge, context, fill, edgeWidth, shape, shapeWidth, x6, y6, angle2) {
+    CRp$9.drawArrowShape = function(edge, context, fill, edgeWidth, shape, shapeWidth, x6, y6, angle2, prefix) {
       var r2 = this;
       var usePaths = this.usePaths() && shape !== "triangle-cross";
       var pathCacheHit = false;
@@ -192103,9 +192457,9 @@ var init_cytoscape_esm = __esm({
         x: x6,
         y: y6
       };
-      var scale3 = edge.pstyle("arrow-scale").value;
-      var size4 = this.getArrowWidth(edgeWidth, scale3);
       var shapeImpl = r2.arrowShapes[shape];
+      var scale3 = getArrowScale(edge, prefix);
+      var size4 = this.getArrowWidth(edgeWidth, scale3);
       if (usePaths) {
         var cache3 = r2.arrowPathCache = r2.arrowPathCache || [];
         var key = hashString2(shape);
@@ -192395,8 +192749,8 @@ var init_cytoscape_esm = __esm({
       var outlineColor = ele.pstyle("text-outline-color").value;
       context.font = labelStyle + " " + labelWeight + " " + labelSize + " " + labelFamily;
       context.lineJoin = "round";
-      this.colorFillStyle(context, color2[0], color2[1], color2[2], opacity);
-      this.colorStrokeStyle(context, outlineColor[0], outlineColor[1], outlineColor[2], outlineOpacity);
+      this.colorFillStyle(context, color2, opacity);
+      this.colorStrokeStyle(context, outlineColor, outlineOpacity);
     };
     CRp$7.getTextAngle = function(ele, prefix) {
       var theta;
@@ -192503,10 +192857,10 @@ var init_cytoscape_esm = __esm({
           var bgW = textW + 2 * backgroundPadding;
           var bgH = textH + 2 * backgroundPadding;
           if (doFill) {
-            context.fillStyle = "rgba(".concat(textBackgroundColor[0], ",").concat(textBackgroundColor[1], ",").concat(textBackgroundColor[2], ",").concat(backgroundOpacity * parentOpacity, ")");
+            this.colorFillStyle(context, textBackgroundColor, backgroundOpacity * parentOpacity);
           }
           if (doStroke) {
-            context.strokeStyle = "rgba(".concat(textBorderColor[0], ",").concat(textBorderColor[1], ",").concat(textBorderColor[2], ",").concat(borderOpacity * parentOpacity, ")");
+            this.colorStrokeStyle(context, textBorderColor, borderOpacity * parentOpacity);
             context.lineWidth = textBorderWidth;
             if (context.setLineDash) {
               switch (textBorderStyle) {
@@ -192681,11 +193035,11 @@ var init_cytoscape_esm = __esm({
       };
       var setupBorderColor = function setupBorderColor2() {
         var bdrOpy = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : borderOpacity;
-        r2.colorStrokeStyle(context, borderColor[0], borderColor[1], borderColor[2], bdrOpy);
+        r2.colorStrokeStyle(context, borderColor, bdrOpy);
       };
       var setupOutlineColor = function setupOutlineColor2() {
         var otlnOpy = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : outlineOpacity;
-        r2.colorStrokeStyle(context, outlineColor[0], outlineColor[1], outlineColor[2], otlnOpy);
+        r2.colorStrokeStyle(context, outlineColor, otlnOpy);
       };
       var getPath = function getPath2(width3, height2, shape, points) {
         var pathCache = r2.nodePathCache = r2.nodePathCache || [];
@@ -192737,6 +193091,9 @@ var init_cytoscape_esm = __esm({
         var prevBging = _p.backgrounding;
         var totalCompleted = 0;
         for (var _i6 = 0; _i6 < image.length; _i6++) {
+          if (!urlDefined[_i6]) {
+            continue;
+          }
           var bgContainment = node2.cy().style().getIndexedStyle(node2, "background-image-containment", "value", _i6);
           if (inside && bgContainment === "over" || !inside && bgContainment === "inside") {
             totalCompleted++;
@@ -192789,7 +193146,7 @@ var init_cytoscape_esm = __esm({
         var opacity = (darkness > 0 ? darkness : -darkness) * darkenOpacity;
         var c4 = darkness > 0 ? 0 : 255;
         if (darkness !== 0) {
-          r2.colorFillStyle(context, c4, c4, c4, opacity);
+          r2.colorFillStyle(context, [c4, c4, c4], opacity);
           if (usePaths) {
             context.fill(path4);
           } else {
@@ -193053,17 +193410,29 @@ var init_cytoscape_esm = __esm({
         }
         var padding = node2.pstyle("".concat(overlayOrUnderlay, "-padding")).pfValue;
         var opacity = node2.pstyle("".concat(overlayOrUnderlay, "-opacity")).value;
-        var color2 = node2.pstyle("".concat(overlayOrUnderlay, "-color")).value;
         var shape = node2.pstyle("".concat(overlayOrUnderlay, "-shape")).value;
         var radius2 = node2.pstyle("".concat(overlayOrUnderlay, "-corner-radius")).value;
         if (opacity > 0) {
+          var _node$pstyle;
           pos = pos || node2.position();
           if (nodeWidth == null || nodeHeight == null) {
             var _padding = node2.padding();
             nodeWidth = node2.width() + 2 * _padding;
             nodeHeight = node2.height() + 2 * _padding;
           }
-          r2.colorFillStyle(context, color2[0], color2[1], color2[2], opacity);
+          var fillStyle = (_node$pstyle = node2.pstyle("".concat(overlayOrUnderlay, "-fill"))) === null || _node$pstyle === void 0 ? void 0 : _node$pstyle.value;
+          if (fillStyle === "linear-gradient" || fillStyle === "radial-gradient") {
+            var gradient = r2.createGradientStyleFor(context, overlayOrUnderlay, node2, fillStyle, opacity);
+            if (gradient) {
+              context.fillStyle = gradient;
+            } else {
+              var color2 = node2.pstyle("".concat(overlayOrUnderlay, "-color")).value;
+              r2.colorFillStyle(context, color2, opacity);
+            }
+          } else {
+            var _color = node2.pstyle("".concat(overlayOrUnderlay, "-color")).value;
+            r2.colorFillStyle(context, _color, opacity);
+          }
           r2.nodeShapes[shape].draw(context, pos.x, pos.y, nodeWidth + padding * 2, nodeHeight + padding * 2, radius2);
           context.fill();
         }
@@ -193137,7 +193506,7 @@ var init_cytoscape_esm = __esm({
           context.arc(x6, y6, holeRadius, angleEnd, angleStart, true);
           context.closePath();
         }
-        this.colorFillStyle(context, color2[0], color2[1], color2[2], opacity);
+        this.colorFillStyle(context, color2, opacity);
         context.fill();
         lastPercent += percent;
       }
@@ -193192,7 +193561,7 @@ var init_cytoscape_esm = __esm({
         context.beginPath();
         context.rect(x6, y6 + stripeH * lastPercent, stripeW, stripeH * percent);
         context.closePath();
-        this.colorFillStyle(context, color2[0], color2[1], color2[2], opacity);
+        this.colorFillStyle(context, color2, opacity);
         context.fill();
         lastPercent += percent;
       }
@@ -193200,6 +193569,12 @@ var init_cytoscape_esm = __esm({
     };
     CRp$5 = {};
     motionBlurDelay = 100;
+    colorAlpha = function colorAlpha2(color2) {
+      return color2[3] == null ? 1 : color2[3];
+    };
+    effectiveAlpha = function effectiveAlpha2(color2, opacity) {
+      return colorAlpha(color2) * opacity;
+    };
     CRp$5.getPixelRatio = function() {
       var context = this.data.contexts[0];
       if (this.forcedPixelRatio != null) {
@@ -193239,7 +193614,7 @@ var init_cytoscape_esm = __esm({
           var d22 = dist(end, mid);
           gradientStyle = context.createRadialGradient(mid.x, mid.y, 0, mid.x, mid.y, Math.max(d1, d22));
         } else {
-          var pos = usePaths ? {
+          var pos = usePaths && shapeStyleName === "background" ? {
             x: 0,
             y: 0
           } : ele.position(), width3 = ele.paddedWidth(), height2 = ele.paddedHeight();
@@ -193250,11 +193625,11 @@ var init_cytoscape_esm = __esm({
           var _start = ele.sourceEndpoint(), _end = ele.targetEndpoint();
           gradientStyle = context.createLinearGradient(_start.x, _start.y, _end.x, _end.y);
         } else {
-          var _pos = usePaths ? {
+          var _pos = usePaths && shapeStyleName === "background" ? {
             x: 0,
             y: 0
           } : ele.position(), _width = ele.paddedWidth(), _height = ele.paddedHeight(), halfWidth = _width / 2, halfHeight = _height / 2;
-          var direction2 = ele.pstyle("background-gradient-direction").value;
+          var direction2 = ele.pstyle(shapeStyleName + "-gradient-direction").value;
           switch (direction2) {
             case "to-bottom":
               gradientStyle = context.createLinearGradient(_pos.x, _pos.y - halfHeight, _pos.x, _pos.y + halfHeight);
@@ -193291,7 +193666,8 @@ var init_cytoscape_esm = __esm({
       var hasPositions = positions2.length === colors3.length;
       var length2 = colors3.length;
       for (var i4 = 0; i4 < length2; i4++) {
-        gradientStyle.addColorStop(hasPositions ? positions2[i4] : i4 / (length2 - 1), "rgba(" + colors3[i4][0] + "," + colors3[i4][1] + "," + colors3[i4][2] + "," + opacity + ")");
+        var stopAlpha = effectiveAlpha(colors3[i4], opacity);
+        gradientStyle.addColorStop(hasPositions ? positions2[i4] : i4 / (length2 - 1), "rgba(" + colors3[i4][0] + "," + colors3[i4][1] + "," + colors3[i4][2] + "," + stopAlpha + ")");
       }
       return gradientStyle;
     };
@@ -193300,8 +193676,8 @@ var init_cytoscape_esm = __esm({
       if (!gradientStyle) return null;
       context.fillStyle = gradientStyle;
     };
-    CRp$5.colorFillStyle = function(context, r2, g2, b11, a3) {
-      context.fillStyle = "rgba(" + r2 + "," + g2 + "," + b11 + "," + a3 + ")";
+    CRp$5.colorFillStyle = function(context, color2, opacity) {
+      context.fillStyle = "rgba(" + color2[0] + "," + color2[1] + "," + color2[2] + "," + effectiveAlpha(color2, opacity) + ")";
     };
     CRp$5.eleFillStyle = function(context, ele, opacity) {
       var backgroundFill = ele.pstyle("background-fill").value;
@@ -193309,7 +193685,7 @@ var init_cytoscape_esm = __esm({
         this.gradientFillStyle(context, ele, backgroundFill, opacity);
       } else {
         var backgroundColor = ele.pstyle("background-color").value;
-        this.colorFillStyle(context, backgroundColor[0], backgroundColor[1], backgroundColor[2], opacity);
+        this.colorFillStyle(context, backgroundColor, opacity);
       }
     };
     CRp$5.gradientStrokeStyle = function(context, ele, fill, opacity) {
@@ -193317,8 +193693,8 @@ var init_cytoscape_esm = __esm({
       if (!gradientStyle) return null;
       context.strokeStyle = gradientStyle;
     };
-    CRp$5.colorStrokeStyle = function(context, r2, g2, b11, a3) {
-      context.strokeStyle = "rgba(" + r2 + "," + g2 + "," + b11 + "," + a3 + ")";
+    CRp$5.colorStrokeStyle = function(context, color2, opacity) {
+      context.strokeStyle = "rgba(" + color2[0] + "," + color2[1] + "," + color2[2] + "," + effectiveAlpha(color2, opacity) + ")";
     };
     CRp$5.eleStrokeStyle = function(context, ele, opacity) {
       var lineFill = ele.pstyle("line-fill").value;
@@ -193326,7 +193702,7 @@ var init_cytoscape_esm = __esm({
         this.gradientStrokeStyle(context, ele, lineFill, opacity);
       } else {
         var lineColor = ele.pstyle("line-color").value;
-        this.colorStrokeStyle(context, lineColor[0], lineColor[1], lineColor[2], opacity);
+        this.colorStrokeStyle(context, lineColor, opacity);
       }
     };
     CRp$5.matchCanvasSize = function(container2) {
@@ -193474,7 +193850,7 @@ var init_cytoscape_esm = __esm({
       function mbclear(context2, x6, y6, w4, h2) {
         var gco = context2.globalCompositeOperation;
         context2.globalCompositeOperation = "destination-out";
-        r2.colorFillStyle(context2, 255, 255, 255, r2.motionBlurTransparency);
+        r2.colorFillStyle(context2, [255, 255, 255], r2.motionBlurTransparency);
         context2.fillRect(x6, y6, w4, h2);
         context2.globalCompositeOperation = gco;
       }
@@ -193552,7 +193928,7 @@ var init_cytoscape_esm = __esm({
         }
         var outsideBgColor = style4.core("outside-texture-bg-color").value;
         var outsideBgOpacity = style4.core("outside-texture-bg-opacity").value;
-        r2.colorFillStyle(context, outsideBgColor[0], outsideBgColor[1], outsideBgColor[2], outsideBgOpacity);
+        r2.colorFillStyle(context, outsideBgColor, outsideBgOpacity);
         context.fillRect(0, 0, vp.width, vp.height);
         var zoom3 = cy.zoom();
         setContextTransform2(context, false);
@@ -194930,7 +195306,7 @@ var init_cytoscape_esm = __esm({
           var lineOpacity = edge.pstyle("line-opacity").value;
           var opacity = baseOpacity * lineOpacity;
           var lineWidth = edge.pstyle("width").pfValue;
-          var scale$1 = edge.pstyle("arrow-scale").value;
+          var scale$1 = getArrowScale(edge, prefix);
           var size4 = this.r.getArrowWidth(lineWidth, scale$1);
           var instance2 = this.instanceCount;
           var transform8 = this.transformBuffer.getMatrixView(instance2);
@@ -195738,7 +196114,7 @@ var init_cytoscape_esm = __esm({
       }
       return style4;
     };
-    version2 = "3.34.4";
+    version2 = "3.35.0";
     cytoscape2 = function cytoscape3(options2) {
       if (options2 === void 0) {
         options2 = {};
@@ -302217,7 +302593,7 @@ export {
   (*! Bundled license information:
   
   dompurify/dist/purify.es.mjs:
-    (*! @license DOMPurify 3.4.17 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.17/LICENSE *)
+    (*! @license DOMPurify 3.4.18 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.18/LICENSE *)
     (*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE *)
   
   lodash-es/lodash.js:
@@ -302244,7 +302620,8 @@ export {
     https://tldrlegal.com/license/mit-license
     https://github.com/jquery/jquery/blob/master/src/event.js
     *)
-    (*! Bezier curve function generator. Copyright Gaetan Renaudeau. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
+    (*! Bezier curve function generator. Copyright 2014-2026 Gaetan Renaudeau. MIT License: http://en.wikipedia.org/wiki/MIT_License
+     * https://github.com/gre/bezier-easing *)
     (*! Runge-Kutta spring physics function generator. Adapted from Framer.js, copyright Koen Bok. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
   
   mermaid/dist/mermaid.core.mjs:
