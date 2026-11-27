@@ -3,6 +3,7 @@ import { defineComponent, nextTick } from "vue";
 import * as logic from "@fkui/logic";
 import { type VueWrapper, flushPromises, mount } from "@vue/test-utils";
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { FSortFilterDataset } from "../FSortFilterDataset";
 import { FTableButton } from "../FTableButton";
 import FCrudDataset from "./FCrudDataset.vue";
 
@@ -668,5 +669,142 @@ describe("html-validate", () => {
             </f-crud-dataset>
         `;
         await expect(markup).toBeValid();
+    });
+});
+
+describe("with FSortFilterDataset", () => {
+    interface Fruit {
+        id: number;
+        name: string;
+    }
+
+    function createSortFilterWrapper(): VueWrapper {
+        return mount(
+            defineComponent({
+                components: { FCrudDataset, FSortFilterDataset },
+                data() {
+                    return {
+                        items: [
+                            { id: 1, name: "banana" },
+                            { id: 2, name: "apple" },
+                            { id: 3, name: "bandana" },
+                        ] as Fruit[],
+                    };
+                },
+                methods: {
+                    onCreate(commit: (item: Fruit) => void): void {
+                        commit({ id: 4, name: "kiwi" });
+                    },
+                    onUpdate(item: Fruit, commit: (item: Fruit) => void): void {
+                        commit({ ...item, name: `${item.name}!` });
+                    },
+                    onDelete(_item: Fruit, commit: () => void): void {
+                        commit();
+                    },
+                },
+                template: /* HTML */ `
+                    <f-crud-dataset
+                        v-model="items"
+                        :on-create
+                        :on-update
+                        :on-delete
+                    >
+                        <template #default="{ updateItem, deleteItem }">
+                            <f-sort-filter-dataset
+                                :data="items"
+                                show-filter
+                                show-sort
+                                :sortable-attributes="{ name: 'Namn' }"
+                            >
+                                <template #default="{ sortFilterResult }">
+                                    <ul>
+                                        <li
+                                            v-for="item in sortFilterResult"
+                                            :key="item.id"
+                                        >
+                                            {{ item.name }}
+                                            <button
+                                                :id="'modify-' + item.id"
+                                                type="button"
+                                                @click="updateItem(item)"
+                                            >
+                                                Ändra
+                                            </button>
+                                            <button
+                                                :id="'delete-' + item.id"
+                                                type="button"
+                                                @click="deleteItem(item)"
+                                            >
+                                                Ta bort
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </template>
+                            </f-sort-filter-dataset>
+                        </template>
+                    </f-crud-dataset>
+                `,
+            }),
+        );
+    }
+
+    async function filterAndSort(wrapper: VueWrapper): Promise<void> {
+        /* "Namn (fallande)" */
+        await wrapper
+            .get(".sort-filter-dataset__sort option:nth-child(3)")
+            .setValue();
+        await wrapper
+            .find(".sort-filter-dataset__search input")
+            .setValue("ban");
+        await flushPromises();
+    }
+
+    function searchString(wrapper: VueWrapper): string {
+        return wrapper.get<HTMLInputElement>(
+            ".sort-filter-dataset__search input",
+        ).element.value;
+    }
+
+    function names(wrapper: VueWrapper): string[] {
+        return wrapper.findAll("li").map((it) => it.text().split(" ", 1)[0]);
+    }
+
+    it("should keep search and row order when an item is created", async () => {
+        expect.assertions(3);
+        const wrapper = createSortFilterWrapper();
+        await filterAndSort(wrapper);
+        expect(names(wrapper)).toEqual(["bandana", "banana"]);
+
+        await wrapper
+            .get("[data-test='f-crud-dataset-add-button']")
+            .trigger("click");
+        await flushPromises();
+
+        expect(searchString(wrapper)).toBe("ban");
+        expect(names(wrapper)).toEqual(["bandana", "banana", "kiwi"]);
+    });
+
+    it("should keep search and row order when an item is modified", async () => {
+        expect.assertions(2);
+        const wrapper = createSortFilterWrapper();
+        await filterAndSort(wrapper);
+
+        await wrapper.get("#modify-1").trigger("click");
+        await flushPromises();
+
+        expect(searchString(wrapper)).toBe("ban");
+        expect(names(wrapper)).toEqual(["bandana", "banana!"]);
+    });
+
+    it("should keep search and row order when an item is removed", async () => {
+        expect.assertions(2);
+        const wrapper = createSortFilterWrapper();
+        await filterAndSort(wrapper);
+
+        await wrapper.get("#delete-3").trigger("click");
+        await flushPromises();
+
+        expect(searchString(wrapper)).toBe("ban");
+        expect(names(wrapper)).toEqual(["banana"]);
     });
 });

@@ -1,6 +1,9 @@
 import { nextTick, ref } from "vue";
 import { describe, expect, it, vi } from "vitest";
-import { useSortFilterDataset } from "./use-sort-filter-dataset";
+import {
+    isEditedDataset,
+    useSortFilterDataset,
+} from "./use-sort-filter-dataset";
 
 it("should output filtered rows directly", () => {
     expect.assertions(1);
@@ -346,5 +349,169 @@ describe("filtered data after replacement of input data", () => {
                 foo: "replaced",
             },
         ]);
+    });
+});
+
+describe("filtered data after immutable editing of input data", () => {
+    it("should have new rows at the end of array", async () => {
+        expect.assertions(2);
+        const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
+        const onLazyRowsAdded = vi.fn();
+
+        const { sortFilterResult } = useSortFilterDataset(
+            data,
+            { foo: "foo" },
+            [],
+            "foo",
+            true,
+            { onLazyRowsAdded },
+        );
+
+        data.value = [...data.value, { foo: "barbaz" }];
+        await nextTick();
+
+        expect(sortFilterResult.value).toMatchObject([
+            { foo: "bar" },
+            { foo: "baz" },
+            { foo: "foo" },
+            { foo: "barbaz" },
+        ]);
+        expect(onLazyRowsAdded).toHaveBeenCalledTimes(1);
+    });
+
+    it("should not contain removed rows", async () => {
+        expect.assertions(1);
+        const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
+
+        const { sortFilterResult } = useSortFilterDataset(
+            data,
+            { foo: "foo" },
+            [],
+            "foo",
+            true,
+        );
+
+        data.value = data.value.filter((it) => it.foo !== "baz");
+        await nextTick();
+
+        expect(sortFilterResult.value).toMatchObject([
+            { foo: "bar" },
+            { foo: "foo" },
+        ]);
+    });
+
+    it("should not be resorted when a row is modified", async () => {
+        expect.assertions(1);
+        const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
+
+        const { sortFilterResult } = useSortFilterDataset(
+            data,
+            { foo: "foo" },
+            [],
+            "foo",
+            true,
+        );
+
+        data.value[0].foo = "alpha";
+        data.value = [...data.value];
+        await nextTick();
+
+        expect(sortFilterResult.value).toMatchObject([
+            { foo: "bar" },
+            { foo: "baz" },
+            { foo: "alpha" },
+        ]);
+    });
+
+    it("should keep search string and not call onFilter", async () => {
+        expect.assertions(3);
+        const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
+        const onFilter = vi.fn();
+
+        const { sortFilterResult, searchString } = useSortFilterDataset(
+            data,
+            { foo: "foo" },
+            ["foo"],
+            "foo",
+            true,
+            { onFilter },
+        );
+
+        searchString.value = "b";
+        await nextTick();
+        onFilter.mockClear();
+
+        data.value = [...data.value, { foo: "lorem" }];
+        await nextTick();
+
+        expect(searchString.value).toBe("b");
+        expect(sortFilterResult.value).toMatchObject([
+            { foo: "bar" },
+            { foo: "baz" },
+            { foo: "lorem" },
+        ]);
+        expect(onFilter).not.toHaveBeenCalled();
+    });
+
+    it("should be resorted when data is replaced with new rows", async () => {
+        expect.assertions(1);
+        const data = ref([{ foo: "foo" }]);
+
+        const { sortFilterResult } = useSortFilterDataset(
+            data,
+            { foo: "foo" },
+            [],
+            "foo",
+            true,
+        );
+
+        data.value = [];
+        await nextTick();
+        data.value = [{ foo: "zzz" }, { foo: "aaa" }];
+        await nextTick();
+
+        expect(sortFilterResult.value).toMatchObject([
+            { foo: "aaa" },
+            { foo: "zzz" },
+        ]);
+    });
+});
+
+describe("isEditedDataset()", () => {
+    const a = { id: 1 };
+    const b = { id: 2 };
+    const c = { id: 3 };
+
+    it("should return false for initial data", () => {
+        expect.assertions(1);
+        expect(isEditedDataset([a], undefined)).toBeFalsy();
+    });
+
+    it("should return false when previous data was empty", () => {
+        expect.assertions(1);
+        expect(isEditedDataset([a], [])).toBeFalsy();
+    });
+
+    it("should return false when no rows are kept", () => {
+        expect.assertions(1);
+        expect(isEditedDataset([c], [a, b])).toBeFalsy();
+    });
+
+    it("should return true when at least one row is kept", () => {
+        expect.assertions(3);
+        expect(isEditedDataset([a, b, c], [a, b])).toBeTruthy();
+        expect(isEditedDataset([b], [a, b])).toBeTruthy();
+        expect(isEditedDataset([c, a], [a, b])).toBeTruthy();
+    });
+
+    it("should return false when all rows are removed", () => {
+        expect.assertions(1);
+        expect(isEditedDataset([], [a, b])).toBeFalsy();
+    });
+
+    it("should compare raw objects", () => {
+        expect.assertions(1);
+        const reactiveA = ref(a).value;
+        expect(isEditedDataset([reactiveA], [a])).toBeTruthy();
     });
 });

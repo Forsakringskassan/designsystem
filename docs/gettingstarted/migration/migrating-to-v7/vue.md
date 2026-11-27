@@ -423,6 +423,38 @@ Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas ore
 
 :::
 
+### Ny lista med befintliga rader räknas som redigering
+
+Tidigare sorterades och filtrerades listan om varje gång `data` sattes till en ny lista.
+Nu räknas en ny lista som innehåller någon av de tidigare raderna som en redigering, på samma sätt som när raderna ändras direkt i listan:
+
+- Nya rader läggs till sist i stället för att sorteras in.
+- Raderna filtreras inte om.
+- Sökningen och markerade rader i tabellen behålls, tidigare tömdes de.
+- Sorteringslistan återställs till "Välj" eftersom listan inte längre är sorterad.
+
+Det gäller till exempel uppdateringar från {@link FCrudDataset datamängdredigeraren}.
+
+Om den nya listan inte innehåller någon av de tidigare raderna, till exempel när data hämtas på nytt från servern, sorteras och filtreras listan om som tidigare.
+
+I de flesta fall behöver du inte ändra något.
+Användaren sorterar om genom att välja sortering igen och filtrerar om genom att ändra sökningen.
+Om applikationen ändå måste sortera om direkt kan du ersätta listan med nya objekt, till exempel `items.value = items.value.map((it) => ({ ...it }))`.
+Då töms även sökningen och de markerade raderna.
+
+Läs mer om {@link FSortFilterDataset#redigering_av_innehall redigering av innehåll}.
+
+::: details 🤖 Prompt för AI Agenter
+
+Leta upp användningar av `FSortFilterDataset` där `data` sätts till en ny lista som innehåller befintliga rader, till exempel med spread, `filter()`, `map()` som returnerar samma objekt eller via `FCrudDataset`.
+Ändra ingenting om koden inte förutsätter att listan sorteras eller filtreras om, eller att sökningen töms, efter ändringen.
+Om koden förutsätter det, rapportera platsen till utvecklaren i stället för att ändra beteendet.
+
+Verifiera resultatet genom att bygga projektet och köra enhetstester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.
+
+:::
+
 ## `getLegacyInternalKey()`
 
 Använd `findItemIdentifier()` om objektet kan sakna en identifierare, eller `getItemIdentifier()` om identifieraren är garanterad att finnas, istället för att hämta ut nyckeln.

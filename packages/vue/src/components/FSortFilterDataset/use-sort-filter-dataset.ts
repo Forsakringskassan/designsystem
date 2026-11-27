@@ -3,6 +3,7 @@ import {
     type Ref,
     computed,
     ref,
+    toRaw,
     toValue,
     watch,
 } from "vue";
@@ -95,6 +96,26 @@ function sortFilterData<T extends object>(
         ascending: sortAttribute.ascending,
     });
     return sortedData;
+}
+
+/**
+ * Returns true if `newData` is an edited revision of `oldData` (rows added,
+ * removed or modified) rather than a completely new dataset, i.e. at least one
+ * row is kept. An empty dataset is always considered new.
+ *
+ * @internal
+ */
+export function isEditedDataset<T>(
+    newData: readonly T[],
+    oldData: readonly T[] | undefined,
+): boolean {
+    if (!oldData || oldData.length === 0 || newData.length === 0) {
+        return false;
+    }
+
+    const previous = new Set(oldData.map((it) => toRaw(it)));
+
+    return newData.some((it) => previous.has(toRaw(it)));
 }
 
 function noop(): void {
@@ -286,7 +307,11 @@ export function useSortFilterDataset<T extends object>(
     let datasetReplaced = false;
     watch(
         () => toValue(data),
-        () => {
+        (newData, oldData) => {
+            if (isEditedDataset(newData, oldData)) {
+                return;
+            }
+
             datasetReplaced = true;
             handleFullRecompute();
         },
