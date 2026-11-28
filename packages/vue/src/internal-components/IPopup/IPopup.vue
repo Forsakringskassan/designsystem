@@ -1,421 +1,414 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
-<script lang="ts">
-import { type PropType, defineComponent } from "vue";
-import { debounce, handleTab, popFocus, pushFocus } from "@fkui/logic";
+<script setup lang="ts">
+import { computed, nextTick, onUnmounted, ref, useTemplateRef, watch } from "vue";
+import { type StackHandle, debounce, handleTab, popFocus, pushFocus } from "@fkui/logic";
 import { config } from "../../config";
 import { type Point, getAbsolutePosition, getHTMLElementFromVueRef } from "../../utils";
 import { MIN_DESKTOP_WIDTH, POPUP_SPACING } from "./constants";
 import { getContainer } from "./get-container";
 import { getFocusableElement } from "./get-focusable-element";
 import { CandidateOrder, Placement, fitInsideArea, getElement, getScrollToPopup } from "./i-popup-utils";
-import { type IPopupData } from "./ipopup-data";
 import { isTeleportDisabled } from "./is-teleport-disabled";
 
-export default defineComponent({
-    name: "IPopup",
+const {
+    isOpen,
+    anchor: anchorProp = undefined,
+    inline = "auto",
+    anchorOverlap = "allow",
+    container = undefined,
+    viewport: viewportProp = document.documentElement,
+    keyboardTrap,
+    focus = false,
+} = defineProps<{
+    /**
+     * Toggle open/closed popup.
+     */
+    isOpen: boolean;
+
+    /**
+     * DOM element or element id to position popup at.
+     */
+    anchor?: HTMLElement | string | null | undefined;
+
+    /**
+     * Type of inline behaviour.
+     * - `"auto"` changes between overlay or inline depending on window size.
+     * - `"always"` forces the popup to always be inline.
+     * - `"never"` forces the popup to never be inline.
+     */
+    inline?: "always" | "never" | "auto";
+
+    /**
+     * Controls whether the popup may overlap its anchor.
+     * - `"allow"` allows placements that overlap the anchor.
+     * - `"never"` excludes placement candidates that overlap the anchor.
+     */
+    anchorOverlap?: "allow" | "never";
+
+    /**
+     * Which element to use as container.
+     */
+    container?: HTMLElement | null | undefined;
+
+    /**
+     * Which element to use as viewport.
+     */
+    viewport?: HTMLElement;
+
+    /**
+     * Prevents tabbing outside of component.
+     */
+    keyboardTrap?: boolean;
+
+    /**
+     * Automatically move focus when popup is opened.
+     *
+     * - When set to `true` it focuses on the first tabbable element.
+     * - When omitted or set to `false` focus management is disabled.
+     * - When set to a function it focuses on the returned element; `null` leaves focus unchanged.
+     *
+     * When an element is focused, the previous focus is restored when the popup closes.
+     */
+    focus?: (() => HTMLElement | null) | boolean;
+}>();
+
+const emit = defineEmits<{
+    /**
+     * Emitted when popup is visible and placement is fully calculated.
+     */
+    open: [];
+    /**
+     * Emitted when clicked outside of popup.
+     *
+     * Includes the reason for closing as event argument. One of:
+     *
+     * - `"click-outside"` - when clicking outside the popup with the mouse
+     * - `"escape"` - when closing the popup with the escape key.
+     */
+    close: [reason: "click-outside" | "escape"];
+}>();
+
+defineOptions({
     inheritAttrs: false,
-    props: {
-        /**
-         * Toggle open/closed popup.
-         */
-        isOpen: {
-            type: Boolean,
-            required: true,
-        },
-        /**
-         * DOM element or element id to position popup at.
-         */
-        anchor: {
-            type: [HTMLElement, String] as PropType<HTMLElement | string | null | undefined>,
-            required: false,
-            default: undefined,
-        },
-        /**
-         * Type of inline behaviour.
-         * - `"auto"` changes between overlay or inline depending on window size.
-         * - `"always"` forces the popup to always be inline.
-         * - `"never"` forces the popup to never be inline.
-         */
-        inline: {
-            type: String as PropType<"always" | "never" | "auto">,
-            required: false,
-            validator(value: string) {
-                // The value must match one of these strings
-                return ["always", "never", "auto"].includes(value);
-            },
-            default: "auto",
-        },
-        /**
-         * Controls whether the popup may overlap its anchor.
-         * - `"allow"` allows placements that overlap the anchor.
-         * - `"never"` excludes placement candidates that overlap the anchor.
-         */
-        anchorOverlap: {
-            type: String as PropType<"allow" | "never">,
-            required: false,
-            validator(value: string) {
-                return ["allow", "never"].includes(value);
-            },
-            default: "allow",
-        },
-        /**
-         * Which element to use as container.
-         */
-        container: {
-            type: HTMLElement as PropType<HTMLElement | null | undefined>,
-            required: false,
-            default: undefined,
-        },
-        /**
-         * Which element to use as viewport.
-         */
-        viewport: {
-            type: HTMLElement as PropType<HTMLElement>,
-            required: false,
-            default(): HTMLElement {
-                return document.documentElement;
-            },
-        },
-        /**
-         * Prevents tabbing outside of component.
-         */
-        keyboardTrap: {
-            type: Boolean,
-            required: false,
-        },
-        /**
-         * Automatically move focus when popup is opened.
-         *
-         * - When set to `true` it focuses on the first tabbable element.
-         * - When omitted or set to `false` focus management is disabled.
-         * - When set to a function it focuses on the returned element; `null` leaves focus unchanged.
-         *
-         * When an element is focused, the previous focus is restored when the popup closes.
-         */
-        focus: {
-            type: [Function, Boolean] as PropType<(() => HTMLElement | null) | boolean>,
-            required: false,
-            default: false,
-        },
-    },
-    emits: [
-        /**
-         * Emitted when popup is visible and placement is fully calculated.
-         */
-        "open",
-        /**
-         * Emitted when clicked outside of popup.
-         *
-         * Includes the reason for closing as event argument. One of:
-         *
-         * - `"click-outside"` - when clicking outside the popup with the mouse
-         * - `"escape"` - when closing the popup with the escape key.
-         */
-        "close",
-    ],
-    data(): IPopupData & { anchorOffset: Point | null } {
-        return {
-            teleportDisabled: false,
-            placement: Placement.NotCalculated,
-            focusHandle: null,
-            anchorOffset: null,
-        };
-    },
-    computed: {
-        popupClasses(): string[] {
-            const popupState = this.isInline ? ["popup--inline"] : ["popup--overlay"];
-            return ["popup", ...popupState];
-        },
-        isInline(): boolean {
-            let isInline = this.teleportDisabled || this.placement === Placement.Fallback;
+});
 
-            /* eslint-disable unicorn/no-duplicate-if-branches -- technical debt */
-            if (this.forceInline) {
-                isInline = true;
-            } else if (this.forceOverlay) {
-                isInline = false;
-            } else if (this.placement === Placement.NotCalculated && !this.isMobileSize()) {
-                // Overlay is required to get accurate results from placement calculation.
-                isInline = false;
-            }
-            /* eslint-enable unicorn/no-duplicate-if-branches */
+const teleportDisabled = ref(false);
+const placement = ref(Placement.NotCalculated);
+const focusHandle = ref<StackHandle | null>(null);
+const anchorOffset = ref<Point | null>(null);
+const popupRef = useTemplateRef("popup");
+const wrapperRef = useTemplateRef("wrapper");
 
-            return isInline;
-        },
-        forceInline(): boolean {
-            return this.inline === "always";
-        },
-        forceOverlay(): boolean {
-            return this.inline === "never";
-        },
-        teleportTarget() {
-            return config.teleportTarget;
-        },
-    },
-    watch: {
-        isOpen: {
-            immediate: true,
-            handler(value: boolean): void {
-                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-                this.toggleIsOpen(value);
-                if (value) {
-                    const { placement, forceInline, forceOverlay } = this;
-                    this.teleportDisabled = isTeleportDisabled({ window, placement, forceInline, forceOverlay });
+const onWindowResizeDebounced = debounce(onWindowResize, 100).bind(this);
+const onScrollDebounced = debounce(onScroll, 100).bind(this);
 
-                    // wait one tick so we dont get the click
-                    // that launches the popup (await nextTick doesnt work here)
-                    // eslint-disable-next-line unicorn/prefer-queue-microtask -- technical debt: microtask closes the popup on same click
-                    setTimeout(() => {
-                        // verify that it's still open
-                        if (!this.isOpen) {
-                            return;
-                        }
+const popupClasses = computed(() => {
+    const popupState = isInline.value ? ["popup--inline"] : ["popup--overlay"];
+    return ["popup", ...popupState];
+});
 
-                        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                        document.addEventListener("click", this.onDocumentClickHandler);
-                        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                        window.addEventListener("resize", this.onWindowResizeDebounced);
-                        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                        window.addEventListener("scroll", this.onScrollEvent, { capture: true });
-                    }, 0);
-                } else {
-                    /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                    document.removeEventListener("click", this.onDocumentClickHandler);
-                    /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                    window.removeEventListener("resize", this.onWindowResizeDebounced);
-                    /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                    window.removeEventListener("scroll", this.onScrollEvent, { capture: true });
-                }
-            },
-        },
-        anchorOverlap(): void {
-            if (this.isOpen && this.placement !== Placement.NotCalculated) {
-                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-                this.recalculatePlacement();
-            }
-        },
-    },
-    created() {
-        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-        this.onWindowResizeDebounced = debounce(this.onWindowResize, 100).bind(this);
-        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-        this.onScrollDebounced = debounce(this.onScroll, 100).bind(this);
-    },
-    unmounted() {
-        // Clean up if unmounted but still opened
-        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-        document.removeEventListener("click", this.onDocumentClickHandler);
-        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-        window.removeEventListener("resize", this.onWindowResizeDebounced);
-        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-        window.removeEventListener("scroll", this.onScrollEvent, { capture: true });
-    },
-    methods: {
-        async toggleIsOpen(isOpen: boolean): Promise<void> {
-            /* popup is closing */
-            if (!isOpen) {
-                this.placement = Placement.NotCalculated;
-                this.anchorOffset = null;
+const isInline = computed(() => {
+    let isInline = teleportDisabled.value || placement.value === Placement.Fallback;
 
-                /* restore focus */
-                if (this.focusHandle) {
-                    popFocus(this.focusHandle);
-                    this.focusHandle = null;
-                }
-                return;
-            }
+    /* eslint-disable unicorn/no-duplicate-if-branches -- technical debt */
+    if (forceInline.value) {
+        isInline = true;
+    } else if (forceOverlay.value) {
+        isInline = false;
+    } else if (placement.value === Placement.NotCalculated && !isMobileSize()) {
+        // Overlay is required to get accurate results from placement calculation.
+        isInline = false;
+    }
+    /* eslint-enable unicorn/no-duplicate-if-branches */
 
-            /* popup is opening */
-            // Wait for popup to show up
-            await this.$nextTick();
-            await this.calculatePlacement();
-            this.applyFocus();
-            this.$emit("open");
-        },
-        async calculatePlacement(options?: { horizontalOnly: boolean }): Promise<void> {
-            const popup = getHTMLElementFromVueRef(this.$refs.popup);
-            const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
-            const anchor = getElement(this.anchor);
+    return isInline;
+});
 
-            if (!anchor) {
-                throw new Error("No anchor element found");
-            }
+const forceInline = computed(() => {
+    return inline === "always";
+});
 
-            // Check candidates for overlay placement.
-            const shouldCheckCandidates = this.forceOverlay || !(this.isMobileSize() || this.forceInline);
-            if (shouldCheckCandidates) {
-                const area = getContainer(popup, this.container);
-                const viewport = this.viewport;
-                const result = fitInsideArea({
-                    area,
-                    anchor,
-                    target: wrapper,
-                    viewport,
-                    spacing: POPUP_SPACING,
-                    candidateOrder: CandidateOrder.Default,
-                    allowAnchorOverlap: this.anchorOverlap === "allow",
-                });
+const forceOverlay = computed(() => {
+    return inline === "never";
+});
 
-                this.placement = result.placement;
-                const useOverlay = this.forceOverlay || result.placement !== Placement.Fallback;
-                if (useOverlay) {
-                    wrapper.style.left = `${String(result.x)}px`;
-                    if (options?.horizontalOnly) {
-                        return;
-                    }
+const teleportTarget = computed(() => {
+    return config.teleportTarget;
+});
 
-                    wrapper.style.top = `${String(result.y)}px`;
-                    if (this.anchorOverlap === "never") {
-                        this.saveAnchorOffset(wrapper, anchor);
-                    }
+watch(
+    () => isOpen,
+    (value) => {
+        /* warning: floating promise */
+        void toggleIsOpen(value);
+
+        if (value) {
+            teleportDisabled.value = isTeleportDisabled({
+                window,
+                placement: placement.value,
+                forceInline: forceInline.value,
+                forceOverlay: forceOverlay.value,
+            });
+
+            // wait one tick so we dont get the click
+            // that launches the popup (await nextTick doesnt work here)
+            // eslint-disable-next-line unicorn/prefer-queue-microtask -- technical debt: microtask closes the popup on same click
+            setTimeout(() => {
+                // verify that it's still open
+                if (!isOpen) {
                     return;
                 }
-            }
 
-            // Force disable teleport since it won't be updated due to fallback placement.
-            this.teleportDisabled = true;
-            wrapper.style.removeProperty("left");
-            wrapper.style.removeProperty("top");
-
-            // Wait for virtual keyboard to be closed before calculating scroll.
-            await new Promise((resolve) => setTimeout(resolve, 200));
-
-            const scrollTarget = popup.closest(".scroll-target");
-            const hasScrollTarget = scrollTarget !== null;
-            const top = getScrollToPopup({
-                popup: wrapper,
-                windowInnerHeight: window.innerHeight,
-                scrollTop: hasScrollTarget ? scrollTarget.scrollTop : window.scrollY,
-                spacing: POPUP_SPACING,
-            });
-            const scrollOptions = { top, behavior: "smooth" } as const;
-
-            if (hasScrollTarget) {
-                scrollTarget.scrollTo(scrollOptions);
-            } else {
-                window.scrollTo(scrollOptions);
-            }
-        },
-        applyFocus(): void {
-            if (!this.focus) {
-                return;
-            }
-            const wrapper = this.$refs.wrapper;
-            if (!wrapper) {
-                return;
-            }
-            const focusableElement = getFocusableElement(wrapper, this.focus);
-            if (focusableElement) {
-                this.focusHandle = pushFocus(focusableElement);
-            }
-        },
-        isMobileSize(): boolean {
-            return window.innerWidth < MIN_DESKTOP_WIDTH;
-        },
-        onDocumentClickHandler(): void {
-            this.$emit("close", "click-outside");
-        },
-        onWindowResizeDebounced(): void {
-            // Overwritten in created so that the debounced `onWindowResize`
-            // method can be removed by removeEventListener.
-        },
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars -- Need to match actual `onScroll` method.
-        onScrollDebounced(event: Event): void {
-            // Overwritten in created to debounce placement calculation for allow mode.
-        },
-        async onScrollEvent(event: Event): Promise<void> {
-            if (this.anchorOverlap === "never") {
-                await this.onScroll(event);
-            } else {
-                this.onScrollDebounced(event);
-            }
-        },
-        async onWindowResize(): Promise<void> {
-            await this.recalculatePlacement();
-        },
-        async onScroll(event: Event): Promise<void> {
-            if (!this.isOpen || this.isInline) {
-                return;
-            }
-            const isPopupTarget = event.target instanceof HTMLElement && Boolean(event.target.closest(".popup"));
-            if (isPopupTarget) {
-                return;
-            }
-            if (this.anchorOverlap === "never") {
-                this.followAnchor();
-                return;
-            }
-
-            await this.recalculatePlacement({ horizontalOnly: true });
-        },
-        saveAnchorOffset(wrapper: HTMLElement, anchor: HTMLElement): void {
-            const wrapperPosition = getAbsolutePosition(wrapper);
-            const anchorPosition = getAbsolutePosition(anchor);
-            this.anchorOffset = {
-                x: wrapperPosition.x - anchorPosition.x,
-                y: wrapperPosition.y - anchorPosition.y,
-            };
-        },
-        followAnchor(): void {
-            if (!this.anchorOffset) {
-                return;
-            }
-            const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
-            const anchor = getElement(this.anchor);
-            if (!anchor) {
-                throw new Error("No anchor element found");
-            }
-
-            const anchorPosition = getAbsolutePosition(anchor);
-            const offsetParent = wrapper.offsetParent?.getBoundingClientRect();
-            const offsetLeft = offsetParent ? offsetParent.left + window.pageXOffset : 0;
-            const offsetTop = offsetParent ? offsetParent.top + window.pageYOffset : 0;
-            wrapper.style.left = `${String(anchorPosition.x + this.anchorOffset.x - offsetLeft)}px`;
-            wrapper.style.top = `${String(anchorPosition.y + this.anchorOffset.y - offsetTop)}px`;
-        },
-        async recalculatePlacement(options?: { horizontalOnly: boolean }): Promise<void> {
-            // Abort if popup was closed during debounce.
-            if (!this.isOpen) {
-                return;
-            }
-            // Don't need to recalculate on resize if forced inline.
-            if (this.forceInline) {
-                return;
-            }
-            // Don't need to recalculate if popup is still supposed to be inline.
-            if (this.isInline && this.isMobileSize()) {
-                return;
-            }
-
-            // Reset placement/teleport to get overlay state for accurate calculation.
-            if (this.isInline) {
-                this.placement = Placement.NotCalculated;
-                this.teleportDisabled = false;
-                await this.$nextTick();
-            }
-
-            await this.calculatePlacement(options);
-            const { placement, forceInline, forceOverlay } = this;
-            this.teleportDisabled = isTeleportDisabled({ window, placement, forceInline, forceOverlay });
-        },
-        onPopupClickHandler(event: Event): void {
-            // prevent propagation so we don't catch this
-            // event in onDocumentClickHandler and close ourself.
-            event.stopPropagation();
-        },
-        onKeyEsc(): void {
-            this.$emit("close", "escape");
-        },
-        onKeyTab(event: KeyboardEvent): void {
-            if (!this.keyboardTrap) {
-                return;
-            }
-
-            const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
-            handleTab(event, wrapper);
-        },
+                document.addEventListener("click", onDocumentClickHandler);
+                window.addEventListener("resize", onWindowResizeDebounced);
+                window.addEventListener("scroll", onScrollEvent, { capture: true });
+            }, 0);
+        } else {
+            document.removeEventListener("click", onDocumentClickHandler);
+            window.removeEventListener("resize", onWindowResizeDebounced);
+            window.removeEventListener("scroll", onScrollEvent, { capture: true });
+        }
     },
+    { immediate: true },
+);
+
+watch(
+    () => anchorOverlap,
+    () => {
+        if (isOpen && placement.value !== Placement.NotCalculated) {
+            void recalculatePlacement();
+        }
+    },
+);
+
+/* ON UNMOUNTED */
+
+onUnmounted(() => {
+    // Clean up if unmounted but still opened
+    document.removeEventListener("click", onDocumentClickHandler);
+    window.removeEventListener("resize", onWindowResizeDebounced);
+    window.removeEventListener("scroll", onScrollEvent, { capture: true });
 });
+
+/* METHODS */
+
+async function toggleIsOpen(isOpen: boolean): Promise<void> {
+    /* popup is closing */
+    if (!isOpen) {
+        placement.value = Placement.NotCalculated;
+        anchorOffset.value = null;
+
+        /* restore focus */
+        if (focusHandle.value) {
+            popFocus(focusHandle.value);
+            focusHandle.value = null;
+        }
+
+        return;
+    }
+
+    /* popup is opening */
+    // Wait for popup to show up
+    await nextTick();
+    await calculatePlacement();
+    applyFocus();
+    emit("open");
+}
+
+async function calculatePlacement(options?: { horizontalOnly: boolean }): Promise<void> {
+    const popup = getHTMLElementFromVueRef(popupRef.value);
+    const wrapper = getHTMLElementFromVueRef(wrapperRef.value);
+    const anchor = getElement(anchorProp);
+
+    if (!anchor) {
+        throw new Error("No anchor element found");
+    }
+
+    // Check candidates for overlay placement.
+    const shouldCheckCandidates = forceOverlay.value || !(isMobileSize() || forceInline.value);
+    if (shouldCheckCandidates) {
+        const area = getContainer(popup, container);
+        const viewport = viewportProp;
+        const result = fitInsideArea({
+            area,
+            anchor,
+            target: wrapper,
+            viewport,
+            spacing: POPUP_SPACING,
+            candidateOrder: CandidateOrder.Default,
+            allowAnchorOverlap: anchorOverlap === "allow",
+        });
+
+        placement.value = result.placement;
+        const useOverlay = forceOverlay.value || result.placement !== Placement.Fallback;
+        if (useOverlay) {
+            wrapper.style.left = `${String(result.x)}px`;
+            if (options?.horizontalOnly) {
+                return;
+            }
+
+            wrapper.style.top = `${String(result.y)}px`;
+            if (anchorOverlap === "never") {
+                saveAnchorOffset(wrapper, anchor);
+            }
+            return;
+        }
+    }
+
+    // Force disable teleport since it won't be updated due to fallback placement.
+    teleportDisabled.value = true;
+    wrapper.style.removeProperty("left");
+    wrapper.style.removeProperty("top");
+
+    // Wait for virtual keyboard to be closed before calculating scroll.
+    await new Promise((resolve) => setTimeout(resolve, 200));
+
+    const scrollTarget = popup.closest(".scroll-target");
+    const hasScrollTarget = scrollTarget !== null;
+    const top = getScrollToPopup({
+        popup: wrapper,
+        windowInnerHeight: window.innerHeight,
+        scrollTop: hasScrollTarget ? scrollTarget.scrollTop : window.scrollY,
+        spacing: POPUP_SPACING,
+    });
+    const scrollOptions = { top, behavior: "smooth" } as const;
+
+    if (hasScrollTarget) {
+        scrollTarget.scrollTo(scrollOptions);
+    } else {
+        window.scrollTo(scrollOptions);
+    }
+}
+
+function applyFocus(): void {
+    if (!focus) {
+        return;
+    }
+    const wrapper = wrapperRef.value;
+    if (!wrapper) {
+        return;
+    }
+    const focusableElement = getFocusableElement(wrapper, focus);
+    if (focusableElement) {
+        focusHandle.value = pushFocus(focusableElement);
+    }
+}
+
+function isMobileSize(): boolean {
+    return window.innerWidth < MIN_DESKTOP_WIDTH;
+}
+
+function onDocumentClickHandler(): void {
+    emit("close", "click-outside");
+}
+
+async function onScrollEvent(event: Event): Promise<void> {
+    if (anchorOverlap === "never") {
+        await onScroll(event);
+    } else {
+        onScrollDebounced(event);
+    }
+}
+
+async function onWindowResize(): Promise<void> {
+    await recalculatePlacement();
+}
+
+async function onScroll(event: Event): Promise<void> {
+    if (!isOpen || isInline.value) {
+        return;
+    }
+    const isPopupTarget = event.target instanceof HTMLElement && Boolean(event.target.closest(".popup"));
+    if (isPopupTarget) {
+        return;
+    }
+    if (anchorOverlap === "never") {
+        followAnchor();
+        return;
+    }
+
+    await recalculatePlacement({ horizontalOnly: true });
+}
+
+function saveAnchorOffset(wrapper: HTMLElement, anchor: HTMLElement): void {
+    const wrapperPosition = getAbsolutePosition(wrapper);
+    const anchorPosition = getAbsolutePosition(anchor);
+    anchorOffset.value = {
+        x: wrapperPosition.x - anchorPosition.x,
+        y: wrapperPosition.y - anchorPosition.y,
+    };
+}
+
+function followAnchor(): void {
+    if (!anchorOffset.value) {
+        return;
+    }
+    const wrapper = getHTMLElementFromVueRef(wrapperRef.value);
+    const anchor = getElement(anchorProp);
+    if (!anchor) {
+        throw new Error("No anchor element found");
+    }
+
+    const anchorPosition = getAbsolutePosition(anchor);
+    const offsetParent = wrapper.offsetParent?.getBoundingClientRect();
+    const offsetLeft = offsetParent ? offsetParent.left + window.pageXOffset : 0;
+    const offsetTop = offsetParent ? offsetParent.top + window.pageYOffset : 0;
+    wrapper.style.left = `${String(anchorPosition.x + anchorOffset.value.x - offsetLeft)}px`;
+    wrapper.style.top = `${String(anchorPosition.y + anchorOffset.value.y - offsetTop)}px`;
+}
+
+async function recalculatePlacement(options?: { horizontalOnly: boolean }): Promise<void> {
+    // Abort if popup was closed during debounce.
+    if (!isOpen) {
+        return;
+    }
+    // Don't need to recalculate on resize if forced inline.
+    if (forceInline.value) {
+        return;
+    }
+    // Don't need to recalculate if popup is still supposed to be inline.
+    if (isInline.value && isMobileSize()) {
+        return;
+    }
+
+    // Reset placement/teleport to get overlay state for accurate calculation.
+    if (isInline.value) {
+        placement.value = Placement.NotCalculated;
+        teleportDisabled.value = false;
+        await nextTick();
+    }
+
+    await calculatePlacement(options);
+    teleportDisabled.value = isTeleportDisabled({
+        window,
+        placement: placement.value,
+        forceInline: forceInline.value,
+        forceOverlay: forceOverlay.value,
+    });
+}
+
+function onPopupClickHandler(event: Event): void {
+    // prevent propagation so we don't catch this
+    // event in onDocumentClickHandler and close ourself.
+    event.stopPropagation();
+}
+
+function onKeyEsc(): void {
+    emit("close", "escape");
+}
+
+function onKeyTab(event: KeyboardEvent): void {
+    if (!keyboardTrap) {
+        return;
+    }
+
+    const wrapper = getHTMLElementFromVueRef(wrapperRef.value);
+    handleTab(event, wrapper);
+}
+</script>
+
+<script lang="ts">
+export default {};
 </script>
 
 <template>

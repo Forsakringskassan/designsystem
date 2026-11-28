@@ -1122,16 +1122,6 @@ export type InputTypeText = (typeof textTypes)[number];
 // @public (undocumented)
 export const IPopup: typeof __VLS_export_74;
 
-// @public (undocumented)
-export interface IPopupData {
-    // (undocumented)
-    focusHandle: StackHandle | null;
-    // (undocumented)
-    placement: Placement;
-    // (undocumented)
-    teleportDisabled: boolean;
-}
-
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_75" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)

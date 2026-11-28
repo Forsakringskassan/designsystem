@@ -1,5 +1,5 @@
 export { IFlex, IFlexItem } from "./IFlex";
-export { type IPopupData, IPopup, Placement } from "./IPopup";
+export { IPopup, Placement } from "./IPopup";
 export { IPopupError } from "./IPopupError";
 export { IPopupListbox } from "./IPopupListbox";
 export { IPopupMenu } from "./IPopupMenu";
