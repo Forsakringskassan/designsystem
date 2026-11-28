@@ -1,7 +1,8 @@
 import { FTablePageObject } from "@fkui/vue/cypress";
 import Example from "./FTablePageObject-selectDropdownOption.vue";
 
-it("selectDropdownOption() should should get correct text.", () => {
+// eslint-disable-next-line mocha/no-pending-tests -- selectDropdownOption() is deprecated, kept for docs
+it.skip("selectDropdownOption() should should get correct text.", () => {
     cy.mount(Example);
 
     /* --- cut above --- */
