@@ -112,7 +112,7 @@
     "@forsakringskassan/vite-lib-config": "6.0.2",
     "@forsakringskassan/vitest-config": "5.1.0",
     "@html-validate/release-scripts": "7.6.22",
-    "@types/estree": "1.0.10",
+    "@types/estree": "1.0.11",
     "@types/lodash": "4.17.27",
     "@types/node": "22.20.5",
     "@typescript/native": "npm:typescript@7.0.2",
