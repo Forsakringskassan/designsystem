@@ -165,3 +165,34 @@ describe("events", () => {
         expect(foobar).toHaveBeenCalled();
     });
 });
+
+describe("notification", () => {
+    it("should render default icon", () => {
+        expect.assertions(1);
+        const wrapper = shallowMount(FExpandablePanel, {
+            props: {
+                notifications: 1,
+            },
+        });
+        const notification = wrapper.get(".expandable-panel__notification");
+        const icon = notification.getComponent({ name: "f-icon" });
+        expect(icon.props("name")).toBe("bell");
+    });
+
+    it("should render custom icon", () => {
+        expect.assertions(2);
+        const wrapper = shallowMount(FExpandablePanel, {
+            props: {
+                notifications: 1,
+            },
+            slots: {
+                icon: '<span class="custom-icon">custom icon</span>',
+            },
+        });
+        const notification = wrapper.get(".expandable-panel__notification");
+        expect(notification.find(".custom-icon").exists()).toBe(true);
+        expect(notification.findComponent({ name: "f-icon" }).exists()).toBe(
+            false,
+        );
+    });
+});
